@@ -34,7 +34,7 @@ The following is a listing of all AIPs so far, broken down by type.
 
 | Number | Title                                            | State     |
 | -----: | ------------------------------------------------ | --------- |
-|    121 | [Resource-oriented design](./0121)               | Approved  |
+|    121 | [Resource-oriented design](./aip/0121)           | Approved  |
 |    122 | [Resource names](./0122.md)                      | Reviewing |
 |    131 | [Standard methods: Get](./0131.md)               | Reviewing |
 |    132 | [Standard methods: List](./0132.md)              | Reviewing |
