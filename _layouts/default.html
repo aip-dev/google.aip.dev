@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}" class="glue-flexbox">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    {% seo %}
+  </head>
+  <body class="h-c-page">
+    {% include svgs.html %}
+    <div class="hercules-header h-c-header h-c-header--product-marketing-one-tier">
+      <div class="h-c-header__bar">
+        <div class="h-c-header__hamburger h-c-header__hamburger--first-tier">
+          <div class="h-c-header__hamburger-wrapper">
+            <button type="button"
+                data-g-event="home"
+                data-g-action="mobile: open global nav"
+                data-g-label="global nav"
+                class="h-js-header__hamburger-link h-c-header__hamburger-link"
+                aria-controls="h-js-header__drawer"
+                aria-expanded="false"
+                aria-label="Open the navigation drawer">
+              <svg role="img" class="h-c-header__hamburger-img
+                  h-c-header__hamburger-img--standard">
+                <use xlink:href="#h-burger"></use>
+              </svg>
+
+              <svg role="img" class="h-c-header__hamburger-img
+                  h-c-header__hamburger-img--reversed">
+                <use xlink:href="#h-burger"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="h-c-header__lockup">
+          <div class="h-c-header__company-logo">
+            <a data-g-event="home"
+                data-g-action="logo"
+                data-g-label="global nav"
+                href="/"
+                class="h-c-header__company-logo-link" title="Google">
+              <svg role="img" class="h-c-header__company-logo-img
+                  h-c-header__company-logo-img--standard">
+                <use xlink:href="#h-color-google-logo"></use>
+              </svg>
+
+              <svg role="img" class="h-c-header__company-logo-img
+                  h-c-header__company-logo-img--reversed">
+                <use xlink:href="#h-white-google-logo"></use>
+              </svg>
+            </a>
+          </div>
+
+          <div class="h-c-header__product-logo">
+            <a data-g-event="home"
+                data-g-action="logo"
+                data-g-label="global nav"
+                href="/"
+                class="h-c-header__product-logo-link">
+              <span class="h-c-header__product-logo-text gmp-logo-text">AIPs</span>
+            </a>
+          </div>
+          <a href="#jump-content" class="h-c-header__jump-to-content"
+              data-glue-jump-link="#jump-content" data-cached-tabindex="auto"
+              tabindex="-1">
+            <span class="h-c-header__jump-to-content-text">Skip to Content</span>
+          </a>
+        </div>
+
+        <div class="h-c-header__hamburger h-c-header__hamburger--second-tier">
+          <div class="h-c-header__hamburger-wrapper">
+            <button type="button" class="h-js-header__hamburger-link h-c-header__hamburger-link"
+                    aria-controls="h-js-header__drawer" aria-expanded="false"
+                    aria-label="Open the navigation drawer" tabindex="-1">
+              <svg role="img" class="h-c-header__hamburger-img h-c-header__hamburger-img--standard">
+                <use xlink:href="#h-burger"></use>
+              </svg>
+              <svg role="img" class="h-c-header__hamburger-img h-c-header__hamburger-img--reversed">
+                <use xlink:href="#h-burger"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <nav class="h-c-header__nav">
+          <ul class="h-c-header__nav-list">
+            <li class="h-c-header__nav-li" aria-level="1">
+              <a href="/" class="h-c-header__nav-li-link" tabindex="-1">Home</a>
+            </li>
+            <!--
+            <li class="h-c-header__nav-li" aria-level="1">
+              <a href="/usage/" class="h-c-header__nav-li-link" tabindex="-1">Usage</a>
+            </li>
+            -->
+          </ul>
+        </nav>
+       </div>
+      </div>
+
+      <div class="h-c-grid">
+        <div class="h-c-grid__col h-c-grid__col--9" role="main" id="jump-content">
+          {{ content }}
+        </div>
+        <div class="h-c-grid__col h-c-grid__col--3" style="margin-top: 40px;">
+          {% include toc.html html=content %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing scripts -->
+    <script src="https://www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v18_0/glue-vanilla.min.js"></script>
+    <script src="//www.gstatic.com/glue/v18_0/hercules.min.js"></script>
+    </body>
+</html>
