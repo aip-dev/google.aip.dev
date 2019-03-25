@@ -67,10 +67,3 @@ consistency.)
 |  2500 | [Cloud](./aip/cloud/)         |
 |  2700 | [Apps (G Suite)](./aip/apps/) |
 |  4600 | [Geo](./aip/geo/)             |
-
-<style>
-th:first-child { width: 100px; }
-td:first-child { width: 100px; }
-th:nth-child(3) { width: 125px; }
-td:nth-child(3) { width: 125px; }
-</style>
