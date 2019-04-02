@@ -210,12 +210,20 @@
 
     <main role="main" class="hd-o-main" id="main">
       <section id="jump-content">
-        <section id="hd-js-component__main" class="ho-o-component__main">
+          <aside id="aip-component-sidebar">
+            <section class="aip-component-sidebar-toc">
+              {% include toc.html html=content h_min=2 h_max=3 %}
+            </section>
+            <section class="aip-component-sidebar-actions">
+              <ul>
+                <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+                <li><a href="https://github.com/googleapis/aip/tree/master{{ page.dir }}{{ page.name }}">View Source</a></li>
+              </ul>
+            </section>
+          </aside>
+          <section id="aip-component-main">
           {{ content }}
         </section>
-        <aside class="hd-o-component__sidebar">
-          {% include toc.html html=content h_min=2 %}
-        </aside>
       </section>
     </main>
 
