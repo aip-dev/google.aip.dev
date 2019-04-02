@@ -4,6 +4,12 @@
 @import "//www.gstatic.com/glue/v19_0/glue.min.css";
 
 
+// Code font
+code.highlighter-rouge {
+  background: #f0f0f0;
+  color: #404040;
+}
+
 // Headers
 h1, h2, h3, h4 {
   @extend .h-c-headline;
@@ -14,16 +20,42 @@ h2 { @extend .h-c-headline--two };
 h3 { @extend .h-c-headline--three };
 h4 { @extend .h-c-headline--four };
 
-p { @extend .h-u-font-weight-regular };
-
+// Tables
 table {
-  @extend .h-has-bottom-margin;
   @extend .h-c-table;
-  @extend .h-c-table--datatable;
+  margin-bottom: 20px !important;
 
-  td {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+  tr td {
+    @extend .h-u-font-weight-light;
+  }
+
+  &.aip-listing {
+    @extend .h-c-table--datatable;
+    th:first-child { width: 100px; }
+    td:first-child { width: 100px; }
+    th:nth-child(3) { width: 125px; }
+    td:nth-child(3) { width: 125px; }
+
+    tr td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  &.aip-summary {
+    @extend .h-c-table--comparisontable;
+    margin-top: 20px !important;
+
+    th { display: none; }
+
+    tr td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &:first-child {
+        @extend .h-u-font-weight-bold;
+      }
+    }
   }
 }
 

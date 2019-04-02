@@ -101,19 +101,20 @@
        </div>
       </div>
 
-      <div class="h-c-grid">
-        <div class="h-c-grid__col h-c-grid__col--9" role="main" id="jump-content">
-          {{ content }}
-        </div>
-        <div class="h-c-grid__col h-c-grid__col--3" style="margin-top: 40px;">
-          {% include toc.html html=content %}
-        </div>
-      </div>
+      <main role="main" class="hd-o-main">
+        <section id="jump-content">
+          <section id="hd-js-component__main" class="ho-o-component__main">
+            {{ content }}
+          </section>
+          <aside class="hd-o-component__sidebar">
+            {% include toc.html html=content h_min=2 %}
+          </aside>
+        </section>
+      </main>
     </div>
 
     <!-- Closing scripts -->
     <script src="https://www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
-    <script src="//www.gstatic.com/glue/v18_0/glue-vanilla.min.js"></script>
-    <script src="//www.gstatic.com/glue/v18_0/hercules.min.js"></script>
+    <script src="//www.gstatic.com/glue/v19_0/glue-vanilla.min.js"></script>
     </body>
 </html>
