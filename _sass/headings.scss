@@ -1,0 +1,24 @@
+@import "hercules.scss";
+
+// Headers
+#aip-component-main {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @extend .h-c-headline;
+    @extend .h-has-top-margin;
+  }
+  h1 {
+    @extend .h-c-headline--one;
+  }
+  h2 {
+    @extend .h-c-headline--two;
+  }
+  h3 {
+    @extend .h-c-headline--three;
+  }
+  h4 {
+    @extend .h-c-headline--four;
+  }
+}
