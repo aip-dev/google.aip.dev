@@ -11,8 +11,6 @@ too. If so, we list their AIPs here, along with which parts of Google they
 apply to. So the complete set of AIPs that apply to you are the General API
 Guidance, possibly supplemented by your PA's guidance.
 
----
-
 ## AIP Listing
 
 The following is a listing of all AIPs so far, broken down by type.
