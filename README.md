@@ -11,13 +11,13 @@ too. If so, we list their AIPs here, along with which parts of Google they
 apply to. So the complete set of AIPs that apply to you are the General API
 Guidance, possibly supplemented by your PA's guidance.
 
----
-
 ## AIP Listing
 
 The following is a listing of all AIPs so far, broken down by type.
 
 ### Meta-AIPs (AIPs about AIPs)
+
+{:.aip-listing}
 
 | Number | Title                                       | State    |
 | -----: | ------------------------------------------- | -------- |
@@ -26,11 +26,15 @@ The following is a listing of all AIPs so far, broken down by type.
 
 ### Process
 
+{:.aip-listing}
+
 | Number | Title                                  | State    |
 | -----: | -------------------------------------- | -------- |
 |    100 | [API Design Review FAQ](./aip/0100.md) | Approved |
 
 ### General API guidance
+
+{:.aip-listing}
 
 | Number | Title                                                | State     |
 | -----: | ---------------------------------------------------- | --------- |
@@ -61,6 +65,8 @@ While it is uncommon, it may be the case that group-level guidance will
 contradict general guidance. In this situation, the group-specific guidance
 takes precedence (local consistency has higher precedence than global
 consistency.)
+
+{:.aip-listing}
 
 | Block | Team                          |
 | ----: | ----------------------------- |

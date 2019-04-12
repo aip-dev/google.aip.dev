@@ -32,7 +32,7 @@ Original file is Copyright © 2017, Vladimir Jimenez
             generate the table of contents and will NOT output the markdown given to it
     {% endcomment %}
 
-    {% capture my_toc %}{% endcapture %}
+    {% capture my_toc %}- {:.toc-header} Contents{% endcapture %}
     {% assign orderedList = include.ordered | default: false %}
     {% assign minHeader = include.h_min | default: 1 %}
     {% assign maxHeader = include.h_max | default: 6 %}
