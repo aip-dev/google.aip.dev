@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.slim.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $(document).ready(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
     <script type="text/javascript" src="/assets/js/documentation.js"></script>
     <script type="text/javascript" src="/assets/js/aip.js"></script>
     {% seo %}

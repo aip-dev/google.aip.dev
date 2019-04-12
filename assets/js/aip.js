@@ -17,7 +17,15 @@
 $(document).ready(() => {
   // The base README page should have tables that span the full width
   // and look consistent with one another.
-  $("table th:first-child:contains(Number)")
+  for (let topLeftCell of ["Number", "Block"]) {
+    $(`table th:first-child:contains(${topLeftCell})`)
+      .parents("table")
+      .addClass("aip-listing");
+  }
+
+  // Each AIP has an "AIP Summary".
+  // Apply a class to it for styling.
+  $("table th:first-child:contains(AIP Summary)")
     .parents("table")
-    .addClass("aip-listing");
+    .addClass("aip-summary");
 });
