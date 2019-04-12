@@ -27,5 +27,9 @@ $(document).ready(() => {
   // Apply a class to it for styling.
   $("table th:first-child:contains(AIP Summary)")
     .parents("table")
-    .addClass("aip-summary");
+    .attr("id", "aip-summary")
+    .insertBefore("#aip-toc");
+  $("#aip-summary th")
+    .parent("tr")
+    .detach();
 });

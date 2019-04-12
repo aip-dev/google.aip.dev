@@ -1,7 +1,8 @@
-#aip-component-main {
+#aip-main {
   table {
+    @extend .h-c-table--datatable;
+
     &.aip-listing {
-      @extend .h-c-table--datatable;
       th:first-child {
         width: 125px;
       }
@@ -20,22 +21,27 @@
         padding-bottom: 10px;
       }
     }
+  }
+}
 
-    &.aip-summary {
-      @extend .h-c-table--comparisontable;
-      margin-top: 20px !important;
+#aip-sidebar {
+  table#aip-summary {
+    background-color: $h-gm-grey-50;
+    border: 1px solid $h-gm-grey-200;
 
-      th {
-        display: none;
-      }
+    th {
+      font-size: 14px;
+      overflow: visible;
+    }
 
-      tr td {
-        padding-top: 10px;
-        padding-bottom: 10px;
+    tr td {
+      font-size: 12px;
+      padding-top: 2px;
+      padding-bottom: 2px;
 
-        &:first-child {
-          @extend .h-u-font-weight-bold;
-        }
+      &:first-child {
+        @extend .h-u-font-weight-bold;
+        width: 60px;
       }
     }
   }

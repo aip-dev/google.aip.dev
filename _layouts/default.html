@@ -220,18 +220,18 @@
 
     <main role="main" class="hd-o-main" id="main">
       <section id="jump-content">
-        <aside id="aip-component-sidebar">
-          <section class="aip-component-sidebar-toc">
+        <aside id="aip-sidebar" class="docs-component-sidebar">
+          <section id="aip-toc" class="docs-component-sidebar-toc">
             {% include toc.html html=content h_min=2 h_max=3 %}
           </section>
-          <section class="aip-component-sidebar-actions">
+          <section class="docs-component-sidebar-actions">
             <ul>
               <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
               <li><a href="https://github.com/googleapis/aip/tree/master{{ page.dir }}{{ page.name }}">View Source</a></li>
             </ul>
           </section>
         </aside>
-        <section id="aip-component-main">
+        <section id="aip-main" class="docs-component-main">
           {{ content }}
         </section>
       </section>
