@@ -18,6 +18,7 @@ The following is a listing of all AIPs so far, broken down by type.
 ### Meta-AIPs (AIPs about AIPs)
 
 {:.aip-listing}
+
 | Number | Title                                       | State    |
 | -----: | ------------------------------------------- | -------- |
 |      1 | [AIP Purpose and Guidelines](./aip/0001.md) | Approved |
@@ -26,6 +27,7 @@ The following is a listing of all AIPs so far, broken down by type.
 ### Process
 
 {:.aip-listing}
+
 | Number | Title                                  | State    |
 | -----: | -------------------------------------- | -------- |
 |    100 | [API Design Review FAQ](./aip/0100.md) | Approved |
@@ -33,6 +35,7 @@ The following is a listing of all AIPs so far, broken down by type.
 ### General API guidance
 
 {:.aip-listing}
+
 | Number | Title                                                | State     |
 | -----: | ---------------------------------------------------- | --------- |
 |    121 | [Resource-oriented design](./aip/0121.md)            | Approved  |
@@ -64,6 +67,7 @@ takes precedence (local consistency has higher precedence than global
 consistency.)
 
 {:.aip-listing}
+
 | Block | Team                          |
 | ----: | ----------------------------- |
 |  2500 | [Cloud](./aip/cloud/)         |
