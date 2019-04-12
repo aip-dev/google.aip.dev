@@ -1,52 +1,11 @@
 @import "hercules.scss";
 
 // Tables
-#aip-component-main {
-  table {
-    @extend .h-c-table;
-    margin-bottom: 20px !important;
+table {
+  @extend .h-c-table;
+  margin-bottom: 20px !important;
 
-    tr td {
-      @extend .h-u-font-weight-light;
-    }
-
-    &.aip-listing {
-      @extend .h-c-table--datatable;
-      th:first-child {
-        width: 125px;
-      }
-      td:first-child {
-        width: 125px;
-      }
-      th:nth-child(3) {
-        width: 125px;
-      }
-      td:nth-child(3) {
-        width: 125px;
-      }
-
-      tr td {
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-    }
-
-    &.aip-summary {
-      @extend .h-c-table--comparisontable;
-      margin-top: 20px !important;
-
-      th {
-        display: none;
-      }
-
-      tr td {
-        padding-top: 10px;
-        padding-bottom: 10px;
-
-        &:first-child {
-          @extend .h-u-font-weight-bold;
-        }
-      }
-    }
+  tr td {
+    @extend .h-u-font-weight-light;
   }
 }

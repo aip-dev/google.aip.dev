@@ -1,16 +1,14 @@
 @import "colors.scss";
 
-#aip-component-main {
-  .callout {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px 20px;
-  }
+.callout {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px 20px;
+}
 
-  .note {
-    @extend .callout;
-    background-color: $h-google-blue-50;
-    border: 1px solid $h-google-blue-100;
-    color: $h-info-color;
-  }
+.note {
+  @extend .callout;
+  background-color: $h-google-blue-50;
+  border: 1px solid $h-google-blue-100;
+  color: $h-info-color;
 }
