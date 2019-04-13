@@ -35,6 +35,7 @@ table#aip-summary {
   border: 1px solid $h-gm-grey-200;
   margin-top: 2px;
   margin-left: 10px;
+  width: 220px;
 
   @media (max-width: 800px) {
     display: none;
