@@ -14,7 +14,7 @@
 
 // This file contains JavaScript-applied rules that apply to the AIP site
 // specifically.
-$(document).ready(() => {
+$.when($.ready).then(() => {
   // The base README page should have tables that span the full width
   // and look consistent with one another.
   for (let topLeftCell of ["Number", "Block"]) {
@@ -28,8 +28,17 @@ $(document).ready(() => {
   $("table th:first-child:contains(AIP Summary)")
     .parents("table")
     .attr("id", "aip-summary")
+    .addClass("no-h")
     .insertBefore("#aip-toc");
-  $("#aip-summary th")
-    .parent("tr")
-    .detach();
+  // .insertAfter("#aip-main h1:eq(0)");
+
+  // Cause the AIP summary header to span all columns.
+  // (This is trivial in HTML but impossible in Markdown.)
+  $("#aip-summary th").each(function() {
+    $(this)
+      .attr("colspan", ($(this).siblings().length + 1).toString())
+      .nextAll()
+      .detach();
+    return false;
+  });
 });

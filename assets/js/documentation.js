@@ -14,7 +14,7 @@
 
 // This file contains JavaScript-applied rules that can be applied
 // to documentation sites using this Jekyll theme generally.
-$(document).ready(() => {
+$.when($.ready).then(() => {
   // Make callouts for notes, warnings, etc. work.
   $("p strong:contains(Note:)")
     .parent()

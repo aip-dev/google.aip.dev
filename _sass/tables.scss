@@ -1,7 +1,7 @@
 @import "hercules.scss";
 
 // Tables
-table {
+table:not(.no-h) {
   @extend .h-c-table;
   margin-bottom: 20px !important;
 
