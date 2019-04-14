@@ -3,6 +3,7 @@ permalink: /assets/css/search.css
 ---
 
 @import "colors.scss";
+@import "hercules.scss";
 
 .docs-component-sidebar-toc {
   display: none;
@@ -32,5 +33,20 @@ permalink: /assets/css/search.css
     color: $h-gm-grey-700;
     font-size: 13px;
     font-style: italic;
+  }
+
+  .tipue_search_content_title {
+    @extend .h-c-headline;
+    @extend .h-c-headline--four;
+    @extend .h-has-top-margin;
+  }
+
+  .tipue_search_content_url {
+    display: none;
+  }
+
+  .tipue_search_content_bold {
+    @extend .h-u-font-weight-bold;
+    color: $h-google-green-500;
   }
 }
