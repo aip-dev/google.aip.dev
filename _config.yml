@@ -3,3 +3,17 @@ markdown: kramdown
 plugins:
   - jekyll-redirect-from
 url: https://github.com/googleapis/aip
+defaults:
+  - scope:
+      path: aip/*
+    values:
+      js:
+        - /assets/js/aip/aip-summary.js
+  - scope:
+      path: README.md
+    values:
+      js:
+        - /assets/js/aip/aip-index.js
+tipue_search:
+  include:
+    pages: true

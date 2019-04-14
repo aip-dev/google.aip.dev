@@ -15,14 +15,6 @@
 // This file contains JavaScript-applied rules that apply to the AIP site
 // specifically.
 $.when($.ready).then(() => {
-  // The base README page should have tables that span the full width
-  // and look consistent with one another.
-  for (let topLeftCell of ["Number", "Block"]) {
-    $(`table th:first-child:contains(${topLeftCell})`)
-      .parents("table")
-      .addClass("aip-listing");
-  }
-
   // Each AIP has an "AIP Summary".
   // Apply a class to it for styling.
   $("table th:first-child:contains(AIP Summary)")
