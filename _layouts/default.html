@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v19_0/glue.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% for stylesheet in page.css -%}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ stylesheet | append: site.github.build_revision }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ stylesheet }}?v={{ site.github.build_revision }}">
     {% endfor -%}
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.slim.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
       $('html').css('visibility', 'hidden');
@@ -121,7 +121,7 @@
         <div class="h-c-header__cta">
           <ul class="h-c-header__cta-list">
             <li class="h-c-header__cta-li">
-              <form class="h-c-sitesearch" action="/path/to/search.html" method="get">
+              <form class="h-c-sitesearch" method="GET" action="{{ '/search/' | relative_url }}">
                 <label for="q" class="h-u-visually-hidden">Search this site</label>
                 <input class="h-c-sitesearch__input" type="text" name="q" id="q">
                 <button type="submit" class="h-c-button h-c-button--secondary h-c-sitesearch__submit" title="Submit">

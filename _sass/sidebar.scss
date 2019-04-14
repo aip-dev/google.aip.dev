@@ -31,6 +31,10 @@
       li.toc-header {
         font-weight: 700;
         text-transform: uppercase;
+
+        &:only-child {
+          display: none;
+        }
       }
 
       li {

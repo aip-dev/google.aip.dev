@@ -1,0 +1,36 @@
+---
+permalink: /assets/css/search.css
+---
+
+@import "colors.scss";
+
+.docs-component-sidebar-toc {
+  display: none;
+}
+
+.primary-search {
+  margin-top: 20px;
+
+  input {
+    font-size: 24px;
+    height: 48px;
+
+    @media (min-width: 1024px) {
+      margin-right: 10px;
+      width: 600px;
+    }
+  }
+
+  button.h-c-button {
+    margin-top: 1px;
+    padding-top: 7px;
+  }
+}
+
+#tipue_search_content {
+  #tipue_search_results_count {
+    color: $h-gm-grey-700;
+    font-size: 13px;
+    font-style: italic;
+  }
+}
