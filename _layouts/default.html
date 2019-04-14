@@ -237,6 +237,9 @@
     <main role="main" class="hd-o-main" id="main">
       <section id="jump-content">
         <aside id="aip-sidebar" class="docs-component-sidebar">
+          {% if page.aip -%}
+            {% include aip-summary.html %}
+          {% endif -%}
           <section id="aip-toc" class="docs-component-sidebar-toc">
             {% include toc.html html=content h_min=2 h_max=3 %}
           </section>

@@ -1,0 +1,59 @@
+<table id="aip-summary">
+  <tr>
+    <th colspan="2">{{ page.title }}</th>
+  </tr>
+  {% if page.aip.id -%}
+  <tr>
+    <td>Number</td>
+    <td>{{ page.aip.id }}</td>
+  </tr>
+  <tr>
+    <td>Permalink</td>
+    <td>
+      <a href="https://aip.dev/{{ page.aip.id }}">aip.dev/{{ page.aip.id }}</a>
+    </td>
+  </tr>
+  {% endif -%} {% if page.aip.state -%}
+  <tr>
+    <td>State</td>
+    <td>{{ page.aip.state | capitalize }}</td>
+  </tr>
+  {% endif -%} {% if page.aip.authors -%}
+  <tr>
+    <td rowspan="{{ page.aip.authors | size }}">
+      Author{% if page.aip.authors.size > 1 %}s{% endif %}
+    </td>
+    <td>
+      <a href="mailto:{{ page.aip.authors.first.email }}">
+        {{ page.aip.authors.first.name }}
+      </a>
+    </td>
+  </tr>
+  {% for author in page.aip.authors -%} {% if forloop.first -%} {% continue %}
+  {% endif -%}
+  <tr>
+    <td>
+      <a href="mailto:{{ author.email }}">
+        {{ author.name }}
+      </a>
+    </td>
+  </tr>
+  {% endfor -%} {% endif -%}
+  <tr>
+    <td>Type</td>
+    <td>
+      {% if page.aip.type %}{{ page.aip.type }}{% else %}Guidance{% endif %}
+    </td>
+  </tr>
+  {% if page.aip.created -%}
+  <tr>
+    <td>Created</td>
+    <td>{{ page.aip.created }}</td>
+  </tr>
+  {% endif -%} {% if page.aip.updated -%}
+  <tr>
+    <td>Updated</td>
+    <td>{{ page.aip.updated }}</td>
+  </tr>
+  {% endif -%}
+</table>
