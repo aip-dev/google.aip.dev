@@ -69,6 +69,11 @@
     color: $h-orange-600;
   }
 
+  // Name: Key (.nk)
+  .nk {
+    color: $h-purple-800;
+  }
+
   // Literal: Number (.m)
   // Literal: Float (.mf)
   // Literal: Hex (.mh)
@@ -216,5 +221,12 @@
   // Literal: Symbol
   .ss {
     @extend .m;
+  }
+
+  // -----------------
+  // Language-specific
+  // -----------------
+  .protobuf-annotation {
+    color: $h-google-yellow-600;
   }
 }

@@ -5,6 +5,11 @@ plugins:
 url: https://github.com/googleapis/aip
 defaults:
   - scope:
+      path: aip
+    values:
+      js:
+        - /assets/js/proto-syntax.js
+  - scope:
       path: README.md
     values:
       exclude_from_search: true
