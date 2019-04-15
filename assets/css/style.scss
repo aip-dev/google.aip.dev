@@ -1,19 +1,13 @@
 ---
 ---
 
-@import "callouts.scss";
-@import "colors.scss";
-@import "footer.scss";
-@import "headings.scss";
-@import "lists.scss";
-@import "sidebar.scss";
-@import "syntax.scss";
-@import "tables.scss";
+@import "callouts";
+@import "colors";
+@import "footer";
+@import "headings";
+@import "lists";
+@import "sidebar";
+@import "syntax";
+@import "tables";
 
-@import "aip/tables.scss";
-
-// Code font
-.highlighter-rouge {
-  background: $h-gm-grey-rgba-100;
-  color: $h-gm-grey-900;
-}
+@import "aip/tables";

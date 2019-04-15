@@ -12,3 +12,12 @@
   border: 1px solid $h-google-blue-100;
   color: $h-info-color;
 }
+
+.docs-component-main div.highlighter-rouge {
+  font-size: 14px;
+  margin: 20px 50px;
+
+  pre.highlight {
+    padding: 9px 14px;
+  }
+}

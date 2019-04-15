@@ -1,4 +1,9 @@
-@import "colors.scss";
+@import "colors";
+
+.highlighter-rouge {
+  background: $h-gm-grey-rgba-100;
+  color: $h-gm-grey-900;
+}
 
 .highlight {
   code {
