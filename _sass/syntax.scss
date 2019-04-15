@@ -1,0 +1,215 @@
+@import "colors.scss";
+
+.highlight {
+  code {
+    color: $h-google-grey-900;
+  }
+
+  .hll {
+    background-color: #ffffcc;
+  }
+
+  // --------------------------------------------
+  // Common things (comments, keywords, literals)
+  // --------------------------------------------
+
+  // Built-in: Pseudo (.bp)
+  .bp {
+    color: $h-light-blue-500;
+  }
+
+  // Comment (.c)
+  // Single-line comment (.c1)
+  // Multi-line comment (.cm)
+  .c,
+  .c1,
+  .cm {
+    color: $h-google-green-700;
+    font-style: italic;
+  }
+
+  // Keyword (.k)
+  // Keyword: Constant (.kc)
+  // Keyword: Declaration (.kd)
+  // Keyword: Namespace (.kn)
+  // Keyword: Pseudo (.kp)
+  // Keyword: Reserved (.kr)
+  .k,
+  .kc,
+  .kd,
+  .kn,
+  .kp,
+  .kr {
+    color: $h-google-blue-900;
+    font-weight: bold;
+  }
+
+  // Keyword: Type (.kt)
+  .kt {
+    color: $h-deep-orange-800;
+  }
+
+  // Name: Attribute
+  .na {
+    color: $h-pink-800;
+  }
+
+  // Name: Built-in (.nb)
+  .nb {
+    @extend .kt;
+  }
+
+  // Name: Class (.nc)
+  .nc {
+    color: $h-orange-600;
+  }
+
+  // Literal: Number (.m)
+  // Literal: Float (.mf)
+  // Literal: Hex (.mh)
+  // Literal: Integer (.mi)
+  // Literal: Octal (.mo)
+  // Literal: Long (.il)
+  .m,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .il {
+    color: $h-light-blue-500;
+  }
+
+  // String (.s)
+  // Backtick string (.sb)
+  // Docstring (.sd)
+  // Double-quoted string (.s2)
+  // Heredoc (.sh)
+  // Single-quoted string (.s1)
+  // String interpolation (.si)
+  // String: Other (.sx)
+  .s,
+  .sb,
+  .sd,
+  .sh,
+  .si,
+  .sx,
+  .s1,
+  .s2 {
+    color: $h-google-blue-500;
+  }
+
+  // Operator: Symbol
+  .o {
+    font-weight: bold;
+  }
+
+  // Operator: Word
+  .ow {
+    @extend .k;
+  }
+
+  // --------
+  // Generics
+  // --------
+
+  // Generic: Deleted
+  .gd {
+    color: black;
+    background-color: $h-google-red-50;
+  }
+
+  // Generic: Emphasis
+  .ge {
+    font-style: italic;
+  }
+
+  // Generic: Error (.gr)
+  // Generic: Traceback (.gt)
+  .gr,
+  .gt {
+    color: $h-google-red-900;
+  }
+
+  // Generic: Heading
+  .gh {
+    color: $h-google-grey-500;
+  }
+
+  // Generic: Inserted
+  .gi {
+    color: black;
+    background-color: $h-google-green-50;
+  }
+
+  // Generic: Output
+  .go {
+    color: $h-google-grey-600;
+  }
+
+  // Generic: Prompt
+  .gp {
+    color: $h-google-grey-800;
+  }
+
+  // Generic: Strong
+  .gs {
+    font-weight: bold;
+  }
+
+  // Generic: Subheading
+  .gu {
+    color: $h-google-grey-400;
+  }
+
+  // ---------------
+  // Uncommon things
+  // ---------------
+
+  // Preprocessor comment
+  .cp {
+    color: #008080;
+  }
+
+  // Special comment
+  .cs {
+    @extend .c;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  // Error
+  .err {
+    color: $h-google-red-700;
+    background-color: $h-google-red-100;
+  }
+
+  // Name: Tag
+  .nt {
+    @extend .k;
+  }
+
+  // Text: Whitespace
+  .w {
+    color: $h-google-grey-400;
+  }
+
+  // Literal: Char
+  .sc {
+    @extend .m;
+  }
+
+  // String: Escape sequence
+  .se {
+    color: $h-light-blue-500;
+  }
+
+  // String: Regex
+  .sr {
+    color: $h-google-blue-600;
+  }
+
+  // Literal: Symbol
+  .ss {
+    @extend .m;
+  }
+}
