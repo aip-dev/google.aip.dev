@@ -18,27 +18,7 @@
     <td>State</td>
     <td>{{ page.aip.state | capitalize }}</td>
   </tr>
-  {% endif -%} {% if page.aip.authors -%}
-  <tr>
-    <td rowspan="{{ page.aip.authors | size }}">
-      Author{% if page.aip.authors.size > 1 %}s{% endif %}
-    </td>
-    <td>
-      <a href="mailto:{{ page.aip.authors.first.email }}">
-        {{ page.aip.authors.first.name }}
-      </a>
-    </td>
-  </tr>
-  {% for author in page.aip.authors -%} {% if forloop.first -%} {% continue %}
   {% endif -%}
-  <tr>
-    <td>
-      <a href="mailto:{{ author.email }}">
-        {{ author.name }}
-      </a>
-    </td>
-  </tr>
-  {% endfor -%} {% endif -%}
   <tr>
     <td>Type</td>
     <td>
