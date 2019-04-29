@@ -13,7 +13,6 @@ js:
   - /assets/js/search/tipuesearch.min.js
 ---
 
-<h1>Search</h1>
 <form action="{{ page.url | relative_url }}">
   <div class="primary-search">
     <input
@@ -24,17 +23,13 @@ js:
       title="At least 3 characters"
       required
     />
-    <button type="submit" class="h-c-button h-c-button--primary h-c-button--green">
-      <svg role="img" class="h-c-icon h-c-icon--32px">
-        <use xlink:href="#mi-search">
-      </svg>
+    <button type="submit" class="h-c-button h-c-button--primary">
+      <div>Search</div>
     </button>
   </div>
-
-  <div style="clear: both;"></div>
 </form>
 
-<h2>Results</h2>
+<h3 class="search-results-header">Search results</h3>
 <div id="tipue_search_content"></div>
 
 <script>
