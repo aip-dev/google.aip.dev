@@ -15,6 +15,7 @@ permalink: /assets/css/search.css
   input {
     font-size: 24px;
     height: 48px;
+    padding-left: 8px;
 
     @media (min-width: 1024px) {
       margin-right: 10px;
@@ -24,11 +25,12 @@ permalink: /assets/css/search.css
 
   button.h-c-button {
     margin-top: 1px;
-    padding-top: 7px;
   }
 }
 
 #tipue_search_content {
+  margin-left: 2px;
+
   #tipue_search_results_count {
     color: $h-gm-grey-700;
     font-size: 13px;
@@ -42,11 +44,20 @@ permalink: /assets/css/search.css
   }
 
   .tipue_search_content_url {
-    display: none;
+    font-size: 75%;
+    a {
+      color: $h-google-green-400;
+      &:before {
+        content: "aip.dev";
+      }
+    }
+  }
+
+  .tipue_search_content_text {
+    font-size: 85%;
   }
 
   .tipue_search_content_bold {
     @extend .h-u-font-weight-bold;
-    color: $h-google-green-500;
   }
 }
