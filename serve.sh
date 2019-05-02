@@ -25,10 +25,18 @@ if [[ "$(docker images -q googleapis-site 2> /dev/null)" == "" ]]; then
   fi
 fi
 
+# Unless we are in incremental mode, the source filesystem should
+# be read-only. Incremental mode sadly requires writing a file to the
+# source directory.
+READ_ONLY=',readonly'
+if [[ $* == *--incremental* ]]; then
+  READ_ONLY=''
+fi
+
 # Run the image.
 docker run --rm \
   -p 4000:4000/tcp   -p 4000:4000/udp   \
   -p 35729:35729/tcp -p 35729:35729/udp \
-  --mount type=bind,source=`pwd`,destination=/code/,readonly \
+  --mount type=bind,source=`pwd`,destination=/code/${READ_ONLY} \
   googleapis-site \
   "$@"
