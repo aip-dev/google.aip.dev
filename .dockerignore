@@ -30,3 +30,6 @@ docs/_build_doc2dash
 # Virtual environment
 env/
 coverage.xml
+
+# Jekyll metadata
+.jekyll-metadata
