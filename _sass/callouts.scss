@@ -13,6 +13,13 @@
   color: $h-info-color;
 }
 
+.warning {
+  @extend .callout;
+  background-color: $h-google-red-50;
+  border: 1px solid $h-google-red-100;
+  color: $h-warning-color;
+}
+
 .docs-component-main div.highlighter-rouge {
   font-size: 14px;
   margin: 20px 50px;

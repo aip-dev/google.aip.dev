@@ -16,9 +16,11 @@
 // to documentation sites using this Jekyll theme generally.
 $.when($.ready).then(() => {
   // Make callouts for notes, warnings, etc. work.
-  $("p strong:contains(Note:)")
-    .parent()
-    .addClass("note");
+  for (let callout of ["Note", "Warning"]) {
+    $(`p strong:contains(${callout}:)`)
+      .parent()
+      .addClass(callout.toLowerCase());
+  }
 
   // Make "spec terms" (must, should, may, must not, should not) that
   // are bold-faced be further emphasized.
