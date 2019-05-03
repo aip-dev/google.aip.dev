@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js"></script>
+    <script type="text/javascript" src="{{ '/assets/js/global.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     {% for js_script in page.js -%}
     <script type="text/javascript" src="{{ js_script }}"></script>
     {% endfor -%}

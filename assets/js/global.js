@@ -19,4 +19,12 @@ $.when($.ready).then(() => {
   $("p strong:contains(Note:)")
     .parent()
     .addClass("note");
+
+  // Make "spec terms" (must, should, may, must not, should not) that
+  // are bold-faced be further emphasized.
+  for (let directive of ["may", "must", "must not", "should", "should not"]) {
+    $("strong")
+      .filter((i, el) => $(el).text() === directive)
+      .addClass("spec-directive");
+  }
 });

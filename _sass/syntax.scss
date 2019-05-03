@@ -1,8 +1,13 @@
 @import "colors";
 
+strong.spec-directive {
+  color: $h-google-red-800;
+}
+
 .highlighter-rouge {
-  background: $h-gm-grey-rgba-100;
-  color: $h-gm-grey-900;
+  background: transparent;
+  color: inherit;
+  padding: 0px;
 }
 
 .highlight {
