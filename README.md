@@ -41,6 +41,7 @@ The following is a listing of all AIPs so far, broken down by type.
 |    135 | [Standard methods: Delete](./aip/0135.md)            | Reviewing |
 |    136 | [Custom methods](./aip/0136.md)                      | Reviewing |
 |    157 | [Partial responses](./aip/0157.md)                   | Reviewing |
+|    158 | [Pagination](./aip/0158.md)                          | Reviewing |
 |    200 | [Avoiding setting bad API precedents](./aip/0200.md) | Approved  |
 |    203 | [Documenting field behavior](./aip/0203.md)          | Approved  |
 |    205 | [Annotate beta-blocking API changes](./aip/0205.md)  | Reviewing |
