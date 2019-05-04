@@ -22,7 +22,9 @@
   <tr>
     <td>Type</td>
     <td>
-      {% if page.aip.type %}{{ page.aip.type }}{% else %}Guidance{% endif %}
+      {%- if page.aip.type -%}
+      {{ page.aip.type | capitalize }}
+      {%- else -%} Guidance {%- endif -%}
     </td>
   </tr>
   {% if page.aip.created -%}
