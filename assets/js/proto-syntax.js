@@ -18,10 +18,12 @@
 $.when($.ready).then(() => {
   // RPCs are always followed by three names (the RPC name, the request object,
   // and the response object) -- designate those appropriately.
-  $(".language-proto .k:contains(rpc)")
-    .nextAll(".n")
-    .slice(1, 3)
-    .addClass("nc");
+  $(".language-proto .k:contains(rpc)").each((_, el) => {
+    $(el)
+      .nextAll(".n")
+      .slice(1, 3)
+      .addClass("nc");
+  });
 
   // Colons in protocol buffers always come immediately after property keys.
   $(".language-proto .n + .o:contains(:)")
@@ -30,8 +32,10 @@ $.when($.ready).then(() => {
     .addClass("nk");
 
   // The option keyword is always followed by the annotation name.
-  $(".language-proto .k:contains(option)")
-    .nextAll(".n")
-    .eq(0)
-    .addClass("protobuf-annotation");
+  $(".language-proto .k:contains(option)").each((_, el) => {
+    $(el)
+      .nextAll(".n")
+      .eq(0)
+      .addClass("protobuf-annotation");
+  });
 });

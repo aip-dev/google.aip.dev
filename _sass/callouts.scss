@@ -1,9 +1,17 @@
 @import "colors.scss";
 
 .callout {
+  margin-top: 5px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 10px 20px;
+}
+
+.tldr {
+  @extend .callout;
+  background-color: $h-google-green-50;
+  border: 1px solid $h-google-green-100;
+  color: $h-success-color;
 }
 
 .note {
