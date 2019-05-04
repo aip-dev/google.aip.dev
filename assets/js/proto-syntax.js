@@ -25,6 +25,12 @@ $.when($.ready).then(() => {
       .addClass("nc");
   });
 
+  // Designate message names as such when using them to delcare fields.
+  $(".language-proto .n + .na + .o:contains(=)")
+    .prev()
+    .prev()
+    .addClass("nc");
+
   // Colons in protocol buffers always come immediately after property keys.
   $(".language-proto .n + .o:contains(:)")
     .addClass("nk")

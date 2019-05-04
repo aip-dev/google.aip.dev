@@ -20,7 +20,7 @@
     </script>
     <script type="text/javascript" src="{{ '/assets/js/global.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     {% for js_script in page.js -%}
-    <script type="text/javascript" src="{{ js_script }}"></script>
+    <script type="text/javascript" src="{{ js_script }}?v={{ site.github.build_revision }}"></script>
     {% endfor -%}
     {% seo %}
   </head>
