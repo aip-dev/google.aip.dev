@@ -18,30 +18,30 @@
 $.when($.ready).then(() => {
   // RPCs are always followed by three names (the RPC name, the request object,
   // and the response object) -- designate those appropriately.
-  $(".language-proto .k:contains(rpc)").each((_, el) => {
+  $('.language-proto .k:contains(rpc)').each((_, el) => {
     $(el)
-      .nextAll(".n")
+      .nextAll('.n')
       .slice(1, 3)
-      .addClass("nc");
+      .addClass('nc');
   });
 
   // Designate message names as such when using them to delcare fields.
-  $(".language-proto .n + .na + .o:contains(=)")
+  $('.language-proto .n + .na + .o:contains(=)')
     .prev()
     .prev()
-    .addClass("nc");
+    .addClass('nc');
 
   // Colons in protocol buffers always come immediately after property keys.
-  $(".language-proto .n + .o:contains(:)")
-    .addClass("nk")
+  $('.language-proto .n + .o:contains(:)')
+    .addClass('nk')
     .prev()
-    .addClass("nk");
+    .addClass('nk');
 
   // The option keyword is always followed by the annotation name.
-  $(".language-proto .k:contains(option)").each((_, el) => {
+  $('.language-proto .k:contains(option)').each((_, el) => {
     $(el)
-      .nextAll(".n")
+      .nextAll('.n')
       .eq(0)
-      .addClass("protobuf-annotation");
+      .addClass('protobuf-annotation');
   });
 });

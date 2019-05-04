@@ -16,17 +16,17 @@
 // to documentation sites using this Jekyll theme generally.
 $.when($.ready).then(() => {
   // Make callouts for notes, warnings, etc. work.
-  for (let callout of ["Note", "TL;DR", "Warning"]) {
+  for (let callout of ['Note', 'TL;DR', 'Warning']) {
     $(`p strong:contains(${callout}:)`)
       .parent()
-      .addClass(callout.replace(";", "").toLowerCase());
+      .addClass(callout.replace(';', '').toLowerCase());
   }
 
   // Make "spec terms" (must, should, may, must not, should not) that
   // are bold-faced be further emphasized.
-  for (let directive of ["may", "must", "must not", "should", "should not"]) {
-    $("strong")
+  for (let directive of ['may', 'must', 'must not', 'should', 'should not']) {
+    $('strong')
       .filter((i, el) => $(el).text() === directive)
-      .addClass("spec-directive");
+      .addClass('spec-directive');
   }
 });

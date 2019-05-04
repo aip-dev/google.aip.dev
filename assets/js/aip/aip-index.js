@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// This file contains JavaScript-applied rules that apply to the AIP site
+// This file contains JavaScript-applied rules that apply to the AIP index
 // specifically.
 $.when($.ready).then(() => {
   // The base README page should have tables that span the full width
   // and look consistent with one another.
-  for (let topLeftCell of ["Number", "Block"]) {
+  for (let topLeftCell of ['Number', 'Block']) {
     $(`table th:first-child:contains(${topLeftCell})`)
-      .parents("table")
-      .addClass("aip-listing");
+      .parents('table')
+      .addClass('aip-listing');
   }
 });
