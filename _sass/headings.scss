@@ -10,13 +10,13 @@
     @extend .h-has-top-margin;
   }
   h1 {
-    @extend .h-c-headline--one;
-  }
-  h2 {
     @extend .h-c-headline--two;
   }
-  h3 {
+  h2 {
     @extend .h-c-headline--three;
+  }
+  h3 {
+    @extend .h-c-headline--four;
   }
   h4 {
     @extend .h-c-headline--four;

@@ -20,6 +20,15 @@ nav.docs-component-nav {
     position: fixed;
     width: 280px;
 
+    &::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
     ul.nav-list {
       margin-left: 0px;
       margin-bottom: 0px;

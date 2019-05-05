@@ -31,7 +31,11 @@ $.when($.ready).then(() => {
   }
 
   // Control the maximum height of the nav sidebar.
-  $('nav.docs-component-nav').css({
-    maxHeight: `${$(window).height() - 110}px`,
-  });
+  $(window)
+    .on('resize', () => {
+      $('nav.docs-component-nav').css({
+        maxHeight: `${$(window).height() - 110}px`,
+      });
+    })
+    .resize();
 });
