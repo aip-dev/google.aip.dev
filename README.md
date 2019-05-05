@@ -67,4 +67,3 @@ consistency.)
 | ----: | ------------------------------------- |
 |  2500 | [Cloud](./aip/cloud/index.md)         |
 |  2700 | [Apps (G Suite)](./aip/apps/index.md) |
-|  4600 | [Geo](./aip/geo/index.md)             |

@@ -7,14 +7,12 @@ js:
 permalink: /apps
 ---
 
-# Apps (G Suite) AIPs
+# Apps AIPs
 
-The following AIPs apply to work on APIs in the Google Apps PA.
+The following AIPs apply to work on APIs in the Google Apps (G Suite) PA. For
+questions, contact apps-api-team@google.com.
 
 ### Guidance
-
-The following AIPs apply to work on APIs in the Apps (G Suite) PA. For
-questions, contact apps-api-team@google.com.
 
 | Number | Title                                            | State     |
 | -----: | ------------------------------------------------ | --------- |

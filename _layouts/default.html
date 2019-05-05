@@ -252,6 +252,9 @@
           </section>
         </aside>
         <section id="aip-main" class="docs-component-main">
+          {% if page.url != '/' %}
+            {% include aip-breadcrumb.html %}
+          {% endif %}
           {{ content }}
           <footer>
             Except as otherwise noted, the content of this page is licensed under the
