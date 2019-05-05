@@ -1,3 +1,5 @@
+# API Improvement Proposals
+
 ## What are AIPs?
 
 AIP stands for **API Improvement Proposal**, which is a design document
@@ -28,7 +30,7 @@ The following is a listing of all AIPs so far, broken down by type.
 | -----: | -------------------------------------- | -------- |
 |    100 | [API Design Review FAQ](./aip/0100.md) | Approved |
 
-### General API guidance
+### Guidance
 
 | Number | Title                                                | State     |
 | -----: | ---------------------------------------------------- | --------- |
@@ -61,8 +63,8 @@ contradict general guidance. In this situation, the group-specific guidance
 takes precedence (local consistency has higher precedence than global
 consistency.)
 
-| Block | Team                          |
-| ----: | ----------------------------- |
-|  2500 | [Cloud](./aip/cloud/)         |
-|  2700 | [Apps (G Suite)](./aip/apps/) |
-|  4600 | [Geo](./aip/geo/)             |
+| Block | Team                                  |
+| ----: | ------------------------------------- |
+|  2500 | [Cloud](./aip/cloud/index.md)         |
+|  2700 | [Apps (G Suite)](./aip/apps/index.md) |
+|  4600 | [Geo](./aip/geo/index.md)             |
