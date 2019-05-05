@@ -1,0 +1,13 @@
+#aip-nav {
+  .nav-item {
+    span.aip-number {
+      display: inline-block;
+      min-width: 26px;
+      text-align: right;
+
+      &:after {
+        content: '. ';
+      }
+    }
+  }
+}

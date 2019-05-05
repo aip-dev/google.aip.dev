@@ -29,4 +29,9 @@ $.when($.ready).then(() => {
       .filter((i, el) => $(el).text() === directive)
       .addClass('spec-directive');
   }
+
+  // Control the maximum height of the nav sidebar.
+  $('nav.docs-component-nav').css({
+    maxHeight: `${$(window).height() - 110}px`,
+  });
 });

@@ -1,4 +1,6 @@
 ---
+aip_index:
+  scope: cloud
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js

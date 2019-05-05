@@ -1,4 +1,6 @@
 ---
+aip_index:
+  scope: apps
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
