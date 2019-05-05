@@ -7,11 +7,11 @@
   padding: 10px 20px;
 }
 
-.tldr {
+.important {
   @extend .callout;
-  background-color: $h-google-green-50;
-  border: 1px solid $h-google-green-100;
-  color: $h-success-color;
+  background-color: $h-google-yellow-50;
+  border: 1px solid $h-google-yellow-100;
+  color: $h-google-yellow-800;
 }
 
 .note {
@@ -19,6 +19,13 @@
   background-color: $h-google-blue-50;
   border: 1px solid $h-google-blue-100;
   color: $h-info-color;
+}
+
+.tldr {
+  @extend .callout;
+  background-color: $h-google-green-50;
+  border: 1px solid $h-google-green-100;
+  color: $h-success-color;
 }
 
 .warning {
