@@ -13,11 +13,6 @@
       <a href="https://aip.dev/{{ page.aip.id }}">aip.dev/{{ page.aip.id }}</a>
     </td>
   </tr>
-  {% endif -%} {% if page.aip.state -%}
-  <tr>
-    <td>State</td>
-    <td>{{ page.aip.state | capitalize }}</td>
-  </tr>
   {% endif -%}
   <tr>
     <td>Type</td>
@@ -27,7 +22,17 @@
       {%- else -%} Guidance {%- endif -%}
     </td>
   </tr>
-  {% if page.aip.created -%}
+  {% if page.aip.scope -%}
+  <tr>
+    <td>Scope</td>
+    <td>{{ page.aip.scope | capitalize }}</td>
+  </tr>
+  {% endif -%} {% if page.aip.state -%}
+  <tr>
+    <td>State</td>
+    <td>{{ page.aip.state | capitalize }}</td>
+  </tr>
+  {% endif -%} {% if page.aip.created -%}
   <tr>
     <td>Created</td>
     <td>{{ page.aip.created }}</td>
