@@ -1,0 +1,35 @@
+# Version control scaffolding
+.git
+.gitignore
+
+# Docker scaffolding
+Dockerfile
+.dockerignore
+
+# Ruby & Jekyll scaffolding
+_site
+
+# Translations
+*.mo
+
+# Mac
+.DS_Store
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# JetBrains
+.idea
+
+# Built documentation
+docs/_build
+docs/_build_doc2dash
+
+# Virtual environment
+env/
+coverage.xml
+
+# Jekyll metadata
+.jekyll-metadata
