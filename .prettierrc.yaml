@@ -1,0 +1,5 @@
+---
+printWidth: 79
+proseWrap: always
+singleQuote: true
+trailingComma: es5
