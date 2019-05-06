@@ -8,8 +8,9 @@
       <a
         class="h-c-breadcrumbs__link"
         href="/{{ page.aip.scope | default: '#aip-listing' }}"
-        >{{ page.aip.scope | default: 'general' | capitalize }} AIPs</a
       >
+        {{ page.aip.scope | default: 'general' | capitalize }} AIPs
+      </a>
     </li>
     {% endif %}
     <li
