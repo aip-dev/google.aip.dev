@@ -11,7 +11,7 @@ means by which API teams discuss and come to consensus on API guidance.
 
 The easiest way to read AIPs is using GitHub Pages: [aip.dev](https://aip.dev).
 If you prefer, you can also read the source files, which are in this repository
-in the `aip/` directory.
+in the [`aip/`](https://github.com/googleapis/aip/tree/master/aip) directory.
 
 ## Proposing / Contributing
 
