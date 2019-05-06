@@ -7,63 +7,28 @@ providing high-level, concise documentation for API development. They are to
 serve as the source of truth for API-related documentation at Google and the
 means by which API teams discuss and come to consensus on API guidance.
 
-Some product areas within Googles have guidance which may supplement (and
-occasionally override) the standard rules. These PAs often use the AIP system
-too. If so, we list their AIPs here, along with which parts of Google they
-apply to. So the complete set of AIPs that apply to you are the General API
-Guidance, possibly supplemented by your PA's guidance.
+## Reading AIPs
 
-## AIP Listing
+The easiest way to read AIPs is using GitHub Pages: [aip.dev](https://aip.dev).
+If you prefer, you can also read the source files, which are in this repository
+in the `aip/` directory.
 
-The following is a listing of all AIPs so far, broken down by type.
+## Proposing / Contributing
 
-### Meta-AIPs (AIPs about AIPs)
+We would be happy to consider proposals. In order to propose a new AIP, start
+by [opening an issue](https://github.com/googleapis/aip/issues). If there is
+general interest and it comes time to draft an actual proposal, consult our
+[contributing guide](./CONTRIBUTING.md).
 
-| Number | Title                                       | State    |
-| -----: | ------------------------------------------- | -------- |
-|      1 | [AIP Purpose and Guidelines](./aip/0001.md) | Approved |
-|      2 | [AIP Numbering](./aip/0002.md)              | Approved |
+## License
 
-### Process
+Except as otherwise noted, the content of this repository is licensed under the
+[Creative Commons Attribution 4.0 License][1], and code samples are licensed
+under the [Apache 2.0 License][2].
 
-| Number | Title                                  | State    |
-| -----: | -------------------------------------- | -------- |
-|    100 | [API Design Review FAQ](./aip/0100.md) | Approved |
+For the full text of each license, see [`LICENSE.md`](./LICENSE.md). For
+additional details, see the developer.google.com [Site Policies][3].
 
-### Guidance
-
-| Number | Title                                                | State     |
-| -----: | ---------------------------------------------------- | --------- |
-|    121 | [Resource-oriented design](./aip/0121.md)            | Approved  |
-|    122 | [Resource names](./aip/0122.md)                      | Reviewing |
-|    131 | [Standard methods: Get](./aip/0131.md)               | Reviewing |
-|    132 | [Standard methods: List](./aip/0132.md)              | Reviewing |
-|    133 | [Standard methods: Create](./aip/0133.md)            | Reviewing |
-|    134 | [Standard methods: Update](./aip/0134.md)            | Reviewing |
-|    135 | [Standard methods: Delete](./aip/0135.md)            | Reviewing |
-|    136 | [Custom methods](./aip/0136.md)                      | Reviewing |
-|    157 | [Partial responses](./aip/0157.md)                   | Reviewing |
-|    158 | [Pagination](./aip/0158.md)                          | Reviewing |
-|    200 | [Avoiding setting bad API precedents](./aip/0200.md) | Approved  |
-|    203 | [Documenting field behavior](./aip/0203.md)          | Approved  |
-|    205 | [Annotate beta-blocking API changes](./aip/0205.md)  | Reviewing |
-|    210 | [Unicode usage in APIs](./aip/0210.md)               | Approved  |
-|    213 | [Common proto messages](./aip/0213.md)               | Approved  |
-|    214 | [Resource expiration](./aip/0214.md)                 | Approved  |
-|    215 | [Always version all protos](./aip/0215.md)           | Approved  |
-|    216 | [States](./aip/0216.md)                              | Approved  |
-
-### PA / Team Guidance
-
-Certain PAs or teams may provide specific guidance that only applies to APIs
-within the purview of that group.
-
-While it is uncommon, it may be the case that group-level guidance will
-contradict general guidance. In this situation, the group-specific guidance
-takes precedence (local consistency has higher precedence than global
-consistency.)
-
-| Block | Team                                  |
-| ----: | ------------------------------------- |
-|  2500 | [Cloud](./aip/cloud/index.md)         |
-|  2700 | [Apps (G Suite)](./aip/apps/index.md) |
+[1]: https://creativecommons.org/licenses/by/4.0/
+[2]: https://www.apache.org/licenses/LICENSE-2.0
+[3]: https://developers.google.com/terms/site-policies
