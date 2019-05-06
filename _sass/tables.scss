@@ -1,0 +1,11 @@
+@import 'hercules';
+
+// Tables
+table:not(.no-h) {
+  @extend .h-c-table;
+  margin-bottom: 20px !important;
+
+  tr td {
+    @extend .h-u-font-weight-light;
+  }
+}

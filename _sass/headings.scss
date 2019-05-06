@@ -1,0 +1,25 @@
+@import 'hercules';
+
+// Headers
+.docs-component-main {
+  h1 {
+    @extend .h-c-headline;
+    @extend .h-c-headline--two;
+    @extend .h-has-top-margin;
+  }
+  h2 {
+    @extend .h-c-headline;
+    @extend .h-c-headline--three;
+    @extend .h-has-top-margin;
+  }
+  h3 {
+    @extend .h-c-headline;
+    @extend .h-c-headline--four;
+    @extend .h-has-top-margin;
+  }
+  h4 {
+    @extend .h-c-headline;
+    @extend .h-c-headline--four;
+    @extend .h-has-top-margin;
+  }
+}

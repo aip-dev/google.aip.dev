@@ -1,0 +1,64 @@
+@import 'colors';
+@import 'hercules';
+
+#aip-main {
+  table {
+    &:not(.no-h) {
+      @extend .h-c-table--datatable;
+
+      &.aip-listing {
+        th:first-child {
+          width: 125px;
+        }
+        td:first-child {
+          width: 125px;
+        }
+        th:nth-child(3) {
+          width: 125px;
+        }
+        td:nth-child(3) {
+          width: 125px;
+        }
+
+        tr td {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  table#aip-summary {
+    float: right;
+  }
+}
+
+table#aip-summary {
+  background-color: $h-gm-grey-50;
+  border: 1px solid $h-gm-grey-200;
+  margin-top: 2px;
+  margin-left: 10px;
+  width: 220px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+
+  th {
+    color: $h-gm-grey-600;
+    font-size: 14px;
+    padding: 4px 0px;
+    text-align: center;
+  }
+
+  tr td {
+    font-size: 12px;
+    padding: 2px 5px;
+
+    &:first-child {
+      @extend .h-u-font-weight-bold;
+      color: $h-gm-grey-600;
+      width: 60px;
+    }
+  }
+}

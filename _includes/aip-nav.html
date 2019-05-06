@@ -1,0 +1,41 @@
+{% assign areas = 'apps,cloud' | split: ',' %}
+{% assign scope = page.aip.scope or page.aip_index.scope %}
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">API Improvement Proposals</li>
+    <li class="nav-item{% if page.url == '/' %} nav-item-active{% endif %}">
+      <a href="/">General</a>
+    </li>
+    {% for area in areas %}
+    {% if page.aip_index.scope == area %}
+      {% assign scope = area %}
+    {% endif %}
+    <li class="nav-item{% if page.aip_index.scope == area %} nav-item-active{% endif %}">
+      <a href="/{{ area }}">{{ area | capitalize }}</a>
+    </li>
+    {% endfor %}
+    <li class="nav-item nav-item-header">Tools</li>
+    <li class="nav-item">
+      <a href="https://github.com/googleapis/api-linter" target="_blank">API Linter</a>
+      <svg role="img" class="h-c-icon h-c-icon--arrow-external" style="width: 14px; height: 14px; margin-bottom: -2px;">
+        <use xlink:href="#mi-arrow-forward"></use>
+      </svg>
+    </li>
+    <li class="nav-item">
+      <a href="https://cloud.google.com/apis/design/" target="_blank">Cloud API Design Guide</a>
+      <svg role="img" class="h-c-icon h-c-icon--arrow-external" style="width: 14px; height: 14px; margin-bottom: -2px;">
+          <use xlink:href="#mi-arrow-forward"></use>
+      </svg>
+    </li>
+    <li class="nav-item nav-item-header">
+      {{ scope | default: 'general' | capitalize }} AIPs
+    </li>
+    {% for p in site.pages %}{% if p.aip and p.aip.scope == scope -%}
+    <li class="nav-item{% if p.url == page.url %} nav-item-active{% endif %}">
+      <a href="{{ p.url }}">
+        <span class="aip-number">{{ p.aip.id }}</span> {{ p.title }}
+      </a>
+    </li>
+    {% endif %}{% endfor -%}
+  </ul>
+</nav>
