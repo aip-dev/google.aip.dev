@@ -76,7 +76,8 @@ contradict general guidance. In this situation, the group-specific guidance
 takes precedence (local consistency has higher precedence than global
 consistency.)
 
-| Block | Team                              |
-| ----: | --------------------------------- |
-|  2500 | [Cloud](./cloud/index.md)         |
-|  2700 | [Apps (G Suite)](./apps/index.md) |
+| Block | Team                                            |
+| ----: | ----------------------------------------------- |
+|  2500 | [Cloud](./cloud/index.md)                       |
+|  2700 | [Apps (G Suite)](./apps/index.md)               |
+|  4200 | [Client libraries](./client-libraries/index.md) |
