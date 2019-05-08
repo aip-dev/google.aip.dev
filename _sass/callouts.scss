@@ -36,13 +36,19 @@ code {
   font-size: 90% !important;
 }
 
-.docs-component-main pre {
-  font-size: 14px;
-  margin: 20px;
-  padding: 9px 14px;
-
+.docs-component-main {
   code {
-    color: $h-google-grey-900;
+    font-size: 0.9em;
+  }
+
+  pre {
+    font-size: 14px;
+    margin: 20px;
+    padding: 9px 14px;
+
+    code {
+      color: $h-google-grey-900;
+    }
   }
 }
 
