@@ -7,12 +7,20 @@
       @extend .h-c-table--datatable;
 
       &.aip-listing {
-        th, td {
-          &:first-child {
-            width: 125px;
-          }
+        margin-top: 10px;
+        tr:first-child {
+          border-top: 2px solid $h-gm-grey-500;
         }
-        th, td {
+        th {
+          display: none;
+        }
+        td {
+          // The Number column.
+          &:first-child {
+            width: 70px;
+          }
+
+          // The State column.
           &:nth-child(3) {
             width: 125px;
           }
