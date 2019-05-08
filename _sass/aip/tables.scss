@@ -7,19 +7,16 @@
       @extend .h-c-table--datatable;
 
       &.aip-listing {
-        th:first-child {
-          width: 125px;
+        th, td {
+          &:first-child {
+            width: 125px;
+          }
         }
-        td:first-child {
-          width: 125px;
+        th, td {
+          &:nth-child(3) {
+            width: 125px;
+          }
         }
-        th:nth-child(3) {
-          width: 125px;
-        }
-        td:nth-child(3) {
-          width: 125px;
-        }
-
         tr td {
           padding-top: 10px;
           padding-bottom: 10px;
@@ -45,20 +42,27 @@ table#aip-summary {
   }
 
   th {
-    color: $h-gm-grey-600;
+    color: $h-gm-grey-800;
     font-size: 14px;
-    padding: 4px 0px;
+    padding: 8px 0px;
     text-align: center;
   }
 
-  tr td {
-    font-size: 12px;
-    padding: 2px 5px;
+  tr {
+    td {
+      font-size: 12px;
+      padding: 2px 5px;
 
-    &:first-child {
-      @extend .h-u-font-weight-bold;
-      color: $h-gm-grey-600;
-      width: 60px;
+      &:first-child {
+        @extend .h-u-font-weight-bold;
+        color: $h-gm-grey-700;
+        width: 60px;
+        padding-left: 12px;
+      }
+    }
+
+    &:last-child td {
+      padding-bottom: 8px;
     }
   }
 }
