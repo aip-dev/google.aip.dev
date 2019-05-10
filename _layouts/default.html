@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}" class="glue-flexbox">
   <head>
+    <title>{% if page.aip %}AIP-{{ page.aip.id }}: {% endif %}{{ page.title }}</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -244,6 +245,9 @@
         <section id="aip-main" class="docs-component-main">
           {% if page.url != '/' %}
             {% include aip-breadcrumb.html %}
+          {% endif %}
+          {% if page.aip %}
+          <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
           {% endif %}
           {{ content }}
           <footer>
