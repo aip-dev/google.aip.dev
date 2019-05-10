@@ -7,9 +7,9 @@ js:
 permalink: /cloud
 ---
 
-# Cloud AIPs
+# Google Cloud Platform AIPs
 
-The following AIPs apply to work on APIs in the Google Cloud PA.
+The following AIPs apply to work on APIs in Google Cloud Platform.
 
 ### Guidance
 
