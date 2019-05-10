@@ -22,4 +22,13 @@
     @extend .h-c-headline--four;
     @extend .h-has-top-margin;
   }
+
+  h4.aip-number {
+    line-height: 1em;
+
+    & + h1 {
+      margin-top: 0px;
+      margin-left: -2px;
+    }
+  }
 }
