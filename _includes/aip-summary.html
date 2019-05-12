@@ -27,7 +27,7 @@
   {% if page.aip.scope -%}
   <tr>
     <td>Scope</td>
-    <td>{{ page.aip.scope | capitalize }}</td>
+    <td>{{ page.areas[page.aip.scope] }}</td>
   </tr>
   {% endif -%} {% if page.aip.state -%}
   <tr>

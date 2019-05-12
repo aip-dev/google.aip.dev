@@ -1,4 +1,3 @@
-{% assign areas = 'apps:GSuite,cloud:Google Cloud Platform' | split: ',' %}
 {% assign scope = page.aip.scope or page.aip_index.scope %}
 <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
@@ -6,15 +5,12 @@
     <li class="nav-item{% if page.url == '/' %} nav-item-active{% endif %}">
       <a href="/">General</a>
     </li>
-    {% for areaPairString in areas %}
-    {% assign areaPair = areaPairString | split: ':' %}
-    {% assign area = areaPair[0] %}
-    {% assign description = areaPair[1] %}
-    {% if page.aip_index.scope == area %}
-      {% assign scope = area %}
+    {% for area in page.areas %}
+    {% if page.aip_index.scope == area[0] %}
+      {% assign scope = area[0] %}
     {% endif %}
-    <li class="nav-item{% if page.aip_index.scope == area %} nav-item-active{% endif %}">
-      <a href="/{{ area }}">{{ description }}</a>
+    <li class="nav-item{% if page.aip_index.scope == area[0] %} nav-item-active{% endif %}">
+      <a href="/{{ area[0] }}">{{ area[1] }}</a>
     </li>
     {% endfor %}
     <li class="nav-item nav-item-header">Tools</li>

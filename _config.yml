@@ -7,6 +7,10 @@ defaults:
   - scope:
       path: aip
     values:
+      areas:
+        apps: GSuite
+        cloud: Google Cloud Platform
+        client-libraries: Client Libraries
       js:
         - /assets/js/proto-syntax.js
   - scope:
