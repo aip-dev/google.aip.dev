@@ -27,7 +27,7 @@
       </svg>
     </li>
     <li class="nav-item nav-item-header">
-      {{ scope | default: 'general' | capitalize }} AIPs
+      {% if scope %}{{ page.areas[scope] }}{% else %}General{% endif %} AIPs
     </li>
     {% for p in site.pages %}{% if p.aip and p.aip.scope == scope -%}
     <li class="nav-item{% if p.url == page.url %} nav-item-active{% endif %}">
