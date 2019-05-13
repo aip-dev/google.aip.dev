@@ -26,7 +26,7 @@ complete. If you see things like "Submit a CL" or "Talk to your PA lead", feel
 free to send pull requests to fix these oversights.
 
 (CL stands for "Change List" which is sort of like a GitHub Pull Request, and
-PA stands fro "Product Area" meaning things like "Google Maps" or "GSuite".)
+PA stands for "Product Area" meaning things like "Google Maps" or "GSuite".)
 
 ### I like most of these AIPs, but some make no sense for me. What do I do?
 
