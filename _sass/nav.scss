@@ -94,3 +94,9 @@ nav li.drawer-heading {
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .glue-header .h-c-header__bar .h-c-header__hamburger:first-child {
+    display: table !important;
+  }
+}
