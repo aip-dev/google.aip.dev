@@ -2,21 +2,11 @@
 <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
     <li class="nav-item nav-item-header">Overview</li>
-    <li class="nav-item{% if page.url == '/' %} nav-item-active{% endif %}">
-      <a href="/">Home</a>
+    {% for p in page.overview %}
+    <li class="nav-item{% if page.url == p.uri %} nav-item-active{% endif %}">
+      <a href="{{ p.uri }}">{{ p.title }}</a>
     </li>
-    <li class="nav-item{% if page.url == '/contributing' %} nav-item-active{% endif %}">
-      <a href="/contributing">Contributing to the project</a>
-    </li>
-    <li class="nav-item{% if page.url == '/adopting' %} nav-item-active{% endif %}">
-      <a href="/adopting">Adopting AIPs in your company</a>
-    </li>
-    <li class="nav-item{% if page.url == '/faqs' %} nav-item-active{% endif %}">
-      <a href="/faq">Frequently asked questions</a>
-    </li>
-    <li class="nav-item{% if page.url == '/licensing' %} nav-item-active{% endif %}">
-      <a href="/licensing">Content licensing</a>
-    </li>
+    {% endfor %}
 
     <li class="nav-item nav-item-header">AIPs by category</li>
     <li class="nav-item{% if page.url == '/general' %} nav-item-active{% endif %}">

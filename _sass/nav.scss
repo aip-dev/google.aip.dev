@@ -4,6 +4,26 @@ nav.docs-component-nav {
   display: none;
 }
 
+nav li.drawer-heading {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  &:not(:first-child) {
+    margin-top: 32px;
+  }
+
+  .drawer-heading-text {
+    color: $h-google-grey-600;
+    display: table-cell;
+    font-family: 'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    height: 48px;
+    letter-spacing: 0.25px;
+    vertical-align: middle;
+  }
+}
+
 @media (min-width: 1280px) {
   .docs-component-main {
     padding-left: 320px;
