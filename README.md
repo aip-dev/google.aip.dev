@@ -7,7 +7,7 @@ permalink: /
 
 # API Improvement Proposals
 
-**TL;DR**: Lots of documents on how Google does APIs.
+**TL;DR:** AIPs are lots of documents on how Google does APIs.
 
 ## Overview
 

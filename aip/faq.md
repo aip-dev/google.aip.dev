@@ -4,7 +4,7 @@ permalink: /faq
 
 # Frequently asked questions
 
-Have a question not answered here? [Ask us on GitHub!][bug]
+**Note:** Have a question not answered here? [Ask us on GitHub!][bug]
 
 ### Why Protocol Buffers?
 
