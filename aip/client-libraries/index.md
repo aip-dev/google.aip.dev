@@ -1,13 +1,13 @@
 ---
 aip_index:
-  scope: client libraries
+  scope: client-libraries
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
 permalink: /client-libraries
 ---
 
-# Client Library AIPs
+# Client Libraries AIPs
 
 The following AIPs apply to work on client libraries and generators for
 mass-producing client libraries.

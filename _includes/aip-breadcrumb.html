@@ -5,11 +5,11 @@
     </li>
     {% if page.aip %}
     <li class="h-c-breadcrumbs__item" aria-level="2">
-      <a
-        class="h-c-breadcrumbs__link"
-        href="/{{ page.aip.scope | default: '#aip-listing' }}"
-      >
-        {{ page.aip.scope | default: 'general' | capitalize }} AIPs
+      <!-- prettier-ignore -->
+      <a class="h-c-breadcrumbs__link"
+         href="/{{ page.aip.scope | default: '#aip-listing' }}">
+        {% if page.aip.scope %}{{ page.areas[page.aip.scope] }}
+        {% else %}General{% endif %} AIPs
       </a>
     </li>
     {% endif %}
