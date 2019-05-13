@@ -2,7 +2,7 @@
 markdown: kramdown
 plugins:
   - jekyll-redirect-from
-url: https://github.com/googleapis/aip
+url: https://aip.dev
 include:
   - CONTRIBUTING.md
 defaults:
