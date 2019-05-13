@@ -3,16 +3,34 @@ markdown: kramdown
 plugins:
   - jekyll-redirect-from
 url: https://github.com/googleapis/aip
+include:
+  - CONTRIBUTING.md
 defaults:
   - scope:
-      path: aip
+      path: ''
     values:
       areas:
         apps: GSuite
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
+      overview:
+        - uri: /
+          title: Home
+        - uri: /contributing
+          title: Contributing to the project
+        - uri: /adopting
+          title: Adopting AIPs in your company
+        - uri: /faq
+          title: Frequently asked questions
+        - uri: /licensing
+          title: Content licensing
       js:
         - /assets/js/proto-syntax.js
+  - scope:
+      path: CONTRIBUTING.md
+    values:
+      exclude_from_search: true
+      permalink: /contributing
   - scope:
       path: README.md
     values:

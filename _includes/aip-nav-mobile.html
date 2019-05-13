@@ -1,0 +1,43 @@
+<nav class="h-c-header__drawer-nav">
+  <ul class="h-c-header__drawer-nav-list">
+    <li class="h-c-header__drawer-nav-li drawer-heading">
+      <div class="drawer-heading-text">Overview</div>
+    </li>
+    {% for p in page.overview %}
+    <li class="h-c-header__drawer-nav-li" aria-level="1">
+      <a href="{{ p.uri }}" class="h-c-header__drawer-nav-li-link">
+        {{ p.title }}
+      </a>
+    </li>
+    {% endfor %}
+
+    <li class="h-c-header__drawer-nav-li drawer-heading">
+      <div class="drawer-heading-text">AIPs</div>
+    </li>
+    <li class="h-c-header__drawer-nav-li" aria-level="1">
+      <a href="/general" class="h-c-header__drawer-nav-li-link">
+        General
+      </a>
+    </li>
+    {% for area in page.areas %}
+    <li class="h-c-header__drawer-nav-li" aria-level="1">
+      <a href="{{ area[0] }}" class="h-c-header__drawer-nav-li-link">
+        {{ area[1] }}
+      </a>
+    </li>
+    {% endfor %}
+
+    <li class="h-c-header__drawer-nav-li" aria-level="1">
+      <button
+        type="button"
+        class="h-c-header__drawer-nav-close-btn"
+        id="h-js-header__drawer-close-btn"
+        aria-controls="h-js-header__drawer"
+        aria-expanded="true"
+        aria-label="Close the navigation drawer"
+      >
+        Close navigation drawer
+      </button>
+    </li>
+  </ul>
+</nav>
