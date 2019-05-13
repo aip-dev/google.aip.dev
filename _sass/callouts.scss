@@ -37,6 +37,12 @@ code {
 }
 
 .docs-component-main {
+  blockquote {
+    border-left: 4px solid $h-google-grey-500;
+    margin: 20px;
+    padding-left: 20px;
+  }
+
   code {
     font-size: 0.9em;
   }
