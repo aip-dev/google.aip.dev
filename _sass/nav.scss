@@ -24,6 +24,12 @@ nav li.drawer-heading {
   }
 }
 
+body.h-c-page
+  .h-c-header--product-marketing-one-tier.h-is-wholly-scrolled
+  .h-c-header__bar {
+  transform: none !important;
+}
+
 @media (min-width: 1200px) {
   .docs-component-main {
     padding-left: 320px;
