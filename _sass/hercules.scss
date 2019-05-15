@@ -8185,8 +8185,7 @@ body.h-is-showing-drawer {
 .glue-app-ready
   .h-c-header--product-marketing-two-tier.h-is-wholly-scrolled
   .h-c-header__bar {
-  /* We don't want the header to disappear, so this is commented out. */
-  /*transform: translate3d(0, -56px, 0);*/
+  transform: translate3d(0, -56px, 0);
 }
 .glue-app-supported .h-c-header--product-initiative .h-c-header__bar,
 .glue-app-ready .h-c-header--product-initiative .h-c-header__bar,
@@ -8221,8 +8220,7 @@ body.h-is-showing-drawer {
   }
   .h-c-header--product-marketing-one-tier.h-is-wholly-scrolled
     .h-c-header__bar {
-      /* We don't want the header to disappear, so this is commented out. */
-    /*transform: translate3d(0, -70px, 0) !important;*/
+    transform: translate3d(0, -70px, 0) !important;
   }
   .h-c-header--product-marketing-one-tier.h-is-showing-nested-nav.h-is-wholly-scrolled
     .h-c-header__bar {
