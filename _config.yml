@@ -13,6 +13,7 @@ defaults:
         apps: GSuite
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
+      permalink: none
       overview:
         - uri: /
           title: Home
