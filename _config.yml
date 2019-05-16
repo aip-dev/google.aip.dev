@@ -13,7 +13,6 @@ defaults:
         apps: GSuite
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
-      permalink: none
       overview:
         - uri: /
           title: Home
@@ -27,6 +26,10 @@ defaults:
           title: Content licensing
       js:
         - /assets/js/proto-syntax.js
+  - scope:
+      path: aip
+    values:
+      permalink: none
   - scope:
       path: CONTRIBUTING.md
     values:
