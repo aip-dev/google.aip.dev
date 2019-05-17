@@ -1,10 +1,3 @@
----
-exclude_from_search: true
-js:
-  - /assets/js/aip/aip-index.js
-permalink: /
----
-
 # API Improvement Proposals
 
 **TL;DR:** AIPs are lots of documents on how Google does APIs.
@@ -12,11 +5,11 @@ permalink: /
 ## Overview
 
 AIP stands for **API Improvement Proposal**, which is a design document
-providing high-level, concise documentation for API development. The goal is for
-these documents to serve as the source of truth for API-related documentation at
-Google and the way API teams discuss and come to consensus on API guidance.
-The program is named and styled after Python's enhancement proposals (PEPs)
-which have seemed to work pretty well over the years.
+providing high-level, concise documentation for API development. The goal is
+for these documents to serve as the source of truth for API-related
+documentation at Google and the way API teams discuss and come to consensus on
+API guidance. The program is named and styled after Python's enhancement
+proposals (PEPs) which have seemed to work pretty well over the years.
 
 ### Specific areas inside Google
 
@@ -36,9 +29,9 @@ answer some common questions about how AIPs work and what you need to know.
 ### Want to use this in your company?
 
 If you like what you see and **want to adopt the general AIPs for your
-organization**, check out our guide on [Adopting AIPs in your company][].
-This guide walks you through how to start using AIPs and write your own
-guidance specific to your organization.
+organization**, check out our guide on [Adopting AIPs in your company][]. This
+guide walks you through how to start using AIPs and write your own guidance
+specific to your organization.
 
 ### Have an idea for an AIP?
 
@@ -46,9 +39,9 @@ If you **have an idea for an AIP that isn't written yet** (yes, there are
 plenty!) check out [Contributing to the project][] to see how you can write
 AIPs for others to follow.
 
-[Frequently Asked Questions]: /faq
-[Adopting AIPs in your company]: /adopting
-[Contributing to the project]: /contributing
+[frequently asked questions]: /faq
+[adopting aips in your company]: /adopting
+[contributing to the project]: /contributing
 
 ## License
 

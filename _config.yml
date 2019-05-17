@@ -39,6 +39,7 @@ defaults:
       path: README.md
     values:
       exclude_from_search: true
+      permalink: /
 tipue_search:
   include:
     pages: true
