@@ -11,6 +11,7 @@
     {% for stylesheet in page.css -%}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ stylesheet }}?v={{ site.github.build_revision }}">
     {% endfor -%}
+    <link rel="stylesheet" type="text/css" media="print" href="{{ '/assets/css/print.css?v=' | append: site.github.build_revision | relative_url }}">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -238,7 +239,7 @@
             <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
             Attribution 4.0 License</a>, and code samples are licensed under the
             <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
-            For details, see <a href="/licensing">content licensing</a>.
+            <span class="no-print">For details, see <a href="/licensing">content licensing</a>.</span>
             {% endif %}
           </footer>
         </section>
