@@ -39,9 +39,9 @@ If you **have an idea for an AIP that isn't written yet** (yes, there are
 plenty!) check out [Contributing to the project][] to see how you can write
 AIPs for others to follow.
 
-[frequently asked questions]: /faq
-[adopting aips in your company]: /adopting
-[contributing to the project]: /contributing
+[frequently asked questions]: ./aip/faq.md
+[adopting aips in your company]: ./aip/adopting.md
+[contributing to the project]: ./aip/contributing.md
 
 ## License
 
