@@ -41,7 +41,7 @@ AIPs for others to follow.
 
 [frequently asked questions]: ./aip/faq.md
 [adopting aips in your company]: ./aip/adopting.md
-[contributing to the project]: ./aip/contributing.md
+[contributing to the project]: ./CONTRIBUTING.md
 
 ## License
 
