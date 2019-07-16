@@ -1,15 +1,16 @@
 ---
 aip_index:
-  scope: apps
+  scope: client-libraries
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
-permalink: /apps
+permalink: /client-libraries
 ---
 
-# Apps AIPs
+# Client Libraries AIPs
 
-The following AIPs apply to work on APIs in the Google Apps (G Suite) PA.
+The following AIPs apply to work on client libraries and generators for
+mass-producing client libraries.
 
 ### Guidance
 
@@ -18,7 +19,7 @@ The following AIPs apply to work on APIs in the Google Apps (G Suite) PA.
 | Number | Title | State |
 | -----: | ----- | ----- |
 {% for p in site.pages -%}
-{% if p.aip and p.aip.id >= 2700 and p.aip.id < 2800 -%}
+{% if p.aip and p.aip.id >= 4200 and p.aip.id < 4300 -%}
 | {{ p.aip.id }} | [{{ p.title }}]({{ p.url }}) | {{ p.aip.state | capitalize }} |
 {% endif -%}
 {% endfor %}

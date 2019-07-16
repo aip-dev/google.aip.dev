@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}" class="glue-flexbox">
   <head>
+    <title>{% if page.aip %}AIP-{{ page.aip.id }}: {% endif %}{{ page.title }}</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -10,6 +11,7 @@
     {% for stylesheet in page.css -%}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ stylesheet }}?v={{ site.github.build_revision }}">
     {% endfor -%}
+    <link rel="stylesheet" type="text/css" media="print" href="{{ '/assets/css/print.css?v=' | append: site.github.build_revision | relative_url }}">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -23,6 +25,15 @@
     <script type="text/javascript" src="{{ js_script }}?v={{ site.github.build_revision }}"></script>
     {% endfor -%}
     {% seo %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
   </head>
   <body class="h-c-page">
     {% include svgs.html %}
@@ -96,23 +107,10 @@
         </div>
         <nav class="h-c-header__nav">
           <ul class="h-c-header__nav-list">
+            <!--
             <li class="h-c-header__nav-li" aria-level="1">
               <a href="/" class="h-c-header__nav-li-link">
                 Home
-              </a>
-            </li>
-            <!--
-            <li class="h-c-header__nav-li" aria-level="1">
-              <a href="#"
-                  class="h-c-header__nav-li-link h-is-active"
-                  aria-expanded="true">
-                Item two
-              </a>
-            </li>
-            <li class="h-c-header__nav-li" aria-level="1">
-              <a href="#"
-                  class="h-c-header__nav-li-link">
-                Item three
               </a>
             </li>
             -->
@@ -142,6 +140,7 @@
             <li class="h-c-header__cta-li h-c-header__cta-li--primary">
               <a href="https://github.com/googleapis/aip" class="h-c-header__cta-li-link
                   h-c-header__cta-li-link--primary">
+                <img src="/assets/images/github.png" class="github-logo">
                 View on GitHub
               </a>
             </li>
@@ -163,66 +162,26 @@
               </div>
               <div class="h-c-header__drawer-product-logo">
                 <div class="h-c-header__drawer-product-logo-link">
-                  <span class="h-c-header__drawer-product-logo-text">Product</span>
+                  <span class="h-c-header__drawer-product-logo-text">AIPs</span>
                 </div>
               </div>
             </div>
-            <div class="h-c-header__drawer-initiative-logo">
-              <div class="h-c-header__drawer-initiative-logo-link">
-                <span class="h-c-header__drawer-initiative-logo-text">Initiative</span>
-              </div>
-            </div>
           </div>
-          <nav class="h-c-header__drawer-nav">
-            <ul class="h-c-header__drawer-nav-list">
-              <li class="h-c-header__drawer-nav-li" aria-level="1">
-                <a href="/"
-                    class="h-c-header__drawer-nav-li-link">
-                  Home
-                </a>
-              </li>
-              <!--
-              <li class="h-c-header__drawer-nav-li" aria-level="1">
-                <! -- Make sure the value you have for `aria-controls` matches
-                      the `id` of your content area. -- >
-                <a href="#"
-                    class="h-c-header__drawer-nav-li-link h-is-active"
-                    aria-expanded="true" aria-controls="main" role="link">
-                  Item two
-                </a>
-              </li>
-              <li class="h-c-header__drawer-nav-li" aria-level="1">
-                <a href="#"
-                    class="h-c-header__drawer-nav-li-link">
-                  Item three
-                </a>
-              </li>
-              -->
-              <li class="h-c-header__drawer-nav-li" aria-level="1">
-                <button type="button"
-                        class="h-c-header__drawer-nav-close-btn"
-                        id="h-js-header__drawer-close-btn"
-                        aria-controls="h-js-header__drawer"
-                        aria-expanded="true"
-                        aria-label="Close the navigation drawer">
-                  Close navigation drawer
-                </button>
-              </li>
-            </ul>
-          </nav>
+          {% include aip-nav-mobile.html %}
         </div>
         <div class="h-c-header__drawer-cta">
           <ul class="h-c-header__drawer-cta-list">
             <li class="h-c-header__drawer-cta-li h-c-header__drawer-cta-li--secondary">
-              <a href="#" class="h-c-header__drawer-cta-li-link
+              <a href="https://github.com/googleapis/aip/issues" class="h-c-header__drawer-cta-li-link
                   h-c-header__drawer-cta-li-link--secondary">
-                Secondary action
+                File an Issue
               </a>
             </li>
             <li class="h-c-header__drawer-cta-li h-c-header__drawer-cta-li--primary">
-              <a href="#" class="h-c-header__drawer-cta-li-link
+              <a href="https://github.com/googleapis/aip" class="h-c-header__drawer-cta-li-link
                   h-c-header__drawer-cta-li-link--primary">
-                Primary button
+                <img src="/assets/images/github.png" class="github-logo">
+                View on GitHub
               </a>
             </li>
           </ul>
@@ -246,8 +205,21 @@
           </section>
           <section class="docs-component-sidebar-actions">
             <ul>
-              <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
-              <li><a href="https://github.com/googleapis/aip/tree/master{{ page.dir }}{{ page.name }}">View Source</a></li>
+              <li>
+                <a href="https://github.com/googleapis/aip/issues/">
+                  File Bug
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/googleapis/aip/blob/master/{{ page.path }}">
+                  View source
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/googleapis/aip/edit/master/{{ page.path }}">
+                  Edit this page
+                </a>
+              </li>
             </ul>
           </section>
         </aside>
@@ -255,14 +227,20 @@
           {% if page.url != '/' %}
             {% include aip-breadcrumb.html %}
           {% endif %}
+          {% if page.aip %}
+          <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
+          {% endif %}
           {{ content }}
           <footer>
+            {% if page.footer %}
+            {{ page.footer }}
+            {% else %}
             Except as otherwise noted, the content of this page is licensed under the
             <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
             Attribution 4.0 License</a>, and code samples are licensed under the
             <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
-            For details, see our
-            <a href="https://developers.google.com/terms/site-policies">Site Policies</a>.
+            <span class="no-print">For details, see <a href="/licensing">content licensing</a>.</span>
+            {% endif %}
           </footer>
         </section>
       </section>
@@ -271,5 +249,8 @@
     <!-- Closing scripts -->
     <script src="https://www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
     <script src="//www.gstatic.com/glue/v19_0/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      glue.ui.header.Header.attachTo(document.querySelector('.glue-header'));
+    </script>
     </body>
 </html>
