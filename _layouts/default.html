@@ -224,9 +224,7 @@
           </section>
         </aside>
         <section id="aip-main" class="docs-component-main">
-          {% if page.url != '/' %}
-            {% include aip-breadcrumb.html %}
-          {% endif %}
+          {% include aip-breadcrumb.html %}
           {% if page.aip %}
           {% if page.aip.state != 'approved' %}
             {% include aip-state-banner.html %}

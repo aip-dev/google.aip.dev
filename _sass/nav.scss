@@ -24,6 +24,24 @@ nav li.drawer-heading {
   }
 }
 
+// This is a hack.
+// For some reason, the entire <main> element is positioned incorrectly
+// (underneath the top bar) if the breadcrumb is not present.
+// We have breadcrumbs on everything except the front page, and so the left
+// nav was tucking under the header bar on the front page.
+//
+// I can not figure out what makes the inclusion of the breadcrumb the
+// silver bullet here (in fact, there has to be a list element inside the
+// breadcrumb, also), so instead I am giving up and hiding it.
+nav.no-breadcrumb {
+  height: 0px;
+  visibility: hidden;
+
+  & + h1 {
+    margin-top: -88px; // Normally -80.
+  }
+}
+
 body.h-c-page
   .h-c-header--product-marketing-one-tier.h-is-wholly-scrolled
   .h-c-header__bar {
