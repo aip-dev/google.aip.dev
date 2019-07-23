@@ -31,6 +31,9 @@ $.when($.ready).then(() => {
       .addClass(`spec-${directive.split(' ')[0]}`);
   }
 
+  // Make AIP banners appear in a better spot.
+  $('#aip-state-banner').insertAfter('#aip-main h1');
+
   // Control the maximum height of the nav sidebar.
   $(window)
     .on('resize', () => {

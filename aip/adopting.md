@@ -31,7 +31,7 @@ Much like the Unicode specification, we've reserved the 9000 block of AIP
 numbers (that is, AIP-9000 through AIP-9999) to be for "internal use". This
 means that these AIPs will never have public documentation and are free for
 private companies to use for their own API guidance. As a result, all you have
-to do is write your AIPs as usuall and give them a number in the 9000 block.
+to do is write your AIPs as usual and give them a number in the 9000 block.
 
 ## Custom AIP domains
 
