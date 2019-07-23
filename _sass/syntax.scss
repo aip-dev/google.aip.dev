@@ -1,7 +1,17 @@
 @import 'colors';
 
 strong.spec-directive {
-  color: $h-google-red-700;
+  &.spec-must {
+    color: $h-google-red-700;
+  }
+
+  &.spec-should {
+    color: $h-orange-700;
+  }
+
+  &.spec-may {
+    color: $h-google-green-700;
+  }
 }
 
 .highlighter-rouge {
