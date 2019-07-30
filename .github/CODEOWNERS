@@ -1,12 +1,13 @@
 # The API governance team is the default owner for everything in the repo.
 # (Note: CODEOWNERS follow a "last match wins" system.)
-*                   @googleapis/api-governance
+*                             @googleapis/api-governance
 
 # These AIP editors own the generally-applicable AIP guidance.
 # PA-specific directories are owned by their respective teams.
-aip/*.md            @googleapis/aip-editors
+aip/*.md                      @googleapis/aip-editors
 
 # Team-specific components are owned by those teams.
-aip/apps/27*.md     @googleapis/aip-apps
-aip/cloud/25*.md    @googleapis/aip-cloud
-aip/geo/46*.md      @googleapis/aip-geo
+aip/cloud/25*.md              @googleapis/aip-cloud
+aip/apps/27*.md               @googleapis/aip-apps
+aip/client-libraries/42*.md   @googleapis/aip-client-libraries
+aip/geo/46*.md                @googleapis/aip-geo

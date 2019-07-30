@@ -9,8 +9,7 @@ permalink: /apps
 
 # Apps AIPs
 
-The following AIPs apply to work on APIs in the Google Apps (G Suite) PA. For
-questions, contact apps-api-team@google.com.
+The following AIPs apply to work on APIs in the Google Apps (G Suite) PA.
 
 ### Guidance
 
