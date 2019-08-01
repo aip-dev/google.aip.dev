@@ -25,7 +25,7 @@ The following AIPs apply to work on APIs on Google Cloud Platform.
 
 <!-- prettier-ignore-end -->
 
-## Cloud SDK
+### Cloud SDK
 
 The following AIPs apply to work on the command-line interface for the
 Cloud SDK.
