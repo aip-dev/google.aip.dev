@@ -11,7 +11,7 @@ permalink: /cloud
 
 The following AIPs apply to work on APIs on Google Cloud Platform.
 
-### Guidance
+### Google Cloud Platform APIs
 
 <!-- prettier-ignore-start -->
 
@@ -27,8 +27,8 @@ The following AIPs apply to work on APIs on Google Cloud Platform.
 
 ### Cloud SDK
 
-The following AIPs apply to work on the command-line interface for the
-Cloud SDK.
+The following AIPs apply to work on the command-line interface for the Cloud
+SDK.
 
 <!-- prettier-ignore-start -->
 
@@ -41,4 +41,3 @@ Cloud SDK.
 {% endfor %}
 
 <!-- prettier-ignore-end -->
-
