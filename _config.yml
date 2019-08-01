@@ -5,6 +5,7 @@ plugins:
 url: https://aip.dev
 include:
   - CONTRIBUTING.md
+  - README.md
 defaults:
   - scope:
       path: ''
@@ -14,7 +15,7 @@ defaults:
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
       overview:
-        - uri: /
+        - uri: /home
           title: Home
         - uri: /contributing
           title: Contributing to the project
@@ -37,6 +38,11 @@ defaults:
       permalink: /contributing
   - scope:
       path: README.md
+    values:
+      exclude_from_search: true
+      permalink: /home
+  - scope:
+      path: index.md
     values:
       exclude_from_search: true
       permalink: /
