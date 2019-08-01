@@ -8,6 +8,7 @@ aip/*.md                      @googleapis/aip-editors
 
 # Team-specific components are owned by those teams.
 aip/cloud/25*.md              @googleapis/aip-cloud
+aip/cloud/26*.md              @googleapis/aip-cloud-cli
 aip/apps/27*.md               @googleapis/aip-apps
 aip/client-libraries/42*.md   @googleapis/aip-client-libraries
 aip/geo/46*.md                @googleapis/aip-geo
