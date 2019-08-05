@@ -187,56 +187,50 @@
     </div> <!-- end header -->
 
     <main role="main" class="hd-o-main" id="main">
-      {% include aip-nav.html %}
-      <section id="jump-content">
-        <aside id="aip-sidebar" class="docs-component-sidebar">
-          {% if page.aip -%}
-            {% include aip-summary.html %}
-          {% endif -%}
-          <section id="aip-toc" class="docs-component-sidebar-toc">
-            {% include toc.html html=content h_min=2 h_max=3 %}
-          </section>
-          <section class="docs-component-sidebar-actions">
-            <ul>
-              <li>
-                <a href="https://github.com/googleapis/aip/issues/">
-                  File Bug
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/googleapis/aip/blob/master/{{ page.path }}">
-                  View source
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/googleapis/aip/edit/master/{{ page.path }}">
-                  Edit this page
-                </a>
-              </li>
-            </ul>
-          </section>
-        </aside>
-        <section id="aip-main" class="docs-component-main">
-          {% include aip-breadcrumb.html %}
-          {% if page.aip %}
-          {% if page.aip.state != 'approved' %}
-            {% include aip-state-banner.html %}
-          {% endif %}
-          <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
-          {% endif %}
+      <section id="jump-content" class="aip-hero">
+        <div class="aip-hero-banner">
+          <div class="aip-hero-title">
+            API Improvement Proposals
+          </div>
+          <div class="aip-hero-subtitle">
+            Focused design documents for flexible API development.
+          </div>
+          <div class="aip-buttons">
+            {% for button in page.hero.buttons %}
+            <a href="{{ button.href }}" class="h-c-button h-c-button--primary"
+              >{{ button.text }}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="aip-landing-content">
           {{ content }}
-          <footer>
-            {% if page.footer %}
+        </div>
+
+        <div class="aip-shortcuts h-c-grid h-c-grid__col--align-middle">
+          {% for shortcut in page.shortcuts %}
+            <div class="aip-shortcut h-c-grid__col h-c-grid__col--6">
+              <h1>{{ shortcut.title }}</h1>
+              <div>{{ shortcut.description }}</div>
+              <a href="{{ shortcut.button.href }}"
+                class="h-c-button h-c-button--secondary">
+                {{ shortcut.button.text }}
+                &raquo;
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+        <footer>
+          {% if page.footer %}
             {{ page.footer }}
-            {% else %}
+          {% else %}
             Except as otherwise noted, the content of this page is licensed under the
             <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
             Attribution 4.0 License</a>, and code samples are licensed under the
             <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
             <span class="no-print">For details, see <a href="/licensing">content licensing</a>.</span>
-            {% endif %}
-          </footer>
-        </section>
+          {% endif %}
+        </footer>
       </section>
     </main>
 
