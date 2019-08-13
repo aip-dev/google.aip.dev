@@ -1,15 +1,20 @@
-<nav class="h-c-breadcrumbs h-u-mt-std" aria-label="You are here.">
-  <ol class="h-c-breadcrumbs__list">
+<nav
+  class="h-c-breadcrumbs h-u-mt-std{% if page.url == '/' %} no-breadcrumb{% endif %}"
+  aria-label="You are here."
+>
+  <ol class="h-c-breadcrumbs__list aip-breadcrumbs">
     <li class="h-c-breadcrumbs__item" aria-level="1">
-      <a class="h-c-breadcrumbs__link" href="/">API Improvement Proposals</a>
+      <a class="h-c-breadcrumbs__link" href="/home">
+        API Improvement Proposals
+      </a>
     </li>
     {% if page.aip %}
     <li class="h-c-breadcrumbs__item" aria-level="2">
-      <a
-        class="h-c-breadcrumbs__link"
-        href="/{{ page.aip.scope | default: '#aip-listing' }}"
-      >
-        {{ page.aip.scope | default: 'general' | capitalize }} AIPs
+      <!-- prettier-ignore -->
+      <a class="h-c-breadcrumbs__link"
+         href="/{{ page.aip.scope | default: '#aip-listing' }}">
+        {% if page.aip.scope %}{{ page.areas[page.aip.scope] }}
+        {% else %}General{% endif %} AIPs
       </a>
     </li>
     {% endif %}
