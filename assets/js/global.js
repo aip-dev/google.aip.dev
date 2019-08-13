@@ -27,8 +27,12 @@ $.when($.ready).then(() => {
   for (let directive of ['may', 'must', 'must not', 'should', 'should not']) {
     $('strong')
       .filter((i, el) => $(el).text() === directive)
-      .addClass('spec-directive');
+      .addClass('spec-directive')
+      .addClass(`spec-${directive.split(' ')[0]}`);
   }
+
+  // Make AIP banners appear in a better spot.
+  $('#aip-state-banner').insertAfter('#aip-main h1');
 
   // Control the maximum height of the nav sidebar.
   $(window)
