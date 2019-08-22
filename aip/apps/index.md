@@ -13,14 +13,4 @@ The following AIPs apply to work on APIs in the Google Apps (G Suite) PA.
 
 ### Guidance
 
-<!-- prettier-ignore-start -->
-
-| Number | Title | State |
-| -----: | ----- | ----- |
-{% for p in site.pages -%}
-{% if p.aip and p.aip.id >= 2700 and p.aip.id < 2800 -%}
-| {{ p.aip.id }} | [{{ p.title }}]({{ p.url }}) | {{ p.aip.state | capitalize }} |
-{% endif -%}
-{% endfor %}
-
-<!-- prettier-ignore-end -->
+{% include aip-listing.html start=2700 end=2799 %}

@@ -1,10 +1,12 @@
 <nav
-  class="h-c-breadcrumbs h-u-mt-std{% if page.url == '/' %} no-breadcrumb{% endif %}"
+  class="h-c-breadcrumbs h-u-mt-std{% if page.url == '/home' %} no-breadcrumb{% endif %}"
   aria-label="You are here."
 >
   <ol class="h-c-breadcrumbs__list aip-breadcrumbs">
     <li class="h-c-breadcrumbs__item" aria-level="1">
-      <a class="h-c-breadcrumbs__link" href="/">API Improvement Proposals</a>
+      <a class="h-c-breadcrumbs__link" href="/home">
+        API Improvement Proposals
+      </a>
     </li>
     {% if page.aip %}
     <li class="h-c-breadcrumbs__item" aria-level="2">
