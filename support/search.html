@@ -1,6 +1,6 @@
 ---
 title: Search
-description: "Search this site"
+description: 'Search this site'
 permalink: /search/
 layout: default
 tipue_search_active: true
@@ -33,5 +33,9 @@ js:
 <div id="tipue_search_content"></div>
 
 <script>
-  $.when($.ready).then(() => $("#tipue_search_input").tipuesearch());
+  $.when($.ready).then(() =>
+    $('#tipue_search_input').tipuesearch({
+      wholeWords: false,
+    })
+  );
 </script>
