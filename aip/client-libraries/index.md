@@ -14,14 +14,4 @@ mass-producing client libraries.
 
 ### Guidance
 
-<!-- prettier-ignore-start -->
-
-| Number | Title | State |
-| -----: | ----- | ----- |
-{% for p in site.pages -%}
-{% if p.aip and p.aip.id >= 4200 and p.aip.id < 4300 -%}
-| {{ p.aip.id }} | [{{ p.title }}]({{ p.url }}) | {{ p.aip.state | capitalize }} |
-{% endif -%}
-{% endfor %}
-
-<!-- prettier-ignore-end -->
+{% include aip-listing.html start=4200 end=4299 %}
