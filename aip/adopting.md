@@ -39,7 +39,7 @@ We're working on a separate fork-able repository that you can copy and use as
 your 9000 block AIP repository. The page rendered by GitHub Pages will serve
 only the AIPs in that block and redirect all other pages to [aip.dev][].
 
-In sort, this means that you can create your own AIP domain (e.g.,
+In short, this means that you can create your own AIP domain (e.g.,
 `aip.example.com`) and point that to the forked GitHub repository which will
 redirect for all well-known AIPs and serve all internal AIPs from your own
 repository. Once you've done that, you can cite all AIPs specifically using
