@@ -12,14 +12,16 @@ inclusive. {% endcomment -%}
     {%- for p in site.pages %}
     <!-- prettier-ignore -->
     {%- if p.aip and p.aip.id >= include.start and p.aip.id <= include.end and
-    'approved,reviewing,draft' contains p.aip.state %}
+    'approved,reviewing,aog-reviewing,draft' contains p.aip.state %}
     <tr>
       <td style="text-align: right;">{{ p.aip.id }}</td>
       <td>
         <a href="{{ p.url }}">{{ p.title }}</a>
         {% if p.aip.state != 'approved' -%}
         <span class="aip-state aip-state-{{ p.aip.state }}">
+          {% if p.aip.state == 'aog-reviewing' %} AoG Reviewing {% else %}
           {{ p.aip.state | capitalize }}
+          {% endif %}
         </span>
         {% endif -%}
       </td>

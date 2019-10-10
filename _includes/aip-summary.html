@@ -32,7 +32,11 @@
   {% endif -%} {% if page.aip.state -%}
   <tr>
     <td>State</td>
-    <td>{{ page.aip.state | capitalize }}</td>
+    <td>
+      {% if page.aip.state == 'aog-reviewing' %} AoG Reviewing {% else %}
+      {{ page.aip.state | capitalize }}
+      {%endif %}
+    </td>
   </tr>
   {% endif -%} {% if page.aip.created -%}
   <tr>
