@@ -60,7 +60,7 @@
         </div>
         <div class="h-c-header__lockup">
           <div class="h-c-header__company-logo">
-            <a href="/" class="h-c-header__company-logo-link title="Google">
+            <a href="{{ relative_url }}" class="h-c-header__company-logo-link title="Google">
               <svg role="img" aria-label="Google" class="h-c-header__company-logo-img
                   h-c-header__company-logo-img--standard">
                 <use xlink:href="#h-color-google-logo"></use>
@@ -197,7 +197,7 @@
           </div>
           <div class="aip-buttons">
             {% for button in page.hero.buttons %}
-            <a href="{{ button.href }}" class="h-c-button h-c-button--primary"
+            <a href="{{ button.href | relative_url }}" class="h-c-button h-c-button--primary"
               >{{ button.text }}</a>
             {% endfor %}
           </div>
