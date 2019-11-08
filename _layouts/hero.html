@@ -212,7 +212,7 @@
             <div class="aip-shortcut h-c-grid__col h-c-grid__col--6">
               <h1>{{ shortcut.title }}</h1>
               <div>{{ shortcut.description }}</div>
-              <a href="{{ shortcut.button.href }}"
+              <a href="{{ shortcut.button.href | relative_url }}"
                 class="h-c-button h-c-button--secondary">
                 {{ shortcut.button.text }}
                 &raquo;
