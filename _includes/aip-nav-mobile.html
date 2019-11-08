@@ -5,7 +5,7 @@
     </li>
     {% for p in page.overview %}
     <li class="h-c-header__drawer-nav-li" aria-level="1">
-      <a href="{{ p.uri }}" class="h-c-header__drawer-nav-li-link">
+      <a href="{{ p.uri | relative_url}}" class="h-c-header__drawer-nav-li-link">
         {{ p.title }}
       </a>
     </li>
@@ -15,13 +15,13 @@
       <div class="drawer-heading-text">AIPs</div>
     </li>
     <li class="h-c-header__drawer-nav-li" aria-level="1">
-      <a href="/general" class="h-c-header__drawer-nav-li-link">
+      <a href="{{ '/general' | relative_url }}" class="h-c-header__drawer-nav-li-link">
         General
       </a>
     </li>
     {% for area in page.areas %}
     <li class="h-c-header__drawer-nav-li" aria-level="1">
-      <a href="/{{ area[0] }}" class="h-c-header__drawer-nav-li-link">
+      <a href="{{ area[0] | relative_url }}" class="h-c-header__drawer-nav-li-link">
         {{ area[1] }}
       </a>
     </li>
