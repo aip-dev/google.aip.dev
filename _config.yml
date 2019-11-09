@@ -2,8 +2,8 @@
 markdown: kramdown
 plugins:
   - jekyll-redirect-from
-url: https://git.soma.salesforce.com/
-baseurl: /pages/rhamilton/aip
+url: https://rhamiltonsf.github.io
+baseurl: /aip
 include:
   - CONTRIBUTING.md
   - README.md
