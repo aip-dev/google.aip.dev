@@ -48,7 +48,7 @@ permalink: /assets/css/search.css
     a {
       color: $h-google-green-400;
       &:before {
-        content: 'aip.dev';
+        content: '{{ site.url }}';
       }
     }
   }
