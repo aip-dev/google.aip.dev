@@ -23,7 +23,7 @@
   This AIP is currently deferred. This means that discussion on the AIP has
   dropped off and it is in an indeterminate state. If you are interested in
   championing this AIP, please
-  <a href="https://github.com/googleapis/aip/issues/">open an issue</a>.
+  <a href="{{ site.github.repository_url }}/issues">open an issue</a>.
 </p>
 {%- elsif page.aip.state == 'rejected' -%}
 <p id="aip-state-banner" class="callout important">
@@ -37,7 +37,7 @@
 <p id="aip-state-banner" class="callout important">
   This AIP is no longer the best current practice.<br />
   It has been replaced by
-  <a href="/{{ page.aip.replacement }}">AIP-{{ page.aip.replacement }}</a
+  <a href="{{ page.aip.replacement | relative_url}}">AIP-{{ page.aip.replacement }}</a
   >.
 </p>
 {% endif -%}
