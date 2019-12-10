@@ -17,11 +17,10 @@ TODO: Should the effective policy message be the same as the policy message? If 
 
 # Policy API Guidance
 
-A policy is a document-based resource that, when set on a resource, controls
-some behavior for that resource and its descendants. Some examples of
-controllable behaviors are:  who can access a resource, what configurations are
-allowed for a resource and what billing account to charge for a resource’s
-usage.
+A policy is a statement of intent. When set on a resource it controls some
+behavior for that resource and its descendants. Some examples of controllable
+behaviors are:  who can access a resource, what configurations are allowed for
+a resource, and what billing account to charge for a resource’s usage.
 
 ## Definitions
 
@@ -98,9 +97,9 @@ permission to create/delete. So to create a binding between a Policy and a
 Resource requires 2 permissions, but to break a binding only requires
 permission on either the Policy or the Resource.
 
-**Note:** No guidance is currently given for re-creating a binding. In
-theory, only half of a binding could be deleted, thus requiring only a
-single permission to re-establish the missing half of the binding.
+**Note:** No guidance is currently given for re-creating a binding. In theory,
+only half of a binding could be deleted, thus requiring only a single
+permission to re-establish the missing half of the binding.
 
 ### Effictive Policies
 
