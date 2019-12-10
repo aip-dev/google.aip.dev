@@ -12,6 +12,7 @@ redirect_from:
 <!--
 TODO: discuss policy lifecycle? binding lifecycle?
 TODO: discuss policy conditions.
+TODO: Should the effective policy message be the same as the policy message? If it's different, should properties of an effective policy reference the concrete policy which caused it?
 -->
 
 # Policy API Guidance
@@ -21,6 +22,8 @@ some behavior for that resource and its descendants. Some examples of
 controllable behaviors are:  who can access a resource, what configurations are
 allowed for a resource and what billing account to charge for a resource’s
 usage.
+
+## Definitions
 
 There are 2 types of policies, _dedicated_ and _shared_.
 
@@ -35,13 +38,15 @@ resources, a shared policy can be _bound_ to one or more resources, and applies
 to those resources and any descendents. An example of a shared policy is
 billing accounts, which are associated with resources that bill to them.
 
-## Standard Methods
+## Guidance
+
+### Standard Methods
 
 For most policy types, it makes sense to incorporate the policy name in to the
 method name, for example `GetBillingPolicy` for a Billing policy. The
 descriptions below omit the specific policy type for brevity.
 
-### Dedicated Policies
+#### Dedicated Policies
 
 Dedicated polices are the simpler of the two to implement, with a smaller API
 scope. A common issue is that since they are bound to a single resource, the
@@ -54,7 +59,7 @@ resource.
 - **LookupEffectivePolicy** - Retrieves the effective policy for a resource,
   which is the combination of policies on the resource and any ancestors
 
-### Shared Policies
+#### Shared Policies
 
 Shared policies have a more complex API scope, but are also substantially more
 powerful. They permit users to have very fine-grained permissions and delegated
@@ -81,7 +86,7 @@ complex) to be bound to numerous resoures.
   policy resource or the target resource (typically via the `filter` field),
   and list all appropriate bindings.
 
-### Permissions
+#### Permissions
 
 There **should** be a separate permission for each policy method, per standard
 practice.
@@ -97,7 +102,7 @@ permission on either the Policy or the Resource.
 theory, only half of a binding could be deleted, thus requiring only a
 single permission to re-establish the missing half of the binding.
 
-## Effictive Policies
+### Effictive Policies
 
 An effective policy is the combination of policies applied to the ancestry of a
 resource. For example, determining the effective policy for a VM would require
