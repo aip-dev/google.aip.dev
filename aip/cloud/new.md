@@ -95,7 +95,7 @@ permission on either the Policy or the Resource.
 
 NOTE: At this point in time, no guidance is given for recreating a binding. In
 theory only half of a binding could be deleted, thus allowing only a
-single-permission to re-establish the missing half of the binding.
+single permission to re-establish the missing half of the binding.
 
 ## Effictive Policies
 
