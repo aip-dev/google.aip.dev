@@ -100,7 +100,7 @@ single permission to re-establish the missing half of the binding.
 ## Effictive Policies
 
 An effective policy is the combination of policies applied to the ancestry of a
-resource. For example, to determine the effective policy for a VM would require
+resource. For example, determining the effective policy for a VM would require
 loading the policies attacted to the VM, Project, Folder, and Organization.
 
 There are multiple combination stragies, and which one chosen depends on the
