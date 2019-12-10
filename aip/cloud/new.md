@@ -88,13 +88,13 @@ practice.
 
 Bindings are a bit special in that they connect two resources. Conceptually,
 it's easiest to think of a binding as two half-bindings, one connected to the
-Policy and one connected to the Resource. Each half-binding has it's own
+Policy and one connected to the Resource. Each half-binding has its own
 permission to create/delete. So to create a binding between a Policy and a
 Resource requires 2 permissions, but to break a binding only requires
 permission on either the Policy or the Resource.
 
-NOTE: At this point in time, no guidance is given for recreating a binding. In
-theory only half of a binding could be deleted, thus allowing only a
+**Note:** No guidance is currently given for re-creating a binding. In
+theory, only half of a binding could be deleted, thus requiring only a
 single permission to re-establish the missing half of the binding.
 
 ## Effictive Policies
@@ -111,7 +111,7 @@ large organizations where administrators need to delegate their responsibility
 and/or want to set reasonable defaults at the top with overrides being set
 where needed.
 
-In some use cases, a policy lower in the hierarchy taking precedency may be
+In some use cases, a policy lower in the hierarchy taking precedence is
 unacceptable. We strongly encourage such cases to permit configuration of
 override policies instead of forcing the choice.
 
