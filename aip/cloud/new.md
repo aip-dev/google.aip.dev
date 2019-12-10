@@ -33,7 +33,7 @@ A _shared_ policy is a first-class resource (with its own identifier) and can
 even have policies applied to it (like an authorization policy). Unlike other
 resources, a shared policy can be _bound_ to one or more resources, and applies
 to those resources and any descendents. An example of a shared policy is
-billing accounts which are associated with resouces that bill to them.
+billing accounts, which are associated with resources that bill to them.
 
 ## Standard Methods
 
