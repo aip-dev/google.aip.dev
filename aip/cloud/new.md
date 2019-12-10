@@ -17,10 +17,11 @@ TODO: Should the effective policy message be the same as the policy message? If 
 
 # Policy API Guidance
 
-A policy is a statement of intent. When set on a resource it controls some
-behavior for that resource and its descendants. Some examples of controllable
-behaviors are:  who can access a resource, what configurations are allowed for
-a resource, and what billing account to charge for a resource’s usage.
+A policy is a statement of intent. When set on a
+[resource](https://aip.dev/121) it controls some behavior for that resource and
+its descendants. Some examples of controllable behaviors are:  who can access a
+resource, what configurations are allowed for a resource, and what billing
+account to charge for a resource’s usage.
 
 ## Definitions
 
