@@ -35,7 +35,7 @@ resource inherit the policy.
 A _shared_ policy is a first-class resource (with its own identifier) and can
 even have policies applied to it (like an authorization policy). Unlike other
 resources, a shared policy can be _bound_ to one or more resources, and applies
-to those resources and any descendents. An example of a shared policy is
+to those resources and any descendants. An example of a shared policy is
 billing accounts, which are associated with resources that bill to them.
 
 ## Guidance
@@ -48,10 +48,15 @@ descriptions below omit the specific policy type for brevity.
 
 #### Dedicated Policies
 
+If a resource can only have one of your policy type bound to it, and there does
+not need to be a separation of authorization privilege between the resource and
+the policy, then you **may** use a dedicated policy.
+
 Dedicated polices are the simpler of the two to implement, with a smaller API
-scope. A common issue is that since they are bound to a single resource, the
-permissions to modify the policy get conflated with permissions to modify the
-resource.
+scope. The authorization policy applied to the resource applies to the policy
+as well. This can be problematic if users have permissions to modify
+permissions on the resource, yet aren't intended to be able to modify the
+policy.
 
 - **SetPolicy** - Sets a dedicated policy for a resource
 - **GetPolicy** - Retrieves the dedicated policy for a resource
@@ -61,10 +66,9 @@ resource.
 
 #### Shared Policies
 
-Shared policies have a more complex API scope, but are also substantially more
-powerful. They permit users to have very fine-grained permissions and delegated
-policy roles. They also allow a common policy definition (which might be quite
-complex) to be bound to numerous resoures.
+If you want to bind a single policy to multiple resources, or want to apply a
+policy to your policy (eg., an authorization policy), then you **should** use a
+shared policy.
 
 - **CreatePolicy** - Creates a shared policy resource
 - **GetPolicy** - Retrieves a shared policy resource
@@ -102,16 +106,16 @@ permission on either the policy or the resource.
 only half of a binding could be deleted, thus requiring only a single
 permission to re-establish the missing half of the binding.
 
-### Effictive Policies
+### Effective Policies
 
 An effective policy is the combination of policies applied to the ancestry of a
 resource. For example, determining the effective policy for a VM would require
-loading the policies attacted to the VM, Project, Folder, and Organization.
+loading the policies attached to the VM, Project, Folder, and Organization.
 
-There are multiple combination stragies, and which one chosen depends on the
+There are multiple combination strategies, and which one chosen depends on the
 policy system. Generally speaking, policies **should** be combined in an
 additive fashion where leaf nodes take precedence for ALLOW semantics, and the
-root nodes taking precendence for DENY semantics. This strategy works well for
+root nodes taking precedence for DENY semantics. This strategy works well for
 large organizations where administrators need to delegate their responsibility
 and/or want to set reasonable defaults at the top with overrides being set
 where needed.
