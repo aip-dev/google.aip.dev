@@ -42,8 +42,8 @@ billing accounts, which are associated with resources that bill to them.
 
 ### Standard Methods
 
-For most policy types, it makes sense to incorporate the policy name in to the
-method name, for example `GetBillingPolicy` for a Billing policy. The
+For most policy types, the policy name **should** be incorporated into the
+method name. For example, `GetBillingPolicy` for a Billing policy. The
 descriptions below omit the specific policy type for brevity.
 
 #### Dedicated Policies
@@ -88,15 +88,15 @@ complex) to be bound to numerous resoures.
 
 #### Permissions
 
-There **should** be a separate permission for each policy method, per standard
+Each policy method **should** have a separate permission, per standard
 practice.
 
 Bindings are a bit special in that they connect two resources. Conceptually,
 it's easiest to think of a binding as two half-bindings, one connected to the
-Policy and one connected to the Resource. Each half-binding has its own
-permission to create/delete. So to create a binding between a Policy and a
-Resource requires 2 permissions, but to break a binding only requires
-permission on either the Policy or the Resource.
+policy and one connected to the resource. Each half-binding has its own
+permission to create/delete. So to create a binding between a policy and a
+resource requires 2 permissions, but to break a binding only requires
+permission on either the policy or the resource.
 
 **Note:** No guidance is currently given for re-creating a binding. In theory,
 only half of a binding could be deleted, thus requiring only a single
@@ -109,7 +109,7 @@ resource. For example, determining the effective policy for a VM would require
 loading the policies attacted to the VM, Project, Folder, and Organization.
 
 There are multiple combination stragies, and which one chosen depends on the
-Policy system. Generally speaking, policies **should** be combined in an
+policy system. Generally speaking, policies **should** be combined in an
 additive fashion where leaf nodes take precedence for ALLOW semantics, and the
 root nodes taking precendence for DENY semantics. This strategy works well for
 large organizations where administrators need to delegate their responsibility
@@ -120,8 +120,8 @@ In some use cases, a policy lower in the hierarchy taking precedence is
 unacceptable. We strongly encourage such cases to permit configuration of
 override policies instead of forcing the choice.
 
-If no policies are bound the ancsestry of a resource, the effective resource is
-to be empty.
+If no policies are bound the ancestry of a resource, the effective policy
+**must** be equivalent to an empty policy.
 
 ## Changelog
 
