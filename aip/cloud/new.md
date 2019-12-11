@@ -98,8 +98,8 @@ practice.
 Bindings are a bit special in that they connect two resources. Conceptually,
 it's easiest to think of a binding as two half-bindings, one connected to the
 policy and one connected to the resource. Each half-binding has its own
-permission to create/delete. So to create a binding between a policy and a
-resource requires 2 permissions, but to break a binding only requires
+permission to create/delete. Therefore, creating a binding between a policy and
+a resource requires two permissions; however breaking a binding only requires
 permission on either the policy or the resource.
 
 **Note:** No guidance is currently given for re-creating a binding. In theory,
