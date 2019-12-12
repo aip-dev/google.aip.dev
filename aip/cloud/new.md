@@ -121,8 +121,11 @@ and/or want to set reasonable defaults at the top with overrides being set
 where needed.
 
 In some use cases, a policy lower in the hierarchy taking precedence is
-unacceptable. We strongly encourage such cases to permit configuration of
-override policies instead of forcing the choice.
+unacceptable. In such cases, the override semantics **should** be a
+configuration property of the policy itself (eg., an administrator could
+explicitly configure the policy at the top to disallow overrides). This is
+important for making it self-evident that the policy is not following the
+standard patterns.
 
 If no policies are bound the ancestry of a resource, the effective policy
 **must** be equivalent to an empty policy.
