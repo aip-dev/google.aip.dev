@@ -112,10 +112,10 @@ An effective policy is the combination of policies applied to the ancestry of a
 resource. For example, determining the effective policy for a VM would require
 loading the policies attached to the VM, Project, Folder, and Organization.
 
-There are multiple combination strategies, and which one chosen depends on the
+There are multiple combination strategies, and which is chosen depends on the
 policy system. Generally speaking, policies **should** be combined in an
-additive fashion where leaf nodes take precedence for ALLOW semantics, and the
-root nodes taking precedence for DENY semantics. This strategy works well for
+additive fashion where leaf nodes take precedence for `ALLOW` semantics, and the
+root nodes taking precedence for `DENY` semantics. This strategy works well for
 large organizations where administrators need to delegate their responsibility
 and/or want to set reasonable defaults at the top with overrides being set
 where needed.
