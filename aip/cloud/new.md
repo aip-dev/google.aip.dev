@@ -17,11 +17,11 @@ TODO: Should the effective policy message be the same as the policy message? If 
 
 # Policy API Guidance
 
-A policy is a statement of intent. When set on a
-[resource](https://aip.dev/121) it controls some behavior for that resource and
-its descendants. Some examples of controllable behaviors are:  who can access a
-resource, what configurations are allowed for a resource, and what billing
-account to charge for a resource’s usage.
+A policy is a set of guidelines which control some behavior of a
+[resource](https://aip.dev/121) and its descendants. Some examples of
+controllable behaviors are:  who can access a resource, what configurations are
+allowed for a resource, and what billing account to charge for a resource’s
+usage.
 
 ## Definitions
 
@@ -46,11 +46,11 @@ For most policy types, the policy name **should** be incorporated into the
 method name. For example, `GetBillingPolicy` for a Billing policy. The
 descriptions below omit the specific policy type for brevity.
 
-#### Dedicated Policies
+### Dedicated Policies
 
-If a resource can only have one of your policy type bound to it, and there does
-not need to be a separation of authorization privilege between the resource and
-the policy, then you **may** use a dedicated policy.
+If a resource can only have one of policy type bound to it, and there does not
+need to be a separation of authorization privilege between the resource and the
+policy, then services **may** use a dedicated policy.
 
 Dedicated polices are the simpler of the two to implement, with a smaller API
 scope. The authorization policy applied to the resource applies to the policy
@@ -64,11 +64,11 @@ policy.
 - **LookupEffectivePolicy** - Retrieves the effective policy for a resource,
   which is the combination of policies on the resource and any ancestors
 
-#### Shared Policies
+### Shared policies
 
-If you want to bind a single policy to multiple resources, or want to apply a
-policy to your policy (eg., an authorization policy), then you **should** use a
-shared policy.
+If a single policy is to be bound to multiple resources, or it should be
+possible to apply a policy to the policy (eg., an authorization policy), then
+services **should** use a shared policy.
 
 - **CreatePolicy** - Creates a shared policy resource
 - **GetPolicy** - Retrieves a shared policy resource
@@ -90,10 +90,10 @@ shared policy.
   policy resource or the target resource (typically via the `filter` field),
   and list all appropriate bindings.
 
-#### Permissions
+### Permissions
 
-Each policy method **should** have a separate permission, per standard
-practice.
+Each policy method **should** have a separate permission in order to permit the
+expression of fine-grained authorization policies.
 
 Bindings are a bit special in that they connect two resources. Conceptually,
 it's easiest to think of a binding as two half-bindings, one connected to the
