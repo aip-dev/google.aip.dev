@@ -46,4 +46,37 @@ repository. Once you've done that, you can cite all AIPs specifically using
 that domain name (e.g., `aip.example.com/1234`) and you'll always get sent to
 the right place.
 
-[aip.dev]: https://aip.dev/
+## Forking AIP
+
+You can fork the AIP project and run it in your own domain if necessary. This will allow you to customize the AIPs to your organizations needs, or even create your own set of AIPs.
+
+### Updating the URL
+
+When running the AIP infrastructure as a Github Page in a another repo, you will need to update the `_config.yaml` file so that Github Pages will build the relative urls of the AIP project correctly.
+
+If you have created a new custom domain for your AIPs, you only need to change the `url` propery in `_config.yaml` to point to your new domain:
+
+```
+url: https://aip.dev
+```
+
+If you are not creating a new domain, it may be necessary to add the `baseurl` property to the `_config.yaml`. This property should contain any additional path information that may be appended to the domain in the `url`.
+
+For example, assume Github user jdoe123 forked the aip project into a repository named my-aips. If this user served the content from their master branch, the url to the Github pages would be `https://jdoe123.github.io/my-aips/`. The `_config.yaml` would need to be updated as follows:
+
+```
+url: https://jdoe123.github.io
+baseurl: /my-aips
+```
+
+For more information about about how these values are used by Github Pages, see the [release notes](https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters) that standardized these configurations in Jekyll.
+
+### Configuring Navigation
+
+The nav menu and the nav drawer are generated dynamically based on the `_data/nav.yaml` file. The nav.yaml file supports the creation of static and dynamic navigation menus that can be included or excluded from either the desktop or mobile views.
+
+The schema can be viewed in `assets/schema/nav-schema.yaml`.
+
+The `bar` and `drawer` properties in the file define the menu components to use when creating the desktop nav-bar and the mobile nav-drawer respectively. The other properties in the file are the definitions of the menu elements that are referred to in the `bar` and `drawer`.
+
+There are two types of navigation elements that can be added to the menu: `static` and `matterGroup`. A `static` menu element will always show the same navigation elements, regardless of the content. A `matterGroup` element is generated dynamically based on the AIPs in the domain, or the current page in the site.

@@ -1,4 +1,7 @@
 ---
+aip_index:
+  order: 10
+  display: General
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
