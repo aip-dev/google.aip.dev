@@ -1,21 +1,24 @@
 $schema: http://json-schema.org/draft-04/schema#
 
 type: object
+description: The schema for defining the components of the navigation bar and the navigation drawer, and which components are in each view.
 required:
   - bar
   - drawer
 properties:
   bar:
+    description: The list of navMenu components to display in the navigatin bar in the desktop view.
     type: array
     items: 
       type: string
   drawer:
+    descripion: The list of navMenu components to display in the navigation drawer in the mobile view.
     type: array
     items: 
       type: string
 minProperties: 3
 additionalPropertie:
-  type: nav-menu
+  type: navMenu
 
 definitions:
   url:
@@ -29,16 +32,19 @@ definitions:
     pattern: ^(\/[-a-zA-Z0-9.\$&\+%,_]*)*(\?[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?(&[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?)*)?(#[-a-zA-Z0-9\.\+\$%_]*)?$
 
   staticMenuDef:
+    description: A navigational menu component containing a list of static paths and URLs.
     type: object
     required:
       - type
       - links
     properties:
       type:
+        description: The descriminator for navMenu objects. Must be `static` for a staticMenuDef.
         type: string
         enum:
           - static
       links:
+        description: A list of paths and URLs to navigate to.
         type: array
         items:
           oneOf:
@@ -46,6 +52,8 @@ definitions:
             - $ref: '#/definitions/uri'
 
   matterGroupDef:
+    description: |
+      A navigational menu component that allows for the dynamic creation of navigation links based on similarities in front matter across multiple pages.
     type: object
     required:
       - type
@@ -53,7 +61,7 @@ definitions:
       - frontMatter
     properties:
       type:
-        description: The discriminator between menu element types
+        description: The discriminator between menu element types. Must be `matterGroup` for a matterGroupDef.
         type: string
         enum:
           - matterGroup
@@ -75,7 +83,7 @@ definitions:
         pattern: ^([a-zA-Z0-9\\.\-\(\):])+(\.html)$
       groupBy:
         description: | 
-          This object can be used to dynamically control the content of the nav menue with content related to the current page. This can be used to only display the links of sibling pages to the current page, instead of all pages.
+          This object can be used to dynamically control the content of the nav menu with content related to the current page. This can be used to only display the links of sibling pages to the current page, instead of all pages.
           When this is populated, the navigation menu will only display links that have the same front matter and the same value in the provided property.
           However, it is recognized that not all pages will have the same front matter. In which case the `with` array can be used to define additional properties and/or front matter that might join with the specified `groupBy` property.
         type: object
@@ -96,13 +104,17 @@ definitions:
                 property:
                   type: string
 
-  nav-menu:
+  navMenu:
     allOf:
       - type: object
+        required:
+          - title
         properties:
           title:
+            description: The name to display as a header in this navigation menu component.
             type: string
           shortTitle:
+            description: This value can be used to override the navigation menu component header in the mobile drawer.
             type: string
       - oneOf:
         - $ref: '#/definitions/staticMenuDef'
