@@ -1,0 +1,2 @@
+{% comment %} This file is used to create the default navigation element to AIPs in the mobile drawer. When this file is included it *must* be sent with a `category` and a `menu` value. The `category` value contains the page a link is being created for. The `menu` value represents the `nav-menu` object that defines the navigation menu.{% endcomment %}
+<a href="{{ category.url | relative_url }}" class="h-c-header__drawer-nav-li-link">{{ category[menu.frontMatter][menu.displayName] | default: category.title }}</a>
