@@ -1,0 +1,53 @@
+bar:
+  - overview
+  - categories
+  - tools
+  - inCategory
+
+drawer:
+  - overview
+  - categories
+
+overview:
+  type: static
+  title: Overview
+  links:
+    - title: Home
+      uri: /home
+    - title: Contributing to the project
+      uri: /contributing
+    - title: Adopting AIPs in your company
+      uri: /adopting
+    - title: Frequently asked questions
+      uri: /faq
+    - title: Content Licensing
+      uri: /licensing
+
+categories:
+  type: matterGroup
+  shortTitle: AIPs
+  title: AIPs By Category
+  frontMatter: aip_index
+  id: scope
+  orderBy: order
+  displayName: display
+
+tools:
+  type: static
+  title: Tools
+  links:
+    - title: API Linter
+      url: https://github.com/googleapis/api-linter
+
+inCategory:
+  type: matterGroup
+  title: AIPs
+  frontMatter: aip
+  id: id
+  orderBy: id
+  groupBy:
+    property: scope
+    with:
+      - frontMatter: aip_index
+        property: scope
+  include: aip-list-item.html

@@ -46,4 +46,39 @@ repository. Once you've done that, you can cite all AIPs specifically using
 that domain name (e.g., `aip.example.com/1234`) and you'll always get sent to
 the right place.
 
-[aip.dev]: https://aip.dev/
+## Forking AIP
+
+You can fork the AIP project and run it in your own domain if necessary. This will allow you to customize the AIPs to your organization's needs. Or you could use the infrastructure to create your own set of AIPs.
+
+### Updating the URL
+
+To run the AIP infrastructure as a GitHub Page in a another repo, the `_config.yaml` file must be updated to work correctly in the new repo.
+
+If a new custom domain and CNAME have been assigned to the new reop, only the `url` property will need to be updated to the new domain.
+
+```
+url: https://aip.dev
+```
+
+If you are not creating a new domain, it will be necessary to add the `baseurl` property to the `_config.yaml`. This property should contain any additional path information that may be appended to the domain in the `url`.
+
+For example, assume GitHub user jdoe123 forked the aip project into a repository named my-aips. If this user served the content from their master branch, the url to the GitHub pages would be `https://jdoe123.github.io/my-aips/`. The accompanying `_config.yaml` would be configured as follows:
+
+```
+url: https://jdoe123.github.io
+baseurl: /my-aips
+```
+
+For more information about about how these values are used by GitHub Pages, see the [release notes](https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters) that standardized these configurations in Jekyll.
+
+### Configuring Navigation
+
+The nav menu and the nav drawer are generated dynamically based on the `_data/nav.yaml` file. The nav.yaml file supports the creation of static and dynamic navigation menus that can be included or excluded from either the desktop or mobile views.
+
+The schema can be viewed in `assets/schema/nav-schema.yaml`.
+
+The `bar` and `drawer` properties in the file define the menu components to use when creating the desktop nav-bar and the mobile nav-drawer respectively. The other properties in the file are the definitions of the menu elements that are referred to in the `bar` and `drawer`.
+
+There are two types of component types that can be added to the menu: `static` and `matterGroup`. A `static` menu component will always show the same navigation elements, regardless of the content of the page and the repository. A `matterGroup` component is generated dynamically based on the AIPs in the domain, or the current page in the site.
+
+The nav.yaml file can be validated against the schema by running `npm test` in the `test` directory.

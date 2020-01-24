@@ -1,6 +1,8 @@
 ---
 aip_index:
   scope: cloud
+  order: 30
+  display: Google Cloud Platform
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
