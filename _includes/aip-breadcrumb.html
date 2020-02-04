@@ -4,7 +4,7 @@
 >
   <ol class="h-c-breadcrumbs__list aip-breadcrumbs">
     <li class="h-c-breadcrumbs__item" aria-level="1">
-      <a class="h-c-breadcrumbs__link" href="/home">
+      <a class="h-c-breadcrumbs__link" href="{{ relative_url}}">
         API Improvement Proposals
       </a>
     </li>
@@ -12,7 +12,7 @@
     <li class="h-c-breadcrumbs__item" aria-level="2">
       <!-- prettier-ignore -->
       <a class="h-c-breadcrumbs__link"
-         href="/{{ page.aip.scope | default: '#aip-listing' }}">
+         href="/{{ page.aip.scope | default: 'general' | relative_url }}">
         {% if page.aip.scope %}{{ page.areas[page.aip.scope] }}
         {% else %}General{% endif %} AIPs
       </a>

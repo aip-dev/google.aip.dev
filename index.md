@@ -6,7 +6,7 @@ hero:
   subtitle: Designs for API development
   buttons:
     - text: Explore the AIPs
-      href: /home
+      href: /general
     - text: Learn how it works
       href: /1
 shortcuts:
@@ -35,8 +35,9 @@ shortcuts:
       text: Learn more
   - title: Still have questions?
     description: |
-      Free free to take a look at the frequently asked questions. If you don't
-      find an answer there, file an issue on our GitHub repository.
+      Free free to take a look at the <a href="/faq">frequently asked
+      questions</a>. If you don't find an answer there, file an issue on our
+      GitHub repository.
     button:
       href: https://github.com/googleapis/aip/issues
       text: Ask us on GitHub

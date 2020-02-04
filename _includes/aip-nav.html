@@ -4,20 +4,20 @@
     <li class="nav-item nav-item-header">Overview</li>
     {% for p in page.overview %}
     <li class="nav-item{% if page.url == p.uri %} nav-item-active{% endif %}">
-      <a href="{{ p.uri }}">{{ p.title }}</a>
+      <a href="{{ p.uri | relative_url }}">{{ p.title }}</a>
     </li>
     {% endfor %}
 
     <li class="nav-item nav-item-header">AIPs by category</li>
     <li class="nav-item{% if page.url == '/general' %} nav-item-active{% endif %}">
-      <a href="/general">General</a>
+      <a href="{{ '/general' | relative_url }}">General</a>
     </li>
     {% for area in page.areas %}
     {% if page.aip_index.scope == area[0] %}
       {% assign scope = area[0] %}
     {% endif %}
     <li class="nav-item{% if page.aip_index.scope == area[0] %} nav-item-active{% endif %}">
-      <a href="/{{ area[0] }}">{{ area[1] }}</a>
+      <a href="{{ area[0] | relative_url }}">{{ area[1] }}</a>
     </li>
     {% endfor %}
 
@@ -28,19 +28,13 @@
         <use xlink:href="#mi-arrow-forward"></use>
       </svg>
     </li>
-    <li class="nav-item">
-      <a href="https://cloud.google.com/apis/design/" target="_blank">Cloud API Design Guide</a>
-      <svg role="img" class="h-c-icon h-c-icon--arrow-external" style="width: 14px; height: 14px; margin-bottom: -2px;">
-          <use xlink:href="#mi-arrow-forward"></use>
-      </svg>
-    </li>
 
     <li class="nav-item nav-item-header">
       {% if scope %}{{ page.areas[scope] }}{% else %}General{% endif %} AIPs
     </li>
     {% for p in site.pages %}{% if p.aip and p.aip.scope == scope -%}
     <li class="nav-item{% if p.url == page.url %} nav-item-active{% endif %}">
-      <a href="{{ p.url }}">
+      <a href="{{ p.url | relative_url }}">
         <span class="aip-number">{{ p.aip.id }}</span> {{ p.title }}
       </a>
     </li>
