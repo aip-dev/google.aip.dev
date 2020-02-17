@@ -20,7 +20,8 @@
   border: 1px solid $h-google-blue-200;
 }
 
-.tldr {
+.tldr,
+.summary {
   @extend .callout;
   background-color: $h-google-green-50;
   border: 1px solid $h-google-green-200;
