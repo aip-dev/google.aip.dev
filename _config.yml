@@ -3,6 +3,8 @@ markdown: kramdown
 plugins:
   - jekyll-redirect-from
 url: https://aip.dev
+github:
+  repository_url: https://github.com/googleapis/aip
 include:
   - CONTRIBUTING.md
   - README.md
@@ -15,7 +17,7 @@ defaults:
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
       overview:
-        - uri: /home
+        - uri: /
           title: Home
         - uri: /contributing
           title: Contributing to the project
