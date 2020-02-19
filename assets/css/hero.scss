@@ -1,7 +1,13 @@
+---
+permalink: /assets/css/hero.css
+---
+
+@import 'colors';
+
 .aip-hero {
   .aip-hero-banner {
     margin-top: 3em;
-    border-bottom: 1px solid $h-gm-grey-300;
+    border-bottom: 1px solid $glue-grey-300;
 
     .aip-hero-title {
       font-size: 250%;
@@ -25,7 +31,7 @@
   .aip-landing-content {
     padding-top: 1em;
     padding-bottom: 1em;
-    border-bottom: 1px solid $h-gm-grey-300;
+    border-bottom: 1px solid $glue-grey-300;
 
     h1 {
       font-size: 160%;
@@ -49,7 +55,6 @@
 
       > a {
         margin-top: 1em;
-        display: inline-block;
       }
     }
   }
