@@ -1,0 +1,90 @@
+---
+title: API Improvement Proposals
+permalink: /
+layout: default
+bare: true
+exclude_from_search: true
+css:
+  - /assets/css/hero.css
+hero:
+  title: API Improvement Proposals
+  subtitle: Designs for API development
+  buttons:
+    - text: Explore the AIPs
+      href: /general
+    - text: Learn how it works
+      href: /1
+shortcuts:
+  - title: Curious about the basics?
+    description: |
+      AIPs are a combination of design guidance and a system we use to manage
+      and track that guidance. Learn more about how the AIP program works in
+      the first AIP!
+    button:
+      href: /1
+      text: Read AIP-1
+  - title: Want to help?
+    description: |
+      Interested in helping with AIPs? Contribute by proposing new guidance,
+      commenting on existing AIPs, or fixing typos. All contributions are
+      welcome!
+    button:
+      href: /contributing
+      text: Contribute to the project
+  - title: Want to use AIPs for your organization?
+    description: |
+      AIPs are designed to be useful outside of Google. Take a look at how you
+      might choose which AIPs are best suited to your API design needs.
+    button:
+      href: /adopting
+      text: Learn more
+  - title: Still have questions?
+    description: |
+      Free free to take a look at the <a href="/faq">frequently asked
+      questions</a>. If you don't find an answer there, file an issue on our
+      GitHub repository.
+    button:
+      href: https://github.com/googleapis/aip/issues
+      text: Ask us on GitHub
+---
+
+<!-- prettier-ignore -->
+<main role="main" class="aip-hero" id="page-content">
+  <div class="aip-hero-banner">
+    <div class="aip-hero-title">
+      API Improvement Proposals
+    </div>
+    <div class="aip-hero-subtitle">
+      Focused design documents for flexible API development.
+    </div>
+    <div class="aip-buttons">
+      {% for button in page.hero.buttons %}
+      <a href="{{ button.href | relative_url }}" class="glue-button glue-button--high-emphasis">
+        {{ button.text }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="aip-landing-content">
+    <h1>Welcome</h1>
+    <p>
+      AIPs are design documents that summarize Google's API design
+      decisions. They also provide a framework and system for others to
+      document their own API design rules and practices.
+    </p>
+  </div>
+
+  <div class="aip-shortcuts glue-grid glue-grid__col--align-middle">
+    {% for shortcut in page.shortcuts %}
+    <div class="aip-shortcut glue-grid__col glue-grid__col--span-6">
+      <h1>{{ shortcut.title }}</h1>
+      <div>{{ shortcut.description }}</div>
+      <a href="{{ shortcut.button.href | relative_url }}" class="glue-button glue-button--medium-emphasis">
+        {{ shortcut.button.text }} &raquo;
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% include aip-footer.html %}
+</main>
