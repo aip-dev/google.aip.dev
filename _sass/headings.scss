@@ -34,7 +34,10 @@
     @extend .glue-has-bottom-margin;
   }
   h4 {
-    @extend .glue-headline--headline-4;
+    @extend .glue-headline--headline-5;
+  }
+  h5 {
+    @extend .glue-headline--headline-5;
 
     &.aip-number {
       line-height: 1em;

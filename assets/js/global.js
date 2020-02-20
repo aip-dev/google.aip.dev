@@ -42,4 +42,74 @@ $.when($.ready).then(() => {
       });
     })
     .resize();
+
+  // Intercept level 4 headings in AIPs and make them into responsive tabs.
+  $('h2,h3').each((_, section) => {
+    section = $(section);
+    let secId = section.attr('id');
+    let tabs = [];
+
+    // Group everything that comes after the <h4> into its own content
+    // div, according to what Glue expects.
+    $(section)
+      .nextUntil('h1,h2,h3')
+      .filter('h4')
+      .each((_, el) => {
+        el = $(el);
+        let id = el.attr('id');
+        let title = el.text();
+        let contentEl = $(`
+          <div id="tab-${id}">
+            <div class="glue-tabpanels__panel-title">
+              <h2>${title}</h2>
+            </div>
+            <div id="tab-${id}-content" class="glue-tabpanels__panel-content">
+              <div></div>
+            </div>
+          </div>
+      `);
+        el.nextUntil('h1,h2,h3,h4').appendTo(
+          contentEl
+            .children(`#tab-${id}-content`)
+            .children()
+            .eq(0)
+        );
+        tabs.push({ id, contentEl, title });
+        el.remove();
+      });
+
+    // Sanity check: If there are no tabs, stop.
+    if (tabs.length == 0) {
+      return;
+    }
+
+    // Create the structure for the tab interface.
+    let tabStruct = $(`
+      <div class="glue-tabpanels" data-glue-tabpanels="${secId}">
+        <ul class="glue-tabpanels__page-list">
+        </ul>
+        <div class="glue-tabpanels__panel-list">
+        </div>
+      </div>
+    `);
+
+    // Iterate over each tab and build the DOM inside the tab structure.
+    for (let tab of tabs) {
+      // Add the tab itself, with the title.
+      $(`<li><a href="#${tab.id}">${tab.title}</a></li>`).appendTo(
+        tabStruct.children('.glue-tabpanels__page-list')
+      );
+
+      // Add the tab content.
+      tab.contentEl.appendTo(
+        tabStruct.children('.glue-tabpanels__panel-list')
+      );
+    }
+
+    // Add the tab interface in place of what was there before.
+    tabStruct.insertAfter(section);
+
+    // Finally, wire up the tab interface!
+    new glue.ui.tabPanels.TabPanels(tabStruct[0]);
+  });
 });
