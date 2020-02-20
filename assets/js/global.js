@@ -45,12 +45,22 @@ $.when($.ready).then(() => {
 
   // Intercept level 4 headings in AIPs and make them into responsive tabs.
   $('h2,h3').each((_, section) => {
+    // Sanity check: Are we adding tabs to this section at all?
     section = $(section);
-    let secId = section.attr('id');
-    let tabs = [];
+    if (section.nextAll('h4').length === 0) {
+      return;
+    }
+
+    // Set up a placeholder element so we can safely put our tabs back in
+    // the right place.
+    let anchor = $('<div id="aip-tab-anchor"></div>').insertBefore(
+      section.nextAll('h4').eq(0)
+    );
 
     // Group everything that comes after the <h4> into its own content
     // div, according to what Glue expects.
+    let secId = section.attr('id');
+    let tabs = [];
     $(section)
       .nextUntil('h1,h2,h3')
       .filter('h4')
@@ -61,14 +71,14 @@ $.when($.ready).then(() => {
         let contentEl = $(`
           <div id="tab-${id}">
             <div class="glue-tabpanels__panel-title">
-              <h2>${title}</h2>
+              <h2 class="aip-tab-header">${title}</h2>
             </div>
             <div id="tab-${id}-content" class="glue-tabpanels__panel-content">
               <div></div>
             </div>
           </div>
         `);
-        el.nextUntil('h1,h2,h3,h4').appendTo(
+        el.nextUntil('h1,h2,h3,h4,hr').appendTo(
           contentEl
             .children(`#tab-${id}-content`)
             .children()
@@ -107,7 +117,14 @@ $.when($.ready).then(() => {
     }
 
     // Add the tab interface in place of what was there before.
-    tabStruct.insertAfter(section);
+    tabStruct.insertAfter(anchor);
+    anchor.remove();
+
+    // If we needed an <hr /> to stop the final tab, expunge it.
+    section
+      .nextUntil('h1,h2:not(.aip-tab-header),h3,h4')
+      .filter('hr')
+      .remove();
 
     // Finally, wire up the tab interface!
     new glue.ui.tabPanels.TabPanels(tabStruct[0]);
