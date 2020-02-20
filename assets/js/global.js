@@ -67,7 +67,7 @@ $.when($.ready).then(() => {
               <div></div>
             </div>
           </div>
-      `);
+        `);
         el.nextUntil('h1,h2,h3,h4').appendTo(
           contentEl
             .children(`#tab-${id}-content`)

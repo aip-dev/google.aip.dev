@@ -2,8 +2,9 @@
 permalink: /assets/css/print.css
 ---
 
-@import 'colors.scss';
-@import 'footer.scss';
+@import 'colors';
+@import 'footer';
+@import 'glue';
 
 .aip-breadcrumbs,
 #aip-nav,
@@ -11,6 +12,7 @@ permalink: /assets/css/print.css
 #aip-sidebar,
 .glue-header,
 .glue-page svg:first-child,
+ul.glue-tabpanels__page-list,
 .no-print {
   display: none;
 }
@@ -27,6 +29,10 @@ h4 {
 
 h1 {
   font-size: 2.5em;
+}
+
+.glue-tabpanels__panel-title h2 {
+  @extend .glue-headline--headline-5;
 }
 
 h4 + h1 {
