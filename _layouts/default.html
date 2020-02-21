@@ -1,250 +1,46 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}" class="glue-flexbox">
-  <head>
-    <title>{% if page.aip %}AIP-{{ page.aip.id }}: {% endif %}{{ page.title }}</title>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v19_0/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% for stylesheet in page.css -%}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ stylesheet | relative_url }}?v={{ site.github.build_revision }}">
-    {% endfor -%}
-    <link rel="stylesheet" type="text/css" media="print" href="{{ '/assets/css/print.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
-    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
-    <script type="text/javascript">
-      $('html').css('visibility', 'hidden');
-      $.when($.ready).then(() => {
-        $('html').css('visibility', 'visible');
-      });
-    </script>
-    <script type="text/javascript" src="{{ '/assets/js/global.js?v=' | append: site.github.build_revision | relative_url }}"></script>
-    {% for js_script in page.js -%}
-    <script type="text/javascript" src="{{ js_script | relative_url}}?v={{ site.github.build_revision }}"></script>
-    {% endfor -%}
-    {% seo %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-140054909-1');
-    </script>
-  </head>
-  <body class="h-c-page">
-    {% include svgs.html %}
-
-    <div class="glue-header h-c-header h-c-header--product-marketing-one-tier">
-      <div class="h-c-header__bar">
-        <div class="h-c-header__hamburger h-c-header__hamburger--first-tier">
-          <div class="h-c-header__hamburger-wrapper">
-            <button type="button"
-                class="h-js-header__drawer-toggle-link h-c-header__hamburger-link"
-                aria-controls="h-js-header__drawer"
-                aria-expanded="false"
-                title="Open the navigation drawer">
-              <svg role="img" aria-label="Navigation" class="h-c-header__hamburger-img
-                  h-c-header__hamburger-img--standard">
-                <use xlink:href="#h-burger"></use>
-              </svg>
-              <svg role="img" aria-label="Navigation" class="h-c-header__hamburger-img
-                  h-c-header__hamburger-img--reversed">
-                <use xlink:href="#h-burger"></use>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="h-c-header__lockup">
-          <div class="h-c-header__company-logo">
-            <a href="{{ '/' | relative_url }}" class="h-c-header__company-logo-link title="Google">
-              <svg role="img" aria-label="Google" class="h-c-header__company-logo-img
-                  h-c-header__company-logo-img--standard">
-                <use xlink:href="#h-color-google-logo"></use>
-              </svg>
-              <svg role="img" aria-label="Google" class="h-c-header__company-logo-img
-                  h-c-header__company-logo-img--reversed">
-                <use xlink:href="#h-white-google-logo"></use>
-              </svg>
-            </a>
-          </div>
-          <div class="h-c-header__product-logo">
-            <a href="{{ '/' | relative_url }}" class="h-c-header__product-logo-link">
-              <span class="h-c-header__product-logo-text">AIPs</span>
-            </a>
-          </div>
-          <a href=" {{ '#jump-content' | relative_url }}" class="h-c-header__jump-to-content"
-              data-glue-jump-link>
-            <span class="h-c-header__jump-to-content-text">Skip to content</span>
-          </a>
-        </div>
-        <div class="h-c-header__hamburger h-c-header__hamburger--second-tier">
-          <div class="h-c-header__hamburger-wrapper">
-            <button type="button"
-                class="h-c-header__hamburger-link"
-                aria-controls="h-js-header__drawer"
-                aria-expanded="false"
-                title="Open the navigation drawer">
-              <svg role="img" aria-label="Navigation" class="h-c-header__hamburger-img
-                  h-c-header__hamburger-img--standard">
-                <use xlink:href="#h-burger"></use>
-              </svg>
-              <svg role="img" aria-label="Navigation" class="h-c-header__hamburger-img
-                  h-c-header__hamburger-img--reversed">
-                <use xlink:href="#h-burger"></use>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="h-c-header__initiative-logo">
-          <a href="#"
-              class="h-c-header__initiative-logo-link">
-            <span class="h-c-header__initiative-logo-text">Initiative</span>
-          </a>
-        </div>
-        <nav class="h-c-header__nav">
-          <ul class="h-c-header__nav-list">
-            <!--
-            <li class="h-c-header__nav-li" aria-level="1">
-              <a href="/" class="h-c-header__nav-li-link">
-                Home
-              </a>
-            </li>
-            -->
-          </ul>
-        </nav>
-        <div class="h-c-header__cta">
-          <ul class="h-c-header__cta-list">
-            <li class="h-c-header__cta-li">
-              <form class="h-c-sitesearch" method="GET" action="{{ '/search/' | relative_url }}">
-                <label for="q" class="h-u-visually-hidden">Search this site</label>
-                <input class="h-c-sitesearch__input" type="text" name="q" id="q"
-                  placeholder="Search AIPs">
-                <button type="submit" class="h-c-button h-c-button--secondary h-c-sitesearch__submit" title="Submit">
-                  <svg role="img" class="h-c-icon h-c-icon--24px sitesearch__submit-icon">
-                    <use xlink:href="#mi-search">
-                  </svg>
-                </button>
-              </form>
-            </li>
-            <li class="h-c-header__cta-li h-c-header__cta-li--primary">
-              <a href={{ site.github.repository_url }} class="h-c-header__cta-li-link
-                  h-c-header__cta-li-link--primary">
-                <img src={{ '/assets/images/github.png' | relative_url}} class="github-logo">
-                View on GitHub
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="h-c-header__bar-underside"></div>
-      </div>
-      <div id="h-js-header__drawer" class="h-c-header__drawer" tabindex="0"
-          aria-label="Navigation drawer">
-        <div class="h-c-header__drawer-content">
-          <div class="h-c-header__drawer-bar">
-            <div class="h-c-header__drawer-lockup">
-              <div class="h-c-header__drawer-company-logo">
-                <div class="h-c-header__drawer-company-logo-link" title="Google">
-                  <svg role="img" class="h-c-header__drawer-company-logo-img">
-                    <use xlink:href="#h-color-google-logo"></use>
-                  </svg>
-                </div>
-              </div>
-              <div class="h-c-header__drawer-product-logo">
-                <div class="h-c-header__drawer-product-logo-link">
-                  <span class="h-c-header__drawer-product-logo-text">AIPs</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% include aip-nav-mobile.html %}
-        </div>
-        <div class="h-c-header__drawer-cta">
-          <ul class="h-c-header__drawer-cta-list">
-            <li class="h-c-header__drawer-cta-li h-c-header__drawer-cta-li--secondary">
-              <a href="{{ site.github.repository_url }}/issues" class="h-c-header__drawer-cta-li-link
-                  h-c-header__drawer-cta-li-link--secondary">
-                File an Issue
-              </a>
-            </li>
-            <li class="h-c-header__drawer-cta-li h-c-header__drawer-cta-li--primary">
-              <a href={{ site.github.repository_url }} "https://github.com/googleapis/aip" class="h-c-header__drawer-cta-li-link
-                  h-c-header__drawer-cta-li-link--primary">
-                <img src="{{ '/assets/images/github.png' | relative_url }}" class="github-logo">
-                View on GitHub
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- TODO (joshmarsh): include drawer backdrop as :before pseudo-element of
-            drawer for simplicity and clarity of code
-      -->
-      <div id="h-js-header__drawer-backdrop" class="h-c-header__drawer-backdrop"></div>
-    </div> <!-- end header -->
-
-    <main role="main" class="hd-o-main" id="main">
-      {% include aip-nav.html %}
-      <section id="jump-content">
-        <aside id="aip-sidebar" class="docs-component-sidebar">
-          {% if page.aip -%}
-            {% include aip-summary.html %}
-          {% endif -%}
-          <section id="aip-toc" class="docs-component-sidebar-toc">
-            {% include toc.html html=content h_min=2 h_max=3 %}
-          </section>
-          <section class="docs-component-sidebar-actions">
-            <ul>
-              <li>
-                <a href="{{ site.github.repository_url }}/issues/">
-                  File Bug
-                </a>
-              </li>
-              <li>
-                <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">
-                  View source
-                </a>
-              </li>
-              <li>
-                <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">
-                  Edit this page
-                </a>
-              </li>
-            </ul>
-          </section>
-        </aside>
-        <section id="aip-main" class="docs-component-main">
-          {% include aip-breadcrumb.html %}
-          {% if page.aip %}
-          {% if page.aip.state != 'approved' %}
-            {% include aip-state-banner.html %}
-          {% endif %}
-          <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
-          {% endif %}
-          {{ content }}
-          <footer>
-            {% if page.footer %}
-            {{ page.footer }}
-            {% else %}
-            Except as otherwise noted, the content of this page is licensed under the
-            <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
-            Attribution 4.0 License</a>, and code samples are licensed under the
-            <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
-            <span class="no-print">For details, see <a href="{{ '/licensing' | relative_url }}">content licensing</a>.</span>
+  {% include aip-head-tag.html %}
+  <!-- prettier-ignore -->
+  <body>
+    {% include aip-header.html %}
+    <div class="glue-page">
+      {% if page.bare %}
+      {{ content }}
+      {% else %}
+      <main role="main" id="page-content">
+        {% include aip-nav.html %}
+        <section id="jump-content">
+          <aside id="aip-sidebar" class="docs-component-sidebar">
+            {% if page.aip -%}
+              {% include aip-summary.html %}
+            {% endif -%}
+            <section id="aip-toc" class="docs-component-sidebar-toc">
+              {% include toc.html html=content h_min=2 h_max=3 %}
+            </section>
+            <section class="docs-component-sidebar-actions">
+              <ul>
+                <li><a href="{{ site.github.repository_url }}/issues/">File Bug</a></li>
+                <li><a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">View source</a></li>
+                <li><a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">Edit this page</a></li>
+              </ul>
+            </section>
+          </aside>
+          <section id="aip-main" class="docs-component-main">
+            {% include aip-breadcrumb.html %}
+            {% if page.aip %}
+            {% if page.aip.state != 'approved' %}
+              {% include aip-state-banner.html %}
             {% endif %}
-          </footer>
+            <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
+            {% endif %}
+            {{ content }}
+            {% include aip-footer.html %}
+          </section>
         </section>
-      </section>
-    </main>
-
-    <!-- Closing scripts -->
-    <script src="https://www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
-    <script src="//www.gstatic.com/glue/v19_0/glue-vanilla.min.js"></script>
-    <script type="text/javascript">
-      glue.ui.header.Header.attachTo(document.querySelector('.glue-header'));
-    </script>
-    </body>
+      </main>
+      {% endif %}
+    </div>
+    {% include aip-closing-scripts.html %}
+  </body>
 </html>

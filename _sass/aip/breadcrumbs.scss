@@ -1,3 +1,12 @@
+@import 'colors';
+
 ol.aip-breadcrumbs {
   margin-bottom: 0;
+
+  .glue-breadcrumbs__item:not(:last-child)::after {
+    color: $glue-grey-700;
+    content: '»';
+    margin-left: 3px;
+    margin-right: 1px;
+  }
 }

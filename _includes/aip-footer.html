@@ -1,0 +1,12 @@
+<!-- prettier-ignore -->
+<footer>
+  {% if page.footer %}
+  {{ page.footer }}
+  {% else %}
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="{{ '/licensing' | relative_url }}">content licensing</a>.</span>
+  {% endif %}
+</footer>

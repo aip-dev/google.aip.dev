@@ -10,7 +10,7 @@ permalink: /assets/css/print.css
 #aip-nav-mobile,
 #aip-sidebar,
 .glue-header,
-.h-c-page svg:first-child,
+.glue-page svg:first-child,
 .no-print {
   display: none;
 }
@@ -59,8 +59,8 @@ code {
 }
 
 div.highlighter-rouge {
-  background: $h-google-grey-100;
-  border: 1px solid $h-google-grey-300;
+  background: $glue-grey-100;
+  border: 1px solid $glue-grey-300;
   margin-left: 0.5in;
   margin-right: 0.5in;
   padding-left: 0.2in;

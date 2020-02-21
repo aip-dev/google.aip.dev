@@ -1,255 +1,7 @@
-// Forked. Do not edit.
-$h-default-color-weight: 500 !default;
-
-// Palettes
-$h-google-reds: (
-  50: #fbe9e7,
-  100: #f4c7c3,
-  200: #eda29b,
-  300: #e67c73,
-  400: #e06055,
-  500: #db4437,
-  600: #d23f31,
-  700: #c53929,
-  800: #b93221,
-  900: #a52714
-);
-
-$h-pinks: (
-  50: #fce4ec,
-  100: #f8bbd0,
-  200: #f48fb1,
-  300: #f06292,
-  400: #ec407a,
-  500: #e91e63,
-  600: #d81b60,
-  700: #c2185b,
-  800: #ad1457,
-  900: #880e4f
-);
-
-$h-purples: (
-  50: #f3e5f5,
-  100: #e1bee7,
-  200: #ce93d8,
-  300: #ba68c8,
-  400: #ab47bc,
-  500: #9c27b0,
-  600: #8e24aa,
-  700: #7b1fa2,
-  800: #6a1b9a,
-  900: #4a148c
-);
-
-$h-deep-purples: (
-  50: #ede7f6,
-  100: #d1c4e9,
-  200: #b39ddb,
-  300: #9575cd,
-  400: #7e57c2,
-  500: #673ab7,
-  600: #5e35b1,
-  700: #512da8,
-  800: #4527a0,
-  900: #311b92
-);
-
-$h-indigos: (
-  50: #e8eaf6,
-  100: #c5cae9,
-  200: #9fa8da,
-  300: #7986cb,
-  400: #5c6bc0,
-  500: #3f51b5,
-  600: #3949ab,
-  700: #303f9f,
-  800: #283593,
-  900: #1a237e
-);
-
-$h-google-blues: (
-  50: #e8f0fe,
-  100: #c6dafc,
-  200: #a1c2fa,
-  300: #7baaf7,
-  400: #5e97f6,
-  500: #4285f4,
-  600: #3b78e7,
-  700: #3367d6,
-  800: #2a56c6,
-  900: #1c3aa9
-);
-
-$h-light-blues: (
-  50: #e1f5fe,
-  100: #b3e5fc,
-  200: #81d4fa,
-  300: #4fc3f7,
-  400: #29b6f6,
-  500: #03a9f4,
-  600: #039be5,
-  700: #0288d1,
-  800: #0277bd,
-  900: #01579b
-);
-
-$h-cyans: (
-  50: #e0f7fa,
-  100: #b2ebf2,
-  200: #80deea,
-  300: #4dd0e1,
-  400: #26c6da,
-  500: #00bcd4,
-  600: #00acc1,
-  700: #0097a7,
-  800: #00838f,
-  900: #006064
-);
-
-$h-teals: (
-  50: #e0f2f1,
-  100: #b2dfdb,
-  200: #80cbc4,
-  300: #4db6ac,
-  400: #26a69a,
-  500: #009688,
-  600: #00897b,
-  700: #00796b,
-  800: #00695c,
-  900: #004d40
-);
-
-$h-google-greens: (
-  50: #e2f3eb,
-  100: #b7e1cd,
-  200: #87ceac,
-  300: #57bb8a,
-  400: #33ac71,
-  500: #0f9d58,
-  600: #0d904f,
-  700: #0b8043,
-  800: #097138,
-  900: #055524
-);
-
-$h-light-greens: (
-  50: #f1f8e9,
-  100: #dcedc8,
-  200: #c5e1a5,
-  300: #aed581,
-  400: #9ccc65,
-  500: #8bc34a,
-  600: #7cb342,
-  700: #689f38,
-  800: #558b2f,
-  900: #33691e
-);
-
-$h-limes: (
-  50: #f9fbe7,
-  100: #f0f4c3,
-  200: #e6ee9c,
-  300: #dce775,
-  400: #d4e157,
-  500: #cddc39,
-  600: #c0ca33,
-  700: #afb42b,
-  800: #9e9d24,
-  900: #827717
-);
-
-$h-yellows: (
-  50: #fffde7,
-  100: #fff9c4,
-  200: #fff59d,
-  300: #fff176,
-  400: #ffee58,
-  500: #ffeb3b,
-  600: #fdd835,
-  700: #fbc02d,
-  800: #f9a825,
-  900: #f57f17
-);
-
-$h-google-yellows: (
-  50: #fef6e0,
-  100: #fce8b2,
-  200: #fada80,
-  300: #f7cb4d,
-  400: #f6bf26,
-  500: #f4b400,
-  600: #f2a600,
-  700: #f09300,
-  800: #ee8100,
-  900: #ea6100
-);
-
-$h-oranges: (
-  50: #fff3e0,
-  100: #ffe0b2,
-  200: #ffcc80,
-  300: #ffb74d,
-  400: #ffa726,
-  500: #ff9800,
-  600: #fb8c00,
-  700: #f57c00,
-  800: #ef6c00,
-  900: #e65100
-);
-
-$h-deep-oranges: (
-  50: #fbe9e7,
-  100: #ffccbc,
-  200: #ffab91,
-  300: #ff8a65,
-  400: #ff7043,
-  500: #ff5722,
-  600: #f4511e,
-  700: #e64a19,
-  800: #d84315,
-  900: #bf360c
-);
-
-$h-browns: (
-  50: #efebe9,
-  100: #d7ccc8,
-  200: #bcaaa4,
-  300: #a1887f,
-  400: #8d6e63,
-  500: #795548,
-  600: #6d4c41,
-  700: #5d4037,
-  800: #4e342e,
-  900: #3e2723
-);
-
-$h-google-greys: (
-  50: #fafafa,
-  100: #f5f5f5,
-  200: #eee,
-  300: #e0e0e0,
-  400: #bdbdbd,
-  500: #9e9e9e,
-  600: #757575,
-  700: #616161,
-  800: #424242,
-  900: #212121
-);
-
-$h-blue-greys: (
-  50: #eceff1,
-  100: #cfd8dc,
-  200: #b0bec5,
-  300: #90a4ae,
-  400: #78909c,
-  500: #607d8b,
-  600: #546e7a,
-  700: #455a64,
-  800: #37474f,
-  900: #263238
-);
-
-$h-gm-greys: (
+// This is forked. Do not edit.
+$glue-greys: (
+  0: #fff,
+  25: #f1f1f1,
   50: #f8f9fa,
   100: #f1f3f4,
   200: #e8eaed,
@@ -261,389 +13,127 @@ $h-gm-greys: (
   800: #3c4043,
   900: #202124
 );
-
-$h-gm-greys-rgba: (
-  50: rgba(#202124, .03),
-  100: rgba(#202124, .06),
-  200: rgba(#202124, .10),
-  300: rgba(#202124, .16),
-  400: rgba(#202124, .28),
-  500: rgba(#202124, .43),
-  600: rgba(#202124, .55),
-  700: rgba(#202124, .71),
-  800: rgba(#202124, .86),
-  900: rgba(#202124, 1)
-);
-
-$h-gm-blues: (
+$glue-blues: (
   50: #e8f0fe,
   100: #d2e3fc,
+  200: #aecbfa,
+  300: #8ab4f8,
+  400: #669df6,
   500: #4285f4,
   600: #1a73e8,
   700: #1967d2,
   800: #185abc,
   900: #174ea6
 );
-
-$h-gm-reds: (
-  50: #fce8e6,
-  100: #fad2cf,
-  500: #ea4335,
-  600: #d93025,
-  700: #c5221f,
-  800: #b31412,
-  900: #a50e0e
-);
-
-$h-gm-yellows: (
-  50: #fef7e0,
-  100: #feefc3,
-  500: #fbbc04,
-  600: #f9ab00,
-  700: #f29900,
-  800: #ea8600,
-  900: #e37400
-);
-
-$h-gm-greens: (
+$glue-greens: (
   50: #e6f4ea,
   100: #ceead6,
+  200: #a8dab5,
+  300: #81c995,
+  400: #5bb974,
   500: #34a853,
   600: #1e8e3e,
   700: #188038,
   800: #137333,
   900: #0d652d
 );
-$h-google-red-50: map-get($h-google-reds, 50);
-$h-google-red-100: map-get($h-google-reds, 100);
-$h-google-red-200: map-get($h-google-reds, 200);
-$h-google-red-300: map-get($h-google-reds, 300);
-$h-google-red-400: map-get($h-google-reds, 400);
-$h-google-red-500: map-get($h-google-reds, 500);
-$h-google-red-600: map-get($h-google-reds, 600);
-$h-google-red-700: map-get($h-google-reds, 700);
-$h-google-red-800: map-get($h-google-reds, 800);
-$h-google-red-900: map-get($h-google-reds, 900);
-
-$h-pink-50: map-get($h-pinks, 50);
-$h-pink-100: map-get($h-pinks, 100);
-$h-pink-200: map-get($h-pinks, 200);
-$h-pink-300: map-get($h-pinks, 300);
-$h-pink-400: map-get($h-pinks, 400);
-$h-pink-500: map-get($h-pinks, 500);
-$h-pink-600: map-get($h-pinks, 600);
-$h-pink-700: map-get($h-pinks, 700);
-$h-pink-800: map-get($h-pinks, 800);
-$h-pink-900: map-get($h-pinks, 900);
-
-$h-purple-50: map-get($h-purples, 50);
-$h-purple-100: map-get($h-purples, 100);
-$h-purple-200: map-get($h-purples, 200);
-$h-purple-300: map-get($h-purples, 300);
-$h-purple-400: map-get($h-purples, 400);
-$h-purple-500: map-get($h-purples, 500);
-$h-purple-600: map-get($h-purples, 600);
-$h-purple-700: map-get($h-purples, 700);
-$h-purple-800: map-get($h-purples, 800);
-$h-purple-900: map-get($h-purples, 900);
-
-$h-deep-purple-50: map-get($h-deep-purples, 50);
-$h-deep-purple-100: map-get($h-deep-purples, 100);
-$h-deep-purple-200: map-get($h-deep-purples, 200);
-$h-deep-purple-300: map-get($h-deep-purples, 300);
-$h-deep-purple-400: map-get($h-deep-purples, 400);
-$h-deep-purple-500: map-get($h-deep-purples, 500);
-$h-deep-purple-600: map-get($h-deep-purples, 600);
-$h-deep-purple-700: map-get($h-deep-purples, 700);
-$h-deep-purple-800: map-get($h-deep-purples, 800);
-$h-deep-purple-900: map-get($h-deep-purples, 900);
-
-$h-indigo-50: map-get($h-indigos, 50);
-$h-indigo-100: map-get($h-indigos, 100);
-$h-indigo-200: map-get($h-indigos, 200);
-$h-indigo-300: map-get($h-indigos, 300);
-$h-indigo-400: map-get($h-indigos, 400);
-$h-indigo-500: map-get($h-indigos, 500);
-$h-indigo-600: map-get($h-indigos, 600);
-$h-indigo-700: map-get($h-indigos, 700);
-$h-indigo-800: map-get($h-indigos, 800);
-$h-indigo-900: map-get($h-indigos, 900);
-
-$h-google-blue-50: map-get($h-google-blues, 50);
-$h-google-blue-100: map-get($h-google-blues, 100);
-$h-google-blue-200: map-get($h-google-blues, 200);
-$h-google-blue-300: map-get($h-google-blues, 300);
-$h-google-blue-400: map-get($h-google-blues, 400);
-$h-google-blue-500: map-get($h-google-blues, 500);
-$h-google-blue-600: map-get($h-google-blues, 600);
-$h-google-blue-700: map-get($h-google-blues, 700);
-$h-google-blue-800: map-get($h-google-blues, 800);
-$h-google-blue-900: map-get($h-google-blues, 900);
-
-$h-light-blue-50: map-get($h-light-blues, 50);
-$h-light-blue-100: map-get($h-light-blues, 100);
-$h-light-blue-200: map-get($h-light-blues, 200);
-$h-light-blue-300: map-get($h-light-blues, 300);
-$h-light-blue-400: map-get($h-light-blues, 400);
-$h-light-blue-500: map-get($h-light-blues, 500);
-$h-light-blue-600: map-get($h-light-blues, 600);
-$h-light-blue-700: map-get($h-light-blues, 700);
-$h-light-blue-800: map-get($h-light-blues, 800);
-$h-light-blue-900: map-get($h-light-blues, 900);
-
-$h-cyan-50: map-get($h-cyans, 50);
-$h-cyan-100: map-get($h-cyans, 100);
-$h-cyan-200: map-get($h-cyans, 200);
-$h-cyan-300: map-get($h-cyans, 300);
-$h-cyan-400: map-get($h-cyans, 400);
-$h-cyan-500: map-get($h-cyans, 500);
-$h-cyan-600: map-get($h-cyans, 600);
-$h-cyan-700: map-get($h-cyans, 700);
-$h-cyan-800: map-get($h-cyans, 800);
-$h-cyan-900: map-get($h-cyans, 900);
-
-$h-teal-50: map-get($h-teals, 50);
-$h-teal-100: map-get($h-teals, 100);
-$h-teal-200: map-get($h-teals, 200);
-$h-teal-300: map-get($h-teals, 300);
-$h-teal-400: map-get($h-teals, 400);
-$h-teal-500: map-get($h-teals, 500);
-$h-teal-600: map-get($h-teals, 600);
-$h-teal-700: map-get($h-teals, 700);
-$h-teal-800: map-get($h-teals, 800);
-$h-teal-900: map-get($h-teals, 900);
-
-$h-google-green-50: map-get($h-google-greens, 50);
-$h-google-green-100: map-get($h-google-greens, 100);
-$h-google-green-200: map-get($h-google-greens, 200);
-$h-google-green-300: map-get($h-google-greens, 300);
-$h-google-green-400: map-get($h-google-greens, 400);
-$h-google-green-500: map-get($h-google-greens, 500);
-$h-google-green-600: map-get($h-google-greens, 600);
-$h-google-green-700: map-get($h-google-greens, 700);
-$h-google-green-800: map-get($h-google-greens, 800);
-$h-google-green-900: map-get($h-google-greens, 900);
-
-$h-light-green-50: map-get($h-light-greens, 50);
-$h-light-green-100: map-get($h-light-greens, 100);
-$h-light-green-200: map-get($h-light-greens, 200);
-$h-light-green-300: map-get($h-light-greens, 300);
-$h-light-green-400: map-get($h-light-greens, 400);
-$h-light-green-500: map-get($h-light-greens, 500);
-$h-light-green-600: map-get($h-light-greens, 600);
-$h-light-green-700: map-get($h-light-greens, 700);
-$h-light-green-800: map-get($h-light-greens, 800);
-$h-light-green-900: map-get($h-light-greens, 900);
-
-$h-lime-50: map-get($h-limes, 50);
-$h-lime-100: map-get($h-limes, 100);
-$h-lime-200: map-get($h-limes, 200);
-$h-lime-300: map-get($h-limes, 300);
-$h-lime-400: map-get($h-limes, 400);
-$h-lime-500: map-get($h-limes, 500);
-$h-lime-600: map-get($h-limes, 600);
-$h-lime-700: map-get($h-limes, 700);
-$h-lime-800: map-get($h-limes, 800);
-$h-lime-900: map-get($h-limes, 900);
-
-$h-yellow-50: map-get($h-yellows, 50);
-$h-yellow-100: map-get($h-yellows, 100);
-$h-yellow-200: map-get($h-yellows, 200);
-$h-yellow-300: map-get($h-yellows, 300);
-$h-yellow-400: map-get($h-yellows, 400);
-$h-yellow-500: map-get($h-yellows, 500);
-$h-yellow-600: map-get($h-yellows, 600);
-$h-yellow-700: map-get($h-yellows, 700);
-$h-yellow-800: map-get($h-yellows, 800);
-$h-yellow-900: map-get($h-yellows, 900);
-
-$h-google-yellow-50: map-get($h-google-yellows, 50);
-$h-google-yellow-100: map-get($h-google-yellows, 100);
-$h-google-yellow-200: map-get($h-google-yellows, 200);
-$h-google-yellow-300: map-get($h-google-yellows, 300);
-$h-google-yellow-400: map-get($h-google-yellows, 400);
-$h-google-yellow-500: map-get($h-google-yellows, 500);
-$h-google-yellow-600: map-get($h-google-yellows, 600);
-$h-google-yellow-700: map-get($h-google-yellows, 700);
-$h-google-yellow-800: map-get($h-google-yellows, 800);
-$h-google-yellow-900: map-get($h-google-yellows, 900);
-
-$h-orange-50: map-get($h-oranges, 50);
-$h-orange-100: map-get($h-oranges, 100);
-$h-orange-200: map-get($h-oranges, 200);
-$h-orange-300: map-get($h-oranges, 300);
-$h-orange-400: map-get($h-oranges, 400);
-$h-orange-500: map-get($h-oranges, 500);
-$h-orange-600: map-get($h-oranges, 600);
-$h-orange-700: map-get($h-oranges, 700);
-$h-orange-800: map-get($h-oranges, 800);
-$h-orange-900: map-get($h-oranges, 900);
-
-$h-deep-orange-50: map-get($h-deep-oranges, 50);
-$h-deep-orange-100: map-get($h-deep-oranges, 100);
-$h-deep-orange-200: map-get($h-deep-oranges, 200);
-$h-deep-orange-300: map-get($h-deep-oranges, 300);
-$h-deep-orange-400: map-get($h-deep-oranges, 400);
-$h-deep-orange-500: map-get($h-deep-oranges, 500);
-$h-deep-orange-600: map-get($h-deep-oranges, 600);
-$h-deep-orange-700: map-get($h-deep-oranges, 700);
-$h-deep-orange-800: map-get($h-deep-oranges, 800);
-$h-deep-orange-900: map-get($h-deep-oranges, 900);
-
-$h-brown-50: map-get($h-browns, 50);
-$h-brown-100: map-get($h-browns, 100);
-$h-brown-200: map-get($h-browns, 200);
-$h-brown-300: map-get($h-browns, 300);
-$h-brown-400: map-get($h-browns, 400);
-$h-brown-500: map-get($h-browns, 500);
-$h-brown-600: map-get($h-browns, 600);
-$h-brown-700: map-get($h-browns, 700);
-$h-brown-800: map-get($h-browns, 800);
-$h-brown-900: map-get($h-browns, 900);
-
-$h-google-grey-50: map-get($h-google-greys, 50);
-$h-google-grey-100: map-get($h-google-greys, 100);
-$h-google-grey-200: map-get($h-google-greys, 200);
-$h-google-grey-300: map-get($h-google-greys, 300);
-$h-google-grey-400: map-get($h-google-greys, 400);
-$h-google-grey-500: map-get($h-google-greys, 500);
-$h-google-grey-600: map-get($h-google-greys, 600);
-$h-google-grey-700: map-get($h-google-greys, 700);
-$h-google-grey-800: map-get($h-google-greys, 800);
-$h-google-grey-900: map-get($h-google-greys, 900);
-
-$h-blue-grey-50: map-get($h-blue-greys, 50);
-$h-blue-grey-100: map-get($h-blue-greys, 100);
-$h-blue-grey-200: map-get($h-blue-greys, 200);
-$h-blue-grey-300: map-get($h-blue-greys, 300);
-$h-blue-grey-400: map-get($h-blue-greys, 400);
-$h-blue-grey-500: map-get($h-blue-greys, 500);
-$h-blue-grey-600: map-get($h-blue-greys, 600);
-$h-blue-grey-700: map-get($h-blue-greys, 700);
-$h-blue-grey-800: map-get($h-blue-greys, 800);
-$h-blue-grey-900: map-get($h-blue-greys, 900);
-
-$h-gm-grey-50: map-get($h-gm-greys, 50);
-$h-gm-grey-100: map-get($h-gm-greys, 100);
-$h-gm-grey-200: map-get($h-gm-greys, 200);
-$h-gm-grey-300: map-get($h-gm-greys, 300);
-$h-gm-grey-400: map-get($h-gm-greys, 400);
-$h-gm-grey-500: map-get($h-gm-greys, 500);
-$h-gm-grey-600: map-get($h-gm-greys, 600);
-$h-gm-grey-700: map-get($h-gm-greys, 700);
-$h-gm-grey-800: map-get($h-gm-greys, 800);
-$h-gm-grey-900: map-get($h-gm-greys, 900);
-
-$h-gm-grey-rgba-50: map-get($h-gm-greys-rgba, 50);
-$h-gm-grey-rgba-100: map-get($h-gm-greys-rgba, 100);
-$h-gm-grey-rgba-200: map-get($h-gm-greys-rgba, 200);
-$h-gm-grey-rgba-300: map-get($h-gm-greys-rgba, 300);
-$h-gm-grey-rgba-400: map-get($h-gm-greys-rgba, 400);
-$h-gm-grey-rgba-500: map-get($h-gm-greys-rgba, 500);
-$h-gm-grey-rgba-600: map-get($h-gm-greys-rgba, 600);
-$h-gm-grey-rgba-700: map-get($h-gm-greys-rgba, 700);
-$h-gm-grey-rgba-800: map-get($h-gm-greys-rgba, 800);
-$h-gm-grey-rgba-900: map-get($h-gm-greys-rgba, 900);
-
-$h-gm-blue-50: map-get($h-gm-blues, 50);
-$h-gm-blue-100: map-get($h-gm-blues, 100);
-$h-gm-blue-500: map-get($h-gm-blues, 500);
-$h-gm-blue-600: map-get($h-gm-blues, 600);
-$h-gm-blue-700: map-get($h-gm-blues, 700);
-$h-gm-blue-800: map-get($h-gm-blues, 800);
-$h-gm-blue-900: map-get($h-gm-blues, 900);
-
-$h-gm-red-50: map-get($h-gm-reds, 50);
-$h-gm-red-100: map-get($h-gm-reds, 100);
-$h-gm-red-500: map-get($h-gm-reds, 500);
-$h-gm-red-600: map-get($h-gm-reds, 600);
-$h-gm-red-700: map-get($h-gm-reds, 700);
-$h-gm-red-800: map-get($h-gm-reds, 800);
-$h-gm-red-900: map-get($h-gm-reds, 900);
-
-$h-gm-yellow-50: map-get($h-gm-yellows, 50);
-$h-gm-yellow-100: map-get($h-gm-yellows, 100);
-$h-gm-yellow-500: map-get($h-gm-yellows, 500);
-$h-gm-yellow-600: map-get($h-gm-yellows, 600);
-$h-gm-yellow-700: map-get($h-gm-yellows, 700);
-$h-gm-yellow-800: map-get($h-gm-yellows, 800);
-$h-gm-yellow-900: map-get($h-gm-yellows, 900);
-
-$h-gm-green-50: map-get($h-gm-greens, 50);
-$h-gm-green-100: map-get($h-gm-greens, 100);
-$h-gm-green-500: map-get($h-gm-greens, 500);
-$h-gm-green-600: map-get($h-gm-greens, 600);
-$h-gm-green-700: map-get($h-gm-greens, 700);
-$h-gm-green-800: map-get($h-gm-greens, 800);
-$h-gm-green-900: map-get($h-gm-greens, 900);
-
-$color-name-to-palette: (
-  'google-red': $h-google-reds,
-  'pink': $h-pinks,
-  'purple': $h-purples,
-  'deep-purple': $h-deep-purples,
-  'indigo': $h-indigos,
-  'google-blue': $h-google-blues,
-  'light-blue': $h-light-blues,
-  'cyan': $h-cyans,
-  'teal': $h-teals,
-  'google-green': $h-google-greens,
-  'light-green': $h-light-greens,
-  'lime': $h-limes,
-  'yellow': $h-yellows,
-  'google-yellow': $h-google-yellows,
-  'orange': $h-oranges,
-  'deep-orange': $h-deep-oranges,
-  'brown': $h-browns,
-  'google-grey': $h-google-greys,
-  'blue-grey': $h-blue-greys,
-  'gm-grey': $h-gm-greys,
-  'gm-grey-rgba': $h-gm-greys-rgba
+$glue-reds: (
+  50: #fce8e6,
+  100: #fad2cf,
+  200: #f6aea9,
+  300: #f28b82,
+  400: #ee675c,
+  500: #ea4335,
+  600: #d93025,
+  700: #c5221f,
+  800: #b31412,
+  900: #a50e0e
 );
-
-$color-name-to-palette-short: (
-  'gm-blue': $h-gm-blues,
-  'gm-red': $h-gm-reds,
-  'gm-yellow': $h-gm-yellows,
-  'gm-green': $h-gm-greens
+$glue-yellows: (
+  50: #fef7e0,
+  100: #feefc3,
+  200: #fde293,
+  300: #fdd663,
+  400: #fcc934,
+  500: #fbbc04,
+  600: #f9ab00,
+  700: #f29900,
+  800: #ea8600,
+  900: #e37400
 );
-
-// Default colors throughout
-$h-primary-color: $h-google-grey-300 !default;
-$h-secondary-color: $h-google-grey-500 !default;
-$h-tertiary-color: $h-google-grey-100 !default;
-$h-success-color: #33ac71 !default;
-$h-warning-color: #ff5252 !default;
-$h-info-color: #448aff !default;
-$h-primary-grey: #414141 !default;
-$h-secondary-grey: #d7d7d7 !default;
-$h-tertiary-grey: #545454 !default;
-
-// Default layout colors
-$h-color-primary-black: $h-gm-grey-900 !default;
-$h-color-border: $h-gm-grey-300 !default;
-$h-color-focus-background: $h-gm-grey-100 !default;
-$h-color-focus-background-rgba: $h-gm-grey-rgba-100 !default;
-$h-color-link-resting: $h-gm-blue-600 !default;
-$h-color-link-active: $h-gm-blue-900 !default;
-
-// Common CSS colors by name
-$h-white: #fff !default;
-$h-ghost: #fafafa !default;
-$h-snow: #f9f9f9 !default;
-$h-vapor: #f6f6f6 !default;
-$h-white-smoke: #f5f5f5 !default;
-$h-silver: #efefef !default;
-$h-smoke: #eee !default;
-$h-gainsboro: #ddd !default;
-$h-iron: #ccc !default;
-$h-base: #aaa !default;
-$h-aluminum: #999 !default;
-$h-jumbo: #888 !default;
-$h-monsoon: #777 !default;
-$h-steel: #666 !default;
-$h-charcoal: #555 !default;
-$h-tuatara: #444 !default;
-$h-oil: #333 !default;
-$h-jet: #222 !default;
-$h-black: #000 !default;
+$glue-purples: (
+  900: #681da8,
+);
+// mws color spec 2.0
+$glue-grey-0: map-get($glue-greys, 0);
+$glue-grey-25: map-get($glue-greys, 25);
+$glue-grey-50: map-get($glue-greys, 50);
+$glue-grey-100: map-get($glue-greys, 100);
+$glue-grey-200: map-get($glue-greys, 200);
+$glue-grey-300: map-get($glue-greys, 300);
+$glue-grey-400: map-get($glue-greys, 400);
+$glue-grey-500: map-get($glue-greys, 500);
+$glue-grey-600: map-get($glue-greys, 600);
+$glue-grey-700: map-get($glue-greys, 700);
+$glue-grey-800: map-get($glue-greys, 800);
+$glue-grey-900: map-get($glue-greys, 900);
+$glue-blue-50: map-get($glue-blues, 50);
+$glue-blue-100: map-get($glue-blues, 100);
+$glue-blue-200: map-get($glue-blues, 200);
+$glue-blue-300: map-get($glue-blues, 300);
+$glue-blue-400: map-get($glue-blues, 400);
+$glue-blue-500: map-get($glue-blues, 500);
+$glue-blue-600: map-get($glue-blues, 600);
+$glue-blue-700: map-get($glue-blues, 700);
+$glue-blue-800: map-get($glue-blues, 800);
+$glue-blue-900: map-get($glue-blues, 900);
+$glue-green-50: map-get($glue-greens, 50);
+$glue-green-100: map-get($glue-greens, 100);
+$glue-green-200: map-get($glue-greens, 200);
+$glue-green-300: map-get($glue-greens, 300);
+$glue-green-400: map-get($glue-greens, 400);
+$glue-green-500: map-get($glue-greens, 500);
+$glue-green-600: map-get($glue-greens, 600);
+$glue-green-700: map-get($glue-greens, 700);
+$glue-green-800: map-get($glue-greens, 800);
+$glue-green-900: map-get($glue-greens, 900);
+$glue-red-50: map-get($glue-reds, 50);
+$glue-red-100: map-get($glue-reds, 100);
+$glue-red-200: map-get($glue-reds, 200);
+$glue-red-300: map-get($glue-reds, 300);
+$glue-red-400: map-get($glue-reds, 400);;
+$glue-red-500: map-get($glue-reds, 500);
+$glue-red-600: map-get($glue-reds, 600);
+$glue-red-700: map-get($glue-reds, 700);
+$glue-red-800: map-get($glue-reds, 800);
+$glue-red-900: map-get($glue-reds, 900);;
+$glue-yellow-50: map-get($glue-yellows, 50);
+$glue-yellow-100: map-get($glue-yellows, 100);
+$glue-yellow-200: map-get($glue-yellows, 200);
+$glue-yellow-300: map-get($glue-yellows, 300);
+$glue-yellow-400: map-get($glue-yellows, 400);
+$glue-yellow-500: map-get($glue-yellows, 500);
+$glue-yellow-600: map-get($glue-yellows, 600);
+$glue-yellow-700: map-get($glue-yellows, 700);
+$glue-yellow-800: map-get($glue-yellows, 800);
+$glue-yellow-900: map-get($glue-yellows, 900);
+// extended color palette
+$glue-purple-900: map-get($glue-purples, 900);
+$glue-color-name-to-palette: (
+  'grey': $glue-greys,
+  'blue': $glue-blues,
+  'green': $glue-greens,
+  'red': $glue-reds,
+  'yellow': $glue-yellows,
+  'purple': $glue-purples
+);
+// Generic color variables - common colors for components.
+$glue-color-primary-black: $glue-grey-900 !default;
+$glue-color-border: $glue-grey-300 !default;
+$glue-color-focus-background: $glue-grey-100 !default;
+$glue-color-link-resting: $glue-blue-600 !default;
+$glue-color-link-active: $glue-blue-900 !default;
+$glue-color-link-visited: $glue-purple-900 !default;
+$glue-color-focus-background-rgba: rgba($glue-grey-900, .06) !default;
+$glue-white: $glue-grey-0 !default;
+$glue-black: #000 !default;

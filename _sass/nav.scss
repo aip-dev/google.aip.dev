@@ -1,5 +1,9 @@
 @import 'colors';
 
+main#page-content {
+  margin-top: 16px;
+}
+
 nav.docs-component-nav {
   display: none;
 }
@@ -13,7 +17,7 @@ nav li.drawer-heading {
   }
 
   .drawer-heading-text {
-    color: $h-google-grey-600;
+    color: $glue-grey-600;
     display: table-cell;
     font-family: 'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -42,19 +46,13 @@ nav.no-breadcrumb {
   }
 }
 
-body.h-c-page
-  .h-c-header--product-marketing-one-tier.h-is-wholly-scrolled
-  .h-c-header__bar {
-  transform: none !important;
-}
-
 @media (min-width: 1200px) {
   .docs-component-main {
     padding-left: 320px;
   }
 
   nav.docs-component-nav {
-    background-color: $h-google-grey-100;
+    background-color: $glue-grey-100;
     display: block;
     float: left;
     margin-right: 40px;
@@ -92,24 +90,32 @@ body.h-c-page
         }
 
         a {
-          color: $h-google-grey-900;
+          color: $glue-grey-900;
+          text-decoration: none;
 
           &:hover {
-            color: $h-gm-blue-600;
+            color: $glue-blue-600;
           }
         }
 
+        svg {
+          color: $glue-grey-500;
+          height: 1.25em;
+          vertical-align: middle;
+          width: 1.25em;
+        }
+
         &.nav-item-active a {
-          color: $h-gm-blue-600;
+          color: $glue-blue-600;
         }
 
         &.nav-item-header {
-          color: $h-google-grey-600;
+          color: $glue-grey-600;
           font-size: 14px;
           font-weight: 500;
 
           &:not(:first-child) {
-            border-top: 1px solid $h-blue-grey-100;
+            border-top: 1px solid #cfd8dc;
             margin: 15px -16px 0px -16px;
             padding: 15px 16px 0px 16px;
           }
@@ -117,17 +123,4 @@ body.h-c-page
       }
     }
   }
-}
-
-@media (max-width: 1200px) {
-  .glue-header .h-c-header__bar .h-c-header__hamburger:first-child {
-    display: table !important;
-  }
-}
-
-.github-logo {
-  width: 1em;
-  height: 1em;
-  margin-right: 6px;
-  margin-top: -2px;
 }
