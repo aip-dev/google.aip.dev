@@ -66,7 +66,9 @@ strong.spec-directive {
   }
 
   // Name: Attribute
-  .na {
+  // Name: Label
+  .na,
+  .nl {
     color: #ad1457;
   }
 
@@ -83,6 +85,11 @@ strong.spec-directive {
   // Name: Key (.nk)
   .nk {
     color: #6a1b9a;
+  }
+
+  // Name: Other (.nx)
+  .nx {
+    @extend .kt;
   }
 
   // Literal: Number (.m)
