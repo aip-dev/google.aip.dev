@@ -16,7 +16,7 @@
 // to documentation sites using this Jekyll theme generally.
 $.when($.ready).then(() => {
   // Make callouts for notes, warnings, etc. work.
-  for (let callout of ['Important', 'Note', 'TL;DR', 'Warning']) {
+  for (let callout of ['Important', 'Note', 'TL;DR', 'Warning', 'Summary']) {
     $(`p strong:contains(${callout}:)`)
       .parent()
       .addClass(callout.replace(';', '').toLowerCase());

@@ -21,6 +21,12 @@ body .glue-header.glue-header--single .glue-header__bar {
 
   @media (min-width: 1024px) {
     transform: none !important;
+
+    @media (max-width: 1096px) {
+      .glue-header__item.header-item-collapse {
+        display: none;
+      }
+    }
   }
 
   @media (max-width: 599px) {

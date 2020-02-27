@@ -1,0 +1,41 @@
+.aip-newsletter-highlights {
+  > p {
+    font-size: 0.85em;
+    margin-top: 0.5em;
+  }
+
+  ul.highlights-list {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 10px;
+    list-style: none;
+
+    > li {
+      font-size: 0.85em;
+      &:before {
+        content: '- ';
+      }
+    }
+
+    > li > ul {
+      display: inline;
+      margin-left: 0px;
+      padding-left: 0px;
+
+      > li {
+        display: inline;
+
+        a {
+          text-decoration: none;
+        }
+
+        &:after {
+          content: ', ';
+        }
+        &:last-child:after {
+          content: '';
+        }
+      }
+    }
+  }
+}
