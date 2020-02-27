@@ -20,7 +20,8 @@
   border: 1px solid $glue-blue-200;
 }
 
-.tldr {
+.tldr,
+.summary {
   @extend .callout;
   background-color: $glue-green-50;
   border: 1px solid $glue-green-200;

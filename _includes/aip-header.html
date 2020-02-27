@@ -27,10 +27,13 @@
             <li class="glue-header__item{% if page.aip or page.aip_index %} glue-header--is-active{% endif %}">
               <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
             </li>
-            <li class="glue-header__item{% if page.permalink == "/faq" %} glue-header--is-active{% endif %}">
+            <li class="glue-header__item{% if page.permalink == '/news' or page.newsletter %} glue-header--is-active{% endif %}">
+              <a class="glue-header__link" href="/news" aria-level="1">News</a>
+            </li>
+            <li class="glue-header__item{% if page.permalink == '/faq' %} glue-header--is-active{% endif %}">
               <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
             </li>
-            <li class="glue-header__item{% if page.permalink == "/contributing" %} glue-header--is-active{% endif %}">
+            <li class="glue-header__item{% if page.permalink == '/contributing' %} glue-header--is-active{% endif %} header-item-collapse">
               <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
             </li>
             <li class="glue-header__item">

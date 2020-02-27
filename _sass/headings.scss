@@ -5,7 +5,8 @@
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     @extend .glue-headline;
     @extend .glue-has-top-margin;
 
@@ -19,6 +20,10 @@
       margin-top: -80px;
       pointer-events: none;
       visibility: hidden;
+    }
+
+    a {
+      text-decoration: none;
     }
   }
   h1 {
