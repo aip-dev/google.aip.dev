@@ -7,7 +7,7 @@ js:
 permalink: /aog
 ---
 
-# Apps AIPs
+# Actions on Google AIPs
 
 The following AIPs apply to work on APIs in Actions on Google.
 

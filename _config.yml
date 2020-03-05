@@ -13,6 +13,7 @@ defaults:
       path: ''
     values:
       areas:
+        aog: Actions on Google
         apps: GSuite
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
