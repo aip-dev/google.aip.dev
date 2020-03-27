@@ -15,11 +15,15 @@ If you have [Docker][3] installed, clone this repository and run the `serve.sh`
 file at the root of the repository. This script does two things:
 
 - It builds the provided Docker image (unless you already have it) and tags it
-  as `googleapis-site`.
-- It runs the `googleapis-site` image.
+  as `aip-site`.
+- It runs the `aip-site` image.
 
 The Jekyll development server uses port 4000 by default; point your web browser
 to `http://localhost:4000`, and you should see the site.
+
+**Note:** After building the Docker image for the first time, you may
+experience issues if Ruby dependencies change underneath you. If this happens,
+remove your Docker image (`docker rmi aip-site`) and run `serve.sh` again.
 
 ### Arguments
 
