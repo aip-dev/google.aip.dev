@@ -1,30 +1,36 @@
 @import 'colors';
-@import 'hercules';
+@import 'glue';
 
 #aip-main {
   table {
     &:not(.no-h) {
-      @extend .h-c-table--datatable;
+      @extend .glue-table--datatable;
 
       &.aip-listing {
         margin-top: 10px;
+
         tr:first-child {
-          border-top: 2px solid $h-gm-grey-500;
+          border-top: 2px solid $glue-grey-500;
         }
+
         th {
           display: none;
         }
+
         td {
+          text-align: left;
+
           // The Number column.
           &:first-child {
+            text-align: right;
             width: 70px;
           }
 
-          // The State column.
-          &:nth-child(3) {
-            width: 125px;
+          a {
+            text-decoration: none;
           }
         }
+
         tr td {
           padding-top: 10px;
           padding-bottom: 10px;
@@ -39,8 +45,8 @@
 }
 
 table#aip-summary {
-  background-color: $h-gm-grey-50;
-  border: 1px solid $h-gm-grey-200;
+  background-color: $glue-grey-50;
+  border: 1px solid $glue-grey-200;
   margin-top: 2px;
   margin-left: 10px;
   width: 220px;
@@ -50,7 +56,8 @@ table#aip-summary {
   }
 
   th {
-    color: $h-gm-grey-800;
+    border: 0px;
+    color: $glue-grey-800;
     font-size: 14px;
     padding: 8px 0px;
     text-align: center;
@@ -62,10 +69,14 @@ table#aip-summary {
       padding: 2px 5px;
 
       &:first-child {
-        @extend .h-u-font-weight-bold;
-        color: $h-gm-grey-700;
-        width: 60px;
+        color: $glue-grey-700;
+        font-weight: bold;
         padding-left: 12px;
+        width: 60px;
+      }
+
+      a {
+        text-decoration: none;
       }
     }
 
