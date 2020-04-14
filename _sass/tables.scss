@@ -1,8 +1,5 @@
-@import 'glue';
-
 // Tables
 table:not(.no-h) {
-  @extend .glue-table;
   margin-bottom: 20px !important;
 
   tr td {
