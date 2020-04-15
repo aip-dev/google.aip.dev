@@ -60,3 +60,39 @@ permalink: /assets/css/search.css
     font-weight: bold;
   }
 }
+
+#tipue_search_foot_boxes {
+  li {
+    border: 1px solid $glue-grey-700;
+    color: $glue-grey-900;
+    display: inline-block;
+    list-style: none;
+    margin-left: -1px;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 8px 12px;
+    position: relative;
+    text-align: center;
+
+    &.current {
+      background-color: $glue-grey-300;
+    }
+
+    &:not(.current) {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $glue-blue-100;
+      }
+    }
+
+    a {
+      color: $glue-grey-900;
+      text-decoration: none;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
