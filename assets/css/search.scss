@@ -3,7 +3,6 @@ permalink: /assets/css/search.css
 ---
 
 @import 'colors';
-@import 'glue';
 
 .docs-component-sidebar-toc {
   display: none;
@@ -37,14 +36,8 @@ permalink: /assets/css/search.css
     font-style: italic;
   }
 
-  .tipue_search_content_title {
-    @extend .glue-headline;
-    @extend .glue-headline--headline-4;
-    @extend .glue-has-top-margin;
-
-    a {
-      text-decoration: none;
-    }
+  .tipue_search_content_title a {
+    text-decoration: none;
   }
 
   .tipue_search_content_url {
