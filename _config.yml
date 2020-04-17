@@ -2,10 +2,9 @@
 markdown: kramdown
 plugins:
   - jekyll-redirect-from
-url: https://rhamiltonsf.github.io
-baseurl: /aip
+url: https://aip.dev 
 github:
-  repository_url: https://github.com/rhamiltonsf/aip
+  repository_url: https://github.com/googleaips/aip
 include:
   - CONTRIBUTING.md
   - README.md
