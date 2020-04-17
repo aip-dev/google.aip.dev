@@ -1,7 +1,7 @@
 ---
 aip_index:
   scope: cloud
-  order: 30
+  order: 40
   display: Google Cloud Platform
 exclude_from_search: true
 js:

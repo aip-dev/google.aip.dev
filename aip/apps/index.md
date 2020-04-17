@@ -1,7 +1,7 @@
 ---
 aip_index:
   scope: apps
-  order: 20
+  order: 30
   display: GSuite
 exclude_from_search: true
 js:

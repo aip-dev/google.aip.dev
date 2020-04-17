@@ -1,7 +1,7 @@
 ---
 aip_index:
   scope: client-libraries
-  order: 40
+  order: 50
   display: Client Libraries
 exclude_from_search: true
 js:
