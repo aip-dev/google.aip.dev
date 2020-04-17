@@ -3,7 +3,6 @@ permalink: /assets/css/search.css
 ---
 
 @import 'colors';
-@import 'glue';
 
 .docs-component-sidebar-toc {
   display: none;
@@ -37,14 +36,8 @@ permalink: /assets/css/search.css
     font-style: italic;
   }
 
-  .tipue_search_content_title {
-    @extend .glue-headline;
-    @extend .glue-headline--headline-4;
-    @extend .glue-has-top-margin;
-
-    a {
-      text-decoration: none;
-    }
+  .tipue_search_content_title a {
+    text-decoration: none;
   }
 
   .tipue_search_content_url {
@@ -65,5 +58,41 @@ permalink: /assets/css/search.css
 
   .tipue_search_content_bold {
     font-weight: bold;
+  }
+}
+
+#tipue_search_foot_boxes {
+  li {
+    border: 1px solid $glue-grey-700;
+    color: $glue-grey-900;
+    display: inline-block;
+    list-style: none;
+    margin-left: -1px;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 8px 12px;
+    position: relative;
+    text-align: center;
+
+    &.current {
+      background-color: $glue-grey-300;
+    }
+
+    &:not(.current) {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $glue-blue-100;
+      }
+    }
+
+    a {
+      color: $glue-grey-900;
+      text-decoration: none;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
 }
