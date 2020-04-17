@@ -1,108 +1,13 @@
-$schema: http://json-schema.org/draft-04/schema#
+$schema: http://json-schema.org/draft-07/schema#
 
-type: object
-description: The schema for defining the components of the navigation bar and the navigation drawer, and which components are in each view.
-required:
-  - bar
-  - drawer
-properties:
-  bar:
-    description: The list of navMenu components to display in the navigatin bar in the desktop view.
-    type: array
-    items: 
-      type: string
-  drawer:
-    descripion: The list of navMenu components to display in the navigation drawer in the mobile view.
-    type: array
-    items: 
-      type: string
-minProperties: 3
-additionalPropertie:
-  type: navMenu
+$id: http://aip.dev/schemas/nav-schema.yaml
+
+description: The schema defining the components of the navigation bar.
+type: array
+items:
+  $ref: '#/definitions/navMenu'
 
 definitions:
-  url:
-    description: A URL should be used for absolute links to external sites. This is enforced using a regex that can be viewed and tested on [Regexer](https://regexr.com/4hrb0).
-    type: string
-    pattern: ^(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6})(\/[-a-zA-Z0-9.\$&\+%,_]*)*(\?[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?(&[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?)*)?(#[-a-zA-Z0-9\.\+\$%_]*)?$
-
-  uri:
-    description: A URI should be used for relative links to pages within the aip domain. The regex used to enforce this can be viewed and tested on [Regexer](https://regexr.com/4smq7)
-    type: string
-    pattern: ^(\/[-a-zA-Z0-9.\$&\+%,_]*)*(\?[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?(&[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?)*)?(#[-a-zA-Z0-9\.\+\$%_]*)?$
-
-  staticMenuDef:
-    description: A navigational menu component containing a list of static paths and URLs.
-    type: object
-    required:
-      - type
-      - links
-    properties:
-      type:
-        description: The descriminator for navMenu objects. Must be `static` for a staticMenuDef.
-        type: string
-        enum:
-          - static
-      links:
-        description: A list of paths and URLs to navigate to.
-        type: array
-        items:
-          oneOf:
-            - $ref: '#/definitions/url'
-            - $ref: '#/definitions/uri'
-
-  matterGroupDef:
-    description: |
-      A navigational menu component that allows for the dynamic creation of navigation links based on similarities in front matter across multiple pages.
-    type: object
-    required:
-      - type
-      - id
-      - frontMatter
-    properties:
-      type:
-        description: The discriminator between menu element types. Must be `matterGroup` for a matterGroupDef.
-        type: string
-        enum:
-          - matterGroup
-      frontMatter:
-         description: The root front matter object within which the properties referrenced by this menu element exist.
-         type: string
-      id:
-        description: The property within the front matter to create unique links for. A navigation element will be created in the navigation menu for each unique value found in this property under the defined front matter. Nil is also considered a unique value, which can be used to enable default functionality.
-        type: string
-      orderBy:
-        description: The propety under the given front matter to be used to order the navigation elements within this navigation menu. If this value is not provided the values will not be sorted.
-        type: string
-      displayName:
-        description: If the default include file is used to render the navigation element, this property can be used to provide a name of the property within the given front matter to use as the text of the navigation element instead of the name of the page the navigation element will link to.
-        type: string
-      include:
-        description: The name of an `_includes` file to use to render the navigation element. If this is not provided, the navigation menu and the navigation drawer will specify the default includes file to sue for the given context. Regex can be viewed and tested on [Regexer](https://regexr.com/4sor0).
-        type: string
-        pattern: ^([a-zA-Z0-9\\.\-\(\):])+(\.html)$
-      groupBy:
-        description: | 
-          This object can be used to dynamically control the content of the nav menu with content related to the current page. This can be used to only display the links of sibling pages to the current page, instead of all pages.
-          When this is populated, the navigation menu will only display links that have the same front matter and the same value in the provided property.
-          However, it is recognized that not all pages will have the same front matter. In which case the `with` array can be used to define additional properties and/or front matter that might join with the specified `groupBy` property.
-        type: object
-        required:
-          - property
-        properties:
-          property:
-            type: string
-          with:
-            type: array
-            items:
-              type: object
-              required:
-                - property
-              properties:
-                frontMatter:
-                  type: string
-                property:
-                  type: string
 
   navMenu:
     allOf:
@@ -111,11 +16,9 @@ definitions:
           - title
         properties:
           title:
-            description: The name to display as a header in this navigation menu component.
-            type: string
-          shortTitle:
-            description: This value can be used to override the navigation menu component header in the mobile drawer.
+            description: |
+              The name to display as a header in this navigation menu component.
             type: string
       - oneOf:
-        - $ref: '#/definitions/staticMenuDef'
-        - $ref: '#/definitions/matterGroupDef'
+        - $ref: 'nav-components.yaml#/definitions/matterGroup'
+        - $ref: 'staticGroup.yaml#'

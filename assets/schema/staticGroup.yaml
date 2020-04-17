@@ -1,0 +1,22 @@
+$schema: http://json-schema.org/draft-07/schema#
+
+$id: http://aip.dev/schemas/staticGroup.yaml
+
+description: |
+  A navigational component containing a static list of relative paths and 
+  absolute URLs.
+type: object
+required:
+  - type
+  - links
+properties:
+  type:
+    description: The descriminator for navigation components. Must be `static` for a staticMenuDef.
+    type: string
+    enum:
+      - static
+  links:
+    description: A list of relative paths and absolute URLs to present to the user.
+    type: array
+    items:
+      $ref: 'nav-components.yaml#/definitions/link'

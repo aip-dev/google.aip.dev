@@ -2,15 +2,15 @@
 
 strong.spec-directive {
   &.spec-must {
-    color: $h-google-red-700;
+    color: $glue-red-700;
   }
 
   &.spec-should {
-    color: $h-orange-700;
+    color: #f57c00;
   }
 
   &.spec-may {
-    color: $h-google-green-700;
+    color: $glue-green-700;
   }
 }
 
@@ -31,7 +31,7 @@ strong.spec-directive {
 
   // Built-in: Pseudo (.bp)
   .bp {
-    color: $h-light-blue-500;
+    color: #03a9f4;
   }
 
   // Comment (.c)
@@ -40,7 +40,7 @@ strong.spec-directive {
   .c,
   .c1,
   .cm {
-    color: $h-google-green-700;
+    color: $glue-green-700;
     font-style: italic;
   }
 
@@ -56,18 +56,18 @@ strong.spec-directive {
   .kn,
   .kp,
   .kr {
-    color: $h-google-blue-900;
+    color: $glue-blue-900;
     font-weight: bold;
   }
 
   // Keyword: Type (.kt)
   .kt {
-    color: $h-deep-orange-800;
+    color: #ef6c00;
   }
 
   // Name: Attribute
   .na {
-    color: $h-pink-800;
+    color: #ad1457;
   }
 
   // Name: Built-in (.nb)
@@ -77,12 +77,12 @@ strong.spec-directive {
 
   // Name: Class (.nc)
   .nc {
-    color: $h-orange-600;
+    color: #fb8c00;
   }
 
   // Name: Key (.nk)
   .nk {
-    color: $h-purple-800;
+    color: #6a1b9a;
   }
 
   // Literal: Number (.m)
@@ -97,7 +97,7 @@ strong.spec-directive {
   .mi,
   .mo,
   .il {
-    color: $h-light-blue-500;
+    color: #03a9f4;
   }
 
   // String (.s)
@@ -116,7 +116,7 @@ strong.spec-directive {
   .sx,
   .s1,
   .s2 {
-    color: $h-google-blue-500;
+    color: $glue-blue-500;
   }
 
   // Operator: Symbol
@@ -136,7 +136,7 @@ strong.spec-directive {
   // Generic: Deleted
   .gd {
     color: black;
-    background-color: $h-google-red-50;
+    background-color: $glue-red-50;
   }
 
   // Generic: Emphasis
@@ -148,28 +148,28 @@ strong.spec-directive {
   // Generic: Traceback (.gt)
   .gr,
   .gt {
-    color: $h-google-red-900;
+    color: $glue-red-900;
   }
 
   // Generic: Heading
   .gh {
-    color: $h-google-grey-500;
+    color: $glue-grey-500;
   }
 
   // Generic: Inserted
   .gi {
     color: black;
-    background-color: $h-google-green-50;
+    background-color: $glue-green-50;
   }
 
   // Generic: Output
   .go {
-    color: $h-google-grey-600;
+    color: $glue-grey-600;
   }
 
   // Generic: Prompt
   .gp {
-    color: $h-google-grey-800;
+    color: $glue-grey-800;
   }
 
   // Generic: Strong
@@ -179,7 +179,7 @@ strong.spec-directive {
 
   // Generic: Subheading
   .gu {
-    color: $h-google-grey-400;
+    color: $glue-grey-400;
   }
 
   // ---------------
@@ -200,8 +200,8 @@ strong.spec-directive {
 
   // Error
   .err {
-    color: $h-google-red-700;
-    background-color: $h-google-red-100;
+    color: $glue-red-700;
+    background-color: $glue-red-100;
   }
 
   // Name: Tag
@@ -211,7 +211,7 @@ strong.spec-directive {
 
   // Text: Whitespace
   .w {
-    color: $h-google-grey-400;
+    color: $glue-grey-400;
   }
 
   // Literal: Char
@@ -221,12 +221,12 @@ strong.spec-directive {
 
   // String: Escape sequence
   .se {
-    color: $h-light-blue-500;
+    color: #03a9f4;
   }
 
   // String: Regex
   .sr {
-    color: $h-google-blue-600;
+    color: $glue-blue-600;
   }
 
   // Literal: Symbol
@@ -238,6 +238,6 @@ strong.spec-directive {
   // Language-specific
   // -----------------
   .protobuf-annotation {
-    color: $h-google-yellow-600;
+    color: $glue-yellow-600;
   }
 }

@@ -1,13 +1,14 @@
-@import 'hercules';
+@import 'glue';
 
 // Headers
 .docs-component-main {
   h1,
   h2,
   h3,
-  h4 {
-    @extend .h-c-headline;
-    @extend .h-has-top-margin;
+  h4,
+  h5 {
+    @extend .glue-headline;
+    @extend .glue-has-top-margin;
 
     // This creates a "fake block" above the header that does not show up
     // anywhere but tricks the browser into thinking that the anchor is 80px
@@ -20,21 +21,25 @@
       pointer-events: none;
       visibility: hidden;
     }
+
+    a {
+      text-decoration: none;
+    }
   }
   h1 {
-    @extend .h-c-headline--two;
-    @extend .h-has-bottom-margin;
+    @extend .glue-headline--headline-2;
+    @extend .glue-has-bottom-margin;
   }
   h2 {
-    @extend .h-c-headline--three;
-    @extend .h-has-bottom-margin;
+    @extend .glue-headline--headline-3;
+    @extend .glue-has-bottom-margin;
   }
   h3 {
-    @extend .h-c-headline--four;
-    @extend .h-has-bottom-margin;
+    @extend .glue-headline--headline-4;
+    @extend .glue-has-bottom-margin;
   }
   h4 {
-    @extend .h-c-headline--four;
+    @extend .glue-headline--headline-5;
 
     &.aip-number {
       line-height: 1em;

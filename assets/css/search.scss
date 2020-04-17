@@ -3,7 +3,7 @@ permalink: /assets/css/search.css
 ---
 
 @import 'colors';
-@import 'hercules';
+@import 'glue';
 
 .docs-component-sidebar-toc {
   display: none;
@@ -23,7 +23,7 @@ permalink: /assets/css/search.css
     }
   }
 
-  button.h-c-button {
+  button.glue-button {
     margin-top: 1px;
   }
 }
@@ -32,21 +32,26 @@ permalink: /assets/css/search.css
   margin-left: 2px;
 
   #tipue_search_results_count {
-    color: $h-gm-grey-700;
+    color: $glue-grey-700;
     font-size: 13px;
     font-style: italic;
   }
 
   .tipue_search_content_title {
-    @extend .h-c-headline;
-    @extend .h-c-headline--four;
-    @extend .h-has-top-margin;
+    @extend .glue-headline;
+    @extend .glue-headline--headline-4;
+    @extend .glue-has-top-margin;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .tipue_search_content_url {
     font-size: 75%;
     a {
-      color: $h-google-green-400;
+      color: $glue-green-400;
+      text-decoration: none;
       &:before {
         content: '{{ site.url }}';
       }
@@ -55,9 +60,10 @@ permalink: /assets/css/search.css
 
   .tipue_search_content_text {
     font-size: 85%;
+    margin-bottom: 1em;
   }
 
   .tipue_search_content_bold {
-    @extend .h-u-font-weight-bold;
+    font-weight: bold;
   }
 }

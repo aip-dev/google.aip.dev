@@ -1,35 +1,36 @@
-@import 'colors.scss';
+@import 'colors';
 
 .callout {
   margin-top: 5px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 10px 20px;
-  color: $h-gm-grey-800;
+  color: $glue-grey-800;
 }
 
 .important {
   @extend .callout;
-  background-color: $h-google-yellow-50;
-  border: 1px solid $h-google-yellow-200;
+  background-color: $glue-yellow-50;
+  border: 1px solid $glue-yellow-200;
 }
 
 .note {
   @extend .callout;
-  background-color: $h-google-blue-50;
-  border: 1px solid $h-google-blue-200;
+  background-color: $glue-blue-50;
+  border: 1px solid $glue-blue-200;
 }
 
-.tldr {
+.tldr,
+.summary {
   @extend .callout;
-  background-color: $h-google-green-50;
-  border: 1px solid $h-google-green-200;
+  background-color: $glue-green-50;
+  border: 1px solid $glue-green-200;
 }
 
 .warning {
   @extend .callout;
-  background-color: $h-google-red-50;
-  border: 1px solid $h-google-red-200;
+  background-color: $glue-red-50;
+  border: 1px solid $glue-red-200;
 }
 
 code {
@@ -38,7 +39,7 @@ code {
 
 .docs-component-main {
   blockquote {
-    border-left: 4px solid $h-google-grey-500;
+    border-left: 4px solid $glue-grey-500;
     margin: 20px;
     padding-left: 20px;
   }
@@ -53,7 +54,7 @@ code {
     padding: 9px 14px;
 
     code {
-      color: $h-google-grey-900;
+      color: $glue-grey-900;
     }
   }
 }

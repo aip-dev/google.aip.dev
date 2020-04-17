@@ -1,17 +1,16 @@
 <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
-  	{% for m in site.data.nav.bar %}
-  	  {% assign menu = site.data.nav[m] %}
+  	{% for menu in site.data.nav %}
       <li class="nav-item nav-item-header">{{ menu.title }}</li>
   	  {% if menu.type == "static" %}
         {% for link in menu.links %}
-          {% if link.uri %}
-            <li class="nav-item{% if page.url == link.uri %} nav-item-active{% endif %}">
-              <a href="{{ link.uri | relative_url }}">{{ link.title }}</a>
+          {% if link.relativeUrl %}
+            <li class="nav-item{% if page.url == link.relativeUrl %} nav-item-active{% endif %}">
+              <a href="{{ link.relativeUrl | relative_url }}">{{ link.title }}</a>
             </li>
-          {% elsif link.url %}
+          {% elsif link.absoluteUrl %}
             <li class="nav-item">
-              <a href="{{ link.url }}" target="blank">{{link.title}}</a>
+              <a href="{{ link.absoluteUrl }}" target="blank">{{link.title}}</a>
               <svg role="img" class="h-c-icon h-c-icon--arrow-external" style="width: 14px; height: 14px; margin-bottom: -2px;">
                 <use xlink:href="#mi-arrow-forward"></use>
               </svg>

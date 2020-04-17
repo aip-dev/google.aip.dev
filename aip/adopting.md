@@ -5,7 +5,7 @@ permalink: /adopting
 # Adopting AIPs in your company
 
 **Note:** We're working on some tooling to make this better. Keep an eye on
-[this GitHub issue](https://github.com/googleapis/aip/issues/98) for progress.
+[this GitHub issue][] for progress.
 
 While AIPs originated at Google and were aimed for Googlers writing Google
 APIs, much of the guidance documented is useful outside of Google. This
@@ -48,37 +48,65 @@ the right place.
 
 ## Forking AIP
 
-You can fork the AIP project and run it in your own domain if necessary. This will allow you to customize the AIPs to your organization's needs. Or you could use the infrastructure to create your own set of AIPs.
+You can fork the AIP project and run it in your own domain if necessary. This
+will allow you to customize the AIPs to your organization's needs. Or you could
+use the infrastructure to create your own set of AIPs.
 
 ### Updating the URL
 
-To run the AIP infrastructure as a GitHub Page in a another repo, the `_config.yaml` file must be updated to work correctly in the new repo.
+To run the AIP infrastructure as a GitHub Page in a another repository, the
+`_config.yaml` file must be updated to work correctly in the new repo.
 
-If a new custom domain and CNAME have been assigned to the new reop, only the `url` property will need to be updated to the new domain.
+If a new custom domain and CNAME have been created for your AIP, only the `url`
+property will need to be updated to the new domain.
 
 ```
 url: https://aip.dev
 ```
 
-If you are not creating a new domain, it will be necessary to add the `baseurl` property to the `_config.yaml`. This property should contain any additional path information that may be appended to the domain in the `url`.
+If you are not creating a new domain, it will be necessary to add the `baseurl`
+property to the `_config.yaml`. This property should contain any additional
+path information that may be appended to the domain in the `url`.
 
-For example, assume GitHub user jdoe123 forked the aip project into a repository named my-aips. If this user served the content from their master branch, the url to the GitHub pages would be `https://jdoe123.github.io/my-aips/`. The accompanying `_config.yaml` would be configured as follows:
+For example, assume GitHub user jdoe123 forked the aip project into a
+repository named my-aips. If this user served the content from their master
+branch, the url to the GitHub pages would be
+`https://jdoe123.github.io/my-aips/`. The accompanying `_config.yaml` would be
+configured as follows:
 
 ```
 url: https://jdoe123.github.io
 baseurl: /my-aips
 ```
 
-For more information about about how these values are used by GitHub Pages, see the [release notes](https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters) that standardized these configurations in Jekyll.
+For more information about about how these values are used by GitHub Pages, see
+the [release notes][] that standardized these configurations in Jekyll.
 
 ### Configuring Navigation
 
-The nav menu and the nav drawer are generated dynamically based on the `_data/nav.yaml` file. The nav.yaml file supports the creation of static and dynamic navigation menus that can be included or excluded from either the desktop or mobile views.
+The navigation headers and bar are generated dynamically based on the
+`_data/header.yaml` and `_data/nav.yaml` files respectively.
 
-The schema can be viewed in `assets/schema/nav-schema.yaml`.
+The schema for the navigation bar can be viewed under
+`assets/schemas/nav-schema.yaml`. It supports two types of navigation
+components; `staticGroup` and `matterGroup`. A `staticGroup` menu component
+will always show the same navigation elements, regardless of the content of the
+page and the repository. A `matterGroup` component is generated dynamically
+based on the AIPs in the domain, or the current page in the site. The
+configurations for a `matterGroup` can be viewed in the
+`assets/schemas/nav-components.yaml#defintions/matterGroup` schema.
 
-The `bar` and `drawer` properties in the file define the menu components to use when creating the desktop nav-bar and the mobile nav-drawer respectively. The other properties in the file are the definitions of the menu elements that are referred to in the `bar` and `drawer`.
+The header is just a specially rendered `staticGroup` component. The schema can
+be viewed at `assets/schemas/staticGroup.yaml`.
 
-There are two types of component types that can be added to the menu: `static` and `matterGroup`. A `static` menu component will always show the same navigation elements, regardless of the content of the page and the repository. A `matterGroup` component is generated dynamically based on the AIPs in the domain, or the current page in the site.
+### Testing Configuration
 
-The nav.yaml file can be validated against the schema by running `npm test` in the `test` directory.
+The `tests` folder contains an npm test module that will validate your data
+files. Running these tests requires npm and mocha. Once these are installed
+that tests can be ran with the `npm test` command.
+
+[this github issue]: https://github.com/googleapis/aip/issues/98
+[npm]: https://www.npmjs.com/get-npm
+[mocha]: https://www.npmjs.com/package/mocha
+[release notes]:
+	https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters

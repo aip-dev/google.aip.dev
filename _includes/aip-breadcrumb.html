@@ -1,28 +1,36 @@
-<nav
-  class="h-c-breadcrumbs h-u-mt-std{% if page.url == '/home' %} no-breadcrumb{% endif %}"
-  aria-label="You are here."
->
-  <ol class="h-c-breadcrumbs__list aip-breadcrumbs">
-    <li class="h-c-breadcrumbs__item" aria-level="1">
-      <a class="h-c-breadcrumbs__link" href="{{ '/' | relative_url }}">
-        API Improvement Proposals
-      </a>
-    </li>
-    {% if page.aip %}
-    <li class="h-c-breadcrumbs__item" aria-level="2">
-      <!-- prettier-ignore -->
-      <a class="h-c-breadcrumbs__link"
-         href="/{{ page.aip.scope | default: 'general' | relative_url }}">
+<section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std{% if page.url == '/home' %} no-breadcrumb{% endif %}"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="{{ '/' | relative_url }}">
+          API Improvement Proposals
+        </a>
+      </li>
+      {% if page.aip %}
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <!-- prettier-ignore -->
+        <a class="glue-breadcrumbs__link"
+         href="{{ page.aip.scope | default: 'general' | relative_url }}">
         {% if page.aip.scope %}{{ page.areas[page.aip.scope] }}
         {% else %}General{% endif %} AIPs
       </a>
-    </li>
-    {% endif %}
-    <li
-      class="h-c-breadcrumbs__item h-c-breadcrumbs__item--active"
-      aria-level="3"
-    >
-      {{ page.title }}
-    </li>
-  </ol>
-</nav>
+      </li>
+      {% endif %} {% if page.newsletter %}
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/news">
+          News
+        </a>
+      </li>
+      {% endif %}
+      <li
+        class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+        aria-level="3"
+      >
+        {{ page.title }}
+      </li>
+    </ol>
+  </nav>
+</section>
