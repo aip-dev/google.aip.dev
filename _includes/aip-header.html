@@ -9,7 +9,7 @@
             <a class="glue-header__logo-link" href="{{ '/' | relative_url }}" title="Google">
               <div class="glue-header__logo-container">
                 <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
-                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                <use xlink:href="{{ '/assets/images/glue-icons.svg#google-color-logo' | relative_url }}"></use>
                 </svg>
               </div>
               <p class="glue-header__logo--product">AIPs</p>
@@ -24,27 +24,23 @@
       <div class="glue-header__container glue-header__container--flex-auto">
         <nav class="glue-header__link-bar">
           <ul id="list-1" class="glue-header__list">
-            <li class="glue-header__item{% if page.aip or page.aip_index %} glue-header--is-active{% endif %}">
-              <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
-            </li>
-            <li class="glue-header__item{% if page.permalink == '/news' or page.newsletter %} glue-header--is-active{% endif %}">
-              <a class="glue-header__link" href="/news" aria-level="1">News</a>
-            </li>
-            <li class="glue-header__item{% if page.permalink == '/faq' %} glue-header--is-active{% endif %}">
-              <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
-            </li>
-            <li class="glue-header__item{% if page.permalink == '/contributing' %} glue-header--is-active{% endif %} header-item-collapse">
-              <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
-            </li>
-            <li class="glue-header__item">
-              <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
-                API Linter&nbsp;
-                <svg role="img" class="glue-icon glue-icon--18px">
-                  <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
-                </svg>
-              </a>
-            </li>
-        </ul>
+            {% for link in site.data.header.links %}
+              {% if link.relativeUrl %}
+                <li class="glue-header__item{% if page.url == link.relativeUrl %} glue-header--is-active{% endif %}">
+                  <a class="glue-header__link" href="{{ link.relativeUrl | relative_url }}" aria-level="1">{{ link.title }}</a>
+                </li>
+              {% else %}
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="{{ link.absoluteUrl }}" target="_blank" aria-level="1">
+                    {{ link.title }}
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="{{ '/assets/images/glue-icons.svg#open-in-new' | relative_url }}"></use>
+                    </svg>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
         </nav>
       </div>
       <!-- CTA-->
@@ -57,13 +53,13 @@
             placeholder="Search AIPs">
           <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
             <svg role="img" class="glue-icon glue-icon--24px">
-            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            <use xlink:href="{{ '/assets/images/glue-icons.svg#search' | relative_url }}"></use>
             </svg>
           </button>
           </form>
         </div>
         <a href={{ site.github.repository_url }} class="glue-button glue-button--high-emphasis">
-          <img src={{ '/assets/images/github.png' | relative_url }} class="github-logo">
+          <img src="{{ '/assets/images/github.png' | relative_url }}" class="github-logo">
           View on GitHub
         </a>
         </div>
@@ -80,7 +76,7 @@
             <div class="glue-header__hamburger-wrapper">
               <button type="button" class="glue-header__drawer-toggle-btn"
                 aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
-                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="{{ '/assets/images/glue-icons.svg#menu' | relative_url }}"></use></svg>
               </button>
             </div>
           </div>
@@ -88,7 +84,7 @@
             <a class="glue-header__logo-link" href="{{ '/' | relative_url }}" title="Google">
               <div class="glue-header__logo-container">
                 <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
-                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                  <use xlink:href="{{ '/assets/images/glue-icons.svg#google-color-logo' | relative_url }}"></use>
                 </svg>
               </div>
               <p class="glue-header__logo--product">AIPs</p>
@@ -104,7 +100,7 @@
       <div class="glue-header__container">
         <div class="glue-header__cta">
         <a href={{ site.github.repository_url }} class="glue-button glue-button--high-emphasis">
-          <img src={{ '/assets/images/github.png' | relative_url }} class="github-logo">
+          <img src="{{ '/assets/images/github.png' | relative_url }}" class="github-logo">
           View on GitHub
         </a>
         </div>

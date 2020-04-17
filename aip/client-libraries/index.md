@@ -1,6 +1,8 @@
 ---
 aip_index:
   scope: client-libraries
+  order: 50
+  display: Client Libraries
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js

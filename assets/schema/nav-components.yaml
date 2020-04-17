@@ -1,0 +1,133 @@
+$schema: http://json-schema.org/draft-07/schema#
+
+$id: http://aip.dev/schemas/nav-components.yaml
+
+description: Contains the resusable components for controlling navigation in the AIP site infrastructure.
+
+definitions:
+  link:
+    description: |
+      A link and accompanying lable to display in a navigation component.
+    type: object
+    required:
+      - title
+    minProperties: 2
+    maxProperties: 2
+    additionalProperties: false
+    properties:
+      title:
+        description: The text to display as a link.
+        type: string
+      absoluteUrl:
+        description: |
+          Used for absolute links to external locations. This is enforced using 
+          a regex that can be viewed and tested on 
+          [Regexer](https://regexr.com/4hrb0).
+        type: string
+        pattern: ^(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6})(\/[-a-zA-Z0-9.\$&\+%,_]*)*(\?[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?(&[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?)*)?(#[-a-zA-Z0-9\.\+\$%_]*)?$
+      relativeUrl:
+        description: |
+          Used for relative links to pages within the aip domain. This is 
+          enforced using a regex that can be viewed and tested on 
+          [Regexer](https://regexr.com/4smq7)
+        type: string
+        pattern: ^(\/[-a-zA-Z0-9.\$&\+%,_]*)*(\?[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?(&[-a-zA-Z0-9\.\+\$%_]*(=[-a-zA-Z0-9\.\+\$%_]*)?)*)?(#[-a-zA-Z0-9\.\+\$%_]*)?$
+  matterGroup:
+    description: |
+      A navigational menu component that allows for the dynamic creation of 
+      navigation links based on similarities in front matter across multiple 
+      pages.
+    type: object
+    required:
+      - type
+      - id
+      - frontMatter
+    properties:
+      type:
+        description: |
+          The discriminator between menu element types. Must be `matterGroup` 
+          for a matterGroup.
+        type: string
+        enum:
+          - matterGroup
+      frontMatter:
+         description: |
+           The root front matter object within which the properties referrenced 
+           by this menu element exist.
+         type: string
+      id:
+        description: |
+          The property within the front matter to create unique links for. A 
+          navigation element will be created in the navigation menu for each 
+          unique value found in this property under the defined front matter. 
+          Nil is also considered a unique value, which can be used to enable 
+          default functionality.
+        type: string
+      orderBy:
+        description: |
+          The propety under the given front matter to be used to order the 
+          navigation elements within this navigation menu. If this value is not 
+          provided the values will not be sorted.
+        type: string
+      displayName:
+        description: |
+          If the default include file is used to render the navigation element, 
+          this property can be used to provide a name of the property within 
+          the given front matter to use as the text of the navigation element 
+          instead of the name of the page the navigation element will link to.
+        type: string
+      include:
+        description: |
+          The name of an `_includes` file to use to render the navigation 
+          element. If this is not provided, the navigation menu and the 
+          navigation drawer will specify the default includes file to use for 
+          the given context. Regex can be viewed and tested on 
+          [Regexer](https://regexr.com/4sor0).
+        type: string
+        pattern: ^([a-zA-Z0-9\\.\-\(\):])+(\.html)$
+      groupBy:
+        description: |
+          This object can be used to dynamically control the content of the nav 
+          menu with content related to the current page. This can be used to 
+          only display the links of sibling pages to the current page, instead 
+          of all pages. When this is populated, the navigation menu will only 
+          display links that have the same front matter and the same value in 
+          the provided property. However, it is recognized that not all pages 
+          will have the same front matter. In which case the `with` array can 
+          be used to define additional properties and/or front matter that 
+          might join with the specified `groupBy` property.
+        type: object
+        required:
+          - property
+        properties:
+          property:
+            description: |
+              The property to to group by. All pages that have this property in 
+              the root front matter, and the value of the property matches the 
+              same value of this property on the current page will be listed as 
+              a navigation element in this group.
+            type: string
+          with:
+            description: |
+              Provide an additional property to compare to the 
+              `matterGroup.groupBy.property`. If the value of this additional 
+              property matches the value of the `matterGroup.groupBy.property` 
+              for the current page, the page will be listed as a navigation 
+              element in the matterGroup.
+            type: array
+            items:
+              type: object
+              required:
+                - property
+              properties:
+                frontMatter:
+                  description: |
+                    If the additional property to compare is not in the root 
+                    front matter, this is the front matter object the additional 
+                    property is in.
+                  type: string
+                property:
+                  description: |
+                    The additional property to compare to the current page's 
+                    `groupMatter.groupBy.property` value.
+                  type: string

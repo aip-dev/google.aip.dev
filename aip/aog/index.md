@@ -1,6 +1,7 @@
 ---
 aip_index:
   scope: aog
+  order: 20 
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
