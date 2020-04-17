@@ -15,6 +15,33 @@
 // This file contains JavaScript-applied rules that can be applied
 // to documentation sites using this Jekyll theme generally.
 $.when($.ready).then(() => {
+  // Certain selectors should apply Glue classes.
+  // (For our purposes, this essentially mimics the SCSS @extend directive.)
+  // In general, we can not apply these directly because the tags are generated
+  // while compiling from Markdown, so we do it ex post facto.
+  let extend = new Map();
+  for (let h = 1; h <= 5; h += 1) {
+    let classes = [
+      'glue-headline',
+      'glue-has-top-margin',
+      `glue-headline--headline-${h + 1}`,
+    ];
+    if (h <= 3) {
+      classes.push('glue-has-bottom-margin');
+    }
+    extend.set(`.docs-component-main h${h}`, classes);
+  }
+  extend.set('table:not(.no-h)', ['glue-table']);
+  extend.set('#aip-main table:not(.no-h)', ['glue-table--datatable']);
+  extend.set('.tipue_search_content_title', [
+    'glue-headline',
+    'glue-headline--headline-4',
+    'glue-has-top-margin',
+  ]);
+  for (let [selector, classes] of extend) {
+    $(selector).addClass(classes);
+  }
+
   // Make callouts for notes, warnings, etc. work.
   for (let callout of ['Important', 'Note', 'TL;DR', 'Warning', 'Summary']) {
     $(`p strong:contains(${callout}:)`)
@@ -26,7 +53,7 @@ $.when($.ready).then(() => {
   // are bold-faced be further emphasized.
   for (let directive of ['may', 'must', 'must not', 'should', 'should not']) {
     $('strong')
-      .filter((i, el) => $(el).text() === directive)
+      .filter((_, el) => $(el).text() === directive)
       .addClass('spec-directive')
       .addClass(`spec-${directive.split(' ')[0]}`);
   }
