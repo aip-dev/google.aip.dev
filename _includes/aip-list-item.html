@@ -1,11 +1,15 @@
-{% comment %} This file is used to create a navigation element to AIPs in a
-navigation menu. When this file is included it *must* be sent with a `category`
-and a `menu` value. The `category` value contains the page a link is being
-created for. The `menu` value represents the `nav-menu` object that defines the
-navigation menu.{% endcomment %}
+{% comment %}
+<!--
+  This file is used to create a navigation element to AIPs in a
+  navigation menu. When this file is included it *must* be sent with a
+  `category` and a `menu` value. The `category` value contains the page a link
+  is being created for. The `menu` value represents the `nav-menu` object that
+  defines the navigation menu.
+-->
+{% endcomment -%}
 <a href="{{ include.category.url | relative_url }}">
-  <span class="aip-number"
-    >{{ include.category[include.menu.front_matter][include.menu.id] }}</span
-  >
+  <span class="aip-number">
+    {{ include.category[include.menu.front_matter][include.menu.id] }}
+  </span>
   {{ include.category.title }}
 </a>
