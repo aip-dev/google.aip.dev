@@ -105,8 +105,9 @@ The `tests` folder contains an npm test module that will validate your data
 files. Running these tests requires npm and mocha. Once these are installed
 that tests can be ran with the `npm test` command.
 
+<!-- prettier-ignore-start -->
 [this github issue]: https://github.com/googleapis/aip/issues/98
 [npm]: https://www.npmjs.com/get-npm
 [mocha]: https://www.npmjs.com/package/mocha
-[release notes]:
-  https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters
+[release notes]: https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters
+<!-- prettier-ignore-end -->
