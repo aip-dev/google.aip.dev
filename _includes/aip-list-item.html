@@ -9,7 +9,7 @@
 {% endcomment -%}
 <a href="{{ include.category.url | relative_url }}">
   <span class="aip-number">
-    {{ include.category[include.menu.front_matter][include.menu.id] }}
+    {{- include.category[include.menu.front_matter][include.menu.id] -}}
   </span>
   {{ include.category.title }}
 </a>
