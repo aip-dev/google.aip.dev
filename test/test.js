@@ -6,7 +6,7 @@ const Ajv = require('ajv');
 
 const schemas = [
   '../assets/schema/nav-components.yaml',
-  '../assets/schema/static_group.yaml',
+  '../assets/schema/static-group.yaml',
   '../assets/schema/nav-schema.yaml',
 ];
 
