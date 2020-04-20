@@ -20,4 +20,4 @@ definitions:
             type: string
       - oneOf:
           - $ref: 'nav-components.yaml#/definitions/matter_group'
-          - $ref: 'staticGroup.yaml#'
+          - $ref: 'static_group.yaml#'

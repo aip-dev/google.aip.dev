@@ -6,7 +6,7 @@ const Ajv = require('ajv');
 
 const schemas = [
   '../assets/schema/nav-components.yaml',
-  '../assets/schema/staticGroup.yaml',
+  '../assets/schema/static_group.yaml',
   '../assets/schema/nav-schema.yaml',
 ];
 
@@ -26,7 +26,7 @@ function validator(schemas) {
   console.log(`create validator with ${schemas[schemas.length - 1]}`);
   const validator = ajv.compile(loadSchema(schemas[schemas.length - 1]));
 
-  return function(file) {
+  return function (file) {
     console.log(`loading file from ${file}...`);
     const data = yaml.safeLoad(fs.readFileSync(path.resolve(__dirname, file)));
     const result = validator(data);
