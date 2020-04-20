@@ -13,6 +13,7 @@ exclude:
   - Dockerfile
   - Gemfile*
   - serve.sh
+  - test
 defaults:
   - scope:
       path: ''
