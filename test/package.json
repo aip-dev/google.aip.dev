@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "ajv": "^6.11.0",
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "mocha": "^7.1.1"
   }
 }
