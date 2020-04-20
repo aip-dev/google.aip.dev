@@ -6,6 +6,3 @@ _site
 # npm
 node_modules/
 */package-lock.json
-
-#sass
-_sass/glue.scss
