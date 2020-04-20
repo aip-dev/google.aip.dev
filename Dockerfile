@@ -20,9 +20,6 @@ RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc && \
 # Install git. (Jekyll expects it.)
 RUN apk add --no-cache git
 
-# Set environment variables that GitHub Pages expects.
-ENV PAGES_REPO_NWO googleapis/googleapis.github.io
-
 # Expose appropriate ports.
 EXPOSE 4000
 EXPOSE 35729
