@@ -8,6 +8,11 @@ github:
 include:
   - CONTRIBUTING.md
   - README.md
+exclude:
+  - CNAME
+  - Dockerfile
+  - Gemfile*
+  - serve.sh
 defaults:
   - scope:
       path: ''
