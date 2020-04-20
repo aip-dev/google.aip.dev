@@ -8,7 +8,6 @@ items:
   $ref: '#/definitions/navMenu'
 
 definitions:
-
   navMenu:
     allOf:
       - type: object
@@ -20,5 +19,5 @@ definitions:
               The name to display as a header in this navigation menu component.
             type: string
       - oneOf:
-        - $ref: 'nav-components.yaml#/definitions/matterGroup'
-        - $ref: 'staticGroup.yaml#'
+          - $ref: 'nav-components.yaml#/definitions/matter_group'
+          - $ref: 'staticGroup.yaml#'

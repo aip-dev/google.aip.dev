@@ -89,12 +89,12 @@ The navigation headers and bar are generated dynamically based on the
 
 The schema for the navigation bar can be viewed under
 `assets/schemas/nav-schema.yaml`. It supports two types of navigation
-components; `staticGroup` and `matterGroup`. A `staticGroup` menu component
+components; `staticGroup` and `matter_group`. A `staticGroup` menu component
 will always show the same navigation elements, regardless of the content of the
-page and the repository. A `matterGroup` component is generated dynamically
+page and the repository. A `matter_group` component is generated dynamically
 based on the AIPs in the domain, or the current page in the site. The
-configurations for a `matterGroup` can be viewed in the
-`assets/schemas/nav-components.yaml#defintions/matterGroup` schema.
+configurations for a `matter_group` can be viewed in the
+`assets/schemas/nav-components.yaml#defintions/matter_group` schema.
 
 The header is just a specially rendered `staticGroup` component. The schema can
 be viewed at `assets/schemas/staticGroup.yaml`.
@@ -109,4 +109,4 @@ that tests can be ran with the `npm test` command.
 [npm]: https://www.npmjs.com/get-npm
 [mocha]: https://www.npmjs.com/package/mocha
 [release notes]:
-	https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters
+  https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#2-relative_url-and-absolute_url-filters

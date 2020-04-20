@@ -1,17 +1,17 @@
-- type: matterGroup
+- type: matter_group
   title: AIPs By Category
-  frontMatter: aip_index
+  front_matter: aip_index
   id: scope
-  orderBy: order
-  displayName: display
-- type: matterGroup
+  order_by: order
+  display_name: display
+- type: matter_group
   title: AIPs
-  frontMatter: aip
+  front_matter: aip
   id: id
-  orderBy: id
-  groupBy: 
+  order_by: id
+  group_by:
     property: scope
     with:
-      - frontMatter: aip_index
+      - front_matter: aip_index
         property: scope
   include: aip-list-item.html
