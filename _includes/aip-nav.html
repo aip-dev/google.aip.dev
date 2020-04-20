@@ -41,7 +41,14 @@
 
         {% for category in categories -%}
           <li class="nav-item{% if page[menu.front_matter] and category[menu.front_matter][menu.id] == page[menu.front_matter][menu.id] %} nav-item-active{% endif %}">
-            {% include {{ menu.include | default: "list-item.html" }} category=category menu=menu%}
+            <a href="{{ category.url | relative_url }}">
+                {% if menu.front_matter == 'aip' -%}
+                <span class="aip-number">
+                  {{- category[menu.front_matter][menu.id] -}}
+                </span>
+                {% endif -%}
+                {{ category[menu.front_matter][menu.display_name] | default: category.title }}
+            </a>
           </li>
         {% endfor -%}
       {% endif -%}
