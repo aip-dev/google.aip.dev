@@ -1,28 +1,50 @@
-{% assign scope = page.aip.scope or page.aip_index.scope %}
 <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
-    <li class="nav-item nav-item-header">AIPs by category</li>
-    <li class="nav-item{% if page.url == '/general' %} nav-item-active{% endif %}">
-      <a href="{{ '/general' | relative_url }}">General</a>
-    </li>
-    {% for area in page.areas %}
-    {% if page.aip_index.scope == area[0] %}
-      {% assign scope = area[0] %}
-    {% endif %}
-    <li class="nav-item{% if page.aip_index.scope == area[0] %} nav-item-active{% endif %}">
-      <a href="{{ area[0] | relative_url }}">{{ area[1] }}</a>
-    </li>
-    {% endfor %}
+  	{% for menu in site.data.nav -%}
+      <li class="nav-item nav-item-header">{{ menu.title }}</li>
+  	  {% if menu.type == "static" -%}
+        {% for link in menu.links -%}
+          {% if link.relative_url -%}
+            <li class="nav-item{% if page.url == link.relative_url %} nav-item-active{% endif %}">
+              <a href="{{ link.relative_url | relative_url }}">{{ link.title }}</a>
+            </li>
+          {% elsif link.absolute_url -%}
+            <li class="nav-item">
+              <a href="{{ link.absolute_url }}" target="blank">{{ link.title }}</a>
+              <svg role="img" class="h-c-icon h-c-icon--arrow-external" style="width: 14px; height: 14px; margin-bottom: -2px;">
+                <use xlink:href="#mi-arrow-forward"></use>
+              </svg>
+            </li>
+          {% endif -%}
+        {% endfor -%}
+      {% elsif menu.type == "matter_group" -%}
+        {% assign orderExp = menu.front_matter | append: "." | append: menu.order_by -%}
+        {% assign categories = site.pages | where_exp: "p", "p[menu.front_matter]" | sort: orderExp -%}
+        {% comment -%} <!--
+          Decide what to show in this nav-menu based on the current page.
+        --> {% endcomment -%}
+        {% if menu.group_by -%}
+          {% assign unformatted = true -%}
+          {% unless page[menu.front_matter] -%}
+            {% for group_by in menu.group_by.with -%}
+              {% if page[group_by.front_matter] -%}
+                {% assign categories = categories | where_exp: "p", "page[group_by.front_matter][group_by.property] == p[menu.front_matter][menu.group_by.property]" -%}
+                {% assign unformatted = false -%}
+                {% break -%}
+              {% endif -%}
+            {% endfor -%}
+          {% endunless -%}
+          {% if page[menu.front_matter] or unformatted -%}
+            {% assign categories = categories | where_exp: "p", "page[menu.front_matter][menu.group_by.property] == p[menu.front_matter][menu.group_by.property]" -%}
+          {% endif -%}
+        {% endif -%}
 
-    <li class="nav-item nav-item-header">
-      {% if scope %}{{ page.areas[scope] }}{% else %}General{% endif %} AIPs
-    </li>
-    {% for p in site.pages %}{% if p.aip and p.aip.scope == scope -%}
-    <li class="nav-item{% if p.url == page.url %} nav-item-active{% endif %}">
-      <a href="{{ p.url | relative_url }}">
-        <span class="aip-number">{{ p.aip.id }}</span> {{ p.title }}
-      </a>
-    </li>
-    {% endif %}{% endfor -%}
+        {% for category in categories -%}
+          <li class="nav-item{% if page[menu.front_matter] and category[menu.front_matter][menu.id] == page[menu.front_matter][menu.id] %} nav-item-active{% endif %}">
+            {% include {{ menu.include | default: "list-item.html" }} category=category menu=menu%}
+          </li>
+        {% endfor -%}
+      {% endif -%}
+  	{% endfor -%}
   </ul>
 </nav>

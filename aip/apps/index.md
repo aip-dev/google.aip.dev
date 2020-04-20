@@ -1,6 +1,8 @@
 ---
 aip_index:
   scope: apps
+  order: 30
+  display: GSuite
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js

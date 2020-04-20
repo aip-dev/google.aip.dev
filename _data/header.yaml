@@ -1,0 +1,12 @@
+type: static
+links:
+  - title: Browse AIPs
+    relative_url: /general
+  - title: News
+    relative_url: /news
+  - title: FAQ
+    relative_url: /faq
+  - title: Contributing
+    relative_url: /contributing
+  - title: API Linter
+    absolute_url: https://linter.aip.dev/
