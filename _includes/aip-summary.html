@@ -45,10 +45,10 @@
     <td>{{ page.aip.created }}</td>
   </tr>
   {% endif -%}
-  {% if page.aip.updated -%}
+  {% if changelogs -%}
   <tr>
     <td>Updated</td>
-    <td>{{ page.aip.updated }}</td>
+    <td>{{ changelogs[0].date }}</td>
   </tr>
   {% endif -%}
 </table>

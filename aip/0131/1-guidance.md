@@ -1,6 +1,13 @@
 ---
 aip_fragment:
   id: 131
+  changelog:
+    - date: 2019-10-18
+      message: Added guidance on annotations.
+    - date: 2019-08-01
+      message: |
+        Changed the examples from "shelves" to "publishers", to present a
+        better example of resource ownership.
 ---
 
 ## Guidance
