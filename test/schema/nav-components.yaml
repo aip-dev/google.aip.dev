@@ -78,15 +78,6 @@ definitions:
           the given front matter to use as the text of the navigation element
           instead of the name of the page the navigation element will link to.
         type: string
-      include:
-        description: |
-          The name of an `_includes` file to use to render the navigation
-          element. If this is not provided, the navigation menu and the
-          navigation drawer will specify the default includes file to use for
-          the given context. Regex can be viewed and tested on
-          [Regexer](https://regexr.com/4sor0).
-        type: string
-        pattern: ^([a-zA-Z0-9\\.\-\(\):])+(\.html)$
       group_by:
         description: |
           This object can be used to dynamically control the content of the nav
