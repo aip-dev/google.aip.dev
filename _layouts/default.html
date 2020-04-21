@@ -3,6 +3,12 @@
   {% include aip-head-tag.html %}
   <!-- prettier-ignore -->
   <body>
+    {%- if page.aip %}
+      {% assign fragments = site.pages | where_exp: "p", "p.aip_fragment" | where: "aip_fragment.id", page.aip.id %}
+      {% for f in fragments %}
+        {% assign content = content | append: f.content %}
+      {% endfor %}
+    {% endif -%}
     {% include aip-header.html %}
     <div class="glue-page">
       {% if page.bare %}
@@ -29,10 +35,10 @@
           <section id="aip-main" class="docs-component-main">
             {% include aip-breadcrumb.html %}
             {% if page.aip %}
-            {% if page.aip.state != 'approved' %}
-              {% include aip-state-banner.html %}
-            {% endif %}
-            <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
+              {% if page.aip.state != 'approved' %}
+                {% include aip-state-banner.html %}
+              {% endif %}
+              <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
             {% endif %}
             {{ content }}
             {% include aip-footer.html %}
