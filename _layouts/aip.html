@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}" class="glue-flexbox">
+  {% include aip-head-tag.html %}
+  <!-- prettier-ignore -->
+  <body>
+    {% comment %} <!--
+      Piece together the AIP fragments and the changelog and add them
+      to the content variable.
+
+      We add them to the content variable rather than rendering them
+      in the layout directly to ensure that the table of contents
+      handles them appropriately.
+    --> {% endcomment %}
+    {% assign fragments = site.pages | where_exp: "p", "p.aip_fragment" | where: "aip_fragment.id", page.aip.id %}
+    {% assign changelogs = '' | split: ',' %}
+    {% for f in fragments %}
+      {% assign content = content | append: f.content %}
+      {% if f.aip_fragment.changelog %}
+        {% assign changelogs = changelogs | concat: f.aip_fragment.changelog %}
+      {% endif %}
+    {% endfor %}
+    {% assign changelogs = changelogs | uniq | sort: "date" | reverse %}
+    {% assign cl_size = changelogs | size %}
+    {% if cl_size > 0 %}
+      {% capture changelog_section -%}
+## Changelog
+
+{% for cl in changelogs -%}
+- **{{ cl.date }}:** {{ cl.message }}
+{% endfor %}
+      {%- endcapture -%}
+      {% assign changelog_section = changelog_section | markdownify %}
+      {%- assign content = content | append: changelog_section %}
+    {% endif -%}
+    {% include aip-header.html %}
+    <div class="glue-page">
+      <main role="main" id="page-content">
+        {% include aip-nav.html %}
+        <section id="jump-content">
+          <aside id="aip-sidebar" class="docs-component-sidebar">
+            {% include aip-summary.html changelogs=changelogs %}
+            <section id="aip-toc" class="docs-component-sidebar-toc">
+              {% include toc.html html=content h_min=2 h_max=3 %}
+            </section>
+            <section class="docs-component-sidebar-actions">
+              <ul>
+                <li><a href="{{ site.github.repository_url }}/issues/">File Bug</a></li>
+                <li><a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">View source</a></li>
+                <li><a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">Edit this page</a></li>
+              </ul>
+            </section>
+          </aside>
+          <section id="aip-main" class="docs-component-main">
+            {% include aip-breadcrumb.html %}
+            {% if page.aip.state != 'approved' %}
+              {% include aip-state-banner.html %}
+            {% endif %}
+            <h4 class="aip-number">AIP-{{ page.aip.id }}</h4>
+            {{ content }}
+            {% include aip-footer.html %}
+          </section>
+        </section>
+      </main>
+    </div>
+    {% include aip-closing-scripts.html %}
+  </body>
+</html>

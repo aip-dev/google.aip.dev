@@ -28,6 +28,7 @@ defaults:
   - scope:
       path: aip
     values:
+      layout: aip
       permalink: none
   - scope:
       path: CONTRIBUTING.md

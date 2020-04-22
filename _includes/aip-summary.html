@@ -45,7 +45,8 @@
     <td>{{ page.aip.created }}</td>
   </tr>
   {% endif -%}
-  {% if changelogs -%}
+  {% assign updated = changelogs[0].date %}
+  {% if updated -%}
   <tr>
     <td>Updated</td>
     <td>{{ changelogs[0].date }}</td>
