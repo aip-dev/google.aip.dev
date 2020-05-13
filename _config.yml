@@ -6,6 +6,12 @@ url: https://aip.dev
 include:
   - CONTRIBUTING.md
   - README.md
+exclude:
+  - CNAME
+  - Dockerfile
+  - Gemfile*
+  - serve.sh
+  - test
 defaults:
   - scope:
       path: ''

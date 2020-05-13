@@ -4,10 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
 
-const schemas = [
-  '../assets/schema/nav-components.yaml',
-  '../assets/schema/staticGroup.yaml',
-  '../assets/schema/nav-schema.yaml',
+const schemata = [
+  './schema/nav-components.yaml',
+  './schema/static-group.yaml',
+  './schema/nav-schema.yaml',
 ];
 
 function loadSchema(src) {
@@ -15,18 +15,18 @@ function loadSchema(src) {
   return yaml.safeLoad(fs.readFileSync(path.resolve(__dirname, src)));
 }
 
-function validator(schemas) {
-  console.log(`schems list = ${JSON.stringify(schemas)}`);
+function validator(schemata) {
+  console.log(`schems list = ${JSON.stringify(schemata)}`);
   console.log(
-    `sliced = ${JSON.stringify(schemas.slice(0, schemas.length - 1))}`
+    `sliced = ${JSON.stringify(schemata.slice(0, schemata.length - 1))}`
   );
-  const ajv = schemas
-    .slice(0, schemas.length - 1)
+  const ajv = schemata
+    .slice(0, schemata.length - 1)
     .reduce((acc, s) => acc.addSchema(loadSchema(s)), new Ajv());
-  console.log(`create validator with ${schemas[schemas.length - 1]}`);
-  const validator = ajv.compile(loadSchema(schemas[schemas.length - 1]));
+  console.log(`create validator with ${schemata[schemata.length - 1]}`);
+  const validator = ajv.compile(loadSchema(schemata[schemata.length - 1]));
 
-  return function(file) {
+  return function (file) {
     console.log(`loading file from ${file}...`);
     const data = yaml.safeLoad(fs.readFileSync(path.resolve(__dirname, file)));
     const result = validator(data);
@@ -36,14 +36,14 @@ function validator(schemas) {
 }
 
 describe('nav.yaml', () => {
-  const navValidation = validator(schemas);
+  const navValidation = validator(schemata);
   it('should conform to the nav-schema', () => {
     navValidation('../_data/nav.yaml');
   });
 });
 
 describe('header.yaml', () => {
-  const headerValidation = validator(schemas.slice(0, schemas.length - 2));
+  const headerValidation = validator(schemata.slice(0, schemata.length - 2));
   it('should conform to the staticMenuDef schema', () => {
     headerValidation('../_data/header.yaml');
   });

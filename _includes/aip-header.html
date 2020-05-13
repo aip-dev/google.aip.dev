@@ -25,13 +25,13 @@
         <nav class="glue-header__link-bar">
           <ul id="list-1" class="glue-header__list">
             {% for link in site.data.header.links %}
-              {% if link.relativeUrl %}
-                <li class="glue-header__item{% if page.url == link.relativeUrl %} glue-header--is-active{% endif %}">
-                  <a class="glue-header__link" href="{{ link.relativeUrl | relative_url }}" aria-level="1">{{ link.title }}</a>
+              {% if link.relative_url %}
+                <li class="glue-header__item{% if page.url == link.relative_url %} glue-header--is-active{% endif %}">
+                  <a class="glue-header__link" href="{{ link.relative_url | relative_url }}" aria-level="1">{{ link.title }}</a>
                 </li>
               {% else %}
                 <li class="glue-header__item">
-                  <a class="glue-header__link" href="{{ link.absoluteUrl }}" target="_blank" aria-level="1">
+                  <a class="glue-header__link" href="{{ link.absolute_url }}" target="_blank" aria-level="1">
                     {{ link.title }}
                     <svg role="img" class="glue-icon glue-icon--18px">
                       <use xlink:href="{{ '/assets/images/glue-icons.svg#open-in-new' | relative_url }}"></use>
