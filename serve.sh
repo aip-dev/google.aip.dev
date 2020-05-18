@@ -34,7 +34,10 @@ if [[ $* == *--incremental* ]]; then
 fi
 
 # Run the image.
+# Add '-e PAGES_API_URL=https://[domain]/api/v3/ \' if connecting to a
+# GitHub Enterprise AIP repository
 docker run --rm \
+  -e PAGES_REPO_NWO=googleapis/aip \
   -p 4000:4000/tcp   -p 4000:4000/udp   \
   -p 35729:35729/tcp -p 35729:35729/udp \
   --mount type=bind,source=`pwd`,destination=/code/${READ_ONLY} \
