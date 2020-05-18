@@ -1,0 +1,16 @@
+- type: matter_group
+  title: AIPs By Category
+  front_matter: aip_index
+  id: scope
+  order_by: order
+  display_name: display
+- type: matter_group
+  title: AIPs
+  front_matter: aip
+  id: id
+  order_by: id
+  group_by:
+    property: scope
+    with:
+      - front_matter: aip_index
+        property: scope

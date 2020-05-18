@@ -1,11 +1,8 @@
 @import 'colors';
-@import 'glue';
 
 #aip-main {
   table {
     &:not(.no-h) {
-      @extend .glue-table--datatable;
-
       &.aip-listing {
         margin-top: 10px;
 
