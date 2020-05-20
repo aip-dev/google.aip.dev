@@ -12,14 +12,4 @@ permalink: /general
 
 The following AIPs apply to work across all APIs generally.
 
-### Meta-AIPs (AIPs about AIPs)
-
-{% include aip-listing.html start=1 end=99 %}
-
-### Process
-
-{% include aip-listing.html start=100 end=119 %}
-
-### Guidance
-
-{% include aip-listing.html start=120 end=999 %}
+{% include aip-listing.html start=1 end=999 %}
