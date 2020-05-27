@@ -28,7 +28,7 @@ usage.
 There are 2 types of policies, _dedicated_ and _shared_.
 
 A _dedicated_ policy shares an identifier with the resource it is bound to. IAM
-policies in GCP are an example of dedicated polices. Users "set" the policy on
+policies in GCP are an example of dedicated polices. Users "set" the policy
 directly on the resource they intend it to apply to, and all children of the
 resource inherit the policy.
 
