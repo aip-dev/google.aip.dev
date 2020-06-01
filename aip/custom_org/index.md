@@ -5,7 +5,7 @@ aip_index:
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
-permalink: custom_org
+permalink: /custom_org
 ---
 
 # Actions on Google AIPs
