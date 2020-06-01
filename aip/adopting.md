@@ -25,14 +25,6 @@ don't want this to conflict with a future AIP (e.g., if you make this AIP-1234,
 maybe that AIP will get written in the future and then you'll have a conflict).
 So what do you do?
 
-## The 9000 block
-
-Much like the Unicode specification, we've reserved the 9000 block of AIP
-numbers (that is, AIP-9000 through AIP-9999) to be for "internal use". This
-means that these AIPs will never have public documentation and are free for
-private companies to use for their own API guidance. As a result, all you have
-to do is write your AIPs as usual and give them a number in the 9000 block.
-
 ## Custom AIP domains
 
 We're working on a separate fork-able repository that you can copy and use as
@@ -45,6 +37,10 @@ redirect for all well-known AIPs and serve all internal AIPs from your own
 repository. Once you've done that, you can cite all AIPs specifically using
 that domain name (e.g., `aip.example.com/1234`) and you'll always get sent to
 the right place.
+
+While it's possible to create your own AIP IDs, it is recommended that you
+maintain the same AIP IDs that are used in aip.dev. This will allow your AIPs
+to be comparable across multiple AIP implementations.
 
 ## Forking AIP
 
@@ -104,6 +100,37 @@ can be viewed at `assets/schemas/static_group.yaml`.
 The `tests` folder contains an npm test module that will validate your data
 files. Running these tests requires npm and mocha. Once these are installed
 that tests can be ran with the `npm test` command.
+
+## AIP Extensions
+
+Sometimes an organization within a domain may want to adopt most or all of the
+AIPs in a domain, and also need the ability to make some adjustments. This is
+considered an extension of an AIP domain, and is expected to reside within the
+domain.
+
+AIP extensions alter an AIP by providing a new file that should be displayed
+when viewing that AIP ID within the organization's context.
+
+AIP extensions are expected to follow the same rules regarding AIP numbering
+when creating custom AIPs that are specific to their context.
+
+When extending an AIP domain, an organization context **must** create a new
+folder in the `aip` directory containing all of their altered or custom AIP
+files. Additionally they must create an `index.md` file with the following
+front-matter:
+
+```
+aip_index:
+  scope: <unique scope for domain>
+  order: <number that determines order in nav>
+exclude_from_search: true
+js: /assets/js/aip/aip-index.js
+permalink: /<unique scope for domain>
+```
+
+Note that the value of `scope` will be used to identify the context under which
+AIPs are being viewed and will determine the content of the nav menu and how
+references to other AIPs are resolved.
 
 <!-- prettier-ignore-start -->
 [this github issue]: https://github.com/googleapis/aip/issues/98

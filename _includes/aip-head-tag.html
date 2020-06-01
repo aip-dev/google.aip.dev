@@ -22,9 +22,36 @@
     });
   </script>
   <script type="text/javascript" src="{{ '/assets/js/global.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+  <script type="text/javascript">
+    
+  </script>
   {% for js_script in page.js -%}
   <script type="text/javascript" src="{{ js_script | relative_url }}?v={{ site.github.build_revision }}"></script>
   {% endfor -%}
+  {% if page.aip_index %}
+  <script type="text/javascript">
+    $.when($.ready).then(() => {
+      localStorage.setItem("scope", "{{ page.aip_index.scope }}")
+      console.log(`setting scope to ${localStorage.getItem("scope")}`)
+    })
+  </script>
+  {% else %}
+  <script type="text/javascript">
+    $.when($.ready).then(() => {
+      const content = document.getElementById("aip-main")
+      const anchors = content.getElementsByTagName("a")
+      //console.log(`anchors.length = ${anchors.length}`)
+      let href
+      for(i = 0; i < anchors.length; i++) {
+        href = anchors[i].getAttribute("href")
+        console.log(href)
+      }
+      if(localStorage.getItem("scope")) {
+        console.log(`scope = ${localStorage.getItem("scope")}`)
+      }
+    })
+  </script>
+  {% endif %}
   {% seo %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>

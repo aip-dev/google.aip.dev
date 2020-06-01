@@ -16,6 +16,7 @@ defaults:
   - scope:
       path: ''
     values:
+      layout: default
       areas:
         aog: Actions on Google
         apps: GSuite
@@ -40,3 +41,8 @@ defaults:
 tipue_search:
   include:
     pages: true
+collections:
+  custom_org:
+    output: true
+    collection_dir: /aip/custom_org
+    permalink: /:collection/:name
