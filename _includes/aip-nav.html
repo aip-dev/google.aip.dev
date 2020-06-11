@@ -40,6 +40,7 @@
         {% endif -%}
 
         {% for category in categories -%}
+          {% if category[menu.front_matter].hidden != true %}
           <li class="nav-item{% if page[menu.front_matter] and category[menu.front_matter][menu.id] == page[menu.front_matter][menu.id] %} nav-item-active{% endif %}">
             <a href="{{ category.url | relative_url }}">
                 {% if menu.front_matter == 'aip' -%}
@@ -50,6 +51,7 @@
                 {{ category[menu.front_matter][menu.display_name] | default: category.title }}
             </a>
           </li>
+          {% endif %}
         {% endfor -%}
       {% endif -%}
   	{% endfor -%}
