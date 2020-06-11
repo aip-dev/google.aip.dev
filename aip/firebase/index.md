@@ -3,7 +3,6 @@ aip_index:
   scope: firebase
   order: 25
   display: Firebase
-  hidden: true
 exclude_from_search: true
 js:
   - /assets/js/aip/aip-index.js
@@ -16,7 +15,7 @@ The following AIPs apply to work on APIs on Firebase.
 
 ### Firebase APIs
 
-{% include aip-listing.html start=3200 end=3269 %}
+{% include aip-listing.html start=3200 end=3259 %}
 
 ### Platform-Specific Guidance
 
