@@ -1,0 +1,139 @@
+// This is forked. Do not edit.
+$glue-greys: (
+  0: #fff,
+  25: #f1f1f1,
+  50: #f8f9fa,
+  100: #f1f3f4,
+  200: #e8eaed,
+  300: #dadce0,
+  400: #bdc1c6,
+  500: #9aa0a6,
+  600: #80868b,
+  700: #5f6368,
+  800: #3c4043,
+  900: #202124,
+);
+$glue-blues: (
+  50: #e8f0fe,
+  100: #d2e3fc,
+  200: #aecbfa,
+  300: #8ab4f8,
+  400: #669df6,
+  500: #4285f4,
+  600: #1a73e8,
+  700: #1967d2,
+  800: #185abc,
+  900: #174ea6,
+);
+$glue-greens: (
+  50: #e6f4ea,
+  100: #ceead6,
+  200: #a8dab5,
+  300: #81c995,
+  400: #5bb974,
+  500: #34a853,
+  600: #1e8e3e,
+  700: #188038,
+  800: #137333,
+  900: #0d652d,
+);
+$glue-reds: (
+  50: #fce8e6,
+  100: #fad2cf,
+  200: #f6aea9,
+  300: #f28b82,
+  400: #ee675c,
+  500: #ea4335,
+  600: #d93025,
+  700: #c5221f,
+  800: #b31412,
+  900: #a50e0e,
+);
+$glue-yellows: (
+  50: #fef7e0,
+  100: #feefc3,
+  200: #fde293,
+  300: #fdd663,
+  400: #fcc934,
+  500: #fbbc04,
+  600: #f9ab00,
+  700: #f29900,
+  800: #ea8600,
+  900: #e37400,
+);
+$glue-purples: (
+  900: #681da8,
+);
+// mws color spec 2.0
+$glue-grey-0: map-get($glue-greys, 0);
+$glue-grey-25: map-get($glue-greys, 25);
+$glue-grey-50: map-get($glue-greys, 50);
+$glue-grey-100: map-get($glue-greys, 100);
+$glue-grey-200: map-get($glue-greys, 200);
+$glue-grey-300: map-get($glue-greys, 300);
+$glue-grey-400: map-get($glue-greys, 400);
+$glue-grey-500: map-get($glue-greys, 500);
+$glue-grey-600: map-get($glue-greys, 600);
+$glue-grey-700: map-get($glue-greys, 700);
+$glue-grey-800: map-get($glue-greys, 800);
+$glue-grey-900: map-get($glue-greys, 900);
+$glue-blue-50: map-get($glue-blues, 50);
+$glue-blue-100: map-get($glue-blues, 100);
+$glue-blue-200: map-get($glue-blues, 200);
+$glue-blue-300: map-get($glue-blues, 300);
+$glue-blue-400: map-get($glue-blues, 400);
+$glue-blue-500: map-get($glue-blues, 500);
+$glue-blue-600: map-get($glue-blues, 600);
+$glue-blue-700: map-get($glue-blues, 700);
+$glue-blue-800: map-get($glue-blues, 800);
+$glue-blue-900: map-get($glue-blues, 900);
+$glue-green-50: map-get($glue-greens, 50);
+$glue-green-100: map-get($glue-greens, 100);
+$glue-green-200: map-get($glue-greens, 200);
+$glue-green-300: map-get($glue-greens, 300);
+$glue-green-400: map-get($glue-greens, 400);
+$glue-green-500: map-get($glue-greens, 500);
+$glue-green-600: map-get($glue-greens, 600);
+$glue-green-700: map-get($glue-greens, 700);
+$glue-green-800: map-get($glue-greens, 800);
+$glue-green-900: map-get($glue-greens, 900);
+$glue-red-50: map-get($glue-reds, 50);
+$glue-red-100: map-get($glue-reds, 100);
+$glue-red-200: map-get($glue-reds, 200);
+$glue-red-300: map-get($glue-reds, 300);
+$glue-red-400: map-get($glue-reds, 400);
+$glue-red-500: map-get($glue-reds, 500);
+$glue-red-600: map-get($glue-reds, 600);
+$glue-red-700: map-get($glue-reds, 700);
+$glue-red-800: map-get($glue-reds, 800);
+$glue-red-900: map-get($glue-reds, 900);
+$glue-yellow-50: map-get($glue-yellows, 50);
+$glue-yellow-100: map-get($glue-yellows, 100);
+$glue-yellow-200: map-get($glue-yellows, 200);
+$glue-yellow-300: map-get($glue-yellows, 300);
+$glue-yellow-400: map-get($glue-yellows, 400);
+$glue-yellow-500: map-get($glue-yellows, 500);
+$glue-yellow-600: map-get($glue-yellows, 600);
+$glue-yellow-700: map-get($glue-yellows, 700);
+$glue-yellow-800: map-get($glue-yellows, 800);
+$glue-yellow-900: map-get($glue-yellows, 900);
+// extended color palette
+$glue-purple-900: map-get($glue-purples, 900);
+$glue-color-name-to-palette: (
+  'grey': $glue-greys,
+  'blue': $glue-blues,
+  'green': $glue-greens,
+  'red': $glue-reds,
+  'yellow': $glue-yellows,
+  'purple': $glue-purples,
+);
+// Generic color variables - common colors for components.
+$glue-color-primary-black: $glue-grey-900 !default;
+$glue-color-border: $glue-grey-300 !default;
+$glue-color-focus-background: $glue-grey-100 !default;
+$glue-color-link-resting: $glue-blue-600 !default;
+$glue-color-link-active: $glue-blue-900 !default;
+$glue-color-link-visited: $glue-purple-900 !default;
+$glue-color-focus-background-rgba: rgba($glue-grey-900, 0.06) !default;
+$glue-white: $glue-grey-0 !default;
+$glue-black: #000 !default;

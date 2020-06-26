@@ -1,0 +1,9 @@
+---
+changelog:
+  - date: 2020-10-18
+    message: Added guidance on annotations.
+  - date: 2020-04-15
+    message: Added guidance on List permissions.
+  - date: 2019-05-29
+    message: |
+      Added an explicit prohibition on arbitrary fields in standard methods.

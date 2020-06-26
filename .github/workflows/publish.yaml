@@ -1,0 +1,26 @@
+---
+name: publish
+on:
+  push:
+    branches: master
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    container: python:3.8
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install system dependencies.
+        run: apt-get update && apt-get install -y rsync
+      - name: Install Python dependencies.
+        run: pip install -r site/requirements.txt
+      - name: Build the static site.
+        run: python generator/publisher.py ../out/
+        working-directory: site
+        env:
+          PYTHONPATH: .:${{ env.PYTHONPATH }}
+      - name: Publish the static site to GitHub Pages.
+        uses: jamesives/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: out

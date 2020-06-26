@@ -1,0 +1,111 @@
+<!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="{{ site.relative_uri }}/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="{{ site.relative_uri }}/static/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            {% for link in site.data.header.links %}
+              {% if link.relative_url is defined %}
+                <li class="glue-header__item{% if site.path == link.relative_url %} glue-header--is-active{% endif %}">
+                  <a class="glue-header__link" href="{{ site.relative_uri }}{{ link.relative_url }}" aria-level="1">{{ link.title }}</a>
+                </li>
+              {% else %}
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="{{ link.absolute_url }}" target="_blank" aria-level="1">
+                    {{ link.title }}
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="{{ site.relative_uri }}/static/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="{{ site.relative_uri }}/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="{{ site.relative_uri }}/static/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="{{ site.base_url }}" class="glue-button glue-button--high-emphasis">
+          <img src="{{ site.relative_uri }}/static/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="{{ site.relative_uri }}/static/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="{{ site.relative_uri }}/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="{{ site.relative_uri }}/static/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="{{ site.repo_url }}" class="glue-button glue-button--high-emphasis">
+          <img src="{{ site.relative_uri }}/static/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>

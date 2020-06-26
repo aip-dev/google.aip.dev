@@ -1,0 +1,11 @@
+@import 'imports/colors';
+
+footer {
+  border-top: 1px solid $glue-grey-300;
+  color: $glue-grey-700;
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 10px;
+  margin-top: 25px;
+  padding-top: 10px;
+}

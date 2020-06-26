@@ -5,7 +5,7 @@ aip_index:
   display: Google Cloud Platform
 exclude_from_search: true
 js:
-  - /assets/js/aip/aip-index.js
+  - /static/js/aip/aip-index.js
 permalink: /cloud
 ---
 

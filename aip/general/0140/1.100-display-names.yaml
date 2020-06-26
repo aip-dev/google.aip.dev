@@ -1,0 +1,4 @@
+---
+changelog:
+  - date: 2020-01-30
+    message: Added guidance around `display_name` and `title`.

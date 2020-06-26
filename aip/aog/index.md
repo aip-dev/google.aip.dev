@@ -1,10 +1,10 @@
 ---
 aip_index:
   scope: aog
-  order: 20 
+  order: 20
 exclude_from_search: true
 js:
-  - /assets/js/aip/aip-index.js
+  - /static/js/aip/aip-index.js
 permalink: /aog
 ---
 

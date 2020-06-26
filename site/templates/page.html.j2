@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html.j2' %}
+
+{% block title -%}
+{{ page.title }}
+{%- endblock %}
+
+{% block content %}
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  {# Table of contents -#}
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    {{ page.content.toc }}
+  </section>
+
+  {# Action links -#}
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="{{ site.repo_url }}/issues/">File Bug</a></li>
+      <li><a href="{{ site.repo_url }}/blob/master{{ page.repo_path }}">View source</a></li>
+      <li><a href="{{ site.repo_url }}/edit/master{{ page.repo_path }}">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  {% with title = page.title -%}
+    {% include 'includes/breadcrumb.html.j2' %}
+  {% endwith -%}
+  {{ page.content.html }}
+
+  {% if 'footer' in page.config -%}
+    <footer>{{ page.config.footer | markdown }}</footer>
+  {% else -%}
+    {% include 'includes/footer.html.j2' %}
+  {% endif -%}
+</section>
+{% endblock %}

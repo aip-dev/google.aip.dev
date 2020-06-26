@@ -1,0 +1,13 @@
+{# This file generates the search content used by Tipur Search.
+   The actual search implementation is in site/static/js/search/
+   See https://tipue.com/search -#}
+var tipuesearch = {'pages': [
+{% for aip in site.aips.values() -%}
+  {
+    'title': {{ aip.title | striptags | tojson }},
+    'text': {{ aip.content.html | striptags | tojson }},
+    'tags': '',
+    'url': '{{ site.relative_uri }}{{ aip.relative_uri }}',
+  },
+{% endfor -%}
+]};

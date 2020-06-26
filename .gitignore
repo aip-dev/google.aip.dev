@@ -6,3 +6,6 @@ _site
 # npm
 node_modules/
 */package-lock.json
+
+# mypy
+.mypy_cache

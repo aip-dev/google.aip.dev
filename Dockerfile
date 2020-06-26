@@ -1,31 +1,24 @@
-FROM ruby:2.6-alpine
+FROM python:3.8-alpine
 
 # Copy the existing code into the Docker image.
 #
 # This will copy everything *at build time* (not at runtime), so it is
 # still important to use `--mount` to get a reasonable development loop.
 # This makes the image work for both purposes, though.
-COPY . /code/
-WORKDIR /code/
+COPY site/requirements.txt /code/site/requirements.txt
+WORKDIR /code/site/
 
-# Install bundler and gems for this project.
-RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc && \
-  apk add --no-cache alpine-sdk && \
-  gem update --system && \
-  gem install bundler && \
-  bundle install && \
-  apk del --no-cache alpine-sdk && \
-  rm ~/.gemrc
+# Install Python packages for this project.
+RUN pip install -r requirements.txt
 
-# Install git. (Jekyll expects it.)
-RUN apk add --no-cache git
+# Set environment variables.
+ENV PYTHONPATH $PYTHONPATH:/code/site/
+ENV FLASK_ENV development
 
 # Expose appropriate ports.
 EXPOSE 4000
 EXPOSE 35729
 
-# Run Jekyll's dev server.
+# Run Flask's dev server.
 # Reminder: Use -p with `docker run` to publish ports.
-ENTRYPOINT ["bundle", "exec", "jekyll", "serve", \
-  "--destination", "/site", \
-  "--host", "0.0.0.0"]
+ENTRYPOINT ["flask", "run", "--host", "0.0.0.0", "--port", "4000"]

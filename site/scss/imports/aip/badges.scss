@@ -1,0 +1,18 @@
+@import 'imports/colors';
+
+.aip-state {
+  border-radius: 4px;
+  font-size: 0.75em;
+  margin-left: 10px;
+  padding: 2px 5px;
+}
+
+.aip-state-reviewing {
+  background-color: $glue-blue-50;
+  border: 1px solid $glue-blue-200;
+}
+
+.aip-state-draft {
+  background-color: $glue-yellow-50;
+  border: 1px solid $glue-yellow-200;
+}

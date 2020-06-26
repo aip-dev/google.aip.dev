@@ -1,0 +1,6 @@
+---
+changelog:
+  - date: 2020-05-19
+    message: Removed requirement to document ordering behavior.
+  - date: 2019-07-30
+    message: Added guidance about documenting the ordering behavior.

@@ -5,7 +5,7 @@ aip_index:
   display: Client Libraries
 exclude_from_search: true
 js:
-  - /assets/js/aip/aip-index.js
+  - /static/js/aip/aip-index.js
 permalink: /client-libraries
 ---
 

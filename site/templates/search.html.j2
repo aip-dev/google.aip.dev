@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html.j2' %}
+
+{% block title -%}
+Search
+{%- endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ site.relative_uri }}/static/css/search.css">
+<style type="text/css">
+  .tipue_search_content_url a:before {
+    content: '{{ site.base_url }}{{ site.relative_uri }}';
+  }
+</style>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ site.relative_uri }}/static/js/search/tipuesearch_content.js"></script>
+<script type="text/javascript" src="{{ site.relative_uri }}/static/js/search/tipuesearch_set.js"></script>
+<script type="text/javascript" src="{{ site.relative_uri }}/static/js/search/tipuesearch.min.js"></script>
+<script type="text/javascript" src="{{ site.relative_uri }}/static/js/search/pagination.js"></script>
+{% endblock %}
+
+{% block content %}
+<section id="aip-main" class="docs-component-main">
+<form method="GET" action="{{ site.relative_uri }}/search">
+  <div class="primary-search">
+    <input
+      type="text"
+      name="q"
+      id="tipue_search_input"
+      pattern=".{3,}"
+      title="At least 3 characters"
+      required
+    />
+    <button type="submit" class="glue-button glue-button--high-emphasis">
+      <div>Search</div>
+    </button>
+  </div>
+</form>
+
+<h3 class="search-results-header">Search results</h3>
+<div id="tipue_search_content"></div>
+</section>
+
+<script>
+  $.when($.ready).then(() =>
+    $('#tipue_search_input').tipuesearch({
+      wholeWords: false,
+    })
+  );
+</script>
+{% endblock %}

@@ -1,0 +1,69 @@
+@import 'imports/colors.scss';
+@import 'imports/footer.scss';
+
+.aip-breadcrumbs,
+#aip-nav,
+#aip-nav-mobile,
+#aip-sidebar,
+.glue-header,
+.glue-page svg:first-child,
+.no-print {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin: 0.5em 0em 0em 0em;
+  padding: 0px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h4 + h1 {
+  margin-top: 0in;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.444;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Roboto Mono', 'Bitstream Vera Sans Mono',
+    'Courier New', Courier, monospace;
+  font-weight: 300;
+}
+
+div.highlighter-rouge {
+  background: $glue-grey-100;
+  border: 1px solid $glue-grey-300;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+  padding-left: 0.2in;
+  padding-right: 0.2in;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

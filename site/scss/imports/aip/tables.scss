@@ -1,0 +1,84 @@
+@import 'imports/colors';
+
+#aip-main {
+  table {
+    &:not(.no-h) {
+      &.aip-listing {
+        margin-top: 10px;
+
+        tr:first-child {
+          border-top: 2px solid $glue-grey-500;
+        }
+
+        th {
+          display: none;
+        }
+
+        td {
+          text-align: left;
+
+          // The Number column.
+          &:first-child {
+            text-align: right;
+            width: 70px;
+          }
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        tr td {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  table#aip-summary {
+    float: right;
+  }
+}
+
+table#aip-summary {
+  background-color: $glue-grey-50;
+  border: 1px solid $glue-grey-200;
+  margin-top: 2px;
+  margin-left: 10px;
+  width: 220px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+
+  th {
+    border: 0px;
+    color: $glue-grey-800;
+    font-size: 14px;
+    padding: 8px 0px;
+    text-align: center;
+  }
+
+  tr {
+    td {
+      font-size: 12px;
+      padding: 2px 5px;
+
+      &:first-child {
+        color: $glue-grey-700;
+        font-weight: bold;
+        padding-left: 12px;
+        width: 60px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    &:last-child td {
+      padding-bottom: 8px;
+    }
+  }
+}

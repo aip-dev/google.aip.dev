@@ -1,0 +1,244 @@
+@import 'imports/colors';
+
+strong.spec-directive {
+  &.spec-must {
+    color: $glue-red-700;
+  }
+
+  &.spec-should {
+    color: #f57c00;
+  }
+
+  &.spec-may {
+    color: $glue-green-700;
+  }
+}
+
+code,
+.highlighter-rouge {
+  background: transparent;
+  color: inherit;
+  padding: 0px;
+}
+
+.highlight {
+  .hll {
+    background-color: #ffffcc;
+  }
+
+  // --------------------------------------------
+  // Common things (comments, keywords, literals)
+  // --------------------------------------------
+
+  // Built-in: Pseudo (.bp)
+  .bp {
+    color: #03a9f4;
+  }
+
+  // Comment (.c)
+  // Single-line comment (.c1)
+  // Multi-line comment (.cm)
+  .c,
+  .c1,
+  .cm {
+    color: $glue-green-700;
+    font-style: italic;
+  }
+
+  // Keyword (.k)
+  // Keyword: Constant (.kc)
+  // Keyword: Declaration (.kd)
+  // Keyword: Namespace (.kn)
+  // Keyword: Pseudo (.kp)
+  // Keyword: Reserved (.kr)
+  .k,
+  .kc,
+  .kd,
+  .kn,
+  .kp,
+  .kr {
+    color: $glue-blue-900;
+    font-weight: bold;
+  }
+
+  // Keyword: Type (.kt)
+  .kt {
+    color: #ef6c00;
+  }
+
+  // Name: Attribute
+  .na {
+    color: #ad1457;
+  }
+
+  // Name: Built-in (.nb)
+  .nb {
+    @extend .kt;
+  }
+
+  // Name: Class (.nc)
+  .nc {
+    color: #fb8c00;
+  }
+
+  // Name: Key (.nk)
+  .nk {
+    color: #6a1b9a;
+  }
+
+  // Literal: Number (.m)
+  // Literal: Float (.mf)
+  // Literal: Hex (.mh)
+  // Literal: Integer (.mi)
+  // Literal: Octal (.mo)
+  // Literal: Long (.il)
+  .m,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .il {
+    color: #03a9f4;
+  }
+
+  // String (.s)
+  // Backtick string (.sb)
+  // Docstring (.sd)
+  // Double-quoted string (.s2)
+  // Heredoc (.sh)
+  // Single-quoted string (.s1)
+  // String interpolation (.si)
+  // String: Other (.sx)
+  .s,
+  .sb,
+  .sd,
+  .sh,
+  .si,
+  .sx,
+  .s1,
+  .s2 {
+    color: $glue-blue-500;
+  }
+
+  // Operator: Symbol
+  .o {
+    font-weight: bold;
+  }
+
+  // Operator: Word
+  .ow {
+    @extend .k;
+  }
+
+  // --------
+  // Generics
+  // --------
+
+  // Generic: Deleted
+  .gd {
+    color: black;
+    background-color: $glue-red-50;
+  }
+
+  // Generic: Emphasis
+  .ge {
+    font-style: italic;
+  }
+
+  // Generic: Error (.gr)
+  // Generic: Traceback (.gt)
+  .gr,
+  .gt {
+    color: $glue-red-900;
+  }
+
+  // Generic: Heading
+  .gh {
+    color: $glue-grey-500;
+  }
+
+  // Generic: Inserted
+  .gi {
+    color: black;
+    background-color: $glue-green-50;
+  }
+
+  // Generic: Output
+  .go {
+    color: $glue-grey-600;
+  }
+
+  // Generic: Prompt
+  .gp {
+    color: $glue-grey-800;
+  }
+
+  // Generic: Strong
+  .gs {
+    font-weight: bold;
+  }
+
+  // Generic: Subheading
+  .gu {
+    color: $glue-grey-400;
+  }
+
+  // ---------------
+  // Uncommon things
+  // ---------------
+
+  // Preprocessor comment
+  .cp {
+    color: #008080;
+  }
+
+  // Special comment
+  .cs {
+    @extend .c;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  // Error
+  .err {
+    color: $glue-red-700;
+    background-color: $glue-red-100;
+  }
+
+  // Name: Tag
+  .nt {
+    @extend .k;
+  }
+
+  // Text: Whitespace
+  .w {
+    color: $glue-grey-400;
+  }
+
+  // Literal: Char
+  .sc {
+    @extend .m;
+  }
+
+  // String: Escape sequence
+  .se {
+    color: #03a9f4;
+  }
+
+  // String: Regex
+  .sr {
+    color: $glue-blue-600;
+  }
+
+  // Literal: Symbol
+  .ss {
+    @extend .m;
+  }
+
+  // -----------------
+  // Language-specific
+  // -----------------
+  .protobuf-annotation {
+    color: $glue-yellow-600;
+  }
+}

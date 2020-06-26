@@ -1,0 +1,4 @@
+---
+changelog:
+  - date: 2020-03-24
+    message: Added guidance around conflicting field and message names.

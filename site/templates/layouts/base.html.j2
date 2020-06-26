@@ -1,0 +1,62 @@
+{% import 'includes/nav.html.j2' as nav -%}
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>{%- block title -%}{{- title -}}{%- endblock -%}</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="{{ site.relative_uri }}/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.relative_uri }}/static/css/style.css?v={{ site.revision }}">
+    {% block css -%}
+    {% endblock -%}
+    <link rel="stylesheet" type="text/css" media="print" href="{{ site.relative_uri }}/static/css/print.css?v={{ site.revision }}">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="{{ site.relative_uri }}/static/js/global.js?v={{ site.revision }}"></script>
+    {% block js -%}
+    {% endblock -%}
+    {# {% seo %} -- port this #}
+    {# Global site tag (gtag.js) - Google Analytics -#}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    {% include 'includes/header.html.j2' %}
+    <div class="glue-page">
+      {% block main %}
+      <main role="main" id="page-content">
+        {% block nav -%}
+        {{ nav.render_nav(site) -}}
+        {% endblock -%}
+        <section id="jump-content">
+          {% block content %}
+          {% endblock %}
+        </section>
+      </main>
+      {% endblock %}
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

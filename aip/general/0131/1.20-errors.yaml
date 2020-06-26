@@ -1,0 +1,4 @@
+---
+changelog:
+  - date: 2019-08-12
+    message: Added guidance for error cases.

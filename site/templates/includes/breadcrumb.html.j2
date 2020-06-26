@@ -1,0 +1,31 @@
+<section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std{% if site.path == '/home' %} no-breadcrumb{% endif %}"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      {% if aip is defined %}
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="{{ site.relative_uri }}/{{ aip.scope }}">
+          {{ site.scopes[aip.scope].title }} AIPs
+        </a>
+      </li>
+      {% elif newsletter is defined %}
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/news">
+          News
+        </a>
+      </li>
+      {% endif %}
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        {{ title }}
+      </li>
+    </ol>
+  </nav>
+</section>

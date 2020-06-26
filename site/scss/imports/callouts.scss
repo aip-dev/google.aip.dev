@@ -1,0 +1,64 @@
+@import 'imports/colors';
+
+.callout {
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px 20px;
+  color: $glue-grey-800;
+}
+
+.important {
+  @extend .callout;
+  background-color: $glue-yellow-50;
+  border: 1px solid $glue-yellow-200;
+}
+
+.note {
+  @extend .callout;
+  background-color: $glue-blue-50;
+  border: 1px solid $glue-blue-200;
+}
+
+.tldr,
+.summary {
+  @extend .callout;
+  background-color: $glue-green-50;
+  border: 1px solid $glue-green-200;
+}
+
+.warning {
+  @extend .callout;
+  background-color: $glue-red-50;
+  border: 1px solid $glue-red-200;
+}
+
+code {
+  font-size: 90% !important;
+}
+
+.docs-component-main {
+  blockquote {
+    border-left: 4px solid $glue-grey-500;
+    margin: 20px;
+    padding-left: 20px;
+  }
+
+  code {
+    font-size: 0.9em;
+  }
+
+  pre {
+    font-size: 14px;
+    margin: 20px;
+    padding: 9px 14px;
+
+    code {
+      color: $glue-grey-900;
+    }
+  }
+}
+
+.digraph {
+  text-align: center;
+}

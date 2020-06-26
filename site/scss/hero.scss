@@ -1,0 +1,57 @@
+@import 'imports/colors';
+
+.aip-hero {
+  .aip-hero-banner {
+    margin-top: 3em;
+    border-bottom: 1px solid $glue-grey-300;
+
+    .aip-hero-title {
+      font-size: 250%;
+      font-weight: bold;
+    }
+    .aip-hero-subtitle {
+      font-size: 125%;
+      margin-top: 1em;
+    }
+
+    .aip-buttons {
+      padding-top: 2em;
+      padding-bottom: 2em;
+
+      > a {
+        margin-right: 1em;
+      }
+    }
+  }
+
+  .aip-landing-content {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid $glue-grey-300;
+
+    h1 {
+      font-size: 160%;
+      font-weight: bold;
+    }
+    p {
+      font-size: 115%;
+    }
+  }
+
+  .aip-shortcuts {
+    padding-top: 1em;
+
+    .aip-shortcut {
+      padding-top: 1em;
+
+      > h1 {
+        font-weight: bold;
+        font-size: 120%;
+      }
+
+      > a {
+        margin-top: 1em;
+      }
+    }
+  }
+}

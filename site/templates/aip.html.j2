@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html.j2' %}
+
+{% block title -%}
+AIP-{{ aip.id }}: {{ aip.title }}
+{%- endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ site.relative_uri }}/static/js/proto-syntax.js"></script>
+{% if aip.js_scripts is defined -%}
+{% for js_script in aip.js_scripts -%}
+<script type="text/javascript" src="{{ site.relative_uri }}{{ js_script }}?v={{ site.revision }}"></script>
+{% endfor -%}
+{% endif -%}
+{% endblock %}
+
+{% block nav %}
+{{ nav.render_nav(site, scope_code=aip.scope) -}}
+{% endblock %}
+
+{% block content %}
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  {# Wikipedia-style info table. -#}
+  <table id="aip-summary">
+    <tr><th colspan="2">{{ aip.title }}</th></tr>
+    <tr><td>Number</td><td>{{ aip.id }}</td></tr>
+    {% with permalink = site.base_url + aip.relative_uri -%}
+    <tr><td>Permalink</td><td><a href="{{ permalink }}">{{ permalink.lstrip('htps')[3:] }}</a></td></tr>
+    {% endwith -%}
+    {% if aip.scope != 'general' -%}
+    <tr><td>Scope</td><td>{{ site.scopes[aip.scope].title }}</td></tr>
+    {% endif -%}
+    {% if aip.state -%}
+    <tr><td>State</td><td>{{ aip.state | capitalize }}</td></tr>
+    {% endif -%}
+    <tr><td>Created</td><td>{{ aip.created }}</td></tr>
+    {% if not aip.legacy -%}
+    <tr><td>Updated</td><td>{{ aip.updated }}</td></tr>
+    {% endif -%}
+  </table>
+
+  {# Table of contents -#}
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    {{ aip.content.toc }}
+  </section>
+
+  {# Action links -#}
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="{{ site.repo_url }}/issues/">File Bug</a></li>
+      <li><a href="{{ site.repo_url }}/blob/master{{ aip.repo_path }}">View source</a></li>
+      <li><a href="{{ site.repo_url }}/edit/master{{ aip.repo_path }}">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  {% with title = aip.title -%}
+    {% include 'includes/breadcrumb.html.j2' %}
+  {% endwith -%}
+  {% include 'includes/state_banners/' + aip.state + '.html.j2' ignore missing %}
+  <h4 class="aip-number">AIP-{{ aip.id }}</h4>
+  {{ aip.content.html }}
+  {% include 'includes/footer.html.j2' %}
+</section>
+{% endblock %}
