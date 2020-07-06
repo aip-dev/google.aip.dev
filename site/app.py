@@ -40,7 +40,7 @@ def aip(aip_id: int):
 @app.route('/news/<int:year>-<int:month>')
 def news(year: int, month: int):
     """Display a single news document."""
-    return models.Site.load().news[year][month].render()
+    return models.Site.load().news[f'{year:04d}-{month:02d}'].render()
 
 
 @app.route('/search')

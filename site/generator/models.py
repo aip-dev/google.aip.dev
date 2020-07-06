@@ -306,7 +306,7 @@ class Page:
         path = os.path.join(SITE_DIR, 'pages', f'{code}.md')
         if code == 'contributing':
             path = os.path.join(BASEDIR, 'CONTRIBUTING.md')
-        if os.path.exists(path + '.j2'):
+        elif os.path.exists(path + '.j2'):
             path += '.j2'
 
         # Load the file and read the content.
@@ -323,7 +323,7 @@ class Page:
         config = {}
         if os.path.exists(config_file):
             with io.open(config_file, 'r') as f:
-                config = yaml.safe_load(f)
+                config = yaml.safe_load(f.read())
 
         # Return the page.
         return cls(
@@ -345,7 +345,7 @@ class Page:
         config = {}
         if os.path.exists(config_file):
             with io.open(config_file, 'r') as f:
-                config = yaml.safe_load(f)
+                config = yaml.safe_load(f.read())
 
         # Return the page.
         return cls(
