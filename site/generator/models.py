@@ -152,7 +152,7 @@ class AIP:
     @property
     def repo_path(self) -> str:
         """Return the relative path in the GitHub repository."""
-        return f'/aip/{self.id:04d}.md'
+        return f'/aip/{self.scope}/{self.id:04d}.md'
 
     @property
     def title(self) -> str:
@@ -182,7 +182,8 @@ class AIP:
         This both appends the content and adds the appropriate header to
         the table of contents.
         """
-        snippet: str = io.open(filename, 'r').read()
+        with io.open(filename, 'r') as f:
+            snippet: str = f.read()
         self.fragments.append(snippet.lstrip())
 
     def _injest_changelog(self, filename: str):
@@ -365,7 +366,7 @@ class Page:
 
     @property
     def title(self) -> str:
-        """Return the AIP title."""
+        """Return the page title."""
         return self.content.title
 
     def render(self) -> str:

@@ -20,7 +20,7 @@ from generator.models import Change
 def test_ordering():
     a = Change(date=date(2012, 4, 21), message='foo')
     b = Change(date=date(2020, 4, 21), message='bar')
-    assert a < b
+    assert a > b
 
 
 def test_set():
