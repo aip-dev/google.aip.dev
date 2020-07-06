@@ -1,4 +1,5 @@
 # pytest
+site/.coverage
 site/.pytest_cache
 site/htmlcov
 
