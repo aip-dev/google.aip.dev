@@ -13,9 +13,15 @@
 # limitations under the License.
 
 from typing import Optional
+from unittest import mock
 import uuid
+import textwrap
 
 from generator import models
+
+
+def file(text: str):
+    return mock.mock_open(read_data=textwrap.dedent(text).strip() + '\n')
 
 
 class Site(models.Site):

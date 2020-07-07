@@ -13,11 +13,26 @@
 # limitations under the License.
 
 from unittest import mock
+import io
 
 import pytest
 
 from generator import models
 from tests import mocks
+
+
+def test_load():
+    config = mocks.file("""
+        ---
+        title: My Scope
+        order: 85
+    """)
+    with mock.patch.object(io, 'open', config) as o:
+        scope = models.Scope.load('my-scope')
+        o.assert_called_once_with('my-scope/meta.yaml', 'r')
+    assert scope.code == 'my-scope'
+    assert scope.title == 'My Scope'
+    assert scope.order == 85
 
 
 @pytest.fixture
