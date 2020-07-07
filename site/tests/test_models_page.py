@@ -127,7 +127,6 @@ def test_load_news_with_config():
     assert page.config['baz'] == date(2012, 4, 21)
 
 
-
 @pytest.fixture
 def page():
     return models.Page(
