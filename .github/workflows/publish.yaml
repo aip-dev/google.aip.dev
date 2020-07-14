@@ -14,7 +14,7 @@ jobs:
       - name: Install the site generator.
         run: pip install -r requirements.txt
       - name: Build the static site.
-        run: aip-site-gen . /out
+        run: aip-site-gen . out
       - name: Publish the static site to GitHub Pages.
         uses: jamesives/github-pages-deploy-action@releases/v3
         with:
