@@ -9,12 +9,7 @@ jobs:
     container: python:3.8
     steps:
       - uses: actions/checkout@v2
-      - name: Install Python dependencies.
-        run: pip install -r site/requirements.txt
-      - name: Install test dependencies.
-        run: pip install pytest
-      - name: Run the tests
-        run: pytest
-        working-directory: site
-        env:
-          PYTHONPATH: .:${{ env.PYTHONPATH }}
+      - name: Install the site-generator
+        run: pip install -r requirements.txt
+      - name: Build the site.
+        run: aip-site-gen . /out

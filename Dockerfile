@@ -7,7 +7,7 @@ WORKDIR /code/
 
 # Install Python packages for this project.
 RUN apk add git && \
-  pip install git+https://github.com/aip-dev/site-generator.git@v0.1.0 && \
+  pip install -r requirements.txt && \
   apk del git
 
 # Set environment variables.
