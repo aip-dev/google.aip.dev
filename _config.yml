@@ -21,6 +21,7 @@ defaults:
         apps: GSuite
         cloud: Google Cloud Platform
         client-libraries: Client Libraries
+        auth: Auth Libraries
       js:
         - /assets/js/proto-syntax.js
   - scope:
