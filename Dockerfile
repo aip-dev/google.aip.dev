@@ -6,6 +6,7 @@ FROM python:3.8-alpine
 WORKDIR /code/
 
 # Install Python packages for this project.
+COPY requirements.txt /code/requirements.txt
 RUN apk add git && \
   pip install -r requirements.txt && \
   apk del git
