@@ -1,0 +1,19 @@
+---
+title: General
+order: 0
+categories:
+  - code: meta
+  - code: process
+  - code: resource-design
+    title: Resource Design
+  - code: operations
+  - code: fields
+  - code: design-patterns
+    title: Design Patterns
+  - code: compatibility
+  - code: polish
+  - code: protobuf
+    title: Protocol buffers
+  - code: misc
+    title: Miscellaneous
+    default: true

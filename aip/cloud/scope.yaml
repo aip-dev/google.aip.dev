@@ -1,0 +1,8 @@
+---
+title: Google Cloud Platform
+order: 10
+categories:
+  - code: gcp
+    title: Google Cloud Platform APIs
+  - code: sdk
+    title: Cloud SDK

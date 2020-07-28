@@ -6,9 +6,6 @@
 Dockerfile
 .dockerignore
 
-# Ruby & Jekyll scaffolding
-_site
-
 # Translations
 *.mo
 
