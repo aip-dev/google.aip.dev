@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>General AIPs</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item glue-header--is-active">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item nav-item-active">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc">
+      <span class="toctitle">Categories</span>
+      <ul>
+        <li><a href="#meta">Meta</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#resource-design">Resource Design</a></li>
+        <li><a href="#operations">Operations</a></li>
+        <li><a href="#fields">Fields</a></li>
+        <li><a href="#design-patterns">Design Patterns</a></li>
+        <li><a href="#compatibility">Compatibility</a></li>
+        <li><a href="#polish">Polish</a></li>
+        <li><a href="#protobuf">Protocol buffers</a></li>
+        <li><a href="#misc">Miscellaneous</a></li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+    </ul>
+  </section>
+</aside>
+
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        General AIPs
+      </li>
+    </ol>
+  </nav>
+</section>
+  <h3 id="meta">Meta</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">1</td>
+        <td>
+          <a href="/1">AIP Purpose and Guidelines</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">2</td>
+        <td>
+          <a href="/2">AIP Numbering</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">200</td>
+        <td>
+          <a href="/200">Precedent</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">8</td>
+        <td>
+          <a href="/8">AIP Style guide</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">9</td>
+        <td>
+          <a href="/9">Glossary</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="process">Process</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">100</td>
+        <td>
+          <a href="/100">API Design Review FAQ</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">205</td>
+        <td>
+          <a href="/205">Beta-blocking changes</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="resource-design">Resource Design</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">121</td>
+        <td>
+          <a href="/121">Resource-oriented design</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">122</td>
+        <td>
+          <a href="/122">Resource names</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">123</td>
+        <td>
+          <a href="/123">Resource types</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">124</td>
+        <td>
+          <a href="/124">Resource association</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">126</td>
+        <td>
+          <a href="/126">Enumerations</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">156</td>
+        <td>
+          <a href="/156">Singleton resources</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="operations">Operations</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">131</td>
+        <td>
+          <a href="/131">Standard methods: Get</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">132</td>
+        <td>
+          <a href="/132">Standard methods: List</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">133</td>
+        <td>
+          <a href="/133">Standard methods: Create</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">134</td>
+        <td>
+          <a href="/134">Standard methods: Update</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">135</td>
+        <td>
+          <a href="/135">Standard methods: Delete</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">136</td>
+        <td>
+          <a href="/136">Custom methods</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">151</td>
+        <td>
+          <a href="/151">Long-running operations</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">231</td>
+        <td>
+          <a href="/231">Batch methods: Get</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">233</td>
+        <td>
+          <a href="/233">Batch methods: Create</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">234</td>
+        <td>
+          <a href="/234">Batch methods: Update</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">235</td>
+        <td>
+          <a href="/235">Batch methods: Delete</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="fields">Fields</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">140</td>
+        <td>
+          <a href="/140">Field names</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">203</td>
+        <td>
+          <a href="/203">Field behavior documentation</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">141</td>
+        <td>
+          <a href="/141">Quantities</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">142</td>
+        <td>
+          <a href="/142">Time and duration</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">143</td>
+        <td>
+          <a href="/143">Standardized codes</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">144</td>
+        <td>
+          <a href="/144">Repeated fields</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">145</td>
+        <td>
+          <a href="/145">Ranges</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">216</td>
+        <td>
+          <a href="/216">States</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">146</td>
+        <td>
+          <a href="/146">Generic fields</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="design-patterns">Design Patterns</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">152</td>
+        <td>
+          <a href="/152">Jobs</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">153</td>
+        <td>
+          <a href="/153">Import and export</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">154</td>
+        <td>
+          <a href="/154">Resource freshness validation</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">155</td>
+        <td>
+          <a href="/155">Request identification</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">157</td>
+        <td>
+          <a href="/157">Partial responses</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">158</td>
+        <td>
+          <a href="/158">Pagination</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">159</td>
+        <td>
+          <a href="/159">Reading across collections</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">160</td>
+        <td>
+          <a href="/160">Filtering</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">162</td>
+        <td>
+          <a href="/162">Resource Revisions</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">163</td>
+        <td>
+          <a href="/163">Change validation</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">165</td>
+        <td>
+          <a href="/165">Criteria-based delete</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">210</td>
+        <td>
+          <a href="/210">Unicode</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">214</td>
+        <td>
+          <a href="/214">Resource expiration</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">217</td>
+        <td>
+          <a href="/217">Unreachable resources</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="compatibility">Compatibility</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">180</td>
+        <td>
+          <a href="/180">Backwards compatibility</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">181</td>
+        <td>
+          <a href="/181">Stability levels</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="polish">Polish</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">191</td>
+        <td>
+          <a href="/191">File and directory structure</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">192</td>
+        <td>
+          <a href="/192">Documentation</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">193</td>
+        <td>
+          <a href="/193">Errors</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">194</td>
+        <td>
+          <a href="/194">Automatic retry configuration</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <h3 id="protobuf">Protocol buffers</h3>
+  <table class="aip-listing">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Number</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align: right;">127</td>
+        <td>
+          <a href="/127">HTTP and gRPC Transcoding</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">213</td>
+        <td>
+          <a href="/213">Common components</a>
+          </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">215</td>
+        <td>
+          <a href="/215">Common component versions</a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

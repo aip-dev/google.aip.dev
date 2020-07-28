@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-100: API Design Review FAQ</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">API Design Review FAQ</th></tr>
+    <tr><td>Number</td><td>100</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/100">google.aip.dev/100</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-08-27</td></tr>
+    <tr><td>Updated</td><td>2018-08-27</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#do-i-need-api-design-approval">Do I need API design approval?</a><ul>
+<li><a href="#who-should-code-directly-against-it">Who should code directly against it?</a></li>
+<li><a href="#alpha">Alpha</a></li>
+</ul>
+</li>
+<li><a href="#why-is-design-review-important">Why is design review important?</a></li>
+<li><a href="#what-should-i-expect">What should I expect?</a><ul>
+<li><a href="#how-long-does-the-review-process-take">How long does the review process take?</a></li>
+<li><a href="#how-do-reviewers-approach-my-api">How do reviewers approach my API?</a></li>
+<li><a href="#what-is-precedent">What is precedent?</a></li>
+</ul>
+</li>
+<li><a href="#what-should-i-do">What should I do?</a><ul>
+<li><a href="#if-i-have-a-launch-on-a-tight-deadline">...if I have a launch on a tight deadline?</a></li>
+<li><a href="#to-make-my-review-go-faster">...to make my review go faster?</a></li>
+<li><a href="#if-one-of-my-api-reviewers-is-unresponsive">...if one of my API reviewers is unresponsive?</a></li>
+<li><a href="#if-i-have-a-design-question">...if I have a design question?</a></li>
+<li><a href="#if-i-have-a-question-not-covered-there">...if I have a question not covered there?</a></li>
+<li><a href="#if-a-question-is-complex-and-languishing-in-a-cl">...if a question is complex and languishing in a CL?</a></li>
+<li><a href="#if-my-api-needs-to-violate-a-standard">...if my API needs to violate a standard?</a></li>
+<li><a href="#if-a-reviewer-is-bringing-up-a-previously-settled-issue">...if a reviewer is bringing up a previously-settled issue?</a></li>
+<li><a href="#if-the-team-and-the-reviewers-strongly-disagree">...if the team and the reviewers strongly disagree?</a></li>
+</ul>
+</li>
+<li><a href="#does-my-pa-or-team-have-any-particular-guidelines">Does my PA or team have any particular guidelines?</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0100.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0100.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        API Design Review FAQ
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-100</h4>
+  <h1>API Design Review FAQ</h1>
+<p>API design review exists to ensure a simple, intuitive, and consistent API
+experience throughout our API corpus.</p>
+<h2 id="do-i-need-api-design-approval">Do I need API design approval?</h2>
+<p><strong>TL;DR:</strong> You usually need API design approval if you are launching an API
+that users can code against (either now or in the future) at the beta or GA
+quality level.</p>
+<p>API design review is fundamentally about ensuring we provide a simple and
+consistent experience for our users, and therefore is only expected for APIs
+that users code directly against.</p>
+<p>The following flowchart illustrates whether or not your API needs to go through
+the design review process:</p>
+<div class="highlight language-graphviz"><pre><span></span><code>digraph {
+  node [ style=&quot;filled,solid&quot; shape=box fontname=&quot;Roboto&quot; ];
+  graph [ splines=ortho, nodesep=0.2 ];
+
+  audience [ label=&quot;Who should code directly\nagainst this API?&quot;
+             shape=diamond fillcolor=bisque ];
+
+  subgraph audience_responses {
+    rank = &quot;same&quot;;
+    node [ shape=oval fillcolor=orange ];
+
+    googlers [ label=&quot;Googlers\nOnly&quot; fillcolor=lightcoral ];
+    public [ label=&quot;Anyone&quot; fillcolor=limegreen ];
+    partners [ label=&quot;Partners\nOnly&quot; fillcolor=deepskyblue ];
+
+    partners -&gt; public -&gt; googlers [ style=invisible arrowhead=none ];
+  }
+
+
+  subgraph and_ever {
+    rank = &quot;same&quot;;
+    node [ shape=diamond fillcolor=bisque ];
+
+    forever_partners [ label=&quot;Forever?&quot; shape=diamond fillcolor=bisque ];
+    forever_googlers [ label=&quot;Forever?&quot; shape=diamond fillcolor=bisque ];
+  }
+
+  subgraph forever_responses {
+    rank = &quot;same&quot;;
+    node [ shape=oval fillcolor=orange ];
+
+    forever_partners_yes [ label=&quot;Yes&quot; fillcolor=deepskyblue ];
+    forever_no [ label=&quot;No, anyone\neventually&quot; fillcolor=limegreen ];
+    forever_googlers_yes [ label=&quot;Yes&quot; fillcolor=lightcoral ];
+  }
+
+  release_level [ label=&quot;What release\nlevel?&quot; shape=diamond fillcolor=bisque ];
+
+  # Not required is not in the subgraph with the other outcomes because
+  # it makes the graph much smaller if it can be higher in the image.
+
+  subgraph release_levels {
+    rank = &quot;same&quot;;
+    node [ shape=oval ];
+
+    alpha [ label=&quot;Alpha&quot; fillcolor=darkorange ];
+    beta [ label=&quot;Beta&quot; fillcolor=goldenrod1 ];
+    ga [ label=&quot;GA&quot; fillcolor=limegreen ];
+
+    alpha -&gt; beta -&gt; ga [ style=invisible arrowhead=none ];
+  }
+
+  changes [ label=&quot;Any changes\nfrom beta?&quot; shape=diamond fillcolor=bisque ];
+
+  subgraph changes_bool {
+    rank = &quot;same&quot;;
+    node [ shape=oval ];
+
+    changes_yes [ label=&quot;Yes&quot; fillcolor=goldenrod1 ];
+    changes_no [ label=&quot;No&quot; fillcolor=limegreen ];
+  }
+
+  subgraph outcome {
+    rank = &quot;same&quot;;
+    node [ style=&quot;rounded,filled&quot; ];
+    fyi [ label=&quot;FYI&quot; fillcolor=lightblue ];
+    recommended [ label=&quot;Recommended&quot; fillcolor=limegreen ];
+    required [ label=&quot;⚠ Required&quot; fillcolor=goldenrod1 ];
+    not_required
+      [ label=&quot;Not Required&quot; fillcolor=lightgrey style=&quot;rounded,filled&quot; ];
+    recommended -&gt; required -&gt; fyi -&gt; not_required
+      [style=invisible arrowhead=none];
+  }
+
+  audience -&gt; googlers [ arrowhead=none style=dashed color=grey ];
+  audience -&gt; partners [ arrowhead=none ];
+  audience -&gt; public [ arrowhead=none ];
+  partners -&gt; forever_partners;
+  googlers -&gt; forever_googlers [ style=dashed color=grey ];
+  public -&gt; release_level;
+  forever_partners -&gt; forever_partners_yes [ arrowhead=none ];
+  forever_googlers -&gt; forever_googlers_yes
+    [ arrowhead=none style=dashed color=grey ];
+  forever_partners -&gt; forever_no [ arrowhead=none ];
+  forever_googlers -&gt; forever_no [ arrowhead=none ];
+  forever_partners_yes -&gt; recommended;
+  forever_googlers_yes -&gt; not_required [ style=dashed color=grey ];
+  forever_no -&gt; release_level;
+  release_level -&gt; alpha [ arrowhead=none ];
+  release_level -&gt; beta [ arrowhead=none ];
+  release_level -&gt; ga [ arrowhead=none ];
+  alpha -&gt; recommended;
+  beta -&gt; required;
+  ga -&gt; changes;
+  changes -&gt; changes_yes [ arrowhead=none ];
+  changes -&gt; changes_no [ arrowhead=none ];
+  changes_yes -&gt; required;
+  changes_no -&gt; fyi;
+}
+</code></pre></div>
+
+<h3 id="who-should-code-directly-against-it">Who should code directly against it?</h3>
+<p>One of the more complex questions is, "Who should code directly against this
+API?" API design review is primarily concerned about the API's audience. This
+means we care about who is permitted to write their own HTTP/gRPC calls against
+the service, and who is able to see the documentation. (We do <em>not</em> care about
+questions such as whether the service is exposed on the public network.)</p>
+<p>Design review is expected if the general public is intended to read
+documentation and write code that interacts with the service.</p>
+<p>The following situations <strong>do not</strong> require design review:</p>
+<ul>
+<li>An API which will only ever be used by Googlers, or internal tools (for
+  example, Pantheon).</li>
+<li>An API which will only ever be called by an executable program released by
+  Google (even if the API could be reverse-engineered from the executable).</li>
+<li>An API which will only ever be called by a single customer or small set of
+  customers under contract, and which will <em>never</em> be made more widely
+  available. (Design review is still recommended in this case, but not
+  required.)</li>
+</ul>
+<h3 id="alpha">Alpha</h3>
+<p>For alpha, API design review is optional but recommended. It may often make
+sense to endeavor to get initial feedback from customers quickly, and launching
+an alpha can be a way of gaining data to determine the best answer to some
+usability questions; therefore, bypassing review may be expedient. On the other
+hand, launching an alpha requires building an implementation which then takes
+engineering effort to update if the API design review at the beta stage raises
+concerns. Because API design review can precede implementation work, we
+recommend a design review for alpha.</p>
+<h2 id="why-is-design-review-important">Why is design review important?</h2>
+<p><strong>TL;DR:</strong> Product excellence.</p>
+<p>Our design review process exists to ensure that the APIs that we present to
+customers are <strong>simple</strong>, <strong>intuitive</strong>, and <strong>consistent</strong>. Your reviewer
+approaches your API from the standpoint of a naïve user, thinks through the
+resources and actions that your API provides, and attempts to make the surface
+as accessible and extensible as possible.</p>
+<p>Your design reviewer is not only evaluating your API, but also checking to
+ensure that your API is consistent with Google's existing corpus of APIs. Many
+customers use multiple APIs, and therefore it is important that our conventions
+and naming choices line up with customer expectations.</p>
+<h2 id="what-should-i-expect">What should I expect?</h2>
+<h3 id="how-long-does-the-review-process-take">How long does the review process take?</h3>
+<p>Reviewers make an effort to keep up with their assigned reviews and offer
+feedback frequently, so as not to cause unnecessary delay, but it's generally
+best to begin the review process early in case there are delays.</p>
+<p>The design review process varies based on the size and complexity of the
+underlying API surface:</p>
+<ul>
+<li>Incremental changes to existing APIs generally take a few days.</li>
+<li>Small APIs usually take around a week.</li>
+<li>Entirely new APIs with large surfaces tend to take no less than a week. In
+  cases with extraordinarily large surfaces (e.g., Cloud AutoML), reviews may
+  take a month or more to go through design review.</li>
+</ul>
+<h3 id="how-do-reviewers-approach-my-api">How do reviewers approach my API?</h3>
+<p>API reviewers seek to approach your API the same way that your users will, by
+focusing primarily on the API surface and its user-facing documentation. In an
+ideal world, your API reviewer will ask the types of design questions that
+users will ask (and nudge the API toward raising fewer of those questions in
+the first place).</p>
+<h3 id="what-is-precedent">What is precedent?</h3>
+<p>In general, we want Google APIs to be as consistent as possible. Once customers
+learn their first Google API, it should be easier to learn the second (and then
+the third, and so on) because we are using the same patterns consistently.</p>
+<p>We refer to <strong>precedent</strong> to mean decisions that have already been made by
+previous APIs, which generally should be binding upon newer APIs in similar
+situations. The most common example of this is naming: we have a list of
+<a href="https://cloud.google.com/apis/design/standard_fields">standard fields</a> that dictate how we use common terms like <code>name</code>,
+<code>create_time</code>, and so forth, and which also dictates that we always attach <em>the
+same</em> name to the same concept.</p>
+<p>Precedent also applies to <em>patterns</em>. All APIs should implement pagination the
+same way. Ditto for long-running operations, import and export, and so on. Once
+a pattern has been established, we seek to implement that pattern the same way
+wherever it is germane.</p>
+<h2 id="what-should-i-do">What should I do?</h2>
+<h3 id="if-i-have-a-launch-on-a-tight-deadline">...if I have a launch on a tight deadline?</h3>
+<p>The best thing that you can do is to engage design review as early as possible.
+Additionally, make your reviewers aware of your timeline so that they are
+aware, and can endeavor to provide you the best possible service. We <em>want</em> you
+to make your deadline if at all possible.</p>
+<p>For time-sensitive <em>alpha</em> launches, an API <strong>may</strong> launch without receiving
+design review approval. Such launches <strong>must</strong> be limited to a known set of
+users. In this case, the reviewers will provide notes for the API team to take
+under consideration for subsequent stages.</p>
+<p><strong>Warning:</strong> Launching an API in alpha with an incomplete design review <strong>does
+not</strong> enshrine that API's decisions. Design review will be required to promote
+the API to beta, and API reviewers will block your beta launch if there are
+issues.</p>
+<p>For launch stages after alpha, the API design review is mandatory due to its
+impact on user experience across the board. Your team's inconsistencies affect
+more than just your team.</p>
+<p>In some cases, there is a difficult choice to be made between product
+excellence and either engineering effort or deadlines. These are difficult
+business decisions and we understand that they are sometimes necessary;
+however, a director or VP must make an explicit choice to put these other
+concerns ahead of product excellence when choosing to bypass design review or
+disregard reviewers' feedback.</p>
+<h3 id="to-make-my-review-go-faster">...to make my review go faster?</h3>
+<p>A few tips:</p>
+<ul>
+<li>Begin API review as early as possible, and follow up frequently.</li>
+<li>Run the <a href="https://github.com/googleapis/api-linter">API linter</a> beforehand. (If you are disabling the linter at any
+  point, explain why. Reviewers often find that the linter is disabled because
+  it did its job.)</li>
+<li>Ensure that every message, RPC, and field is <em>usefully</em> commented. Comments
+  should be in valid American English and say something meaningful.</li>
+<li>If your API reviewer asks you to explain something, add the explanation <em>in
+  the proto comments</em>, rather than the code review conversation. This will very
+  often save you a round trip.</li>
+</ul>
+<h3 id="if-one-of-my-api-reviewers-is-unresponsive">...if one of my API reviewers is unresponsive?</h3>
+<p>Reach out to the reviewer on Hangouts. If that fails, reach out to the other
+reviewer, who will coordinate accordingly. If that fails also, escalate
+according to <a href="/1">AIP-1</a>.</p>
+<h3 id="if-i-have-a-design-question">...if I have a design question?</h3>
+<p>The first places to look at the <a href="https://cloud.google.com/apis/design/">API style guide</a>, the <a href="/">AIP index</a>, and
+other public APIs within Google. Other public APIs are particularly valuable;
+it is common that someone has encountered a situation that is germane to your
+question.</p>
+<h3 id="if-i-have-a-question-not-covered-there">...if I have a question not covered there?</h3>
+<p>Reach out to api-design@google.com with your question.</p>
+<p>This generally works best when you are seeking guidance on a specific question
+related to API design, and when you clearly explain your use case and provide
+examples.</p>
+<p><strong>Note:</strong> The membership of this list comprises almost exclusively volunteers,
+who spend the majority of their time doing something else. We do our best to be
+responsive, but please be patient with us.</p>
+<h3 id="if-a-question-is-complex-and-languishing-in-a-cl">...if a question is complex and languishing in a CL?</h3>
+<p>While the code review interface is the best way to resolve questions when
+practical, sometimes there are issues that are sufficiently complicated that
+working them out in the code review tool is not feasible. In this situation,
+reach out to your reviewers and ask to schedule a meeting. In general, most
+issues can be discussed in 30 minutes.</p>
+<p>When this happens, make sure that someone documents what is discussed in the
+CL, so that the history is preserved.</p>
+<h3 id="if-my-api-needs-to-violate-a-standard">...if my API needs to violate a standard?</h3>
+<p>Clearly document (using an internal comment in the proto) that you are
+violating an API design guideline and your rationale for doing so. This comment
+<strong>must</strong> be prefixed with <code>aip.dev/not-precedent</code>.</p>
+<p>In general, your rationale for the design guideline violation <strong>should</strong> be in
+accordance with one of the enumerated reasons listed in <a href="/200">AIP-200</a>. If it is
+not, work together with your API reviewer to determine the right thing to do.</p>
+<h3 id="if-a-reviewer-is-bringing-up-a-previously-settled-issue">...if a reviewer is bringing up a previously-settled issue?</h3>
+<p>If you have a different reviewer from your API's previous stages, this might
+happen. In general, the best approach is simply to reference the code review
+where the issue was decided. Reviewers want to avoid causing you churn, and
+therefore usually give deference to previous reviews. This is usually
+sufficient to resolve the question promptly.</p>
+<p>Occasionally, the reviewer may believe that the previous reviewer made a
+significant mistake, and that correcting it is important. In this case, you and
+your reviewer should work together to determine the best course of action.</p>
+<h3 id="if-the-team-and-the-reviewers-strongly-disagree">...if the team and the reviewers strongly disagree?</h3>
+<p>Escalate according to <a href="/1">AIP-1</a>.</p>
+<h2 id="does-my-pa-or-team-have-any-particular-guidelines">Does my PA or team have any particular guidelines?</h2>
+<p>The Cloud PA has specific guidelines to ensure additional consistency across
+Cloud, and Cloud APIs have their own reviewer pool. Other teams may adopt
+similar (but not necessarily identical) rules and systems. Some teams that
+produce multiple APIs (for example, machine learning) may also have guidelines
+that apply to that group of APIs.</p>
+<p>In all cases, we endeavor to make these guidelines available as AIPs; the
+higher AIP numbers are reserved for specific PA and team use (see <a href="/2">AIP-2</a>),
+and these AIPs are listed in the <a href="/">AIP index</a>.</p>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

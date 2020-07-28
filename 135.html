@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-135: Standard methods: Delete</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Standard methods: Delete</th></tr>
+    <tr><td>Number</td><td>135</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/135">google.aip.dev/135</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-01-24</td></tr>
+    <tr><td>Updated</td><td>2019-01-24</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#request-message">Request message</a></li>
+<li><a href="#soft-delete">Soft delete</a></li>
+<li><a href="#long-running-delete">Long-running delete</a></li>
+<li><a href="#cascading-delete">Cascading delete</a></li>
+<li><a href="#protected-delete">Protected delete</a></li>
+<li><a href="#errors">Errors</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0135.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0135.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Standard methods: Delete
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-135</h4>
+  <h1>Standard methods: Delete</h1>
+<p>In REST APIs, it is customary to make a <code>DELETE</code> request to a resource's URI
+(for example, <code>/v1/publishers/{publisher}/books/{book}</code>) in order to delete
+that resource.</p>
+<p>Resource-oriented design (<a href="/121">AIP-121</a>) honors this pattern through the <code>Delete</code>
+method. These RPCs accept the URI representing that resource and usually return
+an empty response.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>should</strong> generally provide a delete method for resources unless it is
+not valuable for users to do so.</p>
+<p>Delete methods are specified using the following pattern:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">DeleteBook</span><span class="p">(</span><span class="n">DeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">delete</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The RPC's name <strong>must</strong> begin with the word <code>Delete</code>. The remainder of the
+  RPC name <strong>should</strong> be the singular form of the resource's message name.</li>
+<li>The request message <strong>must</strong> match the RPC name, with a <code>-Request</code> suffix.</li>
+<li>The response message <strong>should</strong> be <code>google.protobuf.Empty</code>.<ul>
+<li>If the resource is <a href="#soft-delete">soft deleted</a>, the response message
+  <strong>should</strong> be the resource itself.</li>
+<li>If the delete RPC is <a href="#long-running-delete">long-running</a>, the response
+  message <strong>must</strong> be a <code>google.longrunning.Operation</code> which resolves to the
+  correct response.</li>
+</ul>
+</li>
+<li>The HTTP verb <strong>must</strong> be <code>DELETE</code>.</li>
+<li>The request message field receiving the resource name <strong>should</strong> map to the
+  URL path.<ul>
+<li>This field <strong>should</strong> be called <code>name</code>.</li>
+<li>The <code>name</code> field <strong>should</strong> be the only variable in the URI path. All
+  remaining parameters <strong>should</strong> map to URI query parameters.</li>
+</ul>
+</li>
+<li>There <strong>must not</strong> be a <code>body</code> key in the <code>google.api.http</code> annotation.</li>
+<li>There <strong>should</strong> be exactly one <code>google.api.method_signature</code> annotation,
+  with a value of <code>"name"</code>. If an etag or force field are used, they <strong>may</strong> be
+  included in the signature.</li>
+</ul>
+<p>The Delete method <strong>should</strong> succeed if and only if a resource was present and
+was successfully deleted. If the resource did not exist, the method <strong>should</strong>
+send a <code>NOT_FOUND</code> error.</p>
+<h3 id="request-message">Request message</h3>
+<p>Delete methods implement a common request message pattern:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeleteBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book to delete.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library-example.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>A <code>name</code> field <strong>must</strong> be included. It <strong>should</strong> be called <code>name</code>.<ul>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
+  references.</li>
+</ul>
+</li>
+<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
+<li>The request message <strong>must not</strong> contain any other required fields, and
+  <strong>should not</strong> contain other optional fields except those described in this
+  or another AIP.</li>
+</ul>
+<h3 id="soft-delete">Soft delete</h3>
+<p>APIs <strong>may</strong> support the ability to "undelete", to allow for situations where
+users mistakenly delete resources and need the ability to recover.</p>
+<p>If a resource needs to support undelete, the Delete method <strong>should</strong> simply
+mark the resource as having been deleted, but not completely remove it from the
+system. If the method behaves this way, it <strong>should</strong> return the updated
+resource (not <code>google.protobuf.Empty</code>), with its <a href="/216">state</a> set to
+<code>DELETED</code>.</p>
+<p>Soft-deleted resources <strong>should not</strong> show up in <a href="/132"><code>List</code></a> requests by
+default (unless <code>bool show_deleted</code> is true). <a href="/131"><code>Get</code></a> requests for
+soft-deleted resources <strong>should</strong> return the resource (rather than a
+<code>NOT_FOUND</code> error).</p>
+<p>The undelete functionality <strong>should</strong> be implemented through an "undelete"
+<a href="/136">custom method</a>.</p>
+<p>APIs that soft delete resources <strong>may</strong> choose a reasonable strategy for
+purging those resources, including automatic purging after a reasonable time
+(such as 30 days), allowing users to <a href="/214">set an expiry time</a>, or
+retaining the resources indefinitely. Regardless of what strategy is selected,
+the API <strong>should</strong> document when soft deleted resources will be completely
+removed.</p>
+<h3 id="long-running-delete">Long-running delete</h3>
+<p>Some resources take longer to delete a resource than is reasonable for a
+regular API request. In this situation, the API <strong>should</strong> use a long-running
+operation instead:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">DeleteBook</span><span class="p">(</span><span class="n">DeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">delete</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;google.protobuf.Empty&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The response type <strong>must</strong> be set to the appropriate return type if the RPC
+  was not long-running: <code>google.protobuf.Empty</code> for most Delete RPCs, or the
+  resource itself for <a href="#soft-delete">soft delete</a>.</li>
+<li>Both the <code>response_type</code> and <code>metadata_type</code> fields <strong>must</strong> be specified
+  (even if they are <code>google.protobuf.Empty</code>).</li>
+</ul>
+<h3 id="cascading-delete">Cascading delete</h3>
+<p>Sometimes, it may be necessary for users to be able to delete a resource as
+well as all applicable child resources. However, since deletion is usually
+permanent, it is also important that users not do so accidentally, as
+reconstructing wiped-out child resources may be quite difficult.</p>
+<p>If an API allows deletion of a resource that may have child resources, the API
+<strong>should</strong> provide a <code>bool force</code> field on the request, which the user sets to
+explicitly opt in to a cascading delete.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeletePublisherRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the publisher to delete.</span>
+  <span class="c1">// Format: publishers/{publisher}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// If set to true, any books from this publisher will also be deleted.</span>
+  <span class="c1">// (Otherwise, the request will only work if the publisher has no books.)</span>
+  <span class="kt">bool</span> <span class="na">force</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The API <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error if the <code>force</code> field
+is <code>false</code> (or unset) and child resources are present.</p>
+<h3 id="protected-delete">Protected delete</h3>
+<p>Sometimes, it may be necessary for users to ensure that no changes have been
+made to a resource that is being deleted. If a resource provides an <a href="/134#etags">etag</a>,
+the delete request <strong>may</strong> accept the etag (as either required or optional):</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeleteBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book to delete.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// Optional. The etag of the book.</span>
+  <span class="c1">// If this is provided, it must match the server&#39;s etag.</span>
+  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>If the etag is provided and does not match the server-computed etag, the
+request <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error code.</p>
+<h3 id="errors">Errors</h3>
+<p>If the user does not have permission to access the resource, regardless of
+whether or not it exists, the service <strong>must</strong> error with <code>PERMISSION_DENIED</code>
+(HTTP 403). Permission <strong>must</strong> be checked prior to checking if the resource
+exists.</p>
+<p>If the user does have proper permission, but the requested resource does not
+exist, the service <strong>must</strong> error with <code>NOT_FOUND</code> (HTTP 404).</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-06-08</strong>: Added guidance for <code>Get</code> of soft-deleted resources.</li>
+<li><strong>2020-02-03</strong>: Added guidance for error cases.</li>
+<li><strong>2019-10-18</strong>: Added guidance on annotations.</li>
+<li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
+  present a better example of resource ownership.</li>
+<li><strong>2019-06-10</strong>: Added guidance for long-running delete.</li>
+<li><strong>2019-05-29</strong>: Added an explicit prohibition on arbitrary fields in standard
+  methods.</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

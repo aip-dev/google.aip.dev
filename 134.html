@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-134: Standard methods: Update</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Standard methods: Update</th></tr>
+    <tr><td>Number</td><td>134</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/134">google.aip.dev/134</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-01-24</td></tr>
+    <tr><td>Updated</td><td>2019-01-24</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#request-message">Request message</a></li>
+<li><a href="#side-effects">Side effects</a></li>
+<li><a href="#patch-and-put">PATCH and PUT</a></li>
+<li><a href="#long-running-update">Long-running update</a></li>
+<li><a href="#create-or-update">Create or update</a></li>
+<li><a href="#etags">Etags</a></li>
+<li><a href="#expensive-fields">Expensive fields</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0134.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0134.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Standard methods: Update
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-134</h4>
+  <h1>Standard methods: Update</h1>
+<p>In REST APIs, it is customary to make a <code>PATCH</code> or <code>PUT</code> request to a
+resource's URI (for example, <code>/v1/publishers/{publisher}/books/{book}</code>) in
+order to update that resource.</p>
+<p>Resource-oriented design (<a href="/121">AIP-121</a>) honors this pattern through the <code>Update</code>
+method (which mirrors the REST <code>PATCH</code> behavior). These RPCs accept the URI
+representing that resource and return the resource.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>should</strong> generally provide an update method for resources unless it is
+not valuable for users to do so. The purpose of the update method is to make
+changes to the resources without causing side effects.</p>
+<p>Update methods are specified using the following pattern:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;book,update_mask&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The RPC's name <strong>must</strong> begin with the word <code>Update</code>. The remainder of the
+  RPC name <strong>should</strong> be the singular form of the resource's message name.</li>
+<li>The request message <strong>must</strong> match the RPC name, with a <code>-Request</code> suffix.</li>
+<li>The response message <strong>must</strong> be the resource itself. (There is no
+  <code>UpdateBookResponse</code>.)<ul>
+<li>The response <strong>should</strong> include the fully-populated resource, and <strong>must</strong>
+  include any fields that were sent and included in the update mask unless
+  they are input only (see <a href="/203">AIP-203</a>).</li>
+<li>If the update RPC is <a href="#long-running-update">long-running</a>, the response
+  message <strong>must</strong> be a <code>google.longrunning.Operation</code> which resolves to the
+  resource itself.</li>
+</ul>
+</li>
+<li>The method <strong>should</strong> support partial resource update, and the HTTP verb
+  <strong>should</strong> be <code>PATCH</code>.<ul>
+<li>If the method will only ever support full resource replacement, then the
+  HTTP verb <strong>may</strong> be <code>PUT</code>. However, this is strongly discouraged because
+  it becomes a backwards-incompatible change to add fields to the resource.</li>
+</ul>
+</li>
+<li>The resource's <code>name</code> field <strong>should</strong> map to the URI path.<ul>
+<li>The <code>{resource}.name</code> field <strong>should</strong> be the only variable in the URI
+  path.</li>
+</ul>
+</li>
+<li>There <strong>must</strong> be a <code>body</code> key in the <code>google.api.http</code> annotation, and it
+  <strong>must</strong> map to the resource field in the request message.<ul>
+<li>All remaining fields <strong>should</strong> map to URI query parameters.</li>
+</ul>
+</li>
+<li>There <strong>should</strong> be exactly one <code>google.api.method_signature</code> annotation,
+  with a value of <code>"{resource},update_mask"</code>.</li>
+</ul>
+<p><strong>Note:</strong> Unlike the other four standard methods, the URI path here references
+a nested field (<code>book.name</code>) in the example. If the resource field has a word
+separator, <code>snake_case</code> is used.</p>
+<h3 id="request-message">Request message</h3>
+<p>Update methods implement a common request message pattern:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UpdateBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The book to update.</span>
+  <span class="c1">//</span>
+  <span class="c1">// The book&#39;s `name` field is used to identify the book to be updated.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+
+  <span class="c1">// The list of fields to be updated.</span>
+  <span class="n">google.protobuf.FieldMask</span> <span class="na">update_mask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The request message <strong>must</strong> contain a field for the resource.<ul>
+<li>The field <strong>must</strong> map to the <code>PATCH</code> body.</li>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>A <code>name</code> field <strong>must</strong> be included in the resource message. It <strong>should</strong>
+  be called <code>name</code>.</li>
+</ul>
+</li>
+<li>A field mask <strong>should</strong> be included in order to support partial update. It
+  <strong>must</strong> be of type <code>google.protobuf.FieldMask</code>, and it <strong>should</strong> be called
+  <code>update_mask</code>.<ul>
+<li>The fields used in the field mask correspond to the resource being updated
+  (not the request message).</li>
+<li>The field <strong>may</strong> be required or optional. If it is required, it <strong>should</strong>
+  include the corresponding annotation.</li>
+</ul>
+</li>
+<li>The request message <strong>must not</strong> contain any other required fields, and
+  <strong>should not</strong> contain other optional fields except those described in this
+  or another AIP.</li>
+</ul>
+<h3 id="side-effects">Side effects</h3>
+<p>In general, update methods are intended to update the data within the resource.
+Update methods <strong>should not</strong> trigger other side effects. Instead, side effects
+<strong>should</strong> be triggered by custom methods.</p>
+<p>In particular, this entails that <a href="/216">state fields</a> <strong>must not</strong> be directly
+writable in update methods.</p>
+<h3 id="patch-and-put">PATCH and PUT</h3>
+<p><strong>TL;DR:</strong> Google APIs generally use the <code>PATCH</code> HTTP verb only, and do not
+support <code>PUT</code> requests.</p>
+<p>We standardize on <code>PATCH</code> because Google updates stable APIs in place with
+backwards-compatible improvements. It is often necessary to add a new field to
+an existing resource, but this becomes a breaking change when using <code>PUT</code>.</p>
+<p>To illustrate this, consider a <code>PUT</code> request to a <code>Book</code> resource:</p>
+<pre><code>  PUT /v1/publishers/123/books/456
+
+  {"title": "Mary Poppins", "author": "P.L. Travers"}
+</code></pre>
+<p>Next consider that the resource is later augmented with a new field (here we
+add <code>rating</code>):</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">title</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">author</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// Subsequently added to v1 in place...</span>
+  <span class="kt">int32</span> <span class="na">rating</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>If a rating is set on a book and the existing <code>PUT</code> request was executed, it
+would wipe out the book's rating. In essence, a <code>PUT</code> request unintentionally
+wiped out data because the previous version did not know about it.</p>
+<h3 id="long-running-update">Long-running update</h3>
+<p>Some resources take longer to update a resource than is reasonable for a
+regular API request. In this situation, the API <strong>should</strong> use a long-running
+operation (<a href="/151">AIP-151</a>) instead:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;Book&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The response type <strong>must</strong> be set to the resource (what the return type would
+  be if the RPC was not long-running).</li>
+<li>Both the <code>response_type</code> and <code>metadata_type</code> fields <strong>must</strong> be specified.</li>
+</ul>
+<h3 id="create-or-update">Create or update</h3>
+<p>If the API accepts client-assigned resource names, the server <strong>may</strong> allow the
+client to specify a non-existent resource name and create a new resource
+(effectively implementing the "upsert" concept). Otherwise, the Update method
+<strong>should</strong> fail with <code>NOT_FOUND</code>.</p>
+<p>An API with an update method that supports resource creation <strong>should</strong> also
+provide a <a href="/133">create</a> method, because otherwise it may not be clear to users how
+to create resources.</p>
+<h3 id="etags">Etags</h3>
+<p>An API may sometimes need to allow users to send update requests which are
+guaranteed to be made against the most current data (a common use case for this
+is to detect and avoid race conditions). Resources which need to enable this do
+so by including a <code>string etag</code> field, which contains an opaque,
+server-computed value representing the content of the resource.</p>
+<p>In this situation, the resource <strong>should</strong> contain a <code>string etag</code> field:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="c1">// The resource name of the book.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The title of the book.</span>
+  <span class="c1">// Example: &quot;Mary Poppins&quot;</span>
+  <span class="kt">string</span> <span class="na">title</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// The author of the book.</span>
+  <span class="c1">// Example: &quot;P.L. Travers&quot;</span>
+  <span class="kt">string</span> <span class="na">author</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+  <span class="c1">// The etag for this book.</span>
+  <span class="c1">// If this is provided on update, it must match the server&#39;s etag.</span>
+  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The <code>etag</code> field <strong>may</strong> be either <a href="/203#required">required</a> or <a href="/203#optional">optional</a>. If it is set,
+then the request <strong>must</strong> succeed if and only if the provided etag matches the
+server-computed value, and <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error
+otherwise. The <code>update_mask</code> field in the request does not affect the behavior
+of the <code>etag</code> field, as it is not a field <em>being</em> updated.</p>
+<h3 id="expensive-fields">Expensive fields</h3>
+<p>APIs sometimes encounter situations where some fields on a resource are
+expensive or impossible to reliably return.</p>
+<p>This can happen in a few situations:</p>
+<ul>
+<li>A resource may have some fields that are very expensive to compute, and that
+  are generally not useful to the customer on update requests.</li>
+<li>A single resource sometimes represents an amalgamation of data from multiple
+  underlying (and eventually consistent) data sources. In these situations, it
+  is impossible to return authoritative information on the fields that were not
+  changed.</li>
+</ul>
+<p>In this situation, an API <strong>may</strong> return back only the fields that were
+updated, and omit the rest, and <strong>should</strong> document this behavior if they do
+so.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-06-08</strong>: Added guidance on returning the full resource.</li>
+<li><strong>2019-10-18</strong>: Added guidance on annotations.</li>
+<li><strong>2019-09-10</strong>: Added a link to the long-running operations AIP
+  (<a href="/151">AIP-151</a>).</li>
+<li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
+  present a better example of resource ownership.</li>
+<li><strong>2019-06-10</strong>: Added guidance for long-running update.</li>
+<li><strong>2019-05-29</strong>: Added an explicit prohibition on arbitrary fields in standard
+  methods.</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

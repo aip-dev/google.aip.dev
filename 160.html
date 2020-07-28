@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-160: Filtering</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Filtering</th></tr>
+    <tr><td>Number</td><td>160</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/160">google.aip.dev/160</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2020-02-24</td></tr>
+    <tr><td>Updated</td><td>2020-02-24</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#literals">Literals</a></li>
+<li><a href="#logical-operators">Logical Operators</a></li>
+<li><a href="#negation-operators">Negation Operators</a></li>
+<li><a href="#comparison-operators">Comparison Operators</a></li>
+<li><a href="#traversal-operator">Traversal operator</a></li>
+<li><a href="#has-operator">Has Operator</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0160.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0160.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Filtering
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-160</h4>
+  <h1>Filtering</h1>
+<p>Often, when listing resources (using a list method as defined in <a href="/132">AIP-132</a> or
+something reasonably similar), it is desirable to filter over the collection
+and only return results that the user is interested in.</p>
+<p>It is tempting to define a structure to handle the precise filtering needs for
+each API. However, filtering requirements evolve frequently, and therefore it
+is prudent to use a string field with a structured syntax accessible to a
+non-technical audience. This allows updates to be able to be made
+transparently, without waiting for UI or client updates.</p>
+<p><strong>Note:</strong> Because list filters are intended for a potentially non-technical
+audience, they sometimes borrow from patterns of colloquial speech rather than
+common patterns found in code.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>may</strong> provide filtering to users on <code>List</code> methods (or similar methods
+to query a collection, such as <code>Search</code>). If they choose to do so, they
+<strong>should</strong> follow the common specification for filters discussed here. The
+syntax is formally defined in the <a href="../static/misc/ebnf-filtering.txt">EBNF grammar</a>.</p>
+<p>When employing filtering, a request message <strong>should</strong> have exactly one
+filtering field, <code>string filter</code>. Filtering of related objects is handled
+through <a href="#traversal-operator">traversal</a> or <a href="#functions">functions</a>.</p>
+<p><strong>Note:</strong> List Filters have fuzzy matching characteristics with support for
+result ranking and scoring. For developers interested in deterministic
+evaluation of list filters, see <a href="https://github.com/google/cel-spec">CEL</a>.</p>
+<h3 id="literals">Literals</h3>
+<p>A bare literal value (examples: "42", "Hugo") is a value to be matched against.
+Literals appearing alone (with no specified field) <strong>should</strong> usually be
+matched anywhere it may appear in an object's field values.</p>
+<p>However, a service <strong>may</strong> choose to only consider certain fields; if so, it
+<strong>must</strong> document which fields it considers. A service <strong>may</strong> include new
+fields over time, but <strong>should</strong> do so judiciously and consider impact on
+existing users.</p>
+<p><strong>Note:</strong> Literals separated by whitespace are considered to have a fuzzy
+variant of <code>AND</code>. Therefore, <code>Victor Hugo</code> is roughly equivalent to
+<code>Victor AND Hugo</code>.</p>
+<h3 id="logical-operators">Logical Operators</h3>
+<p>Filtering implementations <strong>should</strong> provide the binary operators:</p>
+<p>| Operator | Example       | Meaning                                |
+| -------- | ------------- | -------------------------------------- |
+| <code>AND</code>    | <code>a AND b</code>     | True if <code>a</code> and <code>b</code> are true.          |
+| <code>OR</code>     | <code>a OR b OR c</code> | True if any of <code>a</code>, <code>b</code>, <code>c</code> are true. |</p>
+<p><strong>Note:</strong> To match common patterns of speech, the <code>OR</code> operator has higher
+precedence than <code>AND</code>, unlike what is found in most programming languages. The
+expression <code>a AND b OR c</code> evaluates: <code>a AND (b OR c)</code>. API documentation and
+examples <strong>should</strong> encourage the use of explicit parentheses to avoid
+confusion, but <strong>should not</strong> require explicit parentheses.</p>
+<h3 id="negation-operators">Negation Operators</h3>
+<p>Filtering implementations <strong>should</strong> provide the unary operators <code>NOT</code> and <code>-</code>.
+These are used interchangeably, and a service that supports negation <strong>must</strong>
+support both formats.</p>
+<p>| Operator | Example | Meaning                  |
+| -------- | ------- | ------------------------ |
+| <code>NOT</code>    | <code>NOT a</code> | True if <code>a</code> is not true. |
+| <code>-</code>      | <code>-a</code>    | True if <code>a</code> is not true. |</p>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<p>Filtering implementations <strong>should</strong> provide the binary comparison operators
+<code>=</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and <code>&gt;=</code> for string, numeric, timestamp, and
+duration fields (but <strong>should not</strong> provide them for booleans or enums).</p>
+<p>| Operator | Example      | Meaning                                         |
+| -------- | ------------ | ----------------------------------------------- |
+| <code>=</code>      | <code>a = true</code>   | True if <code>a</code> is true.                            |
+| <code>!=</code>     | <code>a != 42</code>    | True unless <code>a</code> equals 42.                      |
+| <code>&lt;</code>      | <code>a &lt; 42</code>     | True if <code>a</code> is a numeric value below 42.        |
+| <code>&gt;</code>      | <code>a &gt; "foo"</code>  | True if <code>a</code> is lexically ordered after "foo".   |
+| <code>&lt;=</code>     | <code>a &lt;= "foo"</code> | True if <code>a</code> is "foo" or lexically before it.    |
+| <code>&gt;=</code>     | <code>a &gt;= 42</code>    | True if <code>a</code> is a numeric value of 42 or higher. |</p>
+<p><strong>Note:</strong> Unlike in most programming languages, field names <strong>must</strong> appear on
+the left-hand side of a comparison operator; the right-hand side only accepts
+literals and logical operators.</p>
+<p>Because filters are accepted as query strings, type conversion takes place to
+translate the string to the appropriate strongly-typed value:</p>
+<ul>
+<li>Enums expect the enum's string representation (case-sensitive).</li>
+<li>Booleans expect <code>true</code> and <code>false</code> literal values.</li>
+<li>Numbers expect the standard integer or float representations. For floats,
+  exponents are supported (e.g. <code>2.997e9</code>).</li>
+<li><a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto">Durations</a> expect a numeric representation followed by an <code>s</code> suffix (for
+  seconds). Examples: <code>20s</code>, <code>1.2s</code>.</li>
+<li><a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto">Timestamps</a> expect an <a href="https://tools.ietf.org/html/rfc3339">RFC-3339</a> formatted string (e.g.
+  <code>2012-04-21T11:30:00-04:00</code>). UTC offsets are supported.</li>
+</ul>
+<p><strong>Warning:</strong> The identifiers <code>true</code>, <code>false</code>, and <code>null</code> only carry intrinsic
+meaning when used in the context of a typed field reference.</p>
+<p>Additionally, when comparing strings for equality, services <strong>should</strong> support
+wildcards using the <code>*</code> character; for example, <code>a = "*.foo"</code> is true if <code>a</code>
+<em>ends with</em> ".foo".</p>
+<h3 id="traversal-operator">Traversal operator</h3>
+<p>Filtering implementations <strong>should</strong> provide the <code>.</code> operator, which indicates
+traversal through a message, map, or struct.</p>
+<p>| Example         | Meaning                                               |
+| --------------- | ----------------------------------------------------- |
+| <code>a.b = true</code>    | True if <code>a</code> has a boolean <code>b</code> field that is true.     |
+| <code>a.b &gt; 42</code>      | True if <code>a</code> has a numeric <code>b</code> field that is above 42. |
+| <code>a.b.c = "foo"</code> | True if <code>a.b</code> has a string <code>c</code> field that is "foo".   |</p>
+<p>Traversal <strong>must</strong> be written using the field names from the resource. If a
+service wishes to support "implicit fields" of some kind, they <strong>must</strong> do so
+through well-documented <a href="#functions">functions</a>. A service <strong>may</strong> specify a
+subset of fields that are supported for traversal.</p>
+<p>If a user attempts to traverse to a field that is not defined on the message,
+the service <strong>should</strong> return an error with <code>INVALID_ARGUMENT</code>. A service
+<strong>may</strong> permit traversal to undefined keys on maps and structs, and <strong>should</strong>
+document how it behaves in this situation.</p>
+<p><strong>Important:</strong> The <code>.</code> operator <strong>must not</strong> be used to traverse through a
+repeated field or list, except for specific use with the <code>:</code> operator.</p>
+<h3 id="has-operator">Has Operator</h3>
+<p>Filtering implementations <strong>must</strong> provide the <code>:</code> operator, which means "has".
+It is usable with collections (repeated fields or maps) as well as messages,
+and behaves slightly differently in each case.</p>
+<p>Repeated fields query to see if the repeated structure contains a matching
+element:</p>
+<p>| Example    | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| <code>r:42</code>     | True if <code>r</code> contains 42.                                    |
+| <code>r.foo:42</code> | True if <code>r</code> contains an element <code>e</code> such that <code>e.foo = 42</code>. |</p>
+<p><strong>Important:</strong> Filters can not query a <em>specific</em> element on a repeated field
+for a value. For example, <code>e.0.foo = 42</code> and <code>e[0].foo = 42</code> are <strong>not</strong> valid
+filters.</p>
+<p>Maps, structs, messages can query either for the presence of a field in the map
+or a specific value:</p>
+<p>| Example    | Meaning                             |
+| ---------- | ----------------------------------- |
+| <code>m:foo</code>    | True if <code>m</code> contains the key "foo". |
+| <code>m.foo:*</code>  | True if <code>m</code> contains the key "foo". |
+| <code>m.foo:42</code> | True if <code>m.foo</code> is 42.              |</p>
+<p>There are two slight distinctions when parsing messages:</p>
+<ul>
+<li>When traversing messages, a field is only considered to be present if it has
+  a non-default value.</li>
+<li>When traversing messages, field names are snake case, although
+  implementations <strong>may</strong> choose to support automatic conversion between camel
+  case and snake case.</li>
+</ul>
+<h3 id="functions">Functions</h3>
+<p>The filtering language supports a function call syntax in order to support
+API-specific extensions. An API <strong>may</strong> define a function using the
+<code>call(arg...)</code> syntax, and <strong>must</strong> document any specific functions it
+supports.</p>
+<h3 id="limitations">Limitations</h3>
+<p>A service <strong>may</strong> specify further structure or limitations for filter queries,
+above what is defined here. For example, a service may support the logical
+operators but only permit a certain number of them (to avoid "queries of death"
+or other performance concerns).</p>
+<p>Further structure or limitations <strong>must</strong> be clearly documented, <strong>must not</strong>
+violate requirements set forth in this document, and a non-compliant filter
+query <strong>must</strong> error with <code>INVALID_ARGUMENT</code>.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

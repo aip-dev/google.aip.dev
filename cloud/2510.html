@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-2510: Project identifiers</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item nav-item-active">
+      <a href="/2510">
+        <span class="aip-number">2510</span>
+        Project identifiers
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2602">
+        <span class="aip-number">2602</span>
+        Parameter-dependent arguments
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2603">
+        <span class="aip-number">2603</span>
+        List command arguments
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2604">
+        <span class="aip-number">2604</span>
+        Numeric arguments
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Project identifiers</th></tr>
+    <tr><td>Number</td><td>2510</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/cloud/2510">google.aip.dev/cloud/2510</a></td></tr>
+    <tr><td>Scope</td><td>Google Cloud Platform</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-12-26</td></tr>
+    <tr><td>Updated</td><td>2018-12-26</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#google-apis">Google APIs</a></li>
+<li><a href="#internal-google-services">Internal Google services</a></li>
+<li><a href="#third-party-services">Third-party services</a></li>
+<li><a href="#project-identifier-format">Project identifier format</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/cloud/2510.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/cloud/2510.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/cloud">
+          Google Cloud Platform AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Project identifiers
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-2510</h4>
+  <h1>Project identifiers</h1>
+<p>Historically, Google had two kinds of projects: API projects and App Engine
+projects. API projects used project numbers (e.g. <code>12345</code>) as identifiers, and
+App Engine projects used project IDs (e.g. <code>happy-armadillo-789</code>) as
+identifiers. Later, Google converged API projects and App Engine projects, so
+now each project has <em>both</em> unique and immutable identifiers.</p>
+<p>The two types of identifiers are used differently in different contexts, and
+create a lot of complexity for application development. One critical issue is
+that applications cannot reliably join data from different services, because
+different services use different project identifiers.</p>
+<h2 id="guidance">Guidance</h2>
+<p><strong>TL;DR:</strong> The project number is the canonical identifier, and the project ID
+is an <a href="/122#resource-id-aliases">alias</a>, and behaves as such. Additionally, third-party services are
+unable to <em>accept</em> project IDs.</p>
+<p>The rationale for this is:</p>
+<ul>
+<li>Each resource should always have one canonical identifier.</li>
+<li>Because Google's privacy policy restricts the use of project IDs, both
+  internally and with partners, only the project number can be the canonical
+  identifier.</li>
+<li>Translating from an <a href="/122#resource-id-aliases">alias</a> to a canonical identifier should be consistent
+  everywhere, including referring to projects.</li>
+<li>Returning resources with project numbers increases the chances that these are
+  what users store, which may be important if using third-party services.</li>
+</ul>
+<h3 id="google-apis">Google APIs</h3>
+<p>Externally-facing Google APIs <strong>should</strong> accept both project IDs and project
+numbers for incoming API requests.</p>
+<p>However, the project number is the canonical identifier, and therefore APIs
+<strong>must</strong> use project numbers in responses, regardless of whether they were sent
+a project ID or a project number.</p>
+<p>There are two exceptions to this rule:</p>
+<ul>
+<li>Error responses <strong>must</strong> return the originally-provided value without
+  modification. Error responses <strong>must not</strong> perform any translation between
+  project IDs and project numbers.</li>
+<li>If a service receives a resource name for a resource that the service does
+  not own, it <strong>should not</strong> perform any translation between project IDs and
+  project numbers for those resource names.</li>
+</ul>
+<h3 id="internal-google-services">Internal Google services</h3>
+<p>Internal Google services <strong>must</strong> use project numbers for internal data storage
+and for output. Project identifiers are widely used as storage keys, which
+often appear in logs and metrics. Project IDs are user-settable and thus
+considered PII and user data, but project numbers are not.</p>
+<p>Therefore, when an internal service calls an external Google APIs, it
+<strong>should</strong> use project numbers for making API requests.</p>
+<h3 id="third-party-services">Third-party services</h3>
+<p><a href="https://cloud.google.com/marketplace">Third-party services</a> that are
+integrated with Google Cloud Platform <strong>must</strong> only store or provide project
+numbers. Google's privacy policy prohibits sharing project IDs with third-party
+services, or providing a service for third-party services to translate between
+project IDs and project numbers at runtime.</p>
+<h3 id="project-identifier-format">Project identifier format</h3>
+<p>APIs <strong>must</strong> use project resource names as defined by the <a href="https://cloud.google.com/resource-manager/">Resource Manager
+API</a> to refer to projects, such as <code>projects/123456</code>. This allows the same
+API to work with other resources similar to projects, such as organizations and
+folders.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2019-08-11</strong>: Add an exception for resources that a service does not own.</li>
+<li><strong>2019-06-19</strong>: Clarify how error messages should be treated</li>
+<li><strong>2019-06-10</strong>: Minor language and organization tweaks</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

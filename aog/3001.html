@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-3001: Actions on Google AIP Process</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item nav-item-active">
+      <a href="/3001">
+        <span class="aip-number">3001</span>
+        Actions on Google AIP Process
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3010">
+        <span class="aip-number">3010</span>
+        Actions on Google Vertical Integration Webhook Format
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3020">
+        <span class="aip-number">3020</span>
+        BII Schema Principles
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3021">
+        <span class="aip-number">3021</span>
+        Type protos in Actions on Google APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3022">
+        <span class="aip-number">3022</span>
+        Built-in intent arguments and fulfillment APIs
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Actions on Google AIP Process</th></tr>
+    <tr><td>Number</td><td>3001</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/aog/3001">google.aip.dev/aog/3001</a></td></tr>
+    <tr><td>Scope</td><td>Actions on Google</td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2019-10-03</td></tr>
+    <tr><td>Updated</td><td>2019-10-03</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#stakeholders">Stakeholders</a><ul>
+<li><a href="#actions-on-google-editors">Actions on Google Editors</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/aog/3001.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/aog/3001.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/aog">
+          Actions on Google AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Actions on Google AIP Process
+      </li>
+    </ol>
+  </nav>
+</section>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-3001</h4>
+  <h1>Actions on Google AIP Process</h1>
+<p>This AIP extends <a href="/1">AIP-1</a> with details specific to Actions on Google AIPs. Any
+details of <a href="/1">AIP-1</a> not modified or contradicted by this AIP also apply to
+Actions on Google AIPs.</p>
+<h2 id="stakeholders">Stakeholders</h2>
+<p>As with any process there are many different stakeholders when it comes to
+reviewing and working with AIPs. Below is a summary of the escalation path
+starting with the API producer.</p>
+<div class="highlight language-graphviz"><pre><span></span><code>digraph d_front_back {
+  rankdir=BT;
+  ranksep=0.3;
+  node [ style=&quot;filled,solid&quot; shape=box fontname=&quot;Roboto&quot; ];
+
+  producer [ label=&quot;API Producer&quot; ];
+  editors [ label=&quot;AIP Editors&quot; ];
+  aog_editors [ label=&quot;Actions on Google AIP Editors&quot; ];
+  tl_infra [ label=&quot;Infrastructure TL&quot; ];
+  tl_design [ label=&quot;Design TL&quot; ];
+  tl [ label=&quot;TL&quot; ];
+
+  producer -&gt; aog_editors;
+  aog_editors -&gt; editors;
+  editors -&gt; tl_infra -&gt; tl;
+  editors -&gt; tl_design -&gt; tl;
+}
+</code></pre></div>
+
+<h3 id="actions-on-google-editors">Actions on Google Editors</h3>
+<p>The Actions on Google editors are the set of people who make decisions on
+Actions on Google AIPs before escalation to the general editors defined in
+<a href="/1">AIP-1</a>.</p>
+<p>The list of Actions on Google AIP editors is currently:</p>
+<ul>
+<li>Ali Ibrahim (<a href="https://github.com/ahahibrahim">@ahahibrahim</a>)</li>
+<li>Richard Frankel (<a href="https://github.com/rofrankel">@rofrankel</a>)</li>
+<li>Shuyang Chen (<a href="https://github.com/Canain">@Canain</a>)</li>
+</ul>
+<p>The Actions on Google editors have the same responsibilities as the general
+editors. They also have the additional responsibility of establishing
+correctness of, and leadership support for, the contents of Actions on Google
+AIPs.</p>
+<p>Actions on Google AIP editorship is by invitation of the current Actions on
+Google editors.</p>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

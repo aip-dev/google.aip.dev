@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-153: Import and export</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Import and export</th></tr>
+    <tr><td>Number</td><td>153</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/153">google.aip.dev/153</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-12-16</td></tr>
+    <tr><td>Updated</td><td>2019-12-16</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#multiple-resources">Multiple resources</a></li>
+<li><a href="#data-for-a-single-resource">Data for a single resource</a></li>
+<li><a href="#request-object">Request object</a></li>
+<li><a href="#inline-sources">Inline sources</a></li>
+<li><a href="#partial-failures">Partial failures</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0153.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0153.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Import and export
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-153</h4>
+  <h1>Import and export</h1>
+<p>Many users want to be able to load data into an API, or get their existing data
+out of an API. This is particularly important for enterprise users, who are
+often concerned about vendor lock.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>may</strong> support import and export operations, which <strong>may</strong> create
+multiple new resources, or they <strong>may</strong> populate data into a single resource.</p>
+<h3 id="multiple-resources">Multiple resources</h3>
+<p>Services <strong>may</strong> support importing and exporting multiple resources into or out
+of an API, and <strong>should</strong> implement a common pattern to do so:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">ImportBooks</span><span class="p">(</span><span class="n">ImportBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:import&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ImportBooksResponse&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ImportBooksMetadata&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">rpc</span> <span class="n">ExportBooks</span><span class="p">(</span><span class="n">ExportBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:export&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ExportBooksResponse&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ExportBooksMetadata&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The method <strong>must</strong> return a long-running operation (see <a href="/151">AIP-151</a>) unless
+  the service can guarantee that it will <em>never</em> need more than a few seconds
+  to complete.</li>
+<li>The HTTP verb <strong>must</strong> be <code>POST</code>, and the <code>body</code> <strong>must</strong> be <code>"*"</code>.</li>
+<li>A <code>parent</code> field <strong>should</strong> be included as part of the URI.<ul>
+<li>If importing into or exporting from multiple resources is required, the API
+  <strong>should</strong> keep the <code>parent</code> field and allow the user to use the <code>-</code>
+  character to indicate multiple parents (see <a href="/159">AIP-159</a>).</li>
+<li>On import, if the user provides a specific parent, the API <strong>must</strong> reject
+  any imported resources that would be added to a different parent.</li>
+</ul>
+</li>
+<li>The URI suffix <strong>should</strong> be <code>:import</code> or <code>:export</code>.</li>
+</ul>
+<h3 id="data-for-a-single-resource">Data for a single resource</h3>
+<p>Services <strong>may</strong> support importing and exporting data into or out of a single
+resource, and <strong>should</strong> implement a common pattern to do so:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">ImportPages</span><span class="p">(</span><span class="n">ImportPagesRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{book=publishers/*/books/*}:importPages&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ImportPagesResponse&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ImportPagesMetadata&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">rpc</span> <span class="n">ExportPages</span><span class="p">(</span><span class="n">ExportPagesRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{book=publishers/*/books/*}:exportPages&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ExportPagesResponse&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ExportPagesMetadata&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The method <strong>must</strong> return a long-running operation (see <a href="/151">AIP-151</a>) unless
+  the service can guarantee that it will <em>never</em> need more than a few seconds
+  to complete.</li>
+<li>The HTTP verb <strong>must</strong> be <code>POST</code>, and the <code>body</code> <strong>must</strong> be <code>"*"</code>.</li>
+<li>A field representing the resource that data is being imported into <strong>should</strong>
+  be included as part of the URI. The field <strong>should</strong> be named after the
+  resource (and <strong>should not</strong> be called <code>name</code>).</li>
+<li>The URI suffix should include both the verb and a noun for the data itself,
+  such as <code>:importPages</code> or <code>:exportPages</code>.</li>
+</ul>
+<h3 id="request-object">Request object</h3>
+<p>Imports and exports often require two fundamentally different types of
+configuration:</p>
+<ol>
+<li>Configuration specific to the source or destination.</li>
+<li>Configuration regarding the imported or exported data itself.</li>
+</ol>
+<p>Source or destination configuration should be grouped into a single message and
+placed inside a oneof:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ImportBooksRequest</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">oneof</span> <span class="n">source</span> <span class="p">{</span>
+    <span class="n">AuthorSource</span> <span class="na">author_source</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">TranslatorSource</span> <span class="na">translator_source</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">string</span> <span class="na">isbn_prefix</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ExportBooksRequest</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">oneof</span> <span class="n">destination</span> <span class="p">{</span>
+    <span class="n">PrinterDestination</span> <span class="na">printer_destination</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">TranslatorDestination</span> <span class="na">translator_destination</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">string</span> <span class="na">filter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The source configuration messages <strong>must</strong> be placed within a <code>oneof source</code>
+  (for import) or <code>oneof destination</code> (for export), even if there is only one.
+  (This maintains flexibility to add more later.)</li>
+<li>Configuration related to the data itself (and therefore common across all
+  sources) <strong>must</strong> be placed at the top-level of the request message.</li>
+</ul>
+<p><strong>Note:</strong> The configuration for import and export <strong>may</strong> be different from one
+another. (For example, it would be sensible to import from a file but export to
+a directory.)</p>
+<h3 id="inline-sources">Inline sources</h3>
+<p>APIs <strong>may</strong> also permit import and export "inline", where the contents to be
+imported or exported are provided in the request or response.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">InlineSource</span> <span class="p">{</span>
+  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The source or destination <strong>should</strong> be named <code>InlineSource</code> or
+  <code>InlineDestination</code>.</li>
+<li>The message <strong>should</strong> include a repeated field representing the resource.
+  However, if the resource structure is complex, the API <strong>may</strong> use a separate
+  inline representation. In this situation, the same format <strong>must</strong> be used
+  for both import and export.</li>
+</ul>
+<h3 id="partial-failures">Partial failures</h3>
+<p>While partial failures are normally discouraged, import and export RPCs
+<strong>should</strong> include partial failure information in the metadata object. Each
+individual error <strong>should</strong> be a <code>google.rpc.Status</code> object describing the
+error. For more on errors, see <a href="/193">AIP-193</a>.</p>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

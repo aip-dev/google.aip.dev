@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>Welcome to the AIP Newsletter</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        <nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#api-linter">API linter</a></li>
+<li><a href="#aips-under-review">AIPs under review</a><ul>
+<li><a href="#aip-153-import-and-export">AIP-153: Import and export</a></li>
+<li><a href="#aip-162-resource-revisions">AIP-162: Resource revisions</a></li>
+<li><a href="#aip-163-change-validation">AIP-163: Change validation</a></li>
+<li><a href="#aip-165-criteria-based-delete">AIP-165: Criteria-based delete</a></li>
+<li><a href="#aip-194-retries-for-grpc-clients">AIP-194: Retries for gRPC clients</a></li>
+</ul>
+</li>
+<li><a href="#recent-updates">Recent updates</a></li>
+<li><a href="#what-is-coming">What is coming?</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/pages/news/2020-03.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/pages/news/2020-03.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Welcome to the AIP Newsletter
+      </li>
+    </ol>
+  </nav>
+</section>
+  <h1>Welcome to the AIP Newsletter</h1>
+<p>Welcome to the first (hopefully monthly) edition of the <strong>AIP newsletter</strong>,
+which is designed to keep you up to date about the AIP program, and particular
+proposals making their way through the system.</p>
+<p>In this edition, we will discuss five pending proposals. This is intended as a
+"public comment" period: the AIP editors are happy with these proposals, but we
+want to ensure that you are too. Assuming feedback is sufficiently positive, we
+intend to formally approve these proposals on Friday, March 27, 2020.</p>
+<h2 id="api-linter">API linter</h2>
+<p>As many readers know, we have published an <a href="https://github.com/api-linter">API linter</a>, which is able to
+check much of the guidance provided in API Improvement Proposals for APIs
+defined in protocol buffers.</p>
+<p>The linter now has over 150 rules, and is running on many new and existing APIs
+at Google, hopefully pushing us toward greater consistency.</p>
+<h2 id="aips-under-review">AIPs under review</h2>
+<h3 id="aip-153-import-and-export">AIP-153: Import and export</h3>
+<blockquote>
+<p>Many users want to be able to load data into an API, or get their existing
+data out of an API. This is particularly important for enterprise users, who
+are often concerned about vendor lock.</p>
+</blockquote>
+<p><a href="../aip/0153.md">Import and export</a> are particularly important concepts for enterprise
+APIs, although they are increasing in importance for consumer and SaaS APIs as
+well.</p>
+<p>We have actually had a reasonably consistent import and export story in Google
+Cloud for a long time, but it has largely been passed along by tribal knowledge
+("go look at X and copy what they did"). Therefore, this AIP attempts to codify
+what we believe is a long-standing practice.</p>
+<p><strong>Summary:</strong> <a href="../aip/0153.md">AIP-153</a> mandates that both import and export methods return
+<a href="../aip/0151.md">long-running operations</a>. Unlike most API methods, they do support
+partial failures, which are handled through the LRO metadata. Finally, they
+have a specified place for per-source and per-destination configuration,
+distinct from configuration for the data itself.</p>
+<p>We are aiming to approve AIP-153 on March 27. If you have feedback, please
+<a href="https://github.com/googleapis/aip/pull/422">leave a comment</a>.</p>
+<h3 id="aip-162-resource-revisions">AIP-162: Resource revisions</h3>
+<blockquote>
+<p>Some APIs need to have resources with a revision history, where users can
+reason about the state of the resource over time.</p>
+</blockquote>
+<p><a href="../aip/0162.md">Resource revisions</a> is a concept we are seeing crop up more and more,
+and we are seeing an increasing number of situations where audit logging is a
+necessary but insufficient solution. Several APIs have struggled with how to
+model a resource's history over time, and handle common use cases like commit
+and rollback, which is what prompted this AIP.</p>
+<p>This is new guidance, put together by the AIP team as well as several API teams
+who needed this functionality near the end of 2019. It has been positively
+received by the teams that needed it, and so we would like to codify it.</p>
+<p><strong>Summary:</strong> <a href="../aip/0162.md">AIP-162</a> mandates the use of revision IDs that are appended to
+a resource name with the <code>@</code> character for signifying revisions, and sets out
+method structures for most common operations (listing revisions, rollback,
+etc.). It also proposes a tagging mechanism for user-friendly revision names.</p>
+<p>We are aiming to approve AIP-162 on March 27. If you have feedback, please
+<a href="https://github.com/googleapis/aip/pull/436">leave a comment</a>.</p>
+<h3 id="aip-163-change-validation">AIP-163: Change validation</h3>
+<blockquote>
+<p>Occasionally, a user wants to validate an intended change to see what the
+result will be before actually making the change. For example, a request to
+provision new servers in a fleet will have an impact on the overall fleet
+size and cost, and could potentially have unexpected downstream effects.</p>
+</blockquote>
+<p><a href="../aip/0163.md">Change validation</a> is the concept of performing a "dry run" on an API
+request, and returning back the result without making any changes.</p>
+<p>This is effectively a migration of long-standing guidance that was not very
+fleshed out. The previous API design guide mentioned <code>validate_only</code> as an
+entry in the standard fields table with minimal explanation. This proposal
+fleshes that out with an example, and addresses some questions we have received
+over time.</p>
+<p><strong>Summary:</strong> <a href="../aip/0163.md">AIP-163</a> offers guidance for "dry run" requests using a
+<code>bool validate_only</code> field in the request message, and addresses some common
+situations around permissions and incomplete output.</p>
+<p>We are aiming to approve AIP-163 on March 27. If you have feedback, please
+<a href="https://github.com/googleapis/aip/pull/437">leave a comment</a>.</p>
+<h3 id="aip-165-criteria-based-delete">AIP-165: Criteria-based delete</h3>
+<blockquote>
+<p>Occasionally, an API may need to provide a mechanism to delete a large number
+of resources based on some set of filter parameters, rather than requiring
+the individual resource name of the resources to be deleted.</p>
+</blockquote>
+<p><a href="../aip/0165.md">Criteria-based delete</a> is designed to address problems where a user
+needs to delete so many items that <a href="../aip/0235.md">batch delete</a> simply becomes
+infeasible.</p>
+<p>This proposal represents a concession of sorts: we have long tried to avoid
+delete-by-filter because of concerns that users would accidentally delete
+important records and be unable to recover them. However, several APIs have had
+legitimate reasons to need to do this, because the number of records the user
+would want to delete was so high.</p>
+<p><strong>Summary:</strong> <a href="../aip/0165.md">AIP-165</a> offers guidance for criteria-based delete, with a
+common name (<code>Purge</code>) and structure, and mandates a dry-run by default with a
+<code>force</code> flag to actually perform the purge.</p>
+<p>We are aiming to approve AIP-165 on March 27. If you have feedback, please
+<a href="https://github.com/googleapis/aip/pull/438">leave a comment</a>.</p>
+<h3 id="aip-194-retries-for-grpc-clients">AIP-194: Retries for gRPC clients</h3>
+<blockquote>
+<p>RPCs sometimes fail. When one does, the client performing the RPC needs to
+know whether it is safe to retry the operation. When status codes are used
+consistently across multiple APIs, clients can respond to failures
+appropriately.</p>
+</blockquote>
+<p><a href="../aip/0194.md">Retries for gRPC clients</a> handles how to deal with errors, and in
+particular when a client can transparently retry those errors.</p>
+<p>This proposal came about because of a need for first-party client libraries to
+be able to transparently retry some server errors. gRPC offers a configuration
+strategy for this, which is defined by API producers.</p>
+<p><strong>Summary:</strong> <a href="../aip/0194.md">AIP-194</a> offers guidance for configuring what error codes from
+an API are safe to retry. It recommends usually retrying <code>UNAVAILABLE</code> and
+nothing else.</p>
+<p>We are aiming to approve AIP-194 on March 27. If you have feedback, please
+<a href="https://github.com/googleapis/aip/pull/439">leave a comment</a>.</p>
+<h2 id="recent-updates">Recent updates</h2>
+<p>In addition to the new AIPs under review, we have added the following guidance
+to existing AIPs:</p>
+<ul>
+<li><a href="../aip/0008.md">AIP-8</a>: AIPs have reverse-chronological changelogs
+  (<a href="https://github.com/googleapis/aip/pull/425">#425</a>)</li>
+<li><a href="../aip/0135.md">AIP-135</a>: Delete methods send 403 errors if the user lacks
+  access (<a href="https://github.com/googleapis/aip/pull/409">#409</a>)</li>
+<li><a href="../aip/0140.md">AIP-140</a>: <code>display_name</code> and <code>title</code> standard fields
+  (<a href="https://github.com/googleapis/aip/pull/405">#405</a>)</li>
+<li><a href="../aip/0158.md">AIP-158</a>: Field order for pagination response messages
+  (<a href="https://github.com/googleapis/aip/pull/419">#419</a>)</li>
+<li><a href="../aip/0193.md">AIP-193</a>: Added reference to new <code>ErrorInfo</code> message
+  (<a href="https://github.com/googleapis/aip/pull/396">#396</a>)</li>
+</ul>
+<h2 id="what-is-coming">What is coming?</h2>
+<p>We have more coming over the course of the next few months, including
+long-awaited public guidance for filtering and versioning.</p>
+<p>You also may notice some pull requests around making AIPs more generic. We are
+exploring the possibility of bringing AIPs to even more API producers across
+multiple companies, so that others can publish their standards under a common
+information architecture. This effort is still nascent, but we are excited and
+hopeful. Stay tuned!</p>
+
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+  </section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

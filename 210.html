@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-210: Unicode</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Unicode</th></tr>
+    <tr><td>Number</td><td>210</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/210">google.aip.dev/210</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-08-20</td></tr>
+    <tr><td>Updated</td><td>2018-08-20</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#unicode-primer">Unicode primer</a></li>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#character-definition">Character definition</a></li>
+<li><a href="#length-units">Length units</a></li>
+<li><a href="#billing-units">Billing units</a></li>
+<li><a href="#unique-identifiers">Unique identifiers</a></li>
+<li><a href="#normalization">Normalization</a></li>
+<li><a href="#uniqueness">Uniqueness</a></li>
+</ul>
+</li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0210.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0210.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Unicode
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-210</h4>
+  <h1>Unicode</h1>
+<p>APIs should be consistent on how they explain, limit, and bill for string
+values and their encodings. This ranges from little ambiguities (like fields
+"limited to 1024 characters") all the way to billing confusion (are names and
+values of properties in Datastore billed based on characters or bytes?).</p>
+<p>In general, if we talk about limits measured in bytes, we are discriminating
+against non-ASCII text since it takes up more space. On the other hand, if we
+talk about "characters", we are ambiguous about whether those are Unicode "code
+points", "code units" for a particular encoding (e.g. UTF-8 or UTF-16),
+"graphemes", or "grapheme clusters".</p>
+<h2 id="unicode-primer">Unicode primer</h2>
+<p>Character encoding tends to be an area we often gloss over, so a quick primer:</p>
+<ul>
+<li>Strings are just bytes that represent numbers according to some encoding
+  format.</li>
+<li>When we talk about <strong>characters</strong>, we sometimes mean Unicode <strong>code points</strong>,
+  which are numbers in the Unicode spec (up to 21 bits).</li>
+<li>Other times we might mean <strong>graphemes</strong> or <strong>grapheme clusters</strong>, which may
+  have multiple numeric representations and may be represented by more than one
+  code point. For example, <code>á</code> may be represented as a composition of
+  <code>U+0061 + U+0301</code> (the <code>a</code> + the accent combining mark) or as a single code
+  point, <code>U+00E1</code>.</li>
+<li>Protocol buffers uses <strong>UTF-8</strong> ("Unicode Transformation Format") which is a
+  variable-length encoding scheme using up to 4 <strong>code units</strong> (8-bit bytes)
+  per code point.</li>
+</ul>
+<h2 id="guidance">Guidance</h2>
+<h3 id="character-definition">Character definition</h3>
+<p><strong>TL;DR:</strong> In our APIs, "characters" means "Unicode code points".</p>
+<p>In API documentation (e.g., API reference documents, blog posts, marketing
+documentation, billing explanations, etc), "character" <strong>must</strong> be defined as a
+Unicode code point.</p>
+<h3 id="length-units">Length units</h3>
+<p><strong>TL;DR:</strong> Set size limits in "characters" (as defined above).</p>
+<p>All string field length limits defined in API comments <strong>must</strong> be measured and
+enforced in characters as defined above. This means that there is an underlying
+maximum limit of (<code>4 * characters</code>) bytes, though this limit will only be hit
+when using exclusively characters that consist of 4 UTF-8 code units (32 bits).</p>
+<p>If you use a database system (e.g. Spanner) which allows you to define a limit
+in characters, it is safe to assume that this byte-defined requirement is
+handled by the underlying storage system.</p>
+<h3 id="billing-units">Billing units</h3>
+<p>APIs <strong>may</strong> use either code points or bytes (using the UTF-8 encoding) as the
+unit for billing or quota measurement (e.g., Cloud Translation chooses to use
+characters). If an API does not define this, the assumption is that the unit of
+billing is characters (e.g., $0.01 <em>per character</em>, not $0.01 <em>per byte</em>).</p>
+<h3 id="unique-identifiers">Unique identifiers</h3>
+<p><strong>TL;DR:</strong> Unique identifiers <strong>should</strong> limit to ASCII, generally only
+letters, numbers, hyphens, and underscores, and <strong>should not</strong> start with a
+number.</p>
+<p>Strings used as unique identifiers <strong>should</strong> limit inputs to ASCII characters,
+typically letters, numbers, hyphens, and underscores
+(<code>[a-zA-Z][a-zA-Z0-9_-]*</code>). This ensures that there are never accidental
+collisions due to normalization. If an API decides to allow all valid Unicode
+characters in unique identifiers, the API <strong>must</strong> reject any inputs that are
+not in Normalization Form C. Generally, unique identifiers <strong>should not</strong> start
+with a number as that prefix is reserved for Google-generated identifiers and
+gives us an easy way to check whether we generated a unique numeric ID for or
+whether the ID was chosen by a user.</p>
+<p>Unique identifiers <strong>should</strong> use a maximum length of 64 characters, though
+this limit may be expanded as necessary. 64 characters should be sufficient for
+most purposes as even UUIDs only require 36 characters.</p>
+<h3 id="normalization">Normalization</h3>
+<p><strong>TL;DR:</strong> Unicode values <strong>should</strong> be stored in <a href="https://unicode.org/reports/tr15/">Normalization Form C</a>.</p>
+<p>Values <strong>should</strong> always be normalized into Normalization Form C. Unique
+identifiers <strong>must</strong> always be stored in Normalization Form C (see the next
+section).</p>
+<p>Imagine we're dealing with Spanish input "estar<b>é</b>" (the accented part
+will be bolded throughout). This text has what we might visualize as 6
+"characters" (in this case, they are grapheme clusters). It has two possible
+Unicode representations:</p>
+<ul>
+<li>Using 6 code points: <code>U+0065</code> <code>U+0073</code> <code>U+0074</code> <code>U+0061</code> <code>U+0072</code>
+  <strong><code>U+00E9</code></strong></li>
+<li>Using 7 code points: <code>U+0065</code> <code>U+0073</code> <code>U+0074</code> <code>U+0061</code> <code>U+0072</code> <strong><code>U+0065</code>
+  <code>U+0301</code></strong></li>
+</ul>
+<p>Further, when encoding to UTF-8, these code points have two different
+serialized representations:</p>
+<ul>
+<li>Using 7 code-units (7 bytes): <code>0x65</code> <code>0x73</code> <code>0x74</code> <code>0x61</code> <code>0x72</code> <strong><code>0xC3</code>
+  <code>0xA9</code></strong></li>
+<li>Using 8 code-units (8 bytes): <code>0x65</code> <code>0x73</code> <code>0x74</code> <code>0x61</code> <code>0x72</code> <strong><code>0x65</code>
+  <code>0xCC</code> <code>0x81</code></strong></li>
+</ul>
+<p>To avoid this discrepancy in size (both code units and code points), use
+<a href="https://unicode.org/reports/tr15/">Normalization Form C</a> which provides a canonical representation for strings.</p>
+<h3 id="uniqueness">Uniqueness</h3>
+<p><strong>TL;DR:</strong> Unicode values <strong>must</strong> be normalized to <a href="https://unicode.org/reports/tr15/">Normalization Form C</a>
+before checking uniqueness.</p>
+<p>For the purposes of unique identification (e.g., <code>name</code>, <code>id</code>, or <code>parent</code>),
+the value <strong>must</strong> be normalized into <a href="https://unicode.org/reports/tr15/">Normalization Form C</a> (which happens
+to be the most compact). Otherwise we may have what is essentially "the same
+string" used to identify two entirely different resources.</p>
+<p>In our example above, there are two ways of representing what is essentially
+the same text. This raises the question about whether the two representations
+should be treated as equivalent or not. In other words, if someone were to use
+both of those byte sequences in a string field that acts as a unique
+identifier, would it violate a uniqueness constraint?</p>
+<p>The W3C recommends using Normalization Form C for all content moving across the
+internet. It is the most compact normalized form on Unicode text, and avoids
+most interoperability problems. If we were to treat two Unicode byte sequences
+as different when they have the same representation in NFC, we'd be required to
+reply to possible "Get" requests with content that is <strong>not</strong> in normalized
+form. Since that is definitely unacceptable, we <strong>must</strong> treat the two as
+identical by transforming any incoming string data into Normalized Form C or
+rejecting identifiers not in the normalized form.</p>
+<p>There is some debate about whether we should view strings as sequences of code
+points represented as bytes (leading to uniqueness determined based on the
+byte-representation of said string) or to interpret strings as a higher level
+abstraction having many different possible byte-representations. The stance
+taken here is that we already have a field type for handling that: <code>bytes</code>.
+Fields of type <code>string</code> already express an opinion of the validity of an input
+(it must be valid UTF-8). As a result, treating two inputs that have identical
+normalized forms as different due to their underlying byte representation seems
+to go against the original intent of the <code>string</code> type. This distinction
+typically doesn't matter for strings that are opaque to our services (e.g.,
+<code>description</code> or <code>display_name</code>), however when we rely on strings to uniquely
+identify resources, we are forced to take a stance.</p>
+<p>Put differently, our goal is to allow someone with text in any encoding (ASCII,
+UTF-16, UTF-32, etc) to interact with our APIs without a lot of "gotchas".</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://unicode.org/reports/tr15/">Unicode normalization forms</a></li>
+<li><a href="https://cloud.google.com/datastore/pricing">Datastore pricing "name and value of each property"</a>
+  doesn't clarify this.</li>
+<li><a href="https://cloud.google.com/natural-language/pricing">Natural Language pricing</a>
+  uses charges based on UTF-8 code points rather than code units.</li>
+<li><a href="https://sites.google.com/a/google.com/intl-eng/apis/matching?pli=1">Text matching and normalization</a></li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

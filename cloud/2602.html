@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-2602: Parameter-dependent arguments</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/2510">
+        <span class="aip-number">2510</span>
+        Project identifiers
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/2602">
+        <span class="aip-number">2602</span>
+        Parameter-dependent arguments
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2603">
+        <span class="aip-number">2603</span>
+        List command arguments
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2604">
+        <span class="aip-number">2604</span>
+        Numeric arguments
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Parameter-dependent arguments</th></tr>
+    <tr><td>Number</td><td>2602</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/cloud/2602">google.aip.dev/cloud/2602</a></td></tr>
+    <tr><td>Scope</td><td>Google Cloud Platform</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-06-12</td></tr>
+    <tr><td>Updated</td><td>2019-06-12</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a></li>
+<li><a href="#alternatives-considered">Alternatives considered</a><ul>
+<li><a href="#single-command-with-an-explicit-flag-corresponding-to-the-parameter">Single command with an explicit flag corresponding to the parameter</a></li>
+<li><a href="#multiple-commands-named-after-the-action-hyphenated-with-the-parameter-value">Multiple commands named after the action hyphenated with the parameter value</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/cloud/2602.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/cloud/2602.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/cloud">
+          Google Cloud Platform AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Parameter-dependent arguments
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-2602</h4>
+  <h1>Parameter-dependent arguments</h1>
+<p>When designing CLI commands, a common scenario is that a command corresponding
+to some conceptual action may take different, largely non-overlapping arguments
+depending on the value of a particular parameter.</p>
+<p>For instance, suppose we're designing a new gcloud surface for managing images,
+and we need a command that formats an image as JPEG, GIF, or PNG. Regardless of
+the image format, the command will need arguments for the source and
+destination files, but otherwise depending on the format, an entirely different
+set of options will apply. JPEG, for example, might take arguments for
+smoothing, subsampling, and DCT method, which are only relevant for JPEG
+images. GIF, on the other hand, might take arguments for controlling animated
+gifs e.g. whether to loop forever, and a delay time in between frames. Finally,
+PNG might take arguments for color type and bits per channel.</p>
+<h2 id="guidance">Guidance</h2>
+<p>When the parameter-specific arguments are numerous relative to the other
+arguments, create a command group for the action, with separate subcommands
+named after each of the parameter values. In the example above, we would thus
+create a <code>gcloud images format</code> command group, with subcommands called <code>jpeg</code>,
+<code>gif</code>, and <code>png</code>. These subcommands can then take their own format-specific
+flags.</p>
+<p>Example usage:</p>
+<div class="highlight language-"><pre><span></span><code>$ gcloud images format jpeg --help
+
+$ gcloud images format jpeg --source-file=foo --destination-file=bar \
+    --dct-method=integer --smoothing=0.1 --subsampling=4:4:4
+
+$ gcloud images format png --source-file=foo --destination-file=bar \
+    --color-type=0 --bits-per-channel=16
+
+$ gcloud images format gif --source-file=foo --destination-file=bar \
+    --loop-forever --frame-delay=1ms
+</code></pre></div>
+
+<p>It's possible that over time more and more arguments are added that are common
+to all parameters. In that case, it may make sense to instead use a single
+command that takes an argument for the parameter. This can be done without
+breaking backward compatibility by making the parameter a positional argument.
+In the example above, this would involve changing <code>format</code> from a command group
+to a command, and having it take a positional image format argument which can
+be one of: <code>jpeg</code>, <code>gif</code>, or <code>png</code>. Note that all the example commands above
+would still function identically (except for the first one, but since it only
+affects help text it's not considered a breaking change.)</p>
+<h2 id="alternatives-considered">Alternatives considered</h2>
+<p>There are several other possibilities for the design of such a command,
+outlined below:</p>
+<h3 id="single-command-with-an-explicit-flag-corresponding-to-the-parameter">Single command with an explicit flag corresponding to the parameter</h3>
+<p>In the example, this would involve a <code>--type</code> flag to specify the image format:</p>
+<div class="highlight language-"><pre><span></span><code>$ gcloud images format --source-file=source --destination-file=dest \
+    --type=JPEG --dct-method=integer --smoothing=0.1 --subsampling=4:4:4
+
+$ gcloud images format --source-file=source --destination-file=dest \
+    --type=GIF --loop-forever --frame-delay=1ms
+
+$ gcloud images format --source-file=source --destination-file=dest \
+    --type=PNG --color-type=0 --bits-per-channel=16
+</code></pre></div>
+
+<p>Conceptually it makes the most sense to just have a single format command.
+However, this approach has several drawbacks:</p>
+<ul>
+<li>Unnecessary help text. The user will see all of the format-specific options,
+  most of which will be irrelevant since they apply to different formats. In
+  graphical image editing programs such as Photoshop or GIMP, the UI can
+  selectively show these format-specific options once the user chooses the
+  desired format from a dropdown. On the CLI, however, we have no such
+  capability because the help text is statically generated.</li>
+<li>Additional logic needed for validation. Since some arguments will be invalid
+  depending on the format, the command author needs to ensure specifying
+  invalid combinations returns an appropriate error. While this can be
+  accomplished with appropriately nested mutex groups, the nesting has the
+  potential to become overly deep and complex.</li>
+</ul>
+<h3 id="multiple-commands-named-after-the-action-hyphenated-with-the-parameter-value">Multiple commands named after the action hyphenated with the parameter value</h3>
+<p>In the example, this would look like:</p>
+<div class="highlight language-"><pre><span></span><code>$ gcloud images format-jpeg ...
+$ gcloud images format-gif ...
+$ gcloud images format-png ...
+</code></pre></div>
+
+<p>This is similar to the recommended design in that each parameter value gets its
+own command. However, there are disadvantages:</p>
+<ul>
+<li>Backward compatibility. If in the future it becomes desirable to make the
+  parameter value an argument to a single command, this would necessitate a
+  breaking change.</li>
+<li>It's less elegant from a command tree layout perspective. Grouping the
+  parameter-specific commands into a command group allows for a natural
+  decomposition of the command space, in keeping with gcloud's CLI design
+  philosophy, and allows for
+  <a href="https://en.wikipedia.org/wiki/Progressive_disclosure">progressive disclosure</a>
+  in the help text and in autocompletion.</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

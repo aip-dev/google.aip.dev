@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-3020: BII Schema Principles</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/3001">
+        <span class="aip-number">3001</span>
+        Actions on Google AIP Process
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3010">
+        <span class="aip-number">3010</span>
+        Actions on Google Vertical Integration Webhook Format
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/3020">
+        <span class="aip-number">3020</span>
+        BII Schema Principles
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3021">
+        <span class="aip-number">3021</span>
+        Type protos in Actions on Google APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3022">
+        <span class="aip-number">3022</span>
+        Built-in intent arguments and fulfillment APIs
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">BII Schema Principles</th></tr>
+    <tr><td>Number</td><td>3020</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/aog/3020">google.aip.dev/aog/3020</a></td></tr>
+    <tr><td>Scope</td><td>Actions on Google</td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2020-03-11</td></tr>
+    <tr><td>Updated</td><td>2020-03-11</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#terminology">Terminology</a></li>
+<li><a href="#general-principles">General principles</a><ul>
+<li><a href="#schema-creation">Schema creation</a></li>
+</ul>
+</li>
+<li><a href="#handling-user-queries">Handling User Queries</a></li>
+<li><a href="#list-of-bii-operations">List of BII Operations</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/aog/3020.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/aog/3020.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/aog">
+          Actions on Google AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        BII Schema Principles
+      </li>
+    </ol>
+  </nav>
+</section>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-3020</h4>
+  <h1>BII Schema Principles</h1>
+<p>Built-in intents (BIIs) allow third party developers to declare what their
+Actions can do. When a developer registers an Action for a BII, Google can then
+invoke that action to fulfill user requests matching that built-in intent.</p>
+<h2 id="terminology">Terminology</h2>
+<p>In the general principles below, we use the following terms:</p>
+<ul>
+<li>
+<p><strong>Built-in intents (BII)</strong>: Fulfillment schemas that are used to call
+  compatible APIs to perform Actions in response to a user query. Built-in
+  intents allow your service to express its fulfillment capabilities to Google.
+  By registering for built-in intents and mapping intent parameters to the
+  fulfillment, it becomes possible for the Google Assistant to invoke the
+  service to perform a task in response to natural language queries.</p>
+<p>A BII comprises an operation (full list below) and a Schema.org entity,
+otherwise known as a type. For example, <code>CREATE_RESERVATION</code> would be a BII
+for initiating a new reservation; this intent applies to various domains such
+as airline, hotel, restaurant, and other reservations.</p>
+</li>
+<li>
+<p><strong>Operation</strong>: An Action which acts as a wrapper around a type.</p>
+</li>
+<li><strong>Type</strong>: The object on which the operation is acting upon.</li>
+</ul>
+<h2 id="general-principles">General principles</h2>
+<p>Each BII <strong>should</strong> be treated like an API. While BIIs are technically
+fulfillment schemas, they fill the same role as an API, in that they tell third
+party developers about the structure of the request that their Action handles.</p>
+<p>This AIP details principles for schema creation, with operation-specific and
+type-specific information, followed by a list of operations for BIIs.</p>
+<h3 id="schema-creation">Schema creation</h3>
+<ul>
+<li>Existing Schema.org types and properties <strong>should</strong> be reused whenever the
+  semantics needed already exist.</li>
+<li>The formula for naming a BII <strong>must</strong> be:<ul>
+<li><strong>Operation + Type</strong> <code>:=</code> <code>VERB</code> ["Operation" from list below] + '_' +
+  <code>NOUN</code> ["Type" from Schema.org].</li>
+<li>Types can be compound nouns which have more than one token. Types with more
+  than one token have tokens separated by '_'.<ul>
+<li><em>Example: <code>CREATE</code> + '_' + <code>MONEY_TRANSFER</code> = <code>CREATE_MONEY_TRANSFER</code></em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BII names <strong>must</strong> be in CAPITAL_SNAKE_CASE (e.g. VERB_NOUN_NOUN).</li>
+<li>For more detail, see <a href="https://schema.org/docs/documents.html">here</a>.</li>
+</ul>
+<h4>Operations</h4>
+<ul>
+<li>Operations comprise a small catalog of simple, generalizable verbs. These can
+  be found at the bottom of the AIP under "List of BII Operations."</li>
+<li>There <strong>must not</strong> be overlap between the scope covered by any operations
+  (mutual exclusivity).<ul>
+<li><em>Example: <code>GET</code> and <code>CREATE</code> do not overlap in scope; while both involve
+  presenting an object, <code>GET</code> is for retrieving an existing object, while
+  <code>CREATE</code> assumes no object yet exists and creates one.</em></li>
+</ul>
+</li>
+<li>Operation + type combos <strong>should</strong> make semantic sense. If there is no
+  operation that can work with the type chosen, either:<ul>
+<li>Choose a new type that is in semantic scope for the Action to attach to an
+  existing operation, with a semantically sensible result.<ul>
+<li><em>Example: Say you want to fulfill a request for checking into a
+  reservation. <code>CREATE_CHECKIN</code> does not seem to make the most semantic
+  sense, since nothing is being created. Upon further thought, you decide
+  to choose a different operation and call the BII <code>UPDATE_RESERVATION</code>
+  instead, which makes more sense with the semantics of checking into a
+  reservation.</em></li>
+</ul>
+</li>
+<li>Or, Create a new operation. Take this step only when there is no operation
+  in the list that can cover the Action requested for the schema.<ul>
+<li><em>Example: Imagine you only had the operations <code>START</code>, <code>STOP</code>, and
+  <code>RESUME</code> for controlling an ongoing activity. A fulfillment request comes
+  in for temporarily stopping an ongoing activity of media playback but not
+  terminating it. You try to create a BII called <code>STOP_MEDIA</code>, but then
+  realize that this operation means the API must terminate the activity.
+  You then create a new operation, <code>PAUSE</code>, which acts to "temporarily
+  stop/pause activity", and does not overlap in scope with the existing
+  operation, <code>STOP</code>. Your new BII is <code>PAUSE_MEDIA</code>.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Types</h4>
+<ul>
+<li>Types <strong>must</strong> be defined as Schema.org types.</li>
+<li>The type <strong>must</strong> be the <em>object</em> upon which the operation is carried out.</li>
+<li>Semantic scope of the type <strong>should</strong> be generalizable, specificity <strong>may</strong>
+  be in properties.<ul>
+<li><em>Example: <a href="http://schema.org/Reservation">Reservation</a> is a type, which has a property named <code>provider</code>.
+  The <code>provider</code> property specifies the service provider, service operator,
+  or service performer. This ensures that any BII created using the type
+  <a href="http://schema.org/Reservation">Reservation</a> is generalizable to any service provider, and that the
+  service provider information is still passed forward through
+  <a href="http://schema.org/Reservation">Reservation</a>’s property <code>provider</code>.</em></li>
+</ul>
+</li>
+<li>Different types <strong>should</strong> take distinctly different properties.</li>
+<li>BIIs <strong>must</strong> be specific enough to avoid semantic ambiguity when calling an
+  API. That is, we shouldn’t inadvertently trigger an Action that the user
+  isn’t expecting.<ul>
+<li><em>Example: brokerage account vs. account: If we do not specify brokerage
+  account, a <code>GET_ACCOUNT</code> BII could call an API that fulfills the Action for
+  getting another sort of account’s information, such as a social media
+  account. <code>GET_BROKERAGE_ACCOUNT</code> ensures the correct scope of financial
+  account is retrieved by the API.</em></li>
+</ul>
+</li>
+<li>The function prototype/set of parameters <strong>should</strong> be bound to the
+  operation. That is, the operation decides the fulfillment boundaries of the
+  Action.</li>
+<li>Each BII operation <strong>must</strong> take a Schema.org type.</li>
+<li>In BII schemas, the same Schema.org type, when combined with different verbs,
+  <strong>may</strong> take different properties.<ul>
+<li><em>Example: <code>GET_MESSAGE</code> and <code>CREATE_MESSAGE</code> use a different but
+  overlapping set of properties of <a href="http://schema.org/Message">Message</a>.</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="handling-user-queries">Handling User Queries</h2>
+<ul>
+<li>Generic/unresolved search criteria at the level of an object <strong>should</strong> be
+  passed through the Description field.</li>
+<li>If a query argument can be recognized as a property of a type, it <strong>should</strong>
+  be passed through as a property; if, on the other hand, an argument is
+  recognized as just a description of the type, it <strong>should</strong> be passed through
+  Description field.<ul>
+<li><em>Example: "find funky blues songs on YouTube" -&gt;
+  get_media_object(description="funky blues").</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="list-of-bii-operations">List of BII Operations</h2>
+<p>| Verb   | Definition                                                    | Example BII schema |
+| ------ | ------------------------------------------------------------- | ------------------ |
+| GET    | retrieve &amp; present an object; if ambiguous, a list of objects | GET_CALL_HISTORY   |
+| CREATE | create an object                                              | CREATE_ORDER       |
+| DELETE | remove or terminate an existing object                        | DELETE_RESERVATION |
+| START  | control an ongoing activity: start activity                   | START_GAME         |
+| STOP   | control an ongoing activity: stop activity                    | STOP_ALARM         |
+| PAUSE  | control an ongoing activity: temporarily stop/pause activity  | PAUSE_SONG         |
+| RESUME | control an ongoing activity: continue activity                | RESUME_TIMER       |</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

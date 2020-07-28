@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-4232: Method signatures</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4210">
+        <span class="aip-number">4210</span>
+        Client library generators
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4221">
+        <span class="aip-number">4221</span>
+        Client-side retry
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4222">
+        <span class="aip-number">4222</span>
+        Routing headers
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4231">
+        <span class="aip-number">4231</span>
+        Parsing resource names
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/4232">
+        <span class="aip-number">4232</span>
+        Method signatures
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4233">
+        <span class="aip-number">4233</span>
+        Automatic pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4290">
+        <span class="aip-number">4290</span>
+        Docker interface
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Method signatures</th></tr>
+    <tr><td>Number</td><td>4232</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4232">google.aip.dev/client-libraries/4232</a></td></tr>
+    <tr><td>Scope</td><td>Client libraries</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-06-22</td></tr>
+    <tr><td>Updated</td><td>2018-06-22</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#method-signatures">Method Signatures</a></li>
+<li><a href="#required-arguments">Required Arguments</a></li>
+<li><a href="#restrictions">Restrictions</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/client-libraries/4232.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/client-libraries/4232.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/client-libraries">
+          Client libraries AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Method signatures
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-4232</h4>
+  <h1>Method signatures</h1>
+<p>In protocol buffer RPCs, each RPC takes exactly one argument: a message.
+However, sending a full message structure can be cumbersome in the case of
+extremely simple requests.</p>
+<p>Many RPCs provide information about which pieces of the request are important
+and commonly used. In many languages, functions and methods take multiple
+positional or keyword arguments.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Some APIs provide annotations to hint how to effectively translate from a
+single request object to individual arguments, and client libraries <strong>may</strong>
+provide overloads based on these hints.</p>
+<p>However, client libraries implementing this feature <strong>must</strong> retain the default
+behavior of accepting the full request object. Put another way, if an API
+<em>adds</em> this annotation to an already-published API, the resulting library
+change <strong>must</strong> be backwards-compatible.</p>
+<p>Client library generators <strong>may</strong> also choose to provide this functionality in
+some cases but not others, as appropriate in the environment. For example, any
+of the following strategies would be permissible:</p>
+<ul>
+<li>Providing overloads iff all arguments in the signature are primitives.</li>
+<li>Providing overloads iff all arguments in the signature are required.</li>
+<li>Providing overloads only for the first of multiple signatures when providing
+  more than one would produce a conflict.</li>
+<li>Any combination of the above.</li>
+</ul>
+<p>In all of these situations, the requirement that the request object is always
+accepted still applies.</p>
+<p>Furthermore, client library generators <strong>may</strong> choose to support this
+functionality for a subset of RPC types, those being:</p>
+<ul>
+<li>Unary</li>
+<li>Server Streaming</li>
+<li>Client Streaming</li>
+<li>Bi-directional Streaming</li>
+</ul>
+<h3 id="method-signatures">Method Signatures</h3>
+<p>An RPC with the <a href="https://github.com/googleapis/api-common-protos/blob/master/google/api/client.proto#L100"><code>google.api.method_signature</code></a> annotation
+indicates that an overload with a flattened method signature is desired where
+supported. The string contains comma-separated arguments, in order. If a
+field's name contains a period (<code>.</code>) character, this indicates a nested field.</p>
+<p>An RPC can provide this annotation more than once to specify multiple
+signatures. Order matters here: In some situations, it may not be possible to
+generate an overload for every signature provided. In this situation, client
+library generators <strong>must</strong> follow a "first match wins" strategy (generate an
+overload for the first signature in the conflict set, and drop the rest).</p>
+<p><strong>Note:</strong> A corollary to this is that it is only guaranteed to be a
+backwards-compatible change to <em>append</em> method signature annotations.</p>
+<h3 id="required-arguments">Required Arguments</h3>
+<p>Often, certain fields on the request message are consistently required, as
+described in <a href="/203">AIP-203</a>.</p>
+<p>While client libraries generally should not perform validation on this (that is
+the server's role), client libraries <strong>may</strong> distinguish required arguments in
+method signatures from optional ones if appropriate for the language. A field
+is considered required for this purpose if annotated with the
+<code>google.api.field_behavior</code> annotation value of <code>REQUIRED</code>:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">TranslateTextRequest</span> <span class="p">{</span>
+  <span class="c1">// The text to translate.</span>
+  <span class="kt">string</span> <span class="na">q</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> The annotation for field behavior is attached to <em>the field</em>, not the
+method.</p>
+<h3 id="restrictions">Restrictions</h3>
+<p>If an RPC lists a nested field in
+<a href="https://github.com/googleapis/api-common-protos/blob/master/google/api/client.proto#L100"><code>google.api.method_signature</code></a> (for example,
+<code>"foo.bar.baz"</code>), none of the individual component fields may be repeated
+except for the last one (continuing the example, <code>baz</code> could be repeated but
+<code>foo</code> or <code>bar</code> could not be). Code generators implementing this feature
+<strong>must</strong> error with a descriptive error message if encountering a non-terminal
+repeated field as a field name.</p>
+<p>If any fields are required arguments, all required arguments are expected to
+appear before any optional ones. Code generators implementing this feature
+<strong>should</strong> error with a descriptive error message if encountering a required
+field after an optional one, and <strong>must</strong> do so if the resulting client library
+would not be valid.</p>
+<h3 id="compatibility">Compatibility</h3>
+<p>Removing, reordering or altering an existing <code>google.api.method_signature</code>
+entry is a breaking change for client libraries. The associated generated
+method is either removed entirely or its signature is altered, both of which
+break user code.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-07-14</strong>: Added caveat for supporting some RPC types</li>
+<li><strong>2019-09-27</strong>: Added a Compatibility section.</li>
+</ul>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

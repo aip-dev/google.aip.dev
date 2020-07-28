@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-3022: Built-in intent arguments and fulfillment APIs</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/3001">
+        <span class="aip-number">3001</span>
+        Actions on Google AIP Process
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3010">
+        <span class="aip-number">3010</span>
+        Actions on Google Vertical Integration Webhook Format
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3020">
+        <span class="aip-number">3020</span>
+        BII Schema Principles
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3021">
+        <span class="aip-number">3021</span>
+        Type protos in Actions on Google APIs
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/3022">
+        <span class="aip-number">3022</span>
+        Built-in intent arguments and fulfillment APIs
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Built-in intent arguments and fulfillment APIs</th></tr>
+    <tr><td>Number</td><td>3022</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/aog/3022">google.aip.dev/aog/3022</a></td></tr>
+    <tr><td>Scope</td><td>Actions on Google</td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2020-01-30</td></tr>
+    <tr><td>Updated</td><td>2020-01-30</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#bii-argument-paths">BII argument paths</a><ul>
+<li><a href="#properties-with-multiple-values">Properties with multiple values</a></li>
+</ul>
+</li>
+<li><a href="#bii-argument-to-common-type-mappings">BII argument to common type mappings</a></li>
+<li><a href="#bii-argument-to-json-type-mappings">BII argument to JSON type mappings</a></li>
+<li><a href="#bii-argument-to-string-mappings">BII argument to string mappings</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/aog/3022.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/aog/3022.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/aog">
+          Actions on Google AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Built-in intent arguments and fulfillment APIs
+      </li>
+    </ol>
+  </nav>
+</section>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-3022</h4>
+  <h1>Built-in intent arguments and fulfillment APIs</h1>
+<p>Actions on Google's <a href="https://developers.google.com/assistant/app/reference/built-in-intents/">built-in intents</a> (BIIs) are a <em>fulfillment schema</em>,
+and use Schema.org as a foreign vocabulary. BIIs are <em>not</em> a fulfillment API,
+and do not use the Actions on Google common types defined in <a href="./3021.md">AIP-3021</a>.</p>
+<p>Actions on Google has two types of generic fulfillment APIs:</p>
+<ul>
+<li>URI-based APIs like <a href="https://developers.google.com/assistant/app/intents#handling_intent_parameters">App Actions</a>, which can only support string arguments.</li>
+<li>Google standard APIs, which support JSON primitive types like <code>string</code> and
+  the Actions on Google common types.</li>
+</ul>
+<p>These APIs do not support Schema.org JSON-LD objects. These APIs <strong>should</strong>
+support BII arguments by mapping them, or their properties, to the argument
+type schema they <em>do</em> support. For example, a BII argument of type
+<a href="https://schema.org/MonetaryAmount">MonetaryAmount</a> may be mapped to an API field of type
+<a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>.</p>
+<h2 id="bii-argument-paths">BII argument paths</h2>
+<p>Only certain Schema.org entity types should be mapped to a given common type.
+In order to support BII arguments with types that cannot be mapped to an
+appropriate type, APIs <strong>may</strong> support configuration via BII argument paths,
+strings which allow users to specify a property of a Schema.org entity which
+<em>can</em> be mapped to an appropriate type.</p>
+<p>APIs which support BII argument paths <strong>should</strong> use the syntax defined in this
+section.</p>
+<p>BII argument paths are dot-delimited strings that identify a specific
+Schema.org entity within the list of arguments to the BII.</p>
+<p>For example, take the following hypothetical BII arguments <code>grant</code> and <code>date</code>:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;grant&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;@context&quot;</span><span class="p">:</span> <span class="s2">&quot;http://schema.org&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MonetaryGrant&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;funder&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;Organization&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Google&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;amount&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MonetaryAmount&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2000-01-01&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>There is no common type to which <code>MonetaryGrant</code> can be mapped, but the <code>grant</code>
+argument contains an <code>amount</code> property of type
+<a href="https://schema.org/MonetaryAmount">MonetaryAmount</a>, which <em>can</em> be mapped to <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>.
+This property can be referenced with the path string <code>"grant.amount"</code>.
+Similarly, <code>grant.name</code> can be mapped to a string field.</p>
+<p>A URI-based API which does not support <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a> would instead need to use the
+path strings <code>"grant.amount.currency"</code> and <code>"grant.amount.value"</code> to map
+<code>grant.amount</code> to two separate URI parameters.</p>
+<p>On the other hand, <code>date</code> can be mapped to <a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto">DateTime</a>, and so the path string
+<code>"date"</code> would be sufficient for either URI-based APIs or string fields in JSON
+APIs.</p>
+<h3 id="properties-with-multiple-values">Properties with multiple values</h3>
+<p>Since any Schema.org property may have multiple values, values other than the
+first may be referenced by indexing with square brackets. For example, take
+this hypothetical BII argument:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;menuItem&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;@context&quot;</span><span class="p">:</span> <span class="s2">&quot;http://schema.org&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MenuItem&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pizza&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;menuAddOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MenuItem&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pineapple&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;menuAddOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MenuItem&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;extra cheese&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2000-01-01&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this example, the path <code>"menuItem.menuAddOn[1].name"</code> would evaluate to
+<code>"extra cheese"</code>.</p>
+<p>When there are no square brackets, the first value is assumed; using <code>[0]</code> is a
+no-op. That is, <code>"menuItem.menuAddOn.name"</code> and <code>"menuItem.menuAddOn[0].name"</code>
+are equivalent, and would <em>both</em> evaluate to <code>"pineapple"</code>.</p>
+<h2 id="bii-argument-to-common-type-mappings">BII argument to common type mappings</h2>
+<p>Google standard APIs which support BII argument mapping <strong>should</strong> support at
+least these type mappings from Schema.org entity type to Actions on Google
+common types:</p>
+<p>| Common type       | Schema.org entity types                                      |
+| ----------------- | ------------------------------------------------------------ |
+| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/date.proto">Date</a>          | <a href="https://schema.org/Date">Date</a>                                          |
+| <a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto">DateTime</a>      | <a href="https://schema.org/DateTime">DateTime</a>                                  |
+| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/timeofday.proto">TimeOfDay</a>     | <a href="https://schema.org/Time">Time</a>                                          |
+| <a href="https://github.com/protocolbuffers/protobuf/tree/master/src/google/protobuf/duration.proto">Duration</a>      | <a href="http://schema.org/Duration">Duration</a>                                  |
+| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>         | <a href="https://schema.org/MonetaryAmount">MonetaryAmount</a>                      |
+| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/postal_address.proto">PostalAddress</a> | <a href="https://schema.org/Place">Place</a>, <a href="https://schema.org/PostalAddress">PostalAddress</a> |</p>
+<h2 id="bii-argument-to-json-type-mappings">BII argument to JSON type mappings</h2>
+<p>Google standard APIs which support BII argument mapping <strong>should</strong> support at
+least these type mappings from Schema.org entity type to JSON type:</p>
+<p>| JSON type | Schema.org entity types   |
+| --------- | ------------------------- |
+| <code>string</code>  | <a href="https://schema.org/Text">Text</a>       |
+| <code>number</code>  | <a href="https://schema.org/Number">Number</a>   |
+| <code>bool</code>    | <a href="https://schema.org/Boolean">Boolean</a> |</p>
+<h2 id="bii-argument-to-string-mappings">BII argument to string mappings</h2>
+<p>URI-based fulfillment APIs like <a href="https://developers.google.com/assistant/app/intents#handling_intent_parameters">App Actions</a> can only map BII arguments to
+strings (URI parameters). These APIs <strong>should</strong> support mapping at least the
+following Schema.org entity types to URI parameters:</p>
+<ul>
+<li><a href="https://schema.org/Text">Text</a></li>
+<li><a href="https://schema.org/Number">Number</a></li>
+<li><a href="https://schema.org/Boolean">Boolean</a></li>
+<li><a href="https://schema.org/Date">Date</a></li>
+<li><a href="https://schema.org/DateTime">DateTime</a></li>
+<li><a href="https://schema.org/Time">Time</a></li>
+</ul>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

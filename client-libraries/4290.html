@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-4290: Docker interface</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4210">
+        <span class="aip-number">4210</span>
+        Client library generators
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4221">
+        <span class="aip-number">4221</span>
+        Client-side retry
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4222">
+        <span class="aip-number">4222</span>
+        Routing headers
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4231">
+        <span class="aip-number">4231</span>
+        Parsing resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4232">
+        <span class="aip-number">4232</span>
+        Method signatures
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4233">
+        <span class="aip-number">4233</span>
+        Automatic pagination
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/4290">
+        <span class="aip-number">4290</span>
+        Docker interface
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Docker interface</th></tr>
+    <tr><td>Number</td><td>4290</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4290">google.aip.dev/client-libraries/4290</a></td></tr>
+    <tr><td>Scope</td><td>Client libraries</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-11-08</td></tr>
+    <tr><td>Updated</td><td>2018-11-08</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#cli-usage">CLI usage</a></li>
+<li><a href="#container-composition">Container composition</a></li>
+<li><a href="#base-images">Base images</a></li>
+<li><a href="#mount-points">Mount points</a></li>
+<li><a href="#plugin-options">Plugin options</a></li>
+<li><a href="#publishing-images">Publishing images</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/client-libraries/4290.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/client-libraries/4290.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/client-libraries">
+          Client libraries AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Docker interface
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-4290</h4>
+  <h1>Docker interface</h1>
+<p>A consequence of using individual generators for API client library generation
+is that each generator has its own set of dependencies and requirements in
+order to run.</p>
+<p>This is reasonable for a user who wishes to generate many libraries for a
+single environment, but presents challenges for a user wishing to generate a
+single API for many languages or environments. Users need a way to generate
+libraries easily and quickly, with minimal ramp-up per language.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Client library generators <strong>should</strong> ship <a href="https://docker.com/">Docker</a> images providing the
+generator and exposing a common interface, so that generating the same API in
+multiple languages usually only requires substituting in the appropriate Docker
+image. Docker images for Google-authored generators will follow a consistent
+scheme.</p>
+<h3 id="cli-usage">CLI usage</h3>
+<p>The expected user command to invoke the code generator in a Docker image (from
+the proto import root, on a POSIX machine):</p>
+<div class="highlight language-bash"><pre><span></span><code>$ docker run --rm --user <span class="nv">$UID</span> <span class="se">\</span>
+  --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/a/b/c/v1/,destination<span class="o">=</span>/in/a/b/c/v1/,readonly <span class="se">\</span>
+  --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>/path/to/dest/,destination<span class="o">=</span>/out/ <span class="se">\</span>
+  gcr.io/gapic-images/<span class="o">{</span>GENERATOR<span class="o">}</span> <span class="se">\</span>
+  <span class="o">[</span>-- additional options...<span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> Even though each component of this is standard in the Docker
+ecosystem (other than the destination path issue, which is a result of how
+protoc handles imports), this is still a rather long command. We can provide a
+<a href="https://github.com/googleapis/gapic-generator-python/blob/master/gapic.sh">shortcut script</a> to further simplify this, but such a script would be for
+convenience and not a replacement for this interface.</p>
+<h3 id="container-composition">Container composition</h3>
+<p>Containers <strong>must</strong> include:</p>
+<ul>
+<li>A current version of protoc, the protocol buffer compiler.</li>
+<li>Common protos permitted to be used by all APIs (<a href="https://github.com/googleapis/api-common-protos">api-common-protos</a>).</li>
+<li>The applicable code generator plugin, as well as any dependencies it
+  requires.<ul>
+<li>The code generator plugin itself <strong>should</strong> be added using an <code>ADD</code> or
+  <code>COPY</code> statement from the host machine at build time and installed locally;
+  it <strong>should not</strong> pull from a package manager. (This leads to catch-22
+  situations when cutting releases.)</li>
+<li>Images <strong>may</strong> include either a pre-compiled binary of the plugin, or the
+  installed source code, depending on the needs of the applicable ecosystem.</li>
+<li>Installation of dependencies <strong>should</strong> use appropriate package managers.</li>
+</ul>
+</li>
+</ul>
+<p>The common protos and the protoc compiler are supplied by an independent image
+(<code>gcr.io/gapic-images/api-common-protos</code>). Both <code>protoc</code> and the common protos
+can be retrieved from this image into a generator's image using the
+<code>COPY --from</code> syntax (see <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multi-stage builds</a>). This is the preferred
+approach as it follows Docker conventions, and allows the protos to be
+versioned independently.</p>
+<h3 id="base-images">Base images</h3>
+<p><strong>TL;DR:</strong> Each language probably wants <code>language:x.y-alpine</code> or
+<code>language:x.y-slim</code>. For example, <code>ruby:2.5-alpine</code> or <code>python:3.7-slim</code>.
+(Alpine images are smaller but idiosyncratic.)</p>
+<p>The following guidelines apply to selecting base images (sorted roughly from
+most important to least important):</p>
+<ul>
+<li>Images <strong>should</strong> generally be based off an official image for the latest
+  stable version of the language in which the generator is implemented.</li>
+<li>Images <strong>should</strong> be able to install required system dependencies from a
+  well-understood package manager.</li>
+<li>Images <strong>should</strong> be ultimately based off of Alpine, Debian, or Ubuntu. This
+  is to ensure we benefit from GCR's <a href="https://cloud.google.com/container-registry/docs/container-analysis#vulnerability_source">vulnerability scanning</a>.</li>
+<li>Images should endeavor to be as small as possible, in line with the general
+  expectations of the Docker community:<ul>
+<li>Use the smallest base image you can. Alpine-based images are great if
+  possible, but may not always be reasonable. "Slim" Debian images are
+  usually the next best (and probably significantly more feasible in many
+  situations).</li>
+</ul>
+</li>
+</ul>
+<h3 id="mount-points">Mount points</h3>
+<p><code>protoc</code> must read protos (representing the API to be generated) from disk, and
+must write the final output (the client library) to disk. Because the user has
+the API protos on the host machine, and will ultimately need the output to go
+to said host machine, Docker images <strong>should</strong> use two mount points. This
+creates a hole in the abstraction layer: the user must mount the appropriate
+locations on the host machine to the appropriate locations in the container.</p>
+<p>The expected locations in the container <strong>must</strong> be constant, and consistent
+between all generator container images:</p>
+<ul>
+<li><code>/in/</code>: The location of the protos to be generated. This <strong>must</strong> be the
+  import root.<ul>
+<li>Example: If generating protos for the Language API, the protos in the
+  Docker image must live in <code>/in/google/cloud/language/v1/</code>.</li>
+</ul>
+</li>
+<li><code>/out/</code>: The location to which the client library shall be written.</li>
+</ul>
+<h3 id="plugin-options">Plugin options</h3>
+<p>Some micro-generators support configuration provided via protoc plugin options.
+In such cases, the options must be routed from the CLI input to the protoc
+command.</p>
+<p>The ultimate protoc invocation could look like the following:</p>
+<div class="highlight language-bash"><pre><span></span><code>protoc --proto_path <span class="o">{</span>path/to/common/protos<span class="o">}</span> --proto_path /in/ <span class="se">\</span>
+       --<span class="o">{</span>LANG<span class="o">}</span>_gapic_out /out/ <span class="se">\</span>
+       --<span class="o">{</span>LANG<span class="o">}</span>_gapic_opt <span class="s2">&quot;go-gapic-package=GO_PACKAGE_VALUE&quot;</span> <span class="se">\</span>
+       <span class="sb">`</span>find /in/ -name *.proto<span class="sb">`</span>
+</code></pre></div>
+
+<p>A resulting invocation of the Docker image would be as follows:</p>
+<div class="highlight language-bash"><pre><span></span><code>$ docker run --rm --user <span class="nv">$UID</span> <span class="se">\</span>
+      --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/a/b/c/v1/,destination<span class="o">=</span>/in/a/b/c/v1/,readonly <span class="se">\</span>
+      --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>/path/to/dest/,destination<span class="o">=</span>/out/ <span class="se">\</span>
+      gcr.io/gapic-images/<span class="o">{</span>GENERATOR<span class="o">}</span> <span class="se">\</span>
+      --go-gapic-package GO_PACKAGE_VALUE
+</code></pre></div>
+
+<p>Thus shortcut scripts written to wrap the Docker image invocation <strong>must</strong> pass
+all options occurring after <code>--</code> to the underlying docker run command. The
+internal Docker image <strong>must</strong> provide the conversion from usual shell syntax
+to the protoc option syntax.</p>
+<p>Client library generators that make use of plugin options <strong>must</strong> accept those
+options as either flags or <code>key=value</code> pairs. (If a generator receives a string
+without an <code>=</code> character, that is a flag, and the implied value is <code>true</code>.) If
+multiple options are provided, they are comma-separated, to conform with the
+protoc behavior if multiple <code>--opt</code> flags are specified.</p>
+<p>Additionally, generators <strong>should</strong> prefix all understood option keys with the
+target language for that generator (e.g. <code>go-gapic-package</code>,
+<code>java-gapic-package</code>), and <strong>should</strong> use <code>kebab-case</code> for keys (in order to
+match Docker, since protoc is inconsistent).</p>
+<p>Microgenerators <strong>must not</strong> error on option keys that they do not recognize,
+although they <strong>may</strong> issue a warning.</p>
+<h3 id="publishing-images">Publishing images</h3>
+<p>Images for Google-created generators <strong>should</strong> be published in
+<code>gcr.io/gapic-images</code>, a dedicated project in <a href="https://cloud.google.com/container-registry/">Google Container Registry</a>.</p>
+<p>Images <strong>should</strong> follow the naming scheme:</p>
+<pre><code>  gcr.io/gapic-images/gapic-generator-{lang}
+</code></pre>
+<p>CI <strong>should</strong> be configured to push a new Docker image to the registry when
+releases are made. When a release is tagged in GitHub (with a version number,
+such as 1.0.3), the CI service should build an image based on the code at that
+tag.</p>
+<p>The resulting image <strong>should</strong> be tagged with each component of the version
+number, as well as <code>latest</code>, and the resulting tags pushed the registry. (This
+is in addition to pushing to a package manager if appropriate, which is outside
+the scope of this AIP.)</p>
+<p>This means that a release tag of <code>1.0.3</code> in GitHub would result in pushing the
+following four tags to GCR:</p>
+<ul>
+<li><code>gcr.io/gapic-images/gapic-generator-{lang}:1</code></li>
+<li><code>gcr.io/gapic-images/gapic-generator-{lang}:1.0</code></li>
+<li><code>gcr.io/gapic-images/gapic-generator-{lang}:1.0.3</code></li>
+<li><code>gcr.io/gapic-images/gapic-generator-{lang}:latest</code></li>
+</ul>
+<p><strong>Note:</strong> These rules assumes that releases have ever-increasing version
+numbers; this process will need to be amended slightly if a generator needs to
+maintain multiple version streams simultaneously.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

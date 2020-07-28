@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-162: Resource Revisions</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style guide
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        Common component versions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Resource Revisions</th></tr>
+    <tr><td>Number</td><td>162</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/162">google.aip.dev/162</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-09-17</td></tr>
+    <tr><td>Updated</td><td>2019-09-17</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#referencing-revisions">Referencing revisions</a></li>
+<li><a href="#getting-a-revision">Getting a revision</a></li>
+<li><a href="#tagging-revisions">Tagging revisions</a></li>
+<li><a href="#listing-revisions">Listing revisions</a></li>
+<li><a href="#child-resources">Child resources</a></li>
+<li><a href="#committing-revisions">Committing revisions</a></li>
+<li><a href="#rollback">Rollback</a></li>
+<li><a href="#deleting-revisions">Deleting revisions</a></li>
+</ul>
+</li>
+<li><a href="#appendix-character-collision">Appendix: Character Collision</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/general/0162.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/general/0162.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Resource Revisions
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-162</h4>
+  <h1>Resource Revisions</h1>
+<p>Some APIs need to have resources with a revision history, where users can
+reason about the state of the resource over time. There are several reasons for
+this:</p>
+<ul>
+<li>Users may want to be able to roll back to a previous revision, or diff
+  against a previous revision.</li>
+<li>An API may create data which is derived in some way from a resource at a
+  given point in time. In these cases, it may be desirable to snapshot the
+  resource for reference later.</li>
+</ul>
+<p><strong>Note:</strong> We use the word <em>revision</em> to refer to a historical reference for a
+particular resource, and intentionally avoid the term <em>version</em>, which refers
+to the version of an API as a whole.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>may</strong> store a revision history for a resource if it is useful to users.</p>
+<p>APIs implementing resources with a revision history <strong>must</strong> provide a
+<code>revision_id</code> field on the resource:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="c1">// The name of the book.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// Other fields…</span>
+
+  <span class="c1">// The revision ID of the book.</span>
+  <span class="c1">// A new revision is committed whenever the book is changed in any way.</span>
+  <span class="c1">// The format is an 8-character hexadecimal string.</span>
+  <span class="kt">string</span> <span class="na">revision_id</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IMMUTABLE</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
+
+  <span class="c1">// The timestamp that the revision was created.</span>
+  <span class="n">google.protobuf.Timestamp</span> <span class="na">revision_create_time</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The resource <strong>must</strong> contain a <code>revision_id</code> field, which <strong>should</strong> be a
+  string and contain a short, automatically-generated random string. A good
+  rule of thumb is the last eight characters of a UUID4.<ul>
+<li>The <code>revision_id</code> field <strong>must</strong> document when new revisions are created
+  (see <a href="#committing-revisions">committing revisions</a> below).</li>
+<li>The <code>revision_id</code> field <strong>should</strong> document the format of revision IDs.</li>
+</ul>
+</li>
+<li>The resource <strong>must</strong> contain a <code>revision_create_time</code> field, which
+  <strong>should</strong> be a <code>google.protobuf.Timestamp</code> (see <a href="/142">AIP-142</a>).</li>
+</ul>
+<p><strong>Note:</strong> A randomly generated string is preferred over other methods, such as
+an auto-incrementing integer, because there is often a need to delete or revert
+revisions, and a randomly generated string holds up better in those situations.</p>
+<h3 id="referencing-revisions">Referencing revisions</h3>
+<p>When it is necessary to refer to a specific revision of a resource, APIs
+<strong>must</strong> use the following syntax: <code>{resource_name}@{revision_id}</code>. For
+example:</p>
+<pre><code>  publishers/123/books/les-miserables@c7cfa2a8
+</code></pre>
+<p><strong>Note:</strong> The <code>@</code> character is selected because it is the only character
+permitted by <a href="https://tools.ietf.org/html/rfc1738">RFC 1738 §2.2</a> for special meaning within a URI scheme that is
+not already used elsewhere.</p>
+<p>APIs <strong>should</strong> generally accept a resource reference at a particular revision
+in any place where they ordinarily accept the resource name. However, they
+<strong>must not</strong> accept a revision in situations that mutate the resource, and
+should error with <code>INVALID_ARGUMENT</code> if one is given.</p>
+<p><strong>Important:</strong> APIs <strong>must not</strong> require a revision ID, and <strong>must</strong> default to
+the current revision if one is not provided, except in methods specifically
+dealing with the revision history (such as rollback) where failing to require
+it would not make sense (or lead to dangerous mistakes).</p>
+<h3 id="getting-a-revision">Getting a revision</h3>
+<p>APIs implementing resource revisions <strong>should</strong> accept a resource name with a
+revision ID in the standard <code>Get</code> method (<a href="/131">AIP-131</a>):</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">GetBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book.</span>
+  <span class="c1">//   Example: publishers/123/books/les-miserables</span>
+  <span class="c1">//</span>
+  <span class="c1">// In order to retrieve a previous revision of the book, also provide</span>
+  <span class="c1">// the revision ID.</span>
+  <span class="c1">//   Example: publishers/123/books/les-miserables@c7cfa2a8</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>If the user passes a revision ID that does not exist, the API <strong>must</strong> fail
+with a <code>NOT_FOUND</code> error.</p>
+<p>APIs <strong>must</strong> return a <code>name</code> value corresponding to what the user sent. If the
+user sent a name with no revision ID, the returned <code>name</code> string <strong>must not</strong>
+include the revision ID either. Similarly, if the user sent a name with a
+revision ID, the returned <code>name</code> string <strong>must</strong> explicitly include it.</p>
+<h3 id="tagging-revisions">Tagging revisions</h3>
+<p>APIs implementing resource revisions <strong>may</strong> provide a mechanism for users to
+tag a specific revision with a user provided name by implementing a "Tag
+Revision" custom method:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">TagBookRevision</span><span class="p">(</span><span class="n">TagBookRevisionRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:tagRevision&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">TagBookRevisionRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book to be tagged, including the revision ID.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The tag to apply.</span>
+  <span class="c1">// The tag should be at most 40 characters, and match `[a-z][a-z0-9-]{3,39}`.</span>
+  <span class="kt">string</span> <span class="na">tag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The <code>name</code> field <strong>should</strong> require an explicit revision ID to be provided.</li>
+<li>Once a revision is tagged, the API <strong>must</strong> support using the tag in place of
+  the revision ID in <code>name</code> fields.<ul>
+<li>If the user sends a tag, the API <strong>must</strong> return the tag in the resource's
+  <code>name</code> field, but the revision ID in the resource's <code>revision_id</code> field.</li>
+<li>If the user sends a revision ID, the API <strong>must</strong> return the revision ID in
+  both the <code>name</code> field and the <code>revision_id</code> field.</li>
+</ul>
+</li>
+<li>If the user calls the <code>Tag</code> method with an existing tag, the request <strong>must</strong>
+  succeed and the tag updated to point to the new requested revision ID. This
+  allows users to write code against specific tags (e.g. <code>published</code>) and the
+  revision can change in the background with no code change.</li>
+</ul>
+<h3 id="listing-revisions">Listing revisions</h3>
+<p>APIs implementing resource revisions <strong>should</strong> provide a custom method for
+listing the revision history for a resource, with a structure similar to
+standard <code>List</code> methods (<a href="/132">AIP-132</a>):</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">ListBookRevisions</span><span class="p">(</span><span class="n">ListBookRevisionsRequest</span><span class="p">)</span>
+    <span class="k">returns</span> <span class="p">(</span><span class="n">ListBookRevisionsResponse</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">get</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:listRevisions&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListBookRevisionsRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book to list revisions for.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The maximum number of revisions to return per page.</span>
+  <span class="kt">int32</span> <span class="na">page_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// The page token, received from a previous ListBookRevisions call.</span>
+  <span class="c1">// Provide this to retrieve the subsequent page.</span>
+  <span class="kt">string</span> <span class="na">page_token</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ListBookRevisionsResponse</span> <span class="p">{</span>
+  <span class="c1">// The revisions of the book.</span>
+  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// A token that can be sent as `page_token` to retrieve the next page.</span>
+  <span class="c1">// If this field is omitted, there are no subsequent pages.</span>
+  <span class="kt">string</span> <span class="na">next_page_token</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>While revision listing methods are mostly similar to standard <code>List</code> methods
+(<a href="/132">AIP-132</a>), the following important differences apply:</p>
+<ul>
+<li>The first field in the request message <strong>must</strong> be called <code>name</code> rather than
+  <code>parent</code> (this is listing revisions for a specific book, not a collection of
+  books).</li>
+<li>The URI <strong>must</strong> end with <code>:listRevisions</code>.</li>
+<li>Revisions <strong>must</strong> be ordered in reverse chronological order. An <code>order_by</code>
+  field <strong>should not</strong> be provided.</li>
+<li>The returned resources <strong>must</strong> include an explicit revision ID in the
+  resource's <code>name</code> field.<ul>
+<li>If providing the full resource is expensive or infeasible, the revision
+  object <strong>may</strong> only populate the <code>string name</code>, <code>string revision_id</code>, and
+  <code>google.protobuf.Timestamp revision_create_time</code> fields instead. The
+  <code>string name</code> field <strong>must</strong> include the resource name and an explicit
+  revision ID, which can be used for an explicit <code>Get</code> request. The API
+  <strong>must</strong> document that it will do this.</li>
+</ul>
+</li>
+</ul>
+<h3 id="child-resources">Child resources</h3>
+<p>Resources with a revision history <strong>may</strong> have child resources. If they do,
+there are two potential variants:</p>
+<ul>
+<li>Child resources where each child resource is a child of the parent resource
+  as a whole.</li>
+<li>Child resources where each child resource is a child of <em>a single revision
+  of</em> the parent resource.</li>
+</ul>
+<p>If a child resource is a child of a single revision, the child resource's name
+<strong>must</strong> always explicitly include the parent's resource ID:</p>
+<pre><code>  publishers/123/books/les-miserables@c7cfa2a8/pages/42
+</code></pre>
+<p>In <code>List</code> requests for such resources, the service <strong>should</strong> default to the
+latest revision of the parent if the user does not specify one, but <strong>must</strong>
+explicitly include the parent's revision ID in the <code>name</code> field of resources in
+the response.</p>
+<p>If necessary, APIs <strong>may</strong> explicitly support listing child resources across
+parent revisions by accepting the <code>@-</code> syntax. For example:</p>
+<pre><code>  GET /v1/publishers/123/books/les-miserables@-/pages
+</code></pre>
+<p>APIs <strong>should not</strong> include multiple levels of resources with revisions, as
+this quickly becomes difficult to reason about.</p>
+<h3 id="committing-revisions">Committing revisions</h3>
+<p>Depending on the resource, different APIs may have different strategies for
+when to commit a new revision, such as:</p>
+<ul>
+<li>Commit a new revision any time that there is a change</li>
+<li>Commit a new revision when something important happens</li>
+<li>Commit a new revision when the user specifically asks</li>
+</ul>
+<p>APIs <strong>may</strong> use any of these strategies. APIs that want to commit a revision
+on user request <strong>should</strong> handle this with a <code>Commit</code> custom method:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CommitBook</span><span class="p">(</span><span class="n">CommitBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:commit&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The method <strong>must</strong> use the <code>POST</code> HTTP verb.</li>
+<li>The method <strong>should</strong> return the resource, and the resource name <strong>must</strong>
+  include the revision ID.</li>
+<li>The request message <strong>must</strong> include the <code>name</code> field.</li>
+</ul>
+<h3 id="rollback">Rollback</h3>
+<p>A common use case for a resource with a revision history is the ability to roll
+back to a given revision. APIs <strong>should</strong> handle this with a <code>Rollback</code> custom
+method:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">RollbackBook</span><span class="p">(</span><span class="n">RollbackBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:rollback&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The method <strong>must</strong> use the <code>POST</code> HTTP verb.</li>
+<li>The method <strong>should</strong> return the resource, and the resource name <strong>must</strong>
+  include the revision ID.</li>
+</ul>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">RollbackBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The book being rolled back.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The revision ID to roll back to.</span>
+  <span class="c1">// It must be a revision of the same book.</span>
+  <span class="c1">//</span>
+  <span class="c1">//   Example: c7cfa2a8</span>
+  <span class="kt">string</span> <span class="na">revision_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The request message <strong>must</strong> include a <code>revision_id</code> field.<ul>
+<li>The API <strong>must</strong> fail the request with <code>NOT_FOUND</code> if the revision does not
+  exist on that resource.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> When rolling back, the API should return a <em>new</em> revision of the
+resource with a <em>new</em> revision ID, rather than reusing the original ID. This
+avoids problems with representing the same revision being active for multiple
+ranges of time.</p>
+<h3 id="deleting-revisions">Deleting revisions</h3>
+<p>Revisions are sometimes expensive to store, and there are valid use cases to
+want to remove one or more revisions from a resource's revision history.</p>
+<p>APIs <strong>may</strong> define a method to delete revisions, with a structure similar to
+<code>Delete</code> (<a href="/135">AIP-135</a>) methods:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">DeleteBookRevision</span><span class="p">(</span><span class="n">DeleteBookRevisionRequest</span><span class="p">)</span>
+    <span class="k">returns</span> <span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">delete</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:deleteRevision&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeleteBookRevisionRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the book revision to be deleted, with a revision ID explicitly</span>
+  <span class="c1">// included.</span>
+  <span class="c1">//</span>
+  <span class="c1">// Example: publishers/123/books/les-miserables@c7cfa2a8</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The explicit resource ID <strong>must</strong> be required (the method <strong>must</strong> fail with
+  <code>INVALID_ARGUMENT</code> if it is not provided, and <strong>must not</strong> default to the
+  latest revision).</li>
+<li>The API <strong>must not</strong> overload the <code>DeleteBook</code> method to serve both purposes
+  (this could lead to dangerous or confusing mistakes).</li>
+<li>If the resource supports soft delete, then revisions of that resource
+  <strong>should</strong> also support soft delete.</li>
+</ul>
+<h2 id="appendix-character-collision">Appendix: Character Collision</h2>
+<p>Most resource names have a restrictive set of characters, but some are very
+open. For example, Google Cloud Storage allows the <code>@</code> character in filenames,
+which are part of the resource name, and therefore uses the <code>#</code> character to
+indicate a revision.</p>
+<p>APIs <strong>should</strong> avoid permitting the <code>@</code> character in resource names, and if
+APIs that do permit it need to support resources with revisions, they
+<strong>should</strong> pick an appropriate separator depending on how and where the API is
+used, and <strong>must</strong> clearly document it.</p>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

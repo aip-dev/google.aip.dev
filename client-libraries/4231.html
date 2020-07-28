@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-4231: Parsing resource names</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=648f6bdc">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=648f6bdc">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=648f6bdc"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/googleapis/aip" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4210">
+        <span class="aip-number">4210</span>
+        Client library generators
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4221">
+        <span class="aip-number">4221</span>
+        Client-side retry
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4222">
+        <span class="aip-number">4222</span>
+        Routing headers
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/4231">
+        <span class="aip-number">4231</span>
+        Parsing resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4232">
+        <span class="aip-number">4232</span>
+        Method signatures
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4233">
+        <span class="aip-number">4233</span>
+        Automatic pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4290">
+        <span class="aip-number">4290</span>
+        Docker interface
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Parsing resource names</th></tr>
+    <tr><td>Number</td><td>4231</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4231">google.aip.dev/client-libraries/4231</a></td></tr>
+    <tr><td>Scope</td><td>Client libraries</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2018-06-22</td></tr>
+    <tr><td>Updated</td><td>2018-06-22</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#resource-messages">Resource messages</a></li>
+<li><a href="#multi-pattern-resources">Multi-pattern resources</a></li>
+<li><a href="#resources-without-messages">Resources without messages</a></li>
+<li><a href="#referencing-other-resources">Referencing other resources</a></li>
+<li><a href="#referencing-an-arbitrary-resource">Referencing an arbitrary resource</a></li>
+<li><a href="#complex-resource-id-path-segments">Complex resource ID path segments</a></li>
+<li><a href="#backwards-compatibility">Backwards compatibility</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/googleapis/aip/issues/">File Bug</a></li>
+      <li><a href="https://github.com/googleapis/aip/blob/master/aip/client-libraries/4231.md">View source</a></li>
+      <li><a href="https://github.com/googleapis/aip/edit/master/aip/client-libraries/4231.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/client-libraries">
+          Client libraries AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Parsing resource names
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-4231</h4>
+  <h1>Parsing resource names</h1>
+<p>In resource-oriented design (<a href="/121">AIP-121</a>), <em>resources</em> represent the primary
+nouns within APIs, and often have <em>resource names</em> (<a href="/122">AIP-122</a>). These
+resource names convey information about the structure and hierarchy of the
+resource structure in that API. APIs accept these resource names as parameters
+when retrieving and modifying resources, and when referencing them in other
+objects. However, users may struggle to piece together resource names to send,
+and client libraries have the opportunity to make this easier through the use
+of helper components.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Client libraries <strong>may</strong> provide helper classes or functions to make
+constructing resource names more straightforward. However, client libraries
+that choose to implement this feature <strong>must</strong> always accept the plain strings
+also, for two reasons:</p>
+<ol>
+<li>An existing API that adds resource descriptor annotations should be able to
+   do so without incurring a breaking change.</li>
+<li>Resource name patterns occasionally evolve, and users need to be able to
+   send and receive resource names that a statically-compiled client library
+   may not yet acknowledge.</li>
+</ol>
+<h3 id="resource-messages">Resource messages</h3>
+<p>A resource in an API always has a message that describes the representation of
+that resource in that API. Client library generators are able to recognize
+these messages when they are annotated with the <code>google.api.resource</code>
+annotation:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a Topic in Pub/Sub.</span>
+<span class="kd">message</span> <span class="nc">Topic</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;pubsub.googleapis.com/Topic&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;projects/{project}/topics/{topic}&quot;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// The resource&#39;s name.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// And so on...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The <code>type</code> field provides the <a href="/123">unified resource type</a> name.<ul>
+<li>Client libraries <strong>should</strong> name their helper component based on this
+  value.</li>
+<li>The universal resource type usually (but not always) ends with a name that
+  matches the name of the message.</li>
+</ul>
+</li>
+<li>The <code>pattern</code> field provides the structure of this resource type's names.<ul>
+<li>The components in braces represent variable substitutions. Client libraries
+  implementing this feature <strong>must</strong> accept variables based on these names
+  when building resource name strings.</li>
+<li>Variable substitution names are usually specified in <code>snake_case</code>, but this
+  is not guaranteed. Client libraries <strong>should</strong> be able to accept any
+  annotation that uses any sane case system.</li>
+<li>Patterns are usually slash-separated, but this is not guaranteed. Client
+  libraries <strong>should</strong> use string interpolation to piece together the
+  resource name.</li>
+</ul>
+</li>
+<li>The defining message is expected to contain a field called <code>name</code>, which is
+  the field holding the resource name.<ul>
+<li>APIs are able to override the name field's name by setting the <code>name_field</code>
+  property on the <code>google.api.resource</code> annotation.</li>
+<li>Code generators <strong>should</strong> fail with an error if a message is annotated as
+  a resource and has no name field (either the default of <code>name</code> or the field
+  provided in the <code>name_field</code> property of the annotation). Code generators
+  <strong>should</strong> also fail with an error if the field is not a string).</li>
+</ul>
+</li>
+</ul>
+<h3 id="multi-pattern-resources">Multi-pattern resources</h3>
+<p>Occasionally, a resource may have more than one pattern. The common case for
+this is when a resource can live under more than one parent type. In this
+situation, the <code>pattern</code> field on the annotation can be specified more than
+once:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">LogEntry</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;logging.googleapis.com/Log&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;projects/{project}/logs/{log}&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;organizations/{organization}/logs/{log}&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;folders/{folder}/logs/{log}&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;billingAccounts/{billing_account}/logs/{log}&quot;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// The resource&#39;s name.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// And so on...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>If necessary, client libraries <strong>may</strong> create a separate helper component for
+each pattern, and <strong>may</strong> provide a rollup component.</p>
+<h3 id="resources-without-messages">Resources without messages</h3>
+<p>Occasionally, a resource may be implicitly defined by an API service, but not
+have an explicit message representing that resource. (For example, the
+<a href="https://github.com/googleapis/googleapis/tree/master/google/firestore/v1">Firestore API</a> defines databases as a common ancestor to its resources, but
+does not define a database message.)</p>
+<p>In this situation, APIs annotate the resource on the <em>file</em> instead of on a
+<em>message</em>, using the <code>google.api.resource_definition</code> annotation:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource_definition</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">type</span><span class="o">:</span> <span class="s">&quot;firestore.googleapis.com/Database&quot;</span>
+  <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;projects/{project}/databases/{database}&quot;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>Client library generators implementing this feature <strong>must</strong> generate the same
+utility components that would be generated when encountering a
+<a href="#resource-messages">resource message</a>.</p>
+<h3 id="referencing-other-resources">Referencing other resources</h3>
+<p>APIs often use resource names for referencing fields defined elsewhere. This is
+particularly common with the request messages for the standard methods, such as
+<a href="/131">Get</a> and <a href="/134">Update</a>; however, resources and other structures
+use resource name strings as references also.</p>
+<p>Client libraries implementing this feature <strong>should</strong> also provide their helper
+components when resources are being referenced. Client libraries are able to
+recognize these fields when they are annotated with the
+<code>google.api.resource_reference</code> annotation:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">GetTopicRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the topic to retrieve.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;pubsub.googleapis.com/Topic&quot;</span>
+  <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The resource reference references the <a href="/123">unified resource type</a> name.</p>
+<p>Some methods also refer to the <em>parent</em> of a type, and in situations where
+there are multiple parents, it is repetitive and error-prone to refer to each
+individual parent type. In these situations, API producers specify <code>child_type</code>
+rather than <code>type</code>:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListLogEntriesRequest</span> <span class="p">{</span>
+  <span class="c1">// The collection of log entries to list.</span>
+  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;logging.googleapis.com/Log&quot;</span>
+  <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this situation, client library generators implementing this feature <strong>must</strong>
+derive the set of parent resources from the child type.</p>
+<h3 id="referencing-an-arbitrary-resource">Referencing an arbitrary resource</h3>
+<p>Occasionally, a field may reference an arbitrary resource. In this case, APIs
+use the special value <code>*</code> in their resource reference.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">GetIamPolicyRequest</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">resource</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this situation, client library generators implementing this feature <strong>may</strong>
+provide a generic utility class or function to address that resource name.</p>
+<h3 id="complex-resource-id-path-segments">Complex resource ID path segments</h3>
+<p><strong>Warning</strong>: Complex resource ID path segments <strong>should not</strong> generally be used
+in new APIs. <a href="/124">AIP-124</a> contains advice on handling many-to-many associations.</p>
+<p>Resource patterns <strong>may</strong> contain resource ID path segments which contain
+multiple pattern variables separated by a variable separator:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">FeedItemTarget</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;googleads.googleapis.com/FeedItemTarget&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;customers/{customer}/feedItemTargets/{feed}~{feed_item}&quot;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// The resource name of this event.</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// Other fields...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This is only used when the resource ID is naturally in multiple parts and it is
+useful for the user to be able to manipulate the separate ID parts.</p>
+<ul>
+<li>A variable separator is one character long, and <strong>must</strong> only one of: <code>_</code>,
+  <code>-</code>, <code>.</code>, <code>~</code> (underscore, hyphen, period, tilde).</li>
+<li>A variable separator <strong>must not</strong> appear before the first pattern variable or
+  after the last pattern variable.</li>
+</ul>
+<h3 id="backwards-compatibility">Backwards compatibility</h3>
+<p>Client libraries implementing helper components for resources <strong>must</strong> conform
+to the following backwards-compatibility expectations:</p>
+<ul>
+<li>The addition of a <code>google.api.resource</code> annotation on an existing message
+  <strong>must</strong> be a backwards-compatible change.</li>
+<li>An existing resource <strong>must</strong> be able to add new patterns (including the "*"
+  wildcard pattern) without breaking changes as long as the following
+  conditions are met:<ul>
+<li>New patterns must always be appended to the list.</li>
+<li>New patterns must use a distinct sequence of collection identifiers (see
+  <a href="/122">AIP-122</a>) compared with all existing patterns within this resource.</li>
+</ul>
+</li>
+<li>The addition of a <code>google.api.resource_reference</code> annotation on an existing
+  field <strong>must</strong> be a backwards-compatible change.</li>
+</ul>
+<p>Note: The <code>ORIGINALLY_SINGLE_PATTERN</code> and <code>FUTURE_MULTI_PATTERN</code> flags are
+deprecated, and must not be used.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>For more on resource names and patterns, see <a href="/122">AIP-122</a>.</li>
+<li>For more on unified resource types, see <a href="/123">AIP-123</a>.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-05-14</strong>: Added complex resource ID path segments.</li>
+<li><strong>2020-05-07</strong>: Updated backwards compatibility guidance.</li>
+<li><strong>2019-09-16</strong>: Added guidance for resources without messages.</li>
+</ul>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>
