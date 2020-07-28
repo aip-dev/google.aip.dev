@@ -1,0 +1,9 @@
+---
+news:
+  year: 2020
+  month: April
+  description: |
+    This month's AIPs revolve around handling lists and series of data, which
+    present specific challenges in APIs.
+  aips:
+    reviewing: [124, 144, 160]

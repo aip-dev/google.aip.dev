@@ -4,12 +4,12 @@ We'd love to accept your patches and contributions to this project.
 
 ## Development Environment
 
-If you are contributing documentation (rather than samples) and want to be able
-to view it in your browser, the easiest way to do so is to run the provided
+If you are contributing AIP content (rather than code) and want to be able to
+view it in your browser, the easiest way to do so is to run the provided
 development server.
 
-We use [GitHub Pages][1] to make this documentation available, which uses
-[Jekyll][2] under the hood.
+We use [GitHub Pages][1] to make this documentation available, and a specific
+[site generator][2] to build the site.
 
 If you have [Docker][3] installed, clone this repository and run the `serve.sh`
 file at the root of the repository. This script does two things:
@@ -18,45 +18,35 @@ file at the root of the repository. This script does two things:
   as `aip-site`.
 - It runs the `aip-site` image.
 
-The Jekyll development server uses port 4000 by default; point your web browser
-to `http://localhost:4000`, and you should see the site.
+The development server uses port 4000; point your web browser to
+`http://localhost:4000`, and you should see the site.
 
 **Note:** After building the Docker image for the first time, you may
-experience issues if Ruby dependencies change underneath you. If this happens,
-remove your Docker image (`docker rmi aip-site`) and run `serve.sh` again.
+experience issues if Python dependencies change underneath you. If this
+happens, remove your Docker image (`docker rmi aip-site`) and run `serve.sh`
+again.
 
 ### Arguments
 
-Any arguments provided to `serve.sh` (or `docker run`) are forwarded to Jekyll.
-Note that the Docker entrypoint automatically provides `--destination` and
-`--host` arguments, and you should not change these. Additionally, changing
-ports is not advised (call `docker run` yourself with a customized `-p` switch
-if you need to use custom ports).
+Any arguments provided to `serve.sh` (or `docker run`) are forwarded (however,
+the current site generator does not honor any; this may change in the future).
 
 ### Hot reloading
 
-The Jekyll development server supports "hot reloading" (where local changes
-will be automatically reflected in your browser without having to manually
-reload). You can activate this by sending the `--livereload` flag (`-l` for
-short) to `serve.sh`.
+The development server recognizes when files change (including static files)
+and local changes will be automatically reflected in your browser upon reload.
 
 ### Local Installation
 
 It is possible to run the development server locally also. The general gist of
 how to do so correctly is:
 
-- Install [rbenv](https://github.com/rbenv/rbenv).
-- Use rbenv to install an appropriate version of Ruby.
-- `gem install bundler`
-- `bundle install`
-
-Once this is done, you can run `bundle exec jekyll serve` to run the
-development server (as above, include `--livereload` to get automatic
-reloading).
-
-**Note:** The Jekyll default setup will write the static site in-place to the
-`_site` subdirectory. (The Docker image redirects this to an arbitrary spot in
-the image so as not to pollute the local disk.)
+- Install Python 3.8 if you do not already have it (direct install is fine, but
+  [pyenv][5] is probably the best way if you have other Python projects).
+- Create a Python 3.8 [venv][6]. Once it is created, activate it in your shell
+  (`source path/to/venv/bin/activate`).
+- `pip install git+https://github.com/aip-dev/site-generator.git`
+- `aip-site-serve .`
 
 ## Contributor License Agreement
 
@@ -84,6 +74,8 @@ to ensure a consistent style throughout our source. You can add prettier as a
 plugin in most development environments.
 
 [1]: https://pages.github.com/
-[2]: https://jekyllrb.com/
+[2]: https://github.com/aip-dev/site-generator
 [3]: https://docker.com/
 [4]: https://prettier.io/
+[5]: https://github.com/pyenv/pyenv
+[6]: https://docs.python.org/3/library/venv.html

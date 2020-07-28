@@ -1,8 +1,7 @@
-# Jekyll
-default.profraw
-_site
-.jekyll-metadata
+# pytest
+site/.coverage
+site/.pytest_cache
+site/htmlcov
 
-# npm
-node_modules/
-*/package-lock.json
+# mypy
+.mypy_cache
