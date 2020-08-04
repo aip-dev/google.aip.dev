@@ -34,5 +34,5 @@ shortcuts:
       questions</a>. If you don't find an answer there, file an issue on our
       GitHub repository.
     button:
-      href: https://github.com/googleapis/aip/issues
+      href: https://github.com/aip-dev/aip.dev/issues
       text: Ask us on GitHub
