@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9e70f14f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9e70f14f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=111b9617">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=111b9617">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9e70f14f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=111b9617"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -635,10 +635,27 @@ variant of <code>AND</code>. Therefore, <code>Victor Hugo</code> is roughly equi
 <code>Victor AND Hugo</code>.</p>
 <h3 id="logical-operators">Logical Operators</h3>
 <p>Filtering implementations <strong>should</strong> provide the binary operators:</p>
-<p>| Operator | Example       | Meaning                                |
-| -------- | ------------- | -------------------------------------- |
-| <code>AND</code>    | <code>a AND b</code>     | True if <code>a</code> and <code>b</code> are true.          |
-| <code>OR</code>     | <code>a OR b OR c</code> | True if any of <code>a</code>, <code>b</code>, <code>c</code> are true. |</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AND</code></td>
+<td><code>a AND b</code></td>
+<td>True if <code>a</code> and <code>b</code> are true.</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td><code>a OR b OR c</code></td>
+<td>True if any of <code>a</code>, <code>b</code>, <code>c</code> are true.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Note:</strong> To match common patterns of speech, the <code>OR</code> operator has higher
 precedence than <code>AND</code>, unlike what is found in most programming languages. The
 expression <code>a AND b OR c</code> evaluates: <code>a AND (b OR c)</code>. API documentation and
@@ -648,22 +665,72 @@ confusion, but <strong>should not</strong> require explicit parentheses.</p>
 <p>Filtering implementations <strong>should</strong> provide the unary operators <code>NOT</code> and <code>-</code>.
 These are used interchangeably, and a service that supports negation <strong>must</strong>
 support both formats.</p>
-<p>| Operator | Example | Meaning                  |
-| -------- | ------- | ------------------------ |
-| <code>NOT</code>    | <code>NOT a</code> | True if <code>a</code> is not true. |
-| <code>-</code>      | <code>-a</code>    | True if <code>a</code> is not true. |</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NOT</code></td>
+<td><code>NOT a</code></td>
+<td>True if <code>a</code> is not true.</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td><code>-a</code></td>
+<td>True if <code>a</code> is not true.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="comparison-operators">Comparison Operators</h3>
 <p>Filtering implementations <strong>should</strong> provide the binary comparison operators
 <code>=</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and <code>&gt;=</code> for string, numeric, timestamp, and
 duration fields (but <strong>should not</strong> provide them for booleans or enums).</p>
-<p>| Operator | Example      | Meaning                                         |
-| -------- | ------------ | ----------------------------------------------- |
-| <code>=</code>      | <code>a = true</code>   | True if <code>a</code> is true.                            |
-| <code>!=</code>     | <code>a != 42</code>    | True unless <code>a</code> equals 42.                      |
-| <code>&lt;</code>      | <code>a &lt; 42</code>     | True if <code>a</code> is a numeric value below 42.        |
-| <code>&gt;</code>      | <code>a &gt; "foo"</code>  | True if <code>a</code> is lexically ordered after "foo".   |
-| <code>&lt;=</code>     | <code>a &lt;= "foo"</code> | True if <code>a</code> is "foo" or lexically before it.    |
-| <code>&gt;=</code>     | <code>a &gt;= 42</code>    | True if <code>a</code> is a numeric value of 42 or higher. |</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td><code>a = true</code></td>
+<td>True if <code>a</code> is true.</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td><code>a != 42</code></td>
+<td>True unless <code>a</code> equals 42.</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td><code>a &lt; 42</code></td>
+<td>True if <code>a</code> is a numeric value below 42.</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td><code>a &gt; "foo"</code></td>
+<td>True if <code>a</code> is lexically ordered after "foo".</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td><code>a &lt;= "foo"</code></td>
+<td>True if <code>a</code> is "foo" or lexically before it.</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td><code>a &gt;= 42</code></td>
+<td>True if <code>a</code> is a numeric value of 42 or higher.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Note:</strong> Unlike in most programming languages, field names <strong>must</strong> appear on
 the left-hand side of a comparison operator; the right-hand side only accepts
 literals and logical operators.</p>
@@ -687,11 +754,28 @@ wildcards using the <code>*</code> character; for example, <code>a = "*.foo"</co
 <h3 id="traversal-operator">Traversal operator</h3>
 <p>Filtering implementations <strong>should</strong> provide the <code>.</code> operator, which indicates
 traversal through a message, map, or struct.</p>
-<p>| Example         | Meaning                                               |
-| --------------- | ----------------------------------------------------- |
-| <code>a.b = true</code>    | True if <code>a</code> has a boolean <code>b</code> field that is true.     |
-| <code>a.b &gt; 42</code>      | True if <code>a</code> has a numeric <code>b</code> field that is above 42. |
-| <code>a.b.c = "foo"</code> | True if <code>a.b</code> has a string <code>c</code> field that is "foo".   |</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a.b = true</code></td>
+<td>True if <code>a</code> has a boolean <code>b</code> field that is true.</td>
+</tr>
+<tr>
+<td><code>a.b &gt; 42</code></td>
+<td>True if <code>a</code> has a numeric <code>b</code> field that is above 42.</td>
+</tr>
+<tr>
+<td><code>a.b.c = "foo"</code></td>
+<td>True if <code>a.b</code> has a string <code>c</code> field that is "foo".</td>
+</tr>
+</tbody>
+</table>
 <p>Traversal <strong>must</strong> be written using the field names from the resource. If a
 service wishes to support "implicit fields" of some kind, they <strong>must</strong> do so
 through well-documented <a href="#functions">functions</a>. A service <strong>may</strong> specify a
@@ -708,20 +792,51 @@ It is usable with collections (repeated fields or maps) as well as messages,
 and behaves slightly differently in each case.</p>
 <p>Repeated fields query to see if the repeated structure contains a matching
 element:</p>
-<p>| Example    | Meaning                                                     |
-| ---------- | ----------------------------------------------------------- |
-| <code>r:42</code>     | True if <code>r</code> contains 42.                                    |
-| <code>r.foo:42</code> | True if <code>r</code> contains an element <code>e</code> such that <code>e.foo = 42</code>. |</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r:42</code></td>
+<td>True if <code>r</code> contains 42.</td>
+</tr>
+<tr>
+<td><code>r.foo:42</code></td>
+<td>True if <code>r</code> contains an element <code>e</code> such that <code>e.foo = 42</code>.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Important:</strong> Filters can not query a <em>specific</em> element on a repeated field
 for a value. For example, <code>e.0.foo = 42</code> and <code>e[0].foo = 42</code> are <strong>not</strong> valid
 filters.</p>
 <p>Maps, structs, messages can query either for the presence of a field in the map
 or a specific value:</p>
-<p>| Example    | Meaning                             |
-| ---------- | ----------------------------------- |
-| <code>m:foo</code>    | True if <code>m</code> contains the key "foo". |
-| <code>m.foo:*</code>  | True if <code>m</code> contains the key "foo". |
-| <code>m.foo:42</code> | True if <code>m.foo</code> is 42.              |</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m:foo</code></td>
+<td>True if <code>m</code> contains the key "foo".</td>
+</tr>
+<tr>
+<td><code>m.foo:*</code></td>
+<td>True if <code>m</code> contains the key "foo".</td>
+</tr>
+<tr>
+<td><code>m.foo:42</code></td>
+<td>True if <code>m.foo</code> is 42.</td>
+</tr>
+</tbody>
+</table>
 <p>There are two slight distinctions when parsing messages:</p>
 <ul>
 <li>When traversing messages, a field is only considered to be present if it has

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9e70f14f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9e70f14f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=111b9617">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=111b9617">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9e70f14f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=111b9617"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -422,15 +422,52 @@ type-specific information, followed by a list of operations for BIIs.</p>
 </li>
 </ul>
 <h2 id="list-of-bii-operations">List of BII Operations</h2>
-<p>| Verb   | Definition                                                    | Example BII schema |
-| ------ | ------------------------------------------------------------- | ------------------ |
-| GET    | retrieve &amp; present an object; if ambiguous, a list of objects | GET_CALL_HISTORY   |
-| CREATE | create an object                                              | CREATE_ORDER       |
-| DELETE | remove or terminate an existing object                        | DELETE_RESERVATION |
-| START  | control an ongoing activity: start activity                   | START_GAME         |
-| STOP   | control an ongoing activity: stop activity                    | STOP_ALARM         |
-| PAUSE  | control an ongoing activity: temporarily stop/pause activity  | PAUSE_SONG         |
-| RESUME | control an ongoing activity: continue activity                | RESUME_TIMER       |</p>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Definition</th>
+<th>Example BII schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>retrieve &amp; present an object; if ambiguous, a list of objects</td>
+<td>GET_CALL_HISTORY</td>
+</tr>
+<tr>
+<td>CREATE</td>
+<td>create an object</td>
+<td>CREATE_ORDER</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>remove or terminate an existing object</td>
+<td>DELETE_RESERVATION</td>
+</tr>
+<tr>
+<td>START</td>
+<td>control an ongoing activity: start activity</td>
+<td>START_GAME</td>
+</tr>
+<tr>
+<td>STOP</td>
+<td>control an ongoing activity: stop activity</td>
+<td>STOP_ALARM</td>
+</tr>
+<tr>
+<td>PAUSE</td>
+<td>control an ongoing activity: temporarily stop/pause activity</td>
+<td>PAUSE_SONG</td>
+</tr>
+<tr>
+<td>RESUME</td>
+<td>control an ongoing activity: continue activity</td>
+<td>RESUME_TIMER</td>
+</tr>
+</tbody>
+</table>
 <!-- prettier-ignore-start -->
 
 <!-- prettier-ignore-end -->

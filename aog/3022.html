@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9e70f14f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9e70f14f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=111b9617">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=111b9617">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9e70f14f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=111b9617"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -373,22 +373,65 @@ are equivalent, and would <em>both</em> evaluate to <code>"pineapple"</code>.</p
 <p>Google standard APIs which support BII argument mapping <strong>should</strong> support at
 least these type mappings from Schema.org entity type to Actions on Google
 common types:</p>
-<p>| Common type       | Schema.org entity types                                      |
-| ----------------- | ------------------------------------------------------------ |
-| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/date.proto">Date</a>          | <a href="https://schema.org/Date">Date</a>                                          |
-| <a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto">DateTime</a>      | <a href="https://schema.org/DateTime">DateTime</a>                                  |
-| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/timeofday.proto">TimeOfDay</a>     | <a href="https://schema.org/Time">Time</a>                                          |
-| <a href="https://github.com/protocolbuffers/protobuf/tree/master/src/google/protobuf/duration.proto">Duration</a>      | <a href="http://schema.org/Duration">Duration</a>                                  |
-| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>         | <a href="https://schema.org/MonetaryAmount">MonetaryAmount</a>                      |
-| <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/postal_address.proto">PostalAddress</a> | <a href="https://schema.org/Place">Place</a>, <a href="https://schema.org/PostalAddress">PostalAddress</a> |</p>
+<table>
+<thead>
+<tr>
+<th>Common type</th>
+<th>Schema.org entity types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/date.proto">Date</a></td>
+<td><a href="https://schema.org/Date">Date</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto">DateTime</a></td>
+<td><a href="https://schema.org/DateTime">DateTime</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/timeofday.proto">TimeOfDay</a></td>
+<td><a href="https://schema.org/Time">Time</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/protocolbuffers/protobuf/tree/master/src/google/protobuf/duration.proto">Duration</a></td>
+<td><a href="http://schema.org/Duration">Duration</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a></td>
+<td><a href="https://schema.org/MonetaryAmount">MonetaryAmount</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/postal_address.proto">PostalAddress</a></td>
+<td><a href="https://schema.org/Place">Place</a>, <a href="https://schema.org/PostalAddress">PostalAddress</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="bii-argument-to-json-type-mappings">BII argument to JSON type mappings</h2>
 <p>Google standard APIs which support BII argument mapping <strong>should</strong> support at
 least these type mappings from Schema.org entity type to JSON type:</p>
-<p>| JSON type | Schema.org entity types   |
-| --------- | ------------------------- |
-| <code>string</code>  | <a href="https://schema.org/Text">Text</a>       |
-| <code>number</code>  | <a href="https://schema.org/Number">Number</a>   |
-| <code>bool</code>    | <a href="https://schema.org/Boolean">Boolean</a> |</p>
+<table>
+<thead>
+<tr>
+<th>JSON type</th>
+<th>Schema.org entity types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><a href="https://schema.org/Text">Text</a></td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td><a href="https://schema.org/Number">Number</a></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="https://schema.org/Boolean">Boolean</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="bii-argument-to-string-mappings">BII argument to string mappings</h2>
 <p>URI-based fulfillment APIs like <a href="https://developers.google.com/assistant/app/intents#handling_intent_parameters">App Actions</a> can only map BII arguments to
 strings (URI parameters). These APIs <strong>should</strong> support mapping at least the
