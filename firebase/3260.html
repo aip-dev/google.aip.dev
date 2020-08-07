@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-3260: Firebase CLI</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=595a3b21">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=595a3b21">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=595a3b21"></script>
+    
+<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aip-dev/aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/3201">
+        <span class="aip-number">3201</span>
+        Projects and Apps
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/3260">
+        <span class="aip-number">3260</span>
+        Firebase CLI
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3270">
+        <span class="aip-number">3270</span>
+        JavaScript APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3271">
+        <span class="aip-number">3271</span>
+        Android APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3272">
+        <span class="aip-number">3272</span>
+        iOS APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3273">
+        <span class="aip-number">3273</span>
+        C++ APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3274">
+        <span class="aip-number">3274</span>
+        .NET APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3275">
+        <span class="aip-number">3275</span>
+        Python APIs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3276">
+        <span class="aip-number">3276</span>
+        Go APIs
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Firebase CLI</th></tr>
+    <tr><td>Number</td><td>3260</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/firebase/3260">google.aip.dev/firebase/3260</a></td></tr>
+    <tr><td>Scope</td><td>Firebase</td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2020-06-10</td></tr>
+    <tr><td>Updated</td><td>2020-06-10</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#command-naming">Command Naming</a></li>
+<li><a href="#project-selection">Project Selection</a></li>
+<li><a href="#json-output">JSON Output</a></li>
+<li><a href="#arguments-and-flags">Arguments and Flags</a></li>
+<li><a href="#common-command-types">Common Command Types</a></li>
+<li><a href="#deployment">Deployment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aip-dev/aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/aip.dev/blob/master/aip/firebase/3260.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/aip.dev/edit/master/aip/firebase/3260.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/firebase">
+          Firebase AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Firebase CLI
+      </li>
+    </ol>
+  </nav>
+</section>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-3260</h4>
+  <h1>Firebase CLI</h1>
+<h2 id="guidance">Guidance</h2>
+<h3 id="command-naming">Command Naming</h3>
+<p>Commands <strong>must</strong> be named in lowercase using colons to separate namespaces.
+The final segment of a command <strong>should</strong> be an action verb, for example
+<code>list</code>, <code>deploy</code>, or <code>clone</code>. A "get" of a single resource <strong>may</strong> omit the
+action for the sake of brevity (e.g. <code>apps:sdkconfig</code> instead of
+<code>apps:sdkconfig:get</code>).</p>
+<h3 id="project-selection">Project Selection</h3>
+<p>The Firebase CLI works with "project directories" that can be associated with
+one or more Firebase projects via the <code>use</code> command. This ambient project
+selection can be overridden by passing the <code>-P</code> or <code>--project</code> flag.</p>
+<p>All Firebase CLI commands <strong>must</strong> determine the intended project for a command
+based on common project selection, except when a command involves multiple
+projects (e.g. a command that clones configuration from one project to
+another).</p>
+<h3 id="json-output">JSON Output</h3>
+<p>All Firebase CLI commands support machine-readable output via the <code>--json</code>
+flag. If a command correlates to a single API call, the unmodified response of
+that API call should be provided as the JSON response (with wrapped CLI
+metadata).</p>
+<p>If a command does not directly correlate to an API call, the output <strong>should</strong>
+include all information a user might reasonably need for programmatic
+interpretation of the command. Output <strong>must</strong> be formatted in snake-case and
+generally conform to all standard Google API guidance (e.g. <a href="/140">field
+names</a>).</p>
+<h3 id="arguments-and-flags">Arguments and Flags</h3>
+<p>Required inputs for a command <strong>must</strong> be represented as arguments (e.g.
+<code>database:get /path</code>) unless doing so would be confusing to the user. For
+instance, <code>appdistribution:distribute</code> requires as input both a file to
+distribute and an App ID, so <code>--app &lt;appId&gt;</code> as a required flag is more clear
+than two unrelated arguments with no clear hierarchy.</p>
+<p>Flags <strong>must</strong> be named using kebab case (e.g. <code>--example-flag</code>) and <strong>may</strong>
+provide a single-letter alias that does not conflict with <a href="https://github.com/firebase/firebase-tools/blob/master/src/index.js">defined global
+flags</a>.</p>
+<h4>Common Flags</h4>
+<ul>
+<li><code>--app &lt;appId&gt;</code> - used to refer to a specific app within a Firebase project.</li>
+<li><code>--force</code> - used to indicate that a command should proceed without additional
+  prompting regarding potentially destructive actions. For example, deploying
+  Cloud Functions with <code>--force</code> will automatically delete functions, while
+  without the user is prompted.</li>
+<li><code>-o, --output &lt;path&gt;</code> - this flag <strong>may</strong> be used to allow convenient output
+  of a serialized response to a local file. If the output is JSON, it <strong>must</strong>
+  output equivalent JSON to <code>--json</code> without wrapped CLI metadata. If the
+  command fetches a deployable resource, it <strong>must</strong> fetch it in a
+  deploy-compatible format. The string path <strong>may</strong> be optional if a clear
+  default path exists. If a file already exists at the path, a confirmation
+  prompt <strong>must</strong> be displayed unless a <code>--force</code> flag is also provided.</li>
+</ul>
+<h3 id="common-command-types">Common Command Types</h3>
+<h4>List Commands</h4>
+<p>Commands that return a list of like resources <strong>must</strong> use a <code>:list</code> suffix
+(e.g. <code>projects:list</code>).</p>
+<p>List commands <strong>must not</strong> require manual pagination (e.g. a <code>--page-token</code>
+flag) and will generally fetch all results (via multiple API calls if
+necessary). List commands <strong>may</strong> include a <code>--limit &lt;int&gt;</code> flag when a
+natural ordering exists, such as a reverse chronological list of releases.
+A <code>--limit 0</code> flag indicates that all results should be fetched and
+returned.</p>
+<p>The JSON output of a list command <strong>must</strong> be a concatenated array of all
+fetched resources in their original wire format.</p>
+<h4>Clone Commands</h4>
+<p>If a command's purpose is to copy information from one resource to another, it
+<strong>must</strong> be suffixed with <code>:clone</code> and <strong>must</strong> take a <code>from</code> and <code>to</code>
+argument:</p>
+<pre><code>  firebase example:clone &lt;fromProject&gt; &lt;toProject&gt;
+</code></pre>
+<p>To avoid confusion and accidental misuse, clone commands <strong>must</strong> explicitly
+require both arguments and <strong>must not</strong> rely on project selection to populate
+either.</p>
+<p>If a clone operation is destructive (replaces existing state), the command
+<strong>should</strong> prompt the user for confirmation before proceeding. If a prompt is
+added, the command <strong>must</strong> allow a <code>--force</code> flag to bypass the prompt.</p>
+<h3 id="deployment">Deployment</h3>
+<p>Behavior that takes local state (e.g. a rules file) and applies it to the live
+operation of a Firebase project <strong>must</strong> integrate with the <code>deploy</code> command.</p>
+<h4>Scoped Deployments</h4>
+<p>If a service has multiple deployable resources, it <strong>may</strong> allow specifying
+which resources are deployed through colon namespacing, for example:</p>
+<pre><code>  firebase deploy --only functions:func1,functions:func2,hosting:site3
+</code></pre>
+<p>Colon namespacing <strong>may</strong> be used to identify one of many like resources (as
+with functions above) or to identify specific resource type (e.g.
+<code>firestore:indexes</code> vs. <code>firestore:rules</code>).</p>
+<p>If the service integrates with <a href="https://firebase.google.com/docs/cli/targets">deploy targets</a>, the targets
+<strong>must</strong> be addressable via colon namespacing.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>
