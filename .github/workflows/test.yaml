@@ -1,7 +1,7 @@
 ---
 name: test
 on:
-  pull_request:
+  pull:
     branches: master
 jobs:
   build:
