@@ -2,7 +2,8 @@
 name: publish
 on:
   push:
-    branches: master
+    branches:
+      - master
 jobs:
   github-pages:
     runs-on: ubuntu-latest

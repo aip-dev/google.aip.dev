@@ -2,7 +2,8 @@
 name: test
 on:
   pull_request:
-    branches: master
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
