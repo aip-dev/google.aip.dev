@@ -4,7 +4,7 @@
 
 # These AIP editors own the generally-applicable AIP guidance.
 # PA-specific directories are owned by their respective teams.
-aip/*.md                      @googleapis/aip-editors
+aip/general/*.md              @googleapis/aip-editors
 
 # Team-specific components are owned by those teams.
 aip/aog/30*.md                @googleapis/aip-aog
