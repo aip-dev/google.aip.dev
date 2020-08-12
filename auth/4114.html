@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-2510: Project identifiers</title>
+    <title>AIP-4114: Device Certificate Authentication via Mutual TLS</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -189,28 +189,28 @@
       <a href="/aog">Actions on Google</a>
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4110">
+        <span class="aip-number">4110</span>
+        Application Default Credentials
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4111">
+        <span class="aip-number">4111</span>
+        Self-signed JWT-based Access Token
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4113">
+        <span class="aip-number">4113</span>
+        gcloud CLI Integration
+      </a>
+    </li>
     <li class="nav-item nav-item-active">
-      <a href="/2510">
-        <span class="aip-number">2510</span>
-        Project identifiers
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2602">
-        <span class="aip-number">2602</span>
-        Parameter-dependent arguments
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2603">
-        <span class="aip-number">2603</span>
-        List command arguments
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2604">
-        <span class="aip-number">2604</span>
-        Numeric arguments
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
       </a>
     </li>
     </ul>
@@ -219,25 +219,25 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Project identifiers</th></tr>
-    <tr><td>Number</td><td>2510</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/cloud/2510">google.aip.dev/cloud/2510</a></td></tr>
-    <tr><td>Scope</td><td>Google Cloud Platform</td></tr>
+    <tr><th colspan="2">Device Certificate Authentication via Mutual TLS</th></tr>
+    <tr><td>Number</td><td>4114</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4114">google.aip.dev/auth/4114</a></td></tr>
+    <tr><td>Scope</td><td>Auth</td></tr>
     <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2018-12-26</td></tr>
-    <tr><td>Updated</td><td>2018-12-26</td></tr>
+    <tr><td>Created</td><td>2020-07-28</td></tr>
+    <tr><td>Updated</td><td>2020-07-28</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#google-apis">Google APIs</a></li>
-<li><a href="#internal-google-services">Internal Google services</a></li>
-<li><a href="#third-party-services">Third-party services</a></li>
-<li><a href="#project-identifier-format">Project identifier format</a></li>
+<li><a href="#application-default-credentials-for-dca">Application Default Credentials for DCA</a></li>
+<li><a href="#expected-behavior">Expected Behavior</a></li>
+<li><a href="#obtaining-the-default-mtls-endpoint">Obtaining the Default mTLS Endpoint</a></li>
+<li><a href="#obtaining-the-default-device-certificate">Obtaining the Default Device Certificate</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -246,8 +246,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/aip.dev/blob/master/aip/cloud/2510.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/aip.dev/edit/master/aip/cloud/2510.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/aip.dev/blob/master/aip/auth/4114.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/aip.dev/edit/master/aip/auth/4114.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -265,84 +265,115 @@
       </li>
       
       <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/cloud">
-          Google Cloud Platform AIPs
+        <a class="glue-breadcrumbs__link" href="/auth">
+          Auth AIPs
         </a>
       </li>
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Project identifiers
+        Device Certificate Authentication via Mutual TLS
       </li>
     </ol>
   </nav>
 </section>
   
-  <h4 class="aip-number">AIP-2510</h4>
-  <h1>Project identifiers</h1>
-<p>Historically, Google had two kinds of projects: API projects and App Engine
-projects. API projects used project numbers (e.g. <code>12345</code>) as identifiers, and
-App Engine projects used project IDs (e.g. <code>happy-armadillo-789</code>) as
-identifiers. Later, Google converged API projects and App Engine projects, so
-now each project has <em>both</em> unique and immutable identifiers.</p>
-<p>The two types of identifiers are used differently in different contexts, and
-create a lot of complexity for application development. One critical issue is
-that applications cannot reliably join data from different services, because
-different services use different project identifiers.</p>
+  <h4 class="aip-number">AIP-4114</h4>
+  <h1>Device Certificate Authentication via Mutual TLS</h1>
+<p>Mutual TLS (a.k.a mTLS) authentication enables authentication of both client and
+server endpoints in a TLS handshake, and offers the solution to enable Context
+Aware Access for GCP enterprise customers. With Context Aware Access, the
+transport context considers the client certificate’s state in the transport
+(TLS) to make authorization decisions. The use of client certificates provides a
+stronger indication of the access originating from a trusted device. This allows
+customers to restrict access from untrusted devices.</p>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
+language-neutral way, it uses generic terminology which may be imprecise or
+inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
-<p><strong>TL;DR:</strong> The project number is the canonical identifier, and the project ID
-is an <a href="/122#resource-id-aliases">alias</a>, and behaves as such. Additionally, third-party services are
-unable to <em>accept</em> project IDs.</p>
-<p>The rationale for this is:</p>
-<ul>
-<li>Each resource should always have one canonical identifier.</li>
-<li>Because Google's privacy policy restricts the use of project IDs, both
-  internally and with partners, only the project number can be the canonical
-  identifier.</li>
-<li>Translating from an <a href="/122#resource-id-aliases">alias</a> to a canonical identifier should be consistent
-  everywhere, including referring to projects.</li>
-<li>Returning resources with project numbers increases the chances that these are
-  what users store, which may be important if using third-party services.</li>
-</ul>
-<h3 id="google-apis">Google APIs</h3>
-<p>Externally-facing Google APIs <strong>should</strong> accept both project IDs and project
-numbers for incoming API requests.</p>
-<p>However, the project number is the canonical identifier, and therefore APIs
-<strong>must</strong> use project numbers in responses, regardless of whether they were sent
-a project ID or a project number.</p>
-<p>There are two exceptions to this rule:</p>
-<ul>
-<li>Error responses <strong>must</strong> return the originally-provided value without
-  modification. Error responses <strong>must not</strong> perform any translation between
-  project IDs and project numbers.</li>
-<li>If a service receives a resource name for a resource that the service does
-  not own, it <strong>should not</strong> perform any translation between project IDs and
-  project numbers for those resource names.</li>
-</ul>
-<h3 id="internal-google-services">Internal Google services</h3>
-<p>Internal Google services <strong>must</strong> use project numbers for internal data storage
-and for output. Project identifiers are widely used as storage keys, which
-often appear in logs and metrics. Project IDs are user-settable and thus
-considered PII and user data, but project numbers are not.</p>
-<p>Therefore, when an internal service calls an external Google APIs, it
-<strong>should</strong> use project numbers for making API requests.</p>
-<h3 id="third-party-services">Third-party services</h3>
-<p><a href="https://cloud.google.com/marketplace">Third-party services</a> that are
-integrated with Google Cloud Platform <strong>must</strong> only store or provide project
-numbers. Google's privacy policy prohibits sharing project IDs with third-party
-services, or providing a service for third-party services to translate between
-project IDs and project numbers at runtime.</p>
-<h3 id="project-identifier-format">Project identifier format</h3>
-<p>APIs <strong>must</strong> use project resource names as defined by the <a href="https://cloud.google.com/resource-manager/">Resource Manager
-API</a> to refer to projects, such as <code>projects/123456</code>. This allows the same
-API to work with other resources similar to projects, such as organizations and
-folders.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2019-08-11</strong>: Add an exception for resources that a service does not own.</li>
-<li><strong>2019-06-19</strong>: Clarify how error messages should be treated</li>
-<li><strong>2019-06-10</strong>: Minor language and organization tweaks</li>
-</ul>
+<p>This section describes the general guidance of supporting Device Certificate
+Authentication (a.k.a DCA) via mTLS.</p>
+<h3 id="application-default-credentials-for-dca">Application Default Credentials for DCA</h3>
+<p>Users <strong>should</strong> enable DCA through <a href="https://google.aip.dev/auth/4110">ADC</a> instead of manual configuration via
+client options.</p>
+<p>There are two aspects of ADC for DCA. The first is the automatic procurement of
+a device certificate. The second is the automatic switching of the service
+endpoint to the mTLS version of the service endpoint. Clients <strong>must</strong> support
+both of these aspects when supporting ADC for DCA.</p>
+<h3 id="expected-behavior">Expected Behavior</h3>
+<p>Client support for DCA <strong>must</strong> give priority to user overrides specified via
+client options. The following decision tree <strong>should</strong> be used:</p>
+<ol>
+<li>If user specifies both device certificate and endpoint override via client
+    options, use them as is.</li>
+<li>If user does not specify device certificate, attempt to procure and use
+    a default device certificate.</li>
+<li>If user does not specify endpoint override, use the default mTLS endpoint if
+    a device certificate is available and the default regular endpoint otherwise.</li>
+</ol>
+<p>Implications of the above logic:</p>
+<ol>
+<li>If user specifies a non-mTLS endpoint override but a device certificate is
+    available, pass along the certificate anyway and let the server decide what
+    to do.</li>
+<li>If user specifies an mTLS endpoint override but device certificate is not
+    available, do not fail-fast, but let server return error when connecting.</li>
+</ol>
+<p>The above behavior avoids introducing client-side logic that parses whether the
+endpoint override is an mTLS url, since the url pattern may change at anytime.</p>
+<h3 id="obtaining-the-default-mtls-endpoint">Obtaining the Default mTLS Endpoint</h3>
+<p>The default mTLS endpoint for a service <strong>should</strong> be read from the Discovery
+Document field <strong>"mtlsRootUrl"</strong> instead of generated via regex patterns.</p>
+<h3 id="obtaining-the-default-device-certificate">Obtaining the Default Device Certificate</h3>
+<p>The default device certicate <strong>should</strong> be procured using the
+<a href="https://cloud.google.com/endpoint-verification/docs/overview">EndpointVerification</a> workflow, which fetches the certificate from a
+platform-specific credential store (ex. KeyChain in macOS) via a native helper.</p>
+<p>Exporting the certificate via the native helper involves executing a <strong>"cert
+provider command"</strong> specified in a well-known gcloud metadata file of the
+following format:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span>
+   <span class="s2">&quot;min_cloud_sdk_version&quot;</span><span class="p">:</span> <span class="s2">&quot;240.0.0&quot;</span>
+   <span class="s2">&quot;has_client_cert&quot;</span><span class="p">:</span> <span class="kc">true</span>
+   <span class="s2">&quot;endpoint_verification_error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+   <span class="s2">&quot;cert_provider_command&quot;</span><span class="p">:</span> <span class="s2">&quot;[absolute_path_to_provider_command] --fetch_client_cert&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>For Linux and macOS platforms, the above metadata file is located at
+<strong>"~/.secureConnect/context_aware_metadata.json"</strong>.</p>
+<p>The cert provider command will print the certificate to stdout, which will be in
+the form of an X.509 cert followed immediately by the private key:</p>
+<pre><code>-----BEGIN CERTIFICATE-----
+Common Name: Google Endpoint Verification
+Valid From: November 10, 2019
+Valid To: November 10, 2020
+Serial Number: 4921083229008411918 (0x444b331faf2dbd0e)
+...
+-----END CERTIFICATE-----
+-----BEGIN PRIVATE KEY-----
+...
+-----END PRIVATE KEY-----
+</code></pre>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>There are situations where the ADC for DCA behavior needs to be modified, such
+as for integration testing, or for failsafe. To accomodate those scenarios, the
+following environment variables <strong>should</strong> be supported.</p>
+<p><strong>GOOGLE_API_USE_MTLS_ENDPOINT</strong>: If <strong>"always"</strong>, always use mTLS endpoint. If
+<strong>"never"</strong>, always use regular endpoint. If <strong>"auto"</strong>, use the default
+behavior, which is to use the mTLS endpoint if a device certificate is
+available. The default value of this environment variable will be "auto".</p>
+<p><strong>GOOGLE_API_USE_CLIENT_CERTIFICATE</strong>: If <strong>"true"</strong>, device certificate
+authentication will be supported as described in the general guidance. If
+<strong>"false"</strong>, the device certificate <strong>must</strong> not be used, even if specified by
+the user. For now, the default value will be "false", since mTLS support is not
+yet fully adopted by all services. Users who wish to enable DCA feature <strong>must</strong>
+explicitly set this environment variable to "true". In the future, the default
+value will be "true' to allow a more secure connection to be established
+whenever possible.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

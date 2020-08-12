@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=595a3b21">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=595a3b21">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0ac9ac0a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0ac9ac0a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=595a3b21"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0ac9ac0a"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -207,6 +207,12 @@
         gcloud CLI Integration
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
+      </a>
+    </li>
     </ul>
 </nav>
 <section id="jump-content">
@@ -301,21 +307,36 @@ the steps below:</p>
 <li>
 <p>Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
     JWT with a header and payload like the following example:</p>
-<pre><code>    ```json
+<pre><code>```json
+{
+  "alg": "RS256",
+  "typ": "JWT",
+  "kid": "abcdef1234567890"
+}
+{
+  "iss": "123456-compute@developer.gserviceaccount.com",
+  "sub": "123456-compute@developer.gserviceaccount.com",
+  "aud": "https://firestore.googleapis.com/",
+  "iat": 1511900000,
+  "exp": 1511903600
+}
+```
 
-{ "alg": "RS256", "typ": "JWT", "kid": "abcdef1234567890" } { "iss":
-"123456-compute@developer.gserviceaccount.com", "sub":
-"123456-compute@developer.gserviceaccount.com", "aud":
-"https://firestore.googleapis.com/", "iat": 1511900000, "exp": 1511903600 }
-``` _ For the `kid` field in the header, specify the service account's
-private key ID. You can find this value in the `private_key_id` field of
-the service account JSON file. _ For the `iss` and `sub` fields, specify
-the service account's email address. You can find this value in the
-`client_email` field of the service account JSON file. _ For the `aud`
-field, specify the audience. The default audience value **should** be
-`https://[API_ENDPOINT]/`. (e.g. `https://pubsub.googleapis.com/`) _ For
-the `iat` field, specify the current Unix time, and for the `exp` field,
-the value **must** be exactly 3600 seconds later, when the JWT will expire.
+- For the `kid` field in the header, specify the service account's private
+  key ID. You can find this value in the `private_key_id` field of the
+  service account JSON file.
+
+- For the `iss` and `sub` fields, specify the service account's email
+  address. You can find this value in the `client_email` field of the
+  service account JSON file.
+
+- For the `aud` field, specify the audience. The default audience value
+  **should** be `https://[API_ENDPOINT]/`. (e.g.
+  `https://pubsub.googleapis.com/`)
+
+- For the `iat` field, specify the current Unix time, and for the `exp`
+  field, the value **must** be exactly 3600 seconds later, when the JWT
+  will expire.
 </code></pre>
 </li>
 <li>
