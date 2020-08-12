@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bb87e341">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bb87e341">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33d55dfd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33d55dfd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bb87e341"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33d55dfd"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -593,64 +593,63 @@ these proposals on Friday, April 24, 2020.</p>
 <p>APIs sometimes have resource hierarchies that can not be cleanly expressed in
 the usual tree structure.</p>
 </blockquote>
-<p><a href="../aip/0124.md">Resource association</a> comes into play when a resource needs something
+<p><a href="../124">Resource association</a> comes into play when a resource needs something
 other than a direct parent-child relationship. This might mean a many-to-many
 relationship, or it might be a one-to-many association that is distinct from
 the parent-child relationship.</p>
 <p>We have had several APIs struggle with unusual associations over the past year
 or so. In general, this has been handled reasonably consistently, but we never
 codified the guidance into an official AIP.</p>
-<p><strong>Summary:</strong> <a href="../aip/0124.md">AIP-124</a> provides patterns for the two most common
+<p><strong>Summary:</strong> <a href="../124">AIP-124</a> provides patterns for the two most common
 associations: a resource with multiple different one-to-many relationships, and
 a resource with a many-to-many association with another resource.</p>
 <p>We are aiming to approve AIP-124 on April 24. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/475">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/475">leave a comment</a>.</p>
 <h3 id="aip-144-repeated-fields">AIP-144: Repeated fields</h3>
 <blockquote>
 <p>Representing lists of data in an API is trickier than it often appears. Users
 often need to modify lists in place, and longer data series within a single
 resource pose a challenge for pagination.</p>
 </blockquote>
-<p><a href="../aip/0144.md">Repeated fields</a> are somewhat common in APIs, and a common question
+<p><a href="../144">Repeated fields</a> are somewhat common in APIs, and a common question
 that we get is how to handle adding or removing a single item from them
 atomically. Additionally, repeated fields can become a trap if they are
 unbounded in size and become too large.</p>
 <p>This is codification of guidance that we have been giving on a case-by-case
 basis for some time. In particular, this documents the various restrictions on
 the two update strategies.</p>
-<p><strong>Summary:</strong> <a href="../aip/0144.md">AIP-144</a> lays out guidance for repeated fields, and details two
+<p><strong>Summary:</strong> <a href="../144">AIP-144</a> lays out guidance for repeated fields, and details two
 distinct strategies for updating repeated fields.</p>
 <p>We are aiming to approve AIP-144 on April 24. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/476">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/476">leave a comment</a>.</p>
 <h3 id="aip-160-filtering">AIP-160: Filtering</h3>
 <blockquote>
 <p>Often, when listing resources, it is desirable to filter over the collection
 and only return results that the user is interested in.</p>
 </blockquote>
-<p><a href="../aip/0160.md">Filtering</a> involves taking a list of resources (usually) and only
+<p><a href="../160">Filtering</a> involves taking a list of resources (usually) and only
 providing the results that the user wants, specified using a familiar syntax
 similar to that of Google search.</p>
 <p>This is likely the most-requested AIP of all time. We have had internal
 filtering documents for ages, but we have not had a public version, and one has
 been sorely needed for years. Also, this work would likely still be unfinished
 if not for the efforts of <a href="https://github.com/tristonianjones">Tristan Swadell</a>; we are grateful for his efforts.</p>
-<p><strong>Summary:</strong> <a href="../aip/0160.md">AIP-160</a> offers a detailed breakdown of the filtering syntax
+<p><strong>Summary:</strong> <a href="../160">AIP-160</a> offers a detailed breakdown of the filtering syntax
 and how to provide filtering results in list and search methods.</p>
 <p>We are aiming to approve AIP-160 on April 24. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/473">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/473">leave a comment</a>.</p>
 <h2 id="recent-updates">Recent updates</h2>
 <p>In addition to the new AIPs under review, we have added the following guidance
 to existing AIPs:</p>
 <ul>
-<li><a href="../aip/0133.md">AIP-133</a>: Clarify which fields can be required
-  (<a href="https://github.com/googleapis/aip/pull/460">#460</a>)</li>
-<li><a href="../aip/0140.md">AIP-140</a>: Add guidance about message and field name
-  conflicts (<a href="https://github.com/googleapis/aip/pull/470">#470</a>)</li>
-<li><a href="../aip/0151.md">AIP-151</a>: Clarify that both <code>response_type</code> and
-  <code>metadata_type</code> are expected
-  (<a href="https://github.com/googleapis/aip/pull/469">#469</a>)</li>
-<li><a href="../aip/0231.md">AIP-231</a>: Clarify Batch Get behavior if no resource names
-  are sent (<a href="https://github.com/googleapis/aip/pull/474">#474</a>)</li>
+<li><a href="../133">AIP-133</a>: Clarify which fields can be required
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/460">#460</a>)</li>
+<li><a href="../140">AIP-140</a>: Add guidance about message and field name conflicts
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/470">#470</a>)</li>
+<li><a href="../151">AIP-151</a>: Clarify that both <code>response_type</code> and <code>metadata_type</code> are
+  expected (<a href="https://github.com/aip-dev/google.aip.dev/pull/469">#469</a>)</li>
+<li><a href="../231">AIP-231</a>: Clarify Batch Get behavior if no resource names are sent
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/474">#474</a>)</li>
 </ul>
 
   <footer>

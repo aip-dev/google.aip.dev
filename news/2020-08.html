@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-191: File and directory structure</title>
+    <title>Field patterns, redux</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -20,8 +20,6 @@
     </script>
     <script type="text/javascript" src="/assets/js/global.js?v=33d55dfd"></script>
     
-<script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -166,8 +164,7 @@
     <div class="glue-page">
       
       <main role="main" id="page-content">
-        
-<nav id="aip-nav" class="docs-component-nav">
+        <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
     <li class="nav-item nav-item-header">AIPs by Scope</li>
     <li class="nav-item">
@@ -429,7 +426,7 @@
         Stability levels
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/191">
         <span class="aip-number">191</span>
         File and directory structure
@@ -536,25 +533,13 @@
 <section id="jump-content">
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
-  <table id="aip-summary">
-    <tr><th colspan="2">File and directory structure</th></tr>
-    <tr><td>Number</td><td>191</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/191">google.aip.dev/191</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-07-25</td></tr>
-    <tr><td>Updated</td><td>2019-07-25</td></tr>
-  </table>
-
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a><ul>
-<li><a href="#single-package">Single package</a></li>
-<li><a href="#file-names">File names</a></li>
-<li><a href="#file-layout">File layout</a></li>
-<li><a href="#packaging-annotations">Packaging annotations</a></li>
+<li><a href="#aips-under-review">AIPs under review</a><ul>
+<li><a href="#aip-147-sensitive-fields">AIP-147: Sensitive fields</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
+<li><a href="#recent-updates">Recent updates</a></li>
 </ul>
 </div>
 
@@ -563,8 +548,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0191.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0191.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/pages/news/2020-08.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/pages/news/2020-08.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -581,113 +566,57 @@
         </a>
       </li>
       
-      <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/general">
-          General AIPs
-        </a>
-      </li>
-      
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        File and directory structure
+        Field patterns, redux
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-191</h4>
-  <h1>File and directory structure</h1>
-<p>A consistent file and directory structure, while making minimal difference
-technically, makes API surface definitions easier for users and reviewers to
-read.</p>
-<h2 id="guidance">Guidance</h2>
-<p><strong>Note:</strong> The following guidance applies to APIs defined in protocol buffers,
-such as those used throughout Google. While the spirit of this guidance applies
-to APIs defined using other specification languages or formats, some of the
-particular recommendations might be irrelevant.</p>
-<h3 id="single-package">Single package</h3>
-<p>APIs defined in protocol buffers <strong>must</strong> define each individual API in a
-single package, which <strong>must</strong> end in a version component. For example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+  <h1>Field patterns, redux</h1>
+<p>Welcome to the fifth edition of the <strong>AIP newsletter</strong>, which is designed to
+keep you up to date about the AIP program, and particular proposals making
+their way through the system. (Our apologies for not publishing a newsletter in
+July.)</p>
+<p>We have one new AIP this month, on sensitive fields. As always, the AIP
+newsletter kicks off what is effectively a "public comment" period: the AIP
+editors are happy with this proposal, but we want to ensure that you are too.
+Assuming feedback is sufficiently positive, we intend to formally approve these
+proposals on Friday, August 28, 2020.</p>
+<h2 id="aips-under-review">AIPs under review</h2>
+<h3 id="aip-147-sensitive-fields">AIP-147: Sensitive fields</h3>
+<blockquote>
+<p>Sometimes APIs need to collect sensitive information such as private
+encryption keys meant to be <em>stored</em> by the underlying service but not
+intended to be <em>read</em> after writing due to the sensitive nature of the data.</p>
+</blockquote>
+<p><a href="../147">Sensitive fields</a> are fields that are stored by a service but, once
+set, not retrievable by the user, such as passwords or private keys. These are
+not particularly common in APIs, and often it is sufficient to set them as
+<code>INPUT_ONLY</code> (as described in AIP-203).</p>
+<p>However, there is a challenge in situations where the service needs to provide
+some kind of indication that a value has been provided, or provide an
+obfuscated value that the original user ought to recognize. This AIP provides a
+standard for each of those situations.</p>
+<p>A special thanks to <a href="https://github.com/mbleigh">Michael Bleigh</a> for writing this AIP.</p>
+<p><strong>Summary:</strong> <a href="../147">AIP-147</a> provides patterns for indicators around sensitive
+fields.</p>
+<p>We are aiming to approve AIP-147 on August 28. If you have feedback, please
+<a href="https://github.com/aip-dev/google.aip.dev/pull/583">leave a comment</a>.</p>
+<h2 id="recent-updates">Recent updates</h2>
+<p>In addition to the new AIPs under review, we have added the following guidance
+to existing AIPs:</p>
+<ul>
+<li><a href="../135">AIP-135</a>: Add "get" guidance for soft delete.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/526">#526</a>)</li>
+<li><a href="../140">AIP-140</a>: Word segments in field names must not begin with a number.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/528">#528</a>)</li>
+<li><a href="../151">AIP-151</a>: Add guidance for parallel operations.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/535">#535</a>)</li>
+<li><a href="../158">AIP-158</a>: Clarify that <code>page_size</code> is always an opitonal field.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/537">#537</a>)</li>
+</ul>
 
-<span class="kn">package</span> <span class="nn">google</span><span class="o">.</span><span class="n">cloud.translation.v3</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Google APIs <strong>must</strong> reside in a directory that matches the protocol buffer
-<code>package</code> directive. For example, the package above dictates that the directory
-be <code>google/cloud/translation/v3</code>.</p>
-<h3 id="file-names">File names</h3>
-<p>It is often useful to divide API definitions into multiple files. File names
-<strong>must</strong> use <code>snake_case</code>.</p>
-<p>APIs <strong>should</strong> have an obvious "entry" file, generally named after the API
-itself. An API with a small number of discrete services (Google Cloud Pub/Sub's
-<code>Publisher</code> and <code>Subscriber</code> is a good example) <strong>may</strong> have a separate entry
-file per service.</p>
-<p>APIs with only one file <strong>should</strong> use a filename corresponding to the name of
-the API.</p>
-<p>Bear in mind that the file names often become module names in client libraries,
-and customers use them in <code>import</code> or <code>use</code> statements. Therefore, choosing a
-descriptive and language keyword-free filename does matter. For example, a file
-called <code>import.proto</code> may be problematic in Python.</p>
-<p><strong>Note:</strong> The version <strong>must not</strong> be used as a filename, because this creates
-bizarre imports in client libraries. Filenames such as <code>v3.proto</code> or
-<code>v1beta1.proto</code> are prohibited.</p>
-<h3 id="file-layout">File layout</h3>
-<p>Individual files <strong>should</strong> place higher level and more important definitions
-before lower level and less important definitions.</p>
-<p>In a proto file, components <strong>should</strong> be in the following order, and each of
-these <strong>should</strong> be separated by a blank line:</p>
-<ul>
-<li>Copyright and license notice (if applicable).</li>
-<li>The proto <code>syntax</code> statement.</li>
-<li>The proto <code>package</code> statement.</li>
-<li>Any <code>import</code> statements, in alphabetical order.</li>
-<li>Any file-level <code>option</code> statements.</li>
-<li>Any <code>service</code> definitions.<ul>
-<li>Methods <strong>should</strong> be grouped by the resource they impact, and standard
-  methods <strong>should</strong> precede custom methods.</li>
-</ul>
-</li>
-<li>Resource <code>message</code> definitions. A parent resource <strong>must</strong> be defined before
-  its child resources.</li>
-<li>The RPC request and response <code>message</code> definitions, in the same order of the
-  corresponding methods. Each request message <strong>must</strong> precede its
-  corresponding response message (if any).</li>
-<li>Any remaining <code>message</code> definitions.</li>
-<li>Any top-level <code>enum</code> definitions.</li>
-</ul>
-<h3 id="packaging-annotations">Packaging annotations</h3>
-<p>Protocol buffers ships with annotations to declare the package or namespace
-(depending on the vocabulary of the target language) of the generated files.
-For example, setting <code>go_package</code> or <code>csharp_namespace</code> will override the
-inferred package name.</p>
-<p>When defining APIs, the following rules apply:</p>
-<ul>
-<li>Java<ul>
-<li>The <code>java_package</code> annotation <strong>must</strong> be set. The correct value is usually
-  the proto package with the appropriate TLD prefixed. Example:
-  <code>com.google.example.v1</code>.</li>
-<li>The <code>java_multiple_files</code> annotation <strong>must</strong> be set to <code>true</code>.</li>
-<li>The <code>java_outer_classname</code> annotation <strong>must</strong> be set, and <strong>should</strong> be
-  set to the name of the proto filename, in <code>PascalCase</code>, with <code>Proto</code>
-  appended. Example: <code>LibraryProto</code>.</li>
-</ul>
-</li>
-<li>Other languages<ul>
-<li>Package or namespace directives for other languages <strong>must</strong> be set either
-  in every file in the proto package, or none of them. If they are set, the
-  values <strong>must</strong> be identical in every file.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Important:</strong> While other languages have sensible defaults, be aware that
-<em>adding</em> this annotation (with a value not equivalent to the default)
-constitutes a breaking change in that language. When releasing protos, be sure
-that omissions are intentional.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2019-11-18</strong>: Added guidance on the packaging annotations.</li>
-</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
@@ -696,7 +625,7 @@ that omissions are intentional.</p>
   <span class="no-print">For details, see <a href="/licensing">content
   licensing</a>.</span>
 </footer>
-</section>
+  </section>
 
         </section>
       </main>

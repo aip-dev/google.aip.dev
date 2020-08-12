@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bb87e341">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bb87e341">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33d55dfd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33d55dfd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bb87e341"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33d55dfd"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -592,7 +592,7 @@ These have wide differences in meaning, and come in many types: integers,
 floats, and timestamps, just to name a few, and the expected meaning of a
 range can vary in subtle ways depending on the type of range being discussed.</p>
 </blockquote>
-<p><a href="../aip/0145.md">Ranges</a> are fields that represent a range of discrete or continuous
+<p><a href="../145">Ranges</a> are fields that represent a range of discrete or continuous
 values. These are often integers or floats, but can be other values where
 ranges make sense, such as dates.</p>
 <p>The primary challenge for ranges is whether their values (particularly their
@@ -600,38 +600,38 @@ end values) should be inclusive or exclusive. Most developers are used to
 exclusive end values, but with some notable and precise exceptions (example:
 dates are an exception, but not timestamps), and the AIP attempts to encode
 this using the idea of "colloquial precedent".</p>
-<p><strong>Summary:</strong> <a href="../aip/0145.md">AIP-145</a> provides patterns for ranges of values: two fields
+<p><strong>Summary:</strong> <a href="../145">AIP-145</a> provides patterns for ranges of values: two fields
 that represent a start and end value.</p>
 <p>We are aiming to approve AIP-145 on June 26. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/523">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/523">leave a comment</a>.</p>
 <h3 id="aip-146-generic-fields">AIP-146: Generic fields</h3>
 <blockquote>
 <p>Occasionally it is appropriate to have a generic or polymorphic field of some
 kind that can conform to multiple schemata, or even be entirely free-form.</p>
 </blockquote>
-<p><a href="../aip/0146.md">Generic fields</a> discusses the various ways to approach a polymorphic
+<p><a href="../146">Generic fields</a> discusses the various ways to approach a polymorphic
 or entirely generic field in the API. These provide implementation flexibility,
 but the tradeoff is a less clear API contract. There are several ways to
 provide a generic field, and the AIP enumerates them and discussed the
 tradeoffs.</p>
-<p><strong>Summary:</strong> <a href="../aip/0146.md">AIP-146</a> offers four patterns for generic fields, and describes
+<p><strong>Summary:</strong> <a href="../146">AIP-146</a> offers four patterns for generic fields, and describes
 the tradeoffs of each.</p>
 <p>We are aiming to approve AIP-146 on June 26. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/524">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/524">leave a comment</a>.</p>
 <h2 id="recent-updates">Recent updates</h2>
 <p>In addition to the new AIPs under review, we have added the following guidance
 to existing AIPs:</p>
 <ul>
-<li><a href="../aip/0122.md">AIP-122</a>: Corrected a mistaken piece of guidance about
-  capitalization (<a href="https://github.com/googleapis/aip/pull/513">#513</a>)</li>
-<li><a href="../aip/0132.md">AIP-132</a>: Removed mandate to document default ordering
-  (<a href="https://github.com/googleapis/aip/pull/512">#512</a>)</li>
-<li><a href="../aip/0140.md">AIP-140</a>: Add guidance for URI fields
-  (<a href="https://github.com/googleapis/aip/pull/519">#519</a>)</li>
-<li><a href="../aip/0143.md">AIP-143</a>: Change guidance for countries to <code>region_code</code>
-  (<a href="https://github.com/googleapis/aip/pull/507">#507</a>)</li>
-<li><a href="../aip/0203.md">AIP-203</a>: Clarified behavior for updating immutable fields
-  (<a href="https://github.com/googleapis/aip/pull/516">#516</a>)</li>
+<li><a href="../122">AIP-122</a>: Corrected a mistaken piece of guidance about
+  capitalization (<a href="https://github.com/aip-dev/google.aip.dev/pull/513">#513</a>)</li>
+<li><a href="../132">AIP-132</a>: Removed mandate to document default ordering
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/512">#512</a>)</li>
+<li><a href="../140">AIP-140</a>: Add guidance for URI fields
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/519">#519</a>)</li>
+<li><a href="../143">AIP-143</a>: Change guidance for countries to <code>region_code</code>
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/507">#507</a>)</li>
+<li><a href="../203">AIP-203</a>: Clarified behavior for updating immutable fields
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/516">#516</a>)</li>
 </ul>
 
   <footer>

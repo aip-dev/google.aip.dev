@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bb87e341">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bb87e341">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33d55dfd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33d55dfd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bb87e341"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33d55dfd"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -593,7 +593,7 @@ complete, and where a transient long-running operation is not appropriate.
 For example, a task could need to run repeatedly, or have separate
 permissions for configuring the task as opposed to running it.</p>
 </blockquote>
-<p><a href="../aip/0152.md">Jobs</a> are resources that are created that represent a (usually)
+<p><a href="../152">Jobs</a> are resources that are created that represent a (usually)
 repeated task in an API. The idea is that the job is configured once, and
 exists as an independent resource, which can either be executed by a user, or
 by the system on a schedule.</p>
@@ -601,35 +601,35 @@ by the system on a schedule.</p>
 RPC with a long-running operation can provide. They can also be useful if a
 service requires a permission model that distinguishes between who can
 <em>configure</em> a job as opposed to who can <em>run</em> it.</p>
-<p><strong>Summary:</strong> <a href="../aip/0152.md">AIP-152</a> provides patterns for jobs: first-class resources that
+<p><strong>Summary:</strong> <a href="../152">AIP-152</a> provides patterns for jobs: first-class resources that
 represent tasks that are run repeatedly, whether by a user or by the system on
 a schedule.</p>
 <p>We are aiming to approve AIP-152 on May 29. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/504">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/504">leave a comment</a>.</p>
 <h3 id="aip-160-filtering">AIP-160: Filtering</h3>
 <blockquote>
 <p>Often, when listing resources, it is desirable to filter over the collection
 and only return results that the user is interested in.</p>
 </blockquote>
-<p><a href="../aip/0160.md">Filtering</a> involves taking a list of resources (usually) and only
+<p><a href="../160">Filtering</a> involves taking a list of resources (usually) and only
 providing the results that the user wants, specified using a familiar syntax
 similar to that of Google search.</p>
 <p>This AIP is a holdover from last month's newsletter: we intended to approve it
 in April, but several teams brought forth issues and clarifications that
 necessitated further iteration. (Thanks!!) These are now represented in the
-approval pull request (<a href="https://github.com/googleapis/aip/pull/473">#473</a>), and we hope to approve this AIP in May.</p>
-<p><strong>Summary:</strong> <a href="../aip/0160.md">AIP-160</a> offers a detailed breakdown of the filtering syntax
+approval pull request (<a href="https://github.com/aip-dev/google.aip.dev/pull/473">#473</a>), and we hope to approve this AIP in May.</p>
+<p><strong>Summary:</strong> <a href="../160">AIP-160</a> offers a detailed breakdown of the filtering syntax
 and how to provide filtering results in list and search methods.</p>
-<p>We are aiming to approve AIP-160 on May 29. If you have feedback, please <a href="https://github.com/googleapis/aip/pull/473">leave
+<p>We are aiming to approve AIP-160 on May 29. If you have feedback, please <a href="https://github.com/aip-dev/google.aip.dev/pull/473">leave
 a comment</a>.</p>
 <h2 id="recent-updates">Recent updates</h2>
 <p>In addition to the new AIPs under review, we have added the following guidance
 to existing AIPs:</p>
 <ul>
-<li><a href="../aip/0122.md">AIP-122</a>: Tighten restrictions on resource names
-  (<a href="https://github.com/googleapis/aip/pull/496">#496</a>)</li>
-<li><a href="../aip/0192.md">AIP-192</a>: Mandate use of absolute links in comments
-  (<a href="https://github.com/googleapis/aip/pull/480">#480</a>)</li>
+<li><a href="../122">AIP-122</a>: Tighten restrictions on resource names
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/496">#496</a>)</li>
+<li><a href="../192">AIP-192</a>: Mandate use of absolute links in comments
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/480">#480</a>)</li>
 </ul>
 
   <footer>

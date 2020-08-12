@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bb87e341">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bb87e341">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33d55dfd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33d55dfd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bb87e341"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33d55dfd"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -600,26 +600,26 @@ at Google, hopefully pushing us toward greater consistency.</p>
 data out of an API. This is particularly important for enterprise users, who
 are often concerned about vendor lock.</p>
 </blockquote>
-<p><a href="../aip/0153.md">Import and export</a> are particularly important concepts for enterprise
+<p><a href="../153">Import and export</a> are particularly important concepts for enterprise
 APIs, although they are increasing in importance for consumer and SaaS APIs as
 well.</p>
 <p>We have actually had a reasonably consistent import and export story in Google
 Cloud for a long time, but it has largely been passed along by tribal knowledge
 ("go look at X and copy what they did"). Therefore, this AIP attempts to codify
 what we believe is a long-standing practice.</p>
-<p><strong>Summary:</strong> <a href="../aip/0153.md">AIP-153</a> mandates that both import and export methods return
-<a href="../aip/0151.md">long-running operations</a>. Unlike most API methods, they do support
+<p><strong>Summary:</strong> <a href="../153">AIP-153</a> mandates that both import and export methods return
+<a href="../151">long-running operations</a>. Unlike most API methods, they do support
 partial failures, which are handled through the LRO metadata. Finally, they
 have a specified place for per-source and per-destination configuration,
 distinct from configuration for the data itself.</p>
 <p>We are aiming to approve AIP-153 on March 27. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/422">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/422">leave a comment</a>.</p>
 <h3 id="aip-162-resource-revisions">AIP-162: Resource revisions</h3>
 <blockquote>
 <p>Some APIs need to have resources with a revision history, where users can
 reason about the state of the resource over time.</p>
 </blockquote>
-<p><a href="../aip/0162.md">Resource revisions</a> is a concept we are seeing crop up more and more,
+<p><a href="../162">Resource revisions</a> is a concept we are seeing crop up more and more,
 and we are seeing an increasing number of situations where audit logging is a
 necessary but insufficient solution. Several APIs have struggled with how to
 model a resource's history over time, and handle common use cases like commit
@@ -627,12 +627,12 @@ and rollback, which is what prompted this AIP.</p>
 <p>This is new guidance, put together by the AIP team as well as several API teams
 who needed this functionality near the end of 2019. It has been positively
 received by the teams that needed it, and so we would like to codify it.</p>
-<p><strong>Summary:</strong> <a href="../aip/0162.md">AIP-162</a> mandates the use of revision IDs that are appended to
+<p><strong>Summary:</strong> <a href="../162">AIP-162</a> mandates the use of revision IDs that are appended to
 a resource name with the <code>@</code> character for signifying revisions, and sets out
 method structures for most common operations (listing revisions, rollback,
 etc.). It also proposes a tagging mechanism for user-friendly revision names.</p>
 <p>We are aiming to approve AIP-162 on March 27. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/436">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/436">leave a comment</a>.</p>
 <h3 id="aip-163-change-validation">AIP-163: Change validation</h3>
 <blockquote>
 <p>Occasionally, a user wants to validate an intended change to see what the
@@ -640,37 +640,37 @@ result will be before actually making the change. For example, a request to
 provision new servers in a fleet will have an impact on the overall fleet
 size and cost, and could potentially have unexpected downstream effects.</p>
 </blockquote>
-<p><a href="../aip/0163.md">Change validation</a> is the concept of performing a "dry run" on an API
+<p><a href="../163">Change validation</a> is the concept of performing a "dry run" on an API
 request, and returning back the result without making any changes.</p>
 <p>This is effectively a migration of long-standing guidance that was not very
 fleshed out. The previous API design guide mentioned <code>validate_only</code> as an
 entry in the standard fields table with minimal explanation. This proposal
 fleshes that out with an example, and addresses some questions we have received
 over time.</p>
-<p><strong>Summary:</strong> <a href="../aip/0163.md">AIP-163</a> offers guidance for "dry run" requests using a
+<p><strong>Summary:</strong> <a href="../163">AIP-163</a> offers guidance for "dry run" requests using a
 <code>bool validate_only</code> field in the request message, and addresses some common
 situations around permissions and incomplete output.</p>
 <p>We are aiming to approve AIP-163 on March 27. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/437">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/437">leave a comment</a>.</p>
 <h3 id="aip-165-criteria-based-delete">AIP-165: Criteria-based delete</h3>
 <blockquote>
 <p>Occasionally, an API may need to provide a mechanism to delete a large number
 of resources based on some set of filter parameters, rather than requiring
 the individual resource name of the resources to be deleted.</p>
 </blockquote>
-<p><a href="../aip/0165.md">Criteria-based delete</a> is designed to address problems where a user
-needs to delete so many items that <a href="../aip/0235.md">batch delete</a> simply becomes
+<p><a href="../165">Criteria-based delete</a> is designed to address problems where a user
+needs to delete so many items that <a href="../235">batch delete</a> simply becomes
 infeasible.</p>
 <p>This proposal represents a concession of sorts: we have long tried to avoid
 delete-by-filter because of concerns that users would accidentally delete
 important records and be unable to recover them. However, several APIs have had
 legitimate reasons to need to do this, because the number of records the user
 would want to delete was so high.</p>
-<p><strong>Summary:</strong> <a href="../aip/0165.md">AIP-165</a> offers guidance for criteria-based delete, with a
+<p><strong>Summary:</strong> <a href="../165">AIP-165</a> offers guidance for criteria-based delete, with a
 common name (<code>Purge</code>) and structure, and mandates a dry-run by default with a
 <code>force</code> flag to actually perform the purge.</p>
 <p>We are aiming to approve AIP-165 on March 27. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/438">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/438">leave a comment</a>.</p>
 <h3 id="aip-194-retries-for-grpc-clients">AIP-194: Retries for gRPC clients</h3>
 <blockquote>
 <p>RPCs sometimes fail. When one does, the client performing the RPC needs to
@@ -678,30 +678,30 @@ know whether it is safe to retry the operation. When status codes are used
 consistently across multiple APIs, clients can respond to failures
 appropriately.</p>
 </blockquote>
-<p><a href="../aip/0194.md">Retries for gRPC clients</a> handles how to deal with errors, and in
+<p><a href="../194">Retries for gRPC clients</a> handles how to deal with errors, and in
 particular when a client can transparently retry those errors.</p>
 <p>This proposal came about because of a need for first-party client libraries to
 be able to transparently retry some server errors. gRPC offers a configuration
 strategy for this, which is defined by API producers.</p>
-<p><strong>Summary:</strong> <a href="../aip/0194.md">AIP-194</a> offers guidance for configuring what error codes from
+<p><strong>Summary:</strong> <a href="../194">AIP-194</a> offers guidance for configuring what error codes from
 an API are safe to retry. It recommends usually retrying <code>UNAVAILABLE</code> and
 nothing else.</p>
 <p>We are aiming to approve AIP-194 on March 27. If you have feedback, please
-<a href="https://github.com/googleapis/aip/pull/439">leave a comment</a>.</p>
+<a href="https://github.com/aip-dev/google.aip.dev/pull/439">leave a comment</a>.</p>
 <h2 id="recent-updates">Recent updates</h2>
 <p>In addition to the new AIPs under review, we have added the following guidance
 to existing AIPs:</p>
 <ul>
-<li><a href="../aip/0008.md">AIP-8</a>: AIPs have reverse-chronological changelogs
-  (<a href="https://github.com/googleapis/aip/pull/425">#425</a>)</li>
-<li><a href="../aip/0135.md">AIP-135</a>: Delete methods send 403 errors if the user lacks
-  access (<a href="https://github.com/googleapis/aip/pull/409">#409</a>)</li>
-<li><a href="../aip/0140.md">AIP-140</a>: <code>display_name</code> and <code>title</code> standard fields
-  (<a href="https://github.com/googleapis/aip/pull/405">#405</a>)</li>
-<li><a href="../aip/0158.md">AIP-158</a>: Field order for pagination response messages
-  (<a href="https://github.com/googleapis/aip/pull/419">#419</a>)</li>
-<li><a href="../aip/0193.md">AIP-193</a>: Added reference to new <code>ErrorInfo</code> message
-  (<a href="https://github.com/googleapis/aip/pull/396">#396</a>)</li>
+<li><a href="../8">AIP-8</a>: AIPs have reverse-chronological changelogs
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/425">#425</a>)</li>
+<li><a href="../135">AIP-135</a>: Delete methods send 403 errors if the user lacks access
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/409">#409</a>)</li>
+<li><a href="../140">AIP-140</a>: <code>display_name</code> and <code>title</code> standard fields
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/405">#405</a>)</li>
+<li><a href="../158">AIP-158</a>: Field order for pagination response messages
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/419">#419</a>)</li>
+<li><a href="../193">AIP-193</a>: Added reference to new <code>ErrorInfo</code> message
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/396">#396</a>)</li>
 </ul>
 <h2 id="what-is-coming">What is coming?</h2>
 <p>We have more coming over the course of the next few months, including
