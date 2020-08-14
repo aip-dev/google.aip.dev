@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-2717: Patterns for generic fields</title>
+    <title>AIP-4112: Service Account Keys</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -190,39 +190,33 @@
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
     <li class="nav-item">
-      <a href="/2712">
-        <span class="aip-number">2712</span>
-        API completeness
+      <a href="/4110">
+        <span class="aip-number">4110</span>
+        Application Default Credentials
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2713">
-        <span class="aip-number">2713</span>
-        One team owns each type
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2715">
-        <span class="aip-number">2715</span>
-        Documenting authorization changes
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2716">
-        <span class="aip-number">2716</span>
-        Standard terms in names
+      <a href="/4111">
+        <span class="aip-number">4111</span>
+        Self-signed JWT-based Access Token
       </a>
     </li>
     <li class="nav-item nav-item-active">
-      <a href="/2717">
-        <span class="aip-number">2717</span>
-        Patterns for generic fields
+      <a href="/4112">
+        <span class="aip-number">4112</span>
+        Service Account Keys
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2718">
-        <span class="aip-number">2718</span>
-        References to objects in other APIs
+      <a href="/4113">
+        <span class="aip-number">4113</span>
+        gcloud CLI Integration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
       </a>
     </li>
     </ul>
@@ -231,22 +225,20 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Patterns for generic fields</th></tr>
-    <tr><td>Number</td><td>2717</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/apps/2717">google.aip.dev/apps/2717</a></td></tr>
-    <tr><td>Scope</td><td>GSuite</td></tr>
-    <tr><td>State</td><td>Reviewing</td></tr>
-    <tr><td>Created</td><td>2018-09-10</td></tr>
-    <tr><td>Updated</td><td>2018-09-10</td></tr>
+    <tr><th colspan="2">Service Account Keys</th></tr>
+    <tr><td>Number</td><td>4112</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4112">google.aip.dev/auth/4112</a></td></tr>
+    <tr><td>Scope</td><td>Auth</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2020-08-13</td></tr>
+    <tr><td>Updated</td><td>2020-08-13</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#oneof">oneof</a></li>
-<li><a href="#mapstring-foo">map&lt;string, Foo&gt;</a></li>
-<li><a href="#any">Any</a></li>
-<li><a href="#struct">Struct</a></li>
+<li><a href="#service-account-key-authentication-using-oauth">Service Account Key Authentication Using OAuth</a></li>
+<li><a href="#expected-behavior">Expected Behavior</a></li>
 </ul>
 </li>
 </ul>
@@ -257,8 +249,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/apps/2717.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/apps/2717.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/auth/4112.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/auth/4112.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -276,80 +268,104 @@
       </li>
       
       <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/apps">
-          GSuite AIPs
+        <a class="glue-breadcrumbs__link" href="/auth">
+          Auth AIPs
         </a>
       </li>
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Patterns for generic fields
+        Service Account Keys
       </li>
     </ol>
   </nav>
 </section>
-  <p id="aip-state-banner" class="callout note">
-  This AIP is currently under review. This means that the editors have read it
-  and are in high-level concurrence, and while it is not yet fully approved, we
-  have a good faith expectation that the AIP will be approved in something
-  close to its current state.
-</p>
-  <h4 class="aip-number">AIP-2717</h4>
-  <h1>Patterns for generic fields</h1>
-<p>Developers have several options for how to represent generic values in proto
-messages. There are reasons to choose one over the other. Understanding them
-will lead to better and more consistent APIs.</p>
+  
+  <h4 class="aip-number">AIP-4112</h4>
+  <h1>Service Account Keys</h1>
+<p>A service account is a special kind of account used by an application or a
+virtual machine (VM) instance, not a person. Applications use service accounts
+to make authorized API calls, authorized as either the service account itself,
+or as G Suite or Cloud Identity users through domain-wide delegation. Service
+accounts are associated with private/public RSA key-pairs that are used for
+authentication, which is the focus of this AIP.</p>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
+language-neutral way, it uses generic terminology which may be imprecise or
+inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
-<p>APIs <strong>should</strong> follow a consistent application of <code>oneof</code> vs.
-<code>map&lt;string, Foo&gt;</code> vs. <code>Any</code> vs. <code>Struct</code>.</p>
-<h3 id="oneof"><code>oneof</code></h3>
-<p>A <code>oneof</code> is used to create a restriction on a set of optional fields,
-enforcing that only one of them may be set (these fields are still separate
-individual fields). A common pattern is to have a message that contains a
-single <code>oneof</code> collection of various message types. Such a <code>oneof</code> message is
-conceptually similar to a C <code>union</code>, or C++ <code>std::variant</code>. These <strong>should</strong> be
-used in most places where a generic message type is needed, in preference to
-other approaches.</p>
-<p><strong>Note:</strong> Adding additional possible values to an existing <code>oneof</code> is a
-non-breaking change, but moving existing fields into or out of a <code>oneof</code> is
-breaking (it creates a backwards-incompatible change in Go protobuf stubs).</p>
-<h3 id="mapstring-foo"><code>map&lt;string, Foo&gt;</code></h3>
-<p>If a more generic structure is needed, a map of strings to objects <strong>may</strong> be
-used. Such a map is represented by a normal JSON object, such as
-<code>{"a": "foo", "b": "bar"}</code>. The downside to such maps is that they are limited
-to flat structures, and they can be difficult to work with because many string
-constants may be needed.</p>
-<h3 id="any"><code>Any</code></h3>
-<p>An <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/any.proto"><code>Any</code></a> allows any message to be packed into the field. This is
-conceptually similar to a "bytes" field containing a serialized message. The
-advantage of an <code>Any</code> is that a user-defined proto message can be stored along
-with type information. The user must be able to know which kind of object is in
-the <code>Any</code>, which complicates the design. The disadvantage is that working with
-and debugging any protos is much more complicated since the code may or may not
-know how to deserialize the packed message. Also, the developer must contend
-with unexpected types of messages in the <code>Any</code>.</p>
-<p><code>Any</code> <strong>should not</strong> be used as a request parameter. Request parameters will
-either be a fixed set of types, in which case a <code>oneof</code> <strong>should</strong> be used, or
-a type descriptor would need to be sent along, in which case a struct
-<strong>should</strong> be used, which achieves essentially the same thing with much simpler
-semantics.</p>
-<!-- prettier-ignore -->
-
-<h3 id="struct"><code>Struct</code></h3>
-<p>The <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/struct.proto"><code>Struct</code></a> message can be used to represent arbitrary nested JSON.
-For example, given the following code:</p>
-<div class="highlight language-java"><pre><span></span><code><span class="n">Struct</span><span class="p">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Struct</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">();</span>
-<span class="n">Value</span> <span class="n">town</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setStringValue</span><span class="p">(</span><span class="s">&quot;Springfield&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
-<span class="n">Value</span> <span class="n">population</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setNumberValue</span><span class="p">(</span><span class="mi">273</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
-<span class="n">builder</span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;town&quot;</span><span class="p">,</span> <span class="n">town</span><span class="p">);</span>
-<span class="n">builder</span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;population&quot;</span><span class="p">,</span> <span class="n">population</span><span class="p">);</span>
-<span class="n">Struct</span> <span class="n">survey</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<p>This section describes the general guidance of supporting Service Account Key
+authentication using traditional OAuth flow. For Service Account Key
+authentication using self-signed JWT flow, please refer to the <a href="https://google.aip.dev/auth/4111">self-signed
+JWT</a> AIP.</p>
+<h3 id="service-account-key-authentication-using-oauth">Service Account Key Authentication Using OAuth</h3>
+<p>Under the latest <a href="https://google.aip.dev/auth/4110">ADC</a> guidance, when Service Account Key is provided as the
+source credential, we prefer to use the <a href="https://google.aip.dev/auth/4111">self-signed JWT</a> flow by default,
+which does not use the OAuth "scope" argument. Therefore, the client <strong>should</strong>
+choose the OAuth flow over self-signed JWT flow only if the OAuth "scope" is
+explicitly provided to the client.</p>
+<h3 id="expected-behavior">Expected Behavior</h3>
+<p>To support Service Account Key authentication using OAuth flow, the auth
+libraries <strong>must</strong> follow the steps below:</p>
+<p>1.Load the <strong>Service Account ID JSON file</strong> from the file path specified by
+<strong>GOOGLE_APPLICATION_CREDENTIALS</strong> environment variable, or an explicit
+<strong>credentials</strong> file path specified through client options. The JSON file will
+look like below:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;service_account&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;project_id&quot;</span><span class="p">:</span> <span class="s2">&quot;testproject&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private_key_id&quot;</span><span class="p">:</span> <span class="s2">&quot;redacted&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private_key&quot;</span><span class="p">:</span> <span class="s2">&quot;redacted&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;client_email&quot;</span><span class="p">:</span> <span class="s2">&quot;testserviceaccount@test.iam.gserviceaccount.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;113258942105700140798&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;auth_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://accounts.google.com/o/oauth2/auth&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;token_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://oauth2.googleapis.com/token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;auth_provider_x509_cert_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/oauth2/v1/certs&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;client_x509_cert_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/robot/v1/metadata/x509/testserviceaccount%40test.iam.gserviceaccount.com&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p><code>survey</code> would serialize as the actual JSON
-<code>{"town": "Springfield": "population": 273}</code>. This message type is fairly
-uncommon, and <strong>should</strong> only be used rarely.</p>
-<!-- prettier-ignore -->
+<p><strong>Note:</strong> A Service Account ID JSON file can be downloaded from <a href="https://console.cloud.google.com/apis/credentials">Google Cloud Console</a>.</p>
+<p>2.Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
+JWT with a header and claims set like the following example:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdef1234567890&quot;</span>
+<span class="p">}</span>
+<span class="p">{</span>
+  <span class="nt">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;123456-compute@developer.gserviceaccount.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;123456-compute@developer.gserviceaccount.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/auth/pubsub&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>For the <code>kid</code> field in the header, specify the service account's private
+key ID. You can find this value in the <strong>private_key_id</strong> field of the
+service account JSON file.</p>
+</li>
+<li>
+<p>For the <code>iss</code> and <code>sub</code> fields, specify the service account's email
+address. You can find this value in the <strong>client_email</strong> field of the
+service account JSON file.</p>
+</li>
+<li>
+<p>For the <code>scope</code> field, specify the <strong>scope</strong> parameter provided by the client.
+Multiple scopes can be specified using single space (" ") as delimiter.</p>
+</li>
+</ul>
+<p>3.Sign the JWT with RSA-256 using the <strong>private_key</strong> found in the service
+account JSON file. The output will be used as the request payload (a.k.a.
+assertion) for the 2-legged OAuth flow.</p>
+<p>4.Define a parameter "grant_type" as
+"urn:ietf:params:oauth:grant-type:jwt-bearer". Define a parameter "assertion" as
+the payload from step 3.</p>
+<p>5.Make a POST request to the <strong>token_uri</strong> endpoint with the parameters from
+step 4 to obtain an OAuth2 Access Token.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
