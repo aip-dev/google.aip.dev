@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-2510: Project identifiers</title>
+    <title>AIP-4115: Default Credentials From Google Virtual Machines</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -189,28 +189,40 @@
       <a href="/aog">Actions on Google</a>
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4110">
+        <span class="aip-number">4110</span>
+        Application Default Credentials
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4111">
+        <span class="aip-number">4111</span>
+        Self-signed JWT-based Access Token
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4112">
+        <span class="aip-number">4112</span>
+        Service Account Keys
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4113">
+        <span class="aip-number">4113</span>
+        gcloud CLI Integration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
+      </a>
+    </li>
     <li class="nav-item nav-item-active">
-      <a href="/2510">
-        <span class="aip-number">2510</span>
-        Project identifiers
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2602">
-        <span class="aip-number">2602</span>
-        Parameter-dependent arguments
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2603">
-        <span class="aip-number">2603</span>
-        List command arguments
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2604">
-        <span class="aip-number">2604</span>
-        Numeric arguments
+      <a href="/4115">
+        <span class="aip-number">4115</span>
+        Default Credentials From Google Virtual Machines
       </a>
     </li>
     </ul>
@@ -219,25 +231,25 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Project identifiers</th></tr>
-    <tr><td>Number</td><td>2510</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/cloud/2510">google.aip.dev/cloud/2510</a></td></tr>
-    <tr><td>Scope</td><td>Google Cloud Platform</td></tr>
+    <tr><th colspan="2">Default Credentials From Google Virtual Machines</th></tr>
+    <tr><td>Number</td><td>4115</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4115">google.aip.dev/auth/4115</a></td></tr>
+    <tr><td>Scope</td><td>Auth</td></tr>
     <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2018-12-26</td></tr>
-    <tr><td>Updated</td><td>2018-12-26</td></tr>
+    <tr><td>Created</td><td>2020-08-13</td></tr>
+    <tr><td>Updated</td><td>2020-08-13</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#google-apis">Google APIs</a></li>
-<li><a href="#internal-google-services">Internal Google services</a></li>
-<li><a href="#third-party-services">Third-party services</a></li>
-<li><a href="#project-identifier-format">Project identifier format</a></li>
+<li><a href="#application-default-credentials">Application Default Credentials</a></li>
+<li><a href="#google-virtual-machine-environments">Google Virtual Machine Environments</a></li>
+<li><a href="#compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</a></li>
+<li><a href="#google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</a></li>
+<li><a href="#token-expiration">Token Expiration</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -246,8 +258,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/cloud/2510.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/cloud/2510.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/auth/4115.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/auth/4115.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -265,84 +277,89 @@
       </li>
       
       <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/cloud">
-          Google Cloud Platform AIPs
+        <a class="glue-breadcrumbs__link" href="/auth">
+          Auth AIPs
         </a>
       </li>
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Project identifiers
+        Default Credentials From Google Virtual Machines
       </li>
     </ol>
   </nav>
 </section>
   
-  <h4 class="aip-number">AIP-2510</h4>
-  <h1>Project identifiers</h1>
-<p>Historically, Google had two kinds of projects: API projects and App Engine
-projects. API projects used project numbers (e.g. <code>12345</code>) as identifiers, and
-App Engine projects used project IDs (e.g. <code>happy-armadillo-789</code>) as
-identifiers. Later, Google converged API projects and App Engine projects, so
-now each project has <em>both</em> unique and immutable identifiers.</p>
-<p>The two types of identifiers are used differently in different contexts, and
-create a lot of complexity for application development. One critical issue is
-that applications cannot reliably join data from different services, because
-different services use different project identifiers.</p>
+  <h4 class="aip-number">AIP-4115</h4>
+  <h1>Default Credentials From Google Virtual Machines</h1>
+<p>If the client runs on Google virtual machine instance such as <a href="https://cloud.google.com/appengine">Google App
+Engine</a> or <a href="https://cloud.google.com/compute">Compute Engine</a>, the auth library <strong>may</strong> obtain the identity
+token that is associated with the instance, and use the identity token as the
+credential to access Google APIs. By using the instance identity, the users no
+longer need to config their credentials explicitly.</p>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
+language-neutral way, it uses generic terminology which may be imprecise or
+inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
-<p><strong>TL;DR:</strong> The project number is the canonical identifier, and the project ID
-is an <a href="/122#resource-id-aliases">alias</a>, and behaves as such. Additionally, third-party services are
-unable to <em>accept</em> project IDs.</p>
-<p>The rationale for this is:</p>
+<p>This section describes the general guidance of supporting default credentials
+from Google virtual machine environments.</p>
+<h3 id="application-default-credentials">Application Default Credentials</h3>
+<p>Supporting the default credentials from Google virtual machines is considered as
+a part of the <a href="./4110">Application Default Credential</a>. To understand the overall
+credential flow, please read <a href="./4110">AIP-4110</a>.</p>
+<h3 id="google-virtual-machine-environments">Google Virtual Machine Environments</h3>
+<p>There are typically two types of Google virtual machine environments where the
+auth library should obtain the identity token based on the environment type:</p>
 <ul>
-<li>Each resource should always have one canonical identifier.</li>
-<li>Because Google's privacy policy restricts the use of project IDs, both
-  internally and with partners, only the project number can be the canonical
-  identifier.</li>
-<li>Translating from an <a href="/122#resource-id-aliases">alias</a> to a canonical identifier should be consistent
-  everywhere, including referring to projects.</li>
-<li>Returning resources with project numbers increases the chances that these are
-  what users store, which may be important if using third-party services.</li>
+<li>Google App Engine Standard 1.0 Compute Engine or equivalent runtime<ul>
+<li>This typically includes Google App Engine Standard 2.0+ and Google App Engine Flex environments.</li>
 </ul>
-<h3 id="google-apis">Google APIs</h3>
-<p>Externally-facing Google APIs <strong>should</strong> accept both project IDs and project
-numbers for incoming API requests.</p>
-<p>However, the project number is the canonical identifier, and therefore APIs
-<strong>must</strong> use project numbers in responses, regardless of whether they were sent
-a project ID or a project number.</p>
-<p>There are two exceptions to this rule:</p>
-<ul>
-<li>Error responses <strong>must</strong> return the originally-provided value without
-  modification. Error responses <strong>must not</strong> perform any translation between
-  project IDs and project numbers.</li>
-<li>If a service receives a resource name for a resource that the service does
-  not own, it <strong>should not</strong> perform any translation between project IDs and
-  project numbers for those resource names.</li>
+</li>
 </ul>
-<h3 id="internal-google-services">Internal Google services</h3>
-<p>Internal Google services <strong>must</strong> use project numbers for internal data storage
-and for output. Project identifiers are widely used as storage keys, which
-often appear in logs and metrics. Project IDs are user-settable and thus
-considered PII and user data, but project numbers are not.</p>
-<p>Therefore, when an internal service calls an external Google APIs, it
-<strong>should</strong> use project numbers for making API requests.</p>
-<h3 id="third-party-services">Third-party services</h3>
-<p><a href="https://cloud.google.com/marketplace">Third-party services</a> that are
-integrated with Google Cloud Platform <strong>must</strong> only store or provide project
-numbers. Google's privacy policy prohibits sharing project IDs with third-party
-services, or providing a service for third-party services to translate between
-project IDs and project numbers at runtime.</p>
-<h3 id="project-identifier-format">Project identifier format</h3>
-<p>APIs <strong>must</strong> use project resource names as defined by the <a href="https://cloud.google.com/resource-manager/">Resource Manager
-API</a> to refer to projects, such as <code>projects/123456</code>. This allows the same
-API to work with other resources similar to projects, such as organizations and
-folders.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2019-08-11</strong>: Add an exception for resources that a service does not own.</li>
-<li><strong>2019-06-19</strong>: Clarify how error messages should be treated</li>
-<li><strong>2019-06-10</strong>: Minor language and organization tweaks</li>
-</ul>
+<p>The auth library <strong>should</strong> depend on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> to detect
+if the application is running within a Google App Engine environment.</p>
+<p>To detect if the application is running on Compute Engine environment, the auth
+library <strong>should</strong> depend on the <a href="https://developers.google.com/analytics/devguides/reporting/metadata/v3/libraries">Metadata Service Library</a>.</p>
+<h3 id="compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</h3>
+<p>If the application runs on a Compute Engine instance (or equivalent runtime),
+the auth library can request the following URL to get an access token associated
+with instance:</p>
+<div class="highlight language-"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
+</code></pre></div>
+
+<p>In response, the auth library will usually receive a token in the following JSON
+format:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+      <span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3599</span><span class="p">,</span>
+      <span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span>
+ <span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> You can use the access token only for scopes that you specified when
+you created the instance. For example, if the instance has been granted only the
+https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then it
+can't use the access token to make a request to BigQuery.</p>
+<h3 id="google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</h3>
+<p>If the application runs on a App Engine Standard 1st generation instance, the
+auth library <strong>should</strong> rely on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> to retrieve the
+access token. Here is <a href="https://godoc.org/google.golang.org/appengine#AccessToken">one example</a> in Go. Essentially the SDK relies on the
+underlying App Engine Identity service to generate the token.</p>
+<p>Unlike Compute Engine, the auth library can specify scopes when requesting the
+token in the App Engine Standard 1.0 runtime.</p>
+<p>Sample code of getting the access token in Go:</p>
+<div class="highlight language-go"><pre><span></span><code><span class="kn">import</span> <span class="s">&quot;google.golang.org/appengine&quot;</span>
+<span class="o">...</span>
+<span class="nx">token</span><span class="p">,</span> <span class="nx">exp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">appengine</span><span class="p">.</span><span class="nx">AccessToken</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">scopes</span><span class="o">...</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+
+<h3 id="token-expiration">Token Expiration</h3>
+<p>The access tokens expire after a short period of time. The auth library <strong>must</strong>
+get a new token if the existing token expires.</p>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

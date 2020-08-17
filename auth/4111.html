@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4f0b2379">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4f0b2379">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d4172d94">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d4172d94">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4f0b2379"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d4172d94"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -219,6 +219,12 @@
         Device Certificate Authentication via Mutual TLS
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/4115">
+        <span class="aip-number">4115</span>
+        Default Credentials From Google Virtual Machines
+      </a>
+    </li>
     </ul>
 </nav>
 <section id="jump-content">
@@ -237,10 +243,12 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#application-default-credentials">Application Default Credentials</a></li>
 <li><a href="#default-authentication-method-for-service-account-keys">Default Authentication Method For Service Account Keys</a></li>
 <li><a href="#expected-behavior">Expected Behavior</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -295,6 +303,8 @@ inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
 <p>This section describes the general guidance of supporting a self-signed
 JWT-based token.</p>
+<h3 id="application-default-credentials">Application Default Credentials</h3>
+<p>Supporting self-signed JWT access token is considered as a part of the <a href="https://google.aip.dev/auth/4112">application default credential</a>. To understand the overall flow, please read <a href="https://google.aip.dev/auth/4112">AIP-4110</a>.</p>
 <h3 id="default-authentication-method-for-service-account-keys">Default Authentication Method For Service Account Keys</h3>
 <p>Considering its efficiency (bypassing the exchanging step), <a href="https://google.aip.dev/auth/4110">ADC</a> <strong>should</strong>
 use self-signed JWT as the default authentication flow for service account
@@ -327,29 +337,39 @@ the steps below:</p>
   "exp": 1511903600
 }
 ```
-
-- For the `kid` field in the header, specify the service account's private
-  key ID. You can find this value in the `private_key_id` field of the
-  service account JSON file.
-
-- For the `iss` and `sub` fields, specify the service account's email
-  address. You can find this value in the `client_email` field of the
-  service account JSON file.
-
-- For the `aud` field, specify the audience. The default audience value
-  **should** be `https://[API_ENDPOINT]/`. (e.g.
-  `https://pubsub.googleapis.com/`)
-
-- For the `iat` field, specify the current Unix time, and for the `exp`
-  field, the value **must** be exactly 3600 seconds later, when the JWT
-  will expire.
 </code></pre>
+<ul>
+<li>
+<p>For the <code>kid</code> field in the header, specify the service account's private
+  key ID. You can find this value in the <code>private_key_id</code> field of the
+  service account JSON file.</p>
+</li>
+<li>
+<p>For the <code>iss</code> and <code>sub</code> fields, specify the service account's email
+  address. You can find this value in the <code>client_email</code> field of the
+  service account JSON file.</p>
+</li>
+<li>
+<p>For the <code>aud</code> field, specify the audience. The default audience value
+  <strong>should</strong> be <code>https://[API_ENDPOINT]/</code>. (e.g.
+  <code>https://pubsub.googleapis.com/</code>)</p>
+</li>
+<li>
+<p>For the <code>iat</code> field, specify the current Unix time, and for the <code>exp</code>
+  field, the value <strong>must</strong> be exactly 3600 seconds later, when the JWT
+  will expire.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>Sign the JWT with RSA-256 using the private key found in the service
     account JSON file.</p>
 </li>
 </ol>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2019-08-13</strong>: Add a section for application default credential.</li>
+</ul>
 <!-- prettier-ignore-start -->
 
 <!-- prettier-ignore-end -->

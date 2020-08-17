@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4f0b2379">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4f0b2379">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d4172d94">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d4172d94">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4f0b2379"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d4172d94"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=4f0b2379"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=4f0b2379"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=4f0b2379"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=d4172d94"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=d4172d94"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=d4172d94"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -222,6 +222,12 @@
         Device Certificate Authentication via Mutual TLS
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/4115">
+        <span class="aip-number">4115</span>
+        Default Credentials From Google Virtual Machines
+      </a>
+    </li>
     </ul>
 </nav>
 <section id="jump-content">
@@ -246,6 +252,7 @@
 </ul>
 </li>
 <li><a href="#expected-behavior">Expected Behavior</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -295,9 +302,9 @@
   <h1>Application Default Credentials</h1>
 <p>Google auth libraries use a strategy called <em>Application Default Credentials
 (ADC)</em> to detect and select credentials based on environment or context. With
-ADC, developers should be able to run the code in different environments and
-the supporting systems fetch the appropriate credentials based on each
-environment in an effortless manner.</p>
+ADC, developers should be able to run the code in different environments and the
+supporting systems fetch the appropriate credentials based on each environment
+in an effortless manner.</p>
 <p>Auth libraries following the standards in these AIPs are known as <em>"Google
 Unified Auth Clients"</em>, or <em>GUAC</em> for short. The resulting libraries are
 colloquially called <em>GUACs</em>.</p>
@@ -310,51 +317,51 @@ inappropriate in certain languages or environments.</p>
 <ul>
 <li>
 <p><strong>Gcloud Credential</strong>: A credential provided by the <a href="https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login">Gcloud tool</a> that
-  identifies a human user that needs to authenticate to access Google APIs. The
-  auth libraries <strong>must</strong> support this credential type.</p>
+identifies a human user that needs to authenticate to access Google APIs. The
+auth libraries <strong>must</strong> support this credential type.</p>
 </li>
 <li>
 <p><strong>Service Account Key</strong>: A credential that identifies a non-human user that
-  needs to authenticate to access Google APIs. The auth libraries <strong>must</strong>
-  support this credential type.</p>
+needs to authenticate to access Google APIs. The auth libraries <strong>must</strong> support
+this credential type.</p>
 </li>
 <li>
-<p><strong>OAuth Client ID</strong>: A credential that identifies the client application
-  which allows human users to sign-in through <a href="https://developers.google.com/identity/protocols/oauth2/native-app">3-legged OAuth flow</a>, which
-  grants the permissions to the application to access Google APIs on behalf of
-  the human user. The auth libraries <strong>may</strong> support this credential type.</p>
+<p><strong>OAuth Client ID</strong>: A credential that identifies the client application which
+allows human users to sign-in through <a href="https://developers.google.com/identity/protocols/oauth2/native-app">3-legged OAuth flow</a>, which grants the
+permissions to the application to access Google APIs on behalf of the human
+user. The auth libraries <strong>may</strong> support this credential type.</p>
 </li>
 </ul>
 <h3 id="environment-variables">Environment Variables</h3>
-<p>The auth libraries <strong>must</strong> support the following environment variables to
-allow developers to provide authentication configuration for their application:</p>
+<p>The auth libraries <strong>must</strong> support the following environment variables to allow
+developers to provide authentication configuration for their application:</p>
 <ul>
 <li>
 <p><strong>GOOGLE_APPLICATION_CREDENTIALS</strong>: The specified value will be used as the
-  full path for ADC to locate the credentials file. The credentials file
-  <strong>should</strong> be one of the following types:</p>
+full path for ADC to locate the credentials file. The credentials file
+<strong>should</strong> be one of the following types:</p>
 <ul>
 <li>Gcloud credentials</li>
 <li>Service account key</li>
 </ul>
-<p>The credentials <strong>may</strong> be the OAuth Client ID if it is supported by the auth
-library. Credentials file path specified at the program level (e.g. via
+<p>The credentials <strong>may</strong> be the OAuth Client ID if it is supported by the
+auth library. Credentials file path specified at the program level (e.g. via
 client options) <strong>must</strong> have priority over the value of this environment
 variable.</p>
 </li>
 <li>
 <p><strong>GOOGLE_API_KEY</strong>: <a href="https://cloud.google.com/docs/authentication/api-keys">API keys</a> are a simple encrypted string that
-  identifies an application, which are useful for accessing public data
-  anonymously. The specified value of this environment variable <strong>should</strong> be
-  used as the API key for the API requests. This value <strong>must</strong> be overridden
-  by any user specified credentials at the programming level (e.g. through
-  client options). And it <strong>must</strong> be ignored if GOOGLE_APPLICATION_CREDENTIALS
-  is specified.</p>
+identifies an application, which are useful for accessing public data
+anonymously. The specified value of this environment variable <strong>should</strong> be used
+as the API key for the API requests. This value <strong>must</strong> be overridden by any
+user specified credentials at the programming level (e.g. through client
+options). And it <strong>must</strong> be ignored if GOOGLE_APPLICATION_CREDENTIALS is
+specified.</p>
 </li>
 <li>
-<p><strong>GOOGLE_API_USE_CLIENT_CERTIFICATE:</strong> The specified value <strong>must</strong> be either
-  true or false. The client certificate <strong>must</strong> be ignored if this variable is
-  set to false. The default value is false if the value is unset.</p>
+<p><strong>GOOGLE_API_USE_CLIENT_CERTIFICATE:</strong> The specified value <strong>must</strong> be
+either true or false. The client certificate <strong>must</strong> be ignored if this
+variable is set to false. The default value is false if the value is unset.</p>
 </li>
 </ul>
 <div class="highlight language-"><pre><span></span><code>GOOGLE_API_USE_CLIENT_CERTIFICATE=[true|false]
@@ -364,12 +371,12 @@ variable.</p>
 <p>From the input/output perspective, the inputs of <em>ADC</em> <strong>should</strong> be the
 credentials as well as the underlying environment such as environment variables
 or metadata service that provides these credentials.</p>
-<p>For example, the <code>GOOGLE_APPLICATION_CREDENTIALS</code> environment variable can
-provide the default credential JSON as the input here, or the well-known path
-that gCloud uses to store the default user credential JSON. The output is the
-access token that application can use to access the Google APIs. This access
-token <strong>may</strong> be a bearer token, a certificate bound token or STS depending on
-the chosen authentication flow.</p>
+<p>For example, the <code>GOOGLE_APPLICATION_CREDENTIALS</code> environment variable can provide
+the default credential JSON as the input here, or the well-known path that
+gCloud uses to store the default user credential JSON. The output is the access
+token that application can use to access the Google APIs. This access token
+<strong>may</strong> be a bearer token, a certificate bound token or STS depending on the
+chosen authentication flow.</p>
 <h2 id="expected-behavior">Expected Behavior</h2>
 <p>This section outlines the expected behavior of the ADC. Auth libraries <strong>must</strong>
 implement these concepts in order to be considered complete.</p>
@@ -400,12 +407,10 @@ implement these concepts in order to be considered complete.</p>
 <li>If neither of above is set, go to step (2)</li>
 </ol>
 </li>
-<li><strong>Load credentials</strong></li>
-<li>Check gcloud default credentials through its default path<ol>
-<li>If found go to step (2.2)</li>
-<li>Otherwise go to step (3)</li>
-</ol>
-</li>
+<li><strong>Load credentials</strong><ol>
+<li>Check gcloud default credentials through its default path
+    1. If found go to step (2.2)
+    1. Otherwise go to step (3)</li>
 <li>Check the provided credential type<ol>
 <li>If the credential is gcloud credentials, go to step (4)</li>
 <li>If the credential is a service account key JSON, go to step (4)</li>
@@ -413,30 +418,47 @@ implement these concepts in order to be considered complete.</p>
 </ol>
 </li>
 <li>Credentials not found <em>[END]</em></li>
-<li><strong>Check Metadata Service Credentials</strong></li>
-<li>If true, use the metadata service flow to get an access token associated
-   with the current environment <em>[END]</em></li>
+</ol>
+</li>
+<li><strong>Check Google Virtual Machine Credentials</strong><ol>
+<li>If true, use the <a href="./4115.md">virtual machine flow</a> to get an access toke associated with the current environment <em>[END]</em></li>
 <li>If false, go to step (2.3)</li>
-<li><strong>Determine auth flows</strong></li>
+</ol>
+</li>
+<li><strong>Determine auth flows</strong><ol>
 <li>If the credential is gcloud credential go to step (5.3)</li>
 <li>If scope is provided by the developer go to step (5.1)</li>
 <li>Otherwise, go to step (5.2)</li>
-<li><strong>Execute auth flows</strong></li>
-<li>Use 2LO flow to exchange for an access token
-    1. If client certificate is presented, the exchanged token will be a
-       certificate bind token and then go to step (6)</li>
-<li>Use self-signed JWT flow to create an access token locally.
-    1. If certificate is presented, embed the certificate into the JWT and then
-       go to step (6).
-    2. Otherwise, use the regular self-signed JWT flow and then go to step (6)</li>
-<li>Use user identity flow to exchange for an access token and then go to step
-    (6)</li>
-<li><strong>Check if STS is needed</strong></li>
-<li>If the given TLD is not a googleapis.com domain and extra system parameters
-    are provided (e.g. quota project override), call STS to exchange for a STS
-    token. (a.k.a. UAT). <em>[END]</em></li>
+</ol>
+</li>
+<li><strong>Execute auth flows</strong><ol>
+<li>Use 2LO flow to exchange for an access token<ol>
+<li>If client certificate is presented, the exchanged token will be a certificate bind token and then go to step (6)</li>
+</ol>
+</li>
+<li>Use self-signed JWT flow to create an access token locally.<ol>
+<li>If certificate is presented, embed the certificate into the JWT and
+  then go to step (6).</li>
+<li>Otherwise, use the regular self-signed JWT flow and then go to step
+  (6)</li>
+</ol>
+</li>
+<li>Use user identity flow to exchange for an access token and then go to
+  step (6)</li>
+</ol>
+</li>
+<li><strong>Check if STS is needed</strong><ol>
+<li>If the given TLD is not a googleapis.com domain and extra system
+parameters are provided (e.g. quota project override), call STS to exchange
+for a STS token. (a.k.a. UAT). <em>[END]</em></li>
 <li>Otherwise, use the access token directly. <em>[END]</em></li>
 </ol>
+</li>
+</ol>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2019-08-13</strong>: Add a link to virtual machine flow (AIP 4115).</li>
+</ul>
 <!-- prettier-ignore-start -->
 
 <!-- prettier-ignore-end -->
