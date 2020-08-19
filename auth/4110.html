@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=55a8286f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=55a8286f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=87c6b0e7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=87c6b0e7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=55a8286f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=87c6b0e7"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=55a8286f"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=55a8286f"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=55a8286f"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=87c6b0e7"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=87c6b0e7"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=87c6b0e7"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -238,7 +238,7 @@
     <tr><td>Number</td><td>4110</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4110">google.aip.dev/auth/4110</a></td></tr>
     <tr><td>Scope</td><td>Auth</td></tr>
-    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
     <tr><td>Created</td><td>2018-06-24</td></tr>
     <tr><td>Updated</td><td>2018-06-24</td></tr>
   </table>
@@ -292,12 +292,7 @@
     </ol>
   </nav>
 </section>
-  <p id="aip-state-banner" class="callout note">
-  This AIP is currently under review. This means that the editors have read it
-  and are in high-level concurrence, and while it is not yet fully approved, we
-  have a good faith expectation that the AIP will be approved in something
-  close to its current state.
-</p>
+  
   <h4 class="aip-number">AIP-4110</h4>
   <h1>Application Default Credentials</h1>
 <p>Google auth libraries use a strategy called <em>Application Default Credentials
@@ -387,13 +382,11 @@ implement these concepts in order to be considered complete.</p>
 
   check_env_var [ label=&quot;1. Check Environment Variables&quot; ];
   load_credentials [ label=&quot;2. Load Credentials&quot; ];
-  check_metadata [ label=&quot;3. Check Metadata Service Credentials&quot; ];
+  check_metadata [ label=&quot;3. Check Virtual Machine Credentials&quot; ];
   auth_flows [ label=&quot;4. Determine Auth Flows&quot; ];
   execute [ label=&quot;5. Execute Auth Flows&quot; ];
-  sts [ label=&quot;6. Apply STS&quot; ];
 
-  check_env_var -&gt; load_credentials -&gt; check_metadata -&gt;auth_flows -&gt; execute -&gt;
-  sts;
+  check_env_var -&gt; load_credentials -&gt; check_metadata -&gt;auth_flows -&gt; execute;
   load_credentials -&gt; auth_flows;
 }
 </code></pre></div>
@@ -408,12 +401,12 @@ implement these concepts in order to be considered complete.</p>
 </ol>
 </li>
 <li><strong>Load credentials</strong><ol>
-<li>Check gcloud default credentials through its default path
+<li>Check <a href="./4113">gcloud default credentials</a> through its default path
     1. If found go to step (2.2)
     1. Otherwise go to step (3)</li>
 <li>Check the provided credential type<ol>
 <li>If the credential is gcloud credentials, go to step (4)</li>
-<li>If the credential is a service account key JSON, go to step (4)</li>
+<li>If the credential is <a href="./4112">a service account key</a> JSON, go to step (4)</li>
 <li>If the credential is unknown type, return an error saying that <em>[END]</em></li>
 </ol>
 </li>
@@ -421,7 +414,7 @@ implement these concepts in order to be considered complete.</p>
 </ol>
 </li>
 <li><strong>Check Google Virtual Machine Credentials</strong><ol>
-<li>If true, use the <a href="./4115.md">virtual machine flow</a> to get an access toke associated with the current environment <em>[END]</em></li>
+<li>If true, use the <a href="./4115">virtual machine flow</a> to get an access toke associated with the current environment <em>[END]</em></li>
 <li>If false, go to step (2.3)</li>
 </ol>
 </li>
@@ -433,31 +426,22 @@ implement these concepts in order to be considered complete.</p>
 </li>
 <li><strong>Execute auth flows</strong><ol>
 <li>Use 2LO flow to exchange for an access token<ol>
-<li>If client certificate is presented, the exchanged token will be a certificate bind token and then go to step (6)</li>
+<li>If client certificate is presented, the exchanged token will be a certificate bind token. <em>[END]</em></li>
 </ol>
 </li>
 <li>Use self-signed JWT flow to create an access token locally.<ol>
-<li>If certificate is presented, embed the certificate into the JWT and
-  then go to step (6).</li>
-<li>Otherwise, use the regular self-signed JWT flow and then go to step
-  (6)</li>
+<li>If certificate is presented, embed the certificate into the JWT.</li>
+<li>Use the regular <a href="./4111">self-signed JWT flow</a> for an access token. <em>[END]</em></li>
 </ol>
 </li>
-<li>Use user identity flow to exchange for an access token and then go to
-  step (6)</li>
-</ol>
-</li>
-<li><strong>Check if STS is needed</strong><ol>
-<li>If the given TLD is not a googleapis.com domain and extra system
-parameters are provided (e.g. quota project override), call STS to exchange
-for a STS token. (a.k.a. UAT). <em>[END]</em></li>
-<li>Otherwise, use the access token directly. <em>[END]</em></li>
+<li>Use user identity flow to exchange for an access token. <em>[END]</em></li>
 </ol>
 </li>
 </ol>
 <h2 id="changelog">Changelog</h2>
 <ul>
 <li><strong>2019-08-13</strong>: Add a link to virtual machine flow (AIP 4115).</li>
+<li><strong>2019-08-18</strong>: Remove STS support from ADC.</li>
 </ul>
 <!-- prettier-ignore-start -->
 
