@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-4111: Self-signed JWT-based Access Token</title>
+    <title>AIP-4111: Self-signed JWT</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=afc0c9a6">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=afc0c9a6">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=80655167">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=80655167">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=afc0c9a6"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=80655167"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -198,7 +198,7 @@
     <li class="nav-item nav-item-active">
       <a href="/4111">
         <span class="aip-number">4111</span>
-        Self-signed JWT-based Access Token
+        Self-signed JWT
       </a>
     </li>
     <li class="nav-item">
@@ -231,7 +231,7 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Self-signed JWT-based Access Token</th></tr>
+    <tr><th colspan="2">Self-signed JWT</th></tr>
     <tr><td>Number</td><td>4111</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4111">google.aip.dev/auth/4111</a></td></tr>
     <tr><td>Scope</td><td>Auth</td></tr>
@@ -283,89 +283,78 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Self-signed JWT-based Access Token
+        Self-signed JWT
       </li>
     </ol>
   </nav>
 </section>
   
   <h4 class="aip-number">AIP-4111</h4>
-  <h1>Self-signed JWT-based Access Token</h1>
-<p>JWT access token for Google APIs was introduced in 2014 to provide a more
-efficient auth stack for Cloud APIs being accessed via service accounts by
-bypassing the intermediate step of exchanging client assertions for OAuth
-tokens. It becomes a standard authentication method, such that many Cloud APIs
-accept JWT-based access tokens that are locally signed by the service account
-private key.</p>
+  <h1>Self-signed JWT</h1>
+<p>Self-signed JWT (JSON Web Token) for Google APIs was introduced in 2014 to
+provide a more efficient auth stack for Cloud APIs being accessed via service
+accounts by bypassing the intermediate step of exchanging client assertions for
+OAuth tokens. A self-signed JWT is a spec-conforming JWT that is locally signed
+by the service account private key. Since many Cloud APIs accept self-signed JWT
+in place of traditional access tokens, it is now considered a standard
+authentication method.</p>
 <p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
 language-neutral way, it uses generic terminology which may be imprecise or
 inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
-<p>This section describes the general guidance of supporting a self-signed
-JWT-based token.</p>
+<p>This section describes the general guidance of supporting self-signed
+JWT as a means of authentication.</p>
 <h3 id="application-default-credentials">Application Default Credentials</h3>
-<p>Supporting self-signed JWT access token is considered as a part of the <a href="https://google.aip.dev/auth/4112">application default credential</a>. To understand the overall flow, please read <a href="https://google.aip.dev/auth/4112">AIP-4110</a>.</p>
+<p>Supporting self-signed JWT is considered a part of <a href="https://google.aip.dev/auth/4112">application default
+credentials</a>. To understand the overall flow, please read <a href="https://google.aip.dev/auth/4112">AIP-4110</a>.</p>
 <h3 id="default-authentication-method-for-service-account-keys">Default Authentication Method For Service Account Keys</h3>
 <p>Considering its efficiency (bypassing the exchanging step), <a href="https://google.aip.dev/auth/4110">ADC</a> <strong>should</strong>
-use self-signed JWT as the default authentication flow for service account
-keys.</p>
-<p>In other words, <a href="https://google.aip.dev/auth/4110">ADC</a> <strong>should</strong> choose the OAuth flow over self-signed JWT
-only if the scope is explicitly provided to the auth library.</p>
+use self-signed JWT as the default authentication flow when service account
+key is provided as the source credential.</p>
+<p>In other words, <a href="https://google.aip.dev/auth/4110">ADC</a> <strong>should</strong> choose the OAuth flow over the self-signed
+JWT flow only if the scope is explicitly provided to the auth library.</p>
 <h3 id="expected-behavior">Expected Behavior</h3>
-<p>To support the self-signed JWT-based token, the auth libraries <strong>must</strong> follow
-the steps below:</p>
-<ol>
-<li>
-<p>Load the <a href="https://google.aip.dev/auth/4112">service account ID JSON file</a>. Please note that the
-    self-signed JWT-based token only supports service account ID credential
-    type.</p>
-</li>
-<li>
-<p>Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
-    JWT with a header and payload like the following example:</p>
-<pre><code>```json
-{
-  "alg": "RS256",
-  "typ": "JWT",
-  "kid": "abcdef1234567890"
-}
-{
-  "iss": "123456-compute@developer.gserviceaccount.com",
-  "sub": "123456-compute@developer.gserviceaccount.com",
-  "aud": "https://firestore.googleapis.com/",
-  "iat": 1511900000,
-  "exp": 1511903600
-}
-```
-</code></pre>
+<p>To support self-signed JWT, the auth libraries <strong>must</strong> follow the steps below:</p>
+<p>1. Load the <a href="https://google.aip.dev/auth/4112">service account ID JSON file</a>. Please note that the self-signed
+JWT only supports service account ID credential type.</p>
+<p>2. Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a JWT
+with a header and payload like the following example:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdef1234567890&quot;</span>
+<span class="p">}</span>
+<span class="p">{</span>
+  <span class="nt">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;123456-compute@developer.gserviceaccount.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;123456-compute@developer.gserviceaccount.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://firestore.googleapis.com/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1511900000</span><span class="p">,</span>
+  <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1511903600</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <ul>
 <li>
-<p>For the <code>kid</code> field in the header, specify the service account's private
-  key ID. You can find this value in the <code>private_key_id</code> field of the
-  service account JSON file.</p>
+<p>For the <code>kid</code> field in the header, specify the service account's private key
+ID. You can find this value in the <code>private_key_id</code> field of the service account
+JSON file.</p>
 </li>
 <li>
-<p>For the <code>iss</code> and <code>sub</code> fields, specify the service account's email
-  address. You can find this value in the <code>client_email</code> field of the
-  service account JSON file.</p>
+<p>For the <code>iss</code> and <code>sub</code> fields, specify the service account's email address.
+You can find this value in the <code>client_email</code> field of the service account JSON
+file.</p>
 </li>
 <li>
 <p>For the <code>aud</code> field, specify the audience. The default audience value
-  <strong>should</strong> be <code>https://[API_ENDPOINT]/</code>. (e.g.
-  <code>https://pubsub.googleapis.com/</code>)</p>
+<strong>should</strong> be <code>https://[API_ENDPOINT]/</code>. (e.g. <code>https://pubsub.googleapis.com/</code>)</p>
 </li>
 <li>
-<p>For the <code>iat</code> field, specify the current Unix time, and for the <code>exp</code>
-  field, the value <strong>must</strong> be exactly 3600 seconds later, when the JWT
-  will expire.</p>
+<p>For the <code>iat</code> field, specify the current Unix time, and for the <code>exp</code> field,
+the value <strong>must</strong> be exactly 3600 seconds later, when the JWT will expire.</p>
 </li>
 </ul>
-</li>
-<li>
-<p>Sign the JWT with RSA-256 using the private key found in the service
-    account JSON file.</p>
-</li>
-</ol>
+<p>3. Sign the JWT with RSA-256 using the private key found in the service
+account JSON file.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
 <li><strong>2019-08-13</strong>: Add a section for application default credential.</li>

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=afc0c9a6">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=afc0c9a6">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=80655167">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=80655167">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=afc0c9a6"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=80655167"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -198,7 +198,7 @@
     <li class="nav-item">
       <a href="/4111">
         <span class="aip-number">4111</span>
-        Self-signed JWT-based Access Token
+        Self-signed JWT
       </a>
     </li>
     <li class="nav-item nav-item-active">
@@ -312,7 +312,7 @@ explicitly provided to the client.</p>
 <h3 id="expected-behavior">Expected Behavior</h3>
 <p>To support Service Account Key authentication using OAuth flow, the auth
 libraries <strong>must</strong> follow the steps below:</p>
-<p>1.Load the <strong>Service Account ID JSON file</strong> from the file path specified by
+<p>1. Load the <strong>Service Account ID JSON file</strong> from the file path specified by
 <strong>GOOGLE_APPLICATION_CREDENTIALS</strong> environment variable, or an explicit
 <strong>credentials</strong> file path specified through client options. The JSON file will
 look like below:</p>
@@ -331,7 +331,7 @@ look like below:</p>
 </code></pre></div>
 
 <p><strong>Note:</strong> A Service Account ID JSON file can be downloaded from <a href="https://console.cloud.google.com/apis/credentials">Google Cloud Console</a>.</p>
-<p>2.Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
+<p>2. Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
 JWT with a header and claims set like the following example:</p>
 <div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
@@ -361,13 +361,13 @@ service account JSON file.</p>
 Multiple scopes can be specified using single space (" ") as delimiter.</p>
 </li>
 </ul>
-<p>3.Sign the JWT with RSA-256 using the <strong>private_key</strong> found in the service
+<p>3. Sign the JWT with RSA-256 using the <strong>private_key</strong> found in the service
 account JSON file. The output will be used as the request payload (a.k.a.
 assertion) for the 2-legged OAuth flow.</p>
-<p>4.Define a parameter "grant_type" as
+<p>4. Define a parameter "grant_type" as
 "urn:ietf:params:oauth:grant-type:jwt-bearer". Define a parameter "assertion" as
 the payload from step 3.</p>
-<p>5.Make a POST request to the <strong>token_uri</strong> endpoint with the parameters from
+<p>5. Make a POST request to the <strong>token_uri</strong> endpoint with the parameters from
 step 4 to obtain an OAuth2 Access Token.</p>
 <!-- prettier-ignore-start -->
 
