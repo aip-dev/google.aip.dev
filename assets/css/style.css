@@ -338,6 +338,40 @@ table:not(.no-h) {
   table:not(.no-h) tr td {
     font-weight: 300; }
 
+.tabbed-set {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap; }
+  .tabbed-set .tabbed-content {
+    display: none;
+    order: 99;
+    width: 100%; }
+    .tabbed-set label {
+      border-radius: 10px 10px 0px 0px;
+      color: #80868b;
+      cursor: pointer;
+      font-family: 'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;
+      font-size: 80%;
+      font-weight: 500;
+      margin: 0 0.5em;
+      padding: 1.25em;
+      width: auto; }
+      .tabbed-set input {
+        position: absolute;
+        opacity: 0; }
+        .tabbed-set input:nth-child(n + 1) {
+          color: #202124; }
+          .tabbed-set input:checked + label {
+            background-color: #f1f3f4;
+            border-bottom: 2px solid #1967d2;
+            color: #202124;
+            z-index: 1; }
+            .tabbed-set input:checked + label + .tabbed-content {
+              border-top: 2px solid #f1f3f4;
+              display: block;
+              margin-top: -2px;
+              padding-top: 1em; }
+
 .aip-state {
   border-radius: 4px;
   font-size: 0.75em;
