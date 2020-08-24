@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f719a33b">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f719a33b">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6d337324">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6d337324">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f719a33b"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=6d337324"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -601,8 +601,8 @@
 amount of time to complete. In these situations, it is often a poor user
 experience to simply block while the task runs; rather, it is better to return
 some kind of promise to the user and allow the user to check back in later.</p>
-<p>The long-running operations pattern is roughly analogous to a [Python
-<code>Future</code>][], or a [Node.js <code>Promise</code>][]. Essentially, the user is given a token
+<p>The long-running operations pattern is roughly analogous to a <a href="https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future">Python
+Future</a>, or a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Node.js Promise</a>. Essentially, the user is given a token
 that can be used to track progress and retrieve the result.</p>
 <h2 id="guidance">Guidance</h2>
 <p>Individual API methods that might take a significant amount of time to complete
@@ -680,7 +680,7 @@ has elapsed after the operation completed.</p>
 error response (<a href="/193">AIP-193</a>), similar to any other method.</p>
 <p>Errors that occur over the course of an operation <strong>may</strong> be placed in the
 metadata message. The errors themselves <strong>must</strong> still be represented with a
-[<code>google.rpc.Status</code>][] object.</p>
+<a href="https://github.com/googleapis/api-common-protos/blob/master/google/rpc/S.proto">google.rpc.Status</a> object.</p>
 <!-- prettier-ignore-start -->
 
 <!-- prettier-ignore-end -->
