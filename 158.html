@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=290dca03">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=290dca03">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f719a33b">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f719a33b">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=290dca03"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f719a33b"></script>
     
 <script type="text/javascript" src="/assets/js/proto-syntax.js"></script>
 
@@ -659,6 +659,7 @@ pagination to an existing method.</p>
   error.</li>
 </ul>
 </li>
+<li>The response <strong>must not</strong> be a streaming response.</li>
 <li>Response messages for collections <strong>should</strong> define a
   <code>string next_page_token</code> field, providing the user with a page token that may
   be used to retrieve the next page.<ul>
@@ -692,9 +693,10 @@ contain sensitive data, an API <strong>may</strong> obfuscate the page token by 
 internal protocol buffer message with any data needed, and send the serialized
 proto, base-64 encoded.</p>
 <p>Page tokens <strong>must</strong> be limited to providing an indication of where to continue
-the pagination process only. They <strong>must not</strong> provide any form of authorization
-to the underlying resources, and authorization <strong>must</strong> be performed on the request
-as with any other regardless of the presence of a page token.</p>
+the pagination process only. They <strong>must not</strong> provide any form of
+authorization to the underlying resources, and authorization <strong>must</strong> be
+performed on the request as with any other regardless of the presence of a page
+token.</p>
 <h3 id="expiring-page-tokens">Expiring page tokens</h3>
 <p>Many APIs store page tokens in a database internally. In this situation, APIs
 <strong>may</strong> expire page tokens a reasonable time after they have been sent, in
@@ -721,6 +723,7 @@ value. Implementing an in-memory version (which might fetch everything then
 paginate) is reasonable for initially-small collections.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2020-08-24</strong>: Clarified that responses are not streaming responses.</li>
 <li><strong>2020-06-24</strong>: Clarified that page size is always optional for users.</li>
 <li><strong>2019-02-12</strong>: Added guidance on the field being paginated over.</li>
 <li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
