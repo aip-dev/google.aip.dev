@@ -1,4 +1,7 @@
-# Jekyll
-default.profraw
-_site
-.jekyll-metadata
+# pytest
+site/.coverage
+site/.pytest_cache
+site/htmlcov
+
+# mypy
+.mypy_cache

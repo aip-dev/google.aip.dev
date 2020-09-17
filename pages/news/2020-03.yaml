@@ -1,0 +1,11 @@
+---
+news:
+  year: 2020
+  month: March
+  description: |
+    The first edition of the AIP newsletter outlines the plan for reviewing
+    outstanding proposals, and announces the release of the API linter.
+  aips:
+    reviewing: [153, 162, 163, 165, 194]
+  other:
+    - The API linter is here!
