@@ -1,1 +1,1 @@
-git+https://github.com/aip-dev/site-generator@v0.2.0
+aip-site-generator==0.3.0
