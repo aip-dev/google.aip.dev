@@ -286,7 +286,7 @@ code, .highlighter-rouge {
               color: #ad1457; }
               .highlight .nc {
                 color: #fb8c00; }
-                .highlight .nk {
+                .highlight .nk, .highlight .nx {
                   color: #6a1b9a; }
                   .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo,
                   .highlight .il, .highlight .sc, .highlight .ss {
@@ -296,42 +296,44 @@ code, .highlighter-rouge {
                       color: #4285f4; }
                       .highlight .o {
                         font-weight: bold; }
-                        .highlight .gd {
-                          color: black;
-                          background-color: #fce8e6; }
-                          .highlight .ge {
-                            font-style: italic; }
-                            .highlight .gr, .highlight .gt {
-                              color: #a50e0e; }
-                              .highlight .gh {
-                                color: #9aa0a6; }
-                                .highlight .gi {
-                                  color: black;
-                                  background-color: #e6f4ea; }
-                                  .highlight .go {
-                                    color: #80868b; }
-                                    .highlight .gp {
-                                      color: #3c4043; }
-                                      .highlight .gs {
-                                        font-weight: bold; }
-                                        .highlight .gu {
-                                          color: #bdc1c6; }
-                                          .highlight .cp {
-                                            color: #008080; }
-                                            .highlight .cs {
-                                              font-style: normal;
-                                              font-weight: bold; }
-                                              .highlight .err {
-                                                color: #c5221f;
-                                                background-color: #fad2cf; }
-                                                .highlight .w {
-                                                  color: #bdc1c6; }
-                                                  .highlight .se {
-                                                    color: #03a9f4; }
-                                                    .highlight .sr {
-                                                      color: #1a73e8; }
-                                                      .highlight .protobuf-annotation {
-                                                        color: #f9ab00; }
+                        .highlight .p.semi {
+                          color: #bdc1c6; }
+                          .highlight .gd {
+                            color: black;
+                            background-color: #fce8e6; }
+                            .highlight .ge {
+                              font-style: italic; }
+                              .highlight .gr, .highlight .gt {
+                                color: #a50e0e; }
+                                .highlight .gh {
+                                  color: #9aa0a6; }
+                                  .highlight .gi {
+                                    color: black;
+                                    background-color: #e6f4ea; }
+                                    .highlight .go {
+                                      color: #80868b; }
+                                      .highlight .gp {
+                                        color: #3c4043; }
+                                        .highlight .gs {
+                                          font-weight: bold; }
+                                          .highlight .gu {
+                                            color: #bdc1c6; }
+                                            .highlight .cp {
+                                              color: #008080; }
+                                              .highlight .cs {
+                                                font-style: normal;
+                                                font-weight: bold; }
+                                                .highlight .err {
+                                                  color: #c5221f;
+                                                  background-color: #fad2cf; }
+                                                  .highlight .w {
+                                                    color: #bdc1c6; }
+                                                    .highlight .se {
+                                                      color: #03a9f4; }
+                                                      .highlight .sr {
+                                                        color: #1a73e8; }
+                                                        .highlight .protobuf-annotation {
+                                                          color: #f9ab00; }
 
 table:not(.no-h) {
   margin-bottom: 20px !important; }

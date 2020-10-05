@@ -16,20 +16,32 @@
 // This applies special CSS classes to protobuf patterns that are overlooked
 // or insufficiently distinguished by the usual Pygments/Rouge syntax parsers.
 $.when($.ready).then(() => {
+  // -------------
+  // -- Generic --
+  // -------------
+  // De-emphasize semicolon punctuation across the board.
+  $('.highlight .p:contains(;)').each((_, el) => {
+    el = $(el);
+    if (el.text() === ';') {
+      el.addClass('semi');
+    } else if (el.text().match(/[;]$/)) {
+      let txt = el.text();
+      el.text(txt.substring(0, txt.length - 1));
+      $('<span class="p semi">;</span>').insertAfter(el);
+    }
+  });
+
+  // --------------
+  // -- Protobuf --
+  // --------------
   // RPCs are always followed by three names (the RPC name, the request object,
   // and the response object) -- designate those appropriately.
   $('.language-proto .k:contains(rpc)').each((_, el) => {
-    $(el)
-      .nextAll('.n')
-      .slice(1, 3)
-      .addClass('nc');
+    $(el).nextAll('.n').slice(1, 3).addClass('nc');
   });
 
   // Designate message names as such when using them to delcare fields.
-  $('.language-proto .n + .na + .o:contains(=)')
-    .prev()
-    .prev()
-    .addClass('nc');
+  $('.language-proto .n + .na + .o:contains(=)').prev().prev().addClass('nc');
 
   // Colons in protocol buffers always come immediately after property keys.
   $('.language-proto .n + .o:contains(:)')
@@ -39,9 +51,20 @@ $.when($.ready).then(() => {
 
   // The option keyword is always followed by the annotation name.
   $('.language-proto .k:contains(option)').each((_, el) => {
-    $(el)
-      .nextAll('.n')
-      .eq(0)
-      .addClass('protobuf-annotation');
+    $(el).nextAll('.n').eq(0).addClass('protobuf-annotation');
   });
+
+  // ----------------
+  // -- TypeScript --
+  // ----------------
+  // Interfaces are always followed by what are effectively class names.
+  for (let lang of ['typescript', 'ts']) {
+    $(`.language-${lang} .kr:contains(interface)`).each((_, el) => {
+      if ($(el).nextAll('.nb').length > 0) {
+        $(el).nextAll('.nb').slice(0, 1).removeClass('nb').addClass('nc');
+      } else {
+        $(el).nextAll('.nx').slice(0, 1).removeClass('nx').addClass('nc');
+      }
+    });
+  }
 });
