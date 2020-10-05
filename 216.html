@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1e9dc566">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1e9dc566">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cbd974">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cbd974">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1e9dc566"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33cbd974"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -649,7 +649,8 @@ document.</p>
 <p>The field referencing the <code>State</code> enum in a resource <strong>should</strong> behave and be
 documented as "Output only", in accordance with <a href="/203">AIP-203</a>.</p>
 <p>APIs <strong>should not</strong> allow a <code>State</code> enum to be directly updated through an
-"update" method, and <strong>should</strong> instead use a custom state transition method.</p>
+"update" method (or directly set through the "create" method), and <strong>should</strong>
+instead use custom state transition methods.</p>
 <p>This is because update methods are generally not expected to have side effects,
 and also because updating state directly implies that it is possible to set the
 state to any available value, whereas states generally reflect a resource's
@@ -791,6 +792,7 @@ necessary.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2020-09-02</strong>: Clarified that states are not directly set on create either.</li>
 <li><strong>2019-12-05</strong>: Changed guidance on state transition methods, downgrading
   <strong>must</strong> to <strong>should</strong> on the response type.</li>
 <li><strong>2019-08-16</strong>: Added guidance for state transition methods.</li>
