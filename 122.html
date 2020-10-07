@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cbd974">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cbd974">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63e38ced">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=63e38ced">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=33cbd974"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=63e38ced"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -256,6 +256,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/128">
+        <span class="aip-number">128</span>
+        Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/131">
         <span class="aip-number">131</span>
         Standard methods: Get
@@ -340,6 +346,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/148">
+        <span class="aip-number">148</span>
+        Standard fields
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/151">
         <span class="aip-number">151</span>
         Long-running operations
@@ -409,6 +421,12 @@
       <a href="/163">
         <span class="aip-number">163</span>
         Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/164">
+        <span class="aip-number">164</span>
+        Soft delete
       </a>
     </li>
     <li class="nav-item">
@@ -634,7 +652,17 @@ the leading slash:</p>
 <li>If additional characters are necessary, resource names <strong>should not</strong> use
   characters that require URL-escaping, or characters outside of ASCII.</li>
 <li>If Unicode characters can not be avoided, resource names <strong>must</strong> be stored
-  in Normalization Form C (see <a href="/210">AIP-210</a>).</li>
+  in Normalization Form C (see [AIP-210][]).</li>
+</ul>
+</li>
+<li>Resources <strong>must</strong> expose a <code>name</code> field that contains its resource name.<ul>
+<li>Resources <strong>may</strong> provide the resource ID as a separate field (e.g.
+  <code>book_id</code>).</li>
+<li>Resources <strong>may</strong> expose a separate, system-generated unique ID field
+  (<code>uid</code>).</li>
+<li>Resources <strong>must not</strong> expose tuples, self-links, or other forms of
+  resource identification.</li>
+<li>All ID fields <strong>should</strong> be strings.</li>
 </ul>
 </li>
 </ul>
@@ -665,11 +693,11 @@ form of the noun used for the resource. (For example, a collection of
 collection's name is used as a prefix for the child resource's name, the child
 collection's name <strong>may</strong> omit the prefix. For example, given a collection of
 <code>UserEvent</code> resources that would normally be nested underneath <code>users</code>:</p>
-<div class="highlight language-"><pre><span></span><code>users/vhugo1802/userEvents/birthday-dinner-226
+<div class="highlight language-None"><pre><span></span><code>users/vhugo1802/userEvents/birthday-dinner-226
 </code></pre></div>
 
 <p>An API <strong>should</strong> use the less-redundant form:</p>
-<div class="highlight language-"><pre><span></span><code>users/vhugo1802/events/birthday-dinner-226
+<div class="highlight language-None"><pre><span></span><code>users/vhugo1802/events/birthday-dinner-226
 </code></pre></div>
 
 <p>In this situation, the <em>message</em> is still called <code>UserEvent</code>; only the resource
@@ -686,19 +714,27 @@ ID for the publisher, and <code>les-miserables</code> is the resource ID for the
   server-generated if unset), or never set by users (not accepted at resource
   creation). They <strong>should</strong> be immutable once created.<ul>
 <li>If resource IDs are user-settable, the API <strong>must</strong> document allowed
-  formats.</li>
+  formats. User-settable resource IDs <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc1034">RFC-1034</a>,
+  which restricts to letters, numbers, and hyphen, with a 63 character
+  maximum.<ul>
+<li>Additionally, user-settable resource IDs <strong>should</strong> restrict letters to
+  lower-case.</li>
+<li>Characters outside of ASCII <strong>should not</strong> be permitted; however, if
+  Unicode characters are necessary, APIs <strong>must</strong> follow guidance in
+  <a href="/210">AIP-210</a>.</li>
+<li>User-settable IDs <strong>should not</strong> be permitted to be a UUID (or any value
+  that syntactically appears to be a UUID).</li>
+</ul>
+</li>
 <li>If resource IDs are not user-settable, the API <strong>should</strong> document the
-  basic format, and any upper boundaries (for example, "at most 256
+  basic format, and any upper boundaries (for example, "at most 63
   characters").</li>
 <li>For more information, see the <a href="/133#user-specified-ids">create</a> standard method.</li>
 </ul>
 </li>
-<li>Resource IDs <strong>should</strong> only use characters that do not require URL-escaping.<ul>
-<li>Characters outside of ASCII are discouraged; however, if Unicode characters
-  are necessary, APIs <strong>must</strong> follow guidance in <a href="/210">AIP-210</a>.</li>
 </ul>
-</li>
-</ul>
+<p><strong>Important:</strong> Resources that are declarative-friendly (<a href="/128">AIP-128</a>) <strong>must</strong> use
+user-settable resource IDs.</p>
 <h3 id="resource-id-aliases">Resource ID aliases</h3>
 <p>It is sometimes valuable to provide an alias for common lookup patterns for
 resource IDs. For example, an API with <code>users</code> at the top of its resource
@@ -714,7 +750,7 @@ are used in contexts where the owning API is clear (for example,
 arbitrary API. In this situation, the service <strong>should</strong> use the <em>full resource
 name</em>, a schemeless URI with the owning API's service endpoint, followed by the
 relative resource name:</p>
-<div class="highlight language-"><pre><span></span><code>//library.googleapis.com/publishers/123/books/les-miserables
+<div class="highlight language-None"><pre><span></span><code>//library.googleapis.com/publishers/123/books/les-miserables
 //calendar.googleapis.com/users/vhugo1802
 </code></pre></div>
 
@@ -725,7 +761,7 @@ resources in multiple APIs where ambiguity is possible.</p>
 <p>The full resource name is a schemeless URI, but slightly distinct from the full
 URIs we use to access a resource. The latter adds two components: the protocol
 (HTTPS) and the API version:</p>
-<div class="highlight language-"><pre><span></span><code>https://library.googleapis.com/v1/publishers/123/books/les-miserables
+<div class="highlight language-None"><pre><span></span><code>https://library.googleapis.com/v1/publishers/123/books/les-miserables
 https://calendar.googleapis.com/v3/users/vhugo1802
 </code></pre></div>
 
@@ -762,7 +798,7 @@ annotation declaring the type (see <a href="/123">AIP-123</a> for more on this).
 <strong>should</strong> be the resource name, which <strong>must</strong> be of type <code>string</code> and
 <strong>must</strong> be called <code>name</code> for the resource name. The field <strong>should</strong> also be
 annotated with the <code>google.api.resource_reference</code> annotation, referencing the
-resource type (<a href="/123">AIP-123</a>).</p>
+resource type ([AIP-123][]).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Request message for ArchiveBook</span>
 <span class="kd">message</span> <span class="nc">ArchiveBookRequest</span> <span class="p">{</span>
   <span class="c1">// The book to archive.</span>
@@ -784,7 +820,7 @@ resource to a collection (such as <code>ListBooks</code> or <code>CreateBook</co
 of the request message <strong>should</strong> be of type <code>string</code> and <strong>should</strong> be called
 <code>parent</code> for the resource name of the collection. The <code>parent</code> field <strong>should</strong>
 also be annotated with the <code>google.api.resource_reference</code> annotation,
-referencing the parent's resource type (<a href="/123">AIP-123</a>).</p>
+referencing the parent's resource type ([AIP-123][]).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Request message for ListBooks.</span>
 <span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
   <span class="c1">// The publisher to list books from.</span>
@@ -849,9 +885,10 @@ equivalent to the corresponding message's name in snake case.</p>
 </code></pre></div>
 
 <p><strong>Note:</strong> When referring to other resources in this way, we use the resource
-name as the value, not just the ID component. APIs <strong>should</strong> use the resource
-name to reference resources when possible. If using the ID component alone is
-strictly necessary, use an <code>_id</code> suffix (e.g. <code>shelf_id</code>).</p>
+name as the value, not just the ID component. Services <strong>should</strong> use the
+resource name to reference resources when possible. If using the ID component
+alone is strictly necessary, the field <strong>should</strong> use an <code>_id</code> suffix (e.g.
+<code>shelf_id</code>).</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For evolving resource names over time, see
@@ -860,6 +897,8 @@ strictly necessary, use an <code>_id</code> suffix (e.g. <code>shelf_id</code>).
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2020-10-06</strong>: Added declarative-friendly guidance, and tightened character
+  set restrictions.</li>
 <li><strong>2020-10-05</strong>: Clarified when full resource names are used.</li>
 <li><strong>2020-05-19</strong>: Clarified that resource <em>IDs</em> avoid capital characters, not
   the entire resource <em>name</em>.</li>

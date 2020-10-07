@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cbd974">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cbd974">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63e38ced">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=63e38ced">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=33cbd974"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=63e38ced"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -256,6 +256,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/128">
+        <span class="aip-number">128</span>
+        Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/131">
         <span class="aip-number">131</span>
         Standard methods: Get
@@ -340,6 +346,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/148">
+        <span class="aip-number">148</span>
+        Standard fields
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/151">
         <span class="aip-number">151</span>
         Long-running operations
@@ -409,6 +421,12 @@
       <a href="/163">
         <span class="aip-number">163</span>
         Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/164">
+        <span class="aip-number">164</span>
+        Soft delete
       </a>
     </li>
     <li class="nav-item">
@@ -608,7 +626,7 @@ particular recommendations might be irrelevant.</p>
 <h3 id="single-package">Single package</h3>
 <p>APIs defined in protocol buffers <strong>must</strong> define each individual API in a
 single package, which <strong>must</strong> end in a version component. For example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">syntax</span> <span class="o">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="kn">package</span> <span class="nn">google</span><span class="o">.</span><span class="n">cloud.translation.v3</span><span class="p">;</span>
 </code></pre></div>

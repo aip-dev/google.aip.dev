@@ -58,6 +58,11 @@ $.when($.ready).then(() => {
       .addClass(`spec-${directive.split(' ')[0]}`);
   }
 
+  // Make "reviewing sections" of approved AIPs show a badge.
+  let reviewing = $('h3 + p').filter((_, el) => $(el).text() === '[^reviewing]');
+  reviewing.prev('h3').addClass('reviewing');
+  reviewing.remove();
+
   // Make AIP banners appear in a better spot.
   $('#aip-state-banner').insertAfter('#aip-main h1');
 

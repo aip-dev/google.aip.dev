@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cbd974">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cbd974">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63e38ced">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=63e38ced">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=33cbd974"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=63e38ced"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -298,7 +298,7 @@ create a <code>gcloud images format</code> command group, with subcommands calle
 <code>gif</code>, and <code>png</code>. These subcommands can then take their own format-specific
 flags.</p>
 <p>Example usage:</p>
-<div class="highlight language-"><pre><span></span><code>$ gcloud images format jpeg --help
+<div class="highlight language-None"><pre><span></span><code>$ gcloud images format jpeg --help
 
 $ gcloud images format jpeg --source-file=foo --destination-file=bar \
     --dct-method=integer --smoothing=0.1 --subsampling=4:4:4
@@ -324,7 +324,7 @@ affects help text it's not considered a breaking change.)</p>
 outlined below:</p>
 <h3 id="single-command-with-an-explicit-flag-corresponding-to-the-parameter">Single command with an explicit flag corresponding to the parameter</h3>
 <p>In the example, this would involve a <code>--type</code> flag to specify the image format:</p>
-<div class="highlight language-"><pre><span></span><code>$ gcloud images format --source-file=source --destination-file=dest \
+<div class="highlight language-None"><pre><span></span><code>$ gcloud images format --source-file=source --destination-file=dest \
     --type=JPEG --dct-method=integer --smoothing=0.1 --subsampling=4:4:4
 
 $ gcloud images format --source-file=source --destination-file=dest \
@@ -351,7 +351,7 @@ However, this approach has several drawbacks:</p>
 </ul>
 <h3 id="multiple-commands-named-after-the-action-hyphenated-with-the-parameter-value">Multiple commands named after the action hyphenated with the parameter value</h3>
 <p>In the example, this would look like:</p>
-<div class="highlight language-"><pre><span></span><code>$ gcloud images format-jpeg ...
+<div class="highlight language-None"><pre><span></span><code>$ gcloud images format-jpeg ...
 $ gcloud images format-gif ...
 $ gcloud images format-png ...
 </code></pre></div>

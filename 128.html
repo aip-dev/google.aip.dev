@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-154: Resource freshness validation</title>
+    <title>AIP-128: Declarative-friendly interfaces</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -255,7 +255,7 @@
         HTTP and gRPC Transcoding
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/128">
         <span class="aip-number">128</span>
         Declarative-friendly interfaces
@@ -369,7 +369,7 @@
         Import and export
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/154">
         <span class="aip-number">154</span>
         Resource freshness validation
@@ -555,24 +555,23 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Resource freshness validation</th></tr>
-    <tr><td>Number</td><td>154</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/154">google.aip.dev/154</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-07-24</td></tr>
-    <tr><td>Updated</td><td>2019-07-24</td></tr>
+    <tr><th colspan="2">Declarative-friendly interfaces</th></tr>
+    <tr><td>Number</td><td>128</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/128">google.aip.dev/128</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2020-10-06</td></tr>
+    <tr><td>Updated</td><td>2020-10-06</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#declarative-friendly-resources">Declarative-friendly resources</a></li>
-<li><a href="#etags-on-request-methods">Etags on request methods</a></li>
-<li><a href="#strong-and-weak-etags">Strong and weak etags</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#annotations">Annotations</a></li>
+<li><a href="#reconciliation">Reconciliation</a></li>
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -581,8 +580,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0154.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0154.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0128.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0128.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -607,104 +606,95 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Resource freshness validation
+        Declarative-friendly interfaces
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-154</h4>
-  <h1>Resource freshness validation</h1>
-<p>APIs often need to validate that a client and server agree on the current state
-of a resource before taking some kind of action on that resource. For example,
-two processes updating the same resource in parallel could create a race
-condition, where the latter process "stomps over" the effort of the former one.</p>
-<p>ETags provide a way to deal with this, by allowing the server to send a
-checksum based on the current content of a resource; when the client sends that
-checksum back, the server can ensure that the checksums match before acting on
-the request.</p>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-128</h4>
+  <h1>Declarative-friendly interfaces</h1>
+<p>Many services need to interact with common DevOps tools, particularly those
+that create and manage network-addressible resources (such as virtual machines,
+load balancers, database instances, and so on). These tools revolve around the
+principle of "configuration as code": the user specifies the complete intended
+landscape, and tooling is responsible for making whatever changes are necessary
+to achieve the user's specification.</p>
+<p>These tools are <strong>declarative</strong>: rather than specifying specific <em>actions</em> to
+take, they specify the desired <em>outcome</em>, with the actions being derived based
+on the differences between the current landscape and the intended one.</p>
+<p>Furthermore, there are numerous popular DevOps tools, with more being
+introduced each year. Integrating hundreds of resource types with multiple
+tools requires strong consistency, so that integration can be automated.</p>
 <h2 id="guidance">Guidance</h2>
-<p>A resource <strong>may</strong> include an <code>etag</code> field on any resource where it is
-important to ensure that the client has an up to date resource before acting on
-certain requests:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a book.</span>
-<span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+<p>Services <strong>should</strong> clearly delineate between "control plane" operations and
+"data plane" operations, ideally through the use of distinct services with
+their own interface definition documents.</p>
+<ul>
+<li>Control plane operations are responsible for managing the <em>lifecycle</em> of
+  resources.</li>
+<li>Data plane operations are responsible for managing the <em>content</em> of
+  resources.</li>
+</ul>
+<p>The same resource <strong>may</strong> have both control plane operations and data plane
+operations associated with it. For example, a database API would have
+operations to create or delete database tables (control plane) as well as
+operations to write and read rows to that table (data plane).</p>
+<h3 id="resources">Resources</h3>
+<p>Resources that are declarative-friendly <strong>must</strong> use only strongly-consistent
+standard methods for managing resource lifecycle, which allows tools to support
+these resources generically, as well as conforming to other
+declarative-friendly guidance (see <a href="#further-reading">further reading</a>).</p>
+<p>Declarative-friendly resources <strong>should</strong> designate that they follow the
+declarative-friendly style:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+    <span class="n">style</span><span class="o">:</span> <span class="n">DECLARATIVE_FRIENDLY</span>
+  <span class="p">};</span>
+
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="c1">// Other fields...</span>
-
-  <span class="c1">// This checksum is computed by the server based on the value of other</span>
-  <span class="c1">// fields, and may be sent on update and delete requests to ensure the</span>
-  <span class="c1">// client has an up-to-date value before proceeding.</span>
-  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>The etag field <strong>must</strong> be a string, and <strong>must</strong> be named <code>etag</code>.</li>
-<li>The etag field <strong>should not</strong> be given any behavior annotations</li>
-<li>The etag field <strong>must</strong> be provided by the server on output, and values
-  <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.</li>
-<li>If a user sends back an etag which matches the current etag value, the
-  service <strong>must</strong> permit the request (unless there is some other reason for
-  failure).</li>
-<li>If a user sends back an etag which does not match the current etag value, the
-  service <strong>must</strong> send a <code>FAILED_PRECONDITION</code> error response (unless another
-  error takes precedence, such as <code>PERMISSION_DENIED</code> if the user is not
-  authorized).</li>
-<li>If the user does not send an etag value at all, the service <strong>should</strong> permit
-  the request. However, services with strong consistency or parallelism
-  requirements <strong>may</strong> require users to send etags all the time and reject the
-  request with an <code>INVALID_ARGUMENT</code> error in this case.</li>
-</ul>
-<p><strong>Note:</strong> ETag values <strong>should</strong> include quotes as described in <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.
-For example, a valid etag is <code>"foo"</code>, not <code>foo</code>.</p>
-<h3 id="declarative-friendly-resources">Declarative-friendly resources</h3>
-<p>[^reviewing]</p>
-<p>A resource that is declarative-friendly (<a href="/128">AIP-128</a>) <strong>must</strong> include an <code>etag</code>
-field.</p>
-<h3 id="etags-on-request-methods">Etags on request methods</h3>
-<p>In some situations, the etag needs to belong on a request message rather than
-the resource itself. For example, an <code>Update</code> standard method can "piggyback"
-off the <code>etag</code> field on the resource, but the <code>Delete</code> standard method can not:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeleteBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The name of the book.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
+<h3 id="annotations">Annotations</h3>
+<p>Declarative-friendly resources <strong>must</strong> include a
+<code>map&lt;string, string&gt; annotations</code> field to allow clients to store small amounts
+of arbitrary data.</p>
+<p>The <code>annotations</code> field <strong>must</strong> use the <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set">Kubernetes limits</a> to maintain wire
+compatibility, and <strong>should</strong> require dot-namespaced annotation keys to prevent
+tools from trampling over one another.</p>
+<p><strong>Note:</strong> Annotations are distinct from various forms of labels. Labels can be
+used by server-side policies, such as IAM conditions. Annotations exist to
+allow client tools to store their own state information without requiring a
+database.</p>
+<!-- prettier-ignore -->
 
-  <span class="c1">// The current etag of the book.</span>
-  <span class="c1">// If an etag is provided and does not match the current etag of the book,</span>
-  <span class="c1">// deletion will be blocked and a FAILED_PRECONDITION error will be returned.</span>
-  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>An <code>etag</code> field <strong>may</strong> also be used on custom methods, similar to the example
-above.</p>
-<h3 id="strong-and-weak-etags">Strong and weak etags</h3>
-<p>ETags can be either "strongly validated" or "weakly validated":</p>
-<ul>
-<li>A strongly validated etag means that two resources bearing the same etag are
-  byte-for-byte identical.</li>
-<li>A weakly validated etag means that two resources bearing the same etag are
-  equivalent, but may differ in ways that the service does not consider to be
-  important.</li>
-</ul>
-<p>Resources <strong>may</strong> use either strong or weak etags, as it sees fit, but
-<strong>should</strong> document the behavior. Additionally, weak etags <strong>must</strong> have a <code>W/</code>
-prefix as mandated by <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.</p>
+<h3 id="reconciliation">Reconciliation</h3>
+<p>If a resource takes time (more than a few seconds) for updates to be realized,
+the service <strong>should</strong> include a <code>bool reconciling</code> field to disclose that
+changes are in flight. This field <strong>must</strong> be output only.</p>
+<p>A resource <strong>must</strong> set the <code>reconciling</code> field to <code>true</code> if the current state
+of the resource does not match the user's intended state, and the system is
+working to reconcile them. This is regardless of whether the root cause of
+going into reconciliation was user or system action.</p>
+<p><strong>Note:</strong> Services responding to a <code>GET</code> request <strong>must</strong> return the resource's
+current state (not the intended state).</p>
 <h2 id="further-reading">Further reading</h2>
+<p>A significant amount of guidance is more strict for declarative-friendly
+interfaces, due to the focus on automation on top of these resources. This list
+is a comprehensive reference to declarative-friendly guidance in other AIPs:</p>
 <ul>
-<li>For how to retry on errors in client libraries, see <a href="/194">AIP-194</a>.</li>
-</ul>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2020-10-06</strong>: Added declarative-friendly resource requirement.</li>
-<li><strong>2020-09-02</strong>: Clarified that other errors may take precedence over
-  <code>FAILED_PRECONDITION</code> for etag mismatches.</li>
-<li><strong>2020-09-02</strong>: Add guidance for etags on request messages.</li>
-<li><strong>2019-09-23</strong>: Changed the title to "resource freshness validation".</li>
+<li>Resources <strong>must</strong> use user-settable resource IDs: see <a href="/122">AIP-122</a>.</li>
+<li>Resources <strong>must</strong> include certain standard fields: see <a href="/148">AIP-148</a>.</li>
+<li>Resources <strong>must</strong> have an <code>etag</code> field: see <a href="/154">AIP-154</a>.</li>
 </ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

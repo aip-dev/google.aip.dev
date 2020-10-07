@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-154: Resource freshness validation</title>
+    <title>AIP-164: Soft delete</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -369,7 +369,7 @@
         Import and export
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/154">
         <span class="aip-number">154</span>
         Resource freshness validation
@@ -423,7 +423,7 @@
         Change validation
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/164">
         <span class="aip-number">164</span>
         Soft delete
@@ -555,20 +555,23 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Resource freshness validation</th></tr>
-    <tr><td>Number</td><td>154</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/154">google.aip.dev/154</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-07-24</td></tr>
-    <tr><td>Updated</td><td>2019-07-24</td></tr>
+    <tr><th colspan="2">Soft delete</th></tr>
+    <tr><td>Number</td><td>164</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/164">google.aip.dev/164</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2020-10-06</td></tr>
+    <tr><td>Updated</td><td>2020-10-06</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#undelete">Undelete</a></li>
+<li><a href="#undelete-request-message">Undelete request message</a></li>
+<li><a href="#long-running-undelete">Long-running undelete</a></li>
+<li><a href="#list-and-get">List and Get</a></li>
 <li><a href="#declarative-friendly-resources">Declarative-friendly resources</a></li>
-<li><a href="#etags-on-request-methods">Etags on request methods</a></li>
-<li><a href="#strong-and-weak-etags">Strong and weak etags</a></li>
+<li><a href="#errors">Errors</a></li>
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
@@ -581,8 +584,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0154.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0154.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0164.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0164.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -607,104 +610,144 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Resource freshness validation
+        Soft delete
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-154</h4>
-  <h1>Resource freshness validation</h1>
-<p>APIs often need to validate that a client and server agree on the current state
-of a resource before taking some kind of action on that resource. For example,
-two processes updating the same resource in parallel could create a race
-condition, where the latter process "stomps over" the effort of the former one.</p>
-<p>ETags provide a way to deal with this, by allowing the server to send a
-checksum based on the current content of a resource; when the client sends that
-checksum back, the server can ensure that the checksums match before acting on
-the request.</p>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-164</h4>
+  <h1>Soft delete</h1>
+<p>There are several reasons why a client could desire soft delete and undelete
+functionality, but one over-arching reason stands out: recovery from mistakes.
+A service that supports undelete makes it possible for users to recover
+resources that were deleted by accident.</p>
 <h2 id="guidance">Guidance</h2>
-<p>A resource <strong>may</strong> include an <code>etag</code> field on any resource where it is
-important to ensure that the client has an up to date resource before acting on
-certain requests:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a book.</span>
-<span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="c1">// Other fields...</span>
-
-  <span class="c1">// This checksum is computed by the server based on the value of other</span>
-  <span class="c1">// fields, and may be sent on update and delete requests to ensure the</span>
-  <span class="c1">// client has an up-to-date value before proceeding.</span>
-  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
+<p>APIs <strong>may</strong> support the ability to "undelete", to allow for situations where
+users mistakenly delete resources and need the ability to recover.</p>
+<p>If a resource needs to support undelete, the <code>Delete</code> method <strong>must</strong> simply
+mark the resource as having been deleted, but not completely remove it from the
+system. If the method behaves this way, it <strong>should</strong> return the updated
+resource instead of <code>google.protobuf.Empty</code>.</p>
+<p>Resources that support soft delete <strong>must</strong> have an <code>expire_time</code> field as
+described in <a href="/148">AIP-148</a>. Additionally, resources <strong>should</strong> include a <code>DELETED</code>
+state value if the resource includes a <code>state</code> field (<a href="/216">AIP-216</a>).</p>
+<h3 id="undelete">Undelete</h3>
+<p>A resource that supports soft delete <strong>should</strong> provide an <code>Undelete</code> method:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
+  <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>The etag field <strong>must</strong> be a string, and <strong>must</strong> be named <code>etag</code>.</li>
-<li>The etag field <strong>should not</strong> be given any behavior annotations</li>
-<li>The etag field <strong>must</strong> be provided by the server on output, and values
-  <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.</li>
-<li>If a user sends back an etag which matches the current etag value, the
-  service <strong>must</strong> permit the request (unless there is some other reason for
-  failure).</li>
-<li>If a user sends back an etag which does not match the current etag value, the
-  service <strong>must</strong> send a <code>FAILED_PRECONDITION</code> error response (unless another
-  error takes precedence, such as <code>PERMISSION_DENIED</code> if the user is not
-  authorized).</li>
-<li>If the user does not send an etag value at all, the service <strong>should</strong> permit
-  the request. However, services with strong consistency or parallelism
-  requirements <strong>may</strong> require users to send etags all the time and reject the
-  request with an <code>INVALID_ARGUMENT</code> error in this case.</li>
+<li>The HTTP verb <strong>must</strong> be <code>POST</code>.</li>
+<li>The <code>body</code> clause <strong>must</strong> be <code>"*"</code>.</li>
+<li>The response message <strong>must</strong> be the resource itself. There is no
+  <code>UndeleteBookResponse</code>.<ul>
+<li>The response <strong>should</strong> include the fully-populated resource unless it is
+  infeasible to do so.</li>
+<li>If the create RPC is <a href="#long-running-undelete">long-running</a>, the response
+  message <strong>must</strong> be a <code>google.longrunning.Operation</code> which resolves to the
+  resource itself.</li>
 </ul>
-<p><strong>Note:</strong> ETag values <strong>should</strong> include quotes as described in <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.
-For example, a valid etag is <code>"foo"</code>, not <code>foo</code>.</p>
-<h3 id="declarative-friendly-resources">Declarative-friendly resources</h3>
-<p>[^reviewing]</p>
-<p>A resource that is declarative-friendly (<a href="/128">AIP-128</a>) <strong>must</strong> include an <code>etag</code>
-field.</p>
-<h3 id="etags-on-request-methods">Etags on request methods</h3>
-<p>In some situations, the etag needs to belong on a request message rather than
-the resource itself. For example, an <code>Update</code> standard method can "piggyback"
-off the <code>etag</code> field on the resource, but the <code>Delete</code> standard method can not:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DeleteBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The name of the book.</span>
+</li>
+</ul>
+<h3 id="undelete-request-message">Undelete request message</h3>
+<p>Undelete methods implement a common request message pattern:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UndeleteBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The name of the deleted book.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
   <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
     <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-
-  <span class="c1">// The current etag of the book.</span>
-  <span class="c1">// If an etag is provided and does not match the current etag of the book,</span>
-  <span class="c1">// deletion will be blocked and a FAILED_PRECONDITION error will be returned.</span>
-  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>An <code>etag</code> field <strong>may</strong> also be used on custom methods, similar to the example
-above.</p>
-<h3 id="strong-and-weak-etags">Strong and weak etags</h3>
-<p>ETags can be either "strongly validated" or "weakly validated":</p>
 <ul>
-<li>A strongly validated etag means that two resources bearing the same etag are
-  byte-for-byte identical.</li>
-<li>A weakly validated etag means that two resources bearing the same etag are
-  equivalent, but may differ in ways that the service does not consider to be
-  important.</li>
+<li>A <code>name</code> field <strong>must</strong> be included. It <strong>should</strong> be called <code>name</code>.<ul>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the [resource type][aip-123] that it
+  references.</li>
+<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
 </ul>
-<p>Resources <strong>may</strong> use either strong or weak etags, as it sees fit, but
-<strong>should</strong> document the behavior. Additionally, weak etags <strong>must</strong> have a <code>W/</code>
-prefix as mandated by <a href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232</a>.</p>
+</li>
+<li>The request message <strong>must not</strong> contain any other required fields, and
+  <strong>should not</strong> contain other optional fields except those described in this
+  or another AIP.</li>
+</ul>
+<h3 id="long-running-undelete">Long-running undelete</h3>
+<p>Some resources take longer to undelete a resource than is reasonable for a
+regular API request. In this situation, the API <strong>should</strong> use a long-running
+operation (<a href="/151">AIP-151</a>) instead:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;Book&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The response type <strong>must</strong> be set to the resource (what the return type would
+  be if the RPC was not long-running).</li>
+<li>Both the <code>response_type</code> and <code>metadata_type</code> fields <strong>must</strong> be specified.</li>
+</ul>
+<h3 id="list-and-get">List and Get</h3>
+<p>Soft-deleted resources <strong>should not</strong> be returned in <code>List</code> (<a href="/132">AIP-132</a>) responses
+by default (unless <code>bool show_deleted</code> is true). <code>Get</code> (<a href="/131">AIP-131</a>) requests for
+soft-deleted resources <strong>should</strong> return the resource (rather than a
+<code>NOT_FOUND</code> error).</p>
+<p>APIs that soft delete resources <strong>may</strong> choose a reasonable strategy for
+purging those resources, including automatic purging after a reasonable time
+(such as 30 days), allowing users to set an expiry time (<a href="/214">AIP-214</a>), or retaining
+the resources indefinitely. Regardless of what strategy is selected, the API
+<strong>should</strong> document when soft deleted resources will be completely removed.</p>
+<h3 id="declarative-friendly-resources">Declarative-friendly resources</h3>
+<p>A resource that is declarative-friendly (<a href="/128">AIP-128</a>) <strong>should</strong> support soft
+delete and undelete.</p>
+<p><strong>Important:</strong> There is an ambiguity in declarative tooling between "create"
+and "undelete". When given an alias which was previously deleted and a
+directive to make it exist, tooling usually does not know if the intent is to
+restore the previously-deleted resource, or create a new one with the same
+alias. Declarative tools <strong>should</strong> resolve this ambiguity in favor of creating
+a new resource: the only way to undelete is to explicitly use the undelete RPC
+(an imperative operation), and declarative tools <strong>may</strong> elect not to map
+anything to undelete at all.</p>
+<p>Declarative-friendly resources <strong>must</strong> use long-running operations for both
+soft delete and undelete. The service <strong>may</strong> return an LRO that is already set
+to done if the request is effectively immediate.</p>
+<p>Declarative-friendly resources <strong>must</strong> include <code>validate_only</code> (<a href="/163">AIP-163</a>) and
+<code>etag</code> (<a href="/154">AIP-154</a>) in their <code>Undelete</code> methods.</p>
+<h3 id="errors">Errors</h3>
+<p>If the user does not have permission to access the resource, regardless of
+whether or not it exists, the service <strong>must</strong> error with <code>PERMISSION_DENIED</code>
+(HTTP 403). Permission <strong>must</strong> be checked prior to checking if the resource
+exists.</p>
+<p>If the user does have proper permission, but the requested resource does not
+exist (either it was never created or already expunged), the service <strong>must</strong>
+error with <code>NOT_FOUND</code> (HTTP 404).</p>
+<p>If the user has proper permission, but the requested resource is not deleted,
+the service <strong>must</strong> respond with <code>ALREADY_EXISTS</code> (HTTP 409).</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
-<li>For how to retry on errors in client libraries, see <a href="/194">AIP-194</a>.</li>
+<li>For the <code>Delete</code> standard method, see <a href="/135">AIP-135</a>.</li>
+<li>For long-running operations, see <a href="/151">AIP-151</a>.</li>
+<li>For resource freshness validation (<code>etag</code>), see <a href="/154">AIP-154</a>.</li>
+<li>For change validation (<code>validate_only</code>), see <a href="/163">AIP-163</a>.</li>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2020-10-06</strong>: Added declarative-friendly resource requirement.</li>
-<li><strong>2020-09-02</strong>: Clarified that other errors may take precedence over
-  <code>FAILED_PRECONDITION</code> for etag mismatches.</li>
-<li><strong>2020-09-02</strong>: Add guidance for etags on request messages.</li>
-<li><strong>2019-09-23</strong>: Changed the title to "resource freshness validation".</li>
+<li><strong>2020-09-23</strong>: Soft delete material in <a href="/135">AIP-135</a> migrated to this AIP.</li>
 </ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

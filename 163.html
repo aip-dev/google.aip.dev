@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cbd974">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cbd974">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63e38ced">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=63e38ced">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=33cbd974"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=63e38ced"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -256,6 +256,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/128">
+        <span class="aip-number">128</span>
+        Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/131">
         <span class="aip-number">131</span>
         Standard methods: Get
@@ -340,6 +346,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/148">
+        <span class="aip-number">148</span>
+        Standard fields
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/151">
         <span class="aip-number">151</span>
         Long-running operations
@@ -409,6 +421,12 @@
       <a href="/163">
         <span class="aip-number">163</span>
         Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/164">
+        <span class="aip-number">164</span>
+        Soft delete
       </a>
     </li>
     <li class="nav-item">
@@ -547,7 +565,11 @@
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a></li>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#declarative-friendly-resources">Declarative-friendly resources</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -620,6 +642,14 @@ if it determines that the actual request would fail.</p>
 example, if creating a resource would create an auto-generated ID, it does not
 make sense to do this on validation. APIs <strong>should</strong> omit such fields on
 validation requests in this situation.</p>
+<h3 id="declarative-friendly-resources">Declarative-friendly resources</h3>
+<p>[^reviewing]</p>
+<p>A resource that is declarative-friendly (<a href="/128">AIP-128</a>) <strong>must</strong> include a
+<code>validate_only</code> field on methods that mutate the resource.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-10-06:</strong> Added declarative-friendly resource requirement.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
