@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>Content licensing</title>
+    <title>Declarative-friendly APIs</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -553,13 +553,14 @@
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#restrictions">Restrictions</a></li>
-<li><a href="#attribution">Attribution</a><ul>
-<li><a href="#exact-reproductions">Exact reproductions</a></li>
-<li><a href="#modified-versions">Modified versions</a></li>
-<li><a href="#other-media">Other media</a></li>
+<li><a href="#aips-under-review">AIPs under review</a><ul>
+<li><a href="#aip-128-declarative-friendly-interfaces">AIP-128: Declarative-friendly interfaces</a></li>
+<li><a href="#aip-148-standard-fields">AIP-148: Standard fields</a></li>
+<li><a href="#aip-164-soft-delete">AIP-164: Soft delete</a></li>
 </ul>
 </li>
+<li><a href="#aip-sections-under-review">AIP sections under review</a></li>
+<li><a href="#recent-updates">Recent updates</a></li>
 </ul>
 </div>
 
@@ -568,8 +569,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/pages/general/licensing.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/pages/general/licensing.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/pages/news/2020-10.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/pages/news/2020-10.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -588,75 +589,133 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Content licensing
+        Declarative-friendly APIs
       </li>
     </ol>
   </nav>
 </section>
-  <h1>Content licensing</h1>
-<p>We are pleased to license much of the AIP content under terms that explicitly
-encourage people to take, modify, reuse, re-purpose, and remix our work as they
-see fit.</p>
-<p>You will find the following notice at the bottom of many pages:</p>
+  <h1>Declarative-friendly APIs</h1>
+<p>Welcome to the sixth edition of the <strong>AIP newsletter</strong>, which is designed to
+keep you up to date about the AIP program, and particular proposals making
+their way through the system.</p>
+<p>We have an exciting slate of AIPs entering review this cycle, all around the
+theme of "declarative-friendly APIs". The linchpin here is AIP-128, which
+introduces and explains the topic.</p>
+<p>The idea behind declarative-friendly APIs addresses an important need: the
+ability to integrate with popular, declarative tools, such as Kubernetes or
+Terraform. These tools and others are used by numerous developers, and the
+follow a straightforward paradigm: the user provides the tool with the desired
+state, and the tool brings that state into fruition.</p>
+<p>Integration with these tools is critical for cloud providers, but with the
+number of services <em>and</em> the number of tools continuously increasing, support
+is difficult without a reliance on automation. Automation, in turn, requires
+strong consistency.</p>
+<p>While ordinarily AIPs stay in review for about a month, we intend for this
+review cycle to be longer, to allow time for APIs to be released that follow
+this guidance. Assuming the feedback is sufficiently positive, we will probably
+be looking at formal approval around the end of the year.</p>
+<h2 id="aips-under-review">AIPs under review</h2>
+<h3 id="aip-128-declarative-friendly-interfaces">AIP-128: Declarative-friendly interfaces</h3>
 <blockquote>
-<p>Except as otherwise noted, the content of this page is licensed under the
-<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are
-licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see
-<a href="./licensing.md">content licensing</a>.</p>
+<p>Many services need to interact with common DevOps tools, particularly those
+that create and manage network-addressible resources (such as virtual
+machines, load balancers, database instances, and so on). These tools revolve
+around the principle of "configuration as code": the user specifies the
+complete intended landscape, and tooling is responsible for making whatever
+changes are necessary to achieve the user's specification.</p>
+<p>These tools are <strong>declarative</strong>: rather than specifying specific actions to
+take, they specify the desired <em>outcome</em>, with the actions being derived
+based on the differences between the current landscape and the intended one.</p>
 </blockquote>
-<p>When you see a page with this notice you are free to use
-<a href="#restrictions">nearly everything</a> on the page in your own creations. For
-example, you could quote the text in a book, cut-and-paste sections to your
-blog, record it as an audiobook for the visually impaired, or even translate it
-into Swahili. Really. That's what open content licenses are all about. We just
-ask that you give us <a href="#attribution">attribution</a> when you reuse our work.</p>
-<p>In addition, you are free to use the computer source code that appears in the
-content (such as in examples) in the code of your own projects.</p>
-<h2 id="restrictions">Restrictions</h2>
-<p>We say "nearly everything" as there are a few simple conditions that apply.</p>
-<p>Google's trademarks and other brand features are not included in this license.
-Please see our <a href="http://www.google.com/permissions/guidelines.html">standard guidelines for third party use of Google brand
-features</a> for information about this usage.</p>
-<p>In some cases, a page may include content consisting of images, audio or video
-material, or a link to content on a different webpage (such as videos or slide
-decks). This content is not covered by the license, unless specifically noted.</p>
-<h2 id="attribution">Attribution</h2>
-<p>Proper attribution is required when you reuse or create modified versions of
-content that appears on a page made available under the terms of the Creative
-Commons Attribution license. The complete requirements for attribution can be
-found in section 3 of the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons legal code</a>.</p>
-<p>In practice we ask that you provide attribution to Google to the best of the
-ability of the medium in which you are producing the work.</p>
-<p>There are several typical ways in which this might apply:</p>
-<h3 id="exact-reproductions">Exact reproductions</h3>
-<p>If your online work <em>exactly reproduces</em> text or images from this site, in
-whole or in part, please include a paragraph at the bottom of your page that
-reads:</p>
+<p><a href="/128">Declarative-friendly interfaces</a> describes patterns for making
+interfaces that are friendly to automated tooling. The basic idea is that by
+being more strict and consistent, it becomes possible to write tools that
+"translate" the interface to a declarative form without having to know anything
+about the specific API.</p>
+<p>This reduces feature latency for users. Essentially, the adapter or plugin can
+be automatically generated, and so an automated pipeline becomes possible: as
+soon as the service launches new features, they become available in the
+adapters also.</p>
+<p>Because declarative-friendliness is a wide-ranging concept, impacting the
+guidance in numerous other AIPs as well, it was difficult to determine how to
+structure the information. Therefore, this AIP also has a robust "further
+reading" section that points to declarative-friendly guidance in other AIPs.</p>
+<p><strong>Summary:</strong> <a href="/128">AIP-128</a> provides an explanation of what it means for a service
+to be declarative-friendly, and why a service might want to adopt these
+patterns. It also indexes declarative-friendly guidance found in other AIPs.</p>
+<h3 id="aip-148-standard-fields">AIP-148: Standard fields</h3>
 <blockquote>
-<p>Portions of this page are reproduced from work created and <a href="./licensing.md">shared by
-Google</a> and used according to terms described in the <a href="https://creativecommons.org/licenses/by/4.0/">Creative
-Commons 4.0 Attribution License</a>.</p>
+<p>Certain concepts are common throughout any corpus of APIs. In these
+situations, it is useful to have a standard field name that is used
+consistently to communicate that concept.</p>
 </blockquote>
-<p>Also, please link back to the original source page so that readers can refer to
-it for more information.</p>
-<h3 id="modified-versions">Modified versions</h3>
-<p>If your online work shows modified text or images based on the content from
-this site, please include a paragraph at the bottom of your page that reads:</p>
+<p><a href="/148">Standard fields</a> is, in some ways, an overdue AIP. It describes
+fields common throughout our corpus, such as <code>name</code>, <code>parent</code>, and
+<code>create_time</code>, that were on the list of standard fields in the original API
+style guide and did not get a full treatment in other AIPs. Common fields that
+are covered in other AIPs are not discussed in this one. (As an example,
+<code>language_code</code> is given extensive treatment in <a href="/143">AIP-143</a>, so not repeated
+here.)</p>
+<p>This takes on new importance with our focus on declarative-friendly APIs
+because tools written to marshal between a declarative tool and the service can
+see those tools and know what they mean.</p>
+<p><strong>Summary:</strong> <a href="/148">AIP-148</a> describes common fields that are already in common use
+throughout our API corpus. It also describes certain fields that are expected
+on declarative-friendly resources.</p>
+<h3 id="aip-164-soft-delete">AIP-164: Soft delete</h3>
 <blockquote>
-<p>Portions of this page are modifications based on work created and <a href="./licensing.md">shared by
-Google</a> and used according to terms described in the <a href="https://creativecommons.org/licenses/by/4.0/">Creative
-Commons 4.0 Attribution License</a>.</p>
+<p>There are several reasons why a client could desire soft delete and undelete
+functionality, but one over-arching reason stands out: recovery from
+mistakes. A service that supports undelete makes it possible for users to
+recover resources that were deleted by accident.</p>
 </blockquote>
-<p>Again, please link back to the original source page so that readers can refer
-to it for more information. This is even more important when the content has
-been modified.</p>
-<h3 id="other-media">Other media</h3>
-<p>If you produce non-hypertext works, such as books, audio, or video, we ask that
-you make a best effort to include a spoken or written attribution in the spirit
-of the messages above.</p>
+<p><a href="/164">Soft delete</a> is increasingly critical for APIs that need to cater to
+enterprise users, due to the need to be able to recover from mistakes without
+data loss. While <a href="/135">AIP-135</a> previously discussed soft delete, it was clear
+that a more thorough treatment is necessary.</p>
+<p>This AIP goes through the request patterns in more detail, and discusses topics
+such as LROs and errata, that are relevant to soft delete and undelete.</p>
+<p><strong>Summary:</strong> <a href="/164">AIP-164</a> expands the guidance on soft delete and undelete and
+provides a more detailed look at both.</p>
+<h2 id="aip-sections-under-review">AIP sections under review</h2>
+<p>Because of the need to add declarative-friendly guidance into existing AIPs,
+certain sections needed to be introduced into existing, approved AIPs in a
+reviewing state. These are all in use for declarative-friendly guidance and
+would be approved alongside AIP-128:</p>
+<ul>
+<li>AIP-134: <a href="/134#create-or-update">Create or update</a></li>
+<li>AIP-135: <a href="/135#delete-if-existing">Delete if existing</a></li>
+<li>AIP-136: <a href="/136#declarative-friendly-resources">Custom method restrictions</a></li>
+</ul>
+<p>Additionally, new sections in <a href="/154#declarative-friendly-resources">AIP-154</a>
+and <a href="/163#declarative-friendly-resources">AIP-163</a> mandate the use of these
+concepts for declarative-friendly resources.</p>
+<h2 id="recent-updates">Recent updates</h2>
+<p>In addition to the new AIPs under review, we have added the following guidance
+to existing AIPs:</p>
+<ul>
+<li><a href="/122">AIP-122</a>: Clarified when to use full resource names
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/629">#629</a>)</li>
+<li><a href="/132">AIP-132</a>: Loosened guidance around top-level resources
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/602">#602</a>)</li>
+<li><a href="/132">AIP-132</a>: Added <code>PERMISSION_DENIED</code> guidance
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/582">#582</a>)</li>
+<li><a href="/151">AIP-151</a>: Clarified that <code>stream</code> and LROs are mutually incompatible
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/597">#597</a>)</li>
+<li><a href="/216">AIP-216</a>: Clarified that states are not directly set on Create
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/606">#606</a>)</li>
+</ul>
+<p>Special thanks to Andrew Paseltiner and Peter Novotney for some of these
+changes, and to several others who send minor corrections not noted here.</p>
 
-  <footer><p>This page was adapted from the <a href="https://developers.google.com/terms/site-policies">site policies</a> for developers.google.com.
-Last updated: May 13, 2019</p></footer>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
   </section>
 
         </section>
