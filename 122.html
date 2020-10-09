@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=28019159">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=28019159">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=064118e5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=064118e5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=28019159"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=064118e5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -803,9 +803,11 @@ resource type ([AIP-123][]).</p>
 <span class="kd">message</span> <span class="nc">ArchiveBookRequest</span> <span class="p">{</span>
   <span class="c1">// The book to archive.</span>
   <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-  <span class="p">}];</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
@@ -840,9 +842,11 @@ instead:</p>
 <span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
   <span class="c1">// The publisher to list books from.</span>
   <span class="c1">// Format: publishers/{publisher_id}</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-  <span class="p">}];</span>
+  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 
   <span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
 <span class="p">}</span>

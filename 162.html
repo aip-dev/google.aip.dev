@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=28019159">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=28019159">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=064118e5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=064118e5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=28019159"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=064118e5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -697,7 +697,11 @@ revision ID in the standard <code>Get</code> method (<a href="/131">AIP-131</a>)
   <span class="c1">// In order to retrieve a previous revision of the book, also provide</span>
   <span class="c1">// the revision ID.</span>
   <span class="c1">//   Example: publishers/123/books/les-miserables@c7cfa2a8</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -721,16 +725,26 @@ Revision" custom method:</p>
 
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">TagBookRevisionRequest</span> <span class="p">{</span>
   <span class="c1">// The name of the book to be tagged, including the revision ID.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 
   <span class="c1">// The tag to apply.</span>
   <span class="c1">// The tag should be at most 40 characters, and match `[a-z][a-z0-9-]{3,39}`.</span>
-  <span class="kt">string</span> <span class="na">tag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">tag</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>The <code>name</code> field <strong>should</strong> require an explicit revision ID to be provided.</li>
+<li>The <code>name</code> field <strong>should</strong> require an explicit revision ID to be provided.<ul>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
+  references.</li>
+</ul>
+</li>
+<li>The <code>tag</code> field <strong>should</strong> be annotated as required.</li>
 <li>Once a revision is tagged, the API <strong>must</strong> support using the tag in place of
   the revision ID in <code>name</code> fields.<ul>
 <li>If the user sends a tag, the API <strong>must</strong> return the tag in the resource's
@@ -758,7 +772,11 @@ standard <code>List</code> methods (<a href="/132">AIP-132</a>):</p>
 
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListBookRevisionsRequest</span> <span class="p">{</span>
   <span class="c1">// The name of the book to list revisions for.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 
   <span class="c1">// The maximum number of revisions to return per page.</span>
   <span class="kt">int32</span> <span class="na">page_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -837,13 +855,26 @@ on user request <strong>should</strong> handle this with a <code>Commit</code> c
     <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">CommitBookRequest</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <ul>
 <li>The method <strong>must</strong> use the <code>POST</code> HTTP verb.</li>
 <li>The method <strong>should</strong> return the resource, and the resource name <strong>must</strong>
   include the revision ID.</li>
-<li>The request message <strong>must</strong> include the <code>name</code> field.</li>
+<li>The request message <strong>must</strong> include the <code>name</code> field.<ul>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
+  references.</li>
+</ul>
+</li>
 </ul>
 <h3 id="rollback">Rollback</h3>
 <p>A common use case for a resource with a revision history is the ability to roll
@@ -864,20 +895,32 @@ method:</p>
 </ul>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">RollbackBookRequest</span> <span class="p">{</span>
   <span class="c1">// The book being rolled back.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 
   <span class="c1">// The revision ID to roll back to.</span>
   <span class="c1">// It must be a revision of the same book.</span>
   <span class="c1">//</span>
   <span class="c1">//   Example: c7cfa2a8</span>
-  <span class="kt">string</span> <span class="na">revision_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">revision_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
+<li>The request message <strong>must</strong> have a <code>name</code> field to identify the resource
+  being rolled back.<ul>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
+  references.</li>
+</ul>
+</li>
 <li>The request message <strong>must</strong> include a <code>revision_id</code> field.<ul>
 <li>The API <strong>must</strong> fail the request with <code>NOT_FOUND</code> if the revision does not
   exist on that resource.</li>
+<li>The field <strong>should</strong> be annotated as required.</li>
 </ul>
 </li>
 </ul>
@@ -903,14 +946,25 @@ want to remove one or more revisions from a resource's revision history.</p>
   <span class="c1">// included.</span>
   <span class="c1">//</span>
   <span class="c1">// Example: publishers/123/books/les-miserables@c7cfa2a8</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
+    <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
+<li>The request message <strong>must</strong> have a <code>name</code> field to identify the resource
+  revision being deleted.<ul>
 <li>The explicit resource ID <strong>must</strong> be required (the method <strong>must</strong> fail with
   <code>INVALID_ARGUMENT</code> if it is not provided, and <strong>must not</strong> default to the
   latest revision).</li>
+<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
+  references.</li>
+</ul>
+</li>
 <li>The API <strong>must not</strong> overload the <code>DeleteBook</code> method to serve both purposes
   (this could lead to dangerous or confusing mistakes).</li>
 <li>If the resource supports soft delete, then revisions of that resource
