@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cec539ee">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=cec539ee">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1c826741">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1c826741">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=cec539ee"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=1c826741"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -297,9 +297,9 @@ efficiently if it knows about some values in the request; however, the request
 payload can not be reasonably deconstructed on the wire to perform that
 routing.</p>
 <h2 id="guidance">Guidance</h2>
-<p>Code generators <strong>should</strong> look at URL-based variables declared in the
+<p>Code generators <strong>should</strong> look at URI-based variables declared in the
 <a href="https://github.com/googleapis/api-common-protos/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation and transcribe these into the
-<code>x-goog-request-params</code> header in unary calls. A URL-based variable is a
+<code>x-goog-request-params</code> header in unary calls. A URI-based variable is a
 variable declared as a key in curly braces in the URI string. For example:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span> <span class="o">=</span> <span class="s">&quot;{parent=projects/*}/topics&quot;</span><span class="p">;</span>
