@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1c826741">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1c826741">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ac7c97db">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ac7c97db">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1c826741"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=ac7c97db"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -739,12 +739,12 @@ Revision" custom method:</p>
 
 <ul>
 <li>The <code>name</code> field <strong>should</strong> require an explicit revision ID to be provided.<ul>
-<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 <li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
   references.</li>
 </ul>
 </li>
-<li>The <code>tag</code> field <strong>should</strong> be annotated as required.</li>
+<li>The <code>tag</code> field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 <li>Once a revision is tagged, the API <strong>must</strong> support using the tag in place of
   the revision ID in <code>name</code> fields.<ul>
 <li>If the user sends a tag, the API <strong>must</strong> return the tag in the resource's
@@ -870,7 +870,7 @@ on user request <strong>should</strong> handle this with a <code>Commit</code> c
 <li>The method <strong>should</strong> return the resource, and the resource name <strong>must</strong>
   include the revision ID.</li>
 <li>The request message <strong>must</strong> include the <code>name</code> field.<ul>
-<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 <li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
   references.</li>
 </ul>
@@ -912,7 +912,7 @@ method:</p>
 <ul>
 <li>The request message <strong>must</strong> have a <code>name</code> field to identify the resource
   being rolled back.<ul>
-<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 <li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
   references.</li>
 </ul>
@@ -920,7 +920,7 @@ method:</p>
 <li>The request message <strong>must</strong> include a <code>revision_id</code> field.<ul>
 <li>The API <strong>must</strong> fail the request with <code>NOT_FOUND</code> if the revision does not
   exist on that resource.</li>
-<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 </ul>
 </li>
 </ul>
@@ -960,7 +960,7 @@ want to remove one or more revisions from a resource's revision history.</p>
 <li>The explicit resource ID <strong>must</strong> be required (the method <strong>must</strong> fail with
   <code>INVALID_ARGUMENT</code> if it is not provided, and <strong>must not</strong> default to the
   latest revision).</li>
-<li>The field <strong>should</strong> be annotated as required.</li>
+<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
 <li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
   references.</li>
 </ul>
