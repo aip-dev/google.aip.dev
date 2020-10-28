@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ac7c97db">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ac7c97db">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=73939cd0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=73939cd0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=ac7c97db"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=73939cd0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -660,6 +660,10 @@ modifications to the repeated field value as needed, and send it back. This is
 fine for many situations, particularly when the repeated field is expected to
 have a small size (fewer than 10 or so) and race conditions are not an issue,
 or can be guarded against with <a href="/154">ETags</a>.</p>
+<p><strong>Note:</strong> Declarative-friendly resources <strong>must</strong> use the standard <code>Update</code>
+method, and not introduce <code>Add</code> and <code>Remove</code> methods. If declarative tools need
+to reason about particular relationships while ignoring others, consider using
+a subresource instead.</p>
 <p>If atomic modifications are required, the API <strong>should</strong> define custom methods
 using the verbs <code>Add</code> and <code>Remove</code>:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">AddAuthor</span><span class="p">(</span><span class="n">AddAuthorRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AddAuthorResponse</span><span class="p">)</span> <span class="p">{</span>
