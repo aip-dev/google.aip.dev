@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=62642f68">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=62642f68">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=467a8cef">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=467a8cef">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=62642f68"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=467a8cef"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -642,7 +642,7 @@ a non-empty value) on the request or resource.</p>
 <p>A field <strong>should</strong> only be described as required if <em>either</em>:</p>
 <ul>
 <li>It is a field on a resource that a user provides somewhere as input. In this
-  case, the resource is only valid if a truthy value is <em>stored</em>.<ul>
+  case, the resource is only valid if a "truthy" value is <em>stored</em>.<ul>
 <li>When <a href="/133">creating</a> the resource, a value <strong>must</strong> be provided for the
   field on the create request.</li>
 <li>When <a href="/134">updating</a> the resource, the user <strong>may</strong> omit the field
@@ -654,6 +654,12 @@ a non-empty value) on the request or resource.</p>
   with a name usually ending in <code>Request</code>). In this case, a value <strong>must</strong> be
   provided as part of the request, and failure to do so <strong>must</strong> cause an error
   (usually <code>INVALID_ARGUMENT</code>).</li>
+</ul>
+<p>We define the term "truthy" above as follows:</p>
+<ul>
+<li>For primitives, values other than <code>0</code>, <code>0.0</code>, empty string/bytes, and <code>false</code></li>
+<li>For repeated fields maps, values with at least one entry</li>
+<li>For messages, any message with at least one "truthy" field.</li>
 </ul>
 <p>Fields <strong>should not</strong> be described as required in order to signify:</p>
 <ul>
@@ -668,10 +674,10 @@ values, and therefore setting a required field to a falsy value yields an
 error. A corollary to this is that a required boolean must be set to <code>true</code>.</p>
 <h3 id="output-only">Output only</h3>
 <p>The use of <code>OUTPUT_ONLY</code> indicates that the field is provided in responses, but
-that including the field in a message in a request does nothing (the server <strong>must</strong>
-clear out any value in this field and <strong>must not</strong> throw an error as a result of the
-presence of a value in this field on input). Similarly, services <strong>must</strong> ignore the
-presence of output only fields in update field masks.</p>
+that including the field in a message in a request does nothing (the server
+<strong>must</strong> clear out any value in this field and <strong>must not</strong> throw an error as a
+result of the presence of a value in this field on input). Similarly, services
+<strong>must</strong> ignore the presence of output only fields in update field masks.</p>
 <p>Additionally, a field <strong>should</strong> only be described as output only if it is a
 field in a resource message, or a field of a message farther down the tree.
 Notably, fields in response messages (a message which only ever acts as a
