@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=467a8cef">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=467a8cef">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ccbfc080">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ccbfc080">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=467a8cef"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=ccbfc080"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -336,10 +336,21 @@ format:</p>
  <span class="p">}</span>
 </code></pre></div>
 
-<p><strong>Note:</strong> You can use the access token only for scopes that you specified when
-you created the instance. For example, if the instance has been granted only the
-https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then it
-can't use the access token to make a request to BigQuery.</p>
+<h4>Scopes</h4>
+<p>Access tokens obtained from the metadata server contain the scopes specified at instance creation.
+For example, if an instance is granted only the
+https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then the tokens obtained 
+from the instance's metadata server have only the <code>storage-full</code> scope.</p>
+<p>When running on GCE, the metadata server ignores requests for custom scopes.
+On Cloud Run and Workload Identity on Google Kubernetes Engine, clients can request a 
+different set of scopes to the metadata server using the <code>scopes</code> url parameter, e.g.:</p>
+<div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token?scopes=comma-separated-list-of-scopes
+</code></pre></div>
+
+<p>The auth library <strong>should</strong> allow the caller to optionally specify a list of custom scopes,
+and add the <code>scopes</code> parameter to the request when needed.
+Depending on the runtime environment, the request for custom scopes will be transparently
+ignored by the server (GCE) or fulfilled (Cloud Run and Workload Identity).</p>
 <h3 id="google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</h3>
 <p>If the application runs on a App Engine Standard 1st generation instance, the
 auth library <strong>should</strong> rely on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> to retrieve the
