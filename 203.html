@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ccbfc080">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ccbfc080">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=521f6e45">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=521f6e45">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=ccbfc080"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=521f6e45"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -572,6 +572,7 @@
 <li><a href="#input-only">Input only</a></li>
 <li><a href="#immutable">Immutable</a></li>
 <li><a href="#optional">Optional</a></li>
+<li><a href="#unordered-list">Unordered List</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -732,8 +733,18 @@ not mandatory to describe optional fields in this way.</p>
 <p>If you do choose to explicitly describe a field as optional, ensure that every
 optional field on the message has this indicator. Within a single message,
 either all optional fields should be indicated, or none of them should be.</p>
+<h3 id="unordered-list">Unordered List</h3>
+<p>The use of <code>UNORDERED_LIST</code> on a repeated field of a resource indicates that
+the service does not guarantee the order of the items in the list.</p>
+<p>A field <strong>should</strong> be described as an unordered list if the service does not
+guarantee that the order of the elements in the list will match the order that
+the user sent, including a situation where the service will sort the list on
+the user's behalf.</p>
+<p>A resource with an unordered list <strong>may</strong> return the list in a stable order, or
+<strong>may</strong> return the list in a randomized, unstable order.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2020-12-15</strong>: Added guidance for <code>UNORDERED_LIST</code>.</li>
 <li><strong>2020-05-27</strong>: Clarify behavior when receiving an immutable field in an
   update.</li>
 <li><strong>2019-12-05</strong>: Added guidance on output only fields in field masks.</li>
