@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -329,7 +329,6 @@ look like below:</p>
   <span class="nt">&quot;client_x509_cert_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/robot/v1/metadata/x509/testserviceaccount%40test.iam.gserviceaccount.com&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p><strong>Note:</strong> A Service Account ID JSON file can be downloaded from <a href="https://console.cloud.google.com/apis/credentials">Google Cloud Console</a>.</p>
 <p>2. Using any standard JWT library, such as one found at <a href="https://jwt.io/#libraries-io">jwt.io</a>, create a
 JWT with a header and claims set like the following example:</p>
@@ -344,7 +343,6 @@ JWT with a header and claims set like the following example:</p>
   <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/auth/pubsub&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>
 <p>For the <code>kid</code> field in the header, specify the service account's private
@@ -370,7 +368,6 @@ the payload from step 3.</p>
 <p>5. Make a POST request to the <strong>token_uri</strong> endpoint with the parameters from
 step 4 to obtain an OAuth2 Access Token.</p>
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

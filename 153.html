@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -646,7 +646,6 @@ of an API, and <strong>should</strong> implement a common pattern to do so:</p>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The method <strong>must</strong> return a long-running operation (see <a href="/151">AIP-151</a>) unless
   the service can guarantee that it will <em>never</em> need more than a few seconds
@@ -687,7 +686,6 @@ resource, and <strong>should</strong> implement a common pattern to do so:</p>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The method <strong>must</strong> return a long-running operation (see <a href="/151">AIP-151</a>) unless
   the service can guarantee that it will <em>never</em> need more than a few seconds
@@ -734,7 +732,6 @@ placed inside a oneof:</p>
   <span class="kt">string</span> <span class="na">filter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The source configuration messages <strong>must</strong> be placed within a <code>oneof source</code>
   (for import) or <code>oneof destination</code> (for export), even if there is only one.
@@ -752,7 +749,6 @@ imported or exported are provided in the request or response.</p>
   <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The source or destination <strong>should</strong> be named <code>InlineSource</code> or
   <code>InlineDestination</code>.</li>

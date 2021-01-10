@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -638,7 +638,6 @@ changes to the resources without causing side effects.</p>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;book,update_mask&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The RPC's name <strong>must</strong> begin with the word <code>Update</code>. The remainder of the
   RPC name <strong>should</strong> be the singular form of the resource's message name.</li>
@@ -689,7 +688,6 @@ separator, <code>snake_case</code> is used.</p>
   <span class="n">google.protobuf.FieldMask</span> <span class="na">update_mask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The request message <strong>must</strong> contain a field for the resource.<ul>
 <li>The field <strong>must</strong> map to the <code>PATCH</code> body.</li>
@@ -742,7 +740,6 @@ add <code>rating</code>):</p>
   <span class="kt">int32</span> <span class="na">rating</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If a rating is set on a book and the existing <code>PUT</code> request was executed, it
 would wipe out the book's rating. In essence, a <code>PUT</code> request unintentionally
 wiped out data because the previous version did not know about it.</p>
@@ -760,7 +757,6 @@ operation (<a href="/151">AIP-151</a>) instead:</p>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The response type <strong>must</strong> be set to the resource (what the return type would
   be if the RPC was not long-running).</li>
@@ -789,7 +785,6 @@ will create the resource in the process):</p>
   <span class="kt">bool</span> <span class="na">allow_missing</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>More specifically, the <code>allow_missing</code> flag triggers the following behavior:</p>
 <ul>
 <li>If the method call is on a resource that does not exist, the resource is
@@ -832,7 +827,6 @@ server-computed value representing the content of the resource.</p>
   <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>The <code>etag</code> field <strong>may</strong> be either <a href="/203#required">required</a> or <a href="/203#optional">optional</a>. If it is set,
 then the request <strong>must</strong> succeed if and only if the provided etag matches the
 server-computed value, and <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error

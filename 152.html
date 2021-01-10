@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -631,7 +631,6 @@ distinct setup, configuration, and execution:</p>
   <span class="c1">// Additional configuration...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The name of the resource <strong>must</strong> end with the word "Job".<ul>
 <li>The prefix <strong>should</strong> be a valid RPC name, with a verb and a noun.</li>
@@ -656,7 +655,6 @@ immediately:</p>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The RPC's name <strong>must</strong> begin with the word <code>Run</code>. The remainder of the
   RPC name <strong>should</strong> be the singular form of the job resource being run.</li>
@@ -691,7 +689,6 @@ immediately:</p>
     <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>A singular <code>string name</code> field <strong>must</strong> be included.<ul>
 <li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
@@ -721,7 +718,6 @@ define the <code>Get</code>, <code>List</code>, and <code>Delete</code> methods 
   <span class="c1">// error information, etc.</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>In this case, the operation returned by job's <code>Run</code> method <strong>should</strong> refer to
 the child resource.</p>
 <h2 id="changelog">Changelog</h2>
@@ -730,7 +726,6 @@ the child resource.</p>
   reference annotations and request format.</li>
 </ul>
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

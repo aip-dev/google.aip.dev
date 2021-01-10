@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -663,7 +663,6 @@ declarative-friendly style:</p>
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="annotations">Annotations</h3>
 <p>Declarative-friendly resources <strong>must</strong> include a
 <code>map&lt;string, string&gt; annotations</code> field to allow clients to store small amounts
@@ -676,7 +675,6 @@ used by server-side policies, such as IAM conditions. Annotations exist to
 allow client tools to store their own state information without requiring a
 database.</p>
 <!-- prettier-ignore -->
-
 <h3 id="reconciliation">Reconciliation</h3>
 <p>If a resource takes time (more than a few seconds) for updates to be realized,
 the service <strong>should</strong> include a <code>bool reconciling</code> field to disclose that

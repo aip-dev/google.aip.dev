@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -636,7 +636,6 @@ not valuable for users to do so.</p>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The RPC's name <strong>must</strong> begin with the word <code>Delete</code>. The remainder of the
   RPC name <strong>should</strong> be the singular form of the resource's message name.</li>
@@ -677,7 +676,6 @@ send a <code>NOT_FOUND</code> error.</p>
     <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>A <code>name</code> field <strong>must</strong> be included. It <strong>should</strong> be called <code>name</code>.<ul>
 <li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
@@ -707,7 +705,6 @@ operation instead:</p>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The response type <strong>must</strong> be set to the appropriate return type if the RPC
   was not long-running: <code>google.protobuf.Empty</code> for most Delete RPCs, or the
@@ -739,7 +736,6 @@ explicitly opt in to a cascading delete.</p>
   <span class="kt">bool</span> <span class="na">force</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>The API <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error if the <code>force</code> field
 is <code>false</code> (or unset) and child resources are present.</p>
 <h3 id="protected-delete">Protected delete</h3>
@@ -760,7 +756,6 @@ the delete request <strong>may</strong> accept the etag (as either required or o
   <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If the etag is provided and does not match the server-computed etag, the
 request <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error code.</p>
 <p><strong>Note:</strong> Declarative-friendly resources (<a href="/128">AIP-128</a>) <strong>must</strong> provide the <code>etag</code>
@@ -786,7 +781,6 @@ which case the request is a no-op):</p>
   <span class="kt">bool</span> <span class="na">allow_missing</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>More specifically, the <code>allow_missing</code> flag triggers the following behavior:</p>
 <ul>
 <li>If the method call is on a resource that does not exist, the request is a

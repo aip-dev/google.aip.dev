@@ -100,7 +100,7 @@ comparable
 
 # Member expressions are either value or DOT qualified field references.
 #
-# Example: expr.type_map.1.type
+# Example: `expr.type_map.1.type`
 member
     : value {DOT field}
     ;
@@ -112,8 +112,8 @@ member
 # `arguments` function must be provided by the host service.
 #
 # Examples:
-# * regex(m.key, '^.*prod.*$')
-# * math.mem('30mb')
+# * `regex(m.key, '^.*prod.*$')`
+# * `math.mem('30mb')`
 #
 # Antipattern: simple and qualified function names may include keywords:
 # NOT, AND, OR. It is not recommended that any of these names be used

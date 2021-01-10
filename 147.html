@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -630,7 +630,6 @@ resource implies storage of the sensitive data. For example:</p>
     <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">INPUT_ONLY</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If the sensitive information is <em>optional</em> within the containing resource, an
 <a href="/203#output-only">output-only</a> boolean field with a postfix of <code>_set</code> <strong>should</strong> be used to
 indicate whether or not the sensitive information is present. For example:</p>
@@ -647,7 +646,6 @@ indicate whether or not the sensitive information is present. For example:</p>
     <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If it is important to be able to identify the sensitive information without
 allowing it to be read back entirely, a field of the same type with an
 <code>obfuscated_</code> prefix <strong>may</strong> be used instead of the boolean <code>_set</code> field to
@@ -664,9 +662,7 @@ nature of the obfuscation is outside the scope of this AIP. For example:</p>
     <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

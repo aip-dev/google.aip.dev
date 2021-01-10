@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -345,13 +345,12 @@ provider command"</strong> specified in a well-known gcloud metadata file of the
 following format:</p>
 <div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span>
-   <span class="s2">&quot;min_cloud_sdk_version&quot;</span><span class="p">:</span> <span class="s2">&quot;240.0.0&quot;</span>
-   <span class="s2">&quot;has_client_cert&quot;</span><span class="p">:</span> <span class="kc">true</span>
-   <span class="s2">&quot;endpoint_verification_error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-   <span class="s2">&quot;cert_provider_command&quot;</span><span class="p">:</span> <span class="s2">&quot;[absolute_path_to_provider_command] --fetch_client_cert&quot;</span>
+   <span class="nt">&quot;min_cloud_sdk_version&quot;</span><span class="p">:</span> <span class="nt">&quot;240.0.0&quot;</span>
+   <span class="nt">&quot;has_client_cert&quot;</span><span class="p">:</span> <span class="kc">true</span>
+   <span class="nt">&quot;endpoint_verification_error&quot;</span><span class="p">:</span> <span class="nt">&quot;&quot;</span>
+   <span class="nt">&quot;cert_provider_command&quot;</span><span class="p">:</span> <span class="s2">&quot;[absolute_path_to_provider_command] --fetch_client_cert&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>For Linux and macOS platforms, the above metadata file is located at
 <strong>"~/.secureConnect/context_aware_metadata.json"</strong>.</p>
 <p>The cert provider command will print the certificate to stdout, which will be in
@@ -384,7 +383,6 @@ explicitly set this environment variable to "true". In the future, the default
 value will be "true' to allow a more secure connection to be established
 whenever possible.</p>
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

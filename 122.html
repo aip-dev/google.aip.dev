@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -695,11 +695,9 @@ collection's name <strong>may</strong> omit the prefix. For example, given a col
 <code>UserEvent</code> resources that would normally be nested underneath <code>users</code>:</p>
 <div class="highlight language-None"><pre><span></span><code>users/vhugo1802/userEvents/birthday-dinner-226
 </code></pre></div>
-
 <p>An API <strong>should</strong> use the less-redundant form:</p>
 <div class="highlight language-None"><pre><span></span><code>users/vhugo1802/events/birthday-dinner-226
 </code></pre></div>
-
 <p>In this situation, the <em>message</em> is still called <code>UserEvent</code>; only the resource
 name is shortened.</p>
 <p><strong>Note:</strong> APIs wishing to do this <strong>must</strong> follow this format consistently
@@ -753,7 +751,6 @@ relative resource name:</p>
 <div class="highlight language-None"><pre><span></span><code>//library.googleapis.com/publishers/123/books/les-miserables
 //calendar.googleapis.com/users/vhugo1802
 </code></pre></div>
-
 <p><strong>Note:</strong> The full resource name <strong>should not</strong> be used for cross-API
 references where the owning API is clear; it is only used if a field refers to
 resources in multiple APIs where ambiguity is possible.</p>
@@ -764,7 +761,6 @@ URIs we use to access a resource. The latter adds two components: the protocol
 <div class="highlight language-None"><pre><span></span><code>https://library.googleapis.com/v1/publishers/123/books/les-miserables
 https://calendar.googleapis.com/v3/users/vhugo1802
 </code></pre></div>
-
 <p>The version is not included in the full resource name because the full resource
 name is expected to persist from version to version. Even though the API
 surface may change between major versions, multiple major versions of the same
@@ -792,7 +788,6 @@ annotation declaring the type (see <a href="/123">AIP-123</a> for more on this).
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>When defining a method that retrieves or acts on an already-existing resource
 (such as <code>GetBook</code> or <code>ArchiveBook</code>), the first field of the request message
 <strong>should</strong> be the resource name, which <strong>must</strong> be of type <code>string</code> and
@@ -812,7 +807,6 @@ resource type ([AIP-123][]).</p>
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p><strong>Note:</strong> Fields <strong>must not</strong> be called <code>name</code> except for this purpose. For
 other use cases, either use a different term or prepend an adjective (for
 example: <code>display_name</code>).</p>
@@ -834,7 +828,6 @@ referencing the parent's resource type ([AIP-123][]).</p>
   <span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If there is more than one possible parent type, the <code>parent</code> field <strong>should</strong>
 be annotated with the <code>child_type</code> key on <code>google.api.resource_reference</code>
 instead:</p>
@@ -851,7 +844,6 @@ instead:</p>
   <span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p><strong>Note:</strong> Fields <strong>should not</strong> be called <code>parent</code> except for this purpose. For
 other use cases, use a synonymous term if possible.</p>
 <h3 id="fields-representing-another-resource">Fields representing another resource</h3>
@@ -887,7 +879,6 @@ equivalent to the corresponding message's name in snake case.</p>
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p><strong>Note:</strong> When referring to other resources in this way, we use the resource
 name as the value, not just the ID component. Services <strong>should</strong> use the
 resource name to reference resources when possible. If using the ID component

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -326,7 +326,6 @@ the auth library can request the following URL to get an access token associated
 with instance:</p>
 <div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
 </code></pre></div>
-
 <p>In response, the auth library will usually receive a token in the following JSON
 format:</p>
 <div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
@@ -335,7 +334,6 @@ format:</p>
       <span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span>
  <span class="p">}</span>
 </code></pre></div>
-
 <h4>Scopes</h4>
 <p>Access tokens obtained from the metadata server contain the scopes specified at instance creation.
 For example, if an instance is granted only the
@@ -346,7 +344,6 @@ On Cloud Run and Workload Identity on Google Kubernetes Engine, clients can requ
 different set of scopes to the metadata server using the <code>scopes</code> url parameter, e.g.:</p>
 <div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token?scopes=comma-separated-list-of-scopes
 </code></pre></div>
-
 <p>The auth library <strong>should</strong> allow the caller to optionally specify a list of custom scopes,
 and add the <code>scopes</code> parameter to the request when needed.
 Depending on the runtime environment, the request for custom scopes will be transparently
@@ -364,12 +361,10 @@ token in the App Engine Standard 1.0 runtime.</p>
 <span class="nx">token</span><span class="p">,</span> <span class="nx">exp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">appengine</span><span class="p">.</span><span class="nx">AccessToken</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">scopes</span><span class="o">...</span><span class="p">)</span>
 <span class="o">...</span>
 </code></pre></div>
-
 <h3 id="token-expiration">Token Expiration</h3>
 <p>The access tokens expire after a short period of time. The auth library <strong>must</strong>
 get a new token if the existing token expires.</p>
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the

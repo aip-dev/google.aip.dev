@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=deac3f24">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=deac3f24">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=deac3f24"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -340,7 +340,6 @@ annotation:</p>
   <span class="c1">// And so on...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>The <code>type</code> field provides the <a href="/123">unified resource type</a> name.<ul>
 <li>Client libraries <strong>should</strong> name their helper component based on this
@@ -392,7 +391,6 @@ once:</p>
   <span class="c1">// And so on...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>If necessary, client libraries <strong>may</strong> create a separate helper component for
 each pattern, and <strong>may</strong> provide a rollup component.</p>
 <h3 id="resources-without-messages">Resources without messages</h3>
@@ -407,7 +405,6 @@ does not define a database message.)</p>
   <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;projects/{project}/databases/{database}&quot;</span>
 <span class="p">};</span>
 </code></pre></div>
-
 <p>Client library generators implementing this feature <strong>must</strong> generate the same
 utility components that would be generated when encountering a
 <a href="#resource-messages">resource message</a>.</p>
@@ -427,7 +424,6 @@ recognize these fields when they are annotated with the
   <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>The resource reference references the <a href="/123">unified resource type</a> name.</p>
 <p>Some methods also refer to the <em>parent</em> of a type, and in situations where
 there are multiple parents, it is repetitive and error-prone to refer to each
@@ -440,7 +436,6 @@ rather than <code>type</code>:</p>
   <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>In this situation, client library generators implementing this feature <strong>must</strong>
 derive the set of parent resources from the child type. Client library
 generators <strong>must</strong> fail with an error if both <code>type</code> and <code>child_type</code> are
@@ -454,7 +449,6 @@ use the special value <code>*</code> in their resource reference.</p>
   <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>In this situation, client library generators implementing this feature <strong>may</strong>
 provide a generic utility class or function to address that resource name.</p>
 <h3 id="complex-resource-id-path-segments">Complex resource ID path segments</h3>
@@ -474,7 +468,6 @@ multiple pattern variables separated by a variable separator:</p>
   <span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>This is only used when the resource ID is naturally in multiple parts and it is
 useful for the user to be able to manipulate the separate ID parts.</p>
 <ul>
@@ -515,7 +508,6 @@ deprecated, and must not be used.</p>
 <li><strong>2019-09-16</strong>: Added guidance for resources without messages.</li>
 </ul>
 <!-- prettier-ignore-start -->
-
 <!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
