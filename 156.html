@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fcd3d1d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fcd3d1d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=25f2d771">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=25f2d771">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4fcd3d1d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=25f2d771"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -566,6 +566,7 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -610,21 +611,21 @@
   <h1>Singleton resources</h1>
 <p>APIs sometimes need to represent a resource where exactly one instance of the
 resource always exists within any given parent. A common use case for this is
-for a settings object.</p>
+for a config object.</p>
 <h2 id="guidance">Guidance</h2>
 <p>An API <strong>may</strong> define <em>singleton resources</em>. A singleton resource <strong>must</strong>
 always exist by virtue of the existence of its parent, with one and exactly one
 per parent.</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetSettings</span><span class="p">(</span><span class="n">GetSettingsRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Settings</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetConfig</span><span class="p">(</span><span class="n">GetConfigRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Config</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">get</span><span class="o">:</span> <span class="s">&quot;/v1/{name=users/*/settings}&quot;</span>
+    <span class="n">get</span><span class="o">:</span> <span class="s">&quot;/v1/{name=users/*/config}&quot;</span>
   <span class="p">};</span>
 <span class="p">}</span>
 
-<span class="k">rpc</span> <span class="n">UpdateSettings</span><span class="p">(</span><span class="n">UpdateSettingsRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Settings</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">rpc</span> <span class="n">UpdateConfig</span><span class="p">(</span><span class="n">UpdateConfigRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Config</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{settings.name=users/*/settings}&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;settings&quot;</span>
+    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{config.name=users/*/config}&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;config&quot;</span>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -632,7 +633,7 @@ per parent.</p>
 <li>Singleton resources <strong>must not</strong> have a user-provided or system-generated ID;
   their <a href="/122">resource name</a> includes the name of their parent followed by
   one static-segment.<ul>
-<li>Example: <code>users/1234/settings</code></li>
+<li>Example: <code>users/1234/config</code></li>
 </ul>
 </li>
 <li>Singleton resources <strong>must not</strong> define the <a href="/133"><code>Create</code></a>,
@@ -641,6 +642,14 @@ per parent.</p>
 <li>Singleton resource <strong>should</strong> define the <a href="/131"><code>Get</code></a> and
   <a href="/134"><code>Update</code></a> methods, and <strong>may</strong> define custom methods as
   appropriate.</li>
+<li>Singleton resources are always singular.<ul>
+<li>Example: 'users/1234/thing'</li>
+</ul>
+</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2021-01-14:</strong> Changed example from <code>settings</code> to <code>config</code> for clarity.</li>
 </ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
