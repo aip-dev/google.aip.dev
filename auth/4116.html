@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-2716: Standard terms in names</title>
+    <title>AIP-4116: Identity Tokens</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -190,39 +190,45 @@
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
     <li class="nav-item">
-      <a href="/2712">
-        <span class="aip-number">2712</span>
-        API completeness
+      <a href="/4110">
+        <span class="aip-number">4110</span>
+        Application Default Credentials
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2713">
-        <span class="aip-number">2713</span>
-        One team owns each type
+      <a href="/4111">
+        <span class="aip-number">4111</span>
+        Self-signed JWT
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2715">
-        <span class="aip-number">2715</span>
-        Documenting authorization changes
+      <a href="/4112">
+        <span class="aip-number">4112</span>
+        Service Account Keys
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4113">
+        <span class="aip-number">4113</span>
+        gcloud CLI Integration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4115">
+        <span class="aip-number">4115</span>
+        Default Credentials From Google Virtual Machines
       </a>
     </li>
     <li class="nav-item nav-item-active">
-      <a href="/2716">
-        <span class="aip-number">2716</span>
-        Standard terms in names
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2717">
-        <span class="aip-number">2717</span>
-        Patterns for generic fields
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/2718">
-        <span class="aip-number">2718</span>
-        References to objects in other APIs
+      <a href="/4116">
+        <span class="aip-number">4116</span>
+        Identity Tokens
       </a>
     </li>
     </ul>
@@ -231,19 +237,23 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Standard terms in names</th></tr>
-    <tr><td>Number</td><td>2716</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/apps/2716">google.aip.dev/apps/2716</a></td></tr>
-    <tr><td>Scope</td><td>GSuite</td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2018-09-10</td></tr>
-    <tr><td>Updated</td><td>2018-09-10</td></tr>
+    <tr><th colspan="2">Identity Tokens</th></tr>
+    <tr><td>Number</td><td>4116</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4116">google.aip.dev/auth/4116</a></td></tr>
+    <tr><td>Scope</td><td>Auth</td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2021-01-06</td></tr>
+    <tr><td>Updated</td><td>2021-01-06</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a></li>
-<li><a href="#fallback-to-schemaorg">Fallback to schema.org</a></li>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#id-tokens-obtained-by-application-default-credentials">ID tokens obtained by Application Default Credentials</a></li>
+<li><a href="#expected-behavior-for-fetching-id-tokens">Expected Behavior for Fetching ID Tokens</a></li>
+<li><a href="#expected-behavior-for-verifying-id-tokens">Expected Behavior for Verifying ID Tokens</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -252,8 +262,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/apps/2716.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/apps/2716.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/auth/4116.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/auth/4116.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -271,56 +281,67 @@
       </li>
       
       <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/apps">
-          GSuite AIPs
+        <a class="glue-breadcrumbs__link" href="/auth">
+          Auth AIPs
         </a>
       </li>
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Standard terms in names
+        Identity Tokens
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-2716</h4>
-  <h1>Standard terms in names</h1>
-<p>APIs have a lot of identifier names (fields, constants, methods, ...), that
-often contain terms for things, such as <code>url</code> (<code>getUrl()</code>, <code>doc_url</code>, ...) or
-<code>id</code> (<code>lookupId()</code>, <code>student_id</code>).</p>
-<p>It is useful to have a standard set of terms for common concepts in these
-various names. This makes it easier for developers to understand new APIs based
-on previous experience. It is not (for example) that <code>id</code> is a better term than
-<code>uid</code> or other options, but it also is not worse, and having different choices
-in different APIs is confusing and unnecessary.</p>
-<p>This AIP defines terms to use for such common concepts. These terms should be
-used for the same concept in identifier names.</p>
-<p>This is supplemental to the API design guide, which lists <a href="https://cloud.google.com/apis/design/standard_fields">standard field
-names</a> and has other rules about identifiers.</p>
-<h2 id="guidance">Guidance</h2>
-<p>Absent other, more specific guidance, APIs <strong>should</strong> use the following
-standard terms (as opposed to alternatives) as parts of identifier names to
-refer to common concepts, and <strong>must not</strong> use them to refer to other things:</p>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-4116</h4>
+  <h1>Identity Tokens</h1>
+<p>Identity Tokens (or ID Tokens) are JSON Web Tokens (JWT) with additional claims pertaining to the identity of the client or end-user (such as "email").  Which additional claims fields are included in the ID token are dependent on the ID
+token provider.</p>
+<p>The <strong>fetching</strong> of ID tokens is used to:</p>
 <ul>
-<li><code>uri</code> for URIs/URLs (as opposed to <code>url</code>, <code>link</code>, <code>href</code>, etc.)</li>
-<li><code>id</code> for a unique identifier, either globally unique or within a specified
-  context</li>
-<li><code>index</code> to indicate an ordinal number of an item within a collection, such as
-  <code>message_index</code> on a message to say what place it occupies in a stream of
-  message (unless there is a more specific name to use, such as if the number
-  also is used as an ID, use <code>id</code>).</li>
+<li>request a <a href="https://cloud.google.com/run/docs/authenticating/service-to-service">protected Cloud Run service</a>, which requires a valid ID token in the <code>Authentication</code> header.</li>
+<li>request an <a href="https://cloud.google.com/iap/docs/signed-headers-howto#securing_iap_headers">IAP-protected resource</a>, which requires a valid ID token in the <code>Authentication</code> header.</li>
 </ul>
-<p>APIs <strong>should</strong> avoid use of the term <code>resource</code> in fields that have resource
-names, as this is redundant.</p>
-<p>Any more specific guidance overrides these rules. For example, the <a href="/122">AIP-122</a>
-rule to use <code>name</code> for the resource name overrides using the term <code>id</code> for
-unique identifiers.</p>
-<h2 id="fallback-to-schemaorg">Fallback to schema.org</h2>
-<p>If you are looking for standard terms for things, <a href="https://schema.org/">schema.org</a> is a good
-place to look for terms that have been fairly widely vetted as being normal,
-customary, and/or clear. You <strong>should</strong> consult it when choosing identifier
-names when other strategies fail.</p>
+<p>The <strong>validation</strong> of ID tokens should be done by:</p>
+<ul>
+<li>services receiving an <a href="https://cloud.google.com/pubsub/docs/push#setting_up_for_push_authentication">authenticated PubSub push message</a> sent outside of Google Cloud.</li>
+</ul>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
+language-neutral way, it uses generic terminology which may be imprecise or
+inappropriate in certain languages or environments.</p>
+<h2 id="guidance">Guidance</h2>
+<p>This section describes the general guidance of ID tokens as a means of
+authentication.</p>
+<h3 id="id-tokens-obtained-by-application-default-credentials">ID tokens obtained by Application Default Credentials</h3>
+<p>When a target audience is provided by the developer, <a href="https://google.aip.dev/auth/4110">ADC</a> <strong>should</strong> fetch
+an ID token with the credentials provided. For example, if service account keys
+are provided, ADC will request an ID token from the OAuth token endpoint. If
+<a href="https://google.aip.dev/auth/4115">virtual machine credentials</a> are provided, ADC will request an ID token from
+the virtual machine server.</p>
+<h3 id="expected-behavior-for-fetching-id-tokens">Expected Behavior for Fetching ID Tokens</h3>
+<p>To support fetching ID Tokens, the auth libraries <strong>must</strong> follow the steps
+below:</p>
+<p>1. Accept a target audience parameter when Application Default Credentials
+are requested. If a target audience and scope are both provided to the auth library, an exception <strong>must</strong> be thrown.</p>
+<p>2. Virtual machine credentials return the ID token retrieved from the metadata
+server's <code>instance/service-accounts/default/identity</code> endpoint, setting the
+<code>audience</code> querystring parameter to the provided target audience.</p>
+<p>3. Service account Keys use the <a href="https://tools.ietf.org/html/rfc7523">JWT Bearer</a> grant type, and set the
+<code>target_audience</code> claim to the provided target audience. This will return a JSON
+object containing an <code>id_token</code> key.</p>
+<p>User Identity flows may be used to issue ID tokens, but are not required to.</p>
+<h3 id="expected-behavior-for-verifying-id-tokens">Expected Behavior for Verifying ID Tokens</h3>
+<p>To support verifying ID Tokens, the auth libraries <strong>must</strong> provide a method to
+validate a JWT token which can do the following:</p>
+<p>1. Validate a JWT with an ES256 signature.
+2. Validate JWT <code>aud</code> claim against a user-provided audience.
+3. Validate JWT <code>exp</code> claim against the current timestamp.</p>
+<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f27f75a4">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f27f75a4">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f302898a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f302898a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f27f75a4"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f302898a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=f27f75a4"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=f27f75a4"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=f27f75a4"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=f302898a"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=f302898a"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=f302898a"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -228,6 +228,12 @@
         Default Credentials From Google Virtual Machines
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/4116">
+        <span class="aip-number">4116</span>
+        Identity Tokens
+      </a>
+    </li>
     </ul>
 </nav>
 <section id="jump-content">
@@ -412,19 +418,27 @@ implement these concepts in order to be considered complete.</p>
 </ol>
 </li>
 <li><strong>Check Google Virtual Machine Credentials</strong><ol>
-<li>If true, use the <a href="./4115">virtual machine flow</a> to get an access toke associated with the current environment <em>[END]</em></li>
+<li>If true, use the <a href="./4115">virtual machine flow</a> to fetch an auth token associated with the current environment<ol>
+<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a> <em>[END]</em></li>
+<li>Otherwise, get an access token <em>[END]</em></li>
+</ol>
+</li>
 <li>If false, go to step (2.3)</li>
 </ol>
 </li>
 <li><strong>Determine auth flows</strong><ol>
 <li>If the credential is gcloud credential go to step (5.3)</li>
-<li>If scope is provided by the developer go to step (5.1)</li>
+<li>If target audience or scope is provided by the developer go to step (5.1)</li>
 <li>Otherwise, go to step (5.2)</li>
 </ol>
 </li>
 <li><strong>Execute auth flows</strong><ol>
-<li>Use 2LO flow to exchange for an access token<ol>
+<li>Use 2LO flow to exchange for an auth token<ol>
+<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a> <em>[END]</em></li>
+<li>Otherwise, get an access token <em>[END]</em><ol>
 <li>If client certificate is presented, the exchanged token will be a certificate bind token. <em>[END]</em></li>
+</ol>
+</li>
 </ol>
 </li>
 <li>Use self-signed JWT flow to create an access token locally.<ol>
@@ -440,6 +454,7 @@ implement these concepts in order to be considered complete.</p>
 <ul>
 <li><strong>2019-08-13</strong>: Add a link to virtual machine flow (AIP 4115).</li>
 <li><strong>2019-08-18</strong>: Remove STS support from ADC.</li>
+<li><strong>2021-01-20</strong>: Add identity token flow (AIP 4116).</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
