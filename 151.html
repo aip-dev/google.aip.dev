@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b8e3a2b5">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b8e3a2b5">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a5215fd5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a5215fd5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b8e3a2b5"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a5215fd5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -683,10 +683,14 @@ but is not obligated to do so:</p>
 <ul>
 <li>Resources that accept multiple parallel operations <strong>may</strong> place them in a
   queue rather than work on the operations simultaneously.</li>
-<li>Resource that does not permit multiple operations in parallel (denying any
+<li>Resources that do not permit multiple operations in parallel (denying any
   new operation until the one that is in progress finishes) <strong>must</strong> return
   <code>ABORTED</code> if a user attempts a parallel operation, and include an error
   message explaining the situation.</li>
+<li>Resources with <a href="/128">declarative-friendly APIs</a> <strong>may</strong> allow subsequent
+  updates to preempt existing operations. In this case, the latest update
+  begins processing and previous operations are marked as <code>ABORTED</code> with an
+  error message explaining the situation.</li>
 </ul>
 <h3 id="expiration">Expiration</h3>
 <p>APIs <strong>may</strong> allow their operation resources to expire after sufficient time
