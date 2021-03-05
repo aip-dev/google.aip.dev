@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=74b1cb0c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=74b1cb0c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0b0b0a1a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0b0b0a1a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=74b1cb0c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0b0b0a1a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -835,9 +835,9 @@ server-computed value representing the content of the resource.</p>
 </code></pre></div>
 <p>The <code>etag</code> field <strong>may</strong> be either <a href="/203#required">required</a> or <a href="/203#optional">optional</a>. If it is set,
 then the request <strong>must</strong> succeed if and only if the provided etag matches the
-server-computed value, and <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error
-otherwise. The <code>update_mask</code> field in the request does not affect the behavior
-of the <code>etag</code> field, as it is not a field <em>being</em> updated.</p>
+server-computed value, and <strong>must</strong> fail with an <code>ABORTED</code> error otherwise. The
+<code>update_mask</code> field in the request does not affect the behavior of the <code>etag</code>
+field, as it is not a field <em>being</em> updated.</p>
 <h3 id="expensive-fields">Expensive fields</h3>
 <p>APIs sometimes encounter situations where some fields on a resource are
 expensive or impossible to reliably return.</p>
@@ -860,6 +860,8 @@ whether or not it exists, the service <strong>must</strong> error with <code>PER
 exists.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2021-03-05</strong>: Changed the etag error from <code>FAILED_PRECONDITION</code> (which
+  becomes HTTP 400) to <code>ABORTED</code> (409).</li>
 <li><strong>2020-10-06</strong>: Added guidance for declarative-friendly resources.</li>
 <li><strong>2020-10-06</strong>: Added guidance for <code>allow_missing</code>.</li>
 <li><strong>2020-08-14</strong>: Added error guidance for permission denied cases.</li>

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=74b1cb0c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=74b1cb0c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0b0b0a1a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0b0b0a1a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=74b1cb0c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0b0b0a1a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -651,7 +651,9 @@ example, a <code>proxy_settings</code> field might be as helpful as
 These names are mapped to an appropriate naming convention in JSON and in
 generated code.</p>
 <p>Additionally, each word in the field <strong>must not</strong> begin with a number, because
-it creates ambiguity when converting between snake case and camel case.</p>
+it creates ambiguity when converting between snake case and camel case.
+Similarly, fields <strong>must not</strong> contain leading, trailing, or adjacent
+underscores.</p>
 <h3 id="consistency">Consistency</h3>
 <p>APIs <strong>should</strong> endeavor to use the same name for the same concept and
 different names for different concepts wherever possible. This includes names
@@ -724,6 +726,8 @@ field <strong>should not</strong> have a uniqueness requirement.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2021-03-05</strong>: Added prohibition on leading, trailing, or adjacent
+  underscores.</li>
 <li><strong>2020-06-10</strong>: Added prohibition on starting any word with a number.</li>
 <li><strong>2020-05-29</strong>: Added guidance around URIs.</li>
 <li><strong>2020-03-24</strong>: Added guidance around conflicting field and message names.</li>
