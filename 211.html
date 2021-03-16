@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-155: Request identification</title>
+    <title>AIP-211: Authorization checks</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -381,7 +381,7 @@
         Resource freshness validation
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/155">
         <span class="aip-number">155</span>
         Request identification
@@ -501,7 +501,7 @@
         Unicode
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/211">
         <span class="aip-number">211</span>
         Authorization checks
@@ -567,22 +567,20 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Request identification</th></tr>
-    <tr><td>Number</td><td>155</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/155">google.aip.dev/155</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-05-06</td></tr>
-    <tr><td>Updated</td><td>2019-05-06</td></tr>
+    <tr><th colspan="2">Authorization checks</th></tr>
+    <tr><td>Number</td><td>211</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/211">google.aip.dev/211</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2021-02-24</td></tr>
+    <tr><td>Updated</td><td>2021-02-24</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#stale-success-responses">Stale success responses</a></li>
+<li><a href="#multiple-operations">Multiple operations</a></li>
 </ul>
 </li>
-<li><a href="#further-reading">Further reading</a></li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -591,8 +589,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0155.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0155.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0211.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0211.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -617,79 +615,62 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Request identification
+        Authorization checks
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-155</h4>
-  <h1>Request identification</h1>
-<p>It is sometimes useful for an API to have a unique, customer-provided
-identifier for particular requests. This can be useful for several purposes,
-such as de-duplicating requests from parallel processes, ensuring the safety of
-retries, or auditing.</p>
-<p>The most important purpose for request IDs is to provide idempotency
-guarantees: allowing the same request to be issued more than once without
-subsequent calls having any effect. In the event of a network failure, the
-client can retry the request, and the server can detect duplication and ensure
-that the request is only processed once.</p>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-211</h4>
+  <h1>Authorization checks</h1>
+<p>The majority of operations, whether reads or writes, require authorization:
+permission to do the thing the user is asking to do. Additionally, it is
+important to be careful how much information is provided to <em>unauthorized</em>
+users, since leaking information can be a security concern.</p>
 <h2 id="guidance">Guidance</h2>
-<p>APIs <strong>may</strong> add a <code>string request_id</code> parameter to request messages (including
-those of standard methods) in order to uniquely identify particular requests.</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">CreateBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The parent resource where this book will be created.</span>
-  <span class="c1">// Format: publishers/{publisher}</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-
-  <span class="c1">// The book to create.</span>
-  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
-
-  <span class="c1">// A unique identifier for this request. Restricted to 36 ASCII characters.</span>
-  <span class="c1">// A random UUID is recommended.</span>
-  <span class="c1">// This request is only idempotent if a `request_id` is provided.</span>
-  <span class="kt">string</span> <span class="na">request_id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Services <strong>must</strong> check authorization before validating any request, to ensure
+both a secure API surface and a consistent user experience. An operation
+<strong>may</strong> require multiple permissions or preconditions in order to grant
+authorization.</p>
+<p>If a request can not pass the authorization check for any reason, the service
+<strong>must</strong> error with <code>PERMISSION_DENIED</code>, and the corresponding error message
+<strong>should</strong> look like: "Permission <code>{p}</code> denied on resource <code>{r}</code> (or it might
+not exist)." This avoids leaking resource existence.</p>
+<p><strong>Note:</strong> This guidance conflicts with the guidance in the HTTP specification,
+which argues for the use of 404 in cases where the user lacks permission to
+know whether or not a resource exists. This variance is because of real-world
+challenges: the practice of "getting <code>NOT_FOUND</code> until you have enough
+permission to get <code>PERMISSION_DENIED</code>" is counter-intuitive and increases the
+difficulty of troubleshooting. Additionally, the guidance here is more
+consistent with most other real-world authorization systems.</p>
+<p>If it is not possible to determine authorization for a resource because the
+resource does not exist, the service <strong>should</strong> check authorization to read
+children on the parent resource, and return <code>NOT_FOUND</code> if the authorization
+check passes.</p>
+<h3 id="multiple-operations">Multiple operations</h3>
+<p>A service could encounter a situation where it has two different operations
+with two different permissions, either of which would reveal the existence of a
+resource if called, but a user only has permission to call one of them.</p>
+<p>In this situation, the service <strong>should</strong> still only check for authorization
+applicable to the operation being called, and <strong>should not</strong> try to "help out"
+by checking for related authorization that would provide permission to reveal
+existence, because such algorithms are complicated to implement correctly and
+prone to accidental leaks.</p>
+<p>For example, posit a scenario where:</p>
 <ul>
-<li>Providing a request ID <strong>must</strong> guarantee idempotency.<ul>
-<li>If a duplicate request is detected, the server <strong>should</strong> return the
-  response for the previously successful request, because the client most
-  likely did not receive the previous response.</li>
-<li>APIs <strong>may</strong> choose any reasonable timeframe for honoring request IDs.</li>
+<li>A resource exists within a given collection that a user is unable to read.</li>
+<li>The user <em>does</em> have the ability to create other resources, and the
+  collection uses user-specified IDs (meaning that a failure because of a
+  duplicate ID would reveal existance).</li>
 </ul>
-</li>
-<li>The <code>request_id</code> field <strong>must</strong> be provided on the request message to which
-  it applies (and it <strong>must not</strong> be a field on resources themselves).</li>
-<li>Request IDs <strong>should</strong> be optional.</li>
-<li>Request IDs <strong>should</strong> be able to be UUIDs, and <strong>may</strong> allow UUIDs to be the
-  only valid format. The format restrictions for request IDs <strong>must</strong> be
-  documented.</li>
-</ul>
-<h3 id="stale-success-responses">Stale success responses</h3>
-<p>In some unusual situations, it may not be possible to return an identical
-success response. For example, a duplicate request to create a resource may
-arrive after the resource has not only been created, but subsequently updated;
-because the service has no other need to retain the historical data, it is no
-longer feasible to return an identical success response.</p>
-<p>In this situation, the method <strong>may</strong> return the current state of the resource
-instead. In other words, it is permissible to substitute the historical success
-response with a similar response that reflects more current data.</p>
-<h2 id="further-reading">Further reading</h2>
-<ul>
-<li>For which codes to retry, see <a href="https://aip.dev/194">AIP-194</a>.</li>
-<li>For how to retry errors in client libraries, see
-  <a href="https://aip.dev/4221">AIP-4221</a>.</li>
-</ul>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
-  present a better example of resource ownership.</li>
-</ul>
+<p>In this situation, the get or create methods <strong>should</strong> still only check
+<em>their</em> permissions when determining what error to return, and not one
+another's.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
