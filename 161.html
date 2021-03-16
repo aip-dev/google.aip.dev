@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-142: Time and duration</title>
+    <title>AIP-161: Field masks</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -309,7 +309,7 @@
         Quantities
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/142">
         <span class="aip-number">142</span>
         Time and duration
@@ -417,7 +417,7 @@
         Filtering
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/161">
         <span class="aip-number">161</span>
         Field masks
@@ -573,23 +573,23 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Time and duration</th></tr>
-    <tr><td>Number</td><td>142</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/142">google.aip.dev/142</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-07-16</td></tr>
-    <tr><td>Updated</td><td>2019-07-16</td></tr>
+    <tr><th colspan="2">Field masks</th></tr>
+    <tr><td>Number</td><td>161</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/161">google.aip.dev/161</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2021-03-01</td></tr>
+    <tr><td>Updated</td><td>2021-03-01</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#timestamps">Timestamps</a></li>
-<li><a href="#durations">Durations</a></li>
-<li><a href="#relative-time-segments">Relative time segments</a></li>
-<li><a href="#civil-dates-and-times">Civil dates and times</a></li>
-<li><a href="#civil-timestamps">Civil timestamps</a></li>
-<li><a href="#compatibility">Compatibility</a></li>
+<li><a href="#read-write-consistency">Read-write consistency</a></li>
+<li><a href="#specifying-specific-fields">Specifying specific fields</a></li>
+<li><a href="#map-fields">Map fields</a></li>
+<li><a href="#wildcards">Wildcards</a></li>
+<li><a href="#output-only-fields">Output only fields</a></li>
+<li><a href="#invalid-field-mask-entries">Invalid field mask entries</a></li>
 </ul>
 </li>
 </ul>
@@ -600,8 +600,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0142.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0142.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0161.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0161.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -626,113 +626,127 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Time and duration
+        Field masks
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-142</h4>
-  <h1>Time and duration</h1>
-<p>Many services need to represent the concepts surrounding time. Representing
-time can be challenging due to the intricacies of calendars and time zones, as
-well as the fact that common exchange formats (such as JSON) lack a native
-concept of time.</p>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-161</h4>
+  <h1>Field masks</h1>
+<p>Often, when updating resources (using an update method as defined in <a href="/134">AIP-134</a> or
+something reasonably similar), it is desirable to specify exactly which fields
+are being updated, so that the service can ignore the rest, even if the user
+sends new values.</p>
+<p>It is tempting to define a mask format to handle the precise needs for each
+API. However, masking requirements evolve, and therefore it is prudent to use a
+structured syntax. This allows updates to be able to be made transparently,
+without waiting for UI or client updates.</p>
 <h2 id="guidance">Guidance</h2>
-<p>Fields representing time <strong>should</strong> use the common, generally used components
-(such as <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto"><code>google.protobuf.Timestamp</code></a> or
-<a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/date.proto"><code>google.type.Date</code></a>) for representing time or duration types. These
-types are <a href="/213">common components</a>, and using them consistently allows
-infrastructure and tooling to provide a better experience when interacting with
-time values.</p>
-<h3 id="timestamps">Timestamps</h3>
-<p>Fields that represent an absolute point in time (independent of any time zone
-or calendar) <strong>should</strong> use the <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto"><code>google.protobuf.Timestamp</code></a> type,
-(which uses UNIX timestamps under the hood and hold nanosecond precision).</p>
-<p>These fields <strong>should</strong> have names ending in <code>_time</code>, such as <code>create_time</code> or
-<code>update_time</code>. For repeated fields, the names <strong>should</strong> end in <code>_times</code>
-instead.</p>
-<p>Many timestamp fields refer to an activity (for example, <code>create_time</code> refers
-to when the applicable resource was created). For these, the field <strong>should</strong>
-be named with the <code>{imperative}_time</code> form. For example, if a book is being
-published, the field storing the time when this happens would use the
-imperative form of the verb "to publish" ("publish") resulting in a field
-called <code>publish_time</code>. Fields <strong>should not</strong> be named using the past tense
-(such as <code>published_time</code>, <code>created_time</code> or <code>last_updated_time</code>).</p>
-<h3 id="durations">Durations</h3>
-<p>Fields that represent a span between two points in time (independent of any
-time zone or calendar) <strong>should</strong> use the
-<a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto"><code>google.protobuf.Duration</code></a> type.</p>
-<p>To illustrate the distinction between timestamps and durations, consider a
-flight record:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a (very incomplete) flight log.</span>
-<span class="kd">message</span> <span class="nc">FlightRecord</span> <span class="p">{</span>
-  <span class="c1">// The absolute point in time when the plane took off.</span>
-  <span class="n">google.protobuf.Timestamp</span> <span class="na">takeoff_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<p>Update methods (<a href="/134">AIP-134</a>) <strong>must</strong> include an <code>update_mask</code> field, and Get and
+List methods <strong>may</strong> include a <code>read_mask</code> field. These are collectively called
+"field masks", and they use the <code>google.protobuf.FieldMask</code> type.</p>
+<p>Field masks <strong>must</strong> always be relative to the resource:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UpdateBookRequest</span> <span class="p">{</span>
+  <span class="c1">// The book to update.</span>
+  <span class="c1">//</span>
+  <span class="c1">// The book&#39;s `name` field is used to identify the book to be updated.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
 
-  <span class="c1">// The length (duration) of the flight, from takeoff to landing.</span>
-  <span class="n">google.protobuf.Duration</span> <span class="na">flight_duration</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="c1">// The list of fields to be updated.</span>
+  <span class="c1">// Fields are specified relative to the book</span>
+  <span class="c1">// (e.g. `title`, `rating`; *not* `book.title` or `book.rating`).</span>
+  <span class="n">google.protobuf.FieldMask</span> <span class="na">update_mask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Note:</strong> Observant readers may notice that the <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto">timestamp</a> and <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto">duration</a>
-messages have the same structure (<code>int64 seconds</code> and <code>int32 nanos</code>). However,
-the distinction between these is important, because they have different
-semantic meaning. Additionally, tooling is able to base behavior off of which
-message is used. For example, a Python-based tool could convert timestamps to
-<a href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a> objects and durations to <a href="https://docs.python.org/3/library/datetime.html#datetime.timedelta">timedelta</a>
-objects.</p>
-<h3 id="relative-time-segments">Relative time segments</h3>
-<p>In some cases, it may be necessary to represent a time segment inside a stream.
-In these cases, the <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto"><code>google.protobuf.Duration</code></a> type <strong>should</strong> be
-used, and the field name <strong>should</strong> end with <code>_offset</code>. To ensure that the
-meaning is clear, the field <strong>must</strong> have a comment noting the point that the
-offset is relative to.</p>
-<p>To illustrate this, consider a resource representing a segment of an audio
-stream:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">AudioSegment</span> <span class="p">{</span>
-  <span class="c1">// The duration relative to the start of the stream representing the</span>
-  <span class="c1">// beginning of the segment.</span>
-  <span class="n">google.protobuf.Duration</span> <span class="na">start_offset</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<h3 id="read-write-consistency">Read-write consistency</h3>
+<p>Read and write behavior for field masks <strong>must</strong> be self-consistent if a mask
+is present:</p>
+<ul>
+<li>If a user updates a resource with a given mask, and then reads the same
+  resource with the same mask, the exact same data <strong>must</strong> be returned.<ul>
+<li>Exception: <a href="#output-only-fields">Output only fields</a>.</li>
+</ul>
+</li>
+<li>Similarly, reading a resource with a given mask and then updating the
+  resource with the returned data and the same mask <strong>must</strong> be a no-op.</li>
+</ul>
+<p><strong>Note:</strong> This implies that any mask that is valid for either read or write
+<strong>must</strong> be valid for both.</p>
+<h3 id="specifying-specific-fields">Specifying specific fields</h3>
+<p>Field masks <strong>must</strong> permit the specification of specific fields in a defined
+struct, using the <code>.</code> character for traversal.</p>
+<p>Because field masks are always relative to the resource, direct fields on the
+resource require no traversal (examples: <code>title</code>, <code>rating</code>). Traversal is used
+when resources contain messages (example: <code>author.given_name</code>).</p>
+<p><strong>Note:</strong> A user <strong>must</strong> be able to specify either a field as a whole, or one
+of its subfields: <code>author</code> and <code>author.given_name</code> are both valid.</p>
+<h3 id="map-fields">Map fields</h3>
+<p>Field masks <strong>may</strong> permit the specification of specific fields in a map, if
+and only if the map's keys are either strings or integers, using the <code>.</code>
+character for traversal.</p>
+<p>Field masks <strong>should</strong> support string keys that contain characters that are
+problematic for the field mask syntax, using the backtick character.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="c1">// The name of the book.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-  <span class="c1">// The total length of the segment.</span>
-  <span class="n">google.protobuf.Duration</span> <span class="na">segment_duration</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="c1">// Reviews for the back cover. The key is the author of the review,</span>
+  <span class="c1">// and the value is the text of the review.</span>
+  <span class="c1">//</span>
+  <span class="c1">// Valid field masks: reviews, reviews.smith, reviews.`John Smith`</span>
+  <span class="n">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="na">reviews</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="civil-dates-and-times">Civil dates and times</h3>
-<p>Fields that represent a calendar date or wall-clock time <strong>should</strong> use the
-appropriate common components:</p>
-<ul>
-<li>Civil date: <a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/date.proto"><code>google.type.Date</code></a></li>
-<li>Wall-clock time: <a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/timeofday.proto"><code>google.type.TimeOfDay</code></a></li>
-</ul>
-<p>Fields representing civil dates <strong>should</strong> have names ending in <code>_date</code>, while
-fields representing civil times or datetimes <strong>should</strong> have names ending in
-<code>_time</code>.</p>
-<p><strong>Note:</strong> Both the <code>Date</code> and <code>TimeOfDay</code> components are timezone-naïve. Fields
-that require timezone-awareness <strong>should</strong> use <code>DateTime</code> (see below).</p>
-<h3 id="civil-timestamps">Civil timestamps</h3>
-<p>Fields that represent a civil timestamp (date and time, optionally with a time
-zone) <strong>should</strong> use the <a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto"><code>google.type.DateTime</code></a> component, and the
-field name <strong>should</strong> end in <code>_time</code>.</p>
-<h3 id="compatibility">Compatibility</h3>
-<p>Occasionally, APIs are unable to use the common structures for legacy or
-compatibility reasons. For example, an API may conform to a separate
-specification that mandates that timestamps be integers or <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO-8601</a>
-strings.</p>
-<p>In these situations, fields <strong>may</strong> use other types. If possible, the following
-naming conventions apply:</p>
-<ul>
-<li>For integers, include the meaning (examples: <code>time</code>, <code>duration</code>, <code>delay</code>,
-  <code>latency</code>) <strong>and</strong> the unit of measurement (valid values: <code>seconds</code>,
-  <code>millis</code>, <code>micros</code>, <code>nanos</code>) as a final suffix. For example,
-  <code>send_time_millis</code>.</li>
-<li>For strings, include the meaning (examples: <code>time</code>, <code>duration</code>, <code>delay</code>,
-  <code>latency</code>) but no unit suffix.</li>
-</ul>
-<p>In all cases, clearly document the expected format, and the rationale for its
-use.</p>
-<!-- prettier-ignore-start -->
-<!-- prettier-ignore-end -->
+<h3 id="wildcards">Wildcards</h3>
+<p>Field masks <strong>may</strong> permit the use of the <code>*</code> character on a repeated field or
+map to indicate the specification of particular sub-fields in the collection:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="c1">// The name of the book.</span>
+  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The author or authors of the book.</span>
+  <span class="c1">// Valid field masks: authors, authors.*.given_name, authors.*.family_name</span>
+  <span class="c1">// Invalid field masks: authors.0, authors.0.given_name</span>
+  <span class="k">repeated</span> <span class="n">Author</span> <span class="na">authors</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Author</span> <span class="p">{</span>
+  <span class="c1">// The author&#39;s given name.</span>
+  <span class="kt">string</span> <span class="na">given_name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The author&#39;s family name.</span>
+  <span class="kt">string</span> <span class="na">family_name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Note:</strong> Field masks <strong>must not</strong> permit accessing a particular element of a
+repeated field by index, and <strong>must</strong> return an <code>INVALID_ARGUMENT</code> error if
+this is attempted.</p>
+<h3 id="output-only-fields">Output only fields</h3>
+<p>If a user includes an output only field in an update mask indirectly (by using
+a wildcard or specifying an overall message that includes an output-only
+subfield), the service <strong>must</strong> ignore any output only fields provided as
+input, even if they are cleared or modified.</p>
+<p>If a user directly specifies an output only field in an update mask, the
+service <strong>should</strong> ignore the output only fields provided as input, even if
+they are cleared or modified, to permit the same field mask to be used for
+input and output. However, the service <strong>may</strong> choose to error with
+<code>INVALID_ARGUMENT</code> if the field is modified in input.</p>
+<h3 id="invalid-field-mask-entries">Invalid field mask entries</h3>
+<p>When reading data, field masks <strong>should</strong> ignore entries that point to a value
+that can not exist (either a field that does not exist, or a map key that the
+service considers invalid).</p>
+<p>When writing data, field masks <strong>should</strong> return an <code>INVALID_ARGUMENT</code> error if
+an entry points to a value that can not exist; however, the service <strong>may</strong>
+permit deletions.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
