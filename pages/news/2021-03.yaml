@@ -1,0 +1,10 @@
+---
+news:
+  year: 2021
+  month: March
+  description: |
+    Publishing long-standing guidance around permissions and field masks.
+  aips:
+    reviewing: [149, 161, 211]
+  other:
+    - Approval of AIPs discussed in the October 2020 newsletter.
