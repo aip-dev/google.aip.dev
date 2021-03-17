@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-2: AIP Numbering</title>
+    <title>Auth and Field Masks</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -20,8 +20,6 @@
     </script>
     <script type="text/javascript" src="/assets/js/global.js?v=59400d18"></script>
     
-<script type="text/javascript" src="/assets/js/syntax.js"></script>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -166,8 +164,7 @@
     <div class="glue-page">
       
       <main role="main" id="page-content">
-        
-<nav id="aip-nav" class="docs-component-nav">
+        <nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
     <li class="nav-item nav-item-header">AIPs by Scope</li>
     <li class="nav-item">
@@ -195,7 +192,7 @@
         AIP Purpose and Guidelines
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/2">
         <span class="aip-number">2</span>
         AIP Numbering
@@ -572,24 +569,16 @@
 <section id="jump-content">
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
-  <table id="aip-summary">
-    <tr><th colspan="2">AIP Numbering</th></tr>
-    <tr><td>Number</td><td>2</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/2">google.aip.dev/2</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2018-08-23</td></tr>
-    <tr><td>Updated</td><td>2018-08-23</td></tr>
-  </table>
-
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#assigning-aip-numbers">Assigning AIP Numbers</a></li>
-<li><a href="#aip-blocks">AIP Blocks</a><ul>
-<li><a href="#generally-applicable">Generally Applicable</a></li>
-<li><a href="#google-product-areas">Google Product Areas</a></li>
+<li><a href="#aips-under-review">AIPs under review</a><ul>
+<li><a href="#aip-149-unset-field-values">AIP-149: Unset field values</a></li>
+<li><a href="#aip-161-field-masks">AIP-161: Field masks</a></li>
+<li><a href="#aip-211-authorization-checks">AIP-211: Authorization checks</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
+<li><a href="#additional-approvals">Additional approvals</a></li>
+<li><a href="#recent-updates">Recent updates</a></li>
 </ul>
 </div>
 
@@ -598,8 +587,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0002.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0002.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/pages/news/2021-03.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/pages/news/2021-03.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -616,66 +605,91 @@
         </a>
       </li>
       
-      <li class="glue-breadcrumbs__item" aria-level="2">
-        <a class="glue-breadcrumbs__link" href="/general">
-          General AIPs
-        </a>
-      </li>
-      
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        AIP Numbering
+        Auth and Field Masks
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-2</h4>
-  <h1>AIP Numbering</h1>
-<p>The AIP system provides a mechanism to index and have a single source of truth
-for API Improvement Proposals, as well as iterate on them collaboratively and
-transparently.</p>
-<p>This document describes the AIP numbering system.</p>
-<h2 id="assigning-aip-numbers">Assigning AIP Numbers</h2>
-<p>The AIP editors (see <a href="/1">AIP-1</a>) are responsible for assigning a number
-to each AIP when it is accepted as a draft for review. Importantly, <em>all</em> AIPs
-have numbers, not just approved ones. The <a href="/">AIP Index</a> clearly delineates
-which AIPs are approved and binding and which are under discussion.</p>
-<p>The editors may decide to reserve a specific block of numbers for groups of
-AIPs that are related in some way (for example, that are only scoped to a
-specific subset of APIs).</p>
-<p>Beyond this, AIP numbers are assigned arbitrarily. In general, the editors will
-take the next AIP number off of the stack to assign to a draft AIP, but
-occasionally may use a special/joke number if useful for mnemonic or other
-reasons.</p>
-<h2 id="aip-blocks">AIP Blocks</h2>
-<p>Currently recognized blocks of AIP numbers are:</p>
-<h3 id="generally-applicable">Generally Applicable</h3>
+  <h1>Auth and Field Masks</h1>
+<p>Welcome to the seventh edition of the <strong>AIP newsletter</strong>, which is designed to
+keep you up to date about the AIP program, and particular proposals making
+their way through the system.</p>
+<p>We have three new AIPs this month. As always, the AIP newsletter kicks off what
+is effectively a "public comment" period: the AIP editors are happy with this
+proposal, but we want to ensure that you are too. Assuming feedback is
+sufficiently positive, we intend to formally approve these proposals on Friday,
+March 26, 2021.</p>
+<h2 id="aips-under-review">AIPs under review</h2>
+<h3 id="aip-149-unset-field-values">AIP-149: Unset field values</h3>
+<blockquote>
+<p>In many messages, many fields are optional: the user is not required to
+provide them, or for output fields, the service might not populate the field.</p>
+</blockquote>
+<p><a href="../149">Unset field values</a> refer to primitive fields where the service makes
+a meaningful distinction between an empty value (such as <code>0</code> or <code>false</code>) and
+not setting the value at all. While this is generally discouraged if an
+alternative design is feasible, there are certainly occasions where this is the
+best approach.</p>
+<p><strong>Summary:</strong> <a href="../149">AIP-149</a> provides guidance around use of the <code>optional</code> keyword
+for primitives.</p>
+<p>We are aiming to approve AIP-149 on March 26. If you have feedback, please
+<a href="https://github.com/aip-dev/google.aip.dev/pull/711">leave a comment</a>.</p>
+<h3 id="aip-161-field-masks">AIP-161: Field masks</h3>
+<blockquote>
+<p>Often, when updating resources, it is desirable to specify exactly which
+fields are being updated, so that the service can ignore the rest, even if
+the user sends new values.</p>
+</blockquote>
+<p><a href="../161">Field masks</a> are the way that users are able to specify exactly which
+fields to read or update. They are necessary to ensure that adding fields to
+existing messages remains backwards-compatible.</p>
+<p>While we have had an internal specification for field masks for some time, this
+AIP publicizes the specification.</p>
+<p><strong>Summary:</strong> <a href="../161">AIP-161</a> provides a public specification for field masks.</p>
+<p>We are aiming to approve AIP-161 on March 26. If you have feedback, please
+<a href="https://github.com/aip-dev/google.aip.dev/pull/718">leave a comment</a>.</p>
+<h3 id="aip-211-authorization-checks">AIP-211: Authorization checks</h3>
+<blockquote>
+<p>The majority of operations, whether reads or writes, require authorization:
+permission to do the thing the user is asking to do. Additionally, it is
+important to be careful how much information is provided to <em>unauthorized</em>
+users, since leaking information can be a security concern.</p>
+</blockquote>
+<p><a href="../211">Authorization checks</a> discusses when in the logical process of a
+request the authorization check ought to occur, and what error to send when an
+auth check fails.</p>
+<p>In particular, if an authorization check fails, regardless of whether the
+resource exists, the service consistently returns <code>PERMISSION_DENIED</code> with an
+error message that also indicates that the resource might not exist.</p>
+<p><strong>Summary:</strong> <a href="../211">AIP-211</a> provides guidance about authorization checks: when to
+perform them, and what error to send.</p>
+<p>We are aiming to approve AIP-211 on March 26. If you have feedback, please
+<a href="https://github.com/aip-dev/google.aip.dev/pull/719">leave a comment</a>.</p>
+<h2 id="additional-approvals">Additional approvals</h2>
+<p>We also intend to approve the AIPs that were placed under review in the October
+2020 newsletter. This includes <a href="../128">AIP-128</a> (<a href="https://github.com/aip-dev/google.aip.dev/pull/708">#708</a>), <a href="../148">AIP-148</a> (<a href="https://github.com/aip-dev/google.aip.dev/pull/710">#710</a>),
+and <a href="../164">AIP-164</a> (<a href="https://github.com/aip-dev/google.aip.dev/pull/709">#709</a>). If you have feedback, please leave a comment in the
+referenced pull requests.</p>
+<h2 id="recent-updates">Recent updates</h2>
+<p>In addition to the new AIPs under review, we have added the following guidance
+to existing AIPs:</p>
 <ul>
-<li><strong>1-99:</strong> Reserved for meta-AIPs (generally process-related).</li>
-<li><strong>100-999:</strong> General API design guidance</li>
+<li><a href="../144">AIP-144</a>: Expand Add and Remove guidance.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/648">#648</a>)</li>
+<li><a href="../154">AIP-154</a>: Etag failures should use <code>ABORTED</code>.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/705">#705</a>)</li>
+<li><a href="../162">AIP-162</a>: Forbid deleting the only remaining revision.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/692">#692</a>)</li>
+<li><a href="../162">AIP-162</a>: Restrict revision tags to lower-case.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/707">#707</a>)</li>
+<li><a href="../165">AIP-165</a>: Make implicit recommendations more explicit.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/662">#662</a>)</li>
+<li><a href="../203">AIP-203</a>: Add <code>UNORDERED_LIST</code> to field behaviors.
+  (<a href="https://github.com/aip-dev/google.aip.dev/pull/671">#671</a>)</li>
 </ul>
-<h3 id="google-product-areas">Google Product Areas</h3>
-<ul>
-<li><strong>2700-2799:</strong> Apps (GSuite)</li>
-<li><strong>2500-2599:</strong> Cloud</li>
-<li><strong>3000-3099:</strong> Actions on Google</li>
-<li><strong>3200-3299:</strong> Firebase</li>
-<li><strong>4100-4199:</strong> Auth libraries</li>
-<li><strong>4200-4299:</strong> Client libraries</li>
-<li><strong>4600-4699:</strong> Geo</li>
-</ul>
-<p>To request a block for a specific team that is publishing API guidance or
-documentation germane to that specific team, reach out to api-editors@.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2019-10-03:</strong> The 3000-3099 block was assigned to Actions on Google.</li>
-<li><strong>2019-01-26:</strong> The general API design guidance block was expanded to include
-  100-199.</li>
-<li><strong>2018-10-24:</strong> The 4600-4699 block was assigned to Google Geo.</li>
-<li><strong>2018-10-02:</strong> The 2500-2599 block was assigned to Google Cloud Platform.</li>
-<li><strong>2018-10-02:</strong> The 2700-2799 block was assigned to Google Apps.</li>
-</ul>
+
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
@@ -684,7 +698,7 @@ documentation germane to that specific team, reach out to api-editors@.</p>
   <span class="no-print">For details, see <a href="/licensing">content
   licensing</a>.</span>
 </footer>
-</section>
+  </section>
 
         </section>
       </main>
