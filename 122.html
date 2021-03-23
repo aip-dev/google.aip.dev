@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=59400d18">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=59400d18">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b22baaad">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b22baaad">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=59400d18"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b22baaad"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -730,9 +730,9 @@ ID for the publisher, and <code>les-miserables</code> is the resource ID for the
   server-generated if unset), or never set by users (not accepted at resource
   creation). They <strong>should</strong> be immutable once created.<ul>
 <li>If resource IDs are user-settable, the API <strong>must</strong> document allowed
-  formats. User-settable resource IDs <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc1034">RFC-1034</a>,
-  which restricts to letters, numbers, and hyphen, with a 63 character
-  maximum.<ul>
+  formats. User-settable resource IDs <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc1034">RFC-1034</a>;
+  which restricts to letters, numbers, and hyphen, with the first character
+  a letter, the last a letter or a number, and a 63 character maximum.<ul>
 <li>Additionally, user-settable resource IDs <strong>should</strong> restrict letters to
   lower-case.</li>
 <li>Characters outside of ASCII <strong>should not</strong> be permitted; however, if
