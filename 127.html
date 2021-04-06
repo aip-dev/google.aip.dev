@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=88eb24f1">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=88eb24f1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9e030017">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9e030017">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=88eb24f1"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9e030017"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -691,20 +691,25 @@ using the <code>google.api.http</code> annotation:</p>
   should be populated in the request proto. When extracting a <a href="/122">resource
   name</a>, the variable <strong>must</strong> include the entire resource name, not
   just the ID component.</li>
+<li>URIs <strong>may</strong> use nested fields for their variable names. (Additionally,
+  <a href="/134">AIP-134</a> mandates this for <code>Update</code> requests.)</li>
 <li>URIs <strong>must</strong> use the <code>*</code> character to represent ID components, which
   matches all URI-safe characters except for <code>/</code>. URIs <strong>may</strong> use <code>**</code> as
   the final segment of a URI if matching <code>/</code> is required.</li>
 </ul>
 </li>
-<li>The <code>body</code> key defines which field in the request will be sent as the HTTP
-  body. If the body is <code>*</code>, then this indicates that the request object itself
-  is the HTTP body. The request body is encoded as JSON as defined by protocol
-  buffers' canonical <a href="https://developers.google.com/protocol-buffers/docs/proto3#json">JSON encoding</a>.<ul>
+<li>The <code>body</code> key defines which single top-level field in the request will be
+  sent as the HTTP body. If the body is <code>*</code>, then this indicates that the
+  request object itself is the HTTP body. The request body is encoded as JSON
+  as defined by protocol buffers' canonical <a href="https://developers.google.com/protocol-buffers/docs/proto3#json">JSON encoding</a>.<ul>
 <li>RPCs <strong>must not</strong> define a <code>body</code> at all for RPCs that use the <code>GET</code> or
   <code>DELETE</code> HTTP verbs.</li>
 <li>RPCs <strong>must</strong> use the prescribed <code>body</code> for Create (<a href="/133">AIP-133</a>) and Update
   (<a href="/134">AIP-134</a>) requests.</li>
 <li>RPCs <strong>should</strong> use the prescribed <code>body</code> for custom methods (<a href="/136">AIP-136</a>).</li>
+<li>The <code>body</code> <strong>must not</strong> contain a nested field (or use the <code>.</code> character),</li>
+<li>The <code>body</code> <strong>must not</strong> be the same as a URI parameter.</li>
+<li>The <code>body</code> <strong>must not</strong> be a <code>repeated</code> field.</li>
 <li>Fields <strong>should not</strong> use the <code>json_name</code> annotation to alter the field
   name in JSON, unless doing so for backwards-compatibility reasons.</li>
 </ul>
@@ -740,6 +745,7 @@ equivalent RPCs.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2021-01-06</strong>: Added clarification around <code>body</code> and nested fields.</li>
 <li><strong>2019-09-23</strong>: Added a statement about request body encoding, and guidance
   discouraging <code>json_name</code>.</li>
 </ul>
