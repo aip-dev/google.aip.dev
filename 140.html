@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=eb0b3ca7">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=eb0b3ca7">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6203eae0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6203eae0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=eb0b3ca7"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=6203eae0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -590,6 +590,7 @@
 <li><a href="#prepositions">Prepositions</a></li>
 <li><a href="#adjectives">Adjectives</a></li>
 <li><a href="#booleans">Booleans</a></li>
+<li><a href="#string-vs-bytes">String vs. bytes</a></li>
 <li><a href="#uris">URIs</a></li>
 <li><a href="#reserved-words">Reserved words</a></li>
 <li><a href="#conflicts">Conflicts</a></li>
@@ -710,6 +711,11 @@ is often appropriate in reporting scenarios (e.g. "nodes per instance" or
 </ul>
 <p><strong>Note:</strong> Field names that would otherwise be <a href="#reserved-words">reserved words</a>
 are an exception to this rule. For example, <code>is_new</code> (<strong>not</strong> <code>new</code>).</p>
+<h3 id="string-vs-bytes">String vs. bytes</h3>
+<p>When using <code>bytes</code>, the contents of the field are base64-encoded when using
+JSON on the wire. Services <strong>should</strong> use <code>bytes</code> when there is a need to send
+binary contents over the wire, and <strong>should not</strong> ask the user to manually
+base64-encode a field into a <code>string</code> field.</p>
 <h3 id="uris">URIs</h3>
 <p>Field names representing URLs or URIs <strong>should</strong> always use <code>uri</code> rather than
 <code>url</code>. This is because while all URLs are URIs, not all URIs are URLs. Field
@@ -738,6 +744,7 @@ field <strong>should not</strong> have a uniqueness requirement.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2012-04-07</strong>: Added base64 and bytes guidance.</li>
 <li><strong>2021-03-05</strong>: Added prohibition on leading, trailing, or adjacent
   underscores.</li>
 <li><strong>2020-06-10</strong>: Added prohibition on starting any word with a number.</li>
