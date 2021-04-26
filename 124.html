@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6203eae0">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6203eae0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9dfbe167">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9dfbe167">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=6203eae0"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9dfbe167"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -588,6 +588,7 @@
 <li><a href="#many-to-many-associations">Many-to-many associations</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -664,6 +665,8 @@ treat the <code>string parent</code> field as required as discussed in <a href="
 <strong>must not</strong> add additional required arguments. The RPC <strong>should</strong> include a
 <code>string filter</code> field that allows users to filter by other resource
 associations as discussed in <a href="/160">AIP-160</a>.</p>
+<p><strong>Note:</strong> Resource reference fields <strong>must</strong> accept the same resource name
+format that is used in the <code>name</code> field of the referenced resource.</p>
 <h3 id="many-to-many-associations">Many-to-many associations</h3>
 <p>Many-to-many associations are less common in APIs than they are in relational
 databases, in part because they are more difficult to model and present over
@@ -713,6 +716,11 @@ relationship using a sub-resource with two one-to-many associations.</p>
 recommended if additional metadata is required in the relationship, or if the
 restrictions around the use of a repeated field preclude the use of that
 approach.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2021-04-07</strong>: Clarified that resource reference fields accept resource
+  names with the same format as the <code>name</code> field of the resource.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
