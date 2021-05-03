@@ -37,10 +37,10 @@ sense for you.
 
 ### Why aren't all of Google's products listed here?
 
-As of this writing (Q2 of 2019), the AIP program is still relatively new. This
-means that not all of Google has adopted AIPs as the way of documenting their
-API guidance and policies. We're working on broadening the scope to more and
-more areas, both inside and outside Google, but it's just not there yet.
+When this project was first published, the AIP program was still relatively new.
+Even with time, not all of Google has adopted AIPs as the way of documenting
+their API guidance and policies. We're working on broadening the scope to more
+and more areas, both inside and outside Google, so this will continue to evolve.
 
 If you work at Google and want your team to adopt AIPs for documenting how your
 team does APIs, feel free to reach out to get in touch with us!
@@ -54,5 +54,5 @@ on GitHub][bug] by filing an issue.
 And if you already know the answer to a question that would be helpful for
 others, [send us a pull request adding it to this page][pull request]!
 
-[bug]: https://github.com/googleapis/aip/issues/new?labels=question
-[pull request]: https://github.com/googleapis/aip/edit/master/aip/faq.md
+[bug]: https://github.com/aip-dev/google.aip.dev/issues/new?labels=question
+[pull request]: https://github.com/aip-dev/google.aip.dev/edit/master/pages/general/faq.md
