@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8d2939fa">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8d2939fa">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=73ad0dd2">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=73ad0dd2">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8d2939fa"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=73ad0dd2"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -587,6 +587,8 @@
 <li><a href="#multiple-operations">Multiple operations</a></li>
 </ul>
 </li>
+<li><a href="#rationale">Rationale</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -642,13 +644,6 @@ authorization.</p>
 <strong>must</strong> error with <code>PERMISSION_DENIED</code>, and the corresponding error message
 <strong>should</strong> look like: "Permission <code>{p}</code> denied on resource <code>{r}</code> (or it might
 not exist)." This avoids leaking resource existence.</p>
-<p><strong>Note:</strong> This guidance conflicts with the guidance in the HTTP specification,
-which argues for the use of 404 in cases where the user lacks permission to
-know whether or not a resource exists. This variance is because of real-world
-challenges: the practice of "getting <code>NOT_FOUND</code> until you have enough
-permission to get <code>PERMISSION_DENIED</code>" is counter-intuitive and increases the
-difficulty of troubleshooting. Additionally, the guidance here is more
-consistent with most other real-world authorization systems.</p>
 <p>If it is not possible to determine authorization for a resource because the
 resource does not exist, the service <strong>should</strong> check authorization to read
 children on the parent resource, and return <code>NOT_FOUND</code> if the authorization
@@ -672,6 +667,36 @@ prone to accidental leaks.</p>
 <p>In this situation, the get or create methods <strong>should</strong> still only check
 <em>their</em> permissions when determining what error to return, and not one
 another's.</p>
+<h2 id="rationale">Rationale</h2>
+<p><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">RFC 7231 §6.5.3</a> states that services are permitted to use <code>404 Not Found</code>
+in lieu of <code>403 Forbidden</code> in situations where the service does not want to
+divulge existance, whereas this AIP argues for the use of <code>PERMISSION_DENIED</code>
+(which corresponds to <code>403 Forbidden</code> in HTTP) instead. We take this position
+for the following reasons:</p>
+<ul>
+<li>The practice of "getting <code>404 Not Found</code> until you have enough permission to
+  get <code>403 Forbidden</code>" is counter-intuitive and increases the difficulty of
+  troubleshooting.<ul>
+<li>A service <em>could</em> ameliorate this by sending information about missing
+  permissions while still using the <code>404 Not Found</code> status code, but this
+  constitutes a mixed message.</li>
+</ul>
+</li>
+<li>While <code>403 Forbidden</code> is essentially always an error requiring manual action,
+  <code>404 Not Found</code> is often a valid response that the application can handle
+  (e.g. "get or create"); overloading it for permission errors deprives
+  applications of this benefit.</li>
+<li>RFC 7231 §6.5.4 states that <code>404 Not Found</code> results are cacheable, but
+  permission errors are not generally cacheable. Sending explicit cache
+  controls on a conditional basis could ameliorate this, but would defeat the
+  purpose.</li>
+<li>The guidance here is more consistent with most other real-world authorization
+  systems.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2021-05-11:</strong> Added a more detailed "Rationale" section.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
