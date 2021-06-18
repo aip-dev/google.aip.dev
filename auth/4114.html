@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e3915e5d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e3915e5d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a0866a53">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a0866a53">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e3915e5d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a0866a53"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -299,12 +299,13 @@
   <h4 class="aip-number">AIP-4114</h4>
   <h1>Device Certificate Authentication via Mutual TLS</h1>
 <p>Mutual TLS (a.k.a mTLS) authentication enables authentication of both client and
-server endpoints in a TLS handshake, and offers the solution to enable Context
-Aware Access for GCP enterprise customers. With Context Aware Access, the
-transport context considers the client certificate’s state in the transport
-(TLS) to make authorization decisions. The use of client certificates provides a
-stronger indication of the access originating from a trusted device. This allows
-customers to restrict access from untrusted devices.</p>
+server identities in a TLS handshake and provides the foundation for Device
+Certificate Authentication for Context Aware Access for GCP enterprise
+customers. With Device Certificate Authentication, the server takes into account
+the client certificate in the transport layer when making authorization
+decisions. The use of a client certificate provides a stronger indication of the
+access originating from a trusted device. This allows enterprise customers to
+restrict access from untrusted devices.</p>
 <p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
 language-neutral way, it uses generic terminology which may be imprecise or
 inappropriate in certain languages or environments.</p>
