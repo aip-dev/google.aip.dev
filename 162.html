@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=74b95d07">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=74b95d07">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=def8c1f5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=def8c1f5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=74b95d07"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=def8c1f5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -595,6 +595,7 @@
 </ul>
 </li>
 <li><a href="#appendix-character-collision">Appendix: Character Collision</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -946,7 +947,7 @@ want to remove one or more revisions from a resource's revision history.</p>
 <p>APIs <strong>may</strong> define a method to delete revisions, with a structure similar to
 <code>Delete</code> (<a href="/135">AIP-135</a>) methods:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">DeleteBookRevision</span><span class="p">(</span><span class="n">DeleteBookRevisionRequest</span><span class="p">)</span>
-    <span class="k">returns</span> <span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">delete</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:deleteRevision&quot;</span>
   <span class="p">};</span>
@@ -985,6 +986,12 @@ want to remove one or more revisions from a resource's revision history.</p>
   only revision.</li>
 </ul>
 </li>
+<li>The response message <strong>must</strong> be the resource itself. There is no
+  <code>DeleteBookRevisionResponse</code>.<ul>
+<li>The response <strong>should</strong> include the fully-populated resource unless it is
+  infeasible to do so.</li>
+</ul>
+</li>
 </ul>
 <h2 id="appendix-character-collision">Appendix: Character Collision</h2>
 <p>Most resource names have a restrictive set of characters, but some are very
@@ -995,6 +1002,10 @@ indicate a revision.</p>
 APIs that do permit it need to support resources with revisions, they
 <strong>should</strong> pick an appropriate separator depending on how and where the API is
 used, and <strong>must</strong> clearly document it.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2021-04-27</strong>: Added guidance on returning the resource from Delete Revision.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
