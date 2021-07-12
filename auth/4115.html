@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e914af17">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e914af17">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4b3661f7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4b3661f7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e914af17"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4b3661f7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -297,7 +297,7 @@
 </section>
   
   <h4 class="aip-number">AIP-4115</h4>
-  <h1>Default Credentials From Google Virtual Machines</h1>
+  <h1 id="default-credentials-from-google-virtual-machines">Default Credentials From Google Virtual Machines</h1>
 <p>If the client runs on Google virtual machine instance such as <a href="https://cloud.google.com/appengine">Google App
 Engine</a> or <a href="https://cloud.google.com/compute">Compute Engine</a>, the auth library <strong>may</strong> obtain the identity
 token that is associated with the instance, and use the identity token as the
@@ -340,7 +340,7 @@ format:</p>
       <span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span>
  <span class="p">}</span>
 </code></pre></div>
-<h4>Scopes</h4>
+<h4 id="scopes">Scopes</h4>
 <p>Access tokens obtained from the metadata server contain the scopes specified at instance creation.
 For example, if an instance is granted only the
 https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then the tokens obtained 

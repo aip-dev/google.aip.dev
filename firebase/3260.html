@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e914af17">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e914af17">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4b3661f7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4b3661f7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e914af17"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4b3661f7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -313,7 +313,7 @@
   and discussed, and it may change in non-trivial ways.
 </p>
   <h4 class="aip-number">AIP-3260</h4>
-  <h1>Firebase CLI</h1>
+  <h1 id="firebase-cli">Firebase CLI</h1>
 <h2 id="guidance">Guidance</h2>
 <h3 id="command-naming">Command Naming</h3>
 <p>Commands <strong>must</strong> be named in lowercase using colons to separate namespaces.
@@ -348,7 +348,7 @@ than two unrelated arguments with no clear hierarchy.</p>
 <p>Flags <strong>must</strong> be named using kebab case (e.g. <code>--example-flag</code>) and <strong>may</strong>
 provide a single-letter alias that does not conflict with <a href="https://github.com/firebase/firebase-tools/blob/master/src/index.js">defined global
 flags</a>.</p>
-<h4>Common Flags</h4>
+<h4 id="common-flags">Common Flags</h4>
 <ul>
 <li><code>--app &lt;appId&gt;</code> - used to refer to a specific app within a Firebase project.</li>
 <li><code>--force</code> - used to indicate that a command should proceed without additional
@@ -364,7 +364,7 @@ flags</a>.</p>
   prompt <strong>must</strong> be displayed unless a <code>--force</code> flag is also provided.</li>
 </ul>
 <h3 id="common-command-types">Common Command Types</h3>
-<h4>List Commands</h4>
+<h4 id="list-commands">List Commands</h4>
 <p>Commands that return a list of like resources <strong>must</strong> use a <code>:list</code> suffix
 (e.g. <code>projects:list</code>).</p>
 <p>List commands <strong>must not</strong> require manual pagination (e.g. a <code>--page-token</code>
@@ -375,7 +375,7 @@ A <code>--limit 0</code> flag indicates that all results should be fetched and
 returned.</p>
 <p>The JSON output of a list command <strong>must</strong> be a concatenated array of all
 fetched resources in their original wire format.</p>
-<h4>Clone Commands</h4>
+<h4 id="clone-commands">Clone Commands</h4>
 <p>If a command's purpose is to copy information from one resource to another, it
 <strong>must</strong> be suffixed with <code>:clone</code> and <strong>must</strong> take a <code>from</code> and <code>to</code>
 argument:</p>
@@ -390,7 +390,7 @@ added, the command <strong>must</strong> allow a <code>--force</code> flag to by
 <h3 id="deployment">Deployment</h3>
 <p>Behavior that takes local state (e.g. a rules file) and applies it to the live
 operation of a Firebase project <strong>must</strong> integrate with the <code>deploy</code> command.</p>
-<h4>Scoped Deployments</h4>
+<h4 id="scoped-deployments">Scoped Deployments</h4>
 <p>If a service has multiple deployable resources, it <strong>may</strong> allow specifying
 which resources are deployed through colon namespacing, for example:</p>
 <pre><code>  firebase deploy --only functions:func1,functions:func2,hosting:site3

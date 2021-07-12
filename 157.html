@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e914af17">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e914af17">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4b3661f7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4b3661f7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e914af17"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4b3661f7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -631,7 +631,7 @@
 </section>
   
   <h4 class="aip-number">AIP-157</h4>
-  <h1>Partial responses</h1>
+  <h1 id="partial-responses">Partial responses</h1>
 <p>Sometimes, a resource can be either large or expensive to compute, and the API
 needs to give the user control over which fields it sends back.</p>
 <h2 id="guidance">Guidance</h2>
@@ -703,7 +703,7 @@ message: <code>google.protobuf.FieldMask read_mask</code>.</p>
 <p>Individual APIs have their own needs, and a partial response strategy that is
 appropriate for one API may not be appropriate for another. However, generally
 APIs <strong>should not</strong> be providing resource views unless they are truly needed.</p>
-<h4>Benefits of view enums</h4>
+<h4 id="benefits-of-view-enums">Benefits of view enums</h4>
 <ul>
 <li>View enums allow an API to present the user with a limited number of choices,
   and are useful when presenting fine-grained control will be cumbersome, or in
@@ -714,7 +714,7 @@ APIs <strong>should not</strong> be providing resource views unless they are tru
 <li>View enums are effective when the API knows which fields are expensive to
   compute, and that this cost will not significantly change over time.</li>
 </ul>
-<h4>Benefits of read masks</h4>
+<h4 id="benefits-of-read-masks">Benefits of read masks</h4>
 <ul>
 <li>Read masks allow the user fine-grained control, and are ideal when the user
   wants to get precisely a certain set of fields back, and there are too many

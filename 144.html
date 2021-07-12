@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e914af17">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e914af17">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4b3661f7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4b3661f7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e914af17"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4b3661f7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -630,7 +630,7 @@
 </section>
   
   <h4 class="aip-number">AIP-144</h4>
-  <h1>Repeated fields</h1>
+  <h1 id="repeated-fields">Repeated fields</h1>
 <p>Representing lists of data in an API is trickier than it often appears. Users
 often need to modify lists in place, and longer data series within a single
 resource pose a challenge for pagination.</p>
@@ -733,7 +733,7 @@ subresource instead.</p>
 <li>If the data being removed in a <code>Remove</code> RPC is not present, the method
   <strong>must</strong> error with <code>NOT_FOUND</code>.</li>
 </ul>
-<h4>Request Message</h4>
+<h4 id="request-message">Request Message</h4>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">AddAuthorRequest</span> <span class="p">{</span>
   <span class="c1">// The name of the book to add an author to.</span>
   <span class="kt">string</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>

@@ -49,10 +49,52 @@ $.when($.ready).then(() => {
     .prev()
     .addClass('nk');
 
-  // The option keyword is always followed by the annotation name.
-  $('.language-proto .k:contains(option)').each((_, el) => {
-    $(el).nextAll('.n').eq(0).addClass('protobuf-annotation');
-  });
+  // Split up the beginning punctuation `[(` for field annotations, putting
+  // them in separate <span>s so we can recolor only the latter.
+  $('.language-proto .p')
+    .filter((_, el) => $(el).text() === '[(')
+    .each((_, el) => {
+      $(el).text('[');
+      $('<span class="p">(</span>').insertAfter($(el));
+    });
+
+  // Designate protobuf annotations, which follow a consistent pattern with
+  // paerentheses.
+  $('.language-proto .p')
+    .filter((_, el) => $(el).text() === '(')
+    .each((_, el) => {
+      let open = $(el); // (
+      let ann = open.next(); // google.api.foo
+      let close = ann.next(); // )
+
+      // Sanity check: Does this really look like an annotation?
+      //
+      // This checks the existing classes that Pygments uses for proto
+      // annotations, to ensure we do not get false positive matches
+      // (since the starting match is just a span with `(` in it).
+      let conditions = [
+        ann.hasClass('n'),
+        !ann.hasClass('nc'),
+        close.hasClass('p'),
+        close.text() === ')',
+        close.next('.o').text() === '=',
+      ];
+      if (!conditions.every((v) => v === true)) {
+        return;
+      }
+
+      // This is an annotation, color it accordingly.
+      for (let e of [open, ann, close]) {
+        e.addClass('protobuf-annotation');
+      }
+    });
+
+  // Highlight constants.
+  $('.language-proto .o + .n:not(.nc)')
+    .filter((_, el) => /^[A-Z0-9_]+$/.test($(el).text()))
+    .each((_, el) => {
+      $(el).addClass('mi').removeClass('n');
+    });
 
   // ----------------
   // -- TypeScript --

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e914af17">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e914af17">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4b3661f7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4b3661f7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e914af17"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4b3661f7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=e914af17"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=e914af17"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=e914af17"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=4b3661f7"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=4b3661f7"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=4b3661f7"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -652,7 +652,7 @@
 </section>
   
   <h4 class="aip-number">AIP-100</h4>
-  <h1>API Design Review FAQ</h1>
+  <h1 id="api-design-review-faq">API Design Review FAQ</h1>
 <p>API design review exists to ensure a simple, intuitive, and consistent API
 experience throughout our API corpus.</p>
 <h2 id="do-i-need-api-design-approval">Do I need API design approval?</h2>
@@ -664,105 +664,105 @@ consistent experience for our users, and therefore is only expected for APIs
 that users code directly against.</p>
 <p>The following flowchart illustrates whether or not your API needs to go through
 the design review process:</p>
-<div class="highlight language-graphviz"><pre><span></span><code>digraph {
-  node [ style=&quot;filled,solid&quot; shape=box fontname=&quot;Roboto&quot; ];
-  graph [ splines=ortho, nodesep=0.2 ];
+<div class="highlight language-graphviz"><pre><span></span><code><span class="k">digraph</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s2">&quot;filled,solid&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">box</span><span class="w"> </span><span class="na">fontname</span><span class="p">=</span><span class="s2">&quot;Roboto&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">graph</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">splines</span><span class="p">=</span><span class="s">ortho</span><span class="p">,</span><span class="w"> </span><span class="na">nodesep</span><span class="p">=</span><span class="m">0.2</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-  audience [ label=&quot;Who should code directly\nagainst this API?&quot;
-             shape=diamond fillcolor=bisque ];
+<span class="w">  </span><span class="nt">audience</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Who should code directly\nagainst this API?&quot;</span><span class="w"></span>
+<span class="w">             </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-  subgraph audience_responses {
-    rank = &quot;same&quot;;
-    node [ shape=oval fillcolor=orange ];
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">audience_responses</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">orange</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    googlers [ label=&quot;Googlers\nOnly&quot; fillcolor=lightcoral ];
-    public [ label=&quot;Anyone&quot; fillcolor=limegreen ];
-    partners [ label=&quot;Partners\nOnly&quot; fillcolor=deepskyblue ];
+<span class="w">    </span><span class="nt">googlers</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Googlers\nOnly&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">lightcoral</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">public</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Anyone&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">limegreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">partners</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Partners\nOnly&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">deepskyblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    partners -&gt; public -&gt; googlers [ style=invisible arrowhead=none ];
-  }
+<span class="w">    </span><span class="nt">partners</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">googlers</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">invisible</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 
-  subgraph and_ever {
-    rank = &quot;same&quot;;
-    node [ shape=diamond fillcolor=bisque ];
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">and_ever</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    forever_partners [ label=&quot;Forever?&quot; shape=diamond fillcolor=bisque ];
-    forever_googlers [ label=&quot;Forever?&quot; shape=diamond fillcolor=bisque ];
-  }
+<span class="w">    </span><span class="nt">forever_partners</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Forever?&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">forever_googlers</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Forever?&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  subgraph forever_responses {
-    rank = &quot;same&quot;;
-    node [ shape=oval fillcolor=orange ];
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">forever_responses</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">orange</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    forever_partners_yes [ label=&quot;Yes&quot; fillcolor=deepskyblue ];
-    forever_no [ label=&quot;No, anyone\neventually&quot; fillcolor=limegreen ];
-    forever_googlers_yes [ label=&quot;Yes&quot; fillcolor=lightcoral ];
-  }
+<span class="w">    </span><span class="nt">forever_partners_yes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Yes&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">deepskyblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">forever_no</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;No, anyone\neventually&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">limegreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">forever_googlers_yes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Yes&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">lightcoral</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  release_level [ label=&quot;What release\nlevel?&quot; shape=diamond fillcolor=bisque ];
+<span class="w">  </span><span class="nt">release_level</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;What release\nlevel?&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-  # Not required is not in the subgraph with the other outcomes because
-  # it makes the graph much smaller if it can be higher in the image.
+<span class="w">  </span><span class="c1"># Not required is not in the subgraph with the other outcomes because</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># it makes the graph much smaller if it can be higher in the image.</span><span class="w"></span>
 
-  subgraph release_levels {
-    rank = &quot;same&quot;;
-    node [ shape=oval ];
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">release_levels</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    alpha [ label=&quot;Alpha&quot; fillcolor=darkorange ];
-    beta [ label=&quot;Beta&quot; fillcolor=goldenrod1 ];
-    ga [ label=&quot;GA&quot; fillcolor=limegreen ];
+<span class="w">    </span><span class="nt">alpha</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Alpha&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">darkorange</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">beta</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Beta&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">goldenrod1</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ga</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;GA&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">limegreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    alpha -&gt; beta -&gt; ga [ style=invisible arrowhead=none ];
-  }
+<span class="w">    </span><span class="nt">alpha</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">beta</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">ga</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">invisible</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  changes [ label=&quot;Any changes\nfrom beta?&quot; shape=diamond fillcolor=bisque ];
+<span class="w">  </span><span class="nt">changes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Any changes\nfrom beta?&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">diamond</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">bisque</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-  subgraph changes_bool {
-    rank = &quot;same&quot;;
-    node [ shape=oval ];
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">changes_bool</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-    changes_yes [ label=&quot;Yes&quot; fillcolor=goldenrod1 ];
-    changes_no [ label=&quot;No&quot; fillcolor=limegreen ];
-  }
+<span class="w">    </span><span class="nt">changes_yes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Yes&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">goldenrod1</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">changes_no</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;No&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">limegreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  subgraph outcome {
-    rank = &quot;same&quot;;
-    node [ style=&quot;rounded,filled&quot; ];
-    fyi [ label=&quot;FYI&quot; fillcolor=lightblue ];
-    recommended [ label=&quot;Recommended&quot; fillcolor=limegreen ];
-    required [ label=&quot;⚠ Required&quot; fillcolor=goldenrod1 ];
-    not_required
-      [ label=&quot;Not Required&quot; fillcolor=lightgrey style=&quot;rounded,filled&quot; ];
-    recommended -&gt; required -&gt; fyi -&gt; not_required
-      [style=invisible arrowhead=none];
-  }
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">outcome</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;same&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s2">&quot;rounded,filled&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fyi</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;FYI&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">lightblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">recommended</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Recommended&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">limegreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">required</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;⚠ Required&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">goldenrod1</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">not_required</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Not Required&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">lightgrey</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s2">&quot;rounded,filled&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">recommended</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">required</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">fyi</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">not_required</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="na">style</span><span class="p">=</span><span class="s">invisible</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  audience -&gt; googlers [ arrowhead=none style=dashed color=grey ];
-  audience -&gt; partners [ arrowhead=none ];
-  audience -&gt; public [ arrowhead=none ];
-  partners -&gt; forever_partners;
-  googlers -&gt; forever_googlers [ style=dashed color=grey ];
-  public -&gt; release_level;
-  forever_partners -&gt; forever_partners_yes [ arrowhead=none ];
-  forever_googlers -&gt; forever_googlers_yes
-    [ arrowhead=none style=dashed color=grey ];
-  forever_partners -&gt; forever_no [ arrowhead=none ];
-  forever_googlers -&gt; forever_no [ arrowhead=none ];
-  forever_partners_yes -&gt; recommended;
-  forever_googlers_yes -&gt; not_required [ style=dashed color=grey ];
-  forever_no -&gt; release_level;
-  release_level -&gt; alpha [ arrowhead=none ];
-  release_level -&gt; beta [ arrowhead=none ];
-  release_level -&gt; ga [ arrowhead=none ];
-  alpha -&gt; recommended;
-  beta -&gt; required;
-  ga -&gt; changes;
-  changes -&gt; changes_yes [ arrowhead=none ];
-  changes -&gt; changes_no [ arrowhead=none ];
-  changes_yes -&gt; required;
-  changes_no -&gt; fyi;
-}
+<span class="w">  </span><span class="nt">audience</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">googlers</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">dashed</span><span class="w"> </span><span class="na">color</span><span class="p">=</span><span class="s">grey</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">audience</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">partners</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">audience</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">partners</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_partners</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">googlers</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_googlers</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">dashed</span><span class="w"> </span><span class="na">color</span><span class="p">=</span><span class="s">grey</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">public</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">release_level</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_partners</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_partners_yes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_googlers</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_googlers_yes</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">dashed</span><span class="w"> </span><span class="na">color</span><span class="p">=</span><span class="s">grey</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_partners</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_no</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_googlers</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">forever_no</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_partners_yes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">recommended</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_googlers_yes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">not_required</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s">dashed</span><span class="w"> </span><span class="na">color</span><span class="p">=</span><span class="s">grey</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">forever_no</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">release_level</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">release_level</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">alpha</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">release_level</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">beta</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">release_level</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">ga</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">alpha</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">recommended</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">beta</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">required</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ga</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">changes</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">changes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">changes_yes</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">changes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">changes_no</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">arrowhead</span><span class="p">=</span><span class="s">none</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">changes_yes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">required</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">changes_no</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">fyi</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="who-should-code-directly-against-it">Who should code directly against it?</h3>
 <p>One of the more complex questions is, "Who should code directly against this

@@ -51,11 +51,12 @@ $.when($.ready).then(() => {
 
   // Make "spec terms" (must, should, may, must not, should not) that
   // are bold-faced be further emphasized.
-  for (let directive of ['may', 'must', 'must not', 'should', 'should not']) {
+  for (let directive of ['may', 'must', 'must not', 'must\nnot',
+                         'should', 'should not', 'should\nnot']) {
     $('strong')
       .filter((_, el) => $(el).text() === directive)
       .addClass('spec-directive')
-      .addClass(`spec-${directive.split(' ')[0]}`);
+      .addClass(`spec-${directive.split(' ')[0].split('\n')[0]}`);
   }
 
   // Make "reviewing sections" of approved AIPs show a badge.
