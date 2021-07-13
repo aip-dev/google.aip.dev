@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8ba48bef">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8ba48bef">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5c882025">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5c882025">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8ba48bef"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5c882025"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=8ba48bef"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=8ba48bef"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=8ba48bef"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=5c882025"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=5c882025"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=5c882025"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -351,15 +351,6 @@ client options) <strong>must</strong> have priority over the value of this envir
 variable.</p>
 </li>
 <li>
-<p><strong>GOOGLE_API_KEY</strong>: <a href="https://cloud.google.com/docs/authentication/api-keys">API keys</a> are a simple encrypted string that
-identifies an application, which are useful for accessing public data
-anonymously. The specified value of this environment variable <strong>should</strong> be used
-as the API key for the API requests. This value <strong>must</strong> be overridden by any
-user specified credentials at the programming level (e.g. through client
-options). And it <strong>must</strong> be ignored if GOOGLE_APPLICATION_CREDENTIALS is
-specified.</p>
-</li>
-<li>
 <p><strong>GOOGLE_API_USE_CLIENT_CERTIFICATE:</strong> The specified value <strong>must</strong> be
 either true or false. The client certificate <strong>must</strong> be ignored if this
 variable is set to false. The default value is false if the value is unset.</p>
@@ -398,10 +389,8 @@ implement these concepts in order to be considered complete.</p>
 <ol>
 <li><strong>Check environment variables</strong><ol>
 <li>Check GOOGLE_APPLICATION_CREDENTIALS
-    1. If set, go to step (2.2)</li>
-<li>Check GOOGLE_API_KEY
-    1. If set, use the provided API key <em>[END]</em></li>
-<li>If neither of above is set, go to step (2)</li>
+    1. If set, go to step (2.2)
+    1. If not set, go to step (2)</li>
 </ol>
 </li>
 <li><strong>Load credentials</strong><ol>
@@ -455,6 +444,7 @@ implement these concepts in order to be considered complete.</p>
 <li><strong>2019-08-13</strong>: Add a link to virtual machine flow (AIP 4115).</li>
 <li><strong>2019-08-18</strong>: Remove STS support from ADC.</li>
 <li><strong>2021-01-20</strong>: Add identity token flow (AIP 4116).</li>
+<li><strong>2021-06-29</strong>: Guidance for GOOGLE_API_KEY temporarily removed until consensus can be established.</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
