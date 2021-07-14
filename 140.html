@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5c32fb42">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5c32fb42">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=dc484cfd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=dc484cfd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=5c32fb42"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=dc484cfd"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -731,8 +731,8 @@ message (ignoring case transformations). This causes conflicts when generating
 code in some languages.</p>
 <h3 id="display-names">Display names</h3>
 <p>Many resources have a human-readable name, often used for display in UI. This
-field <strong>must</strong> generally be called <code>display_name</code>, and <strong>must not</strong> have a
-uniqueness requirement.</p>
+field <strong>should</strong> be called <code>display_name</code>, and <strong>should not</strong> have a uniqueness
+requirement.</p>
 <p>If an entity has an official, formal name (such as a company name or the title
 of a book), an API <strong>may</strong> use <code>title</code> as the field name instead. The <code>title</code>
 field <strong>should not</strong> have a uniqueness requirement.</p>
@@ -744,7 +744,8 @@ field <strong>should not</strong> have a uniqueness requirement.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2012-04-07</strong>: Added base64 and bytes guidance.</li>
+<li><strong>2021-07-12</strong>: Normalized display name guidance to "should".</li>
+<li><strong>2021-04-07</strong>: Added base64 and bytes guidance.</li>
 <li><strong>2021-03-05</strong>: Added prohibition on leading, trailing, or adjacent
   underscores.</li>
 <li><strong>2020-06-10</strong>: Added prohibition on starting any word with a number.</li>
