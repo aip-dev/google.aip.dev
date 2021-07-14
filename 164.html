@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5c882025">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5c882025">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=92eba97f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=92eba97f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=5c882025"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=92eba97f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -748,8 +748,13 @@ exists.</p>
 <p>If the user does have proper permission, but the requested resource does not
 exist (either it was never created or already expunged), the service <strong>must</strong>
 error with <code>NOT_FOUND</code> (HTTP 404).</p>
-<p>If the user has proper permission, but the requested resource is not deleted,
-the service <strong>must</strong> respond with <code>ALREADY_EXISTS</code> (HTTP 409).</p>
+<p>If the user calling a soft <code>Delete</code> has proper permission, but the requested
+resource is already deleted, the service <strong>must</strong> succeed if <code>allow_missing</code> is
+<code>true</code>, and <strong>should</strong> error with <code>NOT_FOUND</code> (HTTP 404) if <code>allow_missing</code> is
+<code>false</code>.</p>
+<p>If the user calling <code>Undelete</code> has proper permission, but the requested
+resource is not deleted, the service <strong>must</strong> respond with <code>ALREADY_EXISTS</code>
+(HTTP 409).</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For the <code>Delete</code> standard method, see <a href="/135">AIP-135</a>.</li>
@@ -759,6 +764,8 @@ the service <strong>must</strong> respond with <code>ALREADY_EXISTS</code> (HTTP
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2021-07-12</strong>: Added error behavior when soft deleting a deleted resource.</li>
+<li><strong>2021-07-12</strong>: Clarified that <code>ALREADY_EXISTS</code> errors apply to <code>Undelete</code>.</li>
 <li><strong>2021-07-12</strong>: Changed the <code>expire_time</code> field to "should" for consistency
   with <a href="/148">AIP-148</a>.</li>
 <li><strong>2020-09-23</strong>: Soft delete material in <a href="/135">AIP-135</a> migrated to this AIP.</li>
