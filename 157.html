@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=92eba97f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=92eba97f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5c32fb42">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5c32fb42">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=92eba97f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5c32fb42"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -654,7 +654,7 @@ number of permutations to the user:</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>The enum <strong>should</strong> be specified as a <code>view</code> field on List/Get RPC requests.</li>
+<li>The enum <strong>should</strong> be specified as a <code>view</code> field on the request message.</li>
 <li>The enum <strong>should</strong> be named something ending in <code>-View</code></li>
 <li>The enum <strong>should</strong> at minimum have values named <code>BASIC</code> and <code>FULL</code> (although
   it <strong>may</strong> have values other than these).</li>
@@ -666,7 +666,7 @@ number of permutations to the user:</p>
 </ul>
 </li>
 <li>The enum <strong>should</strong> be defined at the top level of the proto file (as it is
-  needed in both the Get and List request).</li>
+  likely to be needed in multiple requests, e.g. both <code>Get</code> and <code>List</code>).</li>
 <li>
 <p>APIs <strong>may</strong> add fields to a given view over time. APIs <strong>must not</strong> remove a
   field from a given view (this is a breaking change).</p>
@@ -691,9 +691,11 @@ message: <code>google.protobuf.FieldMask read_mask</code>.</p>
   certain fields are expensive to compute and it is preferable to exclude
   them by default).</li>
 <li>The field mask <strong>may</strong> be designated as required if necessary.</li>
-<li>The default for List and Get <strong>may</strong> be different from each other. However,
-  if they are, the default for Get <strong>must</strong> be a (non-strict) superset of the
-  default for List.</li>
+<li>The default for <code>List</code> and <code>Get</code> <strong>may</strong> be different from each other.
+  However, if they are, the default for <code>Get</code> <strong>must</strong> be a (non-strict)
+  superset of the default for <code>List</code>.</li>
+<li>While it is less common, read masks <strong>may</strong> be used on methods other than
+  <code>List</code> and <code>Get</code>.</li>
 </ul>
 </li>
 <li>An API <strong>may</strong> allow read masks with non-terminal repeated fields (unlike
