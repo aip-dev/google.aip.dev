@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-4210: Client library generators</title>
+    <title>AIP-4234: Common service client mixins</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -189,7 +189,7 @@
       <a href="/aog">Actions on Google</a>
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/4210">
         <span class="aip-number">4210</span>
         Client library generators
@@ -225,7 +225,7 @@
         Automatic pagination
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/4234">
         <span class="aip-number">4234</span>
         Common service client mixins
@@ -243,26 +243,24 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Client library generators</th></tr>
-    <tr><td>Number</td><td>4210</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4210">google.aip.dev/client-libraries/4210</a></td></tr>
+    <tr><th colspan="2">Common service client mixins</th></tr>
+    <tr><td>Number</td><td>4234</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4234">google.aip.dev/client-libraries/4234</a></td></tr>
     <tr><td>Scope</td><td>Client libraries</td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2018-06-22</td></tr>
-    <tr><td>Updated</td><td>2018-06-22</td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2021-06-07</td></tr>
+    <tr><td>Updated</td><td>2021-06-07</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a><ul>
-<li><a href="#protobuf-plugins">Protobuf plugins</a></li>
-<li><a href="#cli-options">CLI options</a></li>
-</ul>
-</li>
-<li><a href="#expected-behavior">Expected behavior</a><ul>
-<li><a href="#services-and-methods">Services and methods</a></li>
-<li><a href="#long-running-operations">Long-running operations</a></li>
-<li><a href="#streaming">Streaming</a></li>
+<li><a href="#guidance">Guidance</a></li>
+<li><a href="#implementing-mixin-support">Implementing mixin support</a><ul>
+<li><a href="#generator-configuration">Generator configuration</a></li>
+<li><a href="#mixin-api-client-configuration">Mixin API client configuration</a></li>
+<li><a href="#generating-mixin-methods">Generating mixin methods</a></li>
+<li><a href="#multiple-host-service-clients">Multiple host service clients</a></li>
+<li><a href="#overriding-a-duplicate-rpc">Overriding a duplicate RPC</a></li>
 </ul>
 </li>
 </ul>
@@ -273,8 +271,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4210.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4210.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4234.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4234.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -299,127 +297,115 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Client library generators
+        Common service client mixins
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-4210</h4>
-  <h1 id="client-library-generators">Client library generators</h1>
-<p>API guidelines exist in order to promote simple, intuitive, and consistent
-APIs. Users familiar with APIs that generally adhere to AIP guidance are able
-to take what they learn in prior APIs and apply it to new ones.</p>
-<p>Client libraries provide a mechanism for users to get started with APIs more
-quickly, by simplifying common concerns (such as auth) and by a language-native
-way to call API endpoints and receive language-native responses. However, for
-these libraries to provide the most value, they also must be simple, intuitive,
-and consistent. Code generators provide a means for producing consistent client
-libraries at scale.</p>
-<p>Code generators following the standards in these AIPs are known as "generated
-API client generators", or <em>GAPIC generators</em> for short. The resulting
-libraries are colloquially called <em>GAPICs</em>.</p>
-<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
-language-neutral way, it uses generic terminology which may be imprecise or
-inappropriate in certain languages or environments (for example, the use of the
-term <code>class</code> even though languages such as Go do not have classes). This AIP's
-particular use of vocabulary is best understood as an explanation of
-principles, and precise adherence to exact vocabulary in this AIP is not an
-expectation.</p>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-4234</h4>
+  <h1 id="common-service-client-mixins">Common service client mixins</h1>
+<p>Often, APIs can have common features for administering resources that are
+separated into utility services. These common, utility services are shared among
+the discrete product services. These common services each have a
+centrally-defined surface, but individual instances are hosted alongside each
+product service. Thus, the surfaces of each common service hosted by the product
+service are "mixed in" at runtime.</p>
 <h2 id="guidance">Guidance</h2>
-<h3 id="protobuf-plugins">Protobuf plugins</h3>
-<p>Code generators <strong>must</strong> be implemented as plugins to <code>protoc</code>, the protocol
-buffer compiler. The <a href="https://developers.google.com/protocol-buffers/docs/reference/other">plugin system</a> allows plugins to be written in any
-language, and plugins <strong>should</strong> ordinarily be written in the language being
-targeted, in order to take advantage of in-language tooling, and to ensure that
-experts in the target environment are able to meaningfully contribute.</p>
+<p>Client libraries <strong>may</strong> provide client methods for the common services that its
+API declares to be mixed-in. Such methods improve the user experience by
+presenting the mixin methods from a client configured to communicate with the
+product service that hosts the mixin service.</p>
+<p>If client libraries support mixin services, they <strong>must</strong> support the following
+common services (and <strong>may</strong> support others):</p>
 <ul>
-<li><code>protoc</code> expects plugins to be an executable in <code>$PATH</code>, and named
-  <code>protoc-gen-{plugin_name}</code>, corresponding to the <code>--{plugin_name}_out</code> option
-  sent to the <code>protoc</code> executable.<ul>
-<li>For a plugin creating client libraries for a specific language, the option
-  name <strong>should</strong> follow the convention <code>--{lang}_gapic_out</code> (meaning the
-  corresponding plugin executable is named <code>protoc-gen-{lang}_gapic</code>).</li>
+<li><code>google.cloud.location.Locations</code></li>
+<li><code>google.iam.v1.IAMPolicy</code></li>
+<li><code>google.longrunning.Operations</code></li>
 </ul>
-</li>
-<li>Plugins <strong>must</strong> accept a serialized <code>CodeGeneratorRequest</code> object (defined
-  in <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/compiler/plugin.proto"><code>plugin.proto</code></a>) on <code>stdin</code>; the bulk of this is a series of
-  <code>FileDescriptorProto</code> messages (defined in <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/descriptor.proto"><code>descriptor.proto</code></a>).</li>
-<li>Plugins <strong>must</strong> emit a serialized <code>CodeGeneratorResponse</code> object (defined in
-  <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/compiler/plugin.proto"><code>plugin.proto</code></a>) on <code>stdout</code>.</li>
-</ul>
-<h3 id="cli-options">CLI options</h3>
-<p>Code generators <strong>should</strong> be able to run without any options or flags if at
-all possible, and be able to generate a valid library from only the protos. If
-options are required, <code>protoc</code> allows them to be passed as
-<code>--{plugin_name}_opt</code>, and the string provided here becomes set as the
-<code>parameter</code> string on the <code>CodeGeneratorRequest</code>.</p>
-<p>Code generators <strong>must not</strong> rely on environment variables for configuration.</p>
-<h2 id="expected-behavior">Expected behavior</h2>
-<p>This section outlines the expected behavioral attributes of the <em>output of</em> the
-client library generator (in other words: the libraries that the generators
-write). Client libraries <strong>must</strong> implement these concepts in order to be
-considered complete.</p>
-<h3 id="services-and-methods">Services and methods</h3>
-<p>Each of the <code>service</code> and <code>rpc</code> directives in the requested protos <strong>must</strong> be
-represented in the client library output, unless the language or transport is
-unable to support it.</p>
-<p><strong>Note:</strong> While how to accomplish this may vary from language to language, in
-most classical languages it is probably a class for each service, containing
-methods for each RPC.</p>
-<ul>
-<li>The classes generated for each <code>service</code> directive <strong>must</strong> honor the
-  <code>google.api.default_host</code> annotation if it is provided, and use that host as
-  the default hostname. These classes <strong>should</strong> provide a mechanism for the
-  end user to override the hostname.<ul>
-<li>If the <code>google.api.default_host</code> annotation is not present on the <code>service</code>
-  directive, then the generated class <strong>should</strong> require a hostname when it
-  is instantiated.</li>
-</ul>
-</li>
-<li>Additionally, if the classes generated for each service support using OAuth
-  and service credentials, they <strong>must</strong> honor the <code>google.api.oauth_scopes</code>
-  annotation (if it is provided), and use these scopes by default.</li>
-<li>Services that have set the <code>deprecated</code> protobuf option to <code>true</code> <strong>should</strong> have an
-  equivalent deprecation tag generated in the generated class. If applicable, this
-  tag may include a comment that specifies when the service will be removed, which
-  is typically the next major version update. Similarly, RPCs with this option set
-  to <code>true</code> <strong>should</strong> have their generated language method(s) marked as deprecated.</li>
-<li>Finally, service classes <strong>must</strong> also accept credentials, which are used
-  appropriately when requests are made. (Accepting a custom gRPC channel
-  satisfies this requirement.)</li>
-</ul>
-<h3 id="long-running-operations">Long-running operations</h3>
-<!-- TODO(b/126177694): Reference the LRO AIP once we have it. -->
+<p><strong>Note:</strong> The list of supported mixin services and the mixin services
+themselves both change infrequently. Any new common service to be supported
+<strong>must</strong> be added to the list here and generators <strong>must</strong> be updated.</p>
+<p>To be generated into a client library, a mixin service <strong>must</strong> be declared
+under <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto#L96">apis</a> in a <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a>. Furthermore, only the RPCs with
+<a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto">google.api.http</a> bindings declared in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto#L124">http</a> configuration of the same
+<a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a> can be generated (more details on these bindings in
+<a href="/127">AIP-127</a>). If a mixin service RPC does not have a <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto">google.api.http</a> rule declared
+in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a>, it <strong>must not</strong> be generated.</p>
+<h2 id="implementing-mixin-support">Implementing mixin support</h2>
+<h3 id="generator-configuration">Generator configuration</h3>
+<p>Client library generators <strong>must</strong> accept the file path of a
+<a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a> in YAML form. This file is specified via a flag that
+<strong>must</strong> be optional. In other words, the flag <strong>must not</strong> be required for
+basic client generation that omits the mixin methods.</p>
+<h3 id="mixin-api-client-configuration">Mixin API client configuration</h3>
+<p>If a mixin API utilizes client library configuration (i.e. annotations, default
+retry settings, etc.) such as <code>google.api.method_signature</code> or request header
+injection, generators <strong>may</strong> support it in the generated mixin methods if the
+configuration is accessible.</p>
+<p>Where client library configuration calls for a fully-qualified name, the
+<em>mixin's</em> fully-qualified name <strong>must</strong> be used. That is to say, the host
+service <strong>must not</strong> refer to a mixin element as if it was in its own package.</p>
+<p>For example, configuring <code>google.iam.v1.IAMPolicy.GetIAMPolicy</code> with default
+retry and timeout settings would be as follows:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">[{</span> <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;google.iam.v1.IAMPolicy&quot;</span><span class="p">,</span> <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;GetIAMPolicy&quot;</span> <span class="p">}],</span>
+  <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;60s&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;retryPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;initialBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1s&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;maxBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;5s&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;backoffMultiplier&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
+    <span class="nt">&quot;retryableStatusCodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;UNKNOWN&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="generating-mixin-methods">Generating mixin methods</h3>
+<p>The mixin API RPCs <strong>should</strong> be generated as methods on the surface of the
+host API's service client library, alongside the host service's RPCs. This
+presents them as top-level methods on the client, but under-the-hood, the
+appropriate mixin API stub or request should be invoked. However, generators
+<strong>may</strong> choose to present the mixin API RPCs in a different manner if it is more
+language idiomatic.</p>
+<p><strong>Note:</strong> For gRPC clients, the mixin API gRPC stub <strong>must</strong> be used in order
+to properly construct the gRPC request. For example, the generated, Go gRPC stub
+<a href="https://pkg.go.dev/google.golang.org/genproto@v0.0.0-20210325141258-5636347f2b14/googleapis/cloud/location#LocationsClient">LocationsClient</a> must be used to invoke RPCs for the
+<code>google.cloud.location.Locations</code> mixin, as opposed to that of the host
+service's gRPC stub.</p>
+<h3 id="multiple-host-service-clients">Multiple host service clients</h3>
+<p>If there are multiple services defined by the host API that would result in
+multiple clients being generated, generators <strong>must</strong> include the mixin
+methods on all eligible, generated service clients.</p>
+<h3 id="overriding-a-duplicate-rpc">Overriding a duplicate RPC</h3>
+<p>Client library generators <strong>must not</strong> generate a mixin method on any host
+service client if a host service already defines an RPC with the same name. For
+example, take the following service definition:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">service</span> <span class="n">LibraryService</span> <span class="p">{</span>
+  <span class="k">rpc</span> <span class="n">ListBooks</span><span class="p">(</span><span class="n">ListBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ListBooksResponse</span><span class="p">);</span>
 
-<p>An RPC is considered to be a "long-running" RPC if (and only if) the RPC's
-return type is <a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L122"><code>google.longrunning.Operation</code></a>. Any API which has one or
-more RPCs returning an <code>Operation</code> is expected to implement the <code>Operations</code>
-service.</p>
-<p>Because the <code>response</code> and <code>metadata</code> fields in <a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L122"><code>Operation</code></a> are of the
-type <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/any.proto"><code>google.protobuf.Any</code></a>, it is necessary to know what message to use to
-deserialize them. This is annotated on the RPC using the
-<a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L222"><code>google.longrunning.operation_info</code></a> annotation.</p>
-<p><strong>Note:</strong> The values in this struct are <em>strings</em>, not message objects; the
-code generator uses the string to determine the appropriate message to use.
-Strings with no period (<code>.</code>) character refer to a message in the same proto
-package.</p>
-<p>Code generators <strong>should</strong> fail with an error if a type is provided in the
-<a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L222"><code>operation_info</code></a> annotation which was not imported, or if no response type
-or metadata type is provided. Code generators <strong>should</strong> fail with an error if
-<em>either</em> the <code>response_type</code> or <code>metadata_type</code> keys are omitted.</p>
-<p>Client libraries <strong>must</strong> honor the LRO interface; if an RPC has an
-<a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L122"><code>Operation</code></a> as its return type, the generated method <strong>must</strong> intercept it
-and return an appropriate idiomatic object for resolving the LRO (such as a
-<code>Future</code> or <code>Promise</code> bound to the underlying <a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L122"><code>Operation</code></a> object).</p>
-<h3 id="streaming">Streaming</h3>
-<p>Client libraries <strong>must</strong> implement streaming to the extent that their
-supporting transports allow. An RPC is considered to be streaming if the
-<code>stream</code> keyword is present on the argument or response type. This is present
-in the <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/descriptor.proto#L269"><code>MethodDescriptorProto</code></a> message using the <code>client_streaming</code> and
-<code>server_streaming</code> keys.</p>
-<!-- prettier-ignore-start -->
-<!-- prettier-ignore-end -->
+  <span class="c1">// Other host API RPCs...</span>
+
+  <span class="c1">// Redefinitions of the google.iam.v1.IAMPolicy mixin service.</span>
+  <span class="k">rpc</span> <span class="n">GetIamPolicy</span><span class="p">(</span><span class="n">google.iam.v1.GetIamPolicyRequest</span><span class="p">)</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.Policy</span><span class="p">);</span>
+
+  <span class="k">rpc</span> <span class="n">SetIamPolicy</span><span class="p">(</span><span class="n">google.iam.v1.SetIamPolicyRequest</span><span class="p">)</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.Policy</span><span class="p">);</span>
+
+  <span class="k">rpc</span> <span class="n">TestIamPermissions</span><span class="p">(</span><span class="n">google.iam.v1.TestIamPermissionsRequest</span><span class="p">)</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.TestIamPermissionsResponse</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Should the host API declare the <code>google.iam.v1.IAMPolicy</code> as a mixin service,
+client library generators <strong>must not</strong> generate the resulting mixin methods that
+match the names explicitly declared above for <em>any</em> service client in the host
+proto package, but they <strong>must</strong> generate the other methods for this mixin. In
+this case, the generator <strong>may</strong> log a warning indicating that a collision was
+avoided, or silently skip the mixin methods in question.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
