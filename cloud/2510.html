@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8fcaeaa3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8fcaeaa3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a47f2172">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a47f2172">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8fcaeaa3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a47f2172"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -291,26 +291,29 @@ that applications cannot reliably join data from different services, because
 different services use different project identifiers.</p>
 <h2 id="guidance">Guidance</h2>
 <p><strong>TL;DR:</strong> The project number is the canonical identifier, and the project ID
-is an <a href="/122#resource-id-aliases">alias</a>, and behaves as such. Additionally, third-party services are
-unable to <em>accept</em> project IDs.</p>
+is an <a href="/122#resource-id-aliases">alias</a>; however, unlike normal aliases, it <strong>may</strong> be returned if it
+is what the user sent. Additionally, third-party services are unable to
+<em>accept</em> project IDs.</p>
 <p>The rationale for this is:</p>
 <ul>
 <li>Each resource should always have one canonical identifier.</li>
 <li>Because Google's privacy policy restricts the use of project IDs, both
   internally and with partners, only the project number can be the canonical
   identifier.</li>
-<li>Translating from an <a href="/122#resource-id-aliases">alias</a> to a canonical identifier should be consistent
-  everywhere, including referring to projects.</li>
-<li>Returning resources with project numbers increases the chances that these are
-  what users store, which may be important if using third-party services.</li>
+<li>However, even though the project number is the canonical identifier, a policy
+  of returning it even if the user sent a project ID has proven to be
+  unfriendly to both humans and declarative tools.</li>
 </ul>
 <h3 id="google-apis">Google APIs</h3>
 <p>Externally-facing Google APIs <strong>should</strong> accept both project IDs and project
 numbers for incoming API requests.</p>
-<p>However, the project number is the canonical identifier, and therefore APIs
-<strong>must</strong> use project numbers in responses, regardless of whether they were sent
-a project ID or a project number.</p>
-<p>There are two exceptions to this rule:</p>
+<p>However, even though the project number is the canonical identifier as
+described in <a href="/122">AIP-122</a>, services <strong>should</strong> return whichever ID the user sent.
+The reason for this is because automatic translation between user-friendly
+project IDs and user-unfriendly project numbers has proven to cause real-world
+difficulty for users, and also for declarative tools (see <a href="/128">AIP-128</a> for more on
+declarative-friendliness).</p>
+<p>Two additional points:</p>
 <ul>
 <li>Error responses <strong>must</strong> return the originally-provided value without
   modification. Error responses <strong>must not</strong> perform any translation between
@@ -333,12 +336,14 @@ numbers. Google's privacy policy prohibits sharing project IDs with third-party
 services, or providing a service for third-party services to translate between
 project IDs and project numbers at runtime.</p>
 <h3 id="project-identifier-format">Project identifier format</h3>
-<p>APIs <strong>must</strong> use project resource names as defined by the <a href="https://cloud.google.com/resource-manager/">Resource Manager
-API</a> to refer to projects, such as <code>projects/123456</code>. This allows the same
-API to work with other resources similar to projects, such as organizations and
-folders.</p>
+<p>Services <strong>must</strong> use project resource names as defined by the <a href="https://cloud.google.com/resource-manager/">Resource
+Manager API</a> to refer to projects, such as <code>projects/123456</code>. This allows the
+same API to work with other resources similar to projects, such as
+organizations and folders.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2021-07-29</strong>: Reversed previous guidance on returning project IDs; this AIP
+  now advocates returning what the user sent.</li>
 <li><strong>2019-08-11</strong>: Add an exception for resources that a service does not own.</li>
 <li><strong>2019-06-19</strong>: Clarify how error messages should be treated</li>
 <li><strong>2019-06-10</strong>: Minor language and organization tweaks</li>
