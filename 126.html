@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e9f0522f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e9f0522f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cf6a0eae">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=cf6a0eae">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e9f0522f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=cf6a0eae"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -681,12 +681,20 @@ infrequently:</p>
   and more useful for it to be a zero value rather than having both.</li>
 </ul>
 </li>
+<li>The other values <strong>should not</strong> be prefixed by the name of the enum itself.
+  This generally requires users to write <code>MyState.MYSTATE_ACTIVE</code> in their
+  code, which is unnecessarily verbose.<ul>
+<li>Note that some languages (including C++) hoist enum values into the parent
+  namespace, which can result in conflicts for enums with the same values in
+  the same proto package. To avoid this, multiple enums in the same proto
+  package <strong>must not</strong> share any values. To avoid sharing values, APIs
+  <strong>may</strong> prefix enum values with the name of the enum. In this case, they
+  <strong>must</strong> do so consistently within the enum.</li>
+</ul>
+</li>
 <li>Enums which will only be used in a single message <strong>should</strong> be nested within
   that message. In this case, the enum <strong>should</strong> be declared immediately
   before it is used.</li>
-<li>If multiple enums are in the same namespace, they <strong>must not</strong> share any
-  values. (This is because enums do not provide their own namespace for their
-  values in some languages.)</li>
 <li>Enums <strong>should</strong> document whether the enum is frozen or they expect to add
   values in the future.</li>
 </ul>
