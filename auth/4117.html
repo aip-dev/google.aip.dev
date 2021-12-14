@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a84932d1">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a84932d1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bc45b917">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bc45b917">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a84932d1"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=bc45b917"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -395,39 +395,39 @@ resources.</p>
 <tr>
 <th>Field Name</th>
 <th>Required</th>
-<th>Description</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>type</td>
 <td>Yes</td>
-<td>This identifies the new type of credential object. This must be "external_account"</td>
+<td align="left">This identifies the new type of credential object. This must be "external_account"</td>
 </tr>
 <tr>
 <td>audience</td>
 <td>Yes</td>
-<td>This is the STS audience which contains the resource name for the workload identity pool and the provider identifier in that pool.</td>
+<td align="left">This is the STS audience which contains the resource name for the workload identity pool and the provider identifier in that pool.</td>
 </tr>
 <tr>
 <td>subject_token_type</td>
 <td>Yes</td>
-<td>This is the STS subject token type based on the <a href="https://tools.ietf.org/html/rfc8693#section-3">OAuth 2.0 token exchange spec</a>.</td>
+<td align="left">This is the STS subject token type based on the <a href="https://tools.ietf.org/html/rfc8693#section-3">OAuth 2.0 token exchange spec</a>.</td>
 </tr>
 <tr>
 <td>service_account_impersonation_url</td>
 <td>No</td>
-<td>This is the URL for the service account impersonation request. If this is not available, the STS returned access token should be directly used without impersonation.</td>
+<td align="left">This is the URL for the service account impersonation request. If this is not available, the STS returned access token should be directly used without impersonation.</td>
 </tr>
 <tr>
 <td>token_url</td>
 <td>Yes</td>
-<td>This is the STS token exchange endpoint.</td>
+<td align="left">This is the STS token exchange endpoint.</td>
 </tr>
 <tr>
 <td>credential_source.*</td>
 <td>Yes</td>
-<td>This object defines the mechanism used to retrieve the external credential from the local environment so that it can be exchanged for a GCP access token via the STS endpoint.</td>
+<td align="left">This object defines the mechanism used to retrieve the external credential from the local environment so that it can be exchanged for a GCP access token via the STS endpoint.</td>
 </tr>
 </tbody>
 </table>
@@ -483,29 +483,29 @@ endpoint.</p>
 <tr>
 <th>Field Name</th>
 <th>Required</th>
-<th>Description</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>credential_source.environment_id</td>
+<td>environment_id</td>
 <td>Yes</td>
-<td>This is the environment identifier, of format <code>aws${version}</code>. A version should be specified to indicate to the auth library whether breaking changes were introduced to the underlying AWS implementation. So if aws1 is supported in the current version of the library but a credential file with aws2 is provided, an error should be thrown instructing the developer to upgrade to a newer version of the library.</td>
+<td align="left">This is the environment identifier, of format <code>aws${version}</code>. A version should be specified to indicate to the auth library whether breaking changes were introduced to the underlying AWS implementation. So if aws1 is supported in the current version of the library but a credential file with aws2 is provided, an error should be thrown instructing the developer to upgrade to a newer version of the library.</td>
 </tr>
 <tr>
-<td>credential_source.region_url</td>
+<td>region_url</td>
 <td>Yes</td>
-<td>This URL should be used to determine the current AWS region needed for the signed request construction.</td>
+<td align="left">This URL should be used to determine the current AWS region needed for the signed request construction.</td>
 </tr>
 <tr>
-<td>credential_source.url</td>
+<td>url</td>
 <td>No</td>
-<td>This AWS metadata server URL should be used to retrieve the access key, secret key and security token needed to sign the <code>GetCallerIdentity</code> request. The $ROLE_NAME should be retrieved from calling this endpoint without any parameter and then calling again with the returned role name appended to this URL: http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME</td>
+<td align="left">This AWS metadata server URL should be used to retrieve the access key, secret key and security token needed to sign the <code>GetCallerIdentity</code> request. The $ROLE_NAME should be retrieved from calling this endpoint without any parameter and then calling again with the returned role name appended to this URL: http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME</td>
 </tr>
 <tr>
-<td>credential_source.regional_cred_verification_url</td>
+<td>regional_cred_verification_url</td>
 <td>Yes</td>
-<td>This defines the regional AWS <code>GetCallerIdentity</code> action URL. This URL should be used to determine the AWS account ID and its roles. This should not actually be called by the Auth libraries. It should be called on the STS token server. The region should be substituted by SDK, e.g. <code>sts.eu-west-1.amazonaws</code>.com.</td>
+<td align="left">This defines the regional AWS <code>GetCallerIdentity</code> action URL. This URL should be used to determine the AWS account ID and its roles. This should not actually be called by the Auth libraries. It should be called on the STS token server. The region should be substituted by SDK, e.g. <code>sts.eu-west-1.amazonaws</code>.com.</td>
 </tr>
 </tbody>
 </table>
@@ -597,29 +597,29 @@ token exchange endpoint.</p>
 <tr>
 <th>Field Name</th>
 <th>Required</th>
-<th>Description</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>credential_source.url</td>
+<td>url</td>
 <td>Yes</td>
-<td>This defines the local metadata server to retrieve the external credentials from. For Azure, this should be the Azure Instance Metadata Service (IMDS) URL used to retrieve the Azure AD access token.</td>
+<td align="left">This defines the local metadata server to retrieve the external credentials from. For Azure, this should be the Azure Instance Metadata Service (IMDS) URL used to retrieve the Azure AD access token.</td>
 </tr>
 <tr>
-<td>credential_source.headers</td>
+<td>headers</td>
 <td>No</td>
-<td>This defines the headers to append to the GET request to credential_source.url.</td>
+<td align="left">This defines the headers to append to the GET request to credential_source.url.</td>
 </tr>
 <tr>
-<td>credential_source.format.type</td>
+<td>format.type</td>
 <td>No</td>
-<td>This indicates the format of the URL response. This can be either "text" or "json". The default should be "text".</td>
+<td align="left">This indicates the format of the URL response. This can be either "text" or "json". The default should be "text".</td>
 </tr>
 <tr>
-<td>credential_source.format.subject_token_field_name</td>
+<td>format.subject_token_field_name</td>
 <td>No</td>
-<td>Required for JSON URL responses. This indicates the JSON field name where the subject_token should be stored.</td>
+<td align="left">Required for JSON URL responses. This indicates the JSON field name where the subject_token should be stored.</td>
 </tr>
 </tbody>
 </table>
@@ -688,24 +688,24 @@ endpoint.</p>
 <tr>
 <th>Field Name</th>
 <th>Required</th>
-<th>Description</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>credential_source.file</td>
+<td>file</td>
 <td>Yes</td>
-<td>This is the source of the credential. This should be used for a credential locally available. This should take precedence over <code>url</code> when both are provided.</td>
+<td align="left">This is the source of the credential. This should be used for a credential locally available. This should take precedence over <code>url</code> when both are provided.</td>
 </tr>
 <tr>
-<td>credential_source.format.type</td>
+<td>format.type</td>
 <td>No</td>
-<td>This indicates the format of the file where the token is stored. This can be either "text" or "json". The default should be "text".</td>
+<td align="left">This indicates the format of the file where the token is stored. This can be either "text" or "json". The default should be "text".</td>
 </tr>
 <tr>
-<td>credential_source.format.subject_token_field_name</td>
+<td>format.subject_token_field_name</td>
 <td>No</td>
-<td>Required for JSON file formats. This indicates the JSON field name where the <code>subject_token</code> should be stored.</td>
+<td align="left">Required for JSON file formats. This indicates the JSON field name where the <code>subject_token</code> should be stored.</td>
 </tr>
 </tbody>
 </table>
