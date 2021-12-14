@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=82af0d2d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=82af0d2d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a84932d1">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a84932d1">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=82af0d2d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a84932d1"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=82af0d2d"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=82af0d2d"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=82af0d2d"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=a84932d1"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=a84932d1"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=a84932d1"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -234,6 +234,12 @@
         Identity Tokens
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/4117">
+        <span class="aip-number">4117</span>
+        External Account Credentials (Workload Identity Federation)
+      </a>
+    </li>
     </ul>
 </nav>
 <section id="jump-content">
@@ -332,6 +338,12 @@ allows human users to sign-in through <a href="https://developers.google.com/ide
 permissions to the application to access Google APIs on behalf of the human
 user. The auth libraries <strong>may</strong> support this credential type.</p>
 </li>
+<li>
+<p><strong>External Account Credential</strong>: A configuration file identifying
+<a href="./4117">external non-Google credentials</a> that can be exchanged for Google access
+tokens to access Google APIs. The auth libraries <strong>must</strong> support this
+credential type.</p>
+</li>
 </ul>
 <h3 id="environment-variables">Environment Variables</h3>
 <p>The auth libraries <strong>must</strong> support the following environment variables to allow
@@ -344,6 +356,7 @@ full path for ADC to locate the credentials file. The credentials file
 <ul>
 <li>Gcloud credentials</li>
 <li>Service account key</li>
+<li>External account credentials</li>
 </ul>
 <p>The credentials <strong>may</strong> be the OAuth Client ID if it is supported by the
 auth library. Credentials file path specified at the program level (e.g. via
@@ -400,6 +413,7 @@ implement these concepts in order to be considered complete.</p>
 <li>Check the provided credential type<ol>
 <li>If the credential is gcloud credentials, go to step (4)</li>
 <li>If the credential is <a href="./4112">a service account key</a> JSON, go to step (4)</li>
+<li>If the credential is <a href="./4117">an external account</a> JSON, go to step (4)</li>
 <li>If the credential is unknown type, return an error saying that <em>[END]</em></li>
 </ol>
 </li>
@@ -418,6 +432,7 @@ implement these concepts in order to be considered complete.</p>
 <li><strong>Determine auth flows</strong><ol>
 <li>If the credential is gcloud credential go to step (5.3)</li>
 <li>If target audience or scope is provided by the developer go to step (5.1)</li>
+<li>If the credential is an external account go to step (5.4)</li>
 <li>Otherwise, go to step (5.2)</li>
 </ol>
 </li>
@@ -436,6 +451,7 @@ implement these concepts in order to be considered complete.</p>
 </ol>
 </li>
 <li>Use user identity flow to exchange for an access token. <em>[END]</em></li>
+<li>Use <a href="./4117">external account</a> flow to exchange for an access token. <em>[END]</em></li>
 </ol>
 </li>
 </ol>
@@ -445,6 +461,7 @@ implement these concepts in order to be considered complete.</p>
 <li><strong>2019-08-18</strong>: Remove STS support from ADC.</li>
 <li><strong>2021-01-20</strong>: Add identity token flow (AIP 4116).</li>
 <li><strong>2021-06-29</strong>: Guidance for GOOGLE_API_KEY temporarily removed until consensus can be established.</li>
+<li><strong>2021-12-10</strong>: Add external account credentials (AIP 4117).</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
