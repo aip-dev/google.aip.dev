@@ -1,6 +1,9 @@
 # API Improvement Proposals
 
 **TL;DR:** AIPs are lots of documents on how Google does APIs.
+Google allows you to fork this repo and host it yoursel, so we
+did that Kolla. The Google AIPs give us a great API style guide to
+start with and build on. 
 
 ## Overview
 

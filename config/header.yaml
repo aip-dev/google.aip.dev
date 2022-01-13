@@ -8,5 +8,7 @@ links:
     relative_url: /faq
   - title: Contributing
     relative_url: /contributing
+  - title: Kolla AIPs
+    relative_url: /kolla
   - title: API Linter
     absolute_url: https://linter.aip.dev/
