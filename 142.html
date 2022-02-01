@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6e88be9c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6e88be9c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f4a7ae79">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f4a7ae79">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=6e88be9c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f4a7ae79"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -647,7 +647,7 @@ concept of time.</p>
 <h2 id="guidance">Guidance</h2>
 <p>Fields representing time <strong>should</strong> use the common, generally used components
 (such as <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto"><code>google.protobuf.Timestamp</code></a> or
-<a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/date.proto"><code>google.type.Date</code></a>) for representing time or duration types. These
+<a href="https://github.com/googleapis/googleapis/blob/master/google/type/date.proto"><code>google.type.Date</code></a>) for representing time or duration types. These
 types are <a href="/213">common components</a>, and using them consistently allows
 infrastructure and tooling to provide a better experience when interacting with
 time values.</p>
@@ -708,8 +708,8 @@ stream:</p>
 <p>Fields that represent a calendar date or wall-clock time <strong>should</strong> use the
 appropriate common components:</p>
 <ul>
-<li>Civil date: <a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/date.proto"><code>google.type.Date</code></a></li>
-<li>Wall-clock time: <a href="https://github.com/googleapis/api-common-protos/blob/master/google/type/timeofday.proto"><code>google.type.TimeOfDay</code></a></li>
+<li>Civil date: <a href="https://github.com/googleapis/googleapis/blob/master/google/type/date.proto"><code>google.type.Date</code></a></li>
+<li>Wall-clock time: <a href="https://github.com/googleapis/googleapis/blob/master/google/type/timeofday.proto"><code>google.type.TimeOfDay</code></a></li>
 </ul>
 <p>Fields representing civil dates <strong>should</strong> have names ending in <code>_date</code>, while
 fields representing civil times or datetimes <strong>should</strong> have names ending in

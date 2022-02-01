@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6e88be9c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6e88be9c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f4a7ae79">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f4a7ae79">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=6e88be9c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f4a7ae79"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -298,7 +298,7 @@ and do not use the Actions on Google common types defined in <a href="./3021.md"
 support BII arguments by mapping them, or their properties, to the argument
 type schema they <em>do</em> support. For example, a BII argument of type
 <a href="https://schema.org/MonetaryAmount">MonetaryAmount</a> may be mapped to an API field of type
-<a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>.</p>
+<a href="https://github.com/googleapis/googleapis/tree/master/google/type/money.proto">Money</a>.</p>
 <h2 id="bii-argument-paths">BII argument paths</h2>
 <p>Only certain Schema.org entity types should be mapped to a given common type.
 In order to support BII arguments with types that cannot be mapped to an
@@ -329,10 +329,10 @@ Schema.org entity within the list of arguments to the BII.</p>
 </code></pre></div>
 <p>There is no common type to which <code>MonetaryGrant</code> can be mapped, but the <code>grant</code>
 argument contains an <code>amount</code> property of type
-<a href="https://schema.org/MonetaryAmount">MonetaryAmount</a>, which <em>can</em> be mapped to <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a>.
+<a href="https://schema.org/MonetaryAmount">MonetaryAmount</a>, which <em>can</em> be mapped to <a href="https://github.com/googleapis/googleapis/tree/master/google/type/money.proto">Money</a>.
 This property can be referenced with the path string <code>"grant.amount"</code>.
 Similarly, <code>grant.name</code> can be mapped to a string field.</p>
-<p>A URI-based API which does not support <a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a> would instead need to use the
+<p>A URI-based API which does not support <a href="https://github.com/googleapis/googleapis/tree/master/google/type/money.proto">Money</a> would instead need to use the
 path strings <code>"grant.amount.currency"</code> and <code>"grant.amount.value"</code> to map
 <code>grant.amount</code> to two separate URI parameters.</p>
 <p>On the other hand, <code>date</code> can be mapped to <a href="https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto">DateTime</a>, and so the path string
@@ -377,7 +377,7 @@ common types:</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/date.proto">Date</a></td>
+<td><a href="https://github.com/googleapis/googleapis/tree/master/google/type/date.proto">Date</a></td>
 <td><a href="https://schema.org/Date">Date</a></td>
 </tr>
 <tr>
@@ -385,7 +385,7 @@ common types:</p>
 <td><a href="https://schema.org/DateTime">DateTime</a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/timeofday.proto">TimeOfDay</a></td>
+<td><a href="https://github.com/googleapis/googleapis/tree/master/google/type/timeofday.proto">TimeOfDay</a></td>
 <td><a href="https://schema.org/Time">Time</a></td>
 </tr>
 <tr>
@@ -393,11 +393,11 @@ common types:</p>
 <td><a href="http://schema.org/Duration">Duration</a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/money.proto">Money</a></td>
+<td><a href="https://github.com/googleapis/googleapis/tree/master/google/type/money.proto">Money</a></td>
 <td><a href="https://schema.org/MonetaryAmount">MonetaryAmount</a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/googleapis/api-common-protos/tree/master/google/type/postal_address.proto">PostalAddress</a></td>
+<td><a href="https://github.com/googleapis/googleapis/tree/master/google/type/postal_address.proto">PostalAddress</a></td>
 <td><a href="https://schema.org/Place">Place</a>, <a href="https://schema.org/PostalAddress">PostalAddress</a></td>
 </tr>
 </tbody>
