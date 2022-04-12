@@ -12,7 +12,7 @@ You will find the following notice at the bottom of many pages:
 > [content licensing][licensing].
 
 When you see a page with this notice you are free to use
-[nearly everything](#restrictions) on the page in your own creations. For
+[nearly everything](#Apprpoved) on the page in your own creations. For
 example, you could quote the text in a book, cut-and-paste sections to your
 blog, record it as an audiobook for the visually impaired, or even translate it
 into Swahili. Really. That's what open content licenses are all about. We just
