@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a962c9ac">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a962c9ac">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9f50310c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9f50310c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a962c9ac"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9f50310c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -321,7 +321,7 @@ JWT as a means of authentication.</p>
 <p>Supporting self-signed JWT is considered a part of <a href="https://google.aip.dev/auth/4112">application default
 credentials</a>. To understand the overall flow, please read <a href="https://google.aip.dev/auth/4112">AIP-4110</a>.</p>
 <h3 id="scope-vs-audience">Scope vs. Audience</h3>
-<p>In the past, the self-signed JWT is only applicable with <code>audience</code>. Recently,
+<p>In the past, the self-signed JWT was only applicable with <code>audience</code>. Recently,
 the usage of the "scope" claim in self-signed JWTs is now allowed in the Google
 Cloud auth ecosystem, which makes the self-signed JWT usable with both audience
 and scope. However, caller <strong>must</strong> not specify scope and audience at the same
