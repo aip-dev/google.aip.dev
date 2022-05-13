@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-4234: Common service client mixins</title>
+    <title>AIP-4223: Client-side payload validation</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -207,7 +207,7 @@
         Routing headers
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/4223">
         <span class="aip-number">4223</span>
         Client-side payload validation
@@ -231,7 +231,7 @@
         Automatic pagination
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/4234">
         <span class="aip-number">4234</span>
         Common service client mixins
@@ -249,24 +249,19 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Common service client mixins</th></tr>
-    <tr><td>Number</td><td>4234</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4234">google.aip.dev/client-libraries/4234</a></td></tr>
+    <tr><th colspan="2">Client-side payload validation</th></tr>
+    <tr><td>Number</td><td>4223</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4223">google.aip.dev/client-libraries/4223</a></td></tr>
     <tr><td>Scope</td><td>Client libraries</td></tr>
     <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2021-06-07</td></tr>
-    <tr><td>Updated</td><td>2021-06-07</td></tr>
+    <tr><td>Created</td><td>2022-05-13</td></tr>
+    <tr><td>Updated</td><td>2022-05-13</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a></li>
-<li><a href="#implementing-mixin-support">Implementing mixin support</a><ul>
-<li><a href="#generator-configuration">Generator configuration</a></li>
-<li><a href="#mixin-api-client-configuration">Mixin API client configuration</a></li>
-<li><a href="#generating-mixin-methods">Generating mixin methods</a></li>
-<li><a href="#multiple-host-service-clients">Multiple host service clients</a></li>
-<li><a href="#overriding-a-duplicate-rpc">Overriding a duplicate RPC</a></li>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#local-failures">Local failures</a></li>
 </ul>
 </li>
 </ul>
@@ -277,8 +272,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4234.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4234.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4223.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4223.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -303,110 +298,42 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Common service client mixins
+        Client-side payload validation
       </li>
     </ol>
   </nav>
 </section>
   
-  <h4 class="aip-number">AIP-4234</h4>
-  <h1 id="common-service-client-mixins">Common service client mixins</h1>
-<p>Often, APIs can have common features for administering resources that are
-separated into utility services. These common, utility services are shared among
-the discrete product services. These common services each have a
-centrally-defined surface, but individual instances are hosted alongside each
-product service. Thus, the surfaces of each common service hosted by the product
-service are "mixed in" at runtime.</p>
+  <h4 class="aip-number">AIP-4223</h4>
+  <h1 id="client-side-payload-validation">Client-side payload validation</h1>
+<p>Client-side payload validation is the practice of inspecting the request payload
+for any misconfigurations (e.g. missing required fields, attempting to update an
+immutable field) prior to executing a network call with the payload. Typically,
+documentation communicates the expectations of the service with regards to each
+request field, including any requirements on presence or format. The
+<code>google.api.field_behavior</code> annotation defined in <a href="../general/0203.md">AIP-203</a> is the
+machine-readable format that services use to document behavior in relation to
+specific request fields.</p>
 <h2 id="guidance">Guidance</h2>
-<p>Client libraries <strong>may</strong> provide client methods for the common services that its
-API declares to be mixed-in. Such methods improve the user experience by
-presenting the mixin methods from a client configured to communicate with the
-product service that hosts the mixin service.</p>
-<p>If client libraries support mixin services, they <strong>must</strong> support the following
-common services (and <strong>may</strong> support others):</p>
-<ul>
-<li><code>google.cloud.location.Locations</code></li>
-<li><code>google.iam.v1.IAMPolicy</code></li>
-<li><code>google.longrunning.Operations</code></li>
-</ul>
-<p><strong>Note:</strong> The list of supported mixin services and the mixin services
-themselves both change infrequently. Any new common service to be supported
-<strong>must</strong> be added to the list here and generators <strong>must</strong> be updated.</p>
-<p>To be generated into a client library, a mixin service <strong>must</strong> be declared
-under <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto#L96">apis</a> in a <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a>. Furthermore, only the RPCs with
-<a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto">google.api.http</a> bindings declared in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto#L124">http</a> configuration of the same
-<a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a> can be generated (more details on these bindings in
-<a href="/127">AIP-127</a>). If a mixin service RPC does not have a <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto">google.api.http</a> rule declared
-in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a>, it <strong>must not</strong> be generated.</p>
-<h2 id="implementing-mixin-support">Implementing mixin support</h2>
-<h3 id="generator-configuration">Generator configuration</h3>
-<p>Client library generators <strong>must</strong> accept the file path of a
-<a href="https://github.com/googleapis/googleapis/blob/master/google/api/service.proto">google.api.Service</a> in YAML form. This file is specified via a flag that
-<strong>must</strong> be optional. In other words, the flag <strong>must not</strong> be required for
-basic client generation that omits the mixin methods.</p>
-<h3 id="mixin-api-client-configuration">Mixin API client configuration</h3>
-<p>If a mixin API utilizes client library configuration (i.e. annotations, default
-retry settings, etc.) such as <code>google.api.method_signature</code> or request header
-injection, generators <strong>may</strong> support it in the generated mixin methods if the
-configuration is accessible.</p>
-<p>Where client library configuration calls for a fully-qualified name, the
-<em>mixin's</em> fully-qualified name <strong>must</strong> be used. That is to say, the host
-service <strong>must not</strong> refer to a mixin element as if it was in its own package.</p>
-<p>For example, configuring <code>google.iam.v1.IAMPolicy.GetIAMPolicy</code> with default
-retry and timeout settings would be as follows:</p>
-<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">[{</span> <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;google.iam.v1.IAMPolicy&quot;</span><span class="p">,</span> <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;GetIAMPolicy&quot;</span> <span class="p">}],</span>
-  <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;60s&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;retryPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;initialBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1s&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;maxBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;5s&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;backoffMultiplier&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
-    <span class="nt">&quot;retryableStatusCodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;UNKNOWN&quot;</span><span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="generating-mixin-methods">Generating mixin methods</h3>
-<p>The mixin API RPCs <strong>should</strong> be generated as methods on the surface of the
-host API's service client library, alongside the host service's RPCs. This
-presents them as top-level methods on the client, but under-the-hood, the
-appropriate mixin API stub or request should be invoked. However, generators
-<strong>may</strong> choose to present the mixin API RPCs in a different manner if it is more
-language idiomatic.</p>
-<p><strong>Note:</strong> For gRPC clients, the mixin API gRPC stub <strong>must</strong> be used in order
-to properly construct the gRPC request. For example, the generated, Go gRPC stub
-<a href="https://pkg.go.dev/google.golang.org/genproto@v0.0.0-20210325141258-5636347f2b14/googleapis/cloud/location#LocationsClient">LocationsClient</a> must be used to invoke RPCs for the
-<code>google.cloud.location.Locations</code> mixin, as opposed to that of the host
-service's gRPC stub.</p>
-<h3 id="multiple-host-service-clients">Multiple host service clients</h3>
-<p>If there are multiple services defined by the host API that would result in
-multiple clients being generated, generators <strong>must</strong> include the mixin
-methods on all eligible, generated service clients.</p>
-<h3 id="overriding-a-duplicate-rpc">Overriding a duplicate RPC</h3>
-<p>Client library generators <strong>must not</strong> generate a mixin method on any host
-service client if a host service already defines an RPC with the same name. For
-example, take the following service definition:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">service</span> <span class="n">LibraryService</span> <span class="p">{</span>
-  <span class="k">rpc</span> <span class="n">ListBooks</span><span class="p">(</span><span class="n">ListBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ListBooksResponse</span><span class="p">);</span>
-
-  <span class="c1">// Other host API RPCs...</span>
-
-  <span class="c1">// Redefinitions of the google.iam.v1.IAMPolicy mixin service.</span>
-  <span class="k">rpc</span> <span class="n">GetIamPolicy</span><span class="p">(</span><span class="n">google.iam.v1.GetIamPolicyRequest</span><span class="p">)</span>
-      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.Policy</span><span class="p">);</span>
-
-  <span class="k">rpc</span> <span class="n">SetIamPolicy</span><span class="p">(</span><span class="n">google.iam.v1.SetIamPolicyRequest</span><span class="p">)</span>
-      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.Policy</span><span class="p">);</span>
-
-  <span class="k">rpc</span> <span class="n">TestIamPermissions</span><span class="p">(</span><span class="n">google.iam.v1.TestIamPermissionsRequest</span><span class="p">)</span>
-      <span class="k">returns</span> <span class="p">(</span><span class="n">google.iam.v1.TestIamPermissionsResponse</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Should the host API declare the <code>google.iam.v1.IAMPolicy</code> as a mixin service,
-client library generators <strong>must not</strong> generate the resulting mixin methods that
-match the names explicitly declared above for <em>any</em> service client in the host
-proto package, but they <strong>must</strong> generate the other methods for this mixin. In
-this case, the generator <strong>may</strong> log a warning indicating that a collision was
-avoided, or silently skip the mixin methods in question.</p>
+<p>Client libraries <strong>must not</strong> implement client-side payload validation based
+on the <code>google.api.field_behavior</code> annotation, except to prevent
+<a href="4223.md#local-failures">local failures</a>.</p>
+<p>The reason for this is that the <code>google.api.field_behavior</code> annotation is
+primarily a machine-readable form of <em>documentation</em>, and <strong>not</strong> a
+configuration for payload validation. The annotation conveys how the service
+<em>already</em> handles the field, and alludes to a service's own payload validation
+or expectations.</p>
+<p>Admittedly, depending on services to implement payload validation means clients
+will sometimes make network calls that are bound to result in errors. Furthermore, users
+then depend on services to provide actionable errors, when the client could have
+provided a language-idiomatic, localized error. However, robust server-side
+payload validation means that <em>all types</em> of client (first party, third party,
+<code>curl</code>, etc.) will benefit from the <strong>same</strong> validation, and that there is no
+lag between service and clients when the field behavior changes.</p>
+<h3 id="local-failures">Local failures</h3>
+<p>Client libraries <strong>may</strong> implement client-side payload validation based on the
+<code>google.api.field_behavior</code> annotation only to the extent that it prevents
+local failures, such as crashes within the client library code itself.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
