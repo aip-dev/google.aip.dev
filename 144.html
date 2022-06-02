@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6a85d523">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6a85d523">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=de0ba38c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=de0ba38c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=6a85d523"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=de0ba38c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -715,10 +715,10 @@ subresource instead.</p>
 </li>
 <li>The RPC's name <strong>must</strong> begin with the word <code>Add</code> or <code>Remove</code>. The remainder
   of the RPC name <strong>should</strong> be the singular form of the field being added.</li>
-<li>The request message <strong>must</strong> match the RPC name, with a <code>-Request</code> suffix.</li>
+<li>The request message <strong>must</strong> match the RPC name, with a <code>Request</code> suffix.</li>
 <li>The response message <strong>should</strong> be the resource itself, unless there is useful
   context to provide in the response, in which case the response message must
-  match the RPC name, with a <code>-Response</code> suffix.<ul>
+  match the RPC name, with a <code>Response</code> suffix.<ul>
 <li>When the response is the resource itself, it <strong>should</strong> include the
   fully-populated resource.</li>
 </ul>
@@ -779,6 +779,7 @@ subresource instead.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2020-10-17</strong>: Recommended returning the resource itself in Add and Remove
   RPCs over separate response types.</li>
 <li><strong>2020-10-17</strong>: Added guidance for Add and Remove RPCs and requests.</li>

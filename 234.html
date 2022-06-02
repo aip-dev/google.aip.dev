@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6a85d523">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6a85d523">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=de0ba38c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=de0ba38c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=6a85d523"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=de0ba38c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -652,10 +652,10 @@ transaction. A batch update method provides this functionality.</p>
 <li>The RPC's name <strong>must</strong> begin with <code>BatchUpdate</code>. The remainder of the RPC
   name <strong>should</strong> be the plural form of the resource being updated.</li>
 <li>The request and response messages <strong>must</strong> match the RPC name, with
-  <code>-Request</code> and <code>-Response</code> suffixes.<ul>
+  <code>Request</code> and <code>Response</code> suffixes.<ul>
 <li>However, in the event that the request may take a significant amount of
   time, the response message <strong>must</strong> be a <code>google.longrunning.Operation</code>
-  which ultimately resolves to the <code>-Response</code> type.</li>
+  which ultimately resolves to the <code>Response</code> type.</li>
 </ul>
 </li>
 <li>The HTTP verb <strong>must</strong> be <code>POST</code>.</li>
@@ -736,6 +736,7 @@ following pattern:</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2020-09-16</strong>: Suggested annotating <code>parent</code> and <code>requests</code> fields.</li>
 <li><strong>2020-08-27</strong>: Removed parent recommendations for top-level resources.</li>
 <li><strong>2019-09-11</strong>: Fixed the wording about which child field the <code>parent</code> field
