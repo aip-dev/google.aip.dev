@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=de0ba38c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=de0ba38c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=29d21781">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=29d21781">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=de0ba38c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=29d21781"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -520,7 +520,7 @@ endpoint.</p>
     <span class="nt">&quot;environment_id&quot;</span><span class="p">:</span> <span class="s2">&quot;aws1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;region_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://169.254.169.254/latest/meta-data/placement/availability-zone&quot;</span><span class="p">,</span>
     <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://169.254.169.254/latest/meta-data/iam/security-credentials&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;regional_cred_verification_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&amp;Version=2011-06-15&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;regional_cred_verification_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&amp;Version=2011-06-15&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -678,7 +678,7 @@ following form:</p>
 </ul>
 </li>
 </ul>
-<h4 id="determining-the-subject-token-file-sourced-credentials">Determining the subject token file-sourced credentials</h4>
+<h4 id="determining-the-subject-token-in-file-sourced-credentials">Determining the subject token in file-sourced credentials</h4>
 <p>External account configuration JSON files contain the following information
 in the <code>credential_source</code> object to facilitate retrieval of file-sourced
 credentials to be passed as subject tokens to the GCP STS token exchange
@@ -724,11 +724,10 @@ the following form:</p>
 </code></pre></div>
 <p>The auth libraries and applications <strong>must</strong> follow the steps below:</p>
 <ul>
-<li>Check <strong>credential_source</strong> for the environment ID. If no environment ID,
-  this should be a file-sourced credential.</li>
+<li>Check <strong>credential_source</strong> has a <strong>file</strong> field and no <strong>environment_id</strong>. If not,
+    this is not a file-sourced credential and the proceeding steps do not apply.</li>
 <li>Get the external credential from the file location specified by the
-  <code>credential_source.file</code> field. If not available, this should be a
-  url-sourced credential.</li>
+  <code>credential_source.file</code> field.</li>
 <li>Before parsing the token, check the <strong>format</strong> field.</li>
 <li>If the <strong>format</strong> is not available, assume the external credential is
   provided in plain text format.</li>
@@ -739,9 +738,197 @@ the following form:</p>
 </ul>
 </li>
 </ul>
+<h4 id="determining-the-subject-token-in-executable-sourced-credentials">Determining the subject token in executable-sourced credentials</h4>
+<p>External account configuration JSON files contain the following information
+in the <code>credential_source</code> object to facilitate retrieval of executable-sourced
+credentials to be passed as subject tokens to the GCP STS token exchange
+endpoint.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>executable</td>
+<td>Yes</td>
+<td align="left">Holds the information necessary to run the executable.</td>
+</tr>
+<tr>
+<td>executable.command</td>
+<td>Yes</td>
+<td align="left">Specifies the full command to run to retrieve the subject token. This can include arguments. Must be an absolute path for the program.</td>
+</tr>
+<tr>
+<td>executable.timeout_millis</td>
+<td>No</td>
+<td align="left">Specifies the timeout duration, in milliseconds. Defaults to 30 seconds when not provided.</td>
+</tr>
+<tr>
+<td>executable.output_file</td>
+<td>No</td>
+<td align="left">Specifies the absolute path to the output file where the executable will cache the response. By specifying this path, the auth libraries will first check this location before running the executable. The format of the file should match the JSON format expected by the auth libraries defined below.</td>
+</tr>
+</tbody>
+</table>
+<p>The JSON file for executable-sourced configuration files (OIDC / SAML) should have
+the following form:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;external_account&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;audience&quot;</span><span class="p">:</span> <span class="s2">&quot;//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;subject_token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;urn:ietf:params:oauth:token-type:saml2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;token_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sts.googleapis.com/v1/token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;service_account_impersonation_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/$EMAIL@project.iam.gserviceaccount.com:generateAccessToken&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;credential_source&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;executable&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/executable --arg1=value1 --arg2=value2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;timeout_millis&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+      <span class="nt">&quot;output_file&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/cached/credentials&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To use executable-sourced credentials, the <code>GOOGLE_EXTERNAL_ACCOUNT_ALLOW_EXECUTABLES</code> environment variable must be set to <code>1</code>.</p>
+<p>Additionally, the executable <strong>must</strong> adhere to the following response format:</p>
+<p>Successful responses:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>number</td>
+<td align="left">The version of the JSON output. Currently only version 1 is supported.</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td align="left">The status of the response. True in this case.</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td align="left">The 3rd party subject token type. Must be <em>urn:ietf:params:oauth:token-type:jwt</em>, <em>urn:ietf:params:oauth:token-type:id_token</em>, or <em>urn:ietf:params:oauth:token-type:saml2</em>.</td>
+</tr>
+<tr>
+<td>id_token OR saml_response</td>
+<td>string</td>
+<td align="left">The 3rd party OIDC token or SAML response.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>number</td>
+<td align="left">The 3rd party subject token expiration time in seconds (unix epoch time).</td>
+</tr>
+</tbody>
+</table>
+<p>A sample successful executable OIDC response:
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;urn:ietf:params:oauth:token-type:id_token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;id_token&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;expiration_time&quot;</span><span class="p">:</span> <span class="mi">1620499962</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>A sample successful executable SAML response:
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;urn:ietf:params:oauth:token-type:saml2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;saml_response&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;expiration_time&quot;</span><span class="p">:</span> <span class="mi">1620499962</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Error responses:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>number</td>
+<td align="left">The version of the JSON output. Currently only version 1 is supported.</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td align="left">The status of the response. False in this case.</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td align="left">The error code.</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td align="left">The error message.</td>
+</tr>
+</tbody>
+</table>
+<p>A sample executable error response:
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Caller not authorized.&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The auth libraries and applications <strong>must</strong> follow the steps below:</p>
+<ul>
+<li>Check <strong>credential_source</strong> has an <strong>executable</strong> field and no <strong>environment_id</strong>. If not,
+  this is not a executable-sourced credential and the proceeding steps do not apply.</li>
+<li>Retrieve the external credential's executable information from the
+  <strong>credential_source.executable</strong> field.</li>
+<li>Check that the <code>GOOGLE_EXTERNAL_ACCOUNT_ALLOW_EXECUTABLES</code> environment variable is set to <strong>1</strong>. If not, error out.</li>
+<li>Before the next step, check if <strong>credential_source.executable.output_file</strong> was specified in the credential configuration.<ul>
+<li>If present, check if there is an executable response at that location. </li>
+<li>If the response is valid and unexpired, or there is no response at that location, continue execution.</li>
+<li>If the response is malformed or invalid, error out.</li>
+</ul>
+</li>
+<li>Ensure the following environment variables will be available to the executable:<ul>
+<li><code>GOOGLE_EXTERNAL_ACCOUNT_AUDIENCE</code>: The audience field from the credential configuration. Must always be present.</li>
+<li><code>GOOGLE_EXTERNAL_ACCOUNT_IMPERSONATED_EMAIL</code>: The service account email. Only present when service account impersonation is used.</li>
+<li><code>GOOGLE_EXTERNAL_ACCOUNT_OUTPUT_FILE</code>: The output file location from the credential configuration. Only present when specified in the credential configuration.</li>
+</ul>
+</li>
+<li>Run the command specified at <strong>credential_source.executable.command</strong>.<ul>
+<li>Fail in the following scenarios:<ul>
+<li>The executable failed to complete in the timeout duration specified.</li>
+<li>The executable's response is invalid, was unsuccessful or expired.</li>
+<li>The executable finished with a non-zero exit code.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Parse the executable response as JSON and then retrieve the external credential from
+  the field name based on the value of <strong>token_type</strong>.<ul>
+<li>The token_type value must be <strong>urn:ietf:params:oauth:token-type:jwt</strong>,
+  <strong>urn:ietf:params:oauth:token-type:id_token</strong>, or <strong>urn:ietf:params:oauth:token-type:saml2</strong>.</li>
+<li>If the <strong>token_type</strong> is <strong>urn:ietf:params:oauth:token-type:saml2</strong>, the subject token will be parsed from the <strong>saml_response</strong> field.</li>
+<li>Otherwise it will be parsed from the <strong>id_token</strong> field.</li>
+</ul>
+</li>
+</ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
 <li><strong>2021-12-10</strong>: Add AIP for External Account Credentials (AIP 4117).</li>
+<li><strong>2022-05-18</strong>: Document executable-sourced credentials (AIP 4117).</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
