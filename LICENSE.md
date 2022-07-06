@@ -24,7 +24,7 @@ consideration of benefits the Licensor receives from making the
 Licensed Material available under these terms and conditions.
 
 
-Section 1 -- Definitions.
+Section 1 KONG-PC Definitions.
 
   a. Adapted Material means material subject to Copyright and Similar
      Rights that is derived from or based upon the Licensed Material
