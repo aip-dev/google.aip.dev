@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=53c4cb4e">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=53c4cb4e">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=6024b0f5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=6024b0f5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=53c4cb4e"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=6024b0f5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -261,6 +261,8 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
+<li><a href="#explicit-routing-headers-googleapirouting">Explicit Routing Headers (google.api.routing)</a></li>
+<li><a href="#implicit-routing-headers-googleapihttp">Implicit Routing Headers (google.api.http)</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -309,7 +311,123 @@ efficiently if it knows about some values in the request; however, the request
 payload can not be reasonably deconstructed on the wire to perform that
 routing.</p>
 <h2 id="guidance">Guidance</h2>
-<p>Code generators <strong>should</strong> look at URI-based variables declared in the
+<p>Code generators <strong>must</strong> use the annotations to generate client libraries that,
+on a per-RPC basis, extract routing information from the request payload and
+add that information to the routing header.</p>
+<p>There are two annotations that specify how to extract routing information from
+the request payload:</p>
+<pre><code>* the [`google.api.routing`][routing] annotation that specifies how to construct
+</code></pre>
+<p>routing headers explicitly 
+  * the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation that may specify how to construct 
+routing headers implicitly.</p>
+<p>For any given RPC, if the explicit routing headers annotation is present, the code
+generators <strong>must</strong> use it and ignore any routing headers that might be implicitly
+specified in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation. If the explicit routing
+headers annotation is absent, the code generators <strong>must</strong> parse the
+<a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation to see if it specifies routing headers
+implicitly, and use that specification.</p>
+<h2 id="explicit-routing-headers-googleapirouting">Explicit Routing Headers (<code>google.api.routing</code>)</h2>
+<p>For an unary or server-streaming RPC the code generator <strong>must</strong> look at the routing
+parameters specified in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation, if present.
+Any given routing parameter specifies a field name and a pattern with exactly one
+named resource ID path segment. For example:</p>
+<p><div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">routing_parameters</span> <span class="p">{</span>
+      <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+      <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*}/**&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<strong>Note:</strong> An empty <code>google.api.routing</code> annotation is acceptable. It means that no
+routing headers should be generated for the RPC, when they otherwise would be
+e.g. implicitly from the <code>google.api.http</code> annotation.</p>
+<p><strong>Note:</strong> It is acceptable to omit the pattern in the resource ID segment, <code>{parent}</code>
+for example, is equivalent to <code>{parent=*}</code> and <strong>must</strong> be parsed, e.g.:
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
+  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;projects/{parent}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>is the same as</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
+  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;projects/{parent=*}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Note</strong> It is acceptable to omit the <code>path_template</code> field altogether. An omitted 
+<code>path_template</code> is equivalent to a <code>path_template</code> with the same resource ID name as
+the field and the pattern <code>**</code>, and <strong>must</strong> be parsed, e.g.:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
+  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>is the same as</p>
+<p><div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
+  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{parent=**}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+NB: an omitted <code>path_template</code> field does not indicate that key-value pairs with empty values can be sent. It's merely a shorthand.</p>
+<p>When the user supplies an instance of <code>CreateTopicRequest</code> to the method, the
+client library <strong>must</strong> match all the routing parameters in the order specified
+to the fields of that instance. For each routing parameter, the pattern in the
+<code>path_template</code> <strong>must</strong> be matched to the input message field specified by the
+routing parameter's <code>field</code> field. In case of a match, the name of the resource ID
+path segment must be used as a key, and the value of the resource ID path segment match 
+must be used as a value of a key-value pair to be appended to the <code>x-goog-request-params</code>
+header. </p>
+<p>Both the key and the value <strong>must</strong> be URL-encoded per <a href="https://tools.ietf.org/html/rfc6570#section-3.2.2">RFC 6570 §3.2.2</a>.
+This can be done with standard library URL encoding. For example, adding this header
+to a gRPC request in Ruby:</p>
+<div class="highlight language-ruby"><pre><span></span><code><span class="n">header_params</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pattern_matches</span><span class="p">(</span><span class="s2">&quot;{project=projects/*}/**&quot;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">parent</span><span class="p">))</span>
+  <span class="n">header_params</span><span class="o">[</span><span class="s2">&quot;project&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="n">extract_match_value</span><span class="p">(</span><span class="s2">&quot;{project=projects/*}/**&quot;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">request_params_header</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">encode_www_form</span> <span class="n">header_params</span>
+<span class="n">metadata</span><span class="o">[</span><span class="ss">:&quot;x-goog-request-params&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="n">request_params_header</span>
+</code></pre></div>
+<p>In cases when multiple routing parameters have the same resource ID path segment name,
+thus referencing the same header key, the "last one wins" rule is used to determine
+which value to send. The "last" here is meant in terms of the order in which they're specified in the annotation. If some of the routing parameters with the same resource ID segment
+name have failed to match the field, or if the field was unset, or if the extracted matched value
+is an empty string, these parameters are not considered when determining which value
+to send.</p>
+<p>Example:</p>
+<p><div class="highlight language-proto"><pre><span></span><code><span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">routing_parameters</span> <span class="p">{</span>
+    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*}/**&quot;</span>
+  <span class="p">}</span>
+  <span class="n">routing_parameters</span> <span class="p">{</span>
+    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*/subprojects/*}/**&quot;</span>
+  <span class="p">}</span>
+  <span class="n">routing_parameters</span> <span class="p">{</span>
+    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;billing_project&quot;</span>
+    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=**}&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+In this case if in a given request the <code>billing_project</code> field is set to an non-empty value,
+its value will be sent with the <code>project</code> key because the routing parameter looking at <code>billing_project</code> field is specified last. If the <code>billing_project</code> field is not set, the <code>parent</code> field will be considered, first trying to send a
+project with a subproject specified, and then without. Note that if a given request has a
+<code>parent</code> field with a value e.g. <code>projects/100/subprojects/200/foo</code>, patterns in both first and second <code>routing_parameters</code> will match it, but the second one will "win" since it is specified "last".</p>
+<p>If all the routing parameters with the same resource ID segment name have failed
+to match the field, the key-value pair corresponding to those routing parameters'
+resource ID path segment name <strong>must not</strong> be sent.</p>
+<p>If none of the routing parameters matched their respective fields, the routing header
+<strong>must not</strong> be sent.</p>
+<p>Much like URL parameters, if there is more than one key-value pair to be sent, the <code>&amp;</code>
+character is used as the separator.</p>
+<h2 id="implicit-routing-headers-googleapihttp">Implicit Routing Headers (<code>google.api.http</code>)</h2>
+<p><strong>Note:</strong> For an RPC annotated with the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation,
+the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation must be ignored for the purpose of adding
+routing headers.</p>
+<p>If an unary or server-streaming RPC is not annotated with the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a>
+annotation, code generators <strong>must</strong> look at URI-based variables declared in the
 <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation and transcribe these into the
 <code>x-goog-request-params</code> header in unary calls. A URI-based variable is a
 variable declared as a key in curly braces in the URI string. For example:</p>
@@ -317,8 +435,8 @@ variable declared as a key in curly braces in the URI string. For example:</p>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span> <span class="o">=</span> <span class="s">&quot;{parent=projects/*}/topics&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Note:</strong> the ommission of a path segment in the variable template, <code>{parent}</code>
-for example, is equivalent to <code>{parent=*}</code> and <strong>should</strong> be parsed.</p>
+<p><strong>Note:</strong> It is acceptable to omit the pattern in the resource ID segment, <code>{parent}</code>
+for example, is equivalent to <code>{parent=*}</code> and <strong>must</strong> be parsed.</p>
 <p>In this case, the applicable variable is <code>parent</code>, and it refers to the
 <code>parent</code> field in <code>CreateTopicRequest</code>. When the user provides an instance of
 <code>CreateTopicRequest</code> to the method (or once the client library has built it, in
@@ -330,19 +448,20 @@ request in Go:</p>
 <div class="highlight language-go"><pre><span></span><code><span class="nx">md</span> <span class="o">:=</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">Pairs</span><span class="p">(</span><span class="s">&quot;x-goog-request-params&quot;</span><span class="p">,</span>
   <span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;=&quot;</span> <span class="o">+</span> <span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">GetParent</span><span class="p">()))</span>
 </code></pre></div>
-<p>Much like URL parameters, if there is more than one key-value pair, the <code>&amp;</code>
-character is used as the separator. At runtime, if a named parameter is unset
-on the request message, it <strong>should not</strong> be included in the headers.</p>
+<p>At runtime, if a field with the same name as the named parameter is unset on the
+request message, the key-value pair corresponding to that parameter <strong>must not</strong>
+be included in the routing header. If none of the parameters must be included in
+the routing header, the routing header <strong>must not</strong> be sent.</p>
 <p>If the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation contains <code>additional_bindings</code>,
-these patterns <strong>should</strong> be parsed for additional request parameters. Fields
-not duplicated in the top-level (or <code>additional_bindings</code>) pattern <strong>should</strong>
+these patterns <strong>must</strong> be parsed for additional request parameters. Fields
+not duplicated in the top-level (or <code>additional_bindings</code>) pattern <strong>must</strong>
 be included in request parameters, encoded in the same way.</p>
-<p><strong>Note:</strong> There is no additional annotation used for this; the presence of the
-key in any of the standard fields (<code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>) on
-the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation is sufficient.</p>
+<p>Much like URL parameters, if there is more than one key-value pair, the <code>&amp;</code>
+character is used as the separator.</p>
 <!-- prettier-ignore -->
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2022-07-13</strong>: Updated to include the new <code>google.api.routing</code> annotation.</li>
 <li><strong>2020-04-21</strong>: Explicitly parse path variables missing a trailing segment.</li>
 <li><strong>2019-11-27</strong>: Include <code>additional_bindings</code> as a request parameter source.</li>
 <li><strong>2019-06-26</strong>: Fix wording and example of key-value pair encoding.</li>
