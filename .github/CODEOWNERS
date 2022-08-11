@@ -7,6 +7,7 @@
 aip/general/*.md              @aip-dev/google
 
 # Team-specific components are owned by those teams.
+aip/apps/27*.md               @aip-dev/apps
 aip/aog/30*.md                @aip-dev/aog
 aip/auth/41*.md               @aip-dev/auth
 aip/client-libraries/42*.md   @aip-dev/client-libraries
