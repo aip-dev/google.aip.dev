@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bd71eea3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bd71eea3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0520d067">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0520d067">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bd71eea3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0520d067"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -592,6 +592,7 @@
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#adding-components">Adding components</a></li>
 <li><a href="#removing-or-renaming-components">Removing or renaming components</a></li>
+<li><a href="#moving-components-between-files">Moving components between files</a></li>
 <li><a href="#moving-into-oneofs">Moving into oneofs</a></li>
 <li><a href="#changing-the-type-of-fields">Changing the type of fields</a></li>
 <li><a href="#changing-resource-names">Changing resource names</a></li>
@@ -712,6 +713,12 @@ add". In cases where these sorts of changes are desirable, a service <strong>may
 add the new component, but <strong>must not</strong> remove the existing one. In situations
 where this can allow users to specify conflicting values for the same semantic
 idea, the behavior <strong>must</strong> be clearly specified.</p>
+<h3 id="moving-components-between-files">Moving components between files</h3>
+<p>Existing components <strong>must not</strong> be moved between files.</p>
+<p>Moving a component from one proto file to another within the same package is
+wire compatible, however, the code generated for languages like C++ or Python
+will result in breaking change since <code>import</code> and <code>#include</code> will no longer
+point to the correct code location.</p>
 <h3 id="moving-into-oneofs">Moving into oneofs</h3>
 <p>Existing fields <strong>must not</strong> be moved into or out of a oneof. This is a
 backwards-incompatible change in the Go protobuf stubs.</p>
@@ -758,7 +765,8 @@ this guidance could ostensibly prevent <em>any</em> change (which is not the int
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2022-06-??</strong>: Added more links to other AIPs with compatibility concerns</li>
+<li><strong>2022-08-11</strong>: Added "Moving components between files" section.</li>
+<li><strong>2022-06-01</strong>: Added more links to other AIPs with compatibility concerns</li>
 <li><strong>2019-12-16</strong>: Clarified that moving existing fields into oneofs is
   breaking.</li>
 </ul>
