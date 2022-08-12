@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0520d067">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0520d067">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=2d801c7b">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=2d801c7b">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=0520d067"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=2d801c7b"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -843,7 +843,7 @@ the following form:</p>
 <tr>
 <td>expiration_time</td>
 <td>number</td>
-<td align="left">The 3rd party subject token expiration time in seconds (unix epoch time).</td>
+<td align="left">The optional 3rd party subject token expiration time in seconds (unix epoch time). Only required in the response when an output file is specified in the credential configuration.</td>
 </tr>
 </tbody>
 </table>
@@ -920,6 +920,7 @@ the following form:</p>
 </li>
 <li>Ensure the following environment variables will be available to the executable:<ul>
 <li><code>GOOGLE_EXTERNAL_ACCOUNT_AUDIENCE</code>: The audience field from the credential configuration. Must always be present.</li>
+<li><code>GOOGLE_EXTERNAL_ACCOUNT_TOKEN_TYPE</code>: The subject token type. Must always be present.</li>
 <li><code>GOOGLE_EXTERNAL_ACCOUNT_IMPERSONATED_EMAIL</code>: The service account email. Only present when service account impersonation is used.</li>
 <li><code>GOOGLE_EXTERNAL_ACCOUNT_OUTPUT_FILE</code>: The output file location from the credential configuration. Only present when specified in the credential configuration.</li>
 </ul>
