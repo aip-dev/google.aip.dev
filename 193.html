@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=2d801c7b">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=2d801c7b">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=eda2186c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=eda2186c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=2d801c7b"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=eda2186c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -639,10 +639,11 @@
   
   <h4 class="aip-number">AIP-193</h4>
   <h1 id="errors">Errors</h1>
-<p>Error handling is an important part of designing simple and intuitive APIs.
-Consistent error handling allows developers to know how to expect to receive
-errors, and to reduce boilerplate by having common error-handling logic, rather
-than being expected to constantly add verbose error handling everywhere.</p>
+<p>Effective error communication is an important part of designing simple and
+intuitive APIs. Services returning standardized error responses enable API
+clients to construct centralized common error handling logic. This common logic
+simplifies API client appications and eliminates the need for cumbersome
+custom error handling code.</p>
 <h2 id="guidance">Guidance</h2>
 <p>Services <strong>must</strong> return a <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto"><code>google.rpc.Status</code></a> message when an API
 error occurs, and <strong>must</strong> use the canonical error codes defined in
@@ -690,6 +691,7 @@ message. The errors themselves <strong>must</strong> still be represented with a
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2022-08-12</strong>: Reworded/Simplified intro to add clarity to the intent.</li>
 <li><strong>2020-01-22</strong>: Added a reference to the <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L111"><code>ErrorInfo</code></a> message.</li>
 <li><strong>2019-10-14</strong>: Added guidance restricting error message mutability to if
   there is a machine-readable identifier present.</li>
