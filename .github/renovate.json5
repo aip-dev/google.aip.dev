@@ -1,5 +1,5 @@
 {
-  extends: ['config:base', 'docker:disable'],
+  extends: ['config:base', 'docker:enable'],
   commitMessagePrefix: 'chore: ',
   groupName: 'multiple dependencies',
 }
