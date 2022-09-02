@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=eda2186c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=eda2186c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e96d4b07">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e96d4b07">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=eda2186c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e96d4b07"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -316,11 +316,12 @@ on a per-RPC basis, extract routing information from the request payload and
 add that information to the routing header.</p>
 <p>There are two annotations that specify how to extract routing information from
 the request payload:</p>
-<pre><code>* the [`google.api.routing`][routing] annotation that specifies how to construct
-</code></pre>
-<p>routing headers explicitly 
-  * the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation that may specify how to construct 
-routing headers implicitly.</p>
+<ul>
+<li>the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation that specifies how to construct 
+routing headers explicitly </li>
+<li>the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation that may specify how to construct 
+routing headers implicitly.</li>
+</ul>
 <p>For any given RPC, if the explicit routing headers annotation is present, the code
 generators <strong>must</strong> use it and ignore any routing headers that might be implicitly
 specified in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation. If the explicit routing
@@ -332,7 +333,7 @@ implicitly, and use that specification.</p>
 parameters specified in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation, if present.
 Any given routing parameter specifies a field name and a pattern with exactly one
 named resource ID path segment. For example:</p>
-<p><div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">routing_parameters</span> <span class="p">{</span>
       <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
@@ -341,7 +342,7 @@ named resource ID path segment. For example:</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<strong>Note:</strong> An empty <code>google.api.routing</code> annotation is acceptable. It means that no
+<p><strong>Note:</strong> An empty <code>google.api.routing</code> annotation is acceptable. It means that no
 routing headers should be generated for the RPC, when they otherwise would be
 e.g. implicitly from the <code>google.api.http</code> annotation.</p>
 <p><strong>Note:</strong> It is acceptable to omit the pattern in the resource ID segment, <code>{parent}</code>
@@ -357,13 +358,13 @@ for example, is equivalent to <code>{parent=*}</code> and <strong>must</strong> 
   <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;projects/{parent=*}&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Note</strong> It is acceptable to omit the <code>path_template</code> field altogether. An omitted 
+<p><strong>Note:</strong> It is acceptable to omit the <code>path_template</code> field altogether. An omitted 
 <code>path_template</code> is equivalent to a <code>path_template</code> with the same resource ID name as
-the field and the pattern <code>**</code>, and <strong>must</strong> be parsed, e.g.:</p>
+the field and the pattern <code>**</code>, and <strong>must</strong> be parsed, e.g.:
 <div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
   <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
 <p>is the same as</p>
 <p><div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
   <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
@@ -396,7 +397,7 @@ name have failed to match the field, or if the field was unset, or if the extrac
 is an empty string, these parameters are not considered when determining which value
 to send.</p>
 <p>Example:</p>
-<p><div class="highlight language-proto"><pre><span></span><code><span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">routing_parameters</span> <span class="p">{</span>
     <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
     <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*}/**&quot;</span>
@@ -411,7 +412,7 @@ to send.</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-In this case if in a given request the <code>billing_project</code> field is set to an non-empty value,
+<p>In this case if in a given request the <code>billing_project</code> field is set to an non-empty value,
 its value will be sent with the <code>project</code> key because the routing parameter looking at <code>billing_project</code> field is specified last. If the <code>billing_project</code> field is not set, the <code>parent</code> field will be considered, first trying to send a
 project with a subproject specified, and then without. Note that if a given request has a
 <code>parent</code> field with a value e.g. <code>projects/100/subprojects/200/foo</code>, patterns in both first and second <code>routing_parameters</code> will match it, but the second one will "win" since it is specified "last".</p>
