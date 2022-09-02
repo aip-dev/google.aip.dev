@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e96d4b07">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e96d4b07">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d5bd76c0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d5bd76c0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e96d4b07"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d5bd76c0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -257,7 +257,13 @@
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#prerequisite">Prerequisite</a></li>
 <li><a href="#configuration-file-generation-and-usage">Configuration File Generation and Usage</a></li>
-<li><a href="#expected-behavior">Expected Behavior</a></li>
+</ul>
+</li>
+<li><a href="#expected-behavior">Expected Behavior</a><ul>
+<li><a href="#determining-the-subject-token-in-aws">Determining the subject token in AWS</a></li>
+<li><a href="#determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials">Determining the subject token in Microsoft Azure and URL-sourced credentials</a></li>
+<li><a href="#determining-the-subject-token-in-file-sourced-credentials">Determining the subject token in file-sourced credentials</a></li>
+<li><a href="#determining-the-subject-token-in-executable-sourced-credentials">Determining the subject token in executable-sourced credentials</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -357,6 +363,16 @@ an additional flag <code>--enable-imdsv2</code> should be added to the <a href="
     --enable-imdsv2 <span class="se">\</span>
     --output-file<span class="o">=</span><span class="nv">$FILEPATH</span>.json
 </code></pre></div>
+<p>If you wish to configure the service account access token lifetime,
+an additional flag <code>--service-account-token-lifetime-seconds</code> should be added to the <a href="/sdk/gcloud/reference/iam/workload-identity-pools/create-cred-config"><code>gcloud iam workload-identity-pools create-cred-config</code></a> command (this example uses an AWS configuration, but the token lifetime can be configured for all workload identity federation providers):</p>
+<div class="highlight language-bash"><pre><span></span><code>$ gcloud iam workload-identity-pools create-cred-config <span class="se">\</span>
+    projects/<span class="nv">$PROJECT_NUMBER</span>/locations/global/workloadIdentityPools/<span class="nv">$POOL_ID</span>/providers/<span class="nv">$PROVIDER_ID</span> <span class="se">\</span>
+    --service-account<span class="o">=</span><span class="nv">$SERVICE_ACCOUNT_EMAIL</span> <span class="se">\</span>
+    --aws <span class="se">\</span>
+    --service-account-token-lifetime-seconds<span class="o">=</span><span class="nv">$TOKEN_LIFETIME</span> <span class="se">\</span>
+    --output-file<span class="o">=</span><span class="nv">$FILEPATH</span>.json
+</code></pre></div>
+<p>The service-account-token-lifetime-seconds flag is optional. If not provided, this defaults to one hour. The minimum allowed value is 600 (10 minutes) and the maximum allowed value is 43200 (12 hours). If a lifetime greater than one hour is required, the service account must be added as an allowed value in an Organization Policy that enforces the <code>constraints/iam.allowServiceAccountCredentialLifetimeExtension</code> constraint.</p>
 <p>The external identities configuration file can be used with
 <a href="https://google.aip.dev/auth/4110">Application Default Credentials</a>. In order to use external identities with
 Application Default Credentials, the full path to this file should be stored
@@ -391,7 +407,7 @@ generated configuration file.</p>
 <span class="n">scoped_credentials</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">with_scopes</span><span class="p">(</span>
     <span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/cloud-platform&#39;</span><span class="p">])</span>
 </code></pre></div>
-<h3 id="expected-behavior">Expected Behavior</h3>
+<h2 id="expected-behavior">Expected Behavior</h2>
 <p>The auth libraries should use the information in the JSON configuration file to
 retrieve the external credentials and exchange them for Google access tokens
 using the GCP Security Token Service (via the token exchange endpoint
@@ -427,6 +443,11 @@ resources.</p>
 <td>service_account_impersonation_url</td>
 <td>No</td>
 <td align="left">This is the URL for the service account impersonation request. If this is not available, the STS returned access token should be directly used without impersonation.</td>
+</tr>
+<tr>
+<td>service_account_impersonation.*</td>
+<td>No</td>
+<td align="left">This object defines additional service account impersonation options. Only one field is currently supported: “token_lifetime_seconds": This is the requested access token lifetime, e.g. <code>2800</code>.</td>
 </tr>
 <tr>
 <td>token_url</td>
@@ -479,10 +500,13 @@ types of external account credentials:</p>
   <code>https://www.googleapis.com/auth/cloud-platform</code> or IAM scope
   <code>https://www.googleapis.com/auth/iam</code>) are required in the underlying
   access token.</li>
+<li>The service account access token lifetime also needs to be provided for this endpoint. The value in
+  <strong>service_account_impersonation.token_lifetime_seconds</strong> will be used if it
+  was provided, otherwise it will default to 1 hour.</li>
 </ul>
 </li>
 </ul>
-<h4 id="determining-the-subject-token-in-aws">Determining the subject token in AWS</h4>
+<h3 id="determining-the-subject-token-in-aws">Determining the subject token in AWS</h3>
 <p>External account configuration JSON files should contain the following
 information in the <code>credential_source</code> object to facilitate retrieval of AWS
 credentials to be passed as subject tokens to the GCP STS token exchange
@@ -604,7 +628,7 @@ endpoint.</p>
 For the AWS token, STS requires a special header <code>x-goog-cloud-endpoint</code> to recognize that the token is for a specific workload identity provider.</p>
 </li>
 </ul>
-<h4 id="determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials">Determining the subject token in Microsoft Azure and URL-sourced credentials</h4>
+<h3 id="determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials">Determining the subject token in Microsoft Azure and URL-sourced credentials</h3>
 <p>External account configuration JSON files should contain the following
 information in the <code>credential_source</code> object to facilitate retrieval of Azure
 and other URL-sourced credentials to be passed as subject tokens to the GCP STS
@@ -695,7 +719,7 @@ following form:</p>
 </ul>
 </li>
 </ul>
-<h4 id="determining-the-subject-token-in-file-sourced-credentials">Determining the subject token in file-sourced credentials</h4>
+<h3 id="determining-the-subject-token-in-file-sourced-credentials">Determining the subject token in file-sourced credentials</h3>
 <p>External account configuration JSON files contain the following information
 in the <code>credential_source</code> object to facilitate retrieval of file-sourced
 credentials to be passed as subject tokens to the GCP STS token exchange
@@ -755,7 +779,7 @@ the following form:</p>
 </ul>
 </li>
 </ul>
-<h4 id="determining-the-subject-token-in-executable-sourced-credentials">Determining the subject token in executable-sourced credentials</h4>
+<h3 id="determining-the-subject-token-in-executable-sourced-credentials">Determining the subject token in executable-sourced credentials</h3>
 <p>External account configuration JSON files contain the following information
 in the <code>credential_source</code> object to facilitate retrieval of executable-sourced
 credentials to be passed as subject tokens to the GCP STS token exchange
@@ -947,6 +971,7 @@ the following form:</p>
 <ul>
 <li><strong>2021-12-10</strong>: Add AIP for External Account Credentials (AIP 4117).</li>
 <li><strong>2022-05-18</strong>: Document executable-sourced credentials (AIP 4117).</li>
+<li><strong>2022-08-31</strong>: Document configurable token lifetime (AIP 4117).</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
