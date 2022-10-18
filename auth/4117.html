@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=aeb15d3c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=aeb15d3c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e1c90e3f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e1c90e3f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=aeb15d3c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e1c90e3f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -582,6 +582,9 @@ endpoint.</p>
 <li>Inspect the version in the environment ID. If this is a newer unexpected
   error, trigger an error that the auth library needs to be updated to handle
   this type of credentials.</li>
+<li>Validate the host for the <strong>url</strong>, <strong>regional_url</strong> and
+  <strong>imdsv2_session_token_url</strong> fields if they are provided. The host should
+  either be <strong>169.254.169.254</strong> or <strong>fd00:ec2::254</strong>.</li>
 <li>If <strong>imdsv2_session_token_url</strong> is available, then fetch session token
   from <strong>imdsv2_session_token_url</strong>.</li>
 <li>Check the environment variables in the following order (<code>AWS_REGION</code> and
