@@ -39,8 +39,8 @@ If you **have an idea for an AIP that isn't written yet** (yes, there are
 plenty!) check out [Contributing to the project][] to see how you can write
 AIPs for others to follow.
 
-[frequently asked questions]: ./aip/faq.md
-[adopting aips in your company]: ./aip/adopting.md
+[frequently asked questions]: https://google.aip.dev/faq
+[adopting aips in your company]: https://google.aip.dev/adopting
 [contributing to the project]: ./CONTRIBUTING.md
 
 ## License
