@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=605d9984">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=605d9984">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9ccae47f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9ccae47f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=605d9984"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9ccae47f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -666,7 +666,7 @@ will need to write code against a specific aspect of the error. Error message
 strings <strong>may</strong> change over time; however, if an error message does not have a
 machine-readable identifier <em>in addition to</em> the <code>code</code> field, changing the
 error message <strong>must</strong> be considered a backwards-incompatible change.</p>
-<p><strong>Note:</strong> The <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L111"><code>ErrorInfo</code></a> message is the recommended way to send a
+<p><strong>Note:</strong> The <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L51"><code>ErrorInfo</code></a> message is the recommended way to send a
 machine-readable identifier.</p>
 <h3 id="localization">Localization</h3>
 <p>Error messages <strong>must</strong> be in English. If a localized error message is also
@@ -692,7 +692,7 @@ message. The errors themselves <strong>must</strong> still be represented with a
 <h2 id="changelog">Changelog</h2>
 <ul>
 <li><strong>2022-08-12</strong>: Reworded/Simplified intro to add clarity to the intent.</li>
-<li><strong>2020-01-22</strong>: Added a reference to the <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L111"><code>ErrorInfo</code></a> message.</li>
+<li><strong>2020-01-22</strong>: Added a reference to the <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L51"><code>ErrorInfo</code></a> message.</li>
 <li><strong>2019-10-14</strong>: Added guidance restricting error message mutability to if
   there is a machine-readable identifier present.</li>
 <li><strong>2019-09-23</strong>: Added guidance about error message strings being able to
