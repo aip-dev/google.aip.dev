@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d60dd18c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d60dd18c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a0e0850e">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a0e0850e">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=d60dd18c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a0e0850e"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -685,6 +685,7 @@ pagination to an existing method.</p>
 <ul>
 <li>Request messages for collections <strong>should</strong> define an <code>int32 page_size</code>
   field, allowing users to specify the maximum number of results to return.<ul>
+<li>The <code>page_size</code> field <strong>must not</strong> be required.</li>
 <li>If the user does not specify <code>page_size</code> (or specifies <code>0</code>), the API
   chooses an appropriate default, which the API <strong>should</strong> document. The API
   <strong>must not</strong> return an error.</li>
@@ -698,6 +699,7 @@ pagination to an existing method.</p>
 </li>
 <li>Request messages for collections <strong>should</strong> define a <code>string page_token</code>
   field, allowing users to advance to the next page in the collection.<ul>
+<li>The <code>page_token</code> field <strong>must not</strong> be required.</li>
 <li>If the user changes the <code>page_size</code> in a request for subsequent pages, the
   service <strong>must</strong> honor the new page size.</li>
 <li>The user is expected to keep all other arguments to the RPC the same; if
