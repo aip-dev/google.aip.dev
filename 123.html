@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e27780e3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e27780e3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=318af04b">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=318af04b">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e27780e3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=318af04b"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -654,14 +654,19 @@ tools such as Kubernetes or GraphQL interact with APIs from multiple providers.<
   This usually (but not necessarily) matches the hostname that users use to
   call the service. Example: <code>pubsub.googleapis.com</code>. This is equivalent to an
   <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups">API Group</a> in Kubernetes.</li>
-<li><strong>Type:</strong> This is the name used for the type within the API. This usually
-  (but not necessarily) matches the name of the protobuf message. This is
-  equivalent to an <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#types-kinds">Object</a> in Kubernetes.</li>
+<li><strong>Type:</strong> This is the name used for the type within the API. This <em>should</em>
+  match the name of the protobuf message. This is equivalent to an <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#types-kinds">Object</a> in
+  Kubernetes.</li>
 </ul>
 <h2 id="guidance">Guidance</h2>
 <p>APIs <strong>must</strong> define a resource type for each resource in the API, according to
-the following pattern: <code>{Service Name}/{Type}</code>. The type name <strong>must</strong> be
-singular and use PascalCase (UpperCamelCase).</p>
+the following pattern: <code>{Service Name}/{Type}</code>. The type name <strong>must</strong>:</p>
+<ul>
+<li>Start with an uppercase letter.</li>
+<li>Only contain alphanumeric characters.</li>
+<li>Be of the singular form of the noun.</li>
+<li>Use PascalCase (UpperCamelCase).</li>
+</ul>
 <h3 id="examples">Examples</h3>
 <p>Examples of resource types include:</p>
 <ul>
@@ -711,6 +716,7 @@ resource:</p>
 
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-01-28</strong>: Clarifying guidance for the resource type name.</li>
 <li><strong>2022-10-28</strong>: Added pattern variable format guidance.</li>
 <li><strong>2020-05-14</strong>: Added pattern uniqueness.</li>
 <li><strong>2019-12-05</strong>: Added guidance on patterns.</li>
