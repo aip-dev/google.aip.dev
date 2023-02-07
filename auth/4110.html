@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=127e7154">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=127e7154">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bc6b74b5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bc6b74b5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=127e7154"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=bc6b74b5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=127e7154"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=127e7154"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=127e7154"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=bc6b74b5"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=bc6b74b5"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=bc6b74b5"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -383,6 +383,11 @@ variable is set to false. The default value is false if the value is unset.</p>
 </ul>
 <div class="highlight language-None"><pre><span></span><code>GOOGLE_API_USE_CLIENT_CERTIFICATE=[true|false]
 </code></pre></div>
+<ul>
+<li><strong>GOOGLE_CLOUD_QUOTA_PROJECT:</strong> The quota project id to be set on the credential.
+The value from the environment variable will override any quota project that is 
+present in the credential detected by the ADC mechanism.</li>
+</ul>
 <h3 id="inputs-outputs">Inputs &amp; Outputs</h3>
 <p>From the input/output perspective, the inputs of <em>ADC</em> <strong>should</strong> be the
 credentials as well as the underlying environment such as environment variables
@@ -406,22 +411,28 @@ implement these concepts in order to be considered complete.</p>
 <span class="w">  </span><span class="nt">check_metadata</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;3. Check workload credentials&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 <span class="w">  </span><span class="nt">auth_flows</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;4. Determine Auth Flows&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 <span class="w">  </span><span class="nt">execute</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;5. Execute Auth Flows&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="nt">post_processing</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;6. Post Processing&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
 
-<span class="w">  </span><span class="nt">check_env_var</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">load_credentials</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">check_metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="nt">auth_flows</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">execute</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">check_env_var</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">load_credentials</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">check_metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">auth_flows</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">execute</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">post_processing</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">load_credentials</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">auth_flows</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">check_metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">post_processing</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <ol>
 <li><strong>Check environment variables</strong><ol>
-<li>Check GOOGLE_APPLICATION_CREDENTIALS
-    1. If set, go to step (2.2)
-    1. If not set, go to step (2)</li>
+<li>Check GOOGLE_APPLICATION_CREDENTIALS<ol>
+<li>If set, go to step (2.2)</li>
+<li>If not set, go to step (2)</li>
+</ol>
+</li>
 </ol>
 </li>
 <li><strong>Load credentials</strong><ol>
-<li>Check <a href="./4113">gcloud default credentials</a> through its default path
-    1. If found go to step (2.2)
-    1. Otherwise go to step (3)</li>
+<li>Check <a href="./4113">gcloud default credentials</a> through its default path<ol>
+<li>If found go to step (2.2)</li>
+<li>Otherwise go to step (3)</li>
+</ol>
+</li>
 <li>Check the provided credential type<ol>
 <li>If the credential is gcloud credentials, go to step (4)</li>
 <li>If the credential is <a href="./4112">a service account key</a> JSON, go to step (4)</li>
@@ -436,13 +447,13 @@ implement these concepts in order to be considered complete.</p>
 <li>If true,<ol>
 <li>If identity binding is enabled, by meeting the requirements in
    <a href="./4119">mTLS Token Binding</a>, use the mTLS Token Binding flow to fetch an
-   identity-bound access token <em>[END]</em></li>
+   identity-bound access token. Go to step(6).</li>
 <li>If there is an issue when obtaining bound access tokens, return an error
    indicating that <em>[END]</em></li>
 <li>If identity binding is not enabled, use the <a href="./4115">virtual machine flow</a> to
    fetch an auth token associated with the current environment<ol>
-<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a> <em>[END]</em></li>
-<li>Otherwise, get an access token <em>[END]</em></li>
+<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a>. Go to step(6).</li>
+<li>Otherwise, get an access token. Go to step(6).</li>
 </ol>
 </li>
 </ol>
@@ -459,20 +470,28 @@ implement these concepts in order to be considered complete.</p>
 </li>
 <li><strong>Execute auth flows</strong><ol>
 <li>Use 2LO flow to exchange for an auth token<ol>
-<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a> <em>[END]</em></li>
-<li>Otherwise, get an access token <em>[END]</em><ol>
-<li>If client certificate is presented, the exchanged token will be a certificate bind token. <em>[END]</em></li>
+<li>If target audience is provided by the developer, get an <a href="./4116">identity token</a>. Go to step(6).</li>
+<li>Otherwise, get an access token. Go to step(6).<ol>
+<li>If client certificate is presented, the exchanged token will be a certificate bind token. Go to step(6).</li>
 </ol>
 </li>
 </ol>
 </li>
 <li>Use self-signed JWT flow to create an access token locally.<ol>
 <li>If certificate is presented, embed the certificate into the JWT.</li>
-<li>Use the regular <a href="./4111">self-signed JWT flow</a> for an access token. <em>[END]</em></li>
+<li>Use the regular <a href="./4111">self-signed JWT flow</a> for an access token. Go to step(6).</li>
 </ol>
 </li>
-<li>Use user identity flow to exchange for an access token. <em>[END]</em></li>
-<li>Use <a href="./4117">external account</a> flow to exchange for an access token. <em>[END]</em></li>
+<li>Use user identity flow to exchange for an access token. Go to step(6).</li>
+<li>Use <a href="./4117">external account</a> flow to exchange for an access token. Go to step(6).</li>
+</ol>
+</li>
+<li><strong>Post Processing</strong><ol>
+<li>Update Quota Project<ol>
+<li>If a quota project is provided explicitly while initiating ADC, override the quota project in the credential with the explicit value. <em>[END]</em></li>
+<li>Else if the <code>GOOGLE_CLOUD_QUOTA_PROJECT</code> environment variable is set, override the quota project in the credential with this value. <em>[END]</em></li>
+</ol>
+</li>
 </ol>
 </li>
 </ol>
@@ -483,6 +502,7 @@ implement these concepts in order to be considered complete.</p>
 <li><strong>2021-01-20</strong>: Add identity token flow (AIP 4116).</li>
 <li><strong>2021-06-29</strong>: Guidance for GOOGLE_API_KEY temporarily removed until consensus can be established.</li>
 <li><strong>2021-12-10</strong>: Add external account credentials (AIP 4117).</li>
+<li><strong>2023-01-23</strong>: Add Quota Project Environment variable.</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
