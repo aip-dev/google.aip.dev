@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+
+permissions:
+  contents: write
+    
 jobs:
   github-pages:
     runs-on: ubuntu-latest
