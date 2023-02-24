@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bc6b74b5">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bc6b74b5">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5d11410c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5d11410c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bc6b74b5"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5d11410c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -590,6 +590,7 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#syntax">Syntax</a></li>
 <li><a href="#single-package">Single package</a></li>
 <li><a href="#file-names">File names</a></li>
 <li><a href="#file-layout">File layout</a></li>
@@ -647,6 +648,8 @@ read.</p>
 such as those used throughout Google. While the spirit of this guidance applies
 to APIs defined using other specification languages or formats, some of the
 particular recommendations might be irrelevant.</p>
+<h3 id="syntax">Syntax</h3>
+<p>APIs defined in protocol buffers <strong>must</strong> use <code>proto3</code> syntax.</p>
 <h3 id="single-package">Single package</h3>
 <p>APIs defined in protocol buffers <strong>must</strong> define each individual API in a
 single package, which <strong>must</strong> end in a version component. For example:</p>
@@ -739,6 +742,7 @@ which don't include compound names, be aware that <em>adding</em> this annotatio
 that language. When releasing protos, be sure that omissions are intentional.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-02-24</strong>: Added guidance on protobuf syntax.</li>
 <li><strong>2022-10-18</strong>: Added guidance on Ruby/PHP/C# options.</li>
 <li><strong>2019-11-18</strong>: Added guidance on the packaging annotations.</li>
 </ul>
