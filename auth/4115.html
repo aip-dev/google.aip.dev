@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-4115: Default Credentials From Google Virtual Machines</title>
+    <title>AIP-4115: Default Credentials For Google Cloud Virtual Environments</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1c404e7d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1c404e7d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a4fa7d1c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a4fa7d1c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1c404e7d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a4fa7d1c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -222,7 +222,7 @@
     <li class="nav-item nav-item-active">
       <a href="/4115">
         <span class="aip-number">4115</span>
-        Default Credentials From Google Virtual Machines
+        Default Credentials For Google Cloud Virtual Environments
       </a>
     </li>
     <li class="nav-item">
@@ -255,7 +255,7 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Default Credentials From Google Virtual Machines</th></tr>
+    <tr><th colspan="2">Default Credentials For Google Cloud Virtual Environments</th></tr>
     <tr><td>Number</td><td>4115</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4115">google.aip.dev/auth/4115</a></td></tr>
     <tr><td>Scope</td><td>Auth</td></tr>
@@ -267,11 +267,8 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#application-default-credentials">Application Default Credentials</a></li>
-<li><a href="#google-virtual-machine-environments">Google Virtual Machine Environments</a></li>
-<li><a href="#compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</a></li>
-<li><a href="#google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</a></li>
-<li><a href="#token-expiration">Token Expiration</a></li>
+<li><a href="#access-default-mtls-credentials">Access Default mTLS Credentials</a></li>
+<li><a href="#request-bound-tokens">Request Bound Tokens</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -309,99 +306,108 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Default Credentials From Google Virtual Machines
+        Default Credentials For Google Cloud Virtual Environments
       </li>
     </ol>
   </nav>
 </section>
   
   <h4 class="aip-number">AIP-4115</h4>
-  <h1 id="default-credentials-from-google-virtual-machines">Default Credentials From Google Virtual Machines</h1>
-<p>If the client runs on Google virtual machine instance such as <a href="https://cloud.google.com/appengine">Google App
-Engine</a> or <a href="https://cloud.google.com/compute">Compute Engine</a>, the auth library <strong>may</strong> obtain the identity
-token that is associated with the instance, and use the identity token as the
-credential to access Google APIs. By using the instance identity, the users no
-longer need to config their credentials explicitly.</p>
-<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
-language-neutral way, it uses generic terminology which may be imprecise or
-inappropriate in certain languages or environments.</p>
+  <h1 id="default-credentials-for-google-cloud-virtual-environments">Default Credentials For Google Cloud Virtual Environments</h1>
+<p>If the client runs on Google cloud virtual environments such as <a href="https://cloud.google.com/compute">Google Compute Engine (GCE)</a>, 
+<a href="https://cloud.google.com/serverless">Serverless</a>, or <a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine (GKE)</a>, the auth library <strong>may</strong> leverage 
+Google’s default mutual TLS (mTLS) credentials and obtain bound tokens for the instance. 
+The auth library <strong>may</strong> use the default mTLS credentials and bound tokens to access Google APIs. </p>
+<p>mTLS authentication enables authentication of both client and server identities in a TLS handshake. 
+Applications running in Google virtual environments can authenticate to Google APIs using X.509 
+SPIFFE Verifiable Identity Documents (SVIDs). These SVIDs are X.509 certificates that contain SPIFFE 
+IDs specifying the identity of the certificate owner.</p>
+<p>Bound tokens are access tokens that are bound to some property of the credentials used to establish 
+the mTLS connection. The advantage of bound tokens is that they can be used over secure channels 
+established via mTLS credentials with the correct binding information, when appropriate access 
+policies have been put in place. Therefore, using bound tokens is more secure than bearer tokens,
+which can be stolen and adversarially replayed.</p>
+<p>This AIP describes the flow of:</p>
+<ol>
+<li>Retrieving a configuration through a metadata server (MDS) endpoint. The configuration specifies 
+   how to access Google’s default mTLS credentials.</li>
+<li>Requesting bound tokens.</li>
+</ol>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a language-neutral way, it uses 
+generic terminology which may be imprecise or inappropriate in certain languages or environments.</p>
 <h2 id="guidance">Guidance</h2>
-<p>This section describes the general guidance of supporting default credentials
-from Google virtual machine environments.</p>
-<h3 id="application-default-credentials">Application Default Credentials</h3>
-<p>Supporting the default credentials from Google virtual machines is considered as
-a part of the <a href="./4110">Application Default Credential</a>. To understand the overall
-credential flow, please read <a href="./4110">AIP-4110</a>.</p>
-<h3 id="google-virtual-machine-environments">Google Virtual Machine Environments</h3>
-<p>There are typically two types of Google virtual machine environments where the
-auth library should obtain the identity token based on the environment type:</p>
+<h3 id="access-default-mtls-credentials">Access Default mTLS Credentials</h3>
+<p><strong>Note:</strong> Before trying to use Google’s default mTLS credentials, the client <strong>must</strong> first check if the remote 
+Google API endpoint supports mTLS. If the remote endpoint does NOT support mTLS, the client <strong>should</strong> 
+connect to the endpoint using TLS. How to check if an endpoint supports mTLS is out of the scope of this 
+AIP. If the remote endpoint does support mTLS, the client <strong>should</strong> try to connect using mTLS first 
+before falling back to TLS. How to find the remote API’s mTLS endpoint is out of the scope of this AIP.
+If users enabled <a href="4">Device Certificate Authentication (DCA)</a>, the client <strong>should</strong> give priority to DCA
+as mTLS credentials.</p>
+<p>To leverage Google’s default mTLS credentials, the client <strong>should</strong> retrieve configurations from 
+MDS. The MDS in all virtual environments (GCE, Serverless, and GKE) exposes an HTTP endpoint that 
+serves a configuration that specifies how to access Google's default mTLS credentials. This endpoint 
+is called the mTLS configuration endpoint.</p>
+<p>The URL of the MDS's mTLS configuration endpoint is: 
+<div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/googleAutoMtlsConfiguration
+</code></pre></div></p>
+<p>The request to the MDS's mTLS configuration endpoint <strong>should</strong> be an HTTP GET request without any 
+parameter or payload.</p>
+<p>The response from the MDS's mTLS configuration endpoint <strong>should</strong> contain the following 
+information:</p>
 <ul>
-<li>Google App Engine Standard 1.0 (aka 1st generation)</li>
-<li>Compute Engine <ul>
-<li>GCE equivalent runtimes<ul>
-<li>Google App Engine Standard 2.0+</li>
-<li>Google App Engine Flex</li>
-<li>Google Cloud Functions</li>
-<li>Cloud Run</li>
-<li>Workload Identity on Google Kubernetes Engine</li>
+<li>The <strong>Secure Session Agent</strong> address: the client doesn’t have direct access to mTLS credentials. 
+  The Secure Session Agent manages default mTLS credentials. The client can only use mTLS 
+  credentials through the Secure Session Agent. The address can be an IP:port address or a file path 
+  representing a Unix Domain Socket (UDS).</li>
+</ul>
+<p>The client <strong>must</strong> follow the steps below to access Google’s default mTLS credentials.</p>
+<ol>
+<li>Check if the remote endpoint supports mTLS. <ul>
+<li>If yes, go to step (2).</li>
+<li>If not, go to step (3). </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<p>The auth library <strong>should</strong> depend on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> or well 
-defined GAE environment variables to detect if the application is running within
-the 1st generation Google App Engine environment.</p>
-<p>To detect if the application is running on Compute Engine or an equivalent runtime,
-the auth library <strong>should</strong> depend on the <a href="https://developers.google.com/analytics/devguides/reporting/metadata/v3/libraries">Metadata Service Library</a>.</p>
-<h3 id="compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</h3>
-<p>If the application runs on a Compute Engine instance (or equivalent runtime),
-the auth library can request the following URL to get an access token associated
-with instance:</p>
+<li>Send a request to the MDS's mTLS configuration endpoint. If the request is successful and the 
+   response contains a Secure Session Agent address, use the address to access Google's default mTLS
+   credentials, and go to step (4). If the request fails or the response contains an empty address,
+   go to step (3).</li>
+<li>Fall back to TLS [END].</li>
+<li>Configure the TLS library to use the Secure Session Agent (<a href="https://github.com/google/s2a-go/tree/main/example">example</a>) for client authentication
+   during the mTLS handshake.</li>
+</ol>
+<h3 id="request-bound-tokens">Request Bound Tokens</h3>
+<p>To access Google APIs with bound tokens, the client <strong>should</strong> request tokens from MDS. The MDS in 
+all virtual environments (GCE, Serverless, and GKE) exposes an HTTP endpoint that serves access tokens.
+This endpoint is called the access token endpoint.</p>
+<p>The URL of the MDS's access token endpoint is: 
 <div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
-</code></pre></div>
-<p>In response, the auth library will usually receive a token in the following JSON
-format:</p>
+</code></pre></div></p>
+<p>The request to the MDS's access token endpoint <strong>should</strong> be an HTTP GET request. The request <strong>may</strong>
+have a “scopes” URL parameter with a list of comma-separated scopes. The auth library <strong>should</strong> allow
+the caller to optionally specify a list of custom scopes, and add the “scopes” parameter to the request 
+when needed. Depending on the runtime environment, the request for custom scopes <strong>may</strong> be transparently 
+ignored or fulfilled by the server.</p>
+<p>The response from the MDS's access token endpoint <strong>should</strong> contain an access token in the following 
+JSON format:</p>
 <div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
-      <span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3599</span><span class="p">,</span>
-      <span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span>
+      <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">3599</span><span class="p">,</span>
+      <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span>
  <span class="p">}</span>
 </code></pre></div>
-<h4 id="scopes">Scopes</h4>
-<p>Access tokens obtained from the metadata server contain the scopes specified at instance creation.
-For example, if an instance is granted only the
-https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then the tokens obtained 
-from the instance's metadata server have only the <code>storage-full</code> scope.</p>
-<p>When running on GCE, the metadata server ignores requests for custom scopes.
-On GCE equivalent runtimes, clients can request a different set of scopes to the metadata server
-using the <code>scopes</code> url parameter, e.g.:</p>
-<div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token?scopes=comma-separated-list-of-scopes
-</code></pre></div>
-<p>The auth library <strong>should</strong> allow the caller to optionally specify a list of custom scopes,
-and add the <code>scopes</code> parameter to the request when needed.
-Depending on the runtime environment, the request for custom scopes will be transparently
-ignored by the server (GCE) or fulfilled (GCE equivalent).</p>
-<h3 id="google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</h3>
-<p>If the application runs on a App Engine Standard 1st generation instance, the
-auth library <strong>should</strong> rely on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> to retrieve the
-access token. Here is <a href="https://godoc.org/google.golang.org/appengine#AccessToken">one example</a> in Go. Essentially the SDK relies on the
-underlying App Engine Identity service to generate the token.</p>
-<p>Like GCE equivalent runtimes, the auth library can specify scopes when requesting the
-token in the App Engine Standard 1.0 runtime.</p>
-<p>Sample code of getting the access token in Go:</p>
-<div class="highlight language-go"><pre><span></span><code><span class="kn">import</span> <span class="s">&quot;google.golang.org/appengine&quot;</span>
-<span class="o">...</span>
-<span class="nx">token</span><span class="p">,</span> <span class="nx">exp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">appengine</span><span class="p">.</span><span class="nx">AccessToken</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">scopes</span><span class="o">...</span><span class="p">)</span>
-<span class="o">...</span>
-</code></pre></div>
-<h3 id="token-expiration">Token Expiration</h3>
-<p>The access tokens expire after a short period of time. The auth library <strong>must</strong>
-get a new token if the existing token expires.</p>
+<p>The client <strong>must</strong> follow the steps below to request new access tokens for Google APIs if existing 
+tokens expire.</p>
+<ol>
+<li>Send an HTTP request to the MDS access token endpoint, retrieve the access token from the response 
+   and go to step (2).</li>
+<li>Attach the token from step (1) to the request to Google APIs.</li>
+</ol>
 <h2 id="changelog">Changelog</h2>
 <ul>
 <li><strong>2020-12-14</strong>: Replace note on scopes with more detailed discussion.</li>
 <li><strong>2021-07-13</strong>: Clarify GCE equivalent runtimes</li>
+<li><strong>2023-02-16</strong>: Add mTLS configuration endpoint and unify the token binding flow.</li>
 </ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
