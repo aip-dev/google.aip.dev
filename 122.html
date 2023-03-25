@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=91cb8cbb">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=91cb8cbb">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0a6a25f3">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0a6a25f3">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=91cb8cbb"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0a6a25f3"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -684,7 +684,7 @@ the leading slash:</p>
   <code>book_id</code>). This field <strong>must</strong> apply the
   <a href="/203#output-only"><code>OUTPUT_ONLY</code></a> field behavior classification.</li>
 <li>Resources <strong>may</strong> expose a separate, system-generated unique ID field
-  (<code>uid</code>). This field <strong>must</strong> apply the
+  <a href="/148#uid">(<code>uid</code>)</a>. This field <strong>must</strong> apply the
   <a href="/203#output-only"><code>OUTPUT_ONLY</code></a> field behavior classification.</li>
 <li>Resources <strong>must not</strong> expose tuples, self-links, or other forms of
   resource identification.</li>
@@ -772,8 +772,8 @@ are used in contexts where the owning API is clear (for example,
 <code>string pubsub_topic</code>).</p>
 <p>However, sometimes it is necessary for services to refer to resources in an
 arbitrary API. In this situation, the service <strong>should</strong> use the <em>full resource
-name</em>, a schemeless URI with the owning API's service endpoint, followed by the
-relative resource name:</p>
+name</em>, a schemeless URI with the owning <a href="/9#api-service-name">API's service name</a>,
+followed by the relative resource name:</p>
 <div class="highlight language-None"><pre><span></span><code>//library.googleapis.com/publishers/123/books/les-miserables
 //calendar.googleapis.com/users/vhugo1802
 </code></pre></div>
@@ -782,8 +782,9 @@ references where the owning API is clear; it is only used if a field refers to
 resources in multiple APIs where ambiguity is possible.</p>
 <h3 id="resource-uris">Resource URIs</h3>
 <p>The full resource name is a schemeless URI, but slightly distinct from the full
-URIs we use to access a resource. The latter adds two components: the protocol
-(HTTPS) and the API version:</p>
+URIs we use to access a resource. The latter includes the protocol
+(HTTPS), the API version, and the specific <a href="/9#api-service-endpoint">service endpoint</a>
+to target:</p>
 <div class="highlight language-None"><pre><span></span><code>https://library.googleapis.com/v1/publishers/123/books/les-miserables
 https://calendar.googleapis.com/v3/users/vhugo1802
 </code></pre></div>
@@ -792,9 +793,9 @@ name is expected to persist from version to version. Even though the API
 surface may change between major versions, multiple major versions of the same
 API are expected to use the same underlying data.</p>
 <p><strong>Note:</strong> The correlation between the full resource name and the service's
-hostname is by convention. In particular, one service is able to have multiple
-hostnames (example use cases include regionalization or staging environments),
-and the full resource does not change between these.</p>
+endpoint is by convention. In particular, one service is able to have multiple
+endpoints (example use cases include regionalization, MTLS, and private access),
+and the full resource name does not change between these.</p>
 <h3 id="fields-representing-resource-names">Fields representing resource names</h3>
 <p>When defining a resource, the first field <strong>should</strong> be the resource name,
 which <strong>must</strong> be of type <code>string</code> and <strong>must</strong> be called <code>name</code> for the
@@ -917,6 +918,8 @@ strictly necessary, the field <strong>should</strong> use an <code>_id</code> su
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-03-24</strong>: Correction: full resource name contains the service name rather
+  than the service endpoint</li>
 <li><strong>2023-03-17</strong>: Add <code>OUTPUT_ONLY</code> guidance for resource ID fields.</li>
 <li><strong>2020-10-06</strong>: Added declarative-friendly guidance, and tightened character
   set restrictions.</li>
