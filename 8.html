@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f26f3401">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f26f3401">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=61a01eeb">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=61a01eeb">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f26f3401"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=61a01eeb"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -647,17 +647,16 @@
   <h4 class="aip-number">AIP-8</h4>
   <h1 id="aip-style-guide">AIP Style guide</h1>
 <p>AIP stands for <strong>API Improvement Proposal</strong>, which is a design document
-providing high-level, concise documentation for API development. The goal is
-for these documents to serve as the source of truth for API-related
-documentation at Google and the way API teams discuss and come to consensus on
-API guidance.</p>
+providing high-level, concise documentation for API development. The goal is for
+these documents to serve as the source of truth for API-related documentation at
+Google and the way API teams discuss and come to consensus on API guidance.</p>
 <p>AIPs are most useful when they are clear and concise, and cover a single topic
 or inquiry well. In the same way that AIPs describe consistent patterns and
 style for use in APIs, they also <em>follow</em> consistent patterns and style.</p>
 <h2 id="guidance">Guidance</h2>
 <p>AIPs <strong>must</strong> cover a single, discrete topic, and <strong>should</strong> fundamentally
-answer the question, "What do I do?" with actionable guidance. AIPs <strong>may</strong>
-also cover what <em>not</em> to do, but <strong>should not</strong> cover <em>only</em> anti-patterns.</p>
+answer the question, "What do I do?" with actionable guidance. AIPs <strong>may</strong> also
+cover what <em>not</em> to do, but <strong>should not</strong> cover <em>only</em> anti-patterns.</p>
 <p>While the length of AIPs will necessarily vary based on the complexity of the
 question, most AIPs <strong>should</strong> be able to cover their content in roughly two
 printed pages.</p>
@@ -710,8 +709,8 @@ precedents" not "Avoid breaking API precedent".</p>
 followed by a <code>## Guidance</code> heading. If necessary, the AIP <strong>may</strong> include any
 of the following after the guidance, in the following order:</p>
 <ul>
-<li>"Further reading" is a bulleted list of links to other AIPs that are useful
-  to fully understand the current AIP.</li>
+<li>"Further reading" is a bulleted list of links to other AIPs that are useful to
+  fully understand the current AIP.</li>
 <li>"Appendices" covering further explanation in the same AIP. These are
   relatively rare but are important in cases where an AIP requires a lot of
   justification for the decision. Often this is primarily an explanation of
@@ -739,17 +738,33 @@ followed by a bulleted list explaining the example.
 Individual subsections can be cited individually, and further elaborate
 details.
 
+<span class="gu">## Rationale</span>
+
+The &quot;rationale&quot; section is optional, and helps the reader understand the
+motivation behind specific guidance within the AIP.
+
+Deeper explanations of design justification and tradeoffs <span class="gs">**must**</span> be in the
+rationale instead of other sections, to ensure the rest of the document acts as
+an easily actionable reference.
+
+<span class="gu">## History</span>
+
+The &quot;history&quot; section is optional, and documents events and context around a
+significant edit to an AIP. For example, explanation of rewrite would be
+included in this section
+
+While the changelog is a dotted list of one-line summaries of changes to an AIP,
+the history section should elaborate on significant events in a descriptive
+format.
+
+The section <span class="gs">**must not**</span> be used to exhaustively enumerate all changes. This
+is what the changelog provides.
+
 <span class="gu">## Further reading</span>
 
 A bulleted list of (usually) other AIPs, in the following format:
 
 <span class="k">-</span> [<span class="nt">AIP-1</span>](<span class="na">/1</span>): AIP purpose and guidelines
-
-<span class="gu">## Appendix</span>
-
-An appendix is appropriate when a non-trivial side discussion is necessary. It
-may explain historical reasons for the guidance, alternatives considered, or
-other issues potentially of interest to the reader.
 
 <span class="gu">## Changelog</span>
 
@@ -761,8 +776,8 @@ format:
 </code></pre></div>
 <p>AIPs <strong>should</strong> attempt to follow this overall format if possible, but AIPs
 <strong>may</strong> deviate from it if necessary (in particular, if the AIP would be more
-difficult to understand, even for a reader already accustomed to reading AIPs
-in the usual format).</p>
+difficult to understand, even for a reader already accustomed to reading AIPs in
+the usual format).</p>
 <p><strong>Note:</strong> Except for the title, AIPs <strong>must</strong> only use the second heading level
 (<code>##</code>) and above. AIPs <strong>should</strong> only use the second and third heading levels
 (<code>##</code>, <code>###</code>).</p>
@@ -782,8 +797,8 @@ examples, a <code>google.api.http</code> annotation <strong>should</strong> be i
 <h3 id="referencing-aips">Referencing AIPs</h3>
 <p>When AIPs reference other AIPs, the prosaic text <strong>must</strong> use the format
 <code>AIP-XXXX</code> without zero-padding (e.g., <code>[AIP-8](/8)</code>, not <code>AIP-0008</code>), and <strong>must</strong>
-link to the relevant AIP. AIP links <strong>may</strong> point to a particular section of
-the AIP if appropriate.</p>
+link to the relevant AIP. AIP links <strong>may</strong> point to a particular section of the
+AIP if appropriate.</p>
 <p><strong>Important:</strong> AIP links <strong>must</strong> use the relative path to the file in the
 repository (such as <code>/8</code> for core AIPs, or <code>/8</code> for AIPs in a
 subdirectory); this ensures that the link works both on the AIP site, when
@@ -791,6 +806,7 @@ viewing the Markdown file on GitHub, using the local development server, or a
 branch.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-03-30</strong>: Removed appendix, added rationale and history to the template.</li>
 <li><strong>2020-02-18</strong>: Specified reverse chronological ordering for changelog items.</li>
 <li><strong>2019-08-23</strong>: Added guidance for internal AIP links.</li>
 </ul>
