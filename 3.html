@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-157: Partial responses</title>
+    <title>AIP-3: AIP Versioning</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -201,7 +201,7 @@
         AIP Numbering
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/3">
         <span class="aip-number">3</span>
         AIP Versioning
@@ -399,7 +399,7 @@
         Singleton resources
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/157">
         <span class="aip-number">157</span>
         Partial responses
@@ -591,23 +591,22 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Partial responses</th></tr>
-    <tr><td>Number</td><td>157</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/157">google.aip.dev/157</a></td></tr>
+    <tr><th colspan="2">AIP Versioning</th></tr>
+    <tr><td>Number</td><td>3</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/3">google.aip.dev/3</a></td></tr>
     <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-01-26</td></tr>
-    <tr><td>Updated</td><td>2019-01-26</td></tr>
+    <tr><td>Created</td><td>2023-03-28</td></tr>
+    <tr><td>Updated</td><td>2023-03-28</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a><ul>
-<li><a href="#field-masks-parameter">Field masks parameter</a></li>
-<li><a href="#view-enumeration">View enumeration</a></li>
-<li><a href="#read-masks-as-a-request-field">Read masks as a request field</a></li>
+<li><a href="#guidance">Guidance</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#rationale-for-date-based-versioning">Rationale for date-based versioning</a></li>
+<li><a href="#why-not-individually-versioned-aips">Why not individually versioned AIPs</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -616,8 +615,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0157.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0157.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0003.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0003.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -642,84 +641,41 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Partial responses
+        AIP Versioning
       </li>
     </ol>
   </nav>
 </section>
   
-  <h4 class="aip-number">AIP-157</h4>
-  <h1 id="partial-responses">Partial responses</h1>
-<p>Sometimes, a resource can be either large or expensive to compute, and the API
-needs to give the user control over which fields it sends back.</p>
+  <h4 class="aip-number">AIP-3</h4>
+  <h1 id="aip-versioning">AIP Versioning</h1>
+<p>This AIP defines the versioning scheme of the AIPs.</p>
 <h2 id="guidance">Guidance</h2>
-<p>APIs <strong>may</strong> support partial responses in one of two ways:</p>
-<h3 id="field-masks-parameter">Field masks parameter</h3>
-<p>Field masks (<code>google.protobuf.FieldMask</code>) can be used for granting the user
-fine-grained control over what fields are returned. An API <strong>should</strong> support the mask in a side channel.
-For example, the parameter can be specified either using an HTTP query
-parameter, an HTTP header, or a <a href="https://grpc.io/docs/what-is-grpc/core-concepts/#metadata">gRPC metadata entry</a>. Google Cloud APIs specify field masks as a <a href="https://cloud.google.com/apis/docs/system-parameters">system parameter</a>.</p>
-<p>Field masks <strong>should not</strong> be specified in the <a href="/157#read-masks-as-a-request-field">request</a>.</p>
 <ul>
-<li>The value of the field mask parameter <strong>must</strong> be a <code>google.protobuf.FieldMask</code>.</li>
-<li>The field mask parameter <strong>must</strong> be optional:<ul>
-<li>An explicit value of <code>"*"</code> <strong>should</strong> be supported, and <strong>must</strong> return all
-  fields.</li>
-<li>If the field mask parameter is omitted, it <strong>must</strong> default to <code>"*"</code>, unless otherwise documented.</li>
+<li>The AIPs <strong>must</strong> be versioned by date, using the <a href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format of
+  <code>YYYY-MM-DD</code></a>, that corresponds to the
+  date the version was added.</li>
+<li>AIPs versions <strong>must</strong> be available as a tag on the source control system used
+  to store the AIPs, of the format <code>v{version}</code>. Example: <code>v2023-03-28</code>.</li>
+<li>The AIPs <strong>must</strong> have a new version when there is a significant change to one
+  or more AIPs.</li>
+<li>Each AIP <strong>must</strong> include a changelog section, with the date the change was
+  made and a short description.</li>
 </ul>
-</li>
-<li>An API <strong>may</strong> allow read masks with non-terminal repeated fields (unlike
-  update masks), but is not obligated to do so.</li>
-</ul>
-<p><strong>Note:</strong> Changing the default value of the field mask parameter is a <a href="/180#semantic-changes">breaking change</a>.</p>
-<h3 id="view-enumeration">View enumeration</h3>
-<p>Alternatively, an API <strong>may</strong> support partial responses with view enums.
-View enums are useful for situations where an API only wants to expose a small
-number of permutations to the user:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">enum</span> <span class="n">BookView</span> <span class="p">{</span>
-  <span class="c1">// The default / unset value.</span>
-  <span class="c1">// The API will default to the BASIC view.</span>
-  <span class="na">BOOK_VIEW_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-  <span class="c1">// Include basic metadata about the book, but not the full contents.</span>
-  <span class="c1">// This is the default value (for both ListBooks and GetBook).</span>
-  <span class="na">BASIC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-  <span class="c1">// Include everything.</span>
-  <span class="na">FULL</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The enum <strong>should</strong> be specified as a <code>view</code> field on the request message.</li>
-<li>The enum <strong>should</strong> be named something ending in <code>-View</code></li>
-<li>The enum <strong>should</strong> at minimum have values named <code>BASIC</code> and <code>FULL</code> (although
-  it <strong>may</strong> have values other than these).</li>
-<li>The <code>UNSPECIFIED</code> value <strong>must</strong> be valid (not an error), and the API
-  <strong>must</strong> document what the unspecified value will do).<ul>
-<li>For List RPCs, the effective default value <strong>should</strong> be <code>BASIC</code>.</li>
-<li>For Get RPCs, the effective default value <strong>should</strong> be either <code>BASIC</code> or
-  <code>FULL</code>.</li>
-</ul>
-</li>
-<li>The enum <strong>should</strong> be defined at the top level of the proto file (as it is
-  likely to be needed in multiple requests, e.g. both <code>Get</code> and <code>List</code>).</li>
-<li>
-<p>APIs <strong>may</strong> add fields to a given view over time. APIs <strong>must not</strong> remove a
-  field from a given view (this is a breaking change).</p>
-<p><strong>Note:</strong> If a service requires (or might require) multiple views with
-overlapping but distinct values, there is a potential for a namespace
-conflict. In this situation, the service <strong>should</strong> nest the view enum within
-the individual resource.</p>
-</li>
-</ul>
-<h3 id="read-masks-as-a-request-field">Read masks as a request field</h3>
-<p><strong>Warning:</strong> Read masks as a single field on the request message, for example: <code>google.protobuf.FieldMask read_mask</code> are <strong>DEPRECATED</strong>.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2022-03-14:</strong> Updated guidance on default value and how to specify a read mask.</li>
-<li><strong>2021-10-06:</strong> Updated the guidance with system parameters.</li>
-<li><strong>2021-03-04:</strong> Added guidance for conflicting view enums.</li>
-</ul>
+<h2 id="rationale">Rationale</h2>
+<p>Versions serve as reference points to AIPs at a specific point in time. They are
+crucial since guidance on an AIP can be reversed, or include significant changes
+such that they are no longer similar to the original design. APIs using AIPs may
+need to reference older AIP guidance to justify their design choice.</p>
+<h3 id="rationale-for-date-based-versioning">Rationale for date-based versioning</h3>
+<p>With date-based versioning, a client can easily find the AIP guidance at the
+time an API was authored.</p>
+<h3 id="why-not-individually-versioned-aips">Why not individually versioned AIPs</h3>
+<p>An alternative to a universal version is to have specific versions attached to
+each AIP.</p>
+<p>AIPs often cross-reference one another. If each AIP had a specific version, then
+cross-references would also have to specify specific versions of those
+referenced AIPs to provide complete guidance.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
