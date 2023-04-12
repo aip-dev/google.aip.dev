@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-231: Batch methods: Get</title>
+    <title>AIP-130: Methods</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -267,7 +267,7 @@
         Declarative-friendly interfaces
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/130">
         <span class="aip-number">130</span>
         Methods
@@ -561,7 +561,7 @@
         Unreachable resources
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/231">
         <span class="aip-number">231</span>
         Batch methods: Get
@@ -597,23 +597,22 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Batch methods: Get</th></tr>
-    <tr><td>Number</td><td>231</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/231">google.aip.dev/231</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2019-06-18</td></tr>
-    <tr><td>Updated</td><td>2019-06-18</td></tr>
+    <tr><th colspan="2">Methods</th></tr>
+    <tr><td>Number</td><td>130</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/130">google.aip.dev/130</a></td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2023-03-313</td></tr>
+    <tr><td>Updated</td><td>2023-03-313</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#request-message">Request message</a></li>
-<li><a href="#response-message">Response message</a></li>
-<li><a href="#nested-request-objects">Nested request objects</a></li>
+<li><a href="#categories-of-methods">Categories of Methods</a></li>
+<li><a href="#choosing-a-method-category">Choosing a method category</a></li>
 </ul>
 </li>
-<li><a href="#changelog">Changelog</a></li>
+<li><a href="#rationale">Rationale</a></li>
 </ul>
 </div>
 
@@ -622,8 +621,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0231.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0231.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0130.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0130.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -648,184 +647,228 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Batch methods: Get
+        Methods
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-231</h4>
-  <h1 id="batch-methods-get">Batch methods: Get</h1>
-<p>Some APIs need to allow users to get a specific set of resources at a
-consistent time point (e.g. using a read transaction). A batch get method
-provides this functionality.</p>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-130</h4>
+  <h1 id="methods">Methods</h1>
+<p>An API is composed of one or more methods, which represent a specific operation
+that a service can perform on behalf of the consumer.</p>
 <h2 id="guidance">Guidance</h2>
-<p>APIs <strong>may</strong> support Batch Get using the following pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">BatchGetBooks</span><span class="p">(</span><span class="n">BatchGetBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BatchGetBooksResponse</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">get</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:batchGet&quot;</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The RPC's name <strong>must</strong> begin with <code>BatchGet</code>. The remainder of the RPC name
-  <strong>should</strong> be the plural form of the resource being retrieved.</li>
-<li>The request and response messages <strong>must</strong> match the RPC name, with
-  <code>Request</code> and <code>Response</code> suffixes.</li>
-<li>The HTTP verb <strong>must</strong> be <code>GET</code>.</li>
-<li>The HTTP URI <strong>must</strong> end with <code>:batchGet</code>.</li>
-<li>The URI path <strong>should</strong> represent the collection for the resource, matching
-  the collection used for simple CRUD operations. If the operation spans
-  parents, a dash (<code>-</code>) <strong>may</strong> be accepted as a wildcard.</li>
-<li>There <strong>must not</strong> be a body key in the <code>google.api.http</code> annotation.</li>
-<li>The operation <strong>must</strong> be atomic: it <strong>must</strong> fail for all resources or
-  succeed for all resources (no partial success). For situations requiring
-  partial failures, <code>List</code> (<a href="https://aip.dev/132">AIP-132</a>) methods <strong>should</strong> be used.<ul>
-<li>If the operation covers multiple locations and at least one location is
-  down, the operation <strong>must</strong> fail.</li>
-</ul>
-</li>
-</ul>
-<h3 id="request-message">Request message</h3>
-<p>The request for a batch get method <strong>should</strong> be specified with the following
-pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BatchGetBooksRequest</span> <span class="p">{</span>
-  <span class="c1">// The parent resource shared by all books being retrieved.</span>
-  <span class="c1">// Format: publishers/{publisher}</span>
-  <span class="c1">// If this is set, the parent of all of the books specified in `names`</span>
-  <span class="c1">// must match this field.</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-
-  <span class="c1">// The names of the books to retrieve.</span>
-  <span class="c1">// A maximum of 1000 books can be retrieved in a batch.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">names</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>A <code>parent</code> field <strong>should</strong> be included, unless the resource being retrieved
-  is a top-level resource, to facilitate inclusion in the URI as
-  well to permit a single permissions check. If a caller sets this field, and
-  the parent collection in the name of any resource being retrieved does not
-  match, the request <strong>must</strong> fail.<ul>
-<li>This field <strong>should</strong> be required if only 1 parent per request is allowed.</li>
-<li>The field <strong>should</strong> identify the <a href="/122#fields-representing-a-resources-parent">resource type</a> that it
-  references.</li>
-<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
-</ul>
-</li>
-<li>The request message <strong>must</strong> include a repeated field which accepts the
-  resource names specifying the resources to retrieve. The field <strong>should</strong> be
-  named <code>names</code>.<ul>
-<li>If no resource names are provided, the API <strong>should</strong> error with
-  <code>INVALID_ARGUMENT</code>.</li>
-<li>The field <strong>should</strong> be required.</li>
-<li>The field <strong>should</strong> identify the <a href="/122#fields-representing-resource-names">resource type</a> that it
-  references.</li>
-<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
-</ul>
-</li>
-<li>Other fields besides <code>name</code> <strong>may</strong> be "hoisted" from the <a href="/131#request-message">standard Get
-  request</a>. There is no way to allow for these fields to
-  accept different values for different resources; if this is needed, use the
-  <a href="#nested-request-objects">alternative request message form</a>.</li>
-<li>Batch get <strong>should not</strong> support pagination because transactionality across
-  API calls would be extremely difficult to implement or enforce, and the
-  request defines the exact scope of the response anyway.</li>
-<li>The request message <strong>must not</strong> contain any other required fields, and
-  <strong>should not</strong> contain other optional fields except those described in this
-  or another AIP.</li>
-<li>The comment above the <code>names</code> field <strong>should</strong> document the maximum number of
-  requests allowed.</li>
-</ul>
-<h3 id="response-message">Response message</h3>
-<p>The response for a batch get method <strong>should</strong> be specified with the following
-pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BatchGetBooksResponse</span> <span class="p">{</span>
-  <span class="c1">// Books requested.</span>
-  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The response message <strong>must</strong> include one repeated field corresponding to the
-  resources being retrieved.</li>
-<li>The order of books in the response <strong>must</strong> be the same as the names in the
-  request.</li>
-</ul>
-<h3 id="nested-request-objects">Nested request objects</h3>
-<p>If the <a href="/131#request-message">standard Get request message</a> contains a field besides
-the resource name that needs to be different between different resources being
-requested, the batch message <strong>may</strong> alternatively hold a <code>repeated</code> field of
-the <a href="/131#request-message">standard Get request message</a>. This is generally
-discouraged unless your use case really requires it.</p>
-<p>The request for a batch get method using this approach <strong>should</strong> be specified
-with the following pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BatchGetBooksRequest</span> <span class="p">{</span>
-  <span class="c1">// The parent resource shared by all books being retrieved.</span>
-  <span class="c1">// Format: publishers/{publisher}</span>
-  <span class="c1">// If this is set, the parent field in the GetBookRequest messages</span>
-  <span class="c1">// must either be empty or match this field.</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-
-  <span class="c1">// The requests specifying the books to retrieve.</span>
-  <span class="c1">// A maximum of 1000 books can be retrieved in a batch.</span>
-  <span class="k">repeated</span> <span class="n">GetBookRequest</span> <span class="na">requests</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>A <code>parent</code> field <strong>should</strong> be included. If a caller sets this field, and the
-  parent collection in the name of any resource being retrieved does not match,
-  the request <strong>must</strong> fail.<ul>
-<li>This field <strong>should</strong> be required if only 1 parent per request is allowed.</li>
-<li>The field <strong>should</strong> identify the <a href="/122#fields-representing-a-resources-parent">resource type</a> that it
-  references.</li>
-<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
-</ul>
-</li>
-<li>The request message <strong>must</strong> include a repeated field which accepts the
-  request messages specifying the resources to retrieve, as specified for
-  <a href="/131#request-message">standard Get methods</a>. The field <strong>should</strong> be named
-  <code>requests</code>.<ul>
-<li>The field <strong>should</strong> be required.</li>
-</ul>
-</li>
-<li>Other fields <strong>may</strong> be "hoisted" from the <a href="/131#request-message">standard Get
-  request</a>, which means that the field can be set at either
-  the batch level or child request level. Similar to <code>parent</code>, if both the
-  batch level and child request level are set for the same field, the values
-  <strong>must</strong> match.</li>
-<li>Batch get <strong>should not</strong> support pagination because transactionality across
-  API calls would be extremely difficult to implement or enforce, and the
-  request defines the exact scope of the response anyway.</li>
-<li>The request message <strong>must not</strong> contain any other required fields, and
-  <strong>should not</strong> contain other optional fields except those described in this
-  or another AIP.</li>
-<li>The comment above the <code>requests</code> field <strong>should</strong> document the maximum number
-  of requests allowed.</li>
-</ul>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
-<li><strong>2020-09-16</strong>: Suggested annotating <code>parent</code>, <code>names</code>, and <code>requests</code> fields.</li>
-<li><strong>2020-08-27</strong>: Removed parent recommendations for top-level resources.</li>
-<li><strong>2020-03-24</strong>: Clarified behavior if no resource names are sent.</li>
-<li><strong>2019-09-11</strong>: Changed the primary recommendation to specify a repeated
-  string instead of a repeated standard Get request message. Moved the original
-  recommendation into its own section.</li>
-<li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
-  present a better example of resource ownership.</li>
-</ul>
+<h3 id="categories-of-methods">Categories of Methods</h3>
+<p>The following enumerates multiple categories of methods that exist, often
+grouped up under some object (e.g. collection or resource) that the method
+operates upon.</p>
+<table>
+<thead>
+<tr>
+<th>Category Name</th>
+<th>Description</th>
+<th>Related AIPs</th>
+<th><a href="/9#IaC">IaC</a> integration</th>
+<th>CLI integration</th>
+<th>UI integration</th>
+<th>SDK integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standard Methods</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Standard collection methods</td>
+<td>Operate on a collection of resources (List or Create).</td>
+<td><a href="/121">AIP-121</a>, <a href="/132">AIP-132</a>, <a href="/133">AIP-133</a></td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Standard resource methods</td>
+<td>Fetch or mutate a single resource (Get, Update, Delete).</td>
+<td><a href="/121">AIP-121</a>, <a href="/131">AIP-131</a>, <a href="/134">AIP-134</a>, <a href="/135">AIP-135</a></td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Batch resource methods</td>
+<td>Fetch or mutate multiple resources in a collection by name.</td>
+<td><a href="/231">AIP-231</a>, <a href="/233">AIP-233</a>, <a href="/234">AIP-234</a>, <a href="/235">AIP-235</a></td>
+<td>may be used to optimize queries</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Aggregated list methods</td>
+<td>Fetch or mutate multiple resources of the same type across multiple collections.</td>
+<td><a href="/159">AIP-159</a></td>
+<td>not useful nor automable</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td><strong>Custom Fetch Methods</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Custom collection fetch methods</td>
+<td>Fetch information across a collection that cannot be expressed via a standard method.</td>
+<td><a href="/136">AIP-136</a></td>
+<td>handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Custom resource fetch methods</td>
+<td>Fetch information for a single resource that cannot be expressed via a standard method.</td>
+<td><a href="/136">AIP-136</a></td>
+<td>handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td><strong>Custom Mutation Methods</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Backing up a resource</td>
+<td>Storing a copy of a resource at a particular point in time.</td>
+<td><a href="/162">AIP-162</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Restoring a resource</td>
+<td>Setting a resource to a version from a particular point in time.</td>
+<td><a href="/162">AIP-162</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Renaming a resource</td>
+<td>Modify the resource's name or id while preserving configuration and data.</td>
+<td><a href="/136">AIP-136</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Custom collection mutation methods</td>
+<td>Perform an imperative operation referencing a collection that may mutate one or more resources within that collection in fashion that cannot be easily achieved by standard methods (e.g. state transitions).</td>
+<td><a href="/136">AIP-136</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td>Custom resource mutation methods</td>
+<td>Perform an imperative operation on a resource that may mutate it in a way a standard method cannot (e.g. state transitions).</td>
+<td><a href="/136">AIP-136</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td><strong>Misc Custom Methods</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Stateless Methods</td>
+<td>A method that has no permanent effect on any data within the API (e.g. translating text)</td>
+<td><a href="/136">AIP-136</a></td>
+<td>unused or handwritten</td>
+<td>automatable</td>
+<td>automatable</td>
+<td>automatable</td>
+</tr>
+<tr>
+<td><strong>None of the above</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Streaming methods</td>
+<td>Methods that communicate via client, server, or bi-directional streams.</td>
+<td></td>
+<td>handwritten</td>
+<td>handwritten</td>
+<td>handwritten</td>
+<td>automatable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="choosing-a-method-category">Choosing a method category</h3>
+<p>While designing a method, API authors should choose from the defined categories
+in the following order:</p>
+<ol>
+<li>Standard methods (on collections and resources)</li>
+<li>Standard batch or aggregate methods</li>
+<li>Custom methods (on collections, resources, or stateless)</li>
+<li>Streaming methods</li>
+</ol>
+<h2 id="rationale">Rationale</h2>
+<p>Resource-oriented standard and custom methods are recommended first, as they can
+be expressed in the widest variety of clients (IaC, CLIs, UIs, and so on), and
+offer the most uniform experience that allows users to apply their knowledge of
+one API to another.</p>
+<p>If a standard method is unsuitable, then custom methods (that are mounted to a
+resource or collection) offer a lesser, but still valuable level of consistency,
+helping the user reason about the scope of the action and the object whose
+configuration is read to inform that action. Although mutative custom methods
+are not uniform enough to have a automated integration with exclusively
+resource-oriented clients such as <a href="/9#IaC">IaC</a> clients, they are still a pattern that
+can easily recognized by CLIs, UIs, and SDKs.</p>
+<p>If one cannot express their APIs in a resource-oriented fashion at all, then the
+operation falls in a category where the lack of uniformity makes it difficult
+for any client aside from SDKs to model the operation. This category is
+preferred last due to the fact that a user cannot rely on their knowledge of
+similar APIs, as well as the issue that integration with many clients will
+likely have to be hand-written.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

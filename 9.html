@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1658352a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1658352a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e0cf139c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e0cf139c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1658352a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e0cf139c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -265,6 +265,12 @@
       <a href="/128">
         <span class="aip-number">128</span>
         Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/130">
+        <span class="aip-number">130</span>
+        Methods
       </a>
     </li>
     <li class="nav-item">
@@ -617,6 +623,7 @@
 <li><a href="#api-request">API Request</a></li>
 <li><a href="#api-version">API Version</a></li>
 <li><a href="#google-api">Google API</a></li>
+<li><a href="#iac">IaC</a></li>
 <li><a href="#network-api">Network API</a></li>
 </ul>
 </li>
@@ -727,12 +734,24 @@ presents in API requests and Protocol Buffers package names.</p>
 <p>A Network API exposed by a Google service. Most of these are
 hosted on the <code>googleapis.com</code> domain. It does not include other types of APIs,
 such as client libraries and SDKs.</p>
+<h3 id="iac">IaC</h3>
+<p>Short for Infrastructure-as-code, IaC describes a category of clients that
+consumes a markup language or code that represents resources exposed by an API,
+and executes the appropriate imperative actions to drive the resource to that
+desired state.</p>
+<p>Examples of complexities that IaC clients abstract away include:</p>
+<ul>
+<li>Determing the appropriate imperative action (create / update / delete) to achieve desired state.</li>
+<li>Ordering of these imperative actions.</li>
+</ul>
+<p><a href="https://www.terraform.io/">Terraform</a> is an example of such a client.</p>
 <h3 id="network-api">Network API</h3>
 <p>An API that operates across a network of computers. Network APIs
 communicate using network protocols including HTTP, and are frequently produced
 by organizations separate from those that consume them.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-04-01</strong>: Adding definition of IaC</li>
 <li><strong>2023-03-24</strong>: Reformatting content to include anchor links.</li>
 </ul>
   <footer>
