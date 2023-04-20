@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e0cf139c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e0cf139c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a96a8c9a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a96a8c9a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e0cf139c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a96a8c9a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -682,10 +682,12 @@ transaction. A batch create method provides this functionality.</p>
   the collection used for simple CRUD operations. If the operation spans
   parents, a dash (<code>-</code>) <strong>may</strong> be accepted as a wildcard.</li>
 <li>The body clause in the <code>google.api.http</code> annotation <strong>should</strong> be <code>"*"</code>.</li>
-<li>The operation <strong>must</strong> be atomic: it <strong>must</strong> fail for all resources or
+<li>The operation <strong>should</strong> be atomic: it <strong>should</strong> fail for all resources or
   succeed for all resources (no partial success).<ul>
 <li>If the operation covers multiple locations and at least one location is
   down, the operation <strong>must</strong> fail.</li>
+<li>In cases where supporting partial responses cannot be avoided, the design
+  should follow the guidelines of <a href="https://aip.dev/193">AIP-193</a>.</li>
 </ul>
 </li>
 </ul>
@@ -756,7 +758,9 @@ following pattern:</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
+<li><strong>2023-04-18</strong>: Changed the recommendation to allow returning partial 
+  successes.</li>
+<li><strong>2022-06-02</strong>: Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2020-09-16</strong>: Suggested annotating <code>parent</code> and <code>requests</code> fields.</li>
 <li><strong>2020-08-27</strong>: Removed parent recommendations for top-level resources.</li>
 <li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
