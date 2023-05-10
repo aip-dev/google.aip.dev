@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3d9ca585">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3d9ca585">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=17aee7ee">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=17aee7ee">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=3d9ca585"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=17aee7ee"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -608,9 +608,15 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#resource-based-custom-methods">Resource-based custom methods</a></li>
 <li><a href="#collection-based-custom-methods">Collection-based custom methods</a></li>
 <li><a href="#stateless-methods">Stateless methods</a></li>
 <li><a href="#declarative-friendly-resources">Declarative-friendly resources</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#http-path">HTTP path</a></li>
+<li><a href="#http-methods">HTTP methods</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -686,12 +692,10 @@ services. The bullets below apply in all three cases.</p>
   <a href="/132">List</a>, <a href="/133">Create</a>, <a href="/134">Update</a>, <a href="/135">Delete</a>).</li>
 </ul>
 </li>
-<li>The HTTP method for custom methods <strong>should</strong> usually be <code>POST</code>, unless the
-  custom method maps more strongly to another HTTP verb.<ul>
-<li>Custom methods that serve as an alternative to get or list methods (such as
-  <code>Search</code>) <strong>should</strong> use <code>GET</code>. These methods <strong>must</strong> be idempotent and
-  have no side effects.</li>
-<li>Custom methods <strong>should not</strong> use <code>PATCH</code> or <code>DELETE</code>.</li>
+<li>The HTTP method <strong>must</strong> be <code>GET</code> or <code>POST</code>:<ul>
+<li><code>GET</code> <strong>must</strong> be used for methods retrieving data or resource state.</li>
+<li><code>POST</code> <strong>must</strong> be used if the method has side effects or mutates resources
+  or data.</li>
 </ul>
 </li>
 <li>The HTTP URI <strong>must</strong> use a <code>:</code> character followed by the custom verb
@@ -701,17 +705,32 @@ services. The bullets below apply in all three cases.</p>
 </ul>
 </li>
 <li>The <code>body</code> clause in the <code>google.api.http</code> annotation <strong>should</strong> be <code>"*"</code>.<ul>
-<li>However, if using <code>GET</code> or <code>DELETE</code>, the <code>body</code> clause <strong>must</strong> be absent.</li>
+<li>However, if using <code>GET</code>, the <code>body</code> clause <strong>must</strong> be absent.</li>
 </ul>
 </li>
-<li>Custom methods <strong>should</strong> usually take a request message matching the RPC
+<li>Custom methods <strong>should</strong> take a request message matching the RPC
   name, with a <code>Request</code> suffix.</li>
-<li>Custom methods <strong>should</strong> usually return a response message matching the RPC
+<li>Custom methods <strong>should</strong> return a response message matching the RPC
   name, with a <code>Response</code> suffix.<ul>
 <li>When operating on a specific resource, a custom method <strong>may</strong> return the
   resource itself.</li>
 </ul>
 </li>
+</ul>
+<h3 id="resource-based-custom-methods">Resource-based custom methods</h3>
+<p>Custom methods <strong>must</strong> operate on a resource if the API can be modeled
+as such:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="c1">// Archives the given book.</span>
+<span class="k">rpc</span> <span class="n">ArchiveBook</span><span class="p">(</span><span class="n">ArchiveBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ArchiveBookResponse</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:archive&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>The parameter for the resource's name <strong>must</strong> be called <code>name</code>, and
+  be the only variable in the URI path.</li>
 </ul>
 <h3 id="collection-based-custom-methods">Collection-based custom methods</h3>
 <p>While most custom methods operate on a single resource, some custom methods
@@ -719,15 +738,14 @@ services. The bullets below apply in all three cases.</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Sorts the books from this publisher.</span>
 <span class="k">rpc</span> <span class="n">SortBooks</span><span class="p">(</span><span class="n">SortBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">SortBooksResponse</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{publisher=publishers/*}/books:sort&quot;</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:sort&quot;</span>
     <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>If the collection has a parent, the field name in the request message
-  <strong>should</strong> be the target resource's singular noun (<code>publisher</code> in the above
-  example). If word separators are necessary, <code>snake_case</code> <strong>must</strong> be used.</li>
+<li>The collection's parent resource <strong>must</strong> be called <code>parent</code>, and
+  be the only variable in the URI path.</li>
 <li>The collection key (<code>books</code> in the above example) <strong>must</strong> be literal.</li>
 </ul>
 <h3 id="stateless-methods">Stateless methods</h3>
@@ -760,8 +778,22 @@ to do with them.</p>
 <p>An exception to this is for rarely-used, fundamentally imperative operations,
 such as a <code>Move</code> or <code>Rename</code> operation, for which there would not be an
 expectation of declarative support.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="http-path">HTTP path</h3>
+<p>Similar to standard methods, a custom method that operates on a resource or
+collection needs a <code>name</code> or <code>parent</code> parameter to indicate the resource that it
+operates on. This convention allows clients to map custom methods to the
+appropriate resource.</p>
+<h3 id="http-methods">HTTP methods</h3>
+<p>Allowing both <code>GET</code> and <code>POST</code> HTTP verbs allows a clear distinction for
+which methods do not mutate data, and which ones do. Methods that only
+read data have first-class concepts in some clients (DataSources in
+Terraform) and clearly indicate to a user which methods can be called
+without risk of runtime impact.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-05-09:</strong> Adding guidance for POST and GET, require parent instead of
+  the resource singular.</li>
 <li><strong>2023-03-02:</strong> Explicitly discourage use of standard method verbs.</li>
 <li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2020-10-06:</strong> Added declarative-friendly guidance.</li>
