@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=586a1a79">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=586a1a79">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3d9ca585">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3d9ca585">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=586a1a79"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=3d9ca585"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -614,6 +614,7 @@
 <li><a href="#permission-denied">Permission Denied</a></li>
 </ul>
 </li>
+<li><a href="#rationale">Rationale</a></li>
 <li><a href="#further-reading">Further reading</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
@@ -685,13 +686,19 @@ will need to write code against a specific aspect of the error. Error message
 strings <strong>may</strong> change over time; however, if an error message does not have a
 machine-readable identifier <em>in addition to</em> the <code>code</code> field, changing the
 error message <strong>must</strong> be considered a backwards-incompatible change.</p>
-<p><strong>Note:</strong> The <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> message is the recommended way to send a
-machine-readable identifier.</p>
+<h4 id="errorinfo">ErrorInfo</h4>
+<p>The <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> message is the required way to send a
+machine-readable identifier. All error responses <strong>must</strong> include an
+<code>ErrorInfo</code> payload in the <code>details</code> field. Variable information
+<strong>should</strong> be included in the <code>metadata</code> field on <code>ErrorInfo</code> and
+<strong>must</strong> be included if it appears within an error message.</p>
 <h4 id="uniqueness">Uniqueness</h4>
 <p>Each type of detail payload <strong>must</strong> be included at most once. For
-example, there <strong>must not</strong> be more than one <code>ErrorInfo</code> message in the
-<code>details</code> field, but there <strong>may</strong> be an <code>ErrorInfo</code> and a
-<a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L139-L166"><code>PreconditionFailure</code></a>.</p>
+example, there <strong>must not</strong> be more than one <a href="https://github.com/googleapis/googleapis/blob/477a59d764428136ba1d857a9633c0d231de6efa/google/rpc/error_details.proto#L168-L218"><code>BadRequest</code></a>
+message in the <code>details</code> field, but there <strong>may</strong> be a <code>BadRequest</code> and
+a <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L139-L166"><code>PreconditionFailure</code></a>.</p>
+<p><strong>Note:</strong> <code>ErrorInfo</code> represents a special case. There <strong>must</strong> be exactly one
+<code>ErrorInfo</code>. It is required.</p>
 <h3 id="localization">Localization</h3>
 <p>Error messages <strong>must</strong> be in English. If a localized error message is also
 required, the service <strong>should</strong> use <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto"><code>google.rpc.LocalizedMessage</code></a>
@@ -715,13 +722,27 @@ regardless of whether or not it exists, the service <strong>must</strong> error 
 if the resource or parent exists.</p>
 <p>If the user does have proper permission, but the requested resource or parent
 does not exist, the service <strong>must</strong> error with <code>NOT_FOUND</code> (HTTP 404).</p>
+<h2 id="rationale">Rationale</h2>
+<p><code>ErrorInfo</code> is required because it further identifies an error. The
+<code>Status</code> field, with under 20 <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto">allowed values</a>, is rarely enough
+to disambiguate one error from another accross an entire API Service.
+Error messages often contain dynamic segments that express values, such
+as project numbers or locations, and these values are often read from
+the string message using brittle extraction methods, like RegExp. There
+needs to be a machine readable component of <em>every</em> error response that
+enables clients to pull such information programatically--without
+parsing the string error message. For these reasons, <code>ErrorInfo</code> is
+required for <em>every</em> error response.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For which error codes to retry, see <a href="https://aip.dev/194">AIP-194</a>.</li>
-<li>For how to retry errors in client libraries, see <a href="https://aip.dev/client-libraries/4221">AIP-4221</a>.</li>
+<li>For how to retry errors in client libraries, see
+  <a href="https://aip.dev/client-libraries/4221">AIP-4221</a>.</li>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-05-10</strong>: Require <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> for all error
+  responses.</li>
 <li><strong>2023-05-04</strong>: Require uniqueness by message type for error details.</li>
 <li><strong>2022-11-04</strong>: Added guidance around PERMISSION_DENIED errors previously
   found in other AIPs.</li>
