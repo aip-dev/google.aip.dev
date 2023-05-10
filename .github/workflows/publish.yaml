@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+
+permissions:
+  contents: write
+    
 jobs:
   github-pages:
     runs-on: ubuntu-latest
@@ -17,7 +21,7 @@ jobs:
       - name: Build the static site.
         run: aip-site-gen . out
       - name: Publish the static site to GitHub Pages.
-        uses: jamesives/github-pages-deploy-action@releases/v3
+        uses: jamesives/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
