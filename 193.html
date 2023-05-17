@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=22dc69b5">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=22dc69b5">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b5136fe7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b5136fe7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=22dc69b5"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b5136fe7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -609,12 +609,16 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#details">Details</a></li>
-<li><a href="#localization">Localization</a></li>
+<li><a href="#error-messages">Error messages</a></li>
 <li><a href="#partial-errors">Partial errors</a></li>
 <li><a href="#permission-denied">Permission Denied</a></li>
 </ul>
 </li>
-<li><a href="#rationale">Rationale</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#requiring-errorinfo">Requiring ErrorInfo</a></li>
+<li><a href="#localizedmessage">LocalizedMessage</a></li>
+</ul>
+</li>
 <li><a href="#further-reading">Further reading</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
@@ -677,6 +681,34 @@ user will know anything about its underlying implementation.</p>
 <strong>should</strong> be provided in the <code>details</code> field. If even more information is
 necessary, you <strong>should</strong> provide a link where a reader can get more
 information or ask questions to help resolve the issue.</p>
+<p>A JSON representation of an error response might look like the
+following:</p>
+<p><a name="sample"></a></p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">429</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;The zone &#39;us-east-1&#39; does not have enough resources available to fulfill the request. Try a different zone, or try again later.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_EXHAUSTED&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.ErrorInfo&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;STOCKOUT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;compute.googleapis.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;zone&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east1-a&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;vmType&quot;</span><span class="p">:</span> <span class="s2">&quot;e2-medium&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;attachment&quot;</span><span class="p">:</span> <span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span>
+         <span class="p">}</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.LocalizedMessage&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;A e2-medium with local-ssd=3,nvidia-t4=2 is currently unavailable in the us-east1-a zone.\nCapacity changes frequently, so try your request in a different zone, with a different VM hardware configuration, or at a later time. For more information, see troubleshooting documentation.&quot;</span>
+       <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="details">Details</h3>
 <p>Google defines a set of <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto">standard detail payloads</a> for error details,
 which cover most common needs for API errors. Services <strong>should</strong> use these
@@ -699,10 +731,98 @@ message in the <code>details</code> field, but there <strong>may</strong> be a <
 a <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L139-L166"><code>PreconditionFailure</code></a>.</p>
 <p><strong>Note:</strong> <code>ErrorInfo</code> represents a special case. There <strong>must</strong> be exactly one
 <code>ErrorInfo</code>. It is required.</p>
-<h3 id="localization">Localization</h3>
-<p>Error messages <strong>must</strong> be in English. If a localized error message is also
-required, the service <strong>should</strong> use <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto"><code>google.rpc.LocalizedMessage</code></a>
-in the <code>details</code> field.</p>
+<h3 id="error-messages">Error messages</h3>
+<p>For each error, the service <strong>must</strong> populate the <code>message</code> field on
+<a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto"><code>google.rpc.Status</code></a>. This error message,</p>
+<ul>
+<li>is a developer-facing, human-readable "debug message"</li>
+<li>is presented in the service's native language</li>
+<li>both explains the error and offers an actionable resolution to it
+  (<a href="https://cloud.google.com/apis/design/errors#error_model">citation</a>)</li>
+</ul>
+<p><strong>Note:</strong> Sometimes a service will elect to always present
+<code>Status.message</code> in English rather than the application's native
+language so that messages are easily searchable in common knowledge
+bases, such as StackOverflow&trade;.</p>
+<p>When introducing an error that represents a failure scenario that did
+not previously occur for the service, the payload <strong>must</strong> include
+<code>ErrorInfo</code> and any variables found in dynamic segments of the error
+message <strong>must</strong> be present in <code>ErrorInfo.metadata</code>. See, "<a href="#dynamic-variables">Dynamic
+variables</a>".</p>
+<h4 id="changing-error-messages">Changing error messages</h4>
+<p><a name="status-message-warning"></a></p>
+<p><code>Status.message</code> <strong>may</strong> change. However, <strong>use extreme caution</strong> when
+doing so.  API consumers often treat this error message as <strong>part of the
+API contract</strong>. Clients perform string matches on the text to
+differentiate one error for another and even parse the error message to
+extract variables from dynamic segments.</p>
+<p>There is a safer alternative. The service can chose to include an error
+message by adding <a href="https://github.com/googleapis/googleapis/blob/e9897ed945336e2dc967b439ac7b4be6d2c62640/google/rpc/error_details.proto#L275-L285"><code>google.rpc.LocalizedMessage</code></a> to
+<a href="https://github.com/googleapis/googleapis/blob/aeae5ea2b01ece6c0cee046ae84b881cdc62b95d/google/rpc/status.proto#L46-L48"><code>Status.details</code></a>.</p>
+<p>The error message presented in <code>LocalizedMessage.message</code> <strong>may</strong> be the
+same as <code>Status.message</code> or it <strong>may</strong> be an alternate message.</p>
+<p>Reasons to present the same error message in both locations include the
+following:</p>
+<ul>
+<li>The service plans to localize either immediately or in the near
+  future.  See, "<a href="#localization">Localization</a>".</li>
+<li>It affords clients the ability to find an error message consistently
+  in one location, <code>LocalizedMessaage.message</code>, across all methods of
+  the API Service.</li>
+</ul>
+<p>Reasons to present an error message in <code>LocalizedMessage.message</code> that
+differs from <code>Status.message</code> include the following:</p>
+<ul>
+<li>The service requires an end-user facing error message that differs
+  from the "debug message".</li>
+<li>Ongoing, iterative error message improvements are expected.</li>
+</ul>
+<p>When including <code>LocalizedMessage</code>, both fields, <code>locale</code> and <code>message</code>,
+<strong>must</strong> be populated.  If the service is to be localized, the value of
+<code>locale</code> <strong>must</strong> change dynamically. See,
+"<a href="#localization">Localization</a>". Otherwise, <code>locale</code> <strong>must</strong> always
+present the service's default locale, e.g. "en-US".</p>
+<p>When adding an error message via <code>LocalizedMessage</code>, <code>ErrorInfo</code>
+<strong>must</strong> be introduced either before or at the same time. If there are
+dynamic segments found in the text, the values of these variables
+<strong>must</strong> be included in <code>ErrorInfo.metadata</code>.  See, "<a href="#dynamic-variables">Dynamic
+variables</a>".</p>
+<p><strong>Warning:</strong> If <code>LocalizedMessage</code> is released without <code>ErrorInfo</code>, the
+same <a href="#status-message-warning">concerns</a> regarding client misuse of
+textual error messages apply.</p>
+<h4 id="dynamic-variables">Dynamic variables</h4>
+<p>The best, actionable error messages include dynamic segments. These
+variable parts of the message are specific to a particular request.
+Consider the following example:</p>
+<blockquote>
+<p>The Book, "The Great Gatsby", is unavailable at the Library, "Garfield
+East". It is expected to be available again on 2199-05-13.</p>
+</blockquote>
+<p>The preceding error message is made actionable by the context, both that
+originates from the request, the title of the Book and the name of the
+Library, and by the information that is known only by the service, i.e.
+the expected return date of the Book.</p>
+<p>All dynamic variables found in error messages <strong>must</strong> also be present
+in the <code>map&lt;string, string&gt;</code>, <code>ErrorInfo.metadata</code> (found on the
+<em>required</em> <code>ErrorInfo</code>).  For example, the <code>metadata</code> map for the sample
+error message above will include <em>at least</em> the following key/value
+pairs:</p>
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">bookTitle</span><span class="p">:</span> <span class="s">&quot;The</span><span class="nv"> </span><span class="s">Great</span><span class="nv"> </span><span class="s">Gatsby&quot;</span>
+<span class="nt">library</span><span class="p">:</span> <span class="s">&quot;Garfield</span><span class="nv"> </span><span class="s">East&quot;</span>
+<span class="nt">expectedReturnDate</span><span class="p">:</span> <span class="s">&quot;2199-05-13&quot;</span>
+</code></pre></div>
+<p>Dynamic variables that do not appear in an error message <strong>may</strong> also be
+included in <code>metadata</code> to provide additional information to the client
+to be used programmatically.</p>
+<p>Once present in <code>metadata</code>, keys <strong>must</strong> continue to be included in the
+map for the error payload to be backwards compatible, even if the value
+for a particular key is empty. Keys <strong>must</strong> be expressed as lower
+camel-case.</p>
+<h4 id="localization">Localization</h4>
+<p>The value of <code>Status.message</code> <strong>should</strong> be presented in the service's
+native language. If a localized error message is required, the service
+<strong>must</strong> include <a href="https://github.com/googleapis/googleapis/blob/e9897ed945336e2dc967b439ac7b4be6d2c62640/google/rpc/error_details.proto#L275-L285"><code>google.rpc.LocalizedMessage</code></a> in
+<code>Status.details</code>.</p>
 <h3 id="partial-errors">Partial errors</h3>
 <p>APIs <strong>should not</strong> support partial errors. Partial errors add significant
 complexity for users, because they usually sidestep the use of error codes, or
@@ -723,16 +843,22 @@ if the resource or parent exists.</p>
 <p>If the user does have proper permission, but the requested resource or parent
 does not exist, the service <strong>must</strong> error with <code>NOT_FOUND</code> (HTTP 404).</p>
 <h2 id="rationale">Rationale</h2>
-<p><code>ErrorInfo</code> is required because it further identifies an error. The
-<code>Status</code> field, with under 20 <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto">allowed values</a>, is rarely enough
-to disambiguate one error from another accross an entire API Service.
-Error messages often contain dynamic segments that express values, such
-as project numbers or locations, and these values are often read from
-the string message using brittle extraction methods, like RegExp. There
-needs to be a machine readable component of <em>every</em> error response that
-enables clients to pull such information programatically--without
-parsing the string error message. For these reasons, <code>ErrorInfo</code> is
-required for <em>every</em> error response.</p>
+<h3 id="requiring-errorinfo">Requiring ErrorInfo</h3>
+<p><code>ErrorInfo</code> is required because it further identifies an error. With
+only approximately twenty <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto">available values</a> for <code>Status.status</code>,
+it is difficult to disambiguate one error from another across an entire
+<a href="https://cloud.google.com/apis/design/glossary#api_service">API Service</a>.</p>
+<p>Also, error messages often contain dynamic segments that express
+variable information, so there needs to be machine readable component of
+<em>every</em> error response that enables clients to use such information
+programmatically.</p>
+<h3 id="localizedmessage">LocalizedMessage</h3>
+<p><code>LocalizedMessage</code> was selected as the location to present alternate
+error messages. This is desirable when clients need to display a crafted
+error message directly to end users. <code>LocalizedMessage</code> can be used with
+a static <code>locale</code>. This may seem misleading, but it allows the service
+to eventually localize without having to duplicate or move the error
+message, which would be a backwards incompatible change.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For which error codes to retry, see <a href="https://aip.dev/194">AIP-194</a>.</li>
@@ -741,6 +867,9 @@ required for <em>every</em> error response.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-05-17</strong>: Change the recommended language for <code>Status.message</code>
+  to be the service's native language rather than English.</li>
+<li><strong>2023-05-17</strong>: Specify requirements for changing error messages.</li>
 <li><strong>2023-05-10</strong>: Require <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> for all error
   responses.</li>
 <li><strong>2023-05-04</strong>: Require uniqueness by message type for error details.</li>
