@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d4b1d46e">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d4b1d46e">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4a7b7bce">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4a7b7bce">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=d4b1d46e"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4a7b7bce"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -773,6 +773,71 @@ code, as such changes will be seen as breaking by those users.</p>
 <p><strong>Note:</strong> This does involve some level of judgment; it is not always clear
 whether a proposed change is likely to break users, and an expansive reading of
 this guidance could ostensibly prevent <em>any</em> change (which is not the intent).</p>
+<h4 id="default-values-must-not-change">Default values must not change</h4>
+<p>Default values are the values set by servers for resources when they are not
+specified by the client. This section only applies to static default values within
+fields on resources and does not apply to dynamic defaults such as the default IP
+address of a resource.</p>
+<p>Changing the default value is considered breaking and <strong>must not</strong> be done. The
+default behavior for a resource is determined by its default values, and this
+<strong>must not</strong> change across minor versions.</p>
+<p>For example:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// The genre of the book</span>
+    <span class="c1">// If this is not set when the book is created, the field will be given a value of FICTION.</span>
+    <span class="kd">enum</span> <span class="n">Genre</span> <span class="p">{</span>
+      <span class="na">UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="na">FICTION</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="na">NONFICTION</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Changing to:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// The genre of the book</span>
+    <span class="c1">// If this is not set when the book is created, the field will be given a value of NONFICTION.</span>
+    <span class="kd">enum</span> <span class="n">Genre</span> <span class="p">{</span>
+      <span class="na">UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="na">FICTION</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="na">NONFICTION</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>would constitute a breaking change.</p>
+<h4 id="serializing-defaults">Serializing defaults</h4>
+<p>APIs <strong>must not</strong> change the way a field with a default value is serialized. For
+example if a field does not appear in the response if the value is equal to the
+default, the serialization <strong>must not</strong> change to include the field with the
+default. Clients may depend on the presence or absence of a field in a resource
+as semantically meaningful, so a change to how serialization is done for absent
+values <strong>must not</strong> occur in a minor version.</p>
+<p>Consider the following proto, where the default value of <code>wheels</code> is <code>2</code>:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of an automobile</span>
+<span class="kd">message</span> <span class="nc">Automobile</span> <span class="p">{</span>
+    <span class="c1">// The name of the automobile.</span>
+    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// The number of wheels on the automobile.</span>
+    <span class="c1">// The default value is 2, when no value is sent by the client.</span>
+    <span class="n">int</span> <span class="na">wheels</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>First the proto serializes to JSON when the value of <code>wheels</code> is <code>2</code> as follows:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-car&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then, the API service changes the serialization to include <code>wheel</code> even if the
+value is equal to the default value, <code>2</code> as follows:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-car&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;wheels&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This constitutes a change that is not backwards compatible within a major
+version.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For compatibility around pagination, see <a href="/158">AIP-158</a>.</li>
