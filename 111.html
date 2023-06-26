@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-152: Jobs</title>
+    <title>AIP-111: Planes</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -225,7 +225,7 @@
         API Design Review FAQ
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/111">
         <span class="aip-number">111</span>
         Planes
@@ -381,7 +381,7 @@
         Long-running operations
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/152">
         <span class="aip-number">152</span>
         Jobs
@@ -603,20 +603,20 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Jobs</th></tr>
-    <tr><td>Number</td><td>152</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/152">google.aip.dev/152</a></td></tr>
+    <tr><th colspan="2">Planes</th></tr>
+    <tr><td>Number</td><td>111</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/111">google.aip.dev/111</a></td></tr>
     <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2020-04-27</td></tr>
-    <tr><td>Updated</td><td>2020-04-27</td></tr>
+    <tr><td>Created</td><td>2023-06-17</td></tr>
+    <tr><td>Updated</td><td>2023-06-17</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#run-method">Run method</a></li>
-<li><a href="#run-request-message">Run request message</a></li>
-<li><a href="#executions-and-results">Executions and results</a></li>
+<li><a href="#management-plane">Management Plane</a></li>
+<li><a href="#data-plane">Data Plane</a></li>
+<li><a href="#major-distinctions-between-management-and-data-plane">Major distinctions between management and data plane</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -628,8 +628,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0152.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0152.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0111.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0111.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -654,128 +654,74 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Jobs
+        Planes
       </li>
     </ol>
   </nav>
 </section>
   
-  <h4 class="aip-number">AIP-152</h4>
-  <h1 id="jobs">Jobs</h1>
-<p>Occasionally, APIs may need to expose a task that takes significant time to
-complete, and where a transient <a href="/151">long-running operation</a> is not
-appropriate. For example, a task could need to run repeatedly, or have separate
-permissions for configuring the task as opposed to running it.</p>
+  <h4 class="aip-number">AIP-111</h4>
+  <h1 id="planes">Planes</h1>
+<p>Resources and methods on an API can be divided into the <em>plane</em> that they reside
+or perform operations upon. For the context of APIs, the following planes are
+defined:</p>
+<ul>
+<li>Management plane: a uniform, resource-oriented API that primarily
+  configures and allows retrieval of resources.</li>
+<li>Data plane: a heterogenous API (ideally resource-oriented) that reads and
+  write user data. Often connects to entities provisioned by the management
+  plane, such as virtual machines.</li>
+</ul>
+<p>The term "plane" was originally used in networking architecture. Although system
+and network architecure often defines additional planes (e.g. control plane or
+power planes), as the AIPs are focused on the interface, they are not defined in
+this AIP.</p>
 <h2 id="guidance">Guidance</h2>
-<p>An API <strong>may</strong> define a <code>Job</code> resource to represent a particular task with
-distinct setup, configuration, and execution:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">WriteBookJob</span> <span class="p">{</span>
-  <span class="c1">// The resource name for the writing job.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/WriteBookJob&quot;</span>
-    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/writeBookJobs/{write_book_job}&quot;</span>
-  <span class="p">}];</span>
-
-  <span class="c1">// Additional configuration...</span>
-<span class="p">}</span>
-</code></pre></div>
+<h3 id="management-plane">Management Plane</h3>
+<p>Management resources and methods exist primarily to provision, configure, and
+audit the resources that the data plane interfaces with.</p>
+<p>As an example, the following are considered management resources for a cloud
+provider:</p>
 <ul>
-<li>The name of the resource <strong>must</strong> end with the word "Job".<ul>
-<li>The prefix <strong>should</strong> be a valid RPC name, with a verb and a noun.</li>
+<li>virtual machines</li>
+<li>virtual private networks</li>
+<li>virtual disks</li>
+<li>a blob store instance</li>
+<li>a project or account</li>
 </ul>
-</li>
-<li>The service <strong>should</strong> define all five of the standard methods (<a href="/131">AIP-131</a>,
-  <a href="/132">AIP-132</a>, <a href="/133">AIP-133</a>, <a href="/134">AIP-134</a>, <a href="/135">AIP-135</a>), and use them as the
-  primary way to configure the job.</li>
-</ul>
-<h3 id="run-method">Run method</h3>
-<p>The service <strong>should</strong> define a <code>Run</code> custom method that executes the job
-immediately:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">RunWriteBookJob</span><span class="p">(</span><span class="n">RunWriteBookJobRequest</span><span class="p">)</span>
-    <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/writeBookJobs/*}:run&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;RunWriteBookJobResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;RunWriteBookJobMetadata&quot;</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div>
+<h3 id="data-plane">Data Plane</h3>
+<p>Methods on the data plane operate on user data in a variety of data formats, and
+generally interface with a resource provisioned via a management plane API.
+Examples of data plane methods include:</p>
 <ul>
-<li>The RPC's name <strong>must</strong> begin with the word <code>Run</code>. The remainder of the
-  RPC name <strong>should</strong> be the singular form of the job resource being run.</li>
-<li>The request message <strong>must</strong> match the RPC name, with a <code>Request</code> suffix.</li>
-<li>The method <strong>should</strong> return a <a href="/151">long-running operation</a>, which
-  <strong>must</strong> resolve to a response message that includes the result of running
-  the job.<ul>
-<li>The response message name must match the RPC name, with a <code>Response</code>
-  suffix.</li>
-<li>The method <strong>may</strong> use any metadata message it wishes.</li>
+<li>writing and reading rows in a table</li>
+<li>pushing to or pulling from a message queue</li>
+<li>uploading blobs to or downloading blobs from a blob store instance</li>
 </ul>
-</li>
-<li>The HTTP verb <strong>must</strong> be <code>POST</code>, as is usual for <a href="/136">custom methods</a>.</li>
-<li>The body clause in the <code>google.api.http</code> annotation <strong>should</strong> be <code>"*"</code>.</li>
-<li>The URI path <strong>should</strong> contain a single <code>name</code> variable corresponding to the
-  name of the job resource being run.</li>
-<li>The URI path <strong>must</strong> end with <code>:run</code>.</li>
-<li>Errors that prevent execution of the job from <em>starting</em> <strong>must</strong> return an
-  error response (<a href="/193">AIP-193</a>), similar to any other method. Errors that occur
-  over the course of the job execution <strong>may</strong> be placed in the metadata
-  message. The errors themselves <strong>must</strong> still be represented with a
-  <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto"><code>google.rpc.Status</code></a> object.</li>
-</ul>
-<h3 id="run-request-message">Run request message</h3>
-<p>Run methods implement a common request message pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">RunWriteBookJobRequest</span> <span class="p">{</span>
-  <span class="c1">// The name of the job to run.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/WriteBookJob&quot;</span>
-    <span class="p">}];</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Data plane APIs <strong>may</strong> be heterogenous across a larger API surface, due to
+requirements including high throughput, low latency, or the need to adhere to an
+existing interface specification (e.g. ANSI SQL).</p>
 <ul>
-<li>A singular <code>string name</code> field <strong>must</strong> be included.<ul>
-<li>The field <strong>should</strong> be <a href="/203">annotated as required</a>.</li>
-<li>The field <strong>should</strong> identify the <a href="/123">resource type</a> that it
-  references.</li>
+<li>For convenience, resources and methods that operate on the data plane <strong>may</strong>
+expose themselves via resource-oriented management APIs. If so, those resources
+and methods <strong>must</strong> adhere to the requirements of the management plane as
+specified in the other AIPs (<a href="/131">AIP-131</a> through <a href="/136">AIP-135</a>).</li>
+</ul>
+<h3 id="major-distinctions-between-management-and-data-plane">Major distinctions between management and data plane</h3>
+<ul>
+<li><a href="/9#iac">IaC</a> tools operate on the management plane exclusively.</li>
+<li>Data planes are often on the critical path of user-facing functionality, and
+  therefore:<ul>
+<li>Have higher availabilty requirements than management planes.</li>
+<li>Are more peformance-sensitive than management planes.</li>
+<li>Require higher-throughput than management planes.</li>
 </ul>
 </li>
 </ul>
-<h3 id="executions-and-results">Executions and results</h3>
-<p>Ordinarily, the API <strong>should</strong> provide results to the user as the final
-response of the <code>Run</code> method. However, this is sometimes insufficient; for
-example, a job that runs on a recurring schedule in the background can not
-deliver results to the user in this way.</p>
-<p>The service <strong>may</strong> store resources representing individual executions along
-with their result as a sub-collection of resources under the job, which allows
-the user to list <em>past</em> job executions. A service that does this <strong>should</strong>
-define the <code>Get</code>, <code>List</code>, and <code>Delete</code> methods for the execution resources:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">WriteBookJobExecution</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/WriteBookJobExecution&quot;</span>
-    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/writeBookJobs/{write_book_job}/executions/{execution}&quot;</span>
-  <span class="p">};</span>
-
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-  <span class="c1">// Other information about the execution, such as metadata, the result,</span>
-  <span class="c1">// error information, etc.</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>In this case, the operation returned by job's <code>Run</code> method <strong>should</strong> refer to
-the child resource.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
-<li><strong>2020-11-02</strong>: Expanded guidance on HTTP, field behavior, and resource
-  reference annotations and request format.</li>
+<li><strong>2023-06-10</strong>: Introduction of this AIP.</li>
 </ul>
-<!-- prettier-ignore-start -->
-<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
