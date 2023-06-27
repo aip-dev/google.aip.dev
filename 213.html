@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ba65a6ad">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ba65a6ad">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e782dfe2">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e782dfe2">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=ba65a6ad"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e782dfe2"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -552,7 +552,7 @@
     <li class="nav-item">
       <a href="/215">
         <span class="aip-number">215</span>
-        Common component versions
+        API-specific protos
       </a>
     </li>
     <li class="nav-item">
@@ -614,12 +614,14 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
-<li><a href="#existing-common-protos">Existing common protos</a><ul>
+<li><a href="#existing-global-common-components">Existing global common components</a><ul>
 <li><a href="#protobuf-types">Protobuf types</a></li>
 <li><a href="#api-types">API Types</a></li>
 <li><a href="#adding-to-common-protos">Adding to common protos</a></li>
 </ul>
 </li>
+<li><a href="#rationale">Rationale</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -662,29 +664,66 @@
   
   <h4 class="aip-number">AIP-213</h4>
   <h1 id="common-components">Common components</h1>
-<p>In general, API reviewers encourage API producers to keep their APIs mostly
-self-contained, except for a relatively small set of common protos which are
-safe to import (e.g. <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto"><code>google.protobuf.Timestamp</code></a>). This is for
-good reason: APIs generally need to be able to move forward independently of
-one another, and mutual dependencies can cause downstream APIs to be forced
-into taking major version changes or even lead to dependency conflicts.</p>
-<p>However, there are also cases where common structures are valuable, especially
-where a concept is well-known and it is sufficiently clear that it will not
-change. Common protos serve this use case.</p>
+<p>As specified in <a href="/215">AIP-215</a>, APIs must be self-contained except for the use
+of "common component" packages which are intended for use by multiple APIs.</p>
+<p>There are two kinds of common component packages:</p>
+<ul>
+<li>Organization-specific common components, covering organization-specific
+  concepts such as a "viewport" in Maps.</li>
+<li>Global common components which are generic (i.e. not domain-specific),
+  such as "timestamp" or "postal address".</li>
+</ul>
+<p>Where it is safe to share a single representation across multiple APIs,
+common components can make it easier for clients to interact with those APIs.
+Concept-specific client code can be written once, and messages can be used from
+the response of one API in the request of another without clunky copying, for
+example.</p>
+<p>This benefit comes with significant restrictions and limitations, however,
+and should not be attempted lightly.</p>
+<p>Note that even if the <em>domain</em> of a component is common, the requirements of
+a component may be organization-specific. For example, some organizations may
+have particular requirements of how financial values are represented, leading
+to multiple finance-oriented organization-specific common components - because
+any global common component would either not meet the organization-specific
+requirements, or be too complex for general use.</p>
 <h2 id="guidance">Guidance</h2>
-<p>The public representation of APIs <strong>should</strong> be self-contained, meaning that
-all protos used by the API originate in the same proto <code>package</code>, except for
-common protos, which <strong>may</strong> be used freely in any API.</p>
-<p>APIs <strong>must not</strong> define a set of API-specific common protos which live outside
-of its versioning structure. This prevents independent movement of particular
-versions and also causes problems for client libraries in many languages that
-compile the proto messages into classes.</p>
-<p>APIs <strong>should not</strong> directly depend on protos defined in other APIs. Instead,
-they should copy and paste the applicable messages into their own API. When
-doing so, APIs <strong>should</strong> keep the field names and numbers the same.</p>
-<h2 id="existing-common-protos">Existing common protos</h2>
-<p>The common protos, which public-facing protos for an API <strong>may</strong> safely import,
-are as follows:</p>
+<ul>
+<li>Organization-wide common component packages <strong>must</strong> end with <code>.type</code>, e.g.
+  <code>google.geo.type</code> or <code>google.shopping.type</code>.</li>
+<li>Organizations <strong>must</strong> consult the API design team before creating a new
+  organization-wide common component package.</li>
+<li>Organizations <strong>must not</strong> define generic components in organization-specific
+  common component packages, instead preferring global common components.</li>
+<li>Common components <strong>must not</strong> be "moved" (that is, deleted from one common
+  component package and added to a different one) from an organization-specific
+  common component package to a global common component package or vice versa.<ul>
+<li>A common component <strong>may</strong> be copied from an organization-specific common
+  component package to a global common component package (without deleting the
+  original component) if it is found to be more widely-applicable than
+  originally expected.</li>
+</ul>
+</li>
+<li>Fields <strong>should not</strong> be added to existing messages.</li>
+<li>Values <strong>should not</strong> be added to existing enums.</li>
+<li>Fields <strong>must not</strong> be removed from existing messages.</li>
+<li>Values <strong>must not</strong> be removed from existing enums.</li>
+<li>While documentation <strong>may</strong> be clarified, it <strong>should not</strong> change the
+  meanings of existing values, including the validity of any given message
+  or set of messages.</li>
+<li>New proto messages and enums <strong>may</strong> be added to common component packages.<ul>
+<li>API teams  <strong>should</strong> allow sufficient time for propagation to clients
+  before using the new messages and enums in their APIs. Fields may take some
+  time for any changes to propagate through publication to client libraries
+  and other surfaces.</li>
+<li>API teams <strong>should</strong> consult widely within their organization, and ideally
+  with the API design team, before adding a new message or enum, due to the
+  limitations listed above.</li>
+</ul>
+</li>
+</ul>
+<h2 id="existing-global-common-components">Existing global common components</h2>
+<p>The global common components, which public-facing protos for an API <strong>may</strong> safely
+import, are as follows:</p>
 <ul>
 <li><a href="https://github.com/googleapis/googleapis/blob/master/google/api"><code>google.api.*</code></a> (but <em>not</em> subpackages of <code>google.api</code>)</li>
 <li><a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto"><code>google.longrunning.Operation</code></a></li>
@@ -692,15 +731,15 @@ are as follows:</p>
 <li><a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/"><code>google.rpc.*</code></a></li>
 <li><a href="https://github.com/googleapis/googleapis/tree/master/google/type"><code>google.type.*</code></a></li>
 </ul>
-<p>Note that some common protos may have internal-only fields. APIs <strong>should</strong>
+<p>Note that some common components may have internal-only fields. APIs <strong>should</strong>
 generally only rely on fields which have been
 <a href="https://github.com/googleapis/googleapis">released into open source</a>.</p>
 <p>Google APIs <strong>may</strong> also import <a href="https://github.com/googleapis/googleapis/tree/master/google/iam/v1"><code>google.iam.v1.*</code></a>, which provides the
 IAM messages used throughout Google.</p>
 <!-- prettier-ignore -->
-<p><strong>Note:</strong> Many APIs also import protos from other packages for internal-only
+<p><strong>Note:</strong> Many APIs also import components from other packages for internal-only
 use (e.g. to apply visibility labels or provide instructions to internal
-infrastructure). This is acceptable provided that the <em>public</em> protos do not
+infrastructure). This is acceptable provided that the <em>public</em> components do not
 contain such references.</p>
 <h3 id="protobuf-types">Protobuf types</h3>
 <p>The <code>google.protobuf</code> package is somewhat special in that it is shipped with
@@ -748,33 +787,28 @@ and the definitive list is always <a href="https://github.com/googleapis/googlea
 <h3 id="adding-to-common-protos">Adding to common protos</h3>
 <p>Occasionally, it may be useful to add protos to these packages or to add to the
 list of commonly-available protos. In order to do this, <a href="https://github.com/googleapis/aip/issues">open an issue</a> on
-the AIP repository in GitHub.</p>
-<p>However, some general guidelines are worth noting for this:</p>
+the AIP repository in GitHub, noting the guidelines above.</p>
+<h2 id="rationale">Rationale</h2>
+<p>Common components are effectively unversioned: APIs evolve independently of
+each other, both in terms of definition and implementation. A change such as
+adding a field is backward-compatible and predictable in specific APIs, and the
+API team can ensure that the server implementation is available before the API
+definition is published. By contrast, a change in a common component would
+effectively be universally available even if most API implementations did not
+take it into account.</p>
+<p>Adding a new message or enum is backward-compatible, as it does not affect
+existing APIs that may import other messages or enums from the same common
+component package.</p>
+<p>Consultation with the API design team is required for global common components
+and suggested for organization-specific common components as the border between
+"generic" and "organization-specific" is a gray area; some generic <em>concepts</em>
+have organization-specific use cases which surface through the components.</p>
+<h2 id="changelog">Changelog</h2>
 <ul>
-<li>Protos <strong>should</strong> only be promoted to common status if we are certain that
-  they will never change (at all -- even in ways that would normally be
-  considered backwards compatible). Common protos are generally not versioned,
-  and it must be the case that we can rely on the proto to be a complete and
-  accurate representation indefinitely.<ul>
-<li>The exception to this is protos describing our infrastructure, which
-  <strong>may</strong> have rare, backwards-compatible changes.</li>
+<li>2023-06-XX: Restructured AIPs 215 and 213 for clarity, and introduced the
+  concept of organization-wide common protos more formally.</li>
+<li>2018-08-17: Initial AIP written.</li>
 </ul>
-</li>
-<li>Protos must be applicable to a significant number of APIs for consideration
-  as common protos. It is okay for those APIs to be clustered together (e.g.
-  all in a single PA).</li>
-<li>There is no good way to "stage" a common proto, because moving references to
-  them is effectively not possible. (In other words, it is infeasible to add a
-  proto to <code>google.geo.type.*</code> and then "graduate" it to <code>google.type.*</code>
-  later.)</li>
-<li>Adding a common proto requires coordination between several teams, and it may
-  take time between when an addition is approved and when it is available for
-  use.</li>
-<li>Even after a common proto is added, APIs using local versions must continue
-  to do so until they go to the next major version.</li>
-</ul>
-<p>In the event that you believe adding a common proto is appropriate, please
-<a href="https://github.com/googleapis/aip/issues">open an issue</a>.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

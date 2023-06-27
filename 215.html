@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-215: Common component versions</title>
+    <title>AIP-215: API-specific protos</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ba65a6ad">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ba65a6ad">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e782dfe2">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e782dfe2">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=ba65a6ad"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e782dfe2"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -552,7 +552,7 @@
     <li class="nav-item nav-item-active">
       <a href="/215">
         <span class="aip-number">215</span>
-        Common component versions
+        API-specific protos
       </a>
     </li>
     <li class="nav-item">
@@ -603,7 +603,7 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Common component versions</th></tr>
+    <tr><th colspan="2">API-specific protos</th></tr>
     <tr><td>Number</td><td>215</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/215">google.aip.dev/215</a></td></tr>
     <tr><td>State</td><td>Approved</td></tr>
@@ -613,10 +613,9 @@
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#guidance">Guidance</a><ul>
-<li><a href="#what-if-a-proto-will-never-change">What if a proto will never change?</a></li>
-</ul>
-</li>
+<li><a href="#guidance">Guidance</a></li>
+<li><a href="#rationale">Rationale</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -651,62 +650,57 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Common component versions
+        API-specific protos
       </li>
     </ol>
   </nav>
 </section>
   
   <h4 class="aip-number">AIP-215</h4>
-  <h1 id="common-component-versions">Common component versions</h1>
-<p>Many APIs may support more than one version at the same time. Often, our first
-instinct is to create protos which are intended to be shared between API
-versions, and place them in an unversioned "common" directory. A similar
-variant to this is an <em>omitted</em> version: a message or service that is
-<em>implicitly</em> v1, but has no version in the proto package.</p>
-<p>When protos are unversioned, changing them safely (that is, in a backwards
-compatible way) is very difficult. For example, adding a field to an
-unversioned proto effectively adds the field to all <em>existing</em> versions, which
-do not actually support it. This is surprising to users, and creates a
-situation where the proto files are not accurate representations of the API
-surface.</p>
-<p>Additionally, client library generators usually generate a class for each
-message in your protos in a language-appropriate namespace. In several
-languages, each version of your API is shipped as a <em>separate</em> client library,
-and the code generator needs to generate the common messages for your API in
-order to ensure a complete package. This makes it difficult to use multiple
-APIs with similar dependent messages together.</p>
-<p>For omitted versions, the version is effectively hidden, and it becomes more
-difficult to reason about release phases (alpha, beta, GA), with no substantive
-benefit.</p>
+  <h1 id="api-specific-protos">API-specific protos</h1>
+<p>APIs are mostly defined in terms of protos which are API-specific, with
+occasional dependencies on common components. Keeping APIs isolated from each
+other avoids versioning problems and client library packaging problems.</p>
 <h2 id="guidance">Guidance</h2>
 <ul>
-<li>
-<p>All protos specific to an API <strong>should</strong> be within the versioned package
-  (e.g., <code>yourapi.v1.SharedProtoMessage</code>).</p>
-</li>
-<li>
-<p>In scenarios where an API doesn't consider itself to have a version, the API
-  <strong>must</strong> use <code>v1</code>. (Omitted-version protos are prohibited.)</p>
-</li>
-<li>
-<p>When a shared proto is identical, that proto <strong>should</strong> be duplicated to the
-  other versioned package (e.g., copied and pasted into
-  <code>yourapi.v2.SharedProtoMessage</code>).</p>
-</li>
+<li>All protos specific to an API <strong>must</strong> be within a package with a major version
+  (e.g., <code>google.library.v1</code>).</li>
+<li>References to resources in other APIs <strong>must</strong> be expressed in terms of
+  resource names (<a href="/122">AIP-122</a>), rather than using the resource messages.</li>
+<li>When two versions of an API use effectively the same (API-specific) proto
+  that proto <strong>must</strong> be duplicated in each version. (In other words, APIs
+  <strong>must not</strong> create their own "API-specific common component" packages.)</li>
+<li>Organization-specific common components <strong>may</strong> be placed in a common package,
+  as described in <a href="/213">AIP-213</a>, but <strong>must not</strong> be used by any API outside
+  that organization.</li>
+<li>Global common components (also described in <a href="/213">AIP-213</a>) <strong>may</strong> be freely used by any API.</li>
 </ul>
-<h3 id="what-if-a-proto-will-never-change">What if a proto will never change?</h3>
-<p>There are some situations where it is useful to have an unversioned
-proto. These should generally apply to a complete organization or suite
-of APIs, not just a single API. In these situations, it may be possible
-to add it to our collections of common protos. Common protos are able to
-be used by many APIs, and are always unversioned.</p>
-<p>Common protos shall always have a package structure ending in <code>type</code> (e.g.
-<code>google.type</code> or <code>google.cloud.type</code>).</p>
-<p><strong>Warning:</strong> This is a relatively rare occurrence. If you find yourself
-adding protos to your organizations's <code>type</code> directory frequently,
-double-check that this is actually where they belong.</p>
-<p>For more information on common protos, consult <a href="/213">AIP-213</a>.</p>
+<h2 id="rationale">Rationale</h2>
+<p>When one API depends on protos defined by another API, this introduces uncertainty
+in terms of customer-expected behavior and client library dependency management.
+Suppose <code>google.cloud.library.v1</code> depends on the protos (rather than abstract resources)
+in <code>google.cloud.movies.v2</code>. Any change to <code>google.cloud.movies.v2</code> can cause problems.</p>
+<p>For example:</p>
+<ul>
+<li>If a field is added to a message in <code>google.cloud.movies.v2</code>, should customers using
+  <code>google.cloud.library.v1</code> expect to see it? If so, how soon after the field has
+  been added? What about other API changes?</li>
+<li>If the whole major version <code>google.cloud.movies.v2</code> is deprecated
+  (typically after v3 has been released), does that mean <code>google.cloud.library.v1</code> has
+  to change to use <code>google.cloud.movies.v3</code>, and if so, does that require a new major version
+  for the library API as well?</li>
+<li>How should client library versioning reflect changes to dependent APIs?</li>
+</ul>
+<p>Keeping APIs isolated from each other, with a limited set of common components which are
+maintained in a highly disciplined way, reduces a lot of the issues with dependencies.</p>
+<p>API-specific common components shared across versions add complexity for client
+library generation and packaging, and are inflexible in terms of versioning.
+When protos are duplicated because they <em>start</em> off the same in multiple versions,
+they can still diverge over time as they are isolated from each other.</p>
+<h2 id="changelog">Changelog</h2>
+<p>2023-06-XX: Restructured AIPs 215 and 213 for clarity.
+2023-05-11: Changed "PA" to "organization".
+2018-10-01: Initial AIP written.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
