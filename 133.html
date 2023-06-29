@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e782dfe2">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e782dfe2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b0f210e0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b0f210e0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e782dfe2"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b0f210e0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -622,7 +622,7 @@
 </li>
 <li><a href="#further-reading">Further reading</a></li>
 <li><a href="#rationale">Rationale</a><ul>
-<li><a href="#requiring-client-settable-ids">Requiring client-settable ids</a></li>
+<li><a href="#requiring-user-specified-ids">Requiring user-specified ids</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -833,14 +833,14 @@ NOT_FOUND errors</a>.</p>
 <li>For naming resources involving Unicode, see <a href="/210">AIP-210</a>.</li>
 </ul>
 <h2 id="rationale">Rationale</h2>
-<h3 id="requiring-client-settable-ids">Requiring client-settable ids</h3>
+<h3 id="requiring-user-specified-ids">Requiring user-specified ids</h3>
 <p><a href="/9#iac">IaC</a> clients use the resource ID as a way to identify a resource for applying
-updates and for conflict resolution. The lack of a client-settable ID means a
+updates and for conflict resolution. The lack of a user-specified ID means a
 client is unable to find the resource unless they store the identifier locally,
 and can result in re-creating the resource. This in turn has a downstream effect
 on all resources that reference it, forcing them to update to the the ID of the
 newly-created resource.</p>
-<p>Having a client-settable ID also means the client can precalculate the resource
+<p>Having a user-specified ID also means the client can precalculate the resource
 name and use it in references from other resources.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>

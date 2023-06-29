@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e782dfe2">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e782dfe2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b0f210e0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b0f210e0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e782dfe2"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b0f210e0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -757,20 +757,16 @@ throughout the API, or else not at all.</p>
 the resource name <code>publishers/123/books/les-miserables</code>, <code>123</code> is the resource
 ID for the publisher, and <code>les-miserables</code> is the resource ID for the book.</p>
 <ul>
-<li>Resource IDs <strong>may</strong> be either always set by users (required on resource
-  creation), optionally set by users (optional on resource creation,
-  server-generated if unset), or never set by users (not accepted at resource
-  creation). They <strong>should</strong> be immutable once created.<ul>
-<li>If resource IDs are user-settable, the API <strong>must</strong> document allowed
-  formats. User-settable resource IDs <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc1034">RFC-1034</a>;
+<li>If resource IDs are user-specified, the API <strong>must</strong> document allowed
+  formats. User-specified resource IDs <strong>should</strong> conform to <a href="https://tools.ietf.org/html/rfc1034">RFC-1034</a>;
   which restricts to letters, numbers, and hyphen, with the first character
   a letter, the last a letter or a number, and a 63 character maximum.<ul>
-<li>Additionally, user-settable resource IDs <strong>should</strong> restrict letters to
+<li>Additionally, user-specified resource IDs <strong>should</strong> restrict letters to
   lower-case (<code>^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$</code>).</li>
 <li>Characters outside of ASCII <strong>should not</strong> be permitted; however, if
   Unicode characters are necessary, APIs <strong>must</strong> follow guidance in
   <a href="/210">AIP-210</a>.</li>
-<li>User-settable IDs <strong>should not</strong> be permitted to be a UUID (or any value
+<li>User-specified IDs <strong>should not</strong> be permitted to be a UUID (or any value
   that syntactically appears to be a UUID).</li>
 </ul>
 </li>
@@ -779,10 +775,6 @@ ID for the publisher, and <code>les-miserables</code> is the resource ID for the
   characters").</li>
 <li>For more information, see the <a href="/133#user-specified-ids">create</a> standard method.</li>
 </ul>
-</li>
-</ul>
-<p><strong>Important:</strong> Resources that are declarative-friendly (<a href="/128">AIP-128</a>) <strong>must</strong> use
-user-settable resource IDs.</p>
 <h3 id="resource-id-aliases">Resource ID aliases</h3>
 <p>It is sometimes valuable to provide an alias for common lookup patterns for
 resource IDs. For example, an API with <code>users</code> at the top of its resource
