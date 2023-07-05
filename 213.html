@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b0f210e0">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b0f210e0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9ed8acec">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9ed8acec">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b0f210e0"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9ed8acec"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -620,6 +620,8 @@
 <li><a href="#adding-to-common-protos">Adding to common protos</a></li>
 </ul>
 </li>
+<li><a href="#existing-organization-specific-common-component-packages">Existing organization-specific common component packages</a></li>
+<li><a href="#non-conformant-common-component-packages">Non-conformant common component packages</a></li>
 <li><a href="#rationale">Rationale</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
@@ -692,6 +694,11 @@ requirements, or be too complex for general use.</p>
   <code>google.geo.type</code> or <code>google.shopping.type</code>.</li>
 <li>Organizations <strong>must</strong> consult the API design team before creating a new
   organization-wide common component package.</li>
+<li>Organization-wide common component packages <strong>must</strong> be published in <a href="https://github.com/googleapis/googleapis">the
+  <code>googleapis</code> repository</a>.</li>
+<li>Organizations creating and publishing a new organization-wide common component
+  package <strong>must</strong> update this AIP to include it in the
+  <a href="#existing-organization-specific-common-component-packages">list below</a>.</li>
 <li>Organizations <strong>must not</strong> define generic components in organization-specific
   common component packages, instead preferring global common components.</li>
 <li>Common components <strong>must not</strong> be "moved" (that is, deleted from one common
@@ -788,6 +795,35 @@ and the definitive list is always <a href="https://github.com/googleapis/googlea
 <p>Occasionally, it may be useful to add protos to these packages or to add to the
 list of commonly-available protos. In order to do this, <a href="https://github.com/googleapis/aip/issues">open an issue</a> on
 the AIP repository in GitHub, noting the guidelines above.</p>
+<h2 id="existing-organization-specific-common-component-packages">Existing organization-specific common component packages</h2>
+<p>The following organization-specific common component packages exist and conform with the above guidance:</p>
+<ul>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/apps/script/type"><code>google.apps.script.type</code></a>
+  Common component package for Google Apps Script.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/geo/type"><code>google.geo.type</code></a>
+  Common component package for Google Maps and the Geo organization.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/actions/type"><code>google.actions.type</code></a>
+  Common component package for Actions on Google APIs.</li>
+</ul>
+<h2 id="non-conformant-common-component-packages">Non-conformant common component packages</h2>
+<p>The following common component packages exist, but do not conform with the above guidance,
+and do not form a precedent for further such packages.</p>
+<ul>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/cloud/common"><code>google.cloud.common</code></a>:
+  This does not conform to the requirement for the package name to end in <code>.type</code>. (This would otherwise
+  be acceptable, and this package should be considered as the Cloud common component package.)</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/logging/type"><code>google.logging.type</code></a>:
+  This appears to be API-specific, although it's used from multiple APIs; some aspects should probably
+  be global or in a Cloud common component package.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/cloud/workflows/type"><code>google.cloud.workflows.type</code></a>:
+  API-specific types.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/cloud/oslogin/common"><code>google.cloud.oslogin.common</code></a>:
+  API-specific types, and a non-conformant name.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/identity/accesscontextmanager/type"><code>google.identity.accesscontextmanager.type</code></a>:
+  API-specific types.</li>
+<li><a href="https://github.com/googleapis/googleapis/tree/master/google/networking/trafficdirector/type"><code>google.networking.trafficdirector.type</code></a>:
+  API-specific types.</li>
+</ul>
 <h2 id="rationale">Rationale</h2>
 <p>Common components are effectively unversioned: APIs evolve independently of
 each other, both in terms of definition and implementation. A change such as
