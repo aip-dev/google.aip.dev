@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9ed8acec">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9ed8acec">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=c569804d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=c569804d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9ed8acec"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=c569804d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -261,7 +261,10 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
-<li><a href="#explicit-routing-headers-googleapirouting">Explicit Routing Headers (google.api.routing)</a></li>
+<li><a href="#explicit-routing-headers-googleapirouting">Explicit Routing Headers (google.api.routing)</a><ul>
+<li><a href="#path_template-syntax">path_template syntax</a></li>
+</ul>
+</li>
 <li><a href="#implicit-routing-headers-googleapihttp">Implicit Routing Headers (google.api.http)</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
@@ -342,6 +345,18 @@ named resource ID path segment. For example:</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>The value of the field <code>field</code> <strong>must</strong> be one of the following:
+1. a name of a field in the top-level of the request message
+1. a dot-separated path of field names leading to a field in a sub-message of
+the request message e.g. <code>"book.author.name"</code> where <code>book</code> is a message field in
+the request message, <code>author</code> is a message field in the <code>book</code> message, and
+<code>name</code> is a <code>string</code> field in the <code>author</code> message</p>
+<p>The <em>actual field</em> specified in the field <code>field</code> <strong>must</strong> have the following
+characteristics:
+- it is type <code>string</code>
+- it either has a path-like value format resembling a resource name or contains
+  an unstructured value that would be appropriate as an individual path segment
+  e.g. a <code>project_id</code>. </p>
 <p><strong>Note:</strong> An empty <code>google.api.routing</code> annotation is acceptable. It means that no
 routing headers should be generated for the RPC, when they otherwise would be
 e.g. implicitly from the <code>google.api.http</code> annotation.</p>
@@ -366,12 +381,13 @@ the field and the pattern <code>**</code>, and <strong>must</strong> be parsed, 
 <span class="p">}</span>
 </code></pre></div></p>
 <p>is the same as</p>
-<p><div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
   <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
   <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{parent=**}&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-NB: an omitted <code>path_template</code> field does not indicate that key-value pairs with empty values can be sent. It's merely a shorthand.</p>
+<p><strong>Note:</strong> An omitted <code>path_template</code> field does not indicate that key-value
+pairs with empty values can be sent. It's merely a shorthand.</p>
 <p>When the user supplies an instance of <code>CreateTopicRequest</code> to the method, the
 client library <strong>must</strong> match all the routing parameters in the order specified
 to the fields of that instance. For each routing parameter, the pattern in the
@@ -423,6 +439,69 @@ resource ID path segment name <strong>must not</strong> be sent.</p>
 <strong>must not</strong> be sent.</p>
 <p>Much like URL parameters, if there is more than one key-value pair to be sent, the <code>&amp;</code>
 character is used as the separator.</p>
+<h3 id="path_template-syntax"><code>path_template</code> syntax</h3>
+<p>As seen in the above examples, the <code>path_template</code> can use a variety of symbols
+that are interpreted by code generators during conversion to regular expressions
+or non-regular expression matcher implementations. The <code>path_template</code> consists
+of segments delimited by the segment delimiter. The syntax for <code>path_template</code>
+is as follows:</p>
+<ul>
+<li>The only acceptable segment delimiter is <code>/</code>.<ul>
+<li>The last symbol in a <code>path_template</code> <strong>may</strong> be a delimiter - it will be 
+  ignored.</li>
+</ul>
+</li>
+<li>A segment <strong>must</strong> be of one of the following types:<ul>
+<li><code>*</code>: A single-segment wildcard. Corresponds to 1 or more non-<code>/</code> symbols.
+  The regex describing it is <code>[^/]+</code>.<ul>
+<li>A Single-segment wildcard typically represents a resource ID.</li>
+</ul>
+</li>
+<li><code>**</code>: A multi-segment wildcard. Corresponds to 0 or more segments. <ul>
+<li>A multi-segment wildcard <strong>must</strong> only appear as the final segment or
+  make up the entire <code>path_template</code>.</li>
+<li>In a multi-segment <code>path_template</code>, a multi-segment wildcard <strong>must</strong>
+  appear immediately following a segment delimiter. This delimiter is
+  consumed while matching so a <code>path_template</code> like <code>foo/**</code> matches all of
+  the following: <code>foo</code>, <code>foo/</code>, <code>foo/bar/baz</code>.</li>
+<li>In a multi-segment <code>path_template</code>, when used as the last segment the
+  regex describing it is <code>([:/].*)?</code>.</li>
+<li>When used as the entire <code>path_template</code>, the regex describing it is <code>.*</code>.</li>
+<li>Segment delimiters are consumed while matching, including any preceding
+  delimiter.</li>
+</ul>
+</li>
+<li><code>LITERAL</code>: A literal segment. A literal segment can contain any
+  alphanumeric symbol.<ul>
+<li>A literal segment <strong>must not</strong> contain a symbol reserved in this syntax.</li>
+<li>Literal segments typically represent a resource collection ID or base
+  path.</li>
+</ul>
+</li>
+<li><code>{}</code>: A variable segment. This matches part of the path as specified by its
+  template.<ul>
+<li>A variable segment can be either of the following:<ul>
+<li><code>{key}</code>, where <code>key</code> is the name to be used in the key-value pair of the
+  header</li>
+<li><code>{key=template}</code>, where the <code>template</code> is the segment(s) (expressed in
+  this <code>path_template</code> syntax) to extract as the value paired with <code>key</code></li>
+</ul>
+</li>
+<li>A variable segment of just <code>{key}</code> defaults to a template of <code>*</code> which
+  matches 1 or more non-<code>/</code> symbols.<ul>
+<li>While <code>{key=*}</code> is technicaly valid syntax, the simpler syntax of
+  <code>{key}</code> <strong>should</strong> be used.</li>
+</ul>
+</li>
+<li>A variable segment <strong>must not</strong> contain other variable segments. This
+  syntax is not recursive.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A segment <strong>must not</strong> represent a complex resource ID as described in
+  <a href="./4231.md#complex-resource-id-path-segments">AIP-4231</a>. A Generator <strong>should</strong> emit an error in this case.</li>
+</ul>
 <h2 id="implicit-routing-headers-googleapihttp">Implicit Routing Headers (<code>google.api.http</code>)</h2>
 <p><strong>Note:</strong> For an RPC annotated with the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation,
 the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation must be ignored for the purpose of adding
@@ -462,6 +541,7 @@ character is used as the separator.</p>
 <!-- prettier-ignore -->
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-07-07</strong>: Include <code>path_template</code> syntax.</li>
 <li><strong>2022-07-13</strong>: Updated to include the new <code>google.api.routing</code> annotation.</li>
 <li><strong>2020-04-21</strong>: Explicitly parse path variables missing a trailing segment.</li>
 <li><strong>2019-11-27</strong>: Include <code>additional_bindings</code> as a request parameter source.</li>
