@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=c569804d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=c569804d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1f7b70b7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1f7b70b7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=c569804d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=1f7b70b7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -617,9 +617,8 @@
 <li><a href="#example">Example</a></li>
 </ul>
 </li>
-<li><a href="#alternatives-considered">Alternatives considered</a><ul>
-<li><a href="#a-new-standard-field-called-ttl">A new standard field called ttl</a></li>
-<li><a href="#always-use-expire_time">Always use expire_time</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#alternatives-considered">Alternatives considered</a></li>
 </ul>
 </li>
 </ul>
@@ -664,12 +663,12 @@
   
   <h4 class="aip-number">AIP-214</h4>
   <h1 id="resource-expiration">Resource expiration</h1>
-<p>Customers often want to provide the time that a given resource or attribute of
-a resource is no longer useful or should be deleted. Currently we recommend
-that customers do this by specifying an exact "expiration time" into a
-<code>google.protobuf.Timestamp expire_time</code> field; however, this adds additional
-strain on the user when they want to specify a relative time offset until
-expiration rather than a specific time until expiration.</p>
+<p>Customers often want to provide the time that a given resource or resource
+attribute is no longer useful or valid (e.g. a rotating security key). Currently
+we recommend that customers do this by specifying an exact "expiration time"
+into a <code>google.protobuf.Timestamp expire_time</code> field; however, this adds
+additional strain on the user when they want to specify a relative time offset
+until expiration rather than a specific time until expiration.</p>
 <p>Furthermore, the world understands the concept of a "time-to-live", often
 abbreviated to TTL, but the typical format of this field (an integer, measured
 in seconds) results in a sub-par experience when using an auto-generated client
@@ -705,15 +704,16 @@ library.</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="alternatives-considered">Alternatives considered</h2>
-<h3 id="a-new-standard-field-called-ttl">A new standard field called <code>ttl</code></h3>
+<h2 id="rationale">Rationale</h2>
+<h3 id="alternatives-considered">Alternatives considered</h3>
+<h4 id="a-new-standard-field-called-ttl">A new standard field called <code>ttl</code></h4>
 <p>We considered allowing a standard field called <code>ttl</code> as an alternative way of
 defining the expiration, however doing so would require that API services
 continually update the field, like a clock counting down. This could
 potentially cause problems with the read-modify-write lifecycle where a
 resource is being processed for some time, and effectively has its life
 extended as a result of that processing time.</p>
-<h3 id="always-use-expire_time">Always use <code>expire_time</code></h3>
+<h4 id="always-use-expire_time">Always use <code>expire_time</code></h4>
 <p>This is the current state of the world with a few exceptions. In this scenario,
 we could potentially push the computation of <code>now + ttl = expire_time</code> into
 client libraries; however, this leads to a somewhat frustrating experience in

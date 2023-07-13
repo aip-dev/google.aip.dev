@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=c569804d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=c569804d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1f7b70b7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1f7b70b7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=c569804d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=1f7b70b7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -620,6 +620,7 @@
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
+<li><a href="#history">History</a></li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -722,15 +723,19 @@ soft deleted the resource. If a resource is not soft deleted, the <code>delete_t
 field <strong>must</strong> be empty.</p>
 <p>Resources that support soft delete (<a href="/164">AIP-164</a>) <strong>should</strong> provide this field.</p>
 <h4 id="expire_time">expire_time</h4>
-<p>The <code>google.protobuf.Timestamp expire_time</code> field <strong>should</strong> usually represent
-the time when a soft deleted resource will be purged from the system. It
-<strong>may</strong> be used for similar forms of expiration as described in <a href="/214">AIP-214</a>.
+<p>The <code>google.protobuf.Timestamp expire_time</code> field <strong>should</strong> represent the time
+that a given resource or resource attribute is no longer useful or valid (e.g. a
+rotating security key). It <strong>may</strong> be used for similar forms of expiration as
+described in <a href="/214">AIP-214</a>.</p>
+<p>Services <strong>may</strong> provide an <code>expire_time</code> value that is inexact, but the
+resource <strong>must not</strong> expire before that time.</p>
+<h4 id="purge_time">purge_time</h4>
+<p>The <code>google.protobuf.Timestamp purge_time</code> field <strong>should</strong> represent the time
+when a soft deleted resource will be purged from the system (see <a href="/164">AIP-164</a>).
+It <strong>may</strong> be used for similar forms of expiration as described in <a href="/214">AIP-214</a>.
 Resources that support soft delete <strong>should</strong> include this field.</p>
-<p>In some situations, it can be difficult to provide an exact <code>expire_time</code>
-value, because of implementation dependencies. Services <strong>may</strong> provide an
-<code>expire_time</code> value that is inexact, but the resource <strong>must not</strong> be expired
-from the system before that time.</p>
-<p>Resources that support soft delete (<a href="/164">AIP-164</a>) <strong>should</strong> provide this field.</p>
+<p>Services <strong>may</strong> provide a <code>purge_time</code> value that is inexact, but the resource
+<strong>must not</strong> be purged from the system before that time.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For standardized codes, see <a href="/143">AIP-143</a>.</li>
@@ -741,8 +746,12 @@ from the system before that time.</p>
 <li>For the <code>validate_only</code> field, see <a href="/163">AIP-163</a>.</li>
 <li>For fields related to soft delete and undelete, see <a href="/164">AIP-164</a>.</li>
 </ul>
+<h2 id="history">History</h2>
+<p>Before 2023-07, <code>purge_time</code> for soft-deleted resources was also called
+<code>expire_time</code>. <code>purge_time</code> was introduced to reduce user confusion.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-07-13</strong>: Introduce the term <code>purge_time</code>.</li>
 <li><strong>2021-04-06</strong>: Require output only field behavior for <code>uid</code> and <code>delete_time</code>
   fields.</li>
 </ul>
