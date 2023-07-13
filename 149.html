@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1f7b70b7">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1f7b70b7">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=72dddee0">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=72dddee0">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1f7b70b7"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=72dddee0"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -614,6 +614,11 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#field-behavior-and-optional">field behavior and optional</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -679,6 +684,26 @@ its default value (<code>0</code>, <code>false</code>, or empty string) from not
 value and unset most of the time; if an alternative design does not require
 such a distinction, it is usually preferred. In practice, this means <code>optional</code>
 <strong>should</strong> only ever be used for integers and floats.</p>
+<p><strong>Important:</strong> Tracking field presence is <em>not</em> the same as documenting API
+field behavior as defined in <a href="/203">AIP-203</a>. For example, a field labeled with
+<code>optional</code> for presence tracking <strong>may</strong> also be annotated as
+<code>google.api.field_behavior = REQUIRED</code> if the field must be set. If you only
+want to document the server perceived behavior of a field, read <a href="/203">AIP-203</a>.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="field-behavior-and-optional">field behavior and <code>optional</code></h3>
+<p>The field behavior annotation and <code>optional</code> label are not mutually exclusive,
+because they address different problems. The former,
+<code>google.api.field_behavior</code>, focuses on communicating the server's perception of
+a field within the API e.g. if it is required or not, if it is immutable, etc.
+The latter, proto3's <code>optional</code>, is a wire format and code generation option
+that is strictly for toggling field presence tracking. While it might be
+confusing for a field to be simultaneously annotated with
+<code>google.api.field_behavior = REQUIRED</code> and labeled as <code>optional</code>, they are
+unrelated in practice and can reasonably be used together.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2023-06-20</strong>: Differentiate from field behavior documentation</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
