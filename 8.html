@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-8: AIP Style guide</title>
+    <title>AIP-8: AIP Style and Guidance</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=72dddee0">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=72dddee0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a1fa85b4">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a1fa85b4">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=72dddee0"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a1fa85b4"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -210,7 +210,7 @@
     <li class="nav-item nav-item-active">
       <a href="/8">
         <span class="aip-number">8</span>
-        AIP Style guide
+        AIP Style and Guidance
       </a>
     </li>
     <li class="nav-item">
@@ -603,7 +603,7 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">AIP Style guide</th></tr>
+    <tr><th colspan="2">AIP Style and Guidance</th></tr>
     <tr><td>Number</td><td>8</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/8">google.aip.dev/8</a></td></tr>
     <tr><td>State</td><td>Approved</td></tr>
@@ -619,6 +619,10 @@
 <li><a href="#requirement-keywords">Requirement keywords</a></li>
 <li><a href="#code-examples">Code examples</a></li>
 <li><a href="#referencing-aips">Referencing AIPs</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#designing-for-a-broad-set-of-clients">Designing for a broad set of clients</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -656,25 +660,69 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        AIP Style guide
+        AIP Style and Guidance
       </li>
     </ol>
   </nav>
 </section>
   
   <h4 class="aip-number">AIP-8</h4>
-  <h1 id="aip-style-guide">AIP Style guide</h1>
+  <h1 id="aip-style-and-guidance">AIP Style and Guidance</h1>
 <p>AIP stands for <strong>API Improvement Proposal</strong>, which is a design document
-providing high-level, concise documentation for API development. The goal is for
-these documents to serve as the source of truth for API-related documentation at
-Google and the way API teams discuss and come to consensus on API guidance.</p>
+providing high-level, concise documentation for API design and development. The
+goal is for these documents to serve as the source of truth for API-related
+documentation at Google and the way API teams discuss and come to consensus on
+API guidance.</p>
 <p>AIPs are most useful when they are clear and concise, and cover a single topic
 or inquiry well. In the same way that AIPs describe consistent patterns and
 style for use in APIs, they also <em>follow</em> consistent patterns and style.</p>
 <h2 id="guidance">Guidance</h2>
-<p>AIPs <strong>must</strong> cover a single, discrete topic, and <strong>should</strong> fundamentally
-answer the question, "What do I do?" with actionable guidance. AIPs <strong>may</strong> also
-cover what <em>not</em> to do, but <strong>should not</strong> cover <em>only</em> anti-patterns.</p>
+<ul>
+<li>AIPs <strong>must</strong> cover a single, discrete topic, and provide clear, actionable
+  guidance.</li>
+<li>AIPs <strong>must not</strong> duplicate or contradict guidance in another AIP.</li>
+<li>AIPs <strong>may</strong> also cover what <em>not</em> to do, but <strong>should not</strong> cover <em>only</em>
+  anti-patterns.</li>
+<li>If AIP guidance is conditional (e.g. a design pattern such as Jobs), the
+  guidance <strong>must</strong> clearly explain under what conditions the guidance should be
+  followed.</li>
+</ul>
+<p>Guidance contained within an AIP <strong>must</strong> be beneficial to one or more
+types of clients or their authors, including but not limited to:</p>
+<ul>
+<li>Asset inventories which can be used to audit and analyze resources.</li>
+<li>Command line interfaces for exploration and simple automation.</li>
+<li>Custom controllers (e.g. auto-scalers) which poll live state and adjust
+  resource configruation accordingly.</li>
+<li><a href="/9#iac">IaC</a> clients for orchestration and automation of multiple resources.</li>
+<li>Recommendation tools which provide guidance on which APIs are useful for
+  specific use cases, and how to use them.</li>
+<li>SDKs to interact with an API from a programming language, often used heavily
+  for data-plane operations.</li>
+<li>Security orchestration, automation, and remediation tools.</li>
+<li>Simple scripts to automate or orchestrate tasks.</li>
+<li>Test frameworks.</li>
+<li>Tools that operate on resource data at rest.</li>
+<li>Visual User Interfaces for visualization and one-off manual actions.</li>
+<li>Users.</li>
+</ul>
+<p>Examples of improvements include:</p>
+<ul>
+<li>Requiring new proto annotations that enable more descriptive interfaces on
+  clients (e.g. requiring <code>singular</code> and <code>plural</code> on a <code>google.api.resource</code>
+  annotation).</li>
+</ul>
+<p>AIP guidance <strong>must not</strong> be a significant detriment to a client's usability or
+implementation difficulty, or maintenance difficulty.</p>
+<p>Examples of detriments include:</p>
+<ul>
+<li>Introduction of a non-uniform pattern in a standard method such that all
+  clients must introduce additional code without sufficient benefit (e.g. List
+  behaves like this <em>except</em> for resources that start with the name Foo).</li>
+<li>Renames of well-established fields for minor improvements in readability (e.g.
+  rename <code>expire_time</code> to <code>lapse_time</code> since <code>lapse</code> is a common term in my
+  service).</li>
+</ul>
 <p>While the length of AIPs will necessarily vary based on the complexity of the
 question, most AIPs <strong>should</strong> be able to cover their content in roughly two
 printed pages.</p>
@@ -821,8 +869,16 @@ repository (such as <code>/8</code> for core AIPs, or <code>/8</code> for AIPs i
 subdirectory); this ensures that the link works both on the AIP site, when
 viewing the Markdown file on GitHub, using the local development server, or a
 branch.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="designing-for-a-broad-set-of-clients">Designing for a broad set of clients</h3>
+<p>API guidance, similar to any software, is most beneficial when there is a clear
+purpose and target beneficiary.</p>
+<p>The beneficiaries of improved API design are users. These users interact with
+APIs via a variety of clients, depending on their use case as enumerated above.</p>
+<p>API guidance must in turn consider the impact broadly across these clients.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-05-20</strong>: Increase API guidance scope to include broad set of clients.</li>
 <li><strong>2023-03-30</strong>: Removed appendix, added rationale and history to the template.</li>
 <li><strong>2020-02-18</strong>: Specified reverse chronological ordering for changelog items.</li>
 <li><strong>2019-08-23</strong>: Added guidance for internal AIP links.</li>
