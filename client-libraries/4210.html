@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=58bcd7bf">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=58bcd7bf">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a691481b">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a691481b">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,9 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=58bcd7bf"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a691481b"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=a691481b"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=a691481b"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=a691481b"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -266,11 +269,13 @@
 </ul>
 </li>
 <li><a href="#expected-behavior">Expected behavior</a><ul>
+<li><a href="#messages-and-enums">Messages and Enums</a></li>
 <li><a href="#services-and-methods">Services and methods</a></li>
 <li><a href="#long-running-operations">Long-running operations</a></li>
 <li><a href="#streaming">Streaming</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -333,26 +338,82 @@ particular use of vocabulary is best understood as an explanation of
 principles, and precise adherence to exact vocabulary in this AIP is not an
 expectation.</p>
 <h2 id="guidance">Guidance</h2>
+<p>The general flow of code generation for client libraries and supporting code in
+most supported languages is outlined below.</p>
+<p><strong>Note:</strong> Exceptions to this pattern are typically due to use of a unique stack
+e.g. Node.js use of <code>protobuf.js</code> and <code>grpc-node</code> which don't have code
+generation, or Python using a protobuf wrapper in <code>proto-plus-python</code>, but the
+general GAPIC flow remains the same.</p>
+<div class="highlight language-graphviz"><pre><span></span><code><span class="k">digraph</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">style</span><span class="p">=</span><span class="s2">&quot;filled,solid&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">box</span><span class="w"> </span><span class="na">fontname</span><span class="p">=</span><span class="s2">&quot;Roboto&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="na">splines</span><span class="p">=</span><span class="s">ortho</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="na">nodesep</span><span class="p">=</span><span class="m">0.3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="na">center</span><span class="p">=</span><span class="s">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">proto</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;API Protobuf\nDescriptors&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">rectancle</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">aliceblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">cluster_code_generators</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">same</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="na">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">filled</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="na">fillcolor</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">lightgrey</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">protobuf</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;protobuf\ngenerator&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">deepskyblue3</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">grpc</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;gRPC\ngenerator&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">gold3</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">gapic</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;GAPIC\ngenerator&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">darkseagreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">proto</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">protobuf</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">proto</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">grpc</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">proto</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">gapic</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">subgraph</span><span class="w"> </span><span class="nt">cluster_generated_code</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">rank</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">same</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="na">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">filled</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="na">fillcolor</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">lightgrey</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">rectangle</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">protobuf_output</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Message &amp; Enum\nCode&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">deepskyblue3</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">grpc_output</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Server &amp; Client\nStubs&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">gold3</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="nt">gapic_output</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Google API\nClient&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">darkseagreen</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">protobuf</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">protobuf_output</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">grpc</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">grpc_output</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">gapic</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">gapic_output</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">assembly</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Package\nassembly&quot;</span><span class="w"> </span><span class="na">shape</span><span class="p">=</span><span class="s">oval</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">aliceblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">protobuf_output</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">assembly</span><span class="w"></span>
+<span class="w">  </span><span class="nt">grpc_output</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">assembly</span><span class="w"></span>
+<span class="w">  </span><span class="nt">gapic_output</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">assembly</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">assembled_package</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Package of\ngenerated code&quot;</span><span class="w"> </span><span class="na">fillcolor</span><span class="p">=</span><span class="s">aliceblue</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">assembly</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">assembled_package</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The following sections focus on the "GAPIC generator" in the above diagram.</p>
 <h3 id="protobuf-plugins">Protobuf plugins</h3>
-<p>Code generators <strong>must</strong> be implemented as plugins to <code>protoc</code>, the protocol
-buffer compiler. The <a href="https://developers.google.com/protocol-buffers/docs/reference/other">plugin system</a> allows plugins to be written in any
-language, and plugins <strong>should</strong> ordinarily be written in the language being
-targeted, in order to take advantage of in-language tooling, and to ensure that
-experts in the target environment are able to meaningfully contribute.</p>
+<p>The protobuf compiler, <code>protoc</code>, supports a <a href="https://protobuf.dev/reference/other">plugin system</a> for code
+generation. The plugin system allows plugins to be written <em>in</em> and <em>for</em> any
+language.</p>
+<p>Code generators <strong>must</strong> be implemented as <code>protoc</code> plugins. The following
+rules apply to the implementation of a client library generator as a <code>protoc</code>
+plugin:</p>
 <ul>
+<li>The plugin  <strong>should</strong> be written in the language being targeted for
+  generation.</li>
 <li><code>protoc</code> expects plugins to be an executable in <code>$PATH</code>, and named
   <code>protoc-gen-{plugin_name}</code>, corresponding to the <code>--{plugin_name}_out</code> option
-  sent to the <code>protoc</code> executable.<ul>
-<li>For a plugin creating client libraries for a specific language, the option
-  name <strong>should</strong> follow the convention <code>--{lang}_gapic_out</code> (meaning the
-  corresponding plugin executable is named <code>protoc-gen-{lang}_gapic</code>).</li>
+  sent to the <code>protoc</code> executable. As such:<ul>
+<li>the plugin executable <strong>should</strong> be named <code>protoc-gen-{lang}_gapic</code></li>
+<li>the plugin option  <strong>should</strong> follow the convention <code>--{lang}_gapic_out</code></li>
 </ul>
 </li>
-<li>Plugins <strong>must</strong> accept a serialized <code>CodeGeneratorRequest</code> object (defined
-  in <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/compiler/plugin.proto"><code>plugin.proto</code></a>) on <code>stdin</code>; the bulk of this is a series of
-  <code>FileDescriptorProto</code> messages (defined in <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/descriptor.proto"><code>descriptor.proto</code></a>).</li>
-<li>Plugins <strong>must</strong> emit a serialized <code>CodeGeneratorResponse</code> object (defined in
-  <a href="https://github.com/google/protobuf/blob/master/src/google/protobuf/compiler/plugin.proto"><code>plugin.proto</code></a>) on <code>stdout</code>.</li>
+<li>The plugin <strong>must not</strong> leverage <code>protoc</code> "insertion points". Despite the
+  <code>protoc</code> plugin documentation indicating the existence of insertion points,
+  their use is unsupported and discouraged by the Protobuf team.</li>
 </ul>
 <h3 id="cli-options">CLI options</h3>
 <p>Code generators <strong>should</strong> be able to run without any options or flags if at
@@ -360,12 +421,19 @@ all possible, and be able to generate a valid library from only the protos. If
 options are required, <code>protoc</code> allows them to be passed as
 <code>--{plugin_name}_opt</code>, and the string provided here becomes set as the
 <code>parameter</code> string on the <code>CodeGeneratorRequest</code>.</p>
+<p><strong>Important:</strong> The <code>CodeGeneratorRequest.parameter</code> value is a comma-delimited
+string of <em>all</em> associated plugin option values that appear at execution time.
+This means that commas cannot be used to delimit list-like plugin option values.</p>
 <p>Code generators <strong>must not</strong> rely on environment variables for configuration.</p>
 <h2 id="expected-behavior">Expected behavior</h2>
 <p>This section outlines the expected behavioral attributes of the <em>output of</em> the
 client library generator (in other words: the libraries that the generators
 write). Client libraries <strong>must</strong> implement these concepts in order to be
 considered complete.</p>
+<h3 id="messages-and-enums">Messages and Enums</h3>
+<p>Client library generators <strong>should not</strong> generate code for <code>message</code> or <code>enum</code>
+descriptors which are already generated by the Protobuf-provided code
+generators.</p>
 <h3 id="services-and-methods">Services and methods</h3>
 <p>Each of the <code>service</code> and <code>rpc</code> directives in the requested protos <strong>must</strong> be
 represented in the client library output, unless the language or transport is
@@ -394,9 +462,11 @@ methods for each RPC.</p>
 <li>Finally, service classes <strong>must</strong> also accept credentials, which are used
   appropriately when requests are made. (Accepting a custom gRPC channel
   satisfies this requirement.)</li>
+<li>Code generators <strong>must not</strong> generate client <em>stub</em> classes, that would
+  normally be generated by gRPC, in addition to client library classes.</li>
 </ul>
 <h3 id="long-running-operations">Long-running operations</h3>
-<!-- TODO(b/126177694): Reference the LRO AIP once we have it. -->
+<!-- TODO(1145): Move to its own client library AIP. -->
 
 <p>An RPC is considered to be a "long-running" RPC if (and only if) the RPC's
 return type is <a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto#L122"><code>google.longrunning.Operation</code></a>. Any API which has one or
@@ -426,6 +496,12 @@ in the <a href="https://github.com/protocolbuffers/protobuf/blob/master/src/goog
 <code>server_streaming</code> keys.</p>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
+
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2023-06-22</strong>: Added code gen diagram, message/enum guidance, and cleaned up
+  plugin &amp; option guidance.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
