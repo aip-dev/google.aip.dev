@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a691481b">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a691481b">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b8cc51f5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b8cc51f5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a691481b"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b8cc51f5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -697,6 +697,12 @@ comprehensive list of every possible change.</p>
 <p><strong>Note:</strong> In general, the specific guidance here assumes use of protocol
 buffers and JSON as transport formats. Other transport formats may have
 slightly different rules.</p>
+<p><strong>Note:</strong> This guidance assumes that APIs are intended to be called from a
+range of consumers, written in multiple languages and with no control over
+how and when consumers update. Any API which has a more limited scope (for
+example, an API which is only called by client code written by the same team
+as the API producer, or deployed in a way which can enforce updates) should
+carefully consider its own compatibility requirements.</p>
 <h3 id="adding-components">Adding components</h3>
 <p>In general, new components (interfaces, methods, messages, fields, enums, or
 enum values) <strong>may</strong> be added to existing APIs in the same major version.</p>
@@ -854,6 +860,7 @@ version.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-07-26</strong>: Added note on APIs which have limited clients.</li>
 <li><strong>2022-08-11</strong>: Added "Moving components between files" section.</li>
 <li><strong>2022-06-01</strong>: Added more links to other AIPs with compatibility concerns</li>
 <li><strong>2019-12-16</strong>: Clarified that moving existing fields into oneofs is
