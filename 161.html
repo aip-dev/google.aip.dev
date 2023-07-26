@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b8cc51f5">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b8cc51f5">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d3a02233">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d3a02233">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b8cc51f5"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d3a02233"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -622,6 +622,7 @@
 <li><a href="#invalid-field-mask-entries">Invalid field mask entries</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -774,6 +775,10 @@ service considers invalid).</p>
 <p>When writing data, field masks <strong>should</strong> return an <code>INVALID_ARGUMENT</code> error if
 an entry points to a value that can not exist; however, the service <strong>may</strong>
 permit deletions.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2023-07-17</strong>: Move <code>update_mask</code> guidance to <a href="/134">AIP-134</a>.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
