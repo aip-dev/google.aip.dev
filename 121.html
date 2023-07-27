@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d3a02233">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d3a02233">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f126fa74">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f126fa74">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=d3a02233"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f126fa74"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -764,8 +764,12 @@ traditional RPC APIs, which can be used to implement common programming
 patterns, such as database transactions, import and export, or data analysis.</p>
 <h3 id="stateless-protocol">Stateless protocol</h3>
 <p>As with most public APIs available today, resource-oriented APIs <strong>must</strong>
-operate over a stateless protocol: The fundamental behavior of any individual
-request is independent of other requests made by the caller.</p>
+operate over a <a href="https://en.wikipedia.org/wiki/Stateless_protocol">stateless protocol</a>: The fundamental behavior of any
+individual request is independent of other requests made by the caller.
+This is to say, each request happens in isolation of other requests made by that
+client or another, and resources exposed by an API are directly addressable
+without needing to apply a series of specific requests to "reach" the desired
+resource.</p>
 <p>In an API with a stateless protocol, the server has the responsibility for
 persisting data, which may be shared between multiple clients, while clients
 have sole responsibility and authority for maintaining the application state.</p>
@@ -788,6 +792,7 @@ resource must be dereferenced first for a successful deletion.</p>
 and in turn do not increase resource management complexity.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-07-23</strong>: Clarify stateless protocol definition.</li>
 <li><strong>2023-01-21</strong>: Explicitly require matching schema across standard methods.</li>
 <li><strong>2022-12-19</strong>: Added a section requiring Get and List.</li>
 <li><strong>2022-11-02</strong>: Added a section restricting resource references.</li>
