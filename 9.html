@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fa7cba3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fa7cba3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b82ec3dd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b82ec3dd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4fa7cba3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b82ec3dd"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -630,7 +630,7 @@
 <li><a href="#api-version">API Version</a></li>
 <li><a href="#client">Client</a></li>
 <li><a href="#google-api">Google API</a></li>
-<li><a href="#iac">IaC</a></li>
+<li><a href="#declarative-clients">Declarative Clients</a></li>
 <li><a href="#user">User</a></li>
 <li><a href="#network-api">Network API</a></li>
 </ul>
@@ -745,19 +745,23 @@ on resource data at rest.</p>
 <li>Libraries, such as an SDK for a particular programming language</li>
 <li>Scripts that operates on a JSON representation of a resource after reading it
   from an API</li>
-<li>Tools, such as an <a href="#iac">IaC</a> client</li>
+<li>Tools, such as a [Declarative client][]</li>
 <li>Visual UIs, such as a web application</li>
 </ul>
 <h3 id="google-api">Google API</h3>
 <p>A Network API exposed by a Google service. Most of these are hosted on the
 <code>googleapis.com</code> domain. It does not include other types of APIs, such as client
 libraries and SDKs.</p>
-<h3 id="iac">IaC</h3>
-<p>Short for Infrastructure-as-code, IaC describes a category of clients that
-consumes a markup language or code that represents resources exposed by an API,
-and executes the appropriate imperative actions to drive the resource to that
-desired state.</p>
-<p>Examples of complexities that IaC clients abstract away include:</p>
+<h3 id="declarative-clients">Declarative Clients</h3>
+<p>Declarative Clients, also known as Infrastructure as Code (IaC), describes a
+category of clients that consumes a markup language or code that represents
+resources exposed by an API, and executes the appropriate imperative actions to
+drive the resource to that desired state. To determine what changes to make and
+if a set of updates was successful a declarative client compares server side
+resource attributes with client defined values. The comparison feature ensures
+accuracy of a creation or an update but it requires services to treat the client
+set fields as read-only and diligently preserve those values.</p>
+<p>Examples of complexities that declarative clients abstract away include:</p>
 <ul>
 <li>Determing the appropriate imperative action (create / update / delete) to
   achieve desired state.</li>
@@ -774,6 +778,7 @@ using network protocols including HTTP, and are frequently produced by
 organizations separate from those that consume them.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-07-24</strong>: Rename IaC to Declarative Clients</li>
 <li><strong>2023-04-01</strong>: Adding definition of IaC</li>
 <li><strong>2023-03-24</strong>: Reformatting content to include anchor links.</li>
 </ul>
