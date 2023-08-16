@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=73f47d29">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=73f47d29">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=7901b34f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=7901b34f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=73f47d29"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=7901b34f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -675,173 +675,135 @@ operates upon.</p>
 <thead>
 <tr>
 <th>Category Name</th>
-<th>Description</th>
 <th>Related AIPs</th>
 <th><a href="/9#declarative-clients">Declarative client</a> integration</th>
-<th>CLI integration</th>
-<th>UI integration</th>
+<th>CLI / UI integration</th>
 <th>SDK integration</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Standard Methods</strong></td>
-<td></td>
-<td></td>
+<td><em>Standard Methods</em></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Standard collection methods</td>
-<td>Operate on a collection of resources (List or Create).</td>
+<td><strong>Standard collection methods</strong>: operate on a collection of resources (List or Create).</td>
 <td><a href="/121">AIP-121</a>, <a href="/132">AIP-132</a>, <a href="/133">AIP-133</a></td>
 <td>automatable</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Standard resource methods</td>
-<td>Fetch or mutate a single resource (Get, Update, Delete).</td>
+<td><strong>Standard resource methods</strong>: fetch or mutate a single resource (Get, Update, Delete).</td>
 <td><a href="/121">AIP-121</a>, <a href="/131">AIP-131</a>, <a href="/134">AIP-134</a>, <a href="/135">AIP-135</a></td>
 <td>automatable</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Batch resource methods</td>
-<td>Fetch or mutate multiple resources in a collection by name.</td>
+<td><strong>Batch resource methods</strong>: fetch or mutate multiple resources in a collection by name.</td>
 <td><a href="/231">AIP-231</a>, <a href="/233">AIP-233</a>, <a href="/234">AIP-234</a>, <a href="/235">AIP-235</a></td>
 <td>may be used to optimize queries</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Aggregated list methods</td>
-<td>Fetch or mutate multiple resources of the same type across multiple collections.</td>
+<td><strong>Aggregated list methods</strong>: fetch or mutate multiple resources of the same type across multiple collections.</td>
 <td><a href="/159">AIP-159</a></td>
 <td>not useful nor automable</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td><strong>Custom Fetch Methods</strong></td>
-<td></td>
-<td></td>
+<td><em>Custom Fetch Methods</em></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Custom collection fetch methods</td>
-<td>Fetch information across a collection that cannot be expressed via a standard method.</td>
+<td><strong>Custom collection fetch methods</strong>: fetch information across a collection that cannot be expressed via a standard method.</td>
 <td><a href="/136">AIP-136</a></td>
 <td>handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Custom resource fetch methods</td>
-<td>Fetch information for a single resource that cannot be expressed via a standard method.</td>
+<td><strong>Custom resource fetch methods</strong>: fetch information for a single resource that cannot be expressed via a standard method.</td>
 <td><a href="/136">AIP-136</a></td>
 <td>handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td><strong>Custom Mutation Methods</strong></td>
-<td></td>
-<td></td>
+<td><em>Custom Mutation Methods</em></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Backing up a resource</td>
-<td>Storing a copy of a resource at a particular point in time.</td>
+<td><strong>Backing up a resource</strong>: storing a copy of a resource at a particular point in time.</td>
 <td><a href="/162">AIP-162</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Restoring a resource</td>
-<td>Setting a resource to a version from a particular point in time.</td>
+<td><strong>Restoring a resource</strong>: setting a resource to a version from a particular point in time.</td>
 <td><a href="/162">AIP-162</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Renaming a resource</td>
-<td>Modify the resource's name or id while preserving configuration and data.</td>
+<td><strong>Renaming a resource</strong>: modify the resource's name or id while preserving configuration and data.</td>
 <td><a href="/136">AIP-136</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Custom collection mutation methods</td>
-<td>Perform an imperative operation referencing a collection that may mutate one or more resources within that collection in fashion that cannot be easily achieved by standard methods (e.g. state transitions).</td>
+<td><strong>Custom collection mutation methods</strong>: perform an imperative operation referencing a collection that may mutate one or more resources within that collection in fashion that cannot be easily achieved by standard methods (e.g. state transitions).</td>
 <td><a href="/136">AIP-136</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td>Custom resource mutation methods</td>
-<td>Perform an imperative operation on a resource that may mutate it in a way a standard method cannot (e.g. state transitions).</td>
+<td><strong>Custom resource mutation methods</strong>: perform an imperative operation on a resource that may mutate it in a way a standard method cannot (e.g. state transitions).</td>
 <td><a href="/136">AIP-136</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td><strong>Misc Custom Methods</strong></td>
-<td></td>
-<td></td>
+<td><em>Misc Custom Methods</em></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Stateless Methods</td>
-<td>A method that has no permanent effect on any data within the API (e.g. translating text)</td>
+<td><strong>Stateless Methods</strong>: a method that has no permanent effect on any data within the API (e.g. translating text)</td>
 <td><a href="/136">AIP-136</a></td>
 <td>unused or handwritten</td>
 <td>automatable</td>
 <td>automatable</td>
-<td>automatable</td>
 </tr>
 <tr>
-<td><strong>None of the above</strong></td>
-<td></td>
-<td></td>
+<td><em>None of the above</em></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Streaming methods</td>
-<td>Methods that communicate via client, server, or bi-directional streams.</td>
+<td><strong>Streaming methods</strong>: methods that communicate via client, server, or bi-directional streams.</td>
 <td></td>
-<td>handwritten</td>
 <td>handwritten</td>
 <td>handwritten</td>
 <td>automatable</td>
