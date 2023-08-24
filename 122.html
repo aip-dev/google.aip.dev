@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=30539b21">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=30539b21">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8e985fed">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8e985fed">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=30539b21"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=8e985fed"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -625,6 +625,10 @@
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#disallow-embedding-of-resources">Disallow embedding of resources</a></li>
+</ul>
+</li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -895,6 +899,10 @@ other use cases, use a synonymous term if possible.</p>
 <p>When a field represents another resource, the field <strong>should</strong> be of type
 <code>string</code> and accept the resource name of the other resource. The field name
 <strong>should</strong> be equivalent to the corresponding message's name in snake case.</p>
+<p>The field <strong>should not</strong> be of type <code>message</code> using the <code>message</code> that 
+implements the resource, <em>unless</em> the API is internal-only, has tight lifecycle
+relationships, and has a permission model that enables inherited access to
+embedded resources.</p>
 <ul>
 <li>Field names <strong>may</strong> include a leading adjective if appropriate (such as
   <code>string dusty_book</code>).</li>
@@ -932,8 +940,28 @@ strictly necessary, the field <strong>should</strong> use an <code>_id</code> su
   <a href="/180#changing-resource-names">AIP-180</a>.</li>
 <li>For resource types, see <a href="/123">AIP-123</a>.</li>
 </ul>
+<h2 id="rationale">Rationale</h2>
+<h3 id="disallow-embedding-of-resources">Disallow embedding of resources</h3>
+<p>Using a resource message directly as the type of a field within another resource
+is problematic for a number of reasons, which are as follows:</p>
+<ul>
+<li>Complicates the resource lifecycle: If the dependency resource is
+  deleted, what happens to the embedded reference in the dependent resource?
+  Data retention and clean up operations will be significantly complicated.</li>
+<li>Bypasses permissions: If every resource has its own set of permissions, a user
+  with read permission on the dependent resource that doesn't have the same
+  permission on the dependency resource suddenly cannot see the full resource.</li>
+<li>Tightly couples resources in all aspects: Changing the requirements in the
+  schema, permissions, or otherwise for either resource impacts the other,
+  significantly increasing complexity of roll outs.</li>
+</ul>
+<p>Referencing by name, as is recommended, eliminates all of this complexity by
+preventing resource data duplication, and forcing the owning service to be
+involved in the resolution of the reference (via Standard Methods), guaranteeing
+isolation of logical concerns per-resource.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-08-10</strong>: Explicitly disallow embedding resource messages in a resource.</li>
 <li><strong>2023-03-24</strong>: Correction: full resource name contains the service name rather
   than the service endpoint</li>
 <li><strong>2023-03-17</strong>: Add <code>OUTPUT_ONLY</code> guidance for resource ID fields.</li>
