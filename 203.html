@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8e985fed">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8e985fed">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=47fbeff7">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=47fbeff7">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8e985fed"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=47fbeff7"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -615,11 +615,11 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
 <li><a href="#vocabulary">Vocabulary</a><ul>
-<li><a href="#required">Required</a></li>
+<li><a href="#immutable">Immutable</a></li>
+<li><a href="#input-only">Input only</a></li>
 <li><a href="#optional">Optional</a></li>
 <li><a href="#output-only">Output only</a></li>
-<li><a href="#input-only">Input only</a></li>
-<li><a href="#immutable">Immutable</a></li>
+<li><a href="#required">Required</a></li>
 <li><a href="#unordered-list">Unordered List</a></li>
 </ul>
 </li>
@@ -702,6 +702,58 @@ backwards-compatility. Nontheless, this annotation <strong>must not</strong> be 
 only, and does not itself add any validation. The purpose is to consistently
 document this behavior for clients.</p>
 <h2 id="vocabulary">Vocabulary</h2>
+<h3 id="immutable">Immutable</h3>
+<p>The use of <code>IMMUTABLE</code> indicates that a field on a resource cannot be changed
+after it's creation. This can apply to either fields that are input or outputs,
+required or optional.</p>
+<p>When a service receives an immutable field in an update request (or similar),
+even if included in the update mask, the service <strong>should</strong> ignore the field if
+the value matches, but <strong>should</strong> error with <code>INVALID_ARGUMENT</code> if a change is
+requested.</p>
+<p>Potential use cases for immutable fields (this is not an exhaustive list) are:</p>
+<ul>
+<li>Names or IDs which are set on creation and then used as a primary key.</li>
+</ul>
+<p><strong>Note:</strong> Fields which are "conditionally immutable" <strong>must not</strong> be given the
+immutable annotation.</p>
+<h3 id="input-only">Input only</h3>
+<p>The use of <code>INPUT_ONLY</code> indicates that the field is provided in requests and
+that the corresponding field will not be included in output.</p>
+<p>Additionally, a field <strong>should</strong> only be described as input only if it is a
+field in a resource message or a field of a message included within a resource
+message. Notably, fields in request messages (a message which only ever acts as
+an argument to an RPC, with a name usually ending in <code>Request</code>) <strong>should not</strong>
+be described as input only because this is already implied.</p>
+<p>Potential use cases for input only fields (this is not an exhaustive list) are:</p>
+<ul>
+<li>The <code>ttl</code> field as described in <a href="/214">AIP-214</a>.</li>
+</ul>
+<p><strong>Warning:</strong> Input only fields are rare and should be considered carefully
+before use.</p>
+<h3 id="optional">Optional</h3>
+<p>The use of <code>OPTIONAL</code> indicates that a field is not required.</p>
+<p>A field <strong>may</strong> be described as optional if it is a field on a request message
+(a message that is an argument to an RPC, usually ending in <code>Request</code>), or a
+field on a submessage.</p>
+<h3 id="output-only">Output only</h3>
+<p>The use of <code>OUTPUT_ONLY</code> indicates that the field is provided in responses, but
+that including the field in a message in a request does nothing (the server
+<strong>must</strong> clear out any value in this field and <strong>must not</strong> throw an error as a
+result of the presence of a value in this field on input). Similarly, services
+<strong>must</strong> ignore the presence of output only fields in update field masks.</p>
+<p>Additionally, a field <strong>should</strong> only be described as output only if it is a
+field in a resource message, or a field of a message farther down the tree.
+Notably, fields in response messages (a message which only ever acts as a
+return value to an RPC, usually ending in <code>Response</code>) <strong>should not</strong> be
+described as output only because this is already implied.</p>
+<p>Output only fields <strong>may</strong> be set to empty values if appropriate to the API.</p>
+<p>Potential use cases for output only fields (this is not an exhaustive list)
+are:</p>
+<ul>
+<li>Create or update timestamps.</li>
+<li>Derived or structured information based on original user input.</li>
+<li>Properties of a resource assigned by the service which can not be altered.</li>
+</ul>
 <h3 id="required">Required</h3>
 <p>The use of <code>REQUIRED</code> indicates that the field <strong>must</strong> be present (and set to
 a non-empty value) on the request or resource.</p>
@@ -738,58 +790,6 @@ a non-empty value) on the request or resource.</p>
 integers, or the unspecified value for enums) are indistinguishable from unset
 values, and therefore setting a required field to a falsy value yields an
 error. A corollary to this is that a required boolean must be set to <code>true</code>.</p>
-<h3 id="optional">Optional</h3>
-<p>The use of <code>OPTIONAL</code> indicates that a field is not required.</p>
-<p>A field <strong>may</strong> be described as optional if it is a field on a request message
-(a message that is an argument to an RPC, usually ending in <code>Request</code>), or a
-field on a submessage.</p>
-<h3 id="output-only">Output only</h3>
-<p>The use of <code>OUTPUT_ONLY</code> indicates that the field is provided in responses, but
-that including the field in a message in a request does nothing (the server
-<strong>must</strong> clear out any value in this field and <strong>must not</strong> throw an error as a
-result of the presence of a value in this field on input). Similarly, services
-<strong>must</strong> ignore the presence of output only fields in update field masks.</p>
-<p>Additionally, a field <strong>should</strong> only be described as output only if it is a
-field in a resource message, or a field of a message farther down the tree.
-Notably, fields in response messages (a message which only ever acts as a
-return value to an RPC, usually ending in <code>Response</code>) <strong>should not</strong> be
-described as output only because this is already implied.</p>
-<p>Output only fields <strong>may</strong> be set to empty values if appropriate to the API.</p>
-<p>Potential use cases for output only fields (this is not an exhaustive list)
-are:</p>
-<ul>
-<li>Create or update timestamps.</li>
-<li>Derived or structured information based on original user input.</li>
-<li>Properties of a resource assigned by the service which can not be altered.</li>
-</ul>
-<h3 id="input-only">Input only</h3>
-<p>The use of <code>INPUT_ONLY</code> indicates that the field is provided in requests and
-that the corresponding field will not be included in output.</p>
-<p>Additionally, a field <strong>should</strong> only be described as input only if it is a
-field in a resource message or a field of a message included within a resource
-message. Notably, fields in request messages (a message which only ever acts as
-an argument to an RPC, with a name usually ending in <code>Request</code>) <strong>should not</strong>
-be described as input only because this is already implied.</p>
-<p>Potential use cases for input only fields (this is not an exhaustive list) are:</p>
-<ul>
-<li>The <code>ttl</code> field as described in <a href="/214">AIP-214</a>.</li>
-</ul>
-<p><strong>Warning:</strong> Input only fields are rare and should be considered carefully
-before use.</p>
-<h3 id="immutable">Immutable</h3>
-<p>The use of <code>IMMUTABLE</code> indicates that a field on a resource cannot be changed
-after it's creation. This can apply to either fields that are input or outputs,
-required or optional.</p>
-<p>When a service receives an immutable field in an update request (or similar),
-even if included in the update mask, the service <strong>should</strong> ignore the field if
-the value matches, but <strong>should</strong> error with <code>INVALID_ARGUMENT</code> if a change is
-requested.</p>
-<p>Potential use cases for immutable fields (this is not an exhaustive list) are:</p>
-<ul>
-<li>Names or IDs which are set on creation and then used as a primary key.</li>
-</ul>
-<p><strong>Note:</strong> Fields which are "conditionally immutable" <strong>must not</strong> be given the
-immutable annotation.</p>
 <h3 id="unordered-list">Unordered List</h3>
 <p>The use of <code>UNORDERED_LIST</code> on a repeated field of a resource indicates that
 the service does not guarantee the order of the items in the list.</p>
