@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=47fbeff7">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=47fbeff7">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=47fbeff7"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -717,8 +717,12 @@ changes to the resources without causing side effects.</p>
 <li>All remaining fields <strong>should</strong> map to URI query parameters.</li>
 </ul>
 </li>
-<li>There <strong>should</strong> be exactly one <code>google.api.method_signature</code> annotation,
-  with a value of <code>"{resource},update_mask"</code>.</li>
+<li>There <strong>should</strong> be exactly one <code>google.api.method_signature</code> annotation, with
+  a value of <code>"{resource},update_mask"</code>.</li>
+<li>If the API is operating on the <a href="/111#management-plane">management plane</a>, the operation should have
+  <a href="/121#strong-consistency">strong consistency</a>: the completion of an update operation <strong>must</strong> mean
+  that all user-settable values and the existence of the resource have reached a
+  steady-state and reading resource state returns a consistent response.</li>
 </ul>
 <p><strong>Note:</strong> Unlike the other four standard methods, the URI path here references
 a nested field (<code>book.name</code>) in the example. If the resource field has a word
@@ -903,6 +907,7 @@ does not exist, the service <strong>must</strong> error with <code>NOT_FOUND</co
 <code>allow_missing</code> is set to <code>true</code>.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-08-26</strong>: Adding consistency requirement.</li>
 <li><strong>2023-07-17</strong>: Make <code>update_mask</code> name guidance a <strong>must</strong>.</li>
 <li><strong>2022-11-04</strong>: Aggregated error guidance to <a href="/193">AIP-193</a>.</li>
 <li><strong>2022-06-02</strong>: Changed suffix descriptions to eliminate superfluous "-".</li>

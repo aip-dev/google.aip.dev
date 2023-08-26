@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=47fbeff7">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=47fbeff7">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=47fbeff7"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -616,6 +616,7 @@
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#resources">Resources</a></li>
 <li><a href="#methods">Methods</a></li>
+<li><a href="#strong-consistency">Strong Consistency</a></li>
 <li><a href="#stateless-protocol">Stateless protocol</a></li>
 <li><a href="#cyclic-references">Cyclic References</a></li>
 </ul>
@@ -762,6 +763,33 @@ custom methods is to define functionality that does not cleanly map to any of
 the standard methods. Custom methods offer the same design freedom as
 traditional RPC APIs, which can be used to implement common programming
 patterns, such as database transactions, import and export, or data analysis.</p>
+<h3 id="strong-consistency">Strong Consistency</h3>
+<p>For methods that operate on the <a href="/111#management-plane">management plane</a>, the completion of those
+operations (either successful or with an error, LRO or synchronous) <strong>must</strong>
+mean that the state of the resource's existence and all user-settable values
+have reached a steady-state.</p>
+<p><a href="/203#output-only">output only</a> values unrelated to the resource <a href="/216">state</a> <strong>should</strong> also have
+reached a steady-state. for values that are related to the resource <a href="/216">state</a>.</p>
+<p>Examples include:</p>
+<ul>
+<li>Following a successful create that is is latest mutation on a resource, a get
+  request for a resource <strong>must</strong> return the resource.</li>
+<li>Following a successful update that is the latest mutation on a resource, a get
+  request for a resource <strong>must</strong> return the final values from the update
+  request.</li>
+<li>Following a successful delete that is the latest mutation on a resource, a get
+  request for a resource <strong>must</strong> return <code>NOT_FOUND</code> (or the resource with the
+  <code>DELETED</code> state value in the case of <a href="/164">soft delete</a>)</li>
+</ul>
+<p>Clients of resource-oriented APIs often need to orchestrate multiple operations
+in sequence (e.g. create resource A, create resource B which depends on A), and
+ensuring that resources immediately reflect steady user state after an operation
+is complete ensures clients can rely on method completion as a signal to begin
+the next operation.</p>
+<p><a href="/203#output-only">output only</a> fields ideally would follow the same guidelines, but as
+these fields can often represent a resources live state, it's sometimes
+necessary for these values to change after a successful mutation operation to
+reflect a state change.</p>
 <h3 id="stateless-protocol">Stateless protocol</h3>
 <p>As with most public APIs available today, resource-oriented APIs <strong>must</strong>
 operate over a <a href="https://en.wikipedia.org/wiki/Stateless_protocol">stateless protocol</a>: The fundamental behavior of any
@@ -792,6 +820,7 @@ resource must be dereferenced first for a successful deletion.</p>
 and in turn do not increase resource management complexity.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-08-24</strong>: Added guidance on consistency guarantees of methods.</li>
 <li><strong>2023-07-23</strong>: Clarify stateless protocol definition.</li>
 <li><strong>2023-01-21</strong>: Explicitly require matching schema across standard methods.</li>
 <li><strong>2022-12-19</strong>: Added a section requiring Get and List.</li>
