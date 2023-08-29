@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a27125c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a27125c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a27125c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -668,7 +668,7 @@ with no corresponding output field. Because the sensitive data must be present
 for the resource to exist, users of the API may assume that existence of the
 resource implies storage of the sensitive data. For example:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">SelfManagedKeypair</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
 
   <span class="c1">// The public key data in PEM-encoded form.</span>
   <span class="kt">bytes</span> <span class="na">public_key</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -682,7 +682,7 @@ resource implies storage of the sensitive data. For example:</p>
 <a href="/203#output-only">output-only</a> boolean field with a postfix of <code>_set</code> <strong>should</strong> be used to
 indicate whether or not the sensitive information is present. For example:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Integration</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
   <span class="kt">string</span> <span class="na">uri</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
   <span class="c1">// A secret to be passed in the `Authorization` header of the webhook.</span>

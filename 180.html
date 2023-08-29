@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a27125c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a27125c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a27125c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -795,7 +795,8 @@ default behavior for a resource is determined by its default values, and this
 <strong>must not</strong> change across minor versions.</p>
 <p>For example:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// google.api.resource and other annotations and fields</span>
+
     <span class="c1">// The genre of the book</span>
     <span class="c1">// If this is not set when the book is created, the field will be given a value of FICTION.</span>
     <span class="kd">enum</span> <span class="n">Genre</span> <span class="p">{</span>
@@ -807,7 +808,8 @@ default behavior for a resource is determined by its default values, and this
 </code></pre></div>
 <p>Changing to:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// google.api.resource and other annotations and fields</span>
+
     <span class="c1">// The genre of the book</span>
     <span class="c1">// If this is not set when the book is created, the field will be given a value of NONFICTION.</span>
     <span class="kd">enum</span> <span class="n">Genre</span> <span class="p">{</span>
@@ -828,8 +830,7 @@ values <strong>must not</strong> occur in a minor version.</p>
 <p>Consider the following proto, where the default value of <code>wheels</code> is <code>2</code>:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of an automobile</span>
 <span class="kd">message</span> <span class="nc">Automobile</span> <span class="p">{</span>
-    <span class="c1">// The name of the automobile.</span>
-    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// google.api.resource and other annotations and fields</span>
 
     <span class="c1">// The number of wheels on the automobile.</span>
     <span class="c1">// The default value is 2, when no value is sent by the client.</span>

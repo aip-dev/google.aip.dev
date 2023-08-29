@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a27125c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a27125c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a27125c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -615,6 +615,7 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a></li>
 <li><a href="#vocabulary">Vocabulary</a><ul>
+<li><a href="#identifier">Identifier</a></li>
 <li><a href="#immutable">Immutable</a></li>
 <li><a href="#input-only">Input only</a></li>
 <li><a href="#optional">Optional</a></li>
@@ -702,6 +703,12 @@ backwards-compatility. Nontheless, this annotation <strong>must not</strong> be 
 only, and does not itself add any validation. The purpose is to consistently
 document this behavior for clients.</p>
 <h2 id="vocabulary">Vocabulary</h2>
+<h3 id="identifier">Identifier</h3>
+<p>The use of <code>IDENTIFIER</code> indicates that a field within a resource message is used
+to identify the resource. It <strong>must</strong> be attached to the <code>name</code> field and <strong>must
+not</strong> be attached to any other field (see <a href="/122#fields-representing-resource-names">fields representing resource names</a>).</p>
+<p>This annotation <strong>must not</strong> be applied to references to other resources within
+a message.</p>
 <h3 id="immutable">Immutable</h3>
 <p>The use of <code>IMMUTABLE</code> indicates that a field on a resource cannot be changed
 after it's creation. This can apply to either fields that are input or outputs,
@@ -712,7 +719,8 @@ the value matches, but <strong>should</strong> error with <code>INVALID_ARGUMENT
 requested.</p>
 <p>Potential use cases for immutable fields (this is not an exhaustive list) are:</p>
 <ul>
-<li>Names or IDs which are set on creation and then used as a primary key.</li>
+<li>Attributes of resources that are not modifiable for the lifetime of the
+  application (e.g. a disk type).</li>
 </ul>
 <p><strong>Note:</strong> Fields which are "conditionally immutable" <strong>must not</strong> be given the
 immutable annotation.</p>
@@ -806,17 +814,21 @@ following are examples of backwards incompatible changes with
 <code>google.api.field_behavior</code>:</p>
 <ul>
 <li>Adding <code>REQUIRED</code> to an existing field previously considered <code>OPTIONAL</code>
-(implicitly or otherwise).</li>
-<li>Adding a new field annotated as <code>REQUIRED</code> to an existing request message.</li>
+(implicitly or otherwise)</li>
+<li>Adding a new field annotated as <code>REQUIRED</code> to an existing request message</li>
 <li>Adding <code>OUTPUT_ONLY</code> to an existing field previously accepted as input</li>
-<li>Removing <code>OUTPUT_ONLY</code> from an existing field previously ignored as input</li>
 <li>Adding <code>INPUT_ONLY</code> to an existing field previously emitted as output</li>
 <li>Adding <code>IMMUTABLE</code> to an existing field previously considered mutable</li>
+<li>Removing <code>OUTPUT_ONLY</code> from an existing field previously ignored as input</li>
+<li>Removing <code>IDENTIFIER</code> from an existing field.</li>
 </ul>
 <p>There are some changes that <em>are</em> backwards compatible, which are as follows:</p>
 <ul>
 <li>Adding <code>OPTIONAL</code> to an existing field</li>
+<li>Adding <code>IDENTIFIER</code> to an existing <code>name</code> field</li>
 <li>Changing from <code>REQUIRED</code> to <code>OPTIONAL</code> on an existing field</li>
+<li>Changing from <code>OUTPUT_ONLY</code> and/or <code>IMMUTABLE</code> to <code>IDENTIFIER</code> on an existing
+  field</li>
 <li>Removing <code>REQUIRED</code> from an existing field</li>
 <li>Removing <code>INPUT_ONLY</code> from an existing field previously excluded in responses</li>
 <li>Removing <code>IMMUTABLE</code> from an existing field previously considered immutable</li>
@@ -850,6 +862,7 @@ compatibility guidance.</p>
 surpass the costs to clients and API users of not doing so.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-08-25</strong>: Add guidance on <code>IDENTIFIER</code>.</li>
 <li><strong>2023-07-20</strong>: Describe compatibility guidance with new section.</li>
 <li><strong>2023-05-24</strong>: Clarify that <code>IMMUTABLE</code> does not imply input nor required.</li>
 <li><strong>2023-05-10</strong>: Added guidance to require the annotation.</li>

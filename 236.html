@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a6fbd237">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a6fbd237">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a27125c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a27125c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a6fbd237"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a27125c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -670,15 +670,15 @@ resources. Generally, the outcome of a policy can be evaluated to a specific set
 of outcomes.</p>
 <p>Changes to policies without proper validation may have unintended consequences
 that can severely impact a customer’s overall infrastructure setup. To safely
-update resources, it is beneficial to test these changes via policy rollout 
+update resources, it is beneficial to test these changes via policy rollout
 APIs.</p>
 <p>Preview is a rollout safety mechanism for policy resources, which gives the
 customer the ability to validate the effect of their proposed changes against
 production traffic prior to the changes going live. The result of the policy
 evaluation against traffic is logged in order to give the customer the data
 required to test the correctness of the change.</p>
-<p>Firewall policies exemplify a case that is suitable for previewing. A new 
-configuration can be evaluated against traffic to observe which IPs would be 
+<p>Firewall policies exemplify a case that is suitable for previewing. A new
+configuration can be evaluated against traffic to observe which IPs would be
 allowed or denied. This gives the customer the data to guide a decision on
 whether to promote the proposed changes to live.</p>
 <p>The expected flow for previewing a policy is as follows:</p>
@@ -704,7 +704,7 @@ following resource name pattern:</p>
 <p>The experimental versions of the resource used for previewing or other safe
 rollout practices are represented as a nested collection under <code>Policy</code> using a
 new resource type. The resource type <strong>must</strong> follow the naming convention
-<em>RegularResourceType</em><code>Experiment</code>. </p>
+<em>RegularResourceType</em><code>Experiment</code>.</p>
 <p>The following pattern is used for the experiment collection:</p>
 <p><code>projects/{project}/locations/{location}/policies/{policy}/experiments/{experiment}</code></p>
 <p>A proto used to represent an experiment <strong>must</strong> contain the following:</p>
@@ -715,8 +715,7 @@ new resource type. The resource type <strong>must</strong> follow the naming con
 </code></pre>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">PolicyExperiment</span> <span class="p">{</span>
 
-  <span class="c1">// The resource name of the PolicyExperiment.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="c1">// google.api.resource, name, and other annotations and fields</span>
 
   <span class="c1">// The policy experiment. This Policy will be used to preview the effects of</span>
   <span class="c1">// the change but will not affect live traffic.</span>
@@ -732,19 +731,19 @@ new resource type. The resource type <strong>must</strong> follow the naming con
 </code></pre></div>
 <ul>
 <li>The experiment proto <strong>must</strong> have a top-level field with the same type as the
-  live policy. <ul>
+  live policy.<ul>
 <li>It <strong>must</strong> be named as the live resource type. For example, if the
   experiment is for FirewallPolicy, then this field <strong>must</strong> be named
   <code>firewall_policy</code>.</li>
 <li>The name inside the embedded <code>policy</code> message <strong>must</strong> be the name of the
-  live policy. </li>
+  live policy.</li>
 </ul>
 </li>
-<li>When the user is ready to promote an experiment, they <strong>must</strong> copy the 
+<li>When the user is ready to promote an experiment, they <strong>must</strong> copy the
   <code>policy</code> message into the live policy and delete the experiment. This can be
   done manually or via a "commit" custom method.</li>
-<li>A product <strong>may</strong> support multiple experiments concurrently being previewed 
-  for a single live policy. <ul>
+<li>A product <strong>may</strong> support multiple experiments concurrently being previewed
+  for a single live policy.<ul>
 <li>Each experiment must generate logs having each entry preceded by log_prefix
   so that the user can compare the results of the experiment with the behavior
   of the live policy.</li>
@@ -772,7 +771,7 @@ same service with experiments.</p>
     <span class="na">ACTIVE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
     <span class="c1">// The previewing of the experiment has been stopped.</span>
-    <span class="na">SUSPENDED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  
+    <span class="na">SUSPENDED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="c1">// The state of previewing the experiment.</span>
@@ -804,15 +803,15 @@ same service with experiments.</p>
   or stopped. This happens when the "startPreview" or "stopPreview custom methods
   are invoked, respectively.</li>
 <li>The first time the "startPreview" custom method is used, the system <strong>must</strong>
-  create <code>preview_metadata</code> and do the following: <ul>
+  create <code>preview_metadata</code> and do the following:<ul>
 <li>It <strong>must</strong> set the <code>state</code> to <code>ACTIVE</code></li>
-<li>It <strong>must</strong> populate <code>start_time</code> with the current time. <ul>
+<li>It <strong>must</strong> populate <code>start_time</code> with the current time.<ul>
 <li><code>start_time</code> <strong>must</strong> be updated every time <code>state</code> is changed to
   <code>ACTIVE</code>.</li>
 </ul>
 </li>
 <li>It <strong>must</strong> set a system generated <code>log_prefix</code> string, which is a
-  predefined constant hard coded by the system developers. </li>
+  predefined constant hard coded by the system developers.</li>
 <li>The same value is used for previewing experiments for the given resource
   type. For example, "FirewallPolicyPreviewLog" for FirewallPolicy.</li>
 </ul>
@@ -820,15 +819,15 @@ same service with experiments.</p>
 <li>When the "stopPreview" custom method is used, the system <strong>must</strong> do the
   following:<ul>
 <li>It <strong>must</strong> set the <code>state</code> to <code>SUSPENDED</code></li>
-<li>It <strong>must</strong> populate the <code>stop_time</code> with the current time. </li>
+<li>It <strong>must</strong> populate the <code>stop_time</code> with the current time.</li>
 </ul>
 </li>
 </ul>
 <h3 id="methods">Methods</h3>
 <h4 id="create">create</h4>
 <ul>
-<li>The resource <strong>must</strong> be created using long-running 
-  <a href="https://aip.dev/133#long-running-create">Create</a> and 
+<li>The resource <strong>must</strong> be created using long-running
+  <a href="https://aip.dev/133#long-running-create">Create</a> and
   <code>google.longrunning.operation_info.response_type</code> <strong>must</strong> be
   <code>PolicyExperiment</code>.</li>
 <li>Creating a new experiment to preview <strong>must</strong> support the following use
@@ -840,15 +839,15 @@ cases:<ul>
 </li>
 <li>For the update and delete use cases, the <code>policy</code> field in the experiment
   <strong>must</strong> have the full payload of the live policy copied into it, including
-  the name. <ul>
+  the name.<ul>
 <li>The user <strong>must</strong> set the rules to the new intended state to preview an
   update.</li>
 <li>The user <strong>must</strong> set set the rules to represent a no-op to preview a
   delete.</li>
 </ul>
 </li>
-<li>To preview a new policy, the system must do the following: <ul>
-<li>If the system does not support a nested collection without a live policy, 
+<li>To preview a new policy, the system must do the following:<ul>
+<li>If the system does not support a nested collection without a live policy,
   the user <strong>must</strong> create a live policy and set the rules to represent a
   no-op. For example, the rules of a no-op policy <strong>may</strong> be empty.<ul>
 <li>An experiment is created as a child of the no-op policy.</li>
@@ -861,8 +860,8 @@ cases:<ul>
 </ul>
 <h4 id="update">update</h4>
 <ul>
-<li>The resource <strong>must</strong> be updated using long-running 
-  <a href="https://aip.dev/134#long-running-update">Update</a> and 
+<li>The resource <strong>must</strong> be updated using long-running
+  <a href="https://aip.dev/134#long-running-update">Update</a> and
   <code>google.longrunning.operation_info.response_type</code> <strong>must</strong> be
   <code>PolicyExperiment</code>.</li>
 <li>The name inside <code>policy</code> <strong>must not</strong> change but the other fields can in
@@ -887,15 +886,15 @@ cases:<ul>
   <code>PolicyExperiment</code> resource types.</li>
 <li>Filtering on <code>PolicyPreviewMetadata</code> indicates which experiments are actively
   previewed.<ul>
-<li>For example, the following filter string returns a List response with 
+<li>For example, the following filter string returns a List response with
   experiments being previewed: preview_metadata.state = ACTIVE.</li>
 </ul>
 </li>
 </ul>
 <h4 id="delete">delete</h4>
 <ul>
-<li>The resource <strong>must</strong> be deleted using long-running 
-  <a href="https://aip.dev/135#long-running-delete">Delete</a> and 
+<li>The resource <strong>must</strong> be deleted using long-running
+  <a href="https://aip.dev/135#long-running-delete">Delete</a> and
   <code>google.longrunning.operation_info.response_type</code> <strong>must</strong> be
   <code>PolicyExperiment</code>.</li>
 </ul>
@@ -924,7 +923,7 @@ cases:<ul>
 <li>This custom method is required.</li>
 <li><code>google.longrunning.Operation.metadata_type</code> <strong>must</strong> follow guidance on
   <a href="/151">Long-running operations</a></li>
-<li>This method <strong>must</strong> trigger the system to start generating logs to preview 
+<li>This method <strong>must</strong> trigger the system to start generating logs to preview
   the experiment.</li>
 <li>Whenever the method is called successfully, the system <strong>must</strong> set the
   following values in the <code>PolicyPreviewMetadata</code>:<ul>
@@ -1016,7 +1015,7 @@ preferable.</p>
   overwrites a specific version of the live policy.</li>
 </ul>
 </li>
-<li>The method is not idempotent and calling it twice on the same experiment 
+<li>The method is not idempotent and calling it twice on the same experiment
   <strong>must</strong> return a 404 NOT_FOUND as the experiment is deleted as part of the
   first call.</li>
 </ul>
@@ -1036,7 +1035,7 @@ associated with that experiment alongside that of the live policy, and be
 preceded by the value of <code>log_prefix</code>.
   - The <code>etag</code> fields help the user identify which
     configurations of the live and experiment are evaluated in the log.
-  - <code>log_prefix</code> helps the user separate logs specifically generated for 
+  - <code>log_prefix</code> helps the user separate logs specifically generated for
     previewing the experiment from other use cases.</p>
 <p>Overall, these logs help the user make a decision about whether to promote the
 experiment to live.</p>
