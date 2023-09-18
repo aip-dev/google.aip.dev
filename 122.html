@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=fbfd6354">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=fbfd6354">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ea3b575a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ea3b575a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=fbfd6354"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=ea3b575a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -741,6 +741,8 @@ form of the noun used for the resource. (For example, a collection of
   such cases (e.g, avoid "infos").</li>
 </ul>
 </li>
+<li>Within any given single resource name, collection identifiers <strong>must</strong> be
+  unique. (e.g. <code>people/xyz/people/abc</code> is invalid)</li>
 </ul>
 <h4 id="nested-collections">Nested collections</h4>
 <p>If a resource name contains multiple levels of a hierarchy, and a parent
@@ -966,6 +968,7 @@ involved in the resolution of the reference (via Standard Methods), guaranteeing
 isolation of logical concerns per-resource.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-09-19</strong>: Prohibit duplicate collection identifiers.</li>
 <li><strong>2023-09-01</strong>: Add a clause that allows embedding for revision resource
   messages.</li>
 <li><strong>2023-08-10</strong>: Explicitly disallow embedding resource messages in a resource.</li>
