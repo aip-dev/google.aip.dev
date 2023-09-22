@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>News</title>
+    <title>AIP-202: Fields</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -20,6 +20,8 @@
     </script>
     <script type="text/javascript" src="/assets/js/global.js?v=e032a567"></script>
     
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -64,7 +66,7 @@
               
             
               
-                <li class="glue-header__item glue-header--is-active">
+                <li class="glue-header__item">
                   <a class="glue-header__link" href="/news" aria-level="1">News</a>
                 </li>
               
@@ -164,7 +166,8 @@
     <div class="glue-page">
       
       <main role="main" id="page-content">
-        <nav id="aip-nav" class="docs-component-nav">
+        
+<nav id="aip-nav" class="docs-component-nav">
   <ul class="nav-list">
     <li class="nav-item nav-item-header">AIPs by Scope</li>
     <li class="nav-item">
@@ -510,7 +513,7 @@
         Precedent
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/202">
         <span class="aip-number">202</span>
         Fields
@@ -605,15 +608,22 @@
 <section id="jump-content">
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Fields</th></tr>
+    <tr><td>Number</td><td>202</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/202">google.aip.dev/202</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2023-09-22</td></tr>
+    <tr><td>Updated</td><td>2023-09-22</td></tr>
+  </table>
+
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#march-2021">March 2021</a></li>
-<li><a href="#october-2020">October 2020</a></li>
-<li><a href="#august-2020">August 2020</a></li>
-<li><a href="#june-2020">June 2020</a></li>
-<li><a href="#may-2020">May 2020</a></li>
-<li><a href="#april-2020">April 2020</a></li>
-<li><a href="#march-2020">March 2020</a></li>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#format">Format</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a></li>
 </ul>
 </div>
 
@@ -622,8 +632,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/pages/general/news.md.j2">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/pages/general/news.md.j2">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0202.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0202.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -640,183 +650,97 @@
         </a>
       </li>
       
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        News
+        Fields
       </li>
     </ol>
   </nav>
 </section>
-  <h1 id="news">News</h1>
-<p>Want to keep up with the AIP system, and what we are working on? Welcome to the
-<strong>AIP newsletter</strong>, a monthly publication covering new AIP guidance, and any
-other developments useful to API producers.</p>
-<h3 id="march-2021">March 2021</h3>
-<h5 id="auth-and-field-masks"><a href="/news/2021-03"><strong>Auth and Field Masks</strong></a></h5>
-<p>Publishing long-standing guidance around permissions and field masks.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/149">AIP-149</a></li>
-
-        <li><a href="/161">AIP-161</a></li>
-
-        <li><a href="/211">AIP-211</a></li>
-
-      </ul>
-    </li>
-
-
-    <li>Approval of AIPs discussed in the October 2020 newsletter.</li>
-
-  </ul>
-</div>
-
-<h3 id="october-2020">October 2020</h3>
-<h5 id="declarative-friendly-apis"><a href="/news/2020-10"><strong>Declarative-friendly APIs</strong></a></h5>
-<p>Why and how to make an API interface "declarative friendly", in order to
-enable automation on top of it.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/128">AIP-128</a></li>
-
-        <li><a href="/148">AIP-148</a></li>
-
-        <li><a href="/164">AIP-164</a></li>
-
-      </ul>
-    </li>
-
-
-    <li>Declarative-friendly updates to existing AIPs.</li>
-
-  </ul>
-</div>
-
-<h3 id="august-2020">August 2020</h3>
-<h5 id="field-patterns-redux"><a href="/news/2020-08"><strong>Field patterns, redux</strong></a></h5>
-<p>Patterns around sensitive fields.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/147">AIP-147</a></li>
-
-      </ul>
-    </li>
-
-
-  </ul>
-</div>
-
-<h3 id="june-2020">June 2020</h3>
-<h5 id="field-patterns"><a href="/news/2020-06"><strong>Field patterns</strong></a></h5>
-<p>Patterns around ranges and generic fields.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/145">AIP-145</a></li>
-
-        <li><a href="/146">AIP-146</a></li>
-
-      </ul>
-    </li>
-
-
-  </ul>
-</div>
-
-<h3 id="may-2020">May 2020</h3>
-<h5 id="jobs-and-filters"><a href="/news/2020-05"><strong>Jobs and filters</strong></a></h5>
-<p>Formalizing the Job pattern; clarifications coming to filtering.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/152">AIP-152</a></li>
-
-        <li><a href="/160">AIP-160</a></li>
-
-      </ul>
-    </li>
-
-
-  </ul>
-</div>
-
-<h3 id="april-2020">April 2020</h3>
-<h5 id="data-series"><a href="/news/2020-04"><strong>Data Series</strong></a></h5>
-<p>This month's AIPs revolve around handling lists and series of data, which
-present specific challenges in APIs.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/124">AIP-124</a></li>
-
-        <li><a href="/144">AIP-144</a></li>
-
-        <li><a href="/160">AIP-160</a></li>
-
-      </ul>
-    </li>
-
-
-  </ul>
-</div>
-
-<h3 id="march-2020">March 2020</h3>
-<h5 id="welcome-to-the-aip-newsletter"><a href="/news/2020-03"><strong>Welcome to the AIP Newsletter</strong></a></h5>
-<p>The first edition of the AIP newsletter outlines the plan for reviewing
-outstanding proposals, and announces the release of the API linter.</p>
-<div class="aip-newsletter-highlights">
-  <p>Highlights:</p>
-  <ul class="highlights-list">
-
-    <li class="highlight-item">Reviewing:
-      <ul>
-
-        <li><a href="/153">AIP-153</a></li>
-
-        <li><a href="/162">AIP-162</a></li>
-
-        <li><a href="/163">AIP-163</a></li>
-
-        <li><a href="/165">AIP-165</a></li>
-
-        <li><a href="/194">AIP-194</a></li>
-
-      </ul>
-    </li>
-
-
-    <li>The API linter is here!</li>
-
-  </ul>
-</div>
-
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-202</h4>
+  <h1 id="fields">Fields</h1>
+<p>The <a href="https://github.com/googleapis/googleapis/blob/master/google/api/field.proto"><code>google.api.Field</code></a> type, through its accompanying extension
+<code>google.api.field</code>, enriches a field's schema beyond the basic name and type
+information.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Decorating a field with <code>google.api.field</code> is only necessary when explicitly
+stated in this AIP or another that leverages <code>google.api.Field</code> information. As
+such, the guidance herein applies to those scenarios as well.</p>
+<h3 id="format">Format</h3>
+<p>Fields with a primitive type can still have a specific format. To convey that
+type format, the <code>Field.Format</code> enumeration is used via the
+<code>(google.api.field).format</code> extension field. The following guidance conveys the
+meaning of and requirements for use of each <code>Field.Format</code> value.</p>
+<h4 id="uuid4">UUID4</h4>
+<p>The <code>UUID4</code> format represents a UUID version 4 value as governed by
+<a href="https://datatracker.ietf.org/doc/html/rfc4122">RFC 4122</a>. It <strong>must</strong> only be used on a field of type <code>string</code>.</p>
+<p>Such a value <strong>may</strong> be normalized by the service to entirely lowercase letters.
+For example, the value <code>F47AC10B-58CC-0372-8567-0E02B2C3D479</code> would be
+normalized to <code>f47ac10b-58cc-0372-8567-0e02b2c3d479</code>.</p>
+<p>As such, equivalence comparison <strong>must not</strong> be done via primitive text
+comparison. Instead, an <a href="https://datatracker.ietf.org/doc/html/rfc4122">RFC 4122</a> compliant implementation <strong>must</strong> be used.</p>
+<h4 id="ipv4">IPv4</h4>
+<p>The <code>IPV4</code> format represents an IP v4 address as governed by <a href="https://datatracker.ietf.org/doc/html/rfc791">RFC 791</a>. It
+<strong>must</strong> only be used on a field of type <code>string</code>.</p>
+<p>Such a value <strong>may</strong> be condensed by the service, with leading zeros in each
+octet stripped. For example, <code>001.022.233.040</code> would be condensed to
+<code>1.22.233.40</code>.</p>
+<p>As such, equivalence comparison <strong>must not</strong> be done via primitive text
+comparison. Instead, an <a href="https://datatracker.ietf.org/doc/html/rfc791">RFC 791</a> compliant implementation <strong>must</strong> be used.</p>
+<h4 id="ipv6">IPv6</h4>
+<p>The <code>IPV6</code> format represents an IP v6 address as governed by <a href="https://datatracker.ietf.org/doc/html/rfc4291#section-2.2">RFC 4291</a>. It
+<strong>must</strong> only be used on a field of type <code>string</code>.</p>
+<p>Such a value <strong>may</strong> be normalized by the service to entirely lowercase letters,
+and zero-padded partial and empty octets. For example, the value <code>2001:DB8::</code>
+would be normalized to <code>2001:0db8:0:0</code>.</p>
+<p>As such, equivalence comparison <strong>must not</strong> be done via primitive text
+comparison. Instead, an <a href="https://datatracker.ietf.org/doc/html/rfc4291#section-2.2">RFC 4291</a> compliant implementation <strong>must</strong> be used.</p>
+<h4 id="ipv4-or-ipv6">IPv4 or IPv6</h4>
+<p>The <code>IPV4_OR_IPV6</code> value indicates that the field can be either an IP v4 or v6
+address, as described in the <a href="#ipv4">IPv4</a> and <a href="#ipv6">IPv6</a> sections.</p>
+<h4 id="format-compatibility">Format Compatibility</h4>
+<p>Adding a format specifier to an existing, unspecified field <strong>is not</strong> backwards
+compatible, <em>unless</em> the field in question has always conformed to the format
+being specified.</p>
+<p>Changing an existing format specifier to a different one in all cases <strong>is not</strong>
+backwards compatible.</p>
+<h4 id="extending-format">Extending Format</h4>
+<p>Any new <code>Field.Format</code> value <strong>must</strong> be governed by an
+<a href="https://www.ietf.org/standards/rfcs">IETF-approved RFC</a> or a <a href="/1">Google-approved AIP</a>.</p>
+<h2 id="rationale">Rationale</h2>
+<h4 id="why-add-a-format-specifier">Why add a format specifier?</h4>
+<p>The format of a primitive-typed field can be critical to its usability. Some
+programming languages may convey a specific type format as a standalone type,
+as Java does with <a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html">UUID</a>. Most have specific structural requirements
+that are validated by the service, so conveying the format to the user ahead of
+time is critical to their experience.</p>
+<h4 id="why-discourage-primitive-equality-comparisons">Why discourage primitive equality comparisons?</h4>
+<p>The text representations of the supported formats have many nuances and
+transforming the value into a canonical representation is non-trivial. As such,
+aligning implementations between each consumer and each service without any
+issue is infeasiable.</p>
+<h4 id="why-document-value-normalizations">Why document value normalizations?</h4>
+<p>While primitive comparison is not recommended for any of the supported formats,
+uniform normalization of values is important to set consumer expectations, and
+create a user-friendly surface.</p>
+<h4 id="why-require-an-rfc-or-aip-for-new-formats">Why require an RFC or AIP for new formats?</h4>
+<p>Those formats which are sufficiently standardized to merit an RFC or AIP are
+stable enough and widely enough known to be incorporated as a supported value
+and see usage in Google APIs. Requiring such extra guidance means that governing
+the format specification is not the responsibility of the <code>Field.Format</code>
+enumeration itself.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
@@ -825,7 +749,7 @@ outstanding proposals, and announces the release of the API linter.</p>
   <span class="no-print">For details, see <a href="/licensing">content
   licensing</a>.</span>
 </footer>
-  </section>
+</section>
 
         </section>
       </main>
