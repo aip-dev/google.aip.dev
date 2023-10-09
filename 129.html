@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-130: Methods</title>
+    <title>AIP-129: Server-Modified Values and Defaults</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -273,13 +273,13 @@
         Declarative-friendly interfaces
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/129">
         <span class="aip-number">129</span>
         Server-Modified Values and Defaults
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/130">
         <span class="aip-number">130</span>
         Methods
@@ -615,23 +615,30 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Methods</th></tr>
-    <tr><td>Number</td><td>130</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/130">google.aip.dev/130</a></td></tr>
-    <tr><td>State</td><td>Approved</td></tr>
-    <tr><td>Created</td><td>2023-03-13</td></tr>
-    <tr><td>Updated</td><td>2023-03-13</td></tr>
+    <tr><th colspan="2">Server-Modified Values and Defaults</th></tr>
+    <tr><td>Number</td><td>129</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/129">google.aip.dev/129</a></td></tr>
+    <tr><td>State</td><td>Draft</td></tr>
+    <tr><td>Created</td><td>2023-09-20</td></tr>
+    <tr><td>Updated</td><td>2023-09-20</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#categories-of-methods">Categories of Methods</a></li>
-<li><a href="#choosing-a-method-category">Choosing a method category</a></li>
+<li><a href="#single-owner-fields">Single Owner Fields</a></li>
+<li><a href="#effective-values">Effective Values</a></li>
+<li><a href="#user-specified-fields">User-Specified Fields</a></li>
+<li><a href="#normalizations">Normalizations</a></li>
 </ul>
 </li>
-<li><a href="#rationale">Rationale</a></li>
-<li><a href="#changelog">Changelog</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#rationale-for-single-owner-fields">Rationale for Single Owner Fields</a></li>
+<li><a href="#rationale-for-naming">Rationale for Naming</a></li>
+<li><a href="#rationale-for-normalizations">Rationale for Normalizations</a></li>
+<li><a href="#rationale-for-field-value-handling">Rationale for Field Value Handling</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -640,8 +647,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0130.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0130.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0129.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0129.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -666,191 +673,122 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Methods
+        Server-Modified Values and Defaults
       </li>
     </ol>
   </nav>
 </section>
-  
-  <h4 class="aip-number">AIP-130</h4>
-  <h1 id="methods">Methods</h1>
-<p>An API is composed of one or more methods, which represent a specific operation
-that a service can perform on behalf of the consumer.</p>
+  <p id="aip-state-banner" class="callout warning">
+  This AIP is currently a draft. This means that it is being actively debated
+  and discussed, and it may change in non-trivial ways.
+</p>
+  <h4 class="aip-number">AIP-129</h4>
+  <h1 id="server-modified-values-and-defaults">Server-Modified Values and Defaults</h1>
+<p>Services often provide default values for resource fields, and occasionally
+normalize the user input before returning it in the response. The guidance
+herein describes how services document such behavior for the benefit of
+consumers.</p>
 <h2 id="guidance">Guidance</h2>
-<h3 id="categories-of-methods">Categories of Methods</h3>
-<p>The following enumerates multiple categories of methods that exist, often
-grouped up under some object (e.g. collection or resource) that the method
-operates upon.</p>
-<table>
-<thead>
-<tr>
-<th>Category Name</th>
-<th>Related AIPs</th>
-<th><a href="/9#declarative-clients">Declarative client</a> integration</th>
-<th>CLI / UI integration</th>
-<th>SDK integration</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Standard Methods</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Standard collection methods</strong>: operate on a collection of resources (List or Create).</td>
-<td><a href="/121">AIP-121</a>, <a href="/132">AIP-132</a>, <a href="/133">AIP-133</a></td>
-<td>automatable</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Standard resource methods</strong>: fetch or mutate a single resource (Get, Update, Delete).</td>
-<td><a href="/121">AIP-121</a>, <a href="/131">AIP-131</a>, <a href="/134">AIP-134</a>, <a href="/135">AIP-135</a></td>
-<td>automatable</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Batch resource methods</strong>: fetch or mutate multiple resources in a collection by name.</td>
-<td><a href="/231">AIP-231</a>, <a href="/233">AIP-233</a>, <a href="/234">AIP-234</a>, <a href="/235">AIP-235</a></td>
-<td>may be used to optimize queries</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Aggregated list methods</strong>: fetch or mutate multiple resources of the same type across multiple collections.</td>
-<td><a href="/159">AIP-159</a></td>
-<td>not useful nor automable</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><em>Custom Fetch Methods</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Custom collection fetch methods</strong>: fetch information across a collection that cannot be expressed via a standard method.</td>
-<td><a href="/136">AIP-136</a></td>
-<td>handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Custom resource fetch methods</strong>: fetch information for a single resource that cannot be expressed via a standard method.</td>
-<td><a href="/136">AIP-136</a></td>
-<td>handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><em>Custom Mutation Methods</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Backing up a resource</strong>: storing a copy of a resource at a particular point in time.</td>
-<td><a href="/162">AIP-162</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Restoring a resource</strong>: setting a resource to a version from a particular point in time.</td>
-<td><a href="/162">AIP-162</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Renaming a resource</strong>: modify the resource's name or id while preserving configuration and data.</td>
-<td><a href="/136">AIP-136</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Custom collection mutation methods</strong>: perform an imperative operation referencing a collection that may mutate one or more resources within that collection in fashion that cannot be easily achieved by standard methods (e.g. state transitions).</td>
-<td><a href="/136">AIP-136</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><strong>Custom resource mutation methods</strong>: perform an imperative operation on a resource that may mutate it in a way a standard method cannot (e.g. state transitions).</td>
-<td><a href="/136">AIP-136</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><em>Misc Custom Methods</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Stateless Methods</strong>: a method that has no permanent effect on any data within the API (e.g. translating text)</td>
-<td><a href="/136">AIP-136</a></td>
-<td>unused or handwritten</td>
-<td>automatable</td>
-<td>automatable</td>
-</tr>
-<tr>
-<td><em>None of the above</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Streaming methods</strong>: methods that communicate via client, server, or bi-directional streams.</td>
-<td></td>
-<td>handwritten</td>
-<td>handwritten</td>
-<td>automatable</td>
-</tr>
-</tbody>
-</table>
-<h3 id="choosing-a-method-category">Choosing a method category</h3>
-<p>While designing a method, API authors should choose from the defined categories
-in the following order:</p>
-<ol>
-<li>Standard methods (on collections and resources)</li>
-<li>Standard batch or aggregate methods</li>
-<li>Custom methods (on collections, resources, or stateless)</li>
-<li>Streaming methods</li>
-</ol>
-<h2 id="rationale">Rationale</h2>
-<p>Resource-oriented standard and custom methods are recommended first, as they can
-be expressed in the widest variety of clients (Declarative clients, CLIs, UIs, and so on), and
-offer the most uniform experience that allows users to apply their knowledge of
-one API to another.</p>
-<p>If a standard method is unsuitable, then custom methods (that are mounted to a
-resource or collection) offer a lesser, but still valuable level of consistency,
-helping the user reason about the scope of the action and the object whose
-configuration is read to inform that action. Although mutative custom methods
-are not uniform enough to have a automated integration with exclusively
-resource-oriented clients such as <a href="/9#declarative-clients">Declarative client</a>s, they are still a pattern that
-can easily recognized by CLIs, UIs, and SDKs.</p>
-<p>If one cannot express their APIs in a resource-oriented fashion at all, then the
-operation falls in a category where the lack of uniformity makes it difficult
-for any client aside from SDKs to model the operation. This category is
-preferred last due to the fact that a user cannot rely on their knowledge of
-similar APIs, as well as the issue that integration with many clients will
-likely have to be hand-written.</p>
-<h2 id="changelog">Changelog</h2>
+<h3 id="single-owner-fields">Single Owner Fields</h3>
+<p>Fields <strong>must</strong> have a single owner, whether that is the client or the server.
+Server owned fields <strong>must</strong> be indicated with the <code>OUTPUT_ONLY</code> field_behavior.
+All other types of fields <strong>must</strong> be considered to be owned by the client. The
+server <strong>must</strong> respect the value (or lack thereof) for all client owned fields
+and not modify them.</p>
+<h3 id="effective-values">Effective Values</h3>
+<p>There are instances where a service will allocate, generate, or calculate a
+value if the client chooses not to specify one. For example: a client creates a
+virtual machine without specifying a static IP address for the virtual machine
+to be available on. Such a scenario is opting into dynamic IP address
+allocation.</p>
+<p>Some examples of these types of fields are ones that are:</p>
 <ul>
-<li><strong>2023-09-05</strong>: Update to approved.</li>
+<li>generated (UUID)</li>
+<li>allocated (dynamic IP address)</li>
+<li>assigned (most recent software package version)</li>
 </ul>
+<p>An attribute with an effective value <strong><em>must</em></strong> be expressed as two fields in
+the API:
+* a mutable field that can be optionally set by the user and <strong>must not</strong> be
+modified by the service
+* an <code>OUTPUT_ONLY</code> field that records the effective value decided on by the
+service</p>
+<p>Example:
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">VirtualMachine</span> <span class="p">{</span>
+  <span class="err">…</span>
+  <span class="kt">string</span> <span class="na">ip_address</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="na">effective_ip_address</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="naming">Naming</h4>
+<p>Effective values <strong>must</strong> be named by prefixing <code>effective_</code> to the mutable
+field's name.</p>
+<h3 id="user-specified-fields">User-Specified Fields</h3>
+<p>For user-specified fields, the value in response from the service <strong>must</strong> be
+the same as provided by the create or update request. For string fields this
+means returning the value unchanged, with one exception: </p>
+<ul>
+<li>When a string field has a data type annotation, a normalized string that
+  represents the given value <strong>may</strong> be returned.</li>
+</ul>
+<h3 id="normalizations">Normalizations</h3>
+<p>A field that is normalized by the service <strong>must</strong> be annotated with the
+<code>google.api.field_info</code> extension. See <a href="aip-202">AIP-202</a> for guidance on using
+this extension The allowed set of normalizations includes the following formats:</p>
+<ul>
+<li>uuid</li>
+<li>ipv4</li>
+<li>ipv6</li>
+<li>email</li>
+</ul>
+<p>Normalizations on fields <strong>must</strong> be described using the <code>google.api.field_info</code>
+annotation.</p>
+<h2 id="rationale">Rationale</h2>
+<p>Server-modified and default values often make it harder to implement
+<a href="state-driven-clients">state-driven clients</a>. These clients are often unable to
+tell when their desired state matches the current state for these fields, as the
+rules by which a server may modify and return values are complex, not public,
+and not repeatable.</p>
+<h3 id="rationale-for-single-owner-fields">Rationale for Single Owner Fields</h3>
+<p>When fields do not have a single owner they can cause issues for
+<a href="state-driven-clients">state-driven clients</a>. These clients may attempt to set
+values for fields that are overwritten by server set values, leading to the
+client entering an infinite loop to correct the change.</p>
+<h3 id="rationale-for-naming">Rationale for Naming</h3>
+<p>Consistent naming is important for identifying standard behavior across APIs
+and fields. Programmatic association between user-specified and effective values
+depends on consistent naming.</p>
+<h3 id="rationale-for-normalizations">Rationale for Normalizations</h3>
+<p>Normalizations are important to allow services to store and return values in a
+standard way while communicating to clients what changes are semantically
+identical. Normalizing a value on the service side allows the service to accept
+a wider range of semantically identical inputs without needing to maintain every
+value as a raw string. Surfacing the normalization that is being applied to
+clients allows for client side comparison of sent and retrieved values to check
+for differences.</p>
+<p>For example, in a resource that accepts an email address on a particular field
+a client may specify a given email address in a variety of ways. For the email
+<code>ada@example.com</code> a client may choose to specify <code>ADA@example.com</code>,
+<code>aDa@example.com</code>, or <code>AdA@example.com</code>. These are semantically identical and
+<em>should</em> all be accepted by the service. The service then may choose to
+normalize the email address for storage and retrieval through downcasing or
+canonicalization. Importantly, the information surfaced to clients on the
+normalization of a field will not describe the normalization algorithm itself,
+but instead the comparison method used to accurately compute if two values
+should be considered equal.</p>
+<h3 id="rationale-for-field-value-handling">Rationale for Field Value Handling</h3>
+<p>For fields not using an allowed normalization,
+<a href="./0009#declarative-clients">Declarative clients</a> will not be able to identify which changes are
+semantically meaningful. When a <a href="./0009#declarative-clients">Declarative client</a>
+sends a particular value it will ensure that the value is being returned by the
+service to validate it was set correctly.</p>
+<ul>
+<li></li>
+</ul>
+<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
