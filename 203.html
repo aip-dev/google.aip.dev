@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=22326c95">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=22326c95">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=2b582bee">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=2b582bee">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=22326c95"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=2b582bee"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -641,6 +641,7 @@
 </li>
 <li><a href="#backwards-compatibility">Backwards compatibility</a></li>
 <li><a href="#rationale">Rationale</a><ul>
+<li><a href="#identifier-field-behavior">Identifier field behavior</a></li>
 <li><a href="#required-set-of-annotations">Required set of annotations</a></li>
 <li><a href="#requiring-field-behavior">Requiring field behavior</a></li>
 </ul>
@@ -736,6 +737,10 @@ parent field can be <code>OPTIONAL</code>:</p>
 <p>The use of <code>IDENTIFIER</code> indicates that a field within a resource message is used
 to identify the resource. It <strong>must</strong> be attached to the <code>name</code> field and <strong>must
 not</strong> be attached to any other field (see <a href="/122#fields-representing-resource-names">fields representing resource names</a>).</p>
+<p>The <code>IDENTIFIER</code> value conveys that the field is not accepted as input (i.e.
+<code>OUTPUT_ONLY</code>) in the context of a create method, while also being considered
+<code>IMMUTABLE</code> and accepted as input for mutation methods that accept the
+resource as the primary input e.g. <a href="/134">Standard Update</a>.</p>
 <p>This annotation <strong>must not</strong> be applied to references to other resources within
 a message.</p>
 <h3 id="immutable">Immutable</h3>
@@ -863,6 +868,17 @@ following are examples of backwards incompatible changes with
 <li>Removing <code>IMMUTABLE</code> from an existing field previously considered immutable</li>
 </ul>
 <h2 id="rationale">Rationale</h2>
+<h3 id="identifier-field-behavior">Identifier field behavior</h3>
+<p>Resource names, the primary identifiers for any compliant resource, are never
+fully constructed by the user on create. Such fields are typically assigned
+<code>OUTPUT_ONLY</code> field behavior. They are, however, also often consumed as
+the primary identifier in scenarios where the resource itself is the primary
+request payload. Such fields could <em>not</em> be considered <code>OUTPUT_ONLY</code>.
+Furthermore, in mutation requests, like Standard Update, the resource name as
+the primary identifier cannot be changed in place. Such fields are typically
+assigned <code>IMMUTABLE</code> field behavior. These conflicting and context-dependent
+field behaviors meant that a new value was necessary to single out and convey
+the behavior of the resource name field.</p>
 <h3 id="required-set-of-annotations">Required set of annotations</h3>
 <p>A field used in a request message must be either an input or an output.</p>
 <p>In the case of an output, the <code>OUTPUT_ONLY</code> annotation is sufficient.</p>
