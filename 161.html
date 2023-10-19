@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=2b582bee">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=2b582bee">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f66e66c4">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f66e66c4">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=2b582bee"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f66e66c4"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -781,10 +781,9 @@ a wildcard or specifying an overall message that includes an output-only
 subfield), the service <strong>must</strong> ignore any output only fields provided as
 input, even if they are cleared or modified.</p>
 <p>If a user directly specifies an output only field in an update mask, the
-service <strong>should</strong> ignore the output only fields provided as input, even if
+service <strong>must</strong> ignore the output only fields provided as input, even if
 they are cleared or modified, to permit the same field mask to be used for
-input and output. However, the service <strong>may</strong> choose to error with
-<code>INVALID_ARGUMENT</code> if the field is modified in input.</p>
+input and output.</p>
 <h3 id="invalid-field-mask-entries">Invalid field mask entries</h3>
 <p>When reading data, field masks <strong>may</strong> ignore entries that point to a value
 that can not exist (either a field that does not exist, or a map key that the
@@ -794,6 +793,8 @@ an entry points to a value that can not exist; however, the service <strong>may<
 permit deletions.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-10-18</strong>: Update guidance for presence of output only fields in update
+  mask.</li>
 <li><strong>2023-07-17</strong>: Move <code>update_mask</code> guidance to <a href="/134">AIP-134</a>.</li>
 </ul>
   <footer>
