@@ -770,5 +770,12 @@
 		"ghcr.io/joshspicer/more-features/color:1": {},
 		"ghcr.io/joshspicer/more-features/cowsay:1": {},
 		"ghcr.io/marlonpassos-git/dev-container-features/vtex-cli:0": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker"
+			]
+		}
 	}
 }
