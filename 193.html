@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f66e66c4">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f66e66c4">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b3315444">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b3315444">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f66e66c4"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b3315444"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -710,18 +710,19 @@ following:</p>
     <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
         <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.ErrorInfo&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;STOCKOUT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_AVAILABILITY&quot;</span><span class="p">,</span>
         <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;compute.googleapis.com&quot;</span><span class="p">,</span>
         <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;zone&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east1-a&quot;</span><span class="p">,</span>
           <span class="nt">&quot;vmType&quot;</span><span class="p">:</span> <span class="s2">&quot;e2-medium&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;attachment&quot;</span><span class="p">:</span> <span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span>
+          <span class="nt">&quot;attachment&quot;</span><span class="p">:</span> <span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;zonesWithCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;us-central1-f,us-central1-c&quot;</span>
          <span class="p">}</span>
        <span class="p">},</span>
        <span class="p">{</span>
         <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.LocalizedMessage&quot;</span><span class="p">,</span>
         <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;A e2-medium with local-ssd=3,nvidia-t4=2 is currently unavailable in the us-east1-a zone.\nCapacity changes frequently, so try your request in a different zone, with a different VM hardware configuration, or at a later time. For more information, see troubleshooting documentation.&quot;</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;An &lt;e2-medium&gt; VM instance with &lt;local-ssd=3,nvidia-t4=2&gt; is currently unavailable in the &lt;us-east1-a&gt; zone.\n Consider trying your request in the &lt;us-central1-f,us-central1-c&gt; zone(s), which currently has/have capacity to accommodate your request.\n Alternatively, you can try your request again with a different  VM hardware configuration or at a later time. For more information, see the troubleshooting documentation.&quot;</span>
        <span class="p">}</span>
     <span class="p">]</span>
   <span class="p">}</span>
@@ -885,6 +886,7 @@ message, which would be a backwards incompatible change.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-10-24</strong>: Updated the example error with more actionable details.</li>
 <li><strong>2023-05-17</strong>: Change the recommended language for <code>Status.message</code>
   to be the service's native language rather than English.</li>
 <li><strong>2023-05-17</strong>: Specify requirements for changing error messages.</li>
