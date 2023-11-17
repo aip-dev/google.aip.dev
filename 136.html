@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=404c5621">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=404c5621">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=34c7472b">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=34c7472b">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=404c5621"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=34c7472b"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -729,7 +729,7 @@ services. The bullets below apply in all three cases.</p>
 </ul>
 </li>
 <li>The <code>body</code> clause in the <code>google.api.http</code> annotation <strong>should</strong> be <code>"*"</code>.<ul>
-<li>However, if using <code>GET</code>, the <code>body</code> clause <strong>must</strong> be absent.</li>
+<li>See <a href="/127">HTTP and gRPC Transcoding</a> for more information.</li>
 </ul>
 </li>
 <li>Custom methods <strong>should</strong> take a request message matching the RPC
@@ -824,6 +824,7 @@ which generate both synchronous and asynchronous methods to call the RPC in some
 languages.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-11-16:</strong> Included link to <a href="/127">AIP-127</a> "HTTP and gRPC Transcoding" for guidance on body definition.</li>
 <li><strong>2023-05-16:</strong> Added prohibition of the term "async" within RPC names.</li>
 <li><strong>2023-05-09:</strong> Adding guidance for POST and GET, require parent instead of
   the resource singular.</li>
