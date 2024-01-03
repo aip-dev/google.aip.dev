@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bff55626">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bff55626">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=2d249d4d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=2d249d4d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bff55626"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=2d249d4d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -706,11 +706,13 @@ allocation.</p>
 <li>assigned (most recent software package version)</li>
 </ul>
 <p>An attribute with an effective value <strong><em>must</em></strong> be expressed as two fields in
-the API:
-* a mutable field that can be optionally set by the user and <strong>must not</strong> be
-modified by the service
-* an <code>OUTPUT_ONLY</code> field that records the effective value decided on by the
-service</p>
+the API:</p>
+<ul>
+<li>a mutable field that can be optionally set by the user and <strong>must not</strong> be
+modified by the service</li>
+<li>an <code>OUTPUT_ONLY</code> field that records the effective value decided on by the
+service</li>
+</ul>
 <p>Example:
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">VirtualMachine</span> <span class="p">{</span>
   <span class="err">…</span>
