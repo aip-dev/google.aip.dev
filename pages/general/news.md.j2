@@ -1,0 +1,35 @@
+# News
+
+Want to keep up with the AIP system, and what we are working on? Welcome to the
+**AIP newsletter**, a monthly publication covering new AIP guidance, and any
+other developments useful to API producers.
+
+{% for n in site.collections.news.pages.values() | sort(reverse=True, attribute='code') -%}
+### {{ n.config.news.month }} {{ n.config.news.year }}
+
+##### [**{{ n.title }}**]({{ n.relative_uri }})
+
+{{ n.config.news.description | default('AIP newsletter') }}
+
+{% if n.config.news.aips.reviewing is defined or n.config.news.other is defined %}
+
+<div class="aip-newsletter-highlights">
+  <p>Highlights:</p>
+  <ul class="highlights-list">
+    {% if n.config.news.aips.reviewing is defined %}
+    <li class="highlight-item">Reviewing:
+      <ul>
+        {% for aip in n.config.news.aips.reviewing %}
+        <li><a href="/{{ aip }}">AIP-{{ aip }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+    {% for other in n.config.news.other | default([]) %}
+    <li>{{ other }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endif %}
+{% endfor -%}

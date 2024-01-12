@@ -7,20 +7,17 @@ js:
 permalink: /cloud
 ---
 
-# Cloud AIPs
+# Google Cloud Platform AIPs
 
-The following AIPs apply to work on APIs in the Google Cloud PA.
+The following AIPs apply to work on APIs on Google Cloud Platform.
 
-### Guidance
+### Google Cloud Platform APIs
 
-<!-- prettier-ignore-start -->
+{% include aip-listing.html start=2500 end=2599 %}
 
-| Number | Title | State |
-| -----: | ----- | ----- |
-{% for p in site.pages -%}
-{% if p.aip and p.aip.id >= 2500 and p.aip.id < 2600 -%}
-| {{ p.aip.id }} | [{{ p.title }}]({{ p.url }}) | {{ p.aip.state | capitalize }} |
-{% endif -%}
-{% endfor %}
+### Cloud SDK
 
-<!-- prettier-ignore-end -->
+The following AIPs apply to work on the command-line interface for the Cloud
+SDK.
+
+{% include aip-listing.html start=2600 end=2699 %}

@@ -1,0 +1,8 @@
+---
+news:
+  year: 2020
+  month: May
+  description: |
+    Formalizing the Job pattern; clarifications coming to filtering.
+  aips:
+    reviewing: [152, 160]

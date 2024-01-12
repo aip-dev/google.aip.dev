@@ -1,0 +1,11 @@
+---
+news:
+  year: 2020
+  month: October
+  description: |
+    Why and how to make an API interface "declarative friendly", in order to
+    enable automation on top of it.
+  aips:
+    reviewing: [128, 148, 164]
+  other:
+    - Declarative-friendly updates to existing AIPs.
