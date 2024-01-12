@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - master
+
+permissions:
+  contents: write
+    
 jobs:
   github-pages:
     runs-on: ubuntu-latest
     container: python:3.8
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install system dependencies.
         run: apt-get update && apt-get install -y rsync
       - name: Install the site generator.
@@ -17,7 +21,7 @@ jobs:
       - name: Build the static site.
         run: aip-site-gen . out
       - name: Publish the static site to GitHub Pages.
-        uses: jamesives/github-pages-deploy-action@releases/v3
+        uses: jamesives/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
