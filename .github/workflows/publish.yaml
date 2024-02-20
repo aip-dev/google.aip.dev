@@ -26,3 +26,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: out
+            - Tên: Cài đặt .NET Core SDK
+  sử dụng: hành động/setup-dotnet@v4.0.0
+  với:
+    # (Các) phiên bản SDK tùy chọn để sử dụng. Nếu không được cung cấp, sẽ cài đặt phiên bản Global.json khi có sẵn. Ví dụ: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx
+    phiên bản dotnet: # tùy chọn
+    # Chất lượng tùy chọn của công trình. Các giá trị có thể là: hàng ngày, đã ký, đã xác thực, xem trước, ga.
+    chất lượng dotnet: # tùy chọn
+    # Vị trí Global.json tùy chọn, nếu Global.json của bạn không nằm trong thư mục gốc của repo.
+    tập tin toàn cầu-json: # tùy chọn
+    # Nguồn gói tùy chọn để thiết lập xác thực. Sẽ tham khảo mọi NuGet.config hiện có trong thư mục gốc của repo và cung cấp NuGet.config tạm thời bằng cách sử dụng biến môi trường NUGET_AUTH_TOKEN làm ClearTextPassword
+    url nguồn: # tùy chọn
+    # CHỦ SỞ HỮU tùy chọn để sử dụng các gói từ các tổ chức/người dùng Đăng ký gói GitHub không phải là chủ sở hữu của kho lưu trữ hiện tại. Chỉ được sử dụng nếu URL GPR cũng được cung cấp trong url nguồn
+    chủ sở hữu: # tùy chọn
+    # Vị trí NuGet.config tùy chọn, nếu NuGet.config của bạn không nằm trong thư mục gốc của repo.
+    tập tin cấu hình: # tùy chọn
+    # Đầu vào tùy chọn để bật bộ nhớ đệm của thư mục gói toàn cầu NuGet
+    bộ đệm: # tùy chọn
+    # Được sử dụng để chỉ định đường dẫn đến tệp phụ thuộc: packages.lock.json. Hỗ trợ ký tự đại diện hoặc danh sách tên tệp để lưu vào bộ đệm nhiều phần phụ thuộc.
+    đường dẫn phụ thuộc bộ đệm: # tùy chọn
+          
