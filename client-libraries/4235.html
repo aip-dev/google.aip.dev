@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>Client libraries AIPs</title>
+    <title>AIP-4235: Automatically populate fields in the request message</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -20,6 +20,8 @@
     </script>
     <script type="text/javascript" src="/assets/js/global.js?v=65e13bab"></script>
     
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -177,7 +179,7 @@
     <li class="nav-item">
       <a href="/auth">Auth</a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/client-libraries">Client libraries</a>
     </li>
     <li class="nav-item">
@@ -235,7 +237,7 @@
         Common service client mixins
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/4235">
         <span class="aip-number">4235</span>
         Automatically populate fields in the request message
@@ -252,22 +254,35 @@
 <section id="jump-content">
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Automatically populate fields in the request message</th></tr>
+    <tr><td>Number</td><td>4235</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4235">google.aip.dev/client-libraries/4235</a></td></tr>
+    <tr><td>Scope</td><td>Client libraries</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2024-03-07</td></tr>
+    <tr><td>Updated</td><td>2024-03-07</td></tr>
+  </table>
+
   <section id="aip-toc" class="docs-component-sidebar-toc">
-    <div class="toc">
-      <span class="toctitle">Categories</span>
-      <ul>
-        <li><a href="#client-libraries">Client libraries</a></li>
-        </ul>
-    </div>
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
   </section>
 
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4235.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4235.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
-
 <section id="aip-main" class="docs-component-main">
   <section class="section-breadcrumbs">
   <nav
@@ -281,84 +296,56 @@
         </a>
       </li>
       
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/client-libraries">
+          Client libraries AIPs
+        </a>
+      </li>
+      
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Client libraries AIPs
+        Automatically populate fields in the request message
       </li>
     </ol>
   </nav>
 </section>
-  <h3 id="client-libraries">Client libraries</h3>
-  <table class="aip-listing">
-    <thead>
-      <tr>
-        <th style="text-align: right;">Number</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td style="text-align: right;">4210</td>
-        <td>
-          <a href="/4210">Client library generators</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4221</td>
-        <td>
-          <a href="/4221">Client-side retry</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4222</td>
-        <td>
-          <a href="/4222">Routing headers</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4223</td>
-        <td>
-          <a href="/4223">Client-side payload validation</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4231</td>
-        <td>
-          <a href="/4231">Parsing resource names</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4232</td>
-        <td>
-          <a href="/4232">Method signatures</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4233</td>
-        <td>
-          <a href="/4233">Automatic pagination</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4234</td>
-        <td>
-          <a href="/4234">Common service client mixins</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4235</td>
-        <td>
-          <a href="/4235">Automatically populate fields in the request message</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">4290</td>
-        <td>
-          <a href="/4290">Docker interface</a>
-          </td>
-      </tr>
-      </tbody>
-  </table>
+  
+  <h4 class="aip-number">AIP-4235</h4>
+  <h1 id="automatically-populate-fields-in-the-request-message">Automatically populate fields in the request message</h1>
+<p>For APIs that leverage request idempotency as described via <a href="https://google.aip.dev/155">AIP-155</a>, APIs may
+choose to have the client libraries automatically populate the <code>request_id</code>
+if it is not already set by the customer.</p>
+<p><strong>Note:</strong> This feature is primarily written for <code>request_id</code> fields within the
+request message. Nonetheless, this feature <strong>must</strong> work for a field of any
+name, as long as the below conditions hold true.</p>
+<h2 id="guidance">Guidance</h2>
+<p>APIs <strong>may</strong> configure fields in the request message for automatic population.
+For a field to be automatically populated, <strong>all</strong> the below configurations
+<strong>must</strong> be true:</p>
+<ul>
+<li>The field <strong>must</strong> be of type <code>string</code></li>
+<li>The field <strong>must</strong> be at the top-level of the request message</li>
+<li>The RPC <strong>must</strong> be a unary RPC (i.e. streaming RPCs are not supported)</li>
+<li>The field <strong>must not</strong> be annotated
+  with <a href="https://google.aip.dev/203#required"><code>google.api.field_behavior = REQUIRED</code></a>.</li>
+<li>The field <strong>must</strong> be annotated
+  with <a href="https://google.aip.dev/202#uuid4"><code>google.api.field_info.format = UUID4</code></a>.</li>
+<li>The field name <strong>must</strong> be listed
+  in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/client.proto"><code>google.api.MethodSettings.auto_populated_fields</code></a> entry
+  in <a href="https://github.com/googleapis/googleapis/blob/master/google/api/client.proto"><code>google.api.Publishing.method_settings</code></a>
+  for the target method.</li>
+</ul>
+<h3 id="expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</h3>
+<p>If the aforementioned requirements are met for a given field, client library
+generators <strong>must</strong> enable automatic population of said field in the
+generated client.
+If a field is specified in the <code>auto_populated_fields</code>, but does not meet the
+structural requirements, the client library generators <strong>must not</strong> enable
+automatic population for that field. Client library generators <strong>may</strong> emit an
+error during generation.</p>
+<p>Client libraries <strong>must</strong> reuse automatically populated values for retries of
+the same request i.e., the automatically populated fields <strong>must not</strong> be
+regenerated for each RPC attempt with a single request message.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
