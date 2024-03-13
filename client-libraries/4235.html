@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=7e3976e6">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=7e3976e6">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=7609cbf9">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=7609cbf9">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=7e3976e6"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=7609cbf9"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -313,7 +313,7 @@
   <h4 class="aip-number">AIP-4235</h4>
   <h1 id="automatically-populate-fields-in-the-request-message">Automatically populate fields in the request message</h1>
 <p>For APIs that leverage request idempotency as described via <a href="https://google.aip.dev/155">AIP-155</a>, APIs may
-choose to have the client libraries automatically populate fields such as 
+choose to have the client libraries automatically populate fields such as
 <code>request_id</code> if they are not already set by the customer.</p>
 <p><strong>Note:</strong> This feature is primarily written for <code>request_id</code> fields within the
 request message. Nonetheless, this feature <strong>must</strong> work for a field of any
@@ -339,13 +339,20 @@ For a field to be automatically populated, <strong>all</strong> the conditions b
 <p>If the aforementioned requirements are met for a given field, client library
 generators <strong>must</strong> enable automatic population of said field in the
 generated client.</p>
+<p>The field <strong>must</strong> be automatically populated if and only if one of the
+following conditions holds:</p>
+<ul>
+<li>The field supports explicit presence, and has <strong>not</strong> been set by the user</li>
+<li>The field doesn't support explicit presence, and its value is the empty
+  string (i.e. the default value)</li>
+</ul>
 <p>If a field is specified in the <code>auto_populated_fields</code>, but does not meet the
 structural requirements, the client library generators <strong>must not</strong> enable
 automatic population for that field. Client library generators <strong>may</strong> emit an
 error during generation.</p>
 <p>Client libraries <strong>must</strong> reuse automatically populated values for retries of
-the same request. In other words, the automatically populated fields <strong>must not</strong>
-be regenerated for each RPC attempt with the same request message.</p>
+the same request. In other words, the automatically populated fields
+<strong>must not</strong> be regenerated for each RPC attempt with the same request message.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
