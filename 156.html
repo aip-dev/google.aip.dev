@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=7609cbf9">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=7609cbf9">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3dd10082">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3dd10082">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=7609cbf9"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=3dd10082"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -628,6 +628,7 @@
 <li><a href="#guidance">Guidance</a></li>
 <li><a href="#rationale">Rationale</a><ul>
 <li><a href="#support-for-standard-list">Support for Standard List</a></li>
+<li><a href="#including-plural-definition">Including plural definition</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -685,6 +686,8 @@ per parent.</p>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">type</span><span class="o">:</span> <span class="s">&quot;api.googleapis.com/Config&quot;</span>
     <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;users/{user}/config&quot;</span>
+    <span class="n">singular</span><span class="o">:</span> <span class="s">&quot;config&quot;</span>
+    <span class="n">plural</span><span class="o">:</span> <span class="s">&quot;configs&quot;</span>
   <span class="p">};</span>
 
   <span class="c1">// additional fields including name</span>
@@ -715,6 +718,8 @@ per parent.</p>
 <li>Example: <code>users/1234/thing</code></li>
 </ul>
 </li>
+<li>Singleton resource defintions <strong>must</strong> provide both the <code>singular</code> and
+  <code>plural</code> fields (see above example).</li>
 <li>Singleton resources <strong>may</strong> parent other resources.</li>
 <li>Singleton resources <strong>must not</strong> define the <a href="/133"><code>Create</code></a> or
   <a href="/135"><code>Delete</code></a> standard methods. The singleton is implicitly created or
@@ -768,8 +773,14 @@ as a collection to the API consumer as it is indirectly one based on its parent.
 Furthermore, presenting the Singleton resource as a pseudo-collection in such
 methods enables future expansion to a real collection, should a Singleton be
 found lacking.</p>
+<h3 id="including-plural-definition">Including <code>plural</code> definition</h3>
+<p>While a Singleton is by definition singular, there are certain cases where
+a Singleton resource may appear in a plural form e.g., if the service supports
+Standard List (as defined here). As such, it is better to forward declare the
+plural form of the Singleton resource type than to not have it when needed.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-04-15:</strong> Singletons must specify <code>singular</code> and <code>plural</code> in resource.</li>
 <li><strong>2023-08-10:</strong> Add Standard <code>List</code> support.</li>
 <li><strong>2023-07-26:</strong> Clarified that read-only singletons should not have <code>Update</code>.</li>
 <li><strong>2021-11-02:</strong> Added an example message and state parent eligibility.</li>
