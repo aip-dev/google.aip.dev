@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=db635e14">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=db635e14">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5e700511">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5e700511">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=db635e14"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5e700511"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -504,6 +504,19 @@ to the following backwards-compatibility expectations:</p>
   libraries.</li>
 <li>The addition of a <code>google.api.resource_reference</code> annotation on an existing
   field <strong>must</strong> be a backwards-compatible change.</li>
+<li>Changing a <code>google.api.resource_reference</code> from <code>child_type</code> to <code>type</code>
+  <strong>must</strong> be a backwards-compatible change when the <code>child_type</code> referenced
+  has a single <code>pattern</code> and the newly referenced <code>type</code> is the matching
+  parent resource <code>pattern</code> (see the
+  <a href="#referencing-other-resources">Referencing other resources</a> section for
+  more info).</li>
+<li>For references that appear in a request, changing from <code>type</code> to
+  <code>child_type</code> <strong>must</strong> be a backwards-compatible change when the resource
+  <code>pattern</code> originally referenced via the <code>type</code> is included in the set of
+  possible resource <code>pattern</code>s derived through <code>child_type</code> resolution (see
+  the above <a href="#multi-pattern-resources">Multi-pattern resources</a> and
+  <a href="#referencing-other-resources">Referencing other resources</a> sections for
+  more examples).</li>
 </ul>
 <p>Note: The <code>ORIGINALLY_SINGLE_PATTERN</code> and <code>FUTURE_MULTI_PATTERN</code> flags are
 deprecated, and must not be used.</p>
@@ -514,6 +527,7 @@ deprecated, and must not be used.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2023-03-25</strong>: Include compatibility guidance for <code>type</code> and <code>child_type</code>.</li>
 <li><strong>2022-10-28</strong>: Pattern variables are considered final</li>
 <li><strong>2020-09-14</strong>: Disallow simultaneous use of both <code>type</code> and <code>child_type</code>.</li>
 <li><strong>2020-05-14</strong>: Added complex resource ID path segments.</li>
