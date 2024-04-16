@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.10-alpine
 
 # Define the working directory.
 # Note: There is no code here; it is pulled from the repository by mounting
