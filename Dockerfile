@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 RUN apk del git
 
 # Set environment variables.
-ENV FLASK_ENV development
+ENV FLASK_DEBUG=True
 
 # Expose appropriate ports.
 EXPOSE 4000
