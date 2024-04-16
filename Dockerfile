@@ -7,9 +7,11 @@ WORKDIR /code/
 
 # Install Python packages for this project.
 COPY requirements.txt /code/requirements.txt
-RUN apk add git && \
-  pip install -r requirements.txt && \
-  apk del git
+COPY cython_constraint.txt /code/cython_constraint.txt
+RUN apk add git
+RUN PIP_CONSTRAINT=cython_constraint.txt pip install -r requirements.txt
+RUN pip install -r requirements.txt
+RUN apk del git
 
 # Set environment variables.
 ENV FLASK_ENV development
