@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=553efdcc">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=553efdcc">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=631afdd6">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=631afdd6">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=553efdcc"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=631afdd6"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -633,6 +633,10 @@
 <li><a href="#backwards-compatibility">Backwards compatibility</a></li>
 </ul>
 </li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#validate-only-behavior">Validate-only behavior</a></li>
+</ul>
+</li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -725,6 +729,24 @@ ultimate response message.</p>
 <li>APIs with messages that return <code>Operation</code> <strong>must</strong> implement the
   <a href="https://github.com/googleapis/googleapis/blob/master/google/longrunning/operations.proto"><code>Operations</code></a> service. Individual APIs <strong>must not</strong> define their own
   interfaces for long-running operations to avoid non-uniformity.</li>
+<li>If an RPC supports a <a href="aip-163">validate-only mode</a>, the response to a
+  validation request <strong>must</strong> be one of the following:<ul>
+<li>A successful response with an <code>Operation</code> which is already complete, with
+  the <code>done</code> field set to <code>true</code>, and a valid (but potentially empty) response
+  message in the <code>response</code> field, wrapped in a <code>google.protobuf.Any</code> message.
+  The <code>name</code> field <strong>may</strong> be empty, to avoid the service having to maintain
+  state for successful validation.</li>
+<li>An immediate error response (typically "bad request")</li>
+<li>An <code>Operation</code> with the <code>done</code> field set to <code>false</code>, to indicate
+  long-running validation. In this case, the <code>name</code> field <strong>must</strong> be set,
+  to allow clients to poll the long-running validation operation until it
+  has completed. Successful validation <strong>must</strong> eventually be represented by
+  an operation with <code>done=true</code> and a valid (but potentially empty) wrapped
+  response message in the <code>response</code> field. Unsuccessful validation <strong>must</strong>
+  eventually be represented by an operation with <code>done=true</code> and the error
+  details provided in the <code>error</code> field.</li>
+</ul>
+</li>
 </ul>
 <p><strong>Note:</strong> User expectations can vary on what is considered "a significant
 amount of time" depending on what work is being done. A good rule of thumb is
@@ -766,12 +788,27 @@ metadata message. The errors themselves <strong>must</strong> still be represent
 <h3 id="backwards-compatibility">Backwards compatibility</h3>
 <p>Changing either the <code>response_type</code> or <code>metadata_type</code> of a long-running operation
 is a breaking change.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="validate-only-behavior">Validate-only behavior</h3>
+<p>The guidance for validate-only responses comes from a tension
+between clients, which benefit from "fully formed" operations that can
+be treated uniformly, and servers, which don't wish to maintain
+additional state for trivial operations. It seems counterintuitive
+that just validating a request should generate more state, but a
+full operation response that can be fetched later would either
+require that or "special" singleton operation IDs. The guidance
+provided is a compromise: by returning a "done" operation, clients
+can use existing logic to check that the operation has completed
+successfully (and therefore doesn't need to be fetched for an
+updated status) but server don't need to maintain any additional state.</p>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
 
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2022-06-??</strong>: Added compatibility section</li>
+<li><strong>2024-04-23</strong>: Provided pattern for validation on RPCs returning
+  long-running operations.</li>
+<li><strong>2022-05-31</strong>: Added compatibility section.</li>
 <li><strong>2020-08-24</strong>: Clarified that responses are not streaming responses.</li>
 <li><strong>2020-06-24</strong>: Added guidance for parallel operations.</li>
 <li><strong>2020-03-20</strong>: Clarified that both <code>response_type</code> and <code>metadata_type</code> are
