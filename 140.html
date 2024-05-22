@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=47a698b2">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=47a698b2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=13b48280">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=13b48280">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=47a698b2"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=13b48280"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -702,6 +702,8 @@ names <strong>should</strong> avoid including unnecessary words. In particular, 
 including adjectives that always apply and add little cognitive value. For
 example, a <code>proxy_settings</code> field might be as helpful as
 <code>shared_proxy_settings</code> if there is no unshared variant.</p>
+<p><strong>Important:</strong> Field names often appear in generated client surfaces. Ensure they 
+are appropriately descriptive and of suitable length.</p>
 <h3 id="case">Case</h3>
 <p>Field definitions in protobuf files <strong>must</strong> use <code>lower_snake_case</code> names.
 These names are mapped to an appropriate naming convention in JSON and in
@@ -799,6 +801,7 @@ field <strong>should not</strong> have a uniqueness requirement.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-05-18</strong>: Documented the effect of field names on client surfaces.</li>
 <li><strong>2023-04-25</strong>: Field names <strong>must not</strong> be expressed as verbs.</li>
 <li><strong>2021-07-12</strong>: Normalized display name guidance to "should".</li>
 <li><strong>2021-04-07</strong>: Added base64 and bytes guidance.</li>
