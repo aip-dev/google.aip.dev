@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>GSuite AIPs</title>
+    <title>AIP-4236: Version-aware clients</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -20,6 +20,8 @@
     </script>
     <script type="text/javascript" src="/assets/js/global.js?v=47a698b2"></script>
     
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -180,7 +182,7 @@
     <li class="nav-item">
       <a href="/client-libraries">Client libraries</a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/apps">GSuite</a>
     </li>
     <li class="nav-item">
@@ -188,39 +190,69 @@
     </li>
     <li class="nav-item nav-item-header">AIPs</li>
     <li class="nav-item">
-      <a href="/2712">
-        <span class="aip-number">2712</span>
-        API completeness
+      <a href="/4210">
+        <span class="aip-number">4210</span>
+        Client library generators
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2713">
-        <span class="aip-number">2713</span>
-        One team owns each type
+      <a href="/4221">
+        <span class="aip-number">4221</span>
+        Client-side retry
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2715">
-        <span class="aip-number">2715</span>
-        Documenting authorization changes
+      <a href="/4222">
+        <span class="aip-number">4222</span>
+        Routing headers
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2716">
-        <span class="aip-number">2716</span>
-        Standard terms in names
+      <a href="/4223">
+        <span class="aip-number">4223</span>
+        Client-side payload validation
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2717">
-        <span class="aip-number">2717</span>
-        Patterns for generic fields
+      <a href="/4231">
+        <span class="aip-number">4231</span>
+        Parsing resource names
       </a>
     </li>
     <li class="nav-item">
-      <a href="/2718">
-        <span class="aip-number">2718</span>
-        References to objects in other APIs
+      <a href="/4232">
+        <span class="aip-number">4232</span>
+        Method signatures
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4233">
+        <span class="aip-number">4233</span>
+        Automatic pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4234">
+        <span class="aip-number">4234</span>
+        Common service client mixins
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4235">
+        <span class="aip-number">4235</span>
+        Automatically populate fields in the request message
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/4236">
+        <span class="aip-number">4236</span>
+        Version-aware clients
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4290">
+        <span class="aip-number">4290</span>
+        Docker interface
       </a>
     </li>
     </ul>
@@ -228,22 +260,38 @@
 <section id="jump-content">
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Version-aware clients</th></tr>
+    <tr><td>Number</td><td>4236</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4236">google.aip.dev/client-libraries/4236</a></td></tr>
+    <tr><td>Scope</td><td>Client libraries</td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2024-05-16</td></tr>
+    <tr><td>Updated</td><td>2024-05-16</td></tr>
+  </table>
+
   <section id="aip-toc" class="docs-component-sidebar-toc">
-    <div class="toc">
-      <span class="toctitle">Categories</span>
-      <ul>
-        <li><a href="#apps">GSuite</a></li>
-        </ul>
-    </div>
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#necessity-for-versioning">Necessity for Versioning</a></li>
+<li><a href="#importance-of-opaque-treatment">Importance of Opaque Treatment</a></li>
+<li><a href="#mutual-exclusivity-of-query-and-header">Mutual Exclusivity of Query and Header</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
   </section>
 
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/client-libraries/4236.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/client-libraries/4236.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
-
 <section id="aip-main" class="docs-component-main">
   <section class="section-breadcrumbs">
   <nav
@@ -257,69 +305,59 @@
         </a>
       </li>
       
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/client-libraries">
+          Client libraries AIPs
+        </a>
+      </li>
+      
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        GSuite AIPs
+        Version-aware clients
       </li>
     </ol>
   </nav>
 </section>
-  <h3 id="apps">GSuite</h3>
-  <table class="aip-listing">
-    <thead>
-      <tr>
-        <th style="text-align: right;">Number</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td style="text-align: right;">2712</td>
-        <td>
-          <a href="/2712">API completeness</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">2713</td>
-        <td>
-          <a href="/2713">One team owns each type</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">2715</td>
-        <td>
-          <a href="/2715">Documenting authorization changes</a>
-          <span class="aip-state aip-state-reviewing">
-            Reviewing
-          </span>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">2716</td>
-        <td>
-          <a href="/2716">Standard terms in names</a>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">2717</td>
-        <td>
-          <a href="/2717">Patterns for generic fields</a>
-          <span class="aip-state aip-state-reviewing">
-            Reviewing
-          </span>
-          </td>
-      </tr>
-      <tr>
-        <td style="text-align: right;">2718</td>
-        <td>
-          <a href="/2718">References to objects in other APIs</a>
-          <span class="aip-state aip-state-draft">
-            Draft
-          </span>
-          </td>
-      </tr>
-      </tbody>
-  </table>
+  <p id="aip-state-banner" class="callout note">
+  This AIP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AIP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aip-number">AIP-4236</h4>
+  <h1 id="version-aware-clients">Version-aware clients</h1>
+<p>APIs can annotate services with [<code>google.api.api_version</code>][]. If
+<code>google.api.api_version</code> is specified, version-aware clients <strong>must</strong>
+include the value of <code>google.api.api_version</code> in the request to the API.</p>
+<h3 id="expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</h3>
+<p>If a service is annotated with <code>google.api.api_version</code>, client library
+generators <strong>must</strong> include either an HTTP query parameter <code>$apiVersion</code>
+or HTTP header <code>X-Goog-Api-Version</code>, but a request <strong>must not</strong> contain both.</p>
+<p>Generated documentation for a given service <strong>may</strong> include the value of
+<code>google.api.api_version</code>, if it exists in the source protos.</p>
+<p>Clients <strong>must</strong> treat the value of <code>google.api.api_version</code> as opaque to ensure
+robust compatibility.  This means that the specific format or structure of the
+version string <strong>must not</strong> be parsed or interpreted for any purpose beyond identifying
+the intended API version.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="necessity-for-versioning">Necessity for Versioning</h3>
+<p>Explicit API versioning using the <code>google.api.api_version</code> annotation is essential
+for maintaining compatibility between clients and services over time. As services
+evolve, their schemas and behaviors may change. By specifying the API version, a
+client communicates its expectations to the service. This allows the service to
+respond in a manner consistent with the client's understanding, preventing errors
+or unexpected results due to incompatible changes.</p>
+<h3 id="importance-of-opaque-treatment">Importance of Opaque Treatment</h3>
+<p>Treating the <code>google.api.api_version</code> value as opaque is important for ensuring robust
+compatibility guarantees. By relying on this opaque identifier, clients avoid making
+assumptions about the underlying versioning scheme, which may change independently of
+the API itself. This flexibility allows service providers to evolve their versioning
+strategies without impacting client compatibility.</p>
+<h3 id="mutual-exclusivity-of-query-and-header">Mutual Exclusivity of Query and Header</h3>
+<p>Both the query parameter and header mechanisms exist to provide flexibility for different
+client environments. However, allowing both simultaneously could lead to ambiguity if the
+values differ. To ensure consistent version identification and prevent potential conflicts,
+only one mechanism should be used at a time.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
