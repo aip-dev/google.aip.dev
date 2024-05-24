@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=13b48280">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=13b48280">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9ac705cb">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9ac705cb">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=13b48280"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9ac705cb"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -814,6 +814,11 @@ default to 50, then that user's code breaks; it was getting all resources, and
 now is only getting the first 50 (and does not know to advance pagination).
 Even if the API set a higher default limit, such as 100, the user's collection
 could grow, and <em>then</em> the code would break.</p>
+<p>Additionally, <a href="../client-libraries/4233.md">client libraries implement automatic
+pagination</a>, typically representing paginated
+RPCs using different method signatures to unpaginated ones. This means that
+adding pagination to a previously-unpaginated method causes a breaking change
+in those libraries.</p>
 <p>For this reason, it is important to always add pagination to RPCs returning
 collections <em>up front</em>; they are consistently important, and they can not be
 added later without causing problems for existing users.</p>
@@ -823,6 +828,8 @@ value. Implementing an in-memory version (which might fetch everything then
 paginate) is reasonable for initially-small collections.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2020-05-24</strong>: Clarified that adding pagination breaks client
+  libraries.</li>
 <li><strong>2020-05-13</strong>: Added guidance for skipping results.</li>
 <li><strong>2020-08-24</strong>: Clarified that responses are not streaming responses.</li>
 <li><strong>2020-06-24</strong>: Clarified that page size is always optional for users.</li>
