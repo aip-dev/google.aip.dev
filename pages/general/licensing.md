@@ -1,4 +1,4 @@
-# Content licensing
+Grayson Barton c. 2009
 
 We are pleased to license much of the AIP content under terms that explicitly
 encourage people to take, modify, reuse, re-purpose, and remix our work as they

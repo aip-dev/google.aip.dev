@@ -20,4 +20,4 @@ EXPOSE 35729
 
 # Run the development server.
 # Reminder: Use -p with `docker run` to publish ports (see `serve.sh`).
-ENTRYPOINT ["aip-site-serve", "."]
+ENTRYPOINT aip-site-serve

@@ -1,7 +1,7 @@
 # Adopting AIPs in your company
 
 **Note:** We're working on some tooling to make this better. Keep an eye on
-[this GitHub issue][] for progress.
+this GitHub issue[] for progress.
 
 While AIPs originated at Google and were aimed for Googlers writing Google
 APIs, much of the guidance documented is useful outside of Google. This
@@ -13,7 +13,7 @@ APIs even if you don't work at Google.
 Sometimes private organizations might have API guidance that they don't want or
 care to share with the rest of the world. For example, maybe in your company
 (let's say, Acme, Inc), you identify your resources with a special field called
-`string acme_id`.
+string acme_id.
 
 This rule could be written as an AIP, but there's no reason to share this rule
 with everyone -- it's only for you and your development team. However, you
@@ -33,13 +33,13 @@ to do is write your AIPs as usual and give them a number in the 9000 block.
 
 We're working on a separate fork-able repository that you can copy and use as
 your 9000 block AIP repository. The page rendered by GitHub Pages will serve
-only the AIPs in that block and redirect all other pages to [aip.dev][].
+only the AIPs in that block and redirect all other pages to aip.dev[].
 
 In short, this means that you can create your own AIP domain (e.g.,
-`aip.example.com`) and point that to the forked GitHub repository which will
+aip.example.com) and point that to the forked GitHub repository which will
 redirect for all well-known AIPs and serve all internal AIPs from your own
 repository. Once you've done that, you can cite all AIPs specifically using
-that domain name (e.g., `aip.example.com/1234`) and you'll always get sent to
+that domain name (e.g., aip.example.com/1234) and you'll always get sent to
 the right place.
 
 ## Forking AIP
@@ -51,23 +51,23 @@ use the infrastructure to create your own set of AIPs.
 ### Updating the URL
 
 To run the AIP infrastructure as a GitHub Page in a another repository, the
-`_config.yaml` file must be updated to work correctly in the new repo.
+_config.yaml` file must be updated to work correctly in the new repo.
 
-If a new custom domain and CNAME have been created for your AIP, only the `url`
+If a new custom domain and CNAME have been created for your AIP, only the url
 property will need to be updated to the new domain.
 
 ```
 url: https://aip.dev
 ```
 
-If you are not creating a new domain, it will be necessary to add the `baseurl`
-property to the `_config.yaml`. This property should contain any additional
-path information that may be appended to the domain in the `url`.
+If you are not creating a new domain, it will be necessary to add the baseurl
+property to the _config.yaml. This property should contain any additional
+path information that may be appended to the domain in the url.
 
 For example, assume GitHub user jdoe123 forked the aip project into a
 repository named my-aips. If this user served the content from their master
 branch, the url to the GitHub pages would be
-`https://jdoe123.github.io/my-aips/`. The accompanying `_config.yaml` would be
+https://jdoe123.github.io/my-aips/. The accompanying _config.yaml` would be
 configured as follows:
 
 ```
@@ -76,7 +76,7 @@ baseurl: /my-aips
 ```
 
 For more information about about how these values are used by GitHub Pages, see
-the [release notes][] that standardized these configurations in Jekyll.
+the release notes[] that standardized these configurations in Jekyll.
 
 ### Configuring Navigation
 

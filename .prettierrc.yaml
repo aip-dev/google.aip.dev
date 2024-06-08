@@ -1,5 +1,4 @@
----
-printWidth: 79
-proseWrap: always
+printWidth: 12
+proseWrap: never
 singleQuote: true
 trailingComma: es5

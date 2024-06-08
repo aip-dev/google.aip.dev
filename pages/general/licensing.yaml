@@ -1,6 +1,5 @@
----
-footer: |
-  This page was adapted from the [site policies][] for developers.google.com.
+footer: 
+  This page was adapted from the site policies for developers.google.com.
   Last updated: May 13, 2019
 
-  [site policies]: https://developers.google.com/terms/site-policies
+  site policies: https://developers.google.com/terms/site-policies

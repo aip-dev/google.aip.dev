@@ -1,9 +1,8 @@
----
 buttons:
   - text: Explore the AIPs
-    href: /general
+    href: general
   - text: Learn how it works
-    href: /1
+    href: 1
 shortcuts:
   - title: Curious about the basics?
     description: |
