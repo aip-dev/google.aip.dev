@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=78b9b6e5">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=78b9b6e5">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63e429ce">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=63e429ce">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=78b9b6e5"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=63e429ce"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -724,6 +724,15 @@ not valuable for users to do so.</p>
   <a href="/121#strong-consistency">strong consistency</a>: the completion of a delete operation <strong>must</strong> mean
   that the existence of the resource has reached a steady-state and reading
   resource state returns a consistent response.</li>
+<li>The API <strong>must</strong> fail with a <code>FAILED_PRECONDITION</code> error if child resources
+  are present. See guidance on <a href="#cascading-delete">Cascading Delete</a> if forcing
+  deletion of parent and child resources is necessary.<ul>
+<li>If the only child resource type is a <a href="/156">Singleton</a>, deletion <strong>must</strong>
+  be allowed, because the lifecycle of a Singleton is tied to that of its
+  parent resource. This applies even if there are multiple different Singleton
+  resource types for the same parent resource.</li>
+</ul>
+</li>
 </ul>
 <p>The Delete method <strong>should</strong> succeed if and only if a resource was present and
 was successfully deleted. If the resource did not exist, the method <strong>should</strong>
@@ -867,6 +876,7 @@ exist, the service <strong>must</strong> error with <code>NOT_FOUND</code> (HTTP
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-06-11</strong>: Add deletion behavior for parent resource deletion requests without a <code>force</code> field.</li>
 <li><strong>2023-08-24</strong>: Adding consistency requirement.</li>
 <li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2022-02-02</strong>: Changed eTag error from <code>FAILED_PRECONDITION</code> to <code>ABORTED</code> making it consistent with change to <a href="/154">AIP-154</a> &amp; <a href="/134#etags">AIP-134</a> on 2021-03-05.</li>
