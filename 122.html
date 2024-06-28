@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a93efbc0">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a93efbc0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8b368480">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8b368480">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a93efbc0"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=8b368480"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -766,10 +766,25 @@ collection's name <strong>may</strong> omit the prefix. For example, given a col
 <p>An API <strong>should</strong> use the less-redundant form:</p>
 <div class="highlight language-None"><pre><span></span><code>users/vhugo1802/events/birthday-dinner-226
 </code></pre></div>
-<p>In this situation, the <em>message</em> is still called <code>UserEvent</code>; only the resource
-name is shortened.</p>
+<p>In this situation, the <em>message</em> and <em>resource type</em> are still called
+<code>UserEvent</code>; only the collection and resource identifiers in the pattern(s) are 
+shortened. Since the <em>resource type</em> is not shortened, the <code>singular</code> and
+<code>plural</code> are similarly <em>not shortened</em>.</p>
+<div class="highlight language-None"><pre><span></span><code>message UserEvent {
+  option (google.api.resource) = {
+    type: &quot;example.googleapis.com/UserEvent&quot;
+    // Only the collection &amp; resource identfiers in the `pattern` are shortened.    
+    pattern: &quot;projects/{project}/users/{user}/events/{event}&quot;
+    singular: &quot;userEvent&quot;
+    plural: &quot;userEvents&quot;
+  };
+
+  string name = 1;
+}
+</code></pre></div>
 <p><strong>Note:</strong> APIs wishing to do this <strong>must</strong> follow this format consistently
-throughout the API, or else not at all.</p>
+throughout all of its <code>pattern</code> entries defined and anywhere else the
+resource is referenced in the API, or else not at all.</p>
 <h3 id="resource-id-segments">Resource ID segments</h3>
 <p>A resource ID segment identifies the resource within its parent collection. In
 the resource name <code>publishers/123/books/les-miserables</code>, <code>123</code> is the resource
@@ -980,6 +995,8 @@ involved in the resolution of the reference (via Standard Methods), guaranteeing
 isolation of logical concerns per-resource.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-06-14</strong>: Clarify resource annotation shortening rules for nested
+  collections.</li>
 <li><strong>2023-09-19</strong>: Prohibit duplicate collection identifiers.</li>
 <li><strong>2023-09-01</strong>: Add a clause that allows embedding for revision resource
   messages.</li>
