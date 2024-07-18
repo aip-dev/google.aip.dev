@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b59d2fd3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b59d2fd3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0b2a127c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0b2a127c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b59d2fd3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0b2a127c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -814,9 +814,10 @@ resource.</p>
 persisting data, which may be shared between multiple clients, while clients
 have sole responsibility and authority for maintaining the application state.</p>
 <h3 id="cyclic-references">Cyclic References</h3>
-<p>The relationship between resources, such as parent-child or
-<a href="/122#fields-representing-another-resource">resource references</a>, <strong>must</strong> be representable via a
-<a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph</a>.</p>
+<p>The relationship between resources, such as with <a href="/122#fields-representing-another-resource">resource references</a>,
+<strong>must</strong> be representable via a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph</a>. The parent-child
+relationship also <strong>must</strong> be acyclic, and as per <a href="/124">AIP-124</a> a given resource
+instance will only have one canonical parent resource.</p>
 <p>A cyclic relationship between resources increases the complexity of managing
 resources. Consider resources A and B that refer to
 each other. The process to create said resources are:</p>
@@ -832,6 +833,7 @@ resource must be dereferenced first for a successful deletion.</p>
 and in turn do not increase resource management complexity.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-07-08</strong>: Clarify acyclic nature of parent-child relationship.</li>
 <li><strong>2023-08-24</strong>: Added guidance on consistency guarantees of methods.</li>
 <li><strong>2023-07-23</strong>: Clarify stateless protocol definition.</li>
 <li><strong>2023-01-21</strong>: Explicitly require matching schema across standard methods.</li>
