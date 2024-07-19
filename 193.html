@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1ad121be">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1ad121be">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3cbec7c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3cbec7c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1ad121be"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=3cbec7c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -866,12 +866,20 @@ descriptions, and examples:</p>
   using either of the following reasons breaches the required
   formatting and is not allowed: <code>librariesAreGreat</code>, <code>noBooks</code>.</p>
 </li>
-<li><code>domain string</code></li>
+</ul>
+</li>
+<li>
+<p><code>domain string</code></p>
+<ul>
 <li>The logical grouping to which the <code>reason</code> belongs. The error domain
   is typically the registered service name of the tool or product that
   generated the error. The domain must be a globally unique value.</li>
 <li><em>Example</em>:<br><code>pubsub.googleapis.com</code></li>
-<li><code>metadata map</code></li>
+</ul>
+</li>
+<li>
+<p><code>metadata map</code></p>
+<ul>
 <li>Additional structured details about this error, which <strong>should</strong>
   provide important context for customers to identify resolution
   steps.  Keys <strong>should</strong> match <code>/[a-z][a-zA-Z0-9-_]+/</code>, and be
@@ -879,7 +887,7 @@ descriptions, and examples:</p>
   value of an exceeded limit, the units <strong>should</strong> be contained in the
   key, not the value.</li>
 <li><em>Example</em>:
- <div class="highlight language-None"><pre><span></span><code>&quot;vmType&quot;: &quot;e2-medium&quot;,
+  <div class="highlight language-None"><pre><span></span><code>&quot;vmType&quot;: &quot;e2-medium&quot;,
 &quot;attachment&quot;: &quot;local-ssd=3,nvidia-t4=2&quot;,
 &quot;zone&quot;: &quot;us-east1-a&quot;
 </code></pre></div></li>
@@ -974,9 +982,9 @@ time.</p>
 <li>
 <p>If the error resolution exceeds the number of characters supported in
   the problem description (<code>message</code> string of <code>google.rpc.Status</code>),
-  or requires multiple troubleshooting steps, include the most common
-  resolution in the message and use the <code>Help</code> payload to link to
-  relevant documentation.</p>
+  or requires multiple troubleshooting steps, include the most
+  common resolution in the message and use the <code>Help</code> payload to
+  link to relevant documentation.</p>
 </li>
 </ul>
 </li>
@@ -1004,7 +1012,7 @@ descriptions, and examples:</p>
 <li>The URL of the link. For error documentation this must follow the
   standardized format listed in the following example.</li>
 <li><em>Example</em>:
-  https://cloud.google.com/PRODUCT/docs/ERROR-REASON</li>
+    https://cloud.google.com/PRODUCT/docs/ERROR-REASON</li>
 </ul>
 </li>
 </ul>
@@ -1098,7 +1106,7 @@ message, which would be a backwards incompatible change.</p>
 <p>Reasons to present the same error message in both locations include the following:</p>
 <ul>
 <li>The service plans to localize either immediately or in the near future. See,
-"<a href="#localization">Localization</a>".</li>
+  "<a href="#localization">Localization</a>".</li>
 <li>This practice enables clients to find an error message consistently in one
   location, <code>LocalizedMessaage.message</code>, across all methods of the API Service.</li>
 </ul>
