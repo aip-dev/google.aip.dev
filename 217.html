@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fedc844">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fedc844">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=205178c8">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=205178c8">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4fedc844"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=205178c8"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -768,15 +768,18 @@ throughout the process of listing all the requested resources.</p>
 aforementioned guidance i.e. the API call returns an error status instead of a
 partial result, to adopt the <code>unreachable</code> pattern the API <strong>must</strong> do the
 following:</p>
-<pre><code>* the default behavior **must** be retained to avoid incompatible behavioral
-  changes
-  * For example, if the default behavior is to return an error if any location
-    is unreachable, that default behavior **must** be retained.
-* the request message **must** have a `bool return_partial_success` field
-* the response message **must** have the standard
-  `repeated string unreachable` field
-* the two aforementioned fields **must** be added simultaneously
-</code></pre>
+<ul>
+<li>The default behavior <strong>must</strong> be retained to avoid incompatible behavioral
+  changes<ul>
+<li>For example, if the default behavior is to return an error if any location
+  is unreachable, that default behavior <strong>must</strong> be retained.</li>
+</ul>
+</li>
+<li>The request message <strong>must</strong> have a <code>bool return_partial_success</code> field</li>
+<li>The response message <strong>must</strong> have the standard
+  <code>repeated string unreachable</code> field</li>
+<li>The two aforementioned fields <strong>must</strong> be added simultaneously</li>
+</ul>
 <p>When the <code>bool return_partial_success</code> field is set to <code>true</code> in a request, the
 API <strong>must</strong> behave as described in the aforementioned guidance with regards to
 populating the <code>repeated string unreachable</code> response field.</p>
