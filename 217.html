@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3cbec7c8">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3cbec7c8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4fedc844">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4fedc844">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=3cbec7c8"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=4fedc844"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -627,9 +627,17 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#pagination">Pagination</a></li>
+<li><a href="#adopting-partial-succcess">Adopting partial succcess</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#using-request-field-to-opt-in">Using request field to opt-in</a></li>
+<li><a href="#introducing-fields-simultaneously">Introducing fields simultaneously</a></li>
+<li><a href="#partial-success-granularity-limitations">Partial success granularity limitations</a></li>
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -755,9 +763,84 @@ throughout the process of listing all the requested resources.</p>
 </ul>
 </li>
 </ul>
+<h3 id="adopting-partial-succcess">Adopting partial succcess</h3>
+<p>In order for an existing API that has a default behavior <em>differing</em> from the
+aforementioned guidance i.e. the API call returns an error status instead of a
+partial result, to adopt the <code>unreachable</code> pattern the API <strong>must</strong> do the
+following:</p>
+<pre><code>* the default behavior **must** be retained to avoid incompatible behavioral
+  changes
+  * For example, if the default behavior is to return an error if any location
+    is unreachable, that default behavior **must** be retained.
+* the request message **must** have a `bool return_partial_success` field
+* the response message **must** have the standard
+  `repeated string unreachable` field
+* the two aforementioned fields **must** be added simultaneously
+</code></pre>
+<p>When the <code>bool return_partial_success</code> field is set to <code>true</code> in a request, the
+API <strong>must</strong> behave as described in the aforementioned guidance with regards to
+populating the <code>repeated string unreachable</code> response field.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
+  <span class="c1">// Standard List request fields...</span>
+
+  <span class="c1">// Setting this field to `true` will opt the request into returning the</span>
+  <span class="c1">// resources that are reachable, and into including the names of those that</span>
+  <span class="c1">// were unreachable in the [ListBooksResponse.unreachable] field. This can</span>
+  <span class="c1">// only be `true` when reading across collections e.g. when `parent` is set to</span>
+  <span class="c1">//  `&quot;projects/example/locations/-&quot;`.</span>
+  <span class="kt">bool</span> <span class="na">return_partial_success</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ListBooksResponse</span> <span class="p">{</span>
+  <span class="c1">// Standard List Response fields...</span>
+
+  <span class="c1">// Unreachable resources. Populated when the request opts into</span>
+  <span class="c1">// `return_partial_success` and reading across collections e.g. when</span>
+  <span class="c1">// attempting to list all resources across all supported locations.</span>
+  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="partial-success-granularity">Partial success granularity</h4>
+<p>If the <code>bool return_partial_success</code> field is set to <code>true</code> in a request that is
+scoped beyond the supported granualirty of the API's ability to reasonably
+report unreachable resources, the API <strong>should</strong> return an <code>INVALID_ARGUMENT</code>
+error with details explaining the issue. For example, if the API only supports
+<code>return_partial_success</code> when [Reading Across Collections][aip159], it returns
+an <code>INVALID_ARGUMENT</code> error when given a request scoped to a specific parent
+resource collection. The supported granularity <strong>must</strong> be documented on the
+<code>return_partial_success</code> field.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="using-request-field-to-opt-in">Using request field to opt-in</h3>
+<p>Introducing a new request field as means of opting into the partial success
+behavior is the best way to communicate user intent while keeping the 
+default behavior backwards compatible. The alternative, changing the default
+behavior with the introduction of the <code>unreachable</code> response field, presents
+a backwards incompatible change. Users that previously expected failure when any
+resource was unreachable, assume the successful response means all resources
+are accounted for in the response.</p>
+<h3 id="introducing-fields-simultaneously">Introducing fields simultaneously</h3>
+<p>Introducing the request and response fields simultaneously is to prevent an
+invalid intermediate state that is presented by only adding one or the other. If
+only <code>unreachable</code> is added, then it could be assumed that it being empty means
+all resources were returned when that may not be true. If only
+<code>return_partial_success</code> is added, then the user wouldn't have a means of
+knowing which resources were unreachable.</p>
+<h3 id="partial-success-granularity-limitations">Partial success granularity limitations</h3>
+<p>At a certain level of request scope granularity, an API is simply unable to
+enumerate the resources that are unreachable. For example, global-only APIs may
+be unable to provide granularity at a localized collection level. In such a
+case, preemptively returning an error when <code>return_partial_success=true</code>
+protects the user from the risks of the alternative - expecting unreachable
+resources if there was an issue, but not getting any, thus falsely assuming
+everything was retrieved. This aligns with guidance herein that suggests failing
+requests that cannot be fulfilled preemptively.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For listing across collections, see <a href="/159">AIP-159</a>.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2024-07-19</strong>: Add guidance for brownfield adoption of partial success.</li>
 </ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
