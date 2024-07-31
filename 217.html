@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=205178c8">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=205178c8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=114757c3">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=114757c3">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=205178c8"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=114757c3"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -631,6 +631,8 @@
 </ul>
 </li>
 <li><a href="#rationale">Rationale</a><ul>
+<li><a href="#using-service-relative-resource-names">Using service-relative resource names</a></li>
+<li><a href="#minimizing-extra-error-details-in-response">Minimizing extra error details in response</a></li>
 <li><a href="#using-request-field-to-opt-in">Using request field to opt-in</a></li>
 <li><a href="#introducing-fields-simultaneously">Introducing fields simultaneously</a></li>
 <li><a href="#partial-success-granularity-limitations">Partial success granularity limitations</a></li>
@@ -705,20 +707,48 @@ a field to indicate this:</p>
 <ul>
 <li>The field <strong>must</strong> be a repeated string, and <strong>should</strong> be named
   <code>unreachable</code>.</li>
-<li>The field <strong>must</strong> be set to the names of the resources which are the cause
-  of the issue, such as the parent or individual resources that could not be
-  reached. The objects listed as unreachable <strong>may</strong> be <em>parents</em> (or higher
-  ancestors) rather than the individual resources being requested. For example,
-  if a location is unreachable, the location is listed.<ul>
-<li>The response <strong>must not</strong> provide any other information about the issue,
-  such as error details or codes. To discover what the underlying issue is,
-  users <strong>should</strong> send a more specific request.</li>
-<li>The service <strong>must</strong> provide a way for the user to get an error with
-  additional information, and <strong>should</strong> allow the user to repeat the
-  original call with more restrictive parameters in order to do so.</li>
-<li>The resource names provided in this field <strong>may</strong> be heterogeneous. The
-  field <strong>should</strong> document what potential resources may be provided in this
-  field, and note that it might expand later.</li>
+<li>The field <strong>must</strong> contain the resource names of the resources that are
+  unreachable or those that impede reaching the requested collection, such as
+  the parent resource of the collection that could not be reached.<ul>
+<li>For example, if an entire location is unreachable, preventing access to the
+  localized collection of resources requested, the location resource is
+  included.</li>
+</ul>
+</li>
+<li>The field <strong>must</strong> contain <em>service-relative</em> resource names, and <strong>must not</strong>
+  contain full resource names, resource URIs, or simple resource IDs. See
+  <a href="/122">AIP-122</a> for definitions.<ul>
+<li>For example, if a <code>Book</code> resource is unreachable, the <em>service-relative</em>
+  resource name <code>"shelves/scifi1/books/starwars4"</code> is included in
+  <code>unreachable</code>, as opposed to the <em>full</em> resource name
+  <code>"//library.googleapis.com/shelves/scifi1/books/starwars4"</code>, the
+  <em>parent-relative</em> resource <code>"books/starwars4"</code>, the resource ID
+  <code>"starwars4"</code>, or the resource URI.</li>
+</ul>
+</li>
+<li>The response <strong>must not</strong> provide any other information about the issue(s)
+  that made the listed resources unreachable.<ul>
+<li>For example, the response cannot contain an extra field with error reasons
+  for each <code>unreachable</code> entry.</li>
+</ul>
+</li>
+<li>The service <strong>must</strong> provide a way for the user to make a more specific
+  request and receive an error with additional information e.g. via a Standard
+  Get or a Standard List targeted at the unreachable collection parent.<ul>
+<li>The service <strong>must</strong> also allow the user to repeat the original call with
+  more restrictive parameters.</li>
+</ul>
+</li>
+<li>The resource names that appear in <code>unreachable</code> <strong>may</strong> be heterogeneous.<ul>
+<li>The <code>unreachable</code> field definition <strong>should</strong> document what potential
+  resources could be provided in this field, and note that it might expand
+  later.</li>
+<li>For example, if both an entire location and a specific resource in a
+  different location are unreachable, the unreachable location's name 
+  e.g. <code>"projects/example123/locations/us-east1"</code> and the unreachable
+  resource's name e.g.
+  <code>"projects/example123/locations/europe-west2/instances/example456"</code> will
+  both appear in <code>unreachable</code>.</li>
 </ul>
 </li>
 </ul>
@@ -813,6 +843,23 @@ an <code>INVALID_ARGUMENT</code> error when given a request scoped to a specific
 resource collection. The supported granularity <strong>must</strong> be documented on the
 <code>return_partial_success</code> field.</p>
 <h2 id="rationale">Rationale</h2>
+<h3 id="using-service-relative-resource-names">Using service-relative resource names</h3>
+<p>In general, relative resource names, as defined in <a href="/122">AIP-122</a>, are the best
+practice for referring to resources by name <em>within</em> a service and in other
+services when that other service is obvious. The full resource name format is
+strictly less consumable (e.g., requires extra parsing client side), and
+over-specified for the uses of <code>unreachable</code>. Resource URIs are not transport
+agnostic, as they are unusable in standard methods for gRPC users, and simple
+resource IDs do not provide enough information about exactly which resource
+was unreachable in a heterogenous list of resources.</p>
+<h3 id="minimizing-extra-error-details-in-response">Minimizing extra error details in response</h3>
+<p>The context in which an unreachable resource is discovered may be sensitive and
+the state of the system fluid between calls. As such, it is preferred to defer
+to the service by making a more specific RPC to get more details about a
+specific resource or parent. This allows the parent to handle all necessary RPC
+checks and system state resolution on at time of request, rather than by
+shoehorning potentially privileged or stale information into the broader list
+call it was unreachable for.</p>
 <h3 id="using-request-field-to-opt-in">Using request field to opt-in</h3>
 <p>Introducing a new request field as means of opting into the partial success
 behavior is the best way to communicate user intent while keeping the 
@@ -843,6 +890,8 @@ requests that cannot be fulfilled preemptively.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-07-29</strong>: Reformat guidance, add explicit resource name format
+  requirement.</li>
 <li><strong>2024-07-19</strong>: Add guidance for brownfield adoption of partial success.</li>
 </ul>
   <footer>
