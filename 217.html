@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=114757c3">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=114757c3">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b90b22c1">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b90b22c1">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=114757c3"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b90b22c1"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -633,9 +633,15 @@
 <li><a href="#rationale">Rationale</a><ul>
 <li><a href="#using-service-relative-resource-names">Using service-relative resource names</a></li>
 <li><a href="#minimizing-extra-error-details-in-response">Minimizing extra error details in response</a></li>
+<li><a href="#unordered-unreachable-contents">Unordered unreachable contents</a></li>
+<li><a href="#per-page-unreachable-resources">Per page unreachable resources</a></li>
 <li><a href="#using-request-field-to-opt-in">Using request field to opt-in</a></li>
 <li><a href="#introducing-fields-simultaneously">Introducing fields simultaneously</a></li>
 <li><a href="#partial-success-granularity-limitations">Partial success granularity limitations</a></li>
+</ul>
+</li>
+<li><a href="#history">History</a><ul>
+<li><a href="#pagination-guidance">Pagination guidance</a></li>
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
@@ -683,8 +689,9 @@
   <h4 class="aip-number">AIP-217</h4>
   <h1 id="unreachable-resources">Unreachable resources</h1>
 <p>Occasionally, a user may ask for a list of resources, and some set of resources
-in the list are temporarily unavailable. For example, a user may ask to list
-resources across multiple parent locations, but one of those locations is
+in the list are temporarily unavailable. The most typical use case is while
+supporting <a href="/159">Reading Across Collections</a>. For example, a user may ask to
+list resources across multiple parent locations, but one of those locations is
 temporarily unreachable. In this situation, it is still desirable to provide
 the user with all the available resources, while indicating that something is
 missing.</p>
@@ -701,7 +708,9 @@ a field to indicate this:</p>
   <span class="kt">string</span> <span class="na">next_page_token</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
   <span class="c1">// Unreachable resources.</span>
-  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">UNORDERED_LIST</span>
+  <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -751,48 +760,67 @@ a field to indicate this:</p>
   both appear in <code>unreachable</code>.</li>
 </ul>
 </li>
+<li>The <code>unreachable</code> field <strong>must not</strong> have semantically meaningful ordering or
+  structure within the list. Put differently, <code>unreachable</code> <strong>must</strong> be an
+  unordered list.<ul>
+<li>As such, the <code>unreachable</code> field <strong>must</strong> be annotated with <code>UNORDERED_LIST</code>
+  field behavior (see <a href="/203#unordered-list">AIP-203</a>).</li>
+</ul>
+</li>
 </ul>
 <p><strong>Important:</strong> If a single unreachable location or resource prevents returning
 any data by definition (for example, a list request for a single publisher
 where that publisher is unreachable), the service <strong>must</strong> fail the entire
 request with an error.</p>
 <h3 id="pagination">Pagination</h3>
-<p>When paginating over a list, it is likely that the service will not know that
-there are unreachable parents or resources initially. Further, parents may
-alternate between being available and unavailable in unpredictable ways
-throughout the process of listing all the requested resources.</p>
-<p>These facts lead to the following guidance:</p>
+<p>While preparing a page of results to fulfill a page fetch RPC e.g. an
+<a href="/132">AIP-132</a> Standard List call, if the service encounters any unreachable
+resources or collections they <strong>must</strong> do the following:</p>
 <ul>
-<li>The response <strong>must</strong> provide any outstanding unreachable locations or
-  resources in the <code>unreachable</code> field on pages <em>following</em> the final page that
-  contains a resource.<ul>
-<li>The response <strong>should not</strong> include both requested data and unreachable
-  resources on the same page.<ul>
-<li>For example, if there are two pages of books and one unavailable
-  publisher, there should be three pages total: first the two pages of
-  books, and then a final page with no books and the unavailable publisher.</li>
+<li>Include the resource name for the unreachable resource in the <code>unreachable</code>
+  response field.<ul>
+<li>The resource name <strong>must</strong> be the most appropriately scoped for the
+  unreachable resource or collection.<ul>
+<li>For example, if a specific zone within a region is unreachable, the
+  unreachable resource name would be a zonal Location e.g.
+  <code>projects/example/locations/us-west1-a</code>, but if an entire region is
+  unreachable, the resource name would be a regional Location e.g.
+  <code>projects/example/locations/us-west1</code>.</li>
 </ul>
 </li>
-<li>If the number of unreachable resources to list is very large, the response
-  <strong>should</strong> honor the <code>page_size</code> field in the same way as for resources. In
-  this case, all pages with requested information <strong>should</strong> precede all
-  pages with unavailable resources or locations.</li>
-<li>The final page's <code>unreachable</code> field <strong>must</strong> <em>only</em> include resources or
-  parents that were partially provided (or missing completely) across the
-  entirety of the pagination process.<ul>
-<li>For example, if a parent or resource was unreachable at the beginning of
-  pagination and it became reachable again and the entire set of previously
-  unreachable data was provided to the user on any page, the <code>unreachable</code>
-  field <strong>must not</strong> include the intermittently-unreachable parent or
-  resource.</li>
-<li>On the other hand, if only <em>some</em> of the resources for a given parent are
-  provided during such an incident as described above, the parent or
-  resource <strong>must</strong> be included in the <code>unreachable</code> field.</li>
+<li>The resource name <strong>must</strong> be included, regardless of restrictive paging
+  parameters e.g. <code>order_by</code>, when it is identified as unreachable.</li>
+</ul>
+</li>
+<li>Populate results that were previously considered unreachable on a following
+  page if their availability is restored and the paging parameters allow for
+  their inclusion.<ul>
+<li>Determining inclusion eligibility based on paging parameters also includes
+  any documented default ordering behavior in the absence of user-specified
+  ordering in the request.</li>
+<li>For example, if region <code>projects/example/locations/us-west1</code> was unavailable
+  in the first page of an ordered paging call, and including its resources
+  would violate the ordering, those out-of-order resources are not included in
+  the following page.</li>
+<li>Similarly, if the same exact request is made, and resources previously
+  considered unreachable are available again, they <strong>must</strong> be populated,
+  within the constraints of the paging parameters.</li>
+</ul>
+</li>
+<li>Limit the number of unreachable resource names returned in a given response
+  if, even after up-scoping the unreachable resource name, the number of
+  unreachable resource names exceeds a documented maximum.<ul>
+<li>This maximum <strong>must</strong> be documented in the <code>unreachable</code> field comments
+  directly.</li>
+<li>This is independent of the <code>page_size</code> set by the caller.</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<h4 id="retaining-previous-behavior">Retaining previous behavior</h4>
+<p>Services <strong>may</strong> continue with previously implemented <code>unreachable</code> pagination
+behavior where changing it would induce an incompatible change as per
+<a href="/180">AIP-180</a>, but <strong>must</strong> document said behavior on the <code>unreachable</code>
+field(s) directly.</p>
 <h3 id="adopting-partial-succcess">Adopting partial succcess</h3>
 <p>In order for an existing API that has a default behavior <em>differing</em> from the
 aforementioned guidance i.e. the API call returns an error status instead of a
@@ -830,7 +858,9 @@ populating the <code>repeated string unreachable</code> response field.</p>
   <span class="c1">// Unreachable resources. Populated when the request opts into</span>
   <span class="c1">// `return_partial_success` and reading across collections e.g. when</span>
   <span class="c1">// attempting to list all resources across all supported locations.</span>
-  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">UNORDERED_LIST</span>
+  <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="partial-success-granularity">Partial success granularity</h4>
@@ -860,6 +890,21 @@ specific resource or parent. This allows the parent to handle all necessary RPC
 checks and system state resolution on at time of request, rather than by
 shoehorning potentially privileged or stale information into the broader list
 call it was unreachable for.</p>
+<h3 id="unordered-unreachable-contents">Unordered <code>unreachable</code> contents</h3>
+<p>It is important for broad API consistency that the contents of <code>unreachable</code> not
+have a specific or order semantic structure. If each API baked a specific
+ordering into a standard field, no single implementation, client or server side,
+would be correct.</p>
+<h3 id="per-page-unreachable-resources">Per page <code>unreachable</code> resources</h3>
+<p>Populating <code>unreachable</code> resources on a per page basis allows end users to
+identify immediately when a page is incomplete, rather than <em>after</em> paging
+through all results. Paging to completion is not guaranteed, so it is important
+to communicate as soon as possible when there are unreachable resource missing
+from a given page. Furthermore, it allows users to identify when there is a
+potential issue that they need to account for in subsequent calls. Finally,
+retaining unreachable resources until the end of paging results requires
+services to retain the state for what should be indepedent and fully isolated
+API calls.</p>
 <h3 id="using-request-field-to-opt-in">Using request field to opt-in</h3>
 <p>Introducing a new request field as means of opting into the partial success
 behavior is the best way to communicate user intent while keeping the 
@@ -884,13 +929,22 @@ protects the user from the risks of the alternative - expecting unreachable
 resources if there was an issue, but not getting any, thus falsely assuming
 everything was retrieved. This aligns with guidance herein that suggests failing
 requests that cannot be fulfilled preemptively.</p>
+<h2 id="history">History</h2>
+<h3 id="pagination-guidance">Pagination guidance</h3>
+<p>The original guidance for how to populate the <code>unreachable</code> field revolved
+around consuming the contents as if they were the paged results. This meant that
+paged resources and unreachable resources couldn't be returned in the same
+response i.e. page, and users needed to completely page through all results
+in order to see if any were unreachable. See the Rationale section for the
+reasoning around the changes.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For listing across collections, see <a href="/159">AIP-159</a>.</li>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li><strong>2024-07-29</strong>: Reformat guidance, add explicit resource name format
+<li><strong>2024-07-29</strong>: Reformat guidance, add explicit resource name format</li>
+<li><strong>2024-07-26</strong>: Change pagination guidance.
   requirement.</li>
 <li><strong>2024-07-19</strong>: Add guidance for brownfield adoption of partial success.</li>
 </ul>
