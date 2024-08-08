@@ -11,7 +11,7 @@ permissions:
 jobs:
   github-pages:
     runs-on: ubuntu-latest
-    container: python:3.8
+    container: python:3.12
     steps:
       - uses: actions/checkout@v3
       - name: Install system dependencies.
