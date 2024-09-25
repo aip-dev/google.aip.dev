@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=bcf4de69">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=bcf4de69">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=696a548d">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=696a548d">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=bcf4de69"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=696a548d"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -689,9 +689,10 @@ users mistakenly delete resources and need the ability to recover.</p>
 mark the resource as having been deleted, but not completely remove it from the
 system. If the method behaves this way, it <strong>should</strong> return the updated
 resource instead of <code>google.protobuf.Empty</code>.</p>
-<p>Resources that support soft delete <strong>should</strong> have a <code>purge_time</code> field as
-described in <a href="/148">AIP-148</a>. Additionally, resources <strong>should</strong> include a <code>DELETED</code>
-state value if the resource includes a <code>state</code> field (<a href="/216">AIP-216</a>).</p>
+<p>Resources that support soft delete <strong>should</strong> have both a <code>delete_time</code> and
+<code>purge_time</code> field as described in <a href="/148">AIP-148</a>. Additionally, resources <strong>should</strong>
+include a <code>DELETED</code> state value if the resource includes a <code>state</code> field
+(<a href="/216">AIP-216</a>).</p>
 <h3 id="undelete">Undelete</h3>
 <p>A resource that supports soft delete <strong>should</strong> provide an <code>Undelete</code> method:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
@@ -796,6 +797,7 @@ resource is not deleted, the service <strong>must</strong> respond with <code>AL
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-09-24</strong>: Included missing requirement for <code>delete_time</code>.</li>
 <li><strong>2023-07-13</strong>: Renamed overloaded <code>expire_time</code> to <code>purge_time</code>.</li>
 <li><strong>2021-07-12</strong>: Added error behavior when soft deleting a deleted resource.</li>
 <li><strong>2021-07-12</strong>: Clarified that <code>ALREADY_EXISTS</code> errors apply to <code>Undelete</code>.</li>
