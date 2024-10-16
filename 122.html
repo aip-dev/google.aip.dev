@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0d757b4c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0d757b4c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=27fdc3b2">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=27fdc3b2">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=0d757b4c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=27fdc3b2"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -638,6 +638,8 @@
 </li>
 <li><a href="#further-reading">Further reading</a></li>
 <li><a href="#rationale">Rationale</a><ul>
+<li><a href="#using-names-instead-of-ids">Using names instead of IDs</a></li>
+<li><a href="#standardizing-on-name">Standardizing on name</a></li>
 <li><a href="#disallow-embedding-of-resources">Disallow embedding of resources</a></li>
 </ul>
 </li>
@@ -975,6 +977,29 @@ implements the resource, <strong>except</strong> for one of following conditions
 <li>For resource types, see <a href="/123">AIP-123</a>.</li>
 </ul>
 <h2 id="rationale">Rationale</h2>
+<h3 id="using-names-instead-of-ids">Using names instead of IDs</h3>
+<p>For any large system, there are many kinds of resources. To use simple resource
+IDs to identify a resource, we'd actually need use a resource-specific tuple to
+reliably identify it, such as <code>(bucket, object)</code> or <code>(user, album, photo)</code>. This
+creates several issues:</p>
+<ul>
+<li>Developers have to understand and remember such anonymous tuples.</li>
+<li>Passing tuples is generally harder than passing strings.</li>
+<li>Centralized infrastructures, such as logging and access control systems,
+  don't understand specialized tuples.</li>
+<li>Specialized tuples limit API design flexibility, such as providing
+  reusable API interfaces. For example,
+  <a href="/151">Long Running Operations</a> can work with many other API interfaces
+  because they use flexible resource names.</li>
+</ul>
+<h3 id="standardizing-on-name">Standardizing on <code>name</code></h3>
+<p>The concept of resource names is not a new one, and is formalized in Uniform
+Resource Names (URN) in conjunction with Uniform Resource Identifiers (URI) and
+Uniform Resource Locators (URL). Considering that the term "name" is so heavily
+overloaded in general, usage outside of a very well-defined meaning would be
+confusing for developers. So, the field name <code>name</code> is reserved in the context
+of AIP-compliant APIs so as to eliminate any confusion with resource names, and
+force other would be "name" fields to use a more specific field name.</p>
 <h3 id="disallow-embedding-of-resources">Disallow embedding of resources</h3>
 <p>Using a resource message directly as the type of a field within another resource
 is problematic for a number of reasons, which are as follows:</p>
@@ -995,6 +1020,8 @@ involved in the resolution of the reference (via Standard Methods), guaranteeing
 isolation of logical concerns per-resource.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-10-15</strong>: Add some rationale we found for use of <code>name</code> as a field and
+  instead of IDs as an identifier.</li>
 <li><strong>2024-06-14</strong>: Clarify resource annotation shortening rules for nested
   collections.</li>
 <li><strong>2023-09-19</strong>: Prohibit duplicate collection identifiers.</li>
