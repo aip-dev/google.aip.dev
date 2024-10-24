@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="glue-flexbox">
   <head>
-    <title>AIP-162: Resource Revisions</title>
+    <title>AIP-185: This topic describes the versioning strategies used by Google APIs. In</title>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -447,7 +447,7 @@
         Field masks
       </a>
     </li>
-    <li class="nav-item nav-item-active">
+    <li class="nav-item">
       <a href="/162">
         <span class="aip-number">162</span>
         Resource Revisions
@@ -489,7 +489,7 @@
         External software dependencies
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item nav-item-active">
       <a href="/185">
         <span class="aip-number">185</span>
         This topic describes the versioning strategies used by Google APIs. In
@@ -621,38 +621,22 @@
           
 <aside id="aip-sidebar" class="docs-component-sidebar">
   <table id="aip-summary">
-    <tr><th colspan="2">Resource Revisions</th></tr>
-    <tr><td>Number</td><td>162</td></tr>
-    <tr><td>Permalink</td><td><a href="https://google.aip.dev/162">google.aip.dev/162</a></td></tr>
-    <tr><td>State</td><td>Draft</td></tr>
-    <tr><td>Created</td><td>2019-09-17</td></tr>
-    <tr><td>Updated</td><td>2019-09-17</td></tr>
+    <tr><th colspan="2">This topic describes the versioning strategies used by Google APIs. In</th></tr>
+    <tr><td>Number</td><td>185</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/185">google.aip.dev/185</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2024-10-22</td></tr>
+    <tr><td>Updated</td><td>2024-10-22</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
-<li><a href="#creating-revisions">Creating Revisions</a></li>
-<li><a href="#resource-names-for-revisions">Resource names for revisions</a></li>
-<li><a href="#server-specified-aliases">Server-specified Aliases</a></li>
-<li><a href="#user-specified-aliases">User-Specified Aliases</a></li>
-<li><a href="#rollback">Rollback</a></li>
-<li><a href="#child-resources">Child resources</a></li>
-<li><a href="#standard-methods">Standard methods</a></li>
+<li><a href="#channel-based-versioning">Channel-based versioning</a></li>
+<li><a href="#release-based-versioning">Release-based versioning</a></li>
+<li><a href="#visibility-based-versioning">Visibility-based versioning</a></li>
 </ul>
 </li>
-<li><a href="#rationale">Rationale</a><ul>
-<li><a href="#abstract-revisions-as-nested-collection">Abstract revisions as nested collection</a></li>
-<li><a href="#tagging-to-aliases">Tagging to Aliases</a></li>
-<li><a href="#output-only-resource-configuration">Output only resource configuration</a></li>
-</ul>
-</li>
-<li><a href="#history">History</a><ul>
-<li><a href="#switching-from-a-collection-extension-to-a-subcollection">Switching from a collection extension to a subcollection</a></li>
-<li><a href="#using-resource-id-instead-of-tag">Using resource ID instead of tag</a></li>
-</ul>
-</li>
-<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -661,8 +645,8 @@
   <section class="docs-component-sidebar-actions">
     <ul>
       <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0162.md">View source</a></li>
-      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0162.md">Edit this page</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0185.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0185.md">Edit this page</a></li>
     </ul>
   </section>
 </aside>
@@ -687,244 +671,144 @@
       
       <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
           aria-level="3">
-        Resource Revisions
+        This topic describes the versioning strategies used by Google APIs. In
       </li>
     </ol>
   </nav>
 </section>
-  <p id="aip-state-banner" class="callout warning">
-  This AIP is currently a draft. This means that it is being actively debated
-  and discussed, and it may change in non-trivial ways.
-</p>
-  <h4 class="aip-number">AIP-162</h4>
-  <h1 id="resource-revisions">Resource Revisions</h1>
-<p>Some APIs need to have resources with a revision history, where users can
-reason about the state of the resource over time. There are several reasons for
-this:</p>
-<ul>
-<li>Users may want to be able to roll back to a previous revision, or diff
-  against a previous revision.</li>
-<li>An API may create data which is derived in some way from a resource at a
-  given point in time. In these cases, it may be desirable to snapshot the
-  resource for reference later.</li>
-</ul>
-<p><strong>Note:</strong> We use the word <em>revision</em> to refer to a historical reference for a
-particular resource, and intentionally avoid the term <em>version</em>, which refers
-to the version of an API as a whole.</p>
+  
+  <h4 class="aip-number">AIP-185</h4>
+  <p>This topic describes the versioning strategies used by Google APIs. In
+general, these strategies apply to all Google-managed services.</p>
 <h2 id="guidance">Guidance</h2>
-<p>APIs <strong>may</strong> store a revision history for a resource. Examples of when it is
-useful include:</p>
+<p>All Google API interfaces <strong>must</strong> provide a <em>major version number</em>, which is
+encoded at the end of the protobuf package, and included as the first part of
+the URI path for REST APIs. In the event an API needs to make an incompatible
+change, consult <a href="https://aip.dev/180">AIP-180</a> and <a href="https://aip.dev/181">AIP-181</a> for necessary steps based on the
+stability level of the surface in question.</p>
+<p>Note: The use of the term "major version number" above is taken from
+<a href="https://semver.org/">semantic versioning</a>. However, unlike in traditional semantic versioning,
+Google APIs <strong>must not</strong> expose minor or patch version numbers. For
+example, Google APIs use <code>v1</code>, not <code>v1.0</code>, <code>v1.1</code>, or <code>v1.4.2</code>. From a user's
+perspective, major versions are updated in place, and users receive new
+functionality without migration.</p>
+<p>A new major version of an API <strong>must not</strong> depend on a previous major version of
+the same API. An API surface <strong>must not</strong> depend on other APIs, except for in
+the cases outlined in <a href="https://aip.dev/213">AIP-213</a> and <a href="https://aip.dev/215">AIP-215</a>.</p>
+<p>Different versions of the same API <strong>must</strong> be able to work at the same time
+within a single client application for a reasonable transition period. This time
+period allows the client to transition smoothly to the newer version. An older
+version <strong>must</strong> go through a reasonable, well-communicated deprecation period
+before being shut down.</p>
+<p>For releases which have <a href="https://aip.dev/181">alpha or beta stability</a>, APIs <strong>must</strong> append
+the stability level after the major version number in the protobuf package and
+URI path using one of these strategies:</p>
 <ul>
-<li>When it is valuable to expose older versions of a resource via an API. This
-  can avoid the overhead of the customers having to write their own API to store
-  and enable retrieval of revisions.</li>
-<li>Other resources depend on different revisions of a resource.</li>
-<li>There is a need to represent the change of a resource over time.</li>
+<li>Channel-based versioning (recommended)</li>
+<li>Release-based versioning</li>
+<li>Visibility-based versioning</li>
 </ul>
-<p>APIs implementing resources with a revision history <strong>should</strong> abstract resource
-revisions as nested collection of the resource. Sometimes, the revisions
-collection can be a top level collection, exceptions include:</p>
-<ul>
-<li>If resource revisions are meant to have longer lifespan than the parent
-resource. In other words, resource revisions exist after resource deletion.</li>
-</ul>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BookRevision</span> <span class="p">{</span>
-  <span class="c1">// The name of the book revision.</span>
+<h3 id="channel-based-versioning">Channel-based versioning</h3>
+<p>A <em>stability channel</em> is a long-lived release at a given stability level that
+receives in-place updates. There is no more than one channel per stability level
+for a major version. Under this strategy, there are up to three channels
+available: alpha, beta, and stable.</p>
+<p>The alpha and beta channel <strong>must</strong> have their stability level appended to the
+version, but the stable channel <strong>must not</strong> have the stability level appended.
+For example, <code>v1</code> is an acceptable version for the stable channel, but <code>v1beta</code>
+or <code>v1alpha</code> are not. Similarly, <code>v1beta</code> or <code>v1alpha</code> are acceptable versions
+for the respective beta and alpha channel, but <code>v1</code> is not acceptable for
+either. Each of these channels receives new features and updates "in-place".</p>
+<p>The beta channel's functionality <strong>must</strong> be a superset of the stable channel's
+functionality, and the alpha channel's functionality <strong>must</strong> be a superset of
+the beta channel's functionality.</p>
+<h4 id="deprecating-api-functionality">Deprecating API functionality</h4>
+<p>API elements (fields, messages, RPCs) <strong>may</strong> be marked deprecated in any
+channel to indicate that they should no longer be used:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="c1">// Represents a scroll. Books are preferred over scrolls.</span>
+<span class="kd">message</span> <span class="nc">Scroll</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="na">deprecated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Deprecated API functionality <strong>must not</strong> graduate from alpha to beta, nor beta
+to stable. In other words, functionality <strong>must not</strong> arrive "pre-deprecated"
+in any channel.</p>
+<p>The beta channel's functionality <strong>may</strong> be removed after it has been deprecated
+for a sufficient period; we recommend 180 days. For functionality that exists
+only in the alpha channel, deprecation is optional, and functionality <strong>may</strong> be
+removed without notice. If functionality is deprecated in an API's
+alpha channel before removal, the API <strong>should</strong> apply the same annotation, and
+<strong>may</strong> use any timeframe it wishes.</p>
+<h3 id="release-based-versioning">Release-based versioning</h3>
+<p><strong>Important:</strong> This pattern is not commonly used for new services. There are
+existing services that follow it, but Channel-based Versioning is the preferred
+mechanism.</p>
+<p>An <em>individual release</em> is an alpha or beta release that is expected to be
+available for a limited time period before its functionality is incorporated
+into the stable channel, after which the individual release will be shut down.
+When using release-based versioning strategy, an API may have any number of
+individual releases at each stability level.</p>
+<p>Note: Both the channel-based and release-based strategies update the <em>stable</em>
+version in-place. There is a single stable channel, rather than individual
+stable releases, even when using the release-based strategy.</p>
+<p>Alpha and beta releases <strong>must</strong> have their stability level appended to the
+version, followed by an incrementing release number. For example, <code>v1beta1</code> or
+<code>v1alpha5</code>. APIs <strong>should</strong> document the chronological order of these versions
+in their documentation (such as comments).</p>
+<p>Each alpha or beta release <strong>may</strong> be updated in place with backwards-compatible
+changes. For beta releases, backwards-incompatible updates <strong>should</strong> be made by
+incrementing the release number and publishing a new release with the change.
+For example, if the current version is <code>v1beta1</code>, then <code>v1beta2</code> is released
+next.</p>
+<p>Alpha and beta releases <strong>should</strong> be shut down after their functionality
+reaches the stable channel. An alpha release <strong>may</strong> be shut down at any time,
+while a beta release <strong>should</strong> allow users a reasonable transition period; we
+recommend 180 days.</p>
+<h3 id="visibility-based-versioning">Visibility-based versioning</h3>
+<p><a href="https://github.com/googleapis/googleapis/blob/master/google/api/visibility.proto">API visibility</a> is an advanced feature provided by Google API infrastructure.
+It allows API producers to expose multiple external API views from one internal
+API surface, and each view is associated with an API <em>visibility label</em>, such
+as:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">import</span> <span class="s">&quot;google/api/visibility.proto&quot;</span><span class="p">;</span>
+
+<span class="kd">message</span> <span class="nc">Resource</span> <span class="p">{</span>
   <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-  <span class="c1">// The snapshot of the book</span>
-  <span class="n">Book</span> <span class="na">snapshot</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
-
-  <span class="c1">// The timestamp that the revision was created.</span>
-  <span class="n">google.protobuf.Timestamp</span> <span class="na">create_time</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
-
-  <span class="c1">// Other revision IDs that share the same snapshot.</span>
-  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">alternate_ids</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">OUTPUT_ONLY</span><span class="p">];</span>
+  <span class="c1">// Preview. Do not use this feature for production.</span>
+  <span class="kt">string</span> <span class="na">display_name</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">[(</span><span class="n">google.api.field_visibility</span><span class="p">)</span><span class="o">.</span><span class="na">restriction</span> <span class="o">=</span> <span class="s">&quot;PREVIEW&quot;</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>The <code>message</code> <strong>must</strong> be annotated as a resource (<a href="/123">AIP-123</a>).</li>
-<li>The <code>message</code> name <strong>must</strong> be named <code>{ResourceType}Revision</code>.</li>
-<li>The resource revision <strong>must</strong> contain a field with a message type of the
-  parent resource, with a field name of <code>snapshot</code>.
-    - The value of <code>snapshot</code> <strong>must</strong> be the configuration of the parent
-      at the point in time the revision was created.</li>
-<li>The resource revision <strong>must</strong> contain a <code>create_time</code> field (see [AIP-142][]).</li>
-<li>The resource revision <strong>may</strong> contain a repeated field <code>alternate_ids</code>, which would
-  contain a list of resource IDs that the revision is also known by (e.g. <code>latest</code>)</li>
-</ul>
-<h3 id="creating-revisions">Creating Revisions</h3>
-<p>Depending on the resource, different APIs may have different strategies for</p>
-<ul>
-<li>Create a new revision any time that there is a change to the parent resource</li>
-<li>Create a new revision when important system state changes</li>
-<li>Create a new revision when specifically requested</li>
-</ul>
-<p>APIs <strong>may</strong> use any of these strategies. APIs <strong>must</strong>
-document their revision creation strategy.</p>
-<h3 id="resource-names-for-revisions">Resource names for revisions</h3>
-<p>When referring to specific revision of a resource, the subcollection name
-<strong>must</strong> be named <code>revisions</code>. Resource revisions have names with the format
-<code>{resource_name}/revisions/{revision_id}</code>. For example:
-<div class="highlight language-None"><pre><span></span><code>publishers/123/books/les-miserables/revisions/c7cfa2a8
-</code></pre></div></p>
-<h3 id="server-specified-aliases">Server-specified Aliases</h3>
-<p>Services <strong>may</strong> reserve specific IDs to be <a href="/122#resource-id-aliases">aliases</a> (e.g.
-<code>latest</code>). These are read-only and managed by the service.</p>
-<div class="highlight language-None"><pre><span></span><code>GET /v1/publishers/{publisher}/books/{book}/revisions/{revision_id}
+<p>A visibility label is a case-sensitive string that can be used to tag any API
+element. By convention, visibility labels should always use UPPER case.
+An implicit <code>PUBLIC</code> label is applied to all API elements unless an explicit
+visibility label is applied as in the example above.</p>
+<p>Each visibility label is an allow-list. API producers need to grant visibility
+labels to API consumers for them to use API features associated with the labels.
+In other words, an API visibility label is like an ACL'ed API version.</p>
+<p>Multiple visibility labels <strong>may</strong> be applied to an element by using a
+comma-separated string (e.g. <code>"PREVIEW,TRUSTED_TESTER"</code>). When multiple
+visibility labels are used, then the client needs only <em>one</em> of the visibility
+labels (logical <code>OR</code>).</p>
+<p>By default, the visibility labels granted to the API consumer are used to verify
+incoming requests. However, a client can send requests with an explicit
+visibility label as follows:</p>
+<div class="highlight language-None"><pre><span></span><code>GET /v1/projects/my-project/topics HTTP/1.1
+Host: pubsub.googleapis.com
+Authorization: Bearer y29....
+X-Goog-Visibilities: PREVIEW
 </code></pre></div>
-<ul>
-<li>If a <code>latest</code> ID exists, it <strong>must</strong> represent the most recently created
-revision. The content of <code>publishers/{publisher}/books/{book}/revisions/latest</code>
-and <code>publishers/{publisher}/books/{book}</code> can differ, as the latest revision may
-be different from the current state of the resource.</li>
-</ul>
-<h3 id="user-specified-aliases">User-Specified Aliases</h3>
-<p>APIs <strong>may</strong> provide a mechanism for users to assign an <a href="/122#resource-id-aliases">alias</a> ID to an
-existing revision with a custom method "alias":</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">AliasBookRevision</span><span class="p">(</span><span class="n">TagBookRevisionRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*/revisions/*}:alias&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">AliasBookRevisionRequest</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/BookRevision&quot;</span>
-    <span class="p">}];</span>
-
-  <span class="c1">// The ID of the revision to alias to, e.g. `CURRENT` or a semantic</span>
-  <span class="c1">// version.</span>
-  <span class="kt">string</span> <span class="na">alias_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The request message <strong>must</strong> have a <code>name</code> field:<ul>
-<li>The field <strong>must</strong> be <a href="/203">annotated as required</a>.</li>
-<li>The field <strong>must</strong> identify the <a href="/123">resource type</a> that it
-  references.</li>
-</ul>
-</li>
-<li>The request message <strong>must</strong> have a <code>alias_id</code> field:<ul>
-<li>The field <strong>must</strong> be <a href="/203">annotated as required</a>.</li>
-</ul>
-</li>
-<li>If the user calls the method with an existing <code>alias_id</code>, the request <strong>must</strong>
-  succeed and the alias will be updated to refer to the provided revision. This
-  allows users to write code against a specific alias (e.g. <code>published</code>) and the
-  revision can change with no code change.</li>
-</ul>
-<h3 id="rollback">Rollback</h3>
-<p>A common use case for a resource with a revision history is the ability to roll
-back to a given revision. APIs <strong>should</strong> handle this with a <code>Rollback</code> custom
-method:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">RollbackBook</span><span class="p">(</span><span class="n">RollbackBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BookRevision</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*/revisions/*}:rollback&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The method <strong>must</strong> use the <code>POST</code> HTTP verb.</li>
-<li>The method <strong>should</strong> return a resource revision.</li>
-</ul>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">RollbackBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The revision that the book should be rolled back to.</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/BookRevision&quot;</span>
-    <span class="p">}];</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>The request message <strong>must</strong> have a <code>name</code> field, referring to the resource
-  revision whose configuration the resource should be rolled back to.<ul>
-<li>The field <strong>must</strong> be <a href="/203">annotated as required</a>.</li>
-<li>The field <strong>must</strong> identify the <a href="/123">resource type</a> that it
-  references.</li>
-</ul>
-</li>
-</ul>
-<h3 id="child-resources">Child resources</h3>
-<p>Resources with a revision history <strong>may</strong> have child resources. If they do,
-there are two potential variants:</p>
-<ul>
-<li>Child resources where each child resource is a child of the parent resource
-  as a whole.</li>
-<li>Child resources where each child resource is a child of <em>a single revision
-  of</em> the parent resource.</li>
-</ul>
-<p>APIs <strong>should not</strong> include multiple levels of resources with revisions, as
-this quickly becomes difficult to reason about.</p>
-<h3 id="standard-methods">Standard methods</h3>
-<p>Any standard methods <strong>must</strong> implement the corresponding AIPs (<a href="/131">AIP-131</a>,
-<a href="/132">AIP-132</a>, <a href="/133">AIP-133</a>, <a href="/134">AIP-134</a>, <a href="/135">AIP-135</a>), with the following additional behaviors:</p>
-<ul>
-<li>List methods: By default, revisions in the list response <strong>must</strong> be ordered
-  in reverse chronological order. User can supply <code>order_by</code> to override the
-  default behavior.</li>
-<li>If the revision supports aliasing, a delete method with the resource name
-  of the alias (e.g. <code>revisions/1.0.2</code>) <strong>must</strong> remove the alias instead of
-  deleting the resource.</li>
-</ul>
-<p>As revisions are nested under the resource, also see <a href="/135#cascading-delete">cascading delete</a>.</p>
-<h2 id="rationale">Rationale</h2>
-<h3 id="abstract-revisions-as-nested-collection">Abstract revisions as nested collection</h3>
-<p>Revisions being resources under nested collection make revisions a first class
-citizen.</p>
-<ul>
-<li>Revisions can offer standard get, list, and delete methods.</li>
-<li>It retains the flexibility of extending new fields to revision in addition to
-  the resource message.</li>
-</ul>
-<h3 id="tagging-to-aliases">Tagging to Aliases</h3>
-<p>Previously, a concept of <code>tag</code> existed. This concept was redundant with that of
-an <a href="/122#resource-id-aliases">alias</a>, and the terms were consolidated to reduce complexity in the AIPs.</p>
-<h3 id="output-only-resource-configuration">Output only resource configuration</h3>
-<p>Although it was an option to have the revision take in the resource
-configuration as part of the create method, doing so would have allowed users to
-submit resource configuration for a revision that the resource was never in.</p>
-<p><code>OUTPUT_ONLY</code> and requiring that a created revision represents the resource at
-current point in time eliminates that issue.</p>
-<h2 id="history">History</h2>
-<h3 id="switching-from-a-collection-extension-to-a-subcollection">Switching from a collection extension to a subcollection</h3>
-<p>In 2023-09, revisions are abstracted as a nested resource collection. Prior to
-this, revisions are more like extension of an existing resource by using <code>@</code>
-symbol. List and delete revisions were custom methods on the resource
-collection. A single Get method was used to retrieve either the resource
-revision, or the resource.</p>
-<p>Its primary advantage was allowing a resource reference to seamlessly refer to
-a resource, or its revision.</p>
-<p>It also had several disadvantages:</p>
-<ul>
-<li>List revisions is a custom method (:listRevisions) on the resource collection</li>
-<li>Delete revision is a custom method on the resource collection</li>
-<li>Not visible in API discovery doc</li>
-<li>Resource ID cannot use <code>@</code></li>
-</ul>
-<p>The guidance was modified ultimately to enable revisions to behave like a
-resource, which reduces the users cognitive load and allows resource-oriented
-clients to easily list, get, create, and update revisions.</p>
-<h3 id="using-resource-id-instead-of-tag">Using resource ID instead of tag</h3>
-<p>In the previous design, revisions had a separate identifer for a revision known
-as a <code>tag</code>, that would live in a revision.</p>
-<p>Tags were effectively a shadow resource ID, requiring methods to create, get and
-filter revisions based on the value of the tag.</p>
-<p>By consolidating the concept of a tag into the revision ID, the user no longer
-needs to be familiar with a second set of retrieval and identifier methods.</p>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li><strong>2023-09-01</strong>: AIP was updated to be a sub-collection.</li>
-<li><strong>2021-04-27</strong>: Added guidance on returning the resource from Delete Revision.</li>
-</ul>
+<p>A single API request can specify at most one visibility label.</p>
+<p>API producers can use API visibility for API versioning, such as
+<code>INTERNAL</code> and <code>PREVIEW</code>. A new API feature starts with the <code>INTERNAL</code> label,
+then moves to the <code>PREVIEW</code> label. When the feature is stable and becomes
+generally available, all API visibility labels are removed from the API
+definition.</p>
+<p>In general, API visibility is easier to implement than API versioning for
+incremental changes, but it depends on sophisticated API infrastructure support.
+Google Cloud APIs often use API visibility for Preview features.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
