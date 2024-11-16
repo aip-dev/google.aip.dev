@@ -1,8 +1,8 @@
 ---
 name: publish
-on:
-  push:
-    branches:
+on:https://e-report.energy.go.th/area/Loei.htm
+  push:https://www.google.co.th/search?q=%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%A5%E0%B8%A2&client=ms-opera-mobile&channel=new&espv=1
+    branches:https://www.google.co.th/search?q=%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%A5%E0%B8%A2&client=ms-opera-mobile&channel=new&espv=1
       - master
 
 permissions:
@@ -12,7 +12,7 @@ jobs:
   github-pages:
     runs-on: ubuntu-latest
     container: python:3.8
-    steps:
+    steps:https://e-report.energy.go.th/area/Loei.htm
       - uses: actions/checkout@v3
       - name: Install system dependencies.
         run: apt-get update && apt-get install -y rsync
@@ -26,3 +26,803 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: out
+เวอร์ชัน 1.0 การเข้ารหัส UTF-8? <rss เวอร์ชัน 2.0
+	xmlns:เนื้อหา="http://purl.org/rss/1.0/โมดูล/เนื้อหา/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:อะตอม="http://www.w3.org/2005/อะตอม"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:เครื่องหมายทับ="http://purl.org/rss/1.0/โมดูล/เครื่องหมายทับ/"
+	-
+
+<ช่องทาง>
+	<title>บล็อก Windows</title>
+	<atom:ลิงก์ href="https://blogs.windows.com/feed/" rel="self" ประเภท="แอปพลิเคชัน/rss+xml" />
+	<ลิงค์>https://blogs.windows.com/</ลิงค์>
+	<คำอธิบาย></คำอธิบาย>
+	<lastBuildDate>ศุกร์, 15 พ.ย. 2024 20:53:21 +0000</lastBuildDate>
+	ภาษาen-US
+	<sy:ระยะเวลาอัปเดต>
+	รายชั่วโมง </sy:updatePeriod>
+	<sy:ความถี่ในการอัปเดต>
+	1 </sy:อัปเดตความถี่>
+	เครื่องกำเนิดไฟฟ้าhttps://wordpress.org/?v=6.5.5
+
+<รูปภาพ>
+	อัพโหลดไฟล์ 32x32 ลงในคอมพิวเตอร์ของคุณ
+	<title>บล็อก Windows</title>
+	<ลิงค์>https://blogs.windows.com/</ลิงค์>
+	<ความกว้าง>32</ความกว้าง>
+	<ความสูง>32</ความสูง>
+</รูปภาพ>
+	<รายการ>
+		<title>ประกาศเปิดตัว Windows 11 Insider Preview Build 22635.4510 (ช่องเบต้า)</title>
+		<ลิงก์>https://blogs.windows.com/windows-insider/2024/11/15/ประกาศ-windows-11-insider-preview-build-22635-4510-beta-channel/</ลิงก์>
+		
+		<dc:creator><![CDATA[อแมนดา ลางอฟสกี้]]></dc:creator>
+		<pubDate>ศุกร์ที่ 15 พ.ย. 2567 18:04:40 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/15/ประกาศเปิดตัว Windows 11 รุ่นเบต้า-22635-4510-ช่องเบต้า/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview Build 22635.4510 (KB5046716) </strong> ไปยังช่องเบต้า</p>
+<p>การเปลี่ยนแปลงในรุ่นและการอัปเดตช่องเบต้าได้รับการบันทึกไว้ในสองกลุ่ม: คุณสมบัติใหม่ การปรับปรุง และการแก้ไข</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/15/announcing-windows-11-insider-preview-build-22635-4510-beta-channel/">ประกาศ Windows 11 Insider Preview Build 22635.4510 (ช่องเบต้า)</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview Build 22635.4510 (KB5046716) </strong> ไปยังช่องเบต้าแล้ว
+
+การเปลี่ยนแปลงในรุ่นและการอัปเดตของ Beta Channel จะถูกบันทึกไว้ในสองส่วน ได้แก่ คุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่ค่อยๆ เผยแพร่ให้กับผู้ใช้ Insider ที่เปิดใช้งานสวิตช์เพื่อรับการอัปเดตล่าสุดเมื่อพร้อมใช้งาน (ผ่านการตั้งค่า > Windows Update*) จากนั้นคุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่เผยแพร่ให้กับทุกคนใน Beta Channel <strong>สำหรับข้อมูลเพิ่มเติม โปรดดูส่วนคำเตือนที่ด้านล่างของโพสต์บล็อกนี้</strong>
+การเปลี่ยนแปลงและการปรับปรุงกำลังทยอยเปิดตัวสู่ช่องเบต้าพร้อมเปิด/ปิด*
+<h3><strong>[แถบงานและถาดระบบ]</strong></h3>
+<ul>
+ 	<li>เรากำลังเปิดตัวความสามารถในการแชร์ไฟล์โดยตรงจากรายการกระโดดบนแถบงาน ซึ่งจะปรากฏขึ้นเมื่อคุณคลิกขวาที่แอปที่มีรายการกระโดด เช่น Notepad บนแถบงาน</li>
+</ul>
+[caption id="attachment_177429" align="alignnone" width="318"]<a href="https://blogs.windows.com/wp-content/uploads/prod/sites/44/2024/11/jump-list-share.png"><img class=" wp-image-177429" src="https://blogs.windows.com/wp-content/uploads/prod/sites/44/2024/11/jump-list-share.png" alt="ไอคอนแชร์ที่ปรากฏบนไฟล์ txt ในรายการกระโดดสำหรับ Notepad" width="318" height="310" /></a> ไอคอนแชร์ที่ปรากฏบนไฟล์ txt ในรายการกระโดดสำหรับ Notepad[/caption]
+<h3><strong>[อินพุต]</strong></h3>
+<ul>
+ 	<li>เรากำลังเริ่มเปิดตัวรูปแบบคีย์บอร์ด Gamepad ใหม่สำหรับคีย์บอร์ดบนหน้าจอใน Windows 11 อีกครั้ง โดยเริ่มเปิดตัวให้กับ Windows Insiders ในช่องเบต้าด้วย <a href="https://blogs.windows.com/windows-insider/2024/08/30/announcing-windows-11-insider-preview-build-22635-4145-beta-channel/">รุ่น 22635.4145</a></li>
+</ul>
+[caption id="attachment_177283" align="alignnone" width="692"]<a href="https://blogs.windows.com/wp-content/uploads/prod/sites/44/2024/08/gamepad-keyboard-layout.png"><img class=" wp-image-177283" src="https://blogs.windows.com/wp-content/uploads/prod/sites/44/2024/08/gamepad-keyboard-layout-1024x296.png" alt="รูปแบบแป้นพิมพ์ Gamepad ใหม่สำหรับแป้นพิมพ์บนหน้าจอใน Windows 11 ที่รองรับความสามารถในการใช้ตัวควบคุม Xbox ของคุณในการนำทางและพิมพ์" width="692" height="200" /></a> รูปแบบแป้นพิมพ์ Gamepad ใหม่สำหรับแป้นพิมพ์บนหน้าจอใน Windows 11 ที่รองรับความสามารถในการใช้ตัวควบคุม Xbox ของคุณในการนำทางและพิมพ์[/caption]
+<h3><strong>[ผู้บรรยาย]</strong></h3>
+<ul>
+ 	<li>เราได้เพิ่มฟังก์ชันใหม่ให้กับโหมดสแกน Narrator แล้ว การข้ามลิงก์ (N') ช่วยให้คุณสามารถนำทางไปยังข้อความหลังลิงก์ได้ ซึ่งมีประโยชน์อย่างยิ่งเมื่อต้องนำทางผ่านอีเมลยาวๆ บทความข่าว และหน้า wiki การข้ามไปยังรายการ (L') ช่วยให้คุณสามารถเข้าถึงรายการบนหน้าเว็บหรือเอกสารได้อย่างรวดเร็ว หากต้องการลองใช้ฟีเจอร์ใหม่เหล่านี้ คุณต้องเปิด Narrator ก่อน (กดปุ่ม Win + Ctrl + Enter) จากนั้นเปิดโหมดสแกนโดยกด Caps Lock + Spacebar และสุดท้ายใช้ทางลัดใหม่ 'N' และ 'L' โปรดทราบว่าโหมดสแกนจะ 'เปิด' ตามค่าเริ่มต้นบนหน้าเว็บส่วนใหญ่ (เช่น บทความข่าว หน้า wiki เป็นต้น)</li>
+</ul>
+<h3><strong>[เสียงพูดใน Windows]</strong></h3>
+<ul>
+ 	<li>เราได้ปรับปรุงประสบการณ์การแปลงคำพูดเป็นข้อความและการแปลงข้อความเป็นคำพูดบน Windows แล้ว ผู้ใช้โปรแกรมผู้บรรยาย การเข้าถึงด้วยเสียง คำบรรยายสด การแปลสด และการพิมพ์ด้วยเสียงอาจเห็นข้อความที่ขอให้อัปเดตไฟล์ภาษาด้วยตนเอง ไฟล์ภาษาจะวางจำหน่ายแยกต่างหากผ่าน Microsoft Store</li>
+</ul>
+<h2><strong>แก้ไขโดยค่อยเป็นค่อยไปในช่องเบต้าพร้อมเปิด/ปิด*</strong></h2>
+<h3><strong>[ล็อคหน้าจอ]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาที่คุณอาจเห็นข้อความแจ้งว่า “คุณออฟไลน์อยู่ วิดเจ็ตไม่พร้อมใช้งาน” โดยไม่คาดคิด</li>
+</ul>
+<h2><strong>คำเตือนสำหรับ Windows Insiders ในช่องเบต้า</strong></h2>
+<ul>
+ 	<li>Windows Insiders ในช่องเบต้าจะได้รับการอัปเดตตาม <strong>Windows 11 เวอร์ชัน 23H2</strong> ผ่านทาง <a href="https://support.microsoft.com/en-us/topic/kb5003791-update-to-windows-10-version-21h2-by-using-an-enablement-package-8bc077be-18d7-4aac-81ce-6f6dad2cd384">แพ็คเกจการเปิดใช้งาน</a> (รุ่น 22635.xxxx)</li>
+ 	<li>ฟีเจอร์มากมายใน Beta Channel จะเปิดตัวโดยใช้<a href="https://support.microsoft.com/en-us/windows/delivering-continuous-innovation-in-windows-11-b0aa0a27-ea9a-4365-9224-cb155e517f12">เทคโนโลยี Control Feature Rollout</a> โดยเริ่มต้นด้วย Insider กลุ่มย่อยและค่อยๆ เพิ่มขึ้นตามเวลาในขณะที่เราตรวจสอบคำติชมเพื่อดูว่ามีผลดีอย่างไร ก่อนที่จะส่งต่อให้ทุกคนในช่องทางนี้</li>
+ 	<li>สำหรับผู้ใช้งาน Windows Insider ในช่อง Beta ที่ต้องการเป็นคนแรกที่ได้รับฟีเจอร์ต่างๆ <strong>ค่อยๆ เผยแพร่</strong> คุณสามารถเปิด/ปิดปุ่มสลับเพื่อรับการอัปเดตล่าสุดได้ทันทีที่พร้อมใช้งานผ่านการตั้งค่า > Windows Update* เมื่อเวลาผ่านไป เราจะเพิ่มการเผยแพร่ฟีเจอร์ต่างๆ ให้กับทุกคนที่เปิดปุ่มสลับนี้ หากคุณปิดปุ่มสลับนี้ไว้ ฟีเจอร์ใหม่ๆ จะค่อยๆ เผยแพร่บนพีซีของคุณเมื่อพร้อมใช้งาน</li>
+ 	<li>ฟีเจอร์และประสบการณ์ที่รวมอยู่ในรุ่นเหล่านี้อาจไม่มีวันได้รับการเผยแพร่ เนื่องจากเราพยายามใช้แนวคิดต่างๆ และได้รับคำติชม ฟีเจอร์อาจเปลี่ยนแปลงไปตามเวลา อาจถูกลบหรือแทนที่ และจะไม่มีการเผยแพร่ต่อจาก Windows Insiders ฟีเจอร์และประสบการณ์บางส่วนเหล่านี้อาจปรากฏใน Windows รุ่นต่อๆ ไป <strong>เมื่อพร้อมใช้งาน</strong></li>
+ 	<li>ฟีเจอร์บางอย่างที่กำลังพัฒนาอยู่ซึ่งเราดูตัวอย่างด้วย Windows Insiders อาจยังไม่ได้รับการแปลเป็นภาษาท้องถิ่นอย่างสมบูรณ์ และการแปลจะเกิดขึ้นเมื่อเวลาผ่านไปเมื่อฟีเจอร์ต่างๆ เสร็จสมบูรณ์ หากคุณพบปัญหาในการแปลเป็นภาษาท้องถิ่น โปรดรายงานปัญหาเหล่านั้นให้เราทราบผ่าน Feedback Hub</li>
+ 	<li>เนื่องจากช่อง Dev และ Beta แสดงถึงเส้นทางการพัฒนาคู่ขนานจากวิศวกรของเรา อาจมีกรณีที่คุณลักษณะและประสบการณ์ปรากฏขึ้นในช่อง Beta ก่อน</li>
+ 	<li>ไปที่ <a href="https://aka.ms/flighthub">Flight Hub</a> เพื่อดูข้อมูลโดยละเอียดว่ามีรุ่นใดอยู่ในช่อง Insider ใด</li>
+</ul>
+ขอบคุณ,
+อแมนดา & แบรนดอน]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>สัมผัสความสนุกสนานกับ Microsoft Store Black Friday และ Cyber ​​Week ลดราคาสินค้าเทคโนโลยีสุดฮิตประจำฤดูกาล ตั้งแต่ Surface ไปจนถึง Xbox</title>
+		<link>https://blogs.windows.com/devices/2024/11/15/feel-the-merriment-with-microsoft-store-black-friday-and-cyber-week-savings-on-the-seasons-hottest-tech-from-surface-to-xbox/</link>
+		
+		<dc:creator><![CDATA[ทีม Microsoft Store]]></dc:creator>
+		<pubDate>ศ. 15 พ.ย. 2567 14:00:20 +0000</pubDate>
+				<หมวดหมู่><![CDATA[ไม่มีหมวดหมู่]]></หมวดหมู่>
+		<category><![CDATA[ช้อปปิ้งช่วงวันหยุด]]></category>
+		<หมวดหมู่><![CDATA[ร้านค้า Microsoft]]></หมวดหมู่>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/15/feel-the-merriment-with-microsoft-store-black-friday-and-cyber-week-savings-on-the-seasons-hottest-tech-from-surface-to-xbox/</guid>
+
+					<description><![CDATA[<p>วันหยุดกำลังใกล้เข้ามาอย่างรวดเร็วและมีเวลาอยู่ร่วมกับคนที่รักอยู่ไม่ไกล ใช้เวลาสร้างความทรงจำให้มากขึ้นและใช้เวลาช้อปปิ้งน้อยลงด้วยข้อเสนอพิเศษวันหยุดสุดฮอตจาก <a href="https://www.microsoft.com/en-us/store/b/sale"><u>Microsoft Store<
+</p>
+<p>โพสต์ <a href="https://blogs.windows.com/devices/2024/11/15/feel-the-merriment-with-microsoft-store-black-friday-and-cyber-week-savings-on-the-seasons-hottest-tech-from-surface-to-xbox/">สัมผัสความสนุกสนานกับส่วนลด Microsoft Store Black Friday และ Cyber ​​Week สำหรับสินค้าเทคโนโลยียอดนิยมประจำฤดูกาล ตั้งแต่ Surface ไปจนถึง Xbox</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[วันหยุดกำลังใกล้เข้ามาอย่างรวดเร็วและเวลาที่จะได้อยู่ร่วมกับคนที่รักก็ใกล้เข้ามาแล้ว ใช้เวลาสร้างความทรงจำให้มากขึ้นและใช้เวลาช้อปปิ้งน้อยลงด้วยข้อเสนอพิเศษวันหยุดสุดฮอตจาก <a href="https://www.microsoft.com/en-us/store/b/sale"><u>Microsoft Store</u></a> ที่ทำให้การซื้ออุปกรณ์เทคโนโลยียอดนิยมในช่วงเทศกาลเป็นเรื่องง่ายเหมือนกับการกลับมาซื้อซ้ำอีกครั้งในวันขอบคุณพระเจ้า
+<h3><strong>ช้อปอย่างมั่นใจที่ Microsoft Store</strong></h3>
+เลือกจากพีซี Surface Copilot+ ที่ทันสมัยที่สุดพร้อมประสบการณ์ที่ขับเคลื่อนด้วย AI หรือมอบของขวัญแห่งการเล่นเกมด้วยผลิตภัณฑ์ Xbox ที่หลากหลาย และด้วยการสนับสนุนออนไลน์ตลอด 24 ชั่วโมงทุกวันของ <a href="https://www.microsoft.com/en-us/store/b/why-microsoft-store?msockid=0a223d3dbe106a1f3ec62966bf3d6bac">Microsoft Store</a> และวิธีการชำระเงินที่ยืดหยุ่น ทำให้ค้นหาและซื้อของขวัญที่สมบูรณ์แบบได้อย่างง่ายดาย
+
+อย่ากังวลกับเรื่องเล็กน้อย มั่นใจได้ว่าของขวัญจะมาถึงตรงเวลาด้วยระบบจัดส่งที่รวดเร็วและฟรีภายใน 2-3 วันสำหรับผลิตภัณฑ์ส่วนใหญ่ มอบของขวัญแห่งความสบายใจให้กับตัวเองด้วยการขยายเวลาคืนสินค้าและการคุ้มครองราคาฟรีจนถึงวันที่ 31 มกราคม 2025
+
+ต้องการอัปเกรดหรือไม่ รับเงินคืนสูงสุด 600 ดอลลาร์ในช่วงเวลาจำกัด เมื่อนำอุปกรณ์มือสองที่เข้าเงื่อนไขมาแลกซื้อ Surface Laptop หรือ Surface Pro Copilot+ PC ใหม่ ข้อเสนอสิ้นสุดวันที่ 14 ธันวาคม
+
+ไม่แน่ใจว่าจะมอบอะไรเป็นของขวัญดี ประสบการณ์การแชท Store Assistant ที่ขับเคลื่อนด้วย AI ใหม่ของ Microsoft Store จะช่วยให้คุณเรียนรู้เกี่ยวกับผลิตภัณฑ์ของ Microsoft และช่วยคุณค้นหาของขวัญที่สมบูรณ์แบบสำหรับทุกคนในรายชื่อของคุณ เพียงคลิกที่ <a href="https://www.microsoft.com/en-us/store/b/sale">แชท Store Assistant</a> เพื่อช่วยคุณตัดสินใจว่าอุปกรณ์ใดเหมาะกับคนที่คุณรัก
+<h3><strong><img class="aligncenter wp-image-263540 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/43/2024/11/Surface-Laptop-and-Surface-Pro-1900x1069-1-1024x576.jpg" alt="อุปกรณ์ Surface Laptop และ Surface Pro" width="1024" height="576" /></strong><strong>ประหยัดเงินจำนวนมากสำหรับ Surface และอัปเกรดประสบการณ์ Windows ของคุณวันนี้ </strong></h3>
+<a href="https://www.microsoft.com/en-us/surface/devices/surface-pro-11th-edition?msockid=1c95b66ad7f166362e92a2a6d64b673c">ประหยัดสูงสุดถึง 400 ดอลลาร์สำหรับ Surface Pro รุ่นที่เลือก</a> และ <a href="https://www.microsoft.com/en-us/d/surface-pro-flex-keyboard/91xw9xj8bm7l">20% สำหรับ Surface Pro Flex Keyboard</a>
+<ul>
+ 	<li>ด้วยความคล่องตัวในการเปลี่ยนจากแท็บเล็ตเป็นแล็ปท็อปหรือเป็นหน้าจอหลายจอ Surface Pro จึงมีความยืดหยุ่นในการตอบสนองความต้องการของนักเรียนที่ยุ่งวุ่นวาย นักเดินทางที่มักเดินทาง ผู้สร้างสรรค์ผลงานระหว่างเดินทาง และบุคคลอื่นๆ มอบของขวัญแห่งประสิทธิภาพการทำงานที่เต็มเปี่ยมและความคิดสร้างสรรค์ที่ไม่มีที่สิ้นสุดด้วยอุปกรณ์ที่ใช้งานแบตเตอรี่ได้ตลอดทั้งวันและประสบการณ์ Copilot+ PC AI ที่ไม่เหมือนใคร
+ 	<li>แป้นพิมพ์ Surface Pro Flex ปลดล็อกระดับความยืดหยุ่นใหม่ด้วยความสามารถในการติดเข้ากับ Pro ของคุณเพื่อตั้งค่าแล็ปท็อปที่ดีที่สุดหรือแยกออกเป็นแป้นพิมพ์แบบสแตนด์อโลน</li>
+ 	<li>ข้อเสนอเริ่มในวันที่ 18 พฤศจิกายนและสิ้นสุดวันที่ 2 ธันวาคม</li>
+</ul>
+<a href="https://www.microsoft.com/en-us/surface/devices/surface-laptop-7th-edition?msockid=1c95b66ad7f166362e92a2a6d64b673c">ประหยัดถึง 400 ดอลลาร์สำหรับ Surface Laptop รุ่นที่เลือก</a>
+<ul>
+ 	<li>ช่วยให้คนที่คุณรักทำงานได้อย่างชาญฉลาดขึ้น เชื่อมต่ออยู่เสมอ และเพิ่มประสิทธิภาพการทำงานด้วย Surface Laptop ที่ชาญฉลาดที่สุดซึ่งปลดล็อกประสบการณ์ AI ของ Copilot+ PC แบบใหม่ แล็ปท็อปจอสัมผัสที่เพรียวบางและน้ำหนักเบาเครื่องนี้ - พร้อมอายุการใช้งานแบตเตอรี่ที่ยาวนานที่สุดใน Surface - ให้ความเร็วที่เร็วขึ้นถึง 86% เมื่อเทียบกับรุ่นก่อนหน้า ทัชแพดที่ครอบคลุมที่สุดในตลาด และมาพร้อมหน้าจอขนาด 13.8 นิ้วและ 15 นิ้วที่สมจริง ข้อเสนอเริ่มตั้งแต่วันที่ 21 พฤศจิกายนและสิ้นสุดในวันที่ 7 ธันวาคม</li>
+</ul>
+<a href="https://www.microsoft.com/en-us/d/surface-laptop-studio-2/8rqr54krf1dz">ประหยัดถึง 600 ดอลลาร์สำหรับ Surface Laptop Studio 2</a>
+<ul>
+ 	<li>Surface Laptop Studio 2 เหมาะอย่างยิ่งสำหรับนักสร้างสรรค์ในรายชื่อของคุณที่ต้องการอุปกรณ์ที่ทรงพลัง โดยสามารถเปลี่ยนจากแล็ปท็อปหน้าจอสัมผัสอันทรงพลังไปเป็นจอภาพมุมเอียงที่สมบูรณ์แบบสำหรับความบันเทิง หรือเป็นผืนผ้าใบสร้างสรรค์สำหรับการวาดภาพด้วย Surface Pen ได้อย่างราบรื่น ข้อเสนอสิ้นสุดวันที่ 11 ธันวาคม<strong style="font-size: min(max(16px, -0.70596px + 1rem + 0.1961vw), 20px);"> </strong></li>
+</ul>
+<h3><strong><img class="aligncenter wp-image-263541 size-full" src="https://blogs.windows.com/wp-content/uploads/prod/sites/43/2024/11/BF-blog-Xbox-image.png" alt="คอลเล็กชันภาพศิลปะชื่อเกม Xbox" width="624" height="351" />มอบของขวัญแห่งเกมและความบันเทิงในช่วงวันหยุดนี้ </strong></h3>
+ตั้งแต่ภาพยนตร์ไปจนถึงรายการทีวีและเกม เรามีสิ่งที่เหมาะกับทุกคนในชีวิตของคุณ รับส่วนลด $50 สำหรับ <a href="https://www.microsoft.com/en-us/d/xbox-series-s/942j774tp9jn">Xbox Series S - 512GB</a> ตั้งแต่วันที่ 21 พฤศจิกายนถึง 2 ธันวาคม นอกจากนี้ รับส่วนลด $10 เมื่อซื้อคอนโทรลเลอร์ Xbox Wireless <a href="https://www.microsoft.com/en-us/store/collections/xboxcontrollers">บางรุ่น</a> ตั้งแต่วันที่ 22 พฤศจิกายนถึง 2 ธันวาคม และรับส่วนลดมากมายสำหรับเกมยอดนิยม เช่น EA SPORTS FC 25 Standard Edition และ NBA 2K25 Standard Edition
+
+<img class="wp-image-263544 size-large aligncenter" src="https://blogs.windows.com/wp-content/uploads/prod/sites/43/2024/11/Xbox-Series-S-Image-1024x576.jpg" alt="คอนโซลและคอนโทรลเลอร์ Xbox พร้อมข้อความประหยัด $50 สำหรับ Xbox Series S" width="1024" height="576" />
+
+<strong>ประหยัดถึง 60% สำหรับเกมพีซี </strong>สนุกสนานได้ตลอดทั้งปีด้วยเกมพีซีอย่าง Ace Attorney Anthology, Crash Bandicoot N.Sane Trilogy และ Forza Motorsport Premium Edition
+
+<strong>ประหยัดถึง 55% สำหรับเกมที่ซื้อจาก Microsoft Store บน Xbox</strong> ค้นหาเกมที่คุณชื่นชอบ เช่น NBA 2K25, EA SPORTS FC 25 หรือ Star Wars: Outlaws ที่กำลังลดราคา และดูข้อเสนอสุดพิเศษเพิ่มเติมด้านล่าง:
+<ul>
+ 	<li>ลูกค้าที่ซื้อ Diablo® IV: Vessel of Hatred™ - Standard Edition, Diablo® IV: Vessel of Hatred™ - Deluxe Edition หรือ Diablo® IV: Vessel of Hatred™ - Ultimate Edition ตั้งแต่วันนี้ถึงวันที่ 2 ธันวาคม จะได้รับบัตรของขวัญ Xbox มูลค่า 5 เหรียญสหรัฐ และ Sound of Slaughter Bundle <a href="https://www.microsoft.com/en-us/store/b/Diablo2024terms?rtc=1">มีข้อกำหนดและเงื่อนไขใช้บังคับ</a></li>
+ 	<li>ลูกค้าที่ซื้อ EA SPORTS College Football 25, EA SPORTS College Football 25 – Deluxe Edition หรือ EA SPORTS MVP Bundle (Madden NFL Deluxe Edition และ College Football 25 Deluxe Edition) ตั้งแต่วันนี้จนถึงวันที่ 2 ธันวาคม จะได้รับบัตรของขวัญ Xbox มูลค่า 5 ดอลลาร์ และ EA SPORTS College Football 25 – 500 College Football Points <a href="https://www.microsoft.com/en-us/store/b/EASportsHoliday_2024terms?rtc=1">มีข้อกำหนดและเงื่อนไขใช้บังคับ</a></li>
+ 	<li>ลูกค้าที่ซื้อ F1 24 หรือ F1 24 Champions Edition จะได้รับบัตรของขวัญ Xbox มูลค่า 5 ดอลลาร์และ F1 24 VIP Podium Pass <a href="https://www.microsoft.com/en-us/store/b/EASportsHoliday_2024terms?rtc=1">มีข้อกำหนดและเงื่อนไขใช้บังคับ</a></li>
+ 	<li>ลูกค้าที่ซื้อ NHL 25 Standard Edition Xbox Series X|S หรือ NHL 25 Deluxe Edition Xbox Series X|S จะได้รับบัตรของขวัญ Xbox มูลค่า 5 ดอลลาร์สหรัฐฯ และ NHL 25 550 Points Pack <a href="https://www.microsoft.com/en-us/store/b/EASportsHoliday_2024terms?rtc=1">มีข้อกำหนดและเงื่อนไขใช้บังคับ</a></li>
+</ul>
+<strong>ประหยัดสูงสุดถึง 50% สำหรับภาพยนตร์และรายการทีวีที่เลือก </strong>ผ่อนคลายริมกองไฟกับครอบครัวและชมภาพยนตร์ดังจาก <a href="https://www.microsoft.com/en-us/p/godzilla-vs-kong-5-film-collection/8d6kgwxwrlkl">Godzilla vs Kong 5 Film Collection</a>, <a href="https://www.microsoft.com/en-us/p/harry-potter-the-complete-8-film-collection/8d6kgwxq97k9?activetab=pivot%3aoverviewtab">Harry Potter: The Complete 8 Film Collection</a> และ <a href="https://www.microsoft.com/en-us/p/transformers-7-movie-collection/8d6kgwxxbnnx">Transformers 7 Movie Collection</a>
+
+<strong>ประหยัดสูงสุดถึง 50% สำหรับแอปที่เลือกใน Microsoft Store บน Windows </strong>ปรับปรุงประสบการณ์การฟังเพลง ความสามารถด้านความบันเทิง และอื่นๆ อีกมากมายด้วยการประหยัดกับแอปต่างๆ เช่น <a href="https://apps.microsoft.com/detail/9n0866fs04w8?hl=en-us&gl=US">Dolby Access</a>, <a href="https://apps.microsoft.com/detail/9pj0nkl8mcsj?hl=en-us&gl=US">DTS Sound Unbound</a> และ <a href="https://apps.microsoft.com/detail/9nblggh529wb?ocid=pdpshare&hl=en-us&gl=US">Karaoke One</a> ที่มีจำหน่ายใน Microsoft Store บน Windows
+
+สำหรับ<a href="https://www.microsoft.com/en-us/store/b/sale#xbox">ข้อเสนอเพิ่มเติม</a> สำหรับคอนโซล Xbox, คอนโทรลเลอร์ และเกม Xbox และ PC โปรดไปที่ <a href="https://news.xbox.com/en-us/2024/11/15/xbox-black-friday-cyber-monday-2024/">Xbox Wire</a> ข้อเสนอบางส่วนมีผลตั้งแต่ตอนนี้และสิ้นสุดในวันที่ 2 ธันวาคม มีจำหน่ายจนกว่าสินค้าจะหมด ข้อเสนอจะแตกต่างกันไปในแต่ละตลาด Microsoft Store เสนอส่วนลดตลอดช่วงวันหยุด โปรดไปที่ <a href="https://www.microsoft.com/en-us">microsoft.com</a> เพื่อค้นหาของขวัญที่สมบูรณ์แบบ
+
+<em><strong>หมายเหตุของบรรณาธิการ – 15 พฤศจิกายน 2024 –</strong> ข้อเสนอ Dolby ได้รับการอัปเดต</em>
+
+<em>หมายเหตุ: ข้อเสนอมีเฉพาะในสหรัฐอเมริกาเท่านั้น โปรดตรวจสอบข้อเสนอในภูมิภาคของคุณที่ Microsoft Store ในพื้นที่</em>]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>การเผยแพร่ Windows 11 Build 26100.2448 ไปยังช่องทาง Release Preview</title>
+		<ลิงก์>https://blogs.windows.com/windows-insider/2024/11/14/ปล่อย-windows-11-build-26100-2448-to-the-release-preview-channel/</ลิงก์>
+		
+		<dc:creator><![CDATA[แบรนดอน เลอบลัง]]></dc:creator>
+		<pubDate>พฤ. 14 พ.ย. 2567 19:22:14 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/14/releasing-windows-11-build-26100-2448-to-the-release-preview-channel/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราจะเปิดตัว <strong>Windows 11 Build</strong><strong>26100</strong><strong>2448 (</strong><strong>KB5046740) </strong> ให้กับผู้ใช้ Insider ใน Release Preview Channel บน Windows 11 เวอร์ชัน 24H2 (Build 26100)</p>
+<p>ด้านล่างนี้</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/14/releasing-windows-11-build-26100-2448-to-the-release-preview-channel/">การเผยแพร่ Windows 11 Build 26100.2448 ไปยัง Release Preview Channel</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราจะเปิดตัว <strong>Windows 11 Build</strong><strong>26100</strong><strong>2448 (</strong><strong>KB5046740) </strong> ให้กับผู้ใช้ Insider ใน Release Preview Channel บน Windows 11 เวอร์ชัน 24H2 (Build 26100)
+
+ด้านล่างนี้คือสรุปคุณลักษณะใหม่และการปรับปรุงที่รวมอยู่ในการอัปเดตนี้ โดยแยกออกเป็น 2 ส่วน ได้แก่ การเปิดตัวแบบค่อยเป็นค่อยไปและการเปิดตัวแบบปกติ ข้อความตัวหนาภายในวงเล็บระบุรายการหรือพื้นที่ของการเปลี่ยนแปลงที่เรากำลังบันทึก
+<h2><strong>การเปิดตัวแบบค่อยเป็นค่อยไป</strong></h2>
+คุณลักษณะและการปรับปรุงต่อไปนี้อาจไม่พร้อมใช้งานสำหรับผู้ใช้ทั้งหมดเนื่องจากคุณลักษณะและการปรับปรุงเหล่านี้จะค่อยๆ เผยแพร่ออกไป ข้อความที่เป็นตัวหนาในวงเล็บแสดงถึงพื้นที่ของการเปลี่ยนแปลงที่กำลังมีการบันทึกไว้
+<ul>
+ 	<li><strong>[เมนูเริ่ม] <em>ใหม่!</em></strong> เมื่อคุณคลิกขวาที่แอพที่คุณปักหมุดไว้ที่เมนูเริ่ม รายการกระโดดจะปรากฏขึ้นสำหรับแอพที่มีรายการกระโดด</li>
+ 	<li><strong>[Taskbar] <em>ใหม่!</em></strong> ถาดระบบจะแสดงวันที่และเวลาที่สั้นลง นอกจากนี้ ไอคอนระฆังแจ้งเตือนอาจไม่ปรากฏขึ้นหากคุณได้ตั้งค่าสวิตช์เป็นเปิดสำหรับ “ห้ามรบกวน” หากไอคอนระฆังไม่ปรากฏขึ้น ให้คลิกวันที่และเวลาเพื่อดูข้อความในศูนย์การแจ้งเตือน หากต้องการย้อนกลับไปที่รูปแบบยาวของวันที่และเวลา ให้ไปที่ <strong>การตั้งค่า</strong> > <strong>วันที่และเวลา</strong> จากนั้นเปิดสวิตช์สำหรับ “แสดงเวลาและวันในถาดระบบ” หากต้องการแสดงไอคอนระฆัง ให้ไปที่ <strong>การตั้งค่า</strong> > <strong>ระบบ</strong> > <strong>การแจ้งเตือน</strong> เปิดสวิตช์สำหรับ “การแจ้งเตือน” นอกจากนี้ คุณยังสามารถเข้าถึงการตั้งค่าเหล่านี้ได้โดยใช้เมนูบริบท เพียงคลิกขวาที่นาฬิกาในถาดระบบหรือไอคอนระฆัง</li>
+ 	<li><strong>[หน้าจอสัมผัส] <em>ใหม่!</em></strong> การอัปเดตนี้เพิ่มส่วนใหม่สำหรับท่าทางสัมผัสขอบหน้าจอสัมผัส ไปที่ <strong>การตั้งค่า</strong> > <strong>บลูทูธและอุปกรณ์</strong> > <strong>การสัมผัส</strong> ที่นั่น คุณสามารถเลือกได้ว่าต้องการปิดท่าทางสัมผัสขอบหน้าจอด้านซ้ายหรือด้านขวา</li>
+ 	<li><strong>[ตัวจัดการงาน]</strong>
+<ul>
+ 	<li><strong><em>ใหม่!</em></strong> กล่องโต้ตอบการตัดการเชื่อมต่อและออกจากระบบรองรับโหมดมืดและการปรับขนาดข้อความแล้ว</li>
+ 	<li><strong><em>ใหม่!</em></strong> ส่วนประสิทธิภาพจะแสดงประเภทของดิสก์แต่ละตัว</li>
+</ul>
+</li>
+ 	<li><strong>[ตัวแก้ไขวิธีการป้อนข้อมูล (IME)]</strong> <strong><em>ใหม่!</em></strong> หลังจากติดตั้งการอัปเดตนี้แล้ว แถบเครื่องมือ IME จะซ่อนเมื่อแอปอยู่ในโหมดเต็มหน้าจอ ซึ่งจะเกิดขึ้นเฉพาะเมื่อแถบเครื่องมือ IME ทำงานอยู่ และคุณพิมพ์อักขระภาษาจีนหรือภาษาญี่ปุ่น</li>
+ 	<li><strong>[File Explorer]</strong> <strong><em>ใหม่!</em></strong> คุณสามารถแชร์เนื้อหาไปยังอุปกรณ์ Android ได้จากเมนูบริบทใน File Explorer และบนเดสก์ท็อป หากต้องการใช้ฟีเจอร์นี้ คุณต้องติดตั้งและกำหนดค่า Phone Link บนพีซีของคุณ</li>
+ 	<li><strong>[IFilters]</strong> <strong><em>ใหม่!</em></strong> Windows Search เรียกใช้ IFilters ใน Less Privileged App Containers (LPAC) LPAC เป็นเหมือนคอนเทนเนอร์แอป แต่จะปฏิเสธสิทธิ์เพิ่มเติมตามค่าเริ่มต้น กระบวนการที่ทำงานใน LPAC จะเข้าถึงทรัพยากรที่ต้องการเท่านั้น กระบวนการจะไม่สามารถเข้าถึงส่วนประกอบและข้อมูลระบบที่ละเอียดอ่อนได้ ซึ่งจะช่วยลดความเสียหายที่อาจเกิดขึ้นจากกระบวนการที่ถูกบุกรุก</li>
+ 	<li><strong>[หน้าการตั้งค่าแสงไดนามิก]</strong>
+<ul>
+ 	<li><strong><em>ใหม่!</em></strong> หน้าเว็บจะแสดงข้อความตัวแทนเมื่อไม่มีอุปกรณ์ที่เข้ากันได้เชื่อมต่อกับคอมพิวเตอร์ของคุณ นอกจากนี้ การควบคุมความสว่างและเอฟเฟกต์จะปิดอยู่ด้วย</li>
+ 	<li><strong><em>ใหม่! </em></strong>การอัปเดตนี้เพิ่มตัวเลือกทิศทางไปข้างหน้า ถอยหลัง ออกด้านนอก และเข้าด้านในให้กับเอฟเฟกต์คลื่น เอฟเฟกต์ไล่ระดับมีตัวเลือกทิศทางไปข้างหน้าแล้ว</li>
+</ul>
+</li>
+ 	<li><strong>[ผู้บรรยาย] <em>ใหม่!</em> </strong>เราได้เพิ่มฟังก์ชันใหม่ให้กับโหมดสแกนของผู้บรรยายแล้ว การข้ามลิงก์ (N') ช่วยให้คุณสามารถนำทางไปยังข้อความหลังลิงก์ได้ ซึ่งมีประโยชน์อย่างยิ่งเมื่อต้องนำทางผ่านอีเมลยาวๆ บทความข่าว และหน้าวิกิ การข้ามไปยังรายการ (L') ช่วยให้คุณสามารถเข้าถึงรายการบนหน้าเว็บหรือเอกสารได้อย่างรวดเร็ว หากต้องการลองใช้ฟีเจอร์ใหม่เหล่านี้ คุณต้องเปิดผู้บรรยายก่อน (ปุ่ม Win + Ctrl + Enter) จากนั้นเปิดโหมดสแกนโดยกด Caps Lock + Spacebar และสุดท้ายใช้ทางลัดใหม่ 'N' และ 'L' โปรดทราบว่าโหมดสแกนจะ 'เปิด' ตามค่าเริ่มต้นบนหน้าเว็บส่วนใหญ่ (เช่น บทความข่าว หน้าวิกิ เป็นต้น)</li>
+ 	<li><strong>[คำพูดใน Windows] <em>ใหม่!</em> </strong>เราได้ปรับปรุงประสบการณ์การแปลงคำพูดเป็นข้อความและการแปลงข้อความเป็นคำพูดบน Windows แล้ว ผู้ใช้โปรแกรมบรรยาย การเข้าถึงด้วยเสียง คำบรรยายสด การแปลสด และการพิมพ์ด้วยเสียงอาจเห็นข้อความที่ขอให้อัปเดตไฟล์ภาษาด้วยตนเอง ไฟล์ภาษาจะวางจำหน่ายแยกต่างหากผ่าน Microsoft Store</li>
+ 	<li><strong>[การตั้งค่า]</strong> <strong><em>ใหม่!</em></strong> ประสบการณ์ที่ปรับแต่งได้เป็นข้อเสนอที่ปรับแต่งให้เหมาะกับผู้ใช้ในประสบการณ์แบบพร้อมใช้งาน (OOBE) แล้ว คุณสามารถค้นหาข้อเสนอนี้ได้ที่หน้าคำแนะนำและข้อเสนอ ไปที่ <strong>การตั้งค่า</strong> > <strong>ความเป็นส่วนตัวและความปลอดภัย</strong> ที่นี่ คุณสามารถปิดการตั้งค่าที่ส่งข้อมูลเกี่ยวกับอุปกรณ์ของคุณเพื่อปรับปรุง Windows</li>
+ 	<li><b><span data-contrast="none">[รายการข้าม]</span></b> <b><i><span data-contrast="none">ใหม่!</span></i></b><span data-contrast="none"> หากคุณกด Shift และ CTRL ค้างไว้แล้วคลิกรายการข้าม รายการนั้นจะเปิดขึ้นในฐานะผู้ดูแลระบบ </span><span data-ccp-props="{"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[DISM]</span></b><span data-contrast="auto"> แก้ไขแล้ว: งาน StartComponentCleanup ไม่ทำงานอย่างถูกต้อง หยุดที่ 71% และแสดงข้อผิดพลาด 6842</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[PowerShell]</span></b><span data-contrast="auto"> แก้ไขแล้ว: คำสั่ง </span><b><span data-contrast="auto">Get-WindowsCapability</span></b><span data-contrast="auto"> บางครั้งใช้ไม่ได้ จากนั้นคุณต้องรีสตาร์ทพีซี</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[Windows Update]</span></b><span data-contrast="auto"> แก้ไขแล้ว: เมื่อคุณติดตั้งการอัปเดต คุณอาจได้รับข้อผิดพลาด 0x800f0905</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[ไฟล์ JPG]</span></b><span data-contrast="auto"> แก้ไขแล้ว: คุณไม่สามารถใช้ API เพื่อค้นหาข้อมูลการหมุนได้</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[แสดง] </span></b><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span>
+<ul>
+ 	<li><span data-contrast="auto">แก้ไขแล้ว: หน้าต่างแอปอาจสะสมที่มุมของจอภาพหลังจากอุปกรณ์ของคุณเข้าสู่โหมดสลีป ซึ่งเกิดขึ้นเมื่อคุณใช้จอภาพหลายจอ</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><span data-contrast="auto">แก้ไขแล้ว: </span><a href="https://learn.microsoft.com/windows/apps/design/style/mica"><span data-contrast="none">วัสดุไมก้า</span></a><span data-contrast="auto"> อาจแสดงไม่ถูกต้อง ซึ่งเกิดขึ้นเมื่อคุณใช้พื้นหลังสไลด์โชว์</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+</ul>
+</li>
+ 	<li><b><span data-contrast="auto">[เมาส์]</span></b><span data-contrast="auto"> แก้ไขแล้ว: เมื่อคุณใช้ "แสดงตำแหน่งของตัวชี้เมื่อกดปุ่ม CTRL" วงกลมอาจเล็กมากในจอภาพบางจอ</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[คลิปบอร์ด]</span></b><span data-contrast="auto"> แก้ไขแล้ว: ประวัติคลิปบอร์ด (ปุ่มโลโก้ Windows เครื่องหมายบวก (+) V) อาจไม่แสดงเนื้อหา ปัญหานี้เกิดขึ้นแม้ว่าจะเปิดใช้งานอยู่ และคุณได้คัดลอกข้อความและรูปภาพไปแล้ว</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559685":720,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[Taskbar]</span></b><span data-contrast="auto"> แก้ไขแล้ว: เมื่อคุณเลือก "ซ่อนแถบงานโดยอัตโนมัติ" กล่องค้นหาจะแสดงเป็นไอคอน ไม่ใช่กล่องค้นหา</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559685":720,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><b><span data-contrast="auto">[ตัวสำรวจไฟล์] </span></b><span data-ccp-props="{"134233279":false,"201341983":0,"335559685":720,"335559739":120,"335559740":240}"> </span>
+<ul>
+ 	<li><span data-contrast="auto">แก้ไขแล้ว: อาจมีพื้นที่ว่างมากกว่าที่คุณคาดไว้ระหว่างรายการที่แสดงในบานหน้าต่างด้านซ้าย</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+ 	<li><span data-contrast="auto">แก้ไขแล้ว: กล่องค้นหาถูกตัดออกเมื่อหน้าต่าง File Explorer มีขนาดเล็ก</span><span data-ccp-props="{"134233279":false,"201341983":0,"335559739":120,"335559740":240}"> </span></li>
+</ul>
+</li>
+</ul>
+<h2><strong>การเปิดตัวปกติ</strong></h2>
+การอัปเดตนี้ประกอบด้วยคุณลักษณะและการปรับปรุงต่อไปนี้ที่เปิดตัวเป็นส่วนหนึ่งของการอัปเดตนี้ ข้อความที่เป็นตัวหนาในวงเล็บระบุพื้นที่ของการเปลี่ยนแปลงที่กำลังได้รับการบันทึก
+<ul>
+ 	<li><strong>[File Explorer]</strong> แก้ไขแล้ว: เมื่อคุณเลือกปุ่ม <strong>ดูเพิ่มเติม</strong> เมนูจะขยายขึ้นด้านบนแทนที่จะเลื่อนลง เนื่องด้วยเหตุนี้ เมนูอาจหลุดออกจากหน้าจอ ขึ้นอยู่กับตำแหน่งของ File Explorer</li>
+</ul>
+<ul>
+ 	<li><strong>[แอปพลิเคชัน HTML (HTA)]</strong> แก้ไขแล้ว: ส่วนประกอบเสริม (OC) ของ HTA มีอยู่ใน ARM64 Windows PE แล้ว</li>
+</ul>
+<ul>
+ 	<li><strong>[ตัวจัดการงาน]</strong> แก้ไขแล้ว: หน้าผู้ใช้จะทำให้ตัวจัดการงานหยุดตอบสนองเมื่อคุณใช้แป้นพิมพ์</li>
+</ul>
+<ul>
+ 	<li><strong>[อินเทอร์เฟซอุปกรณ์กราฟิกพลัส (GDI+)]</strong></li>
+</ul>
+<ul>
+ 	<li>แก้ไขแล้ว: คุณไม่สามารถรับคุณสมบัติของไฟล์รูปภาพโดยใช้ GDI+ ได้</li>
+ 	<li>แก้ไขแล้ว: การปรับขนาดผิดพลาดเมื่อคุณเข้ารหัสรูปภาพใหม่ใน GDI+</li>
+</ul>
+<ul>
+ 	<li><strong>[รูปภาพรูปแบบ RAW]</strong> แก้ไขแล้ว: แสดงในทิศทางที่ไม่ถูกต้อง</li>
+</ul>
+<ul>
+ 	<li><strong>[การส่งออกวัตถุแผนภูมิ]</strong> แก้ไขแล้ว: แอปหยุดตอบสนองเมื่อส่งออกวัตถุแผนภูมิในรูปแบบ PDF และ XLSX</li>
+</ul>
+<ul>
+ 	<li><strong>[เมาส์และแถบเกม Xbox]</strong> แก้ไขแล้ว: เมาส์ของคุณอาจปลดล็อกจากหน้าต่างเกม ซึ่งจะเกิดขึ้นเมื่อคุณมีจอภาพหลายจอและเปิดและปิดแถบเกม Xbox</li>
+ 	<li><strong>[เพิ่มแล้ว]</strong> <span data-teams="true"><strong>[ระบบย่อย Windows สำหรับ Linux (WSL)]</strong> แก้ไขแล้ว: หยุดทำงานและไม่สามารถเริ่มต้นได้ </span></li>
+</ul>
+ขอบคุณ,
+ทีมโปรแกรม Windows Insider]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>เปิดตัว Windows 10 Build 19045.5194 สู่เวอร์ชันเบต้าและ Release Preview Channels</title>
+		<ลิงก์>https://blogs.windows.com/windows-insider/2024/11/14/ปล่อย windows-10-build-19045-5194-to-beta-and-release-preview-channels/</ลิงก์>
+		
+		<dc:creator><![CDATA[แบรนดอน เลอบลัง]]></dc:creator>
+		<pubDate>พฤ. 14 พ.ย. 2567 19:11:36 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<หมวดหมู่><![CDATA[Windows 10]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/14/releasing-windows-10-build-19045-5194-to-beta-and-release-preview-channels/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราจะเปิดตัว <strong>Windows 10 22H2 Build 19045.5194 (KB5046714)</strong> ให้ทั้ง <strong>ช่อง</strong>เบต้า</strong> และช่อง Release Preview สำหรับผู้ใช้ Insider ที่ใช้ Windows 10 เวอร์ชัน 22H2</p>
+<p>ช่องเบต้าและ</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/14/releasing-windows-10-build-19045-5194-to-beta-and-release-preview-channels/">การเผยแพร่ Windows 10 Build 19045.5194 ไปยัง Beta และ Release Preview Channels</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราจะเปิดตัว <strong>Windows 10 22H2 Build 19045.5194 (KB5046714)</strong> ให้ทั้ง <strong>ช่อง</strong> Beta และช่อง Release Preview</strong> สำหรับผู้ใช้ Windows 10 เวอร์ชัน 22H2
+
+ในวันนี้ Beta Channel และ Release Preview Channel จะได้รับ Windows 10 รุ่นเดียวกันเช่นเดียวกับที่เราทำมา <a href="https://blogs.windows.com/windows-insider/2024/06/04/opening-the-beta-channel-for-windows-insiders-on-windows-10/">ตั้งแต่เดือนมิถุนายน</a>. <strong>อย่างไรก็ตาม นี่จะเป็นครั้งสุดท้ายที่เราเผยแพร่ Windows 10 รุ่นใน Beta Channel เนื่องจากเราจะปิด Beta Channel สำหรับ Windows 10</strong> ผู้ใช้ Windows 10 ใน Beta Channel จะถูกย้ายไปยัง Release Preview Channel และเราจะยังคงเผยแพร่รุ่นสำหรับ Windows 10 ใน Release Preview Channel เท่านั้นต่อไป ผู้ใช้ Windows 10 ใน Beta Channel ในวันนี้ยังสามารถย้ายไปยัง Release Preview Channel ได้ด้วยตนเองผ่านการตั้งค่า > การอัปเดต & ความปลอดภัย > โปรแกรม Windows Insider และเลือก Release Preview Channel <a href="https://blogs.windows.com/windowsexperience/2024/10/31/how-to-prepare-for-windows-10-end-of-support-by-moving-to-windows-11-today/">เราขอแนะนำให้ลูกค้าเตรียมพร้อมสำหรับการสิ้นสุดการสนับสนุน Windows 10 โดยการย้ายไปใช้ Windows 11 วันนี้</a>
+<h2><strong>สำหรับ Windows Insiders บน Windows 10 ในช่องเบต้า เรากำลังเริ่มเปิดตัวการปรับปรุงต่อไปนี้</strong></h2>
+<ul>
+ 	<li><strong>[เมนูเริ่ม] <em>ใหม่!</em></strong> ส่วนที่แนะนำของเมนูเริ่มจะแสดงแอปใน Microsoft Store บางส่วน แอปเหล่านี้มาจากกลุ่มนักพัฒนาที่ได้รับการคัดสรรจำนวนเล็กน้อย ซึ่งจะช่วยให้คุณค้นพบแอปดีๆ บางส่วนที่มีจำหน่าย หากต้องการปิดสิ่งนี้ ให้ไปที่ การตั้งค่า > การปรับแต่ง > เริ่ม ปิดสวิตช์สำหรับ แสดงคำแนะนำเป็นครั้งคราวในเมนูเริ่ม</li>
+</ul>
+ผู้ใช้งาน Windows 10 Insider Channel ที่ต้องการเป็นคนแรกที่ได้รับฟีเจอร์ต่างๆ ที่ทยอยเปิดตัวให้ใช้งาน สามารถ<a href="https://support.microsoft.com/en-us/windows/get-windows-updates-as-soon-as-they-re-available-for-your-device-4911c7af-2644-41f7-a800-6660f9212448">เปิดสวิตช์เพื่อรับการอัปเดตล่าสุดทันทีที่มี</a> ได้ที่<strong>การตั้งค่า > อัปเดต & ความปลอดภัย > Windows Update</strong> เราจะเพิ่มการเปิดตัวฟีเจอร์ต่างๆ ให้กับทุกคนที่เปิดสวิตช์นี้อย่างต่อเนื่อง หากคุณปิดสวิตช์นี้ไว้ ฟีเจอร์ใหม่ๆ จะทยอยเปิดตัวให้ใช้งานบนอุปกรณ์ของคุณเมื่อพร้อมใช้งาน
+<h2><strong>การอัปเดตนี้รวมคุณลักษณะและการปรับปรุงต่อไปนี้สำหรับ Windows Insiders ทั้งในช่องทางเบต้าและช่องทางการดูตัวอย่างการเผยแพร่</strong></h2>
+รายการที่เป็นตัวหนาในวงเล็บระบุพื้นที่ของการเปลี่ยนแปลงที่ได้รับการบันทึกไว้:
+<ul>
+ 	<li><strong>[การสำรองข้อมูลรายการแอป]</strong> แก้ไขแล้ว: ทางลัด Win32 อาจไม่สามารถสำรองข้อมูลไปยังคลาวด์ได้</li>
+ 	<li><strong>[คัดลอกไฟล์บนคลาวด์]</strong> แก้ไขแล้ว: เมื่อคุณลากและวางไฟล์จากโฟลเดอร์ของผู้ให้บริการไฟล์บนคลาวด์ อาจทำให้เกิดการย้ายแทนการคัดลอก</li>
+</ul>
+<ul>
+ 	<li><strong>[การเปลี่ยนเมนบอร์ด]</strong> แก้ไขแล้ว: Windows จะไม่เปิดใช้งานหลังจากคุณเปลี่ยนเมนบอร์ด</li>
+ 	<li><strong>[ทรัพยากรการตั้งค่าประเทศและผู้ให้บริการ (COSA)]</strong> แก้ไขแล้ว: การอัปเดตนี้จะทำให้โปรไฟล์เป็นปัจจุบันสำหรับผู้ให้บริการมือถือบางราย</li>
+ 	<li><strong>[เครื่องพิมพ์ Internet Printing Protocol (IPP)]</strong> แก้ไขแล้ว: Windows หยุดตอบสนองเมื่อคุณใช้เครื่องพิมพ์ USB IPP</li>
+</ul>
+ขอบคุณ,
+ทีมโปรแกรม Windows Insider]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>การเผยแพร่ Windows 11 Build 22631.4534 ไปยังช่องทาง Release Preview</title>
+		ลิงค์ไปยังลิงก์นี้: https://blogs.windows.com/windows-insider/2024/11/14/ปล่อย Windows 11 รุ่น 22631-4534
+		
+		<dc:creator><![CDATA[แบรนดอน เลอบลัง]]></dc:creator>
+		<pubDate>พฤ. 14 พ.ย. 2567 18:27:06 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/14/releasing-windows-11-build-22631-4534-to-the-release-preview-channel/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราจะเปิดตัว <strong>Windows 11 Build </strong><strong>22631</strong><strong>4534 (</strong><strong>KB5046732) </strong> ให้กับผู้ใช้ Insider ใน Release Preview Channel บน Windows 11 เวอร์ชัน 23H2 (Build 22631) <strong></p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/14/releasing-windows-11-build-22631-4534-to-the-release-preview-channel/">การเผยแพร่ Windows 11 Build 22631.4534 สู่ Release Preview Channel</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Build </strong><strong>22631</strong><strong>4534 (</strong><strong>KB5046732) </strong> ให้กับผู้ใช้ Windows Insider ใน Release Preview Channel บน Windows 11 เวอร์ชัน 23H2 (Build 22631) <strong> </strong>
+
+ด้านล่างนี้คือสรุปคุณลักษณะใหม่และการปรับปรุงที่รวมอยู่ในการอัปเดตนี้ โดยแยกออกเป็น 2 ส่วน ได้แก่ การเปิดตัวแบบค่อยเป็นค่อยไปและการเปิดตัวแบบปกติ ข้อความตัวหนาภายในวงเล็บระบุรายการหรือพื้นที่ของการเปลี่ยนแปลงที่เรากำลังบันทึก
+<h2><strong>การเปิดตัวแบบค่อยเป็นค่อยไป</strong></h2>
+คุณลักษณะและการปรับปรุงต่อไปนี้อาจไม่พร้อมใช้งานสำหรับผู้ใช้ทั้งหมดเนื่องจากคุณลักษณะและการปรับปรุงเหล่านี้จะค่อยๆ เผยแพร่ออกไป ข้อความที่เป็นตัวหนาในวงเล็บแสดงถึงพื้นที่ของการเปลี่ยนแปลงที่กำลังมีการบันทึกไว้
+<ul>
+ 	<li><strong>[เมนูเริ่ม] <em>ใหม่!</em></strong> เมื่อคุณคลิกขวาที่แอพที่คุณปักหมุดไว้ที่เมนูเริ่ม รายการกระโดดจะปรากฏขึ้นสำหรับแอพที่มีรายการกระโดด</li>
+ 	<li><strong>[Taskbar] <em>ใหม่!</em></strong> ถาดระบบจะแสดงวันที่และเวลาที่สั้นลง นอกจากนี้ ไอคอนระฆังแจ้งเตือนอาจไม่ปรากฏขึ้นหากคุณได้ตั้งค่าสวิตช์เป็นเปิดสำหรับ “ห้ามรบกวน” หากไอคอนระฆังไม่ปรากฏขึ้น ให้คลิกวันที่และเวลาเพื่อดูข้อความในศูนย์การแจ้งเตือน หากต้องการย้อนกลับไปที่รูปแบบยาวของวันที่และเวลา ให้ไปที่ <strong>การตั้งค่า</strong> > <strong>วันที่และเวลา</strong> จากนั้นเปิดสวิตช์สำหรับ “แสดงเวลาและวันในถาดระบบ” หากต้องการแสดงไอคอนระฆัง ให้ไปที่ <strong>การตั้งค่า</strong> > <strong>ระบบ</strong> > <strong>การแจ้งเตือน</strong> เปิดสวิตช์สำหรับ “การแจ้งเตือน” นอกจากนี้ คุณยังสามารถเข้าถึงการตั้งค่าเหล่านี้ได้โดยใช้เมนูบริบท เพียงคลิกขวาที่นาฬิกาในถาดระบบหรือไอคอนระฆัง</li>
+ 	<li><strong>[หน้าจอสัมผัส] <em>ใหม่!</em></strong> การอัปเดตนี้เพิ่มส่วนใหม่สำหรับท่าทางสัมผัสขอบหน้าจอสัมผัส ไปที่ <strong>การตั้งค่า</strong> > <strong>บลูทูธและอุปกรณ์</strong> > <strong>การสัมผัส</strong> ที่นั่น คุณสามารถเลือกได้ว่าต้องการปิดท่าทางสัมผัสขอบหน้าจอด้านซ้ายหรือด้านขวา</li>
+ 	<li><strong>[เมาส์]</strong> <strong><em>ใหม่!</em></strong> การอัปเดตนี้เพิ่มตัวเลือกในการปิดความแม่นยำของตัวชี้เมาส์ที่ได้รับการปรับปรุงใน <strong>การตั้งค่า</strong> > <strong>บลูทูธและอุปกรณ์</strong> > <strong>เมาส์</strong> นอกจากนี้ยังมีตัวเลือกใหม่ในการเปลี่ยนทิศทางการเลื่อนเมาส์อีกด้วย</li>
+ 	<li><strong>[ตัวจัดการงาน]</strong>
+<ul>
+ 	<li><strong><em>ใหม่!</em></strong> กล่องโต้ตอบการตัดการเชื่อมต่อและออกจากระบบรองรับโหมดมืดและการปรับขนาดข้อความแล้ว</li>
+ 	<li><strong><em>ใหม่!</em></strong> ส่วนประสิทธิภาพจะแสดงประเภทของดิสก์แต่ละตัว</li>
+</ul>
+</li>
+ 	<li><strong>[ตัวแก้ไขวิธีการป้อนข้อมูล (IME)]</strong> <strong><em>ใหม่!</em></strong> หลังจากติดตั้งการอัปเดตนี้แล้ว แถบเครื่องมือ IME จะซ่อนเมื่อแอปอยู่ในโหมดเต็มหน้าจอ ซึ่งจะเกิดขึ้นเฉพาะเมื่อแถบเครื่องมือ IME ทำงานอยู่ และคุณพิมพ์อักขระภาษาจีนหรือภาษาญี่ปุ่น</li>
+ 	<li><strong>[File Explorer]</strong> <strong><em>ใหม่!</em></strong> คุณสามารถแชร์เนื้อหาไปยังอุปกรณ์ Android ได้จากเมนูบริบทใน File Explorer และบนเดสก์ท็อป หากต้องการใช้ฟีเจอร์นี้ คุณต้องติดตั้งและกำหนดค่า Phone Link บนพีซีของคุณ</li>
+ 	<li><strong>[IFilters]</strong> <strong><em>ใหม่!</em></strong> Windows Search เรียกใช้ IFilters ใน Less Privileged App Containers (LPAC) LPAC เป็นเหมือนคอนเทนเนอร์แอป แต่จะปฏิเสธสิทธิ์เพิ่มเติมตามค่าเริ่มต้น กระบวนการที่ทำงานใน LPAC จะเข้าถึงทรัพยากรที่ต้องการเท่านั้น กระบวนการจะไม่สามารถเข้าถึงส่วนประกอบและข้อมูลระบบที่ละเอียดอ่อนได้ ซึ่งจะช่วยลดความเสียหายที่อาจเกิดขึ้นจากกระบวนการที่ถูกบุกรุก</li>
+ 	<li><strong>[หน้าการตั้งค่าแสงไดนามิก]</strong>
+<ul>
+ 	<li><strong><em>ใหม่!</em></strong> หน้าเว็บจะแสดงข้อความตัวแทนเมื่อไม่มีอุปกรณ์ที่เข้ากันได้เชื่อมต่อกับคอมพิวเตอร์ของคุณ นอกจากนี้ การควบคุมความสว่างและเอฟเฟกต์จะปิดอยู่ด้วย</li>
+ 	<li><strong><em>ใหม่! </em></strong>การอัปเดตนี้เพิ่มตัวเลือกทิศทางไปข้างหน้า ถอยหลัง ออกด้านนอก และเข้าด้านในให้กับเอฟเฟกต์คลื่น เอฟเฟกต์ไล่ระดับมีตัวเลือกทิศทางไปข้างหน้าแล้ว</li>
+</ul>
+</li>
+ 	<li><strong>[ผู้บรรยาย] <em>ใหม่!</em> </strong>เราได้เพิ่มฟังก์ชันใหม่ให้กับโหมดสแกนของผู้บรรยายแล้ว การข้ามลิงก์ (N') ช่วยให้คุณสามารถนำทางไปยังข้อความหลังลิงก์ได้ ซึ่งมีประโยชน์อย่างยิ่งเมื่อต้องนำทางผ่านอีเมลยาวๆ บทความข่าว และหน้าวิกิ การข้ามไปยังรายการ (L') ช่วยให้คุณสามารถเข้าถึงรายการบนหน้าเว็บหรือเอกสารได้อย่างรวดเร็ว หากต้องการลองใช้ฟีเจอร์ใหม่เหล่านี้ คุณต้องเปิดผู้บรรยายก่อน (ปุ่ม Win + Ctrl + Enter) จากนั้นเปิดโหมดสแกนโดยกด Caps Lock + Spacebar และสุดท้ายใช้ทางลัดใหม่ 'N' และ 'L' โปรดทราบว่าโหมดสแกนจะ 'เปิด' ตามค่าเริ่มต้นบนหน้าเว็บส่วนใหญ่ (เช่น บทความข่าว หน้าวิกิ เป็นต้น)</li>
+ 	<li><strong>[คำพูดใน Windows] <em>ใหม่!</em> </strong>เราได้ปรับปรุงประสบการณ์การแปลงคำพูดเป็นข้อความและการแปลงข้อความเป็นคำพูดบน Windows แล้ว ผู้ใช้โปรแกรมบรรยาย การเข้าถึงด้วยเสียง คำบรรยายสด การแปลสด และการพิมพ์ด้วยเสียงอาจเห็นข้อความที่ขอให้อัปเดตไฟล์ภาษาด้วยตนเอง ไฟล์ภาษาจะวางจำหน่ายแยกต่างหากผ่าน Microsoft Store</li>
+ 	<li><strong>[การตั้งค่า]</strong> <strong><em>ใหม่!</em></strong> ประสบการณ์ที่ปรับแต่งได้เป็นข้อเสนอที่ปรับแต่งให้เหมาะกับผู้ใช้ในประสบการณ์แบบพร้อมใช้งาน (OOBE) แล้ว คุณสามารถค้นหาข้อเสนอนี้ได้ที่หน้าคำแนะนำและข้อเสนอ ไปที่ <strong>การตั้งค่า</strong> > <strong>ความเป็นส่วนตัวและความปลอดภัย</strong> ที่นี่ คุณสามารถปิดการตั้งค่าที่ส่งข้อมูลเกี่ยวกับอุปกรณ์ของคุณเพื่อปรับปรุง Windows</li>
+ 	<li><strong>[แถบงาน]</strong> แก้ไขแล้ว: เมื่อคุณเลือก "ซ่อนแถบงานโดยอัตโนมัติ" กล่องค้นหาจะแสดงเป็นไอคอน ไม่ใช่กล่องค้นหา</li>
+ 	<li><strong>[ตัวสำรวจไฟล์]</strong>
+<ul>
+ 	<li>แก้ไขแล้ว: อาจมีพื้นที่ว่างมากกว่าที่คุณคาดไว้ระหว่างรายการที่แสดงในบานหน้าต่างด้านซ้าย</li>
+ 	<li>แก้ไข: กล่องค้นหาถูกตัดออกเมื่อหน้าต่าง File Explorer มีขนาดเล็ก</li>
+</ul>
+</li>
+ 	<li><strong>[รายการข้าม]</strong> <i><strong>ใหม่!</strong></i> หากคุณกด Shift และ CTRL ค้างไว้แล้วคลิกรายการข้าม รายการดังกล่าวจะเปิดขึ้นในฐานะผู้ดูแลระบบ</li>
+</ul>
+<h2><strong>การเปิดตัวปกติ</strong></h2>
+การอัปเดตนี้ประกอบด้วยคุณลักษณะและการปรับปรุงต่อไปนี้ที่เปิดตัวเป็นส่วนหนึ่งของการอัปเดตนี้ ข้อความที่เป็นตัวหนาในวงเล็บระบุพื้นที่ของการเปลี่ยนแปลงที่กำลังได้รับการบันทึก
+<ul>
+ 	<li><strong>[การเปลี่ยนเมนบอร์ด]</strong> แก้ไขแล้ว: Windows จะไม่เปิดใช้งานหลังจากคุณเปลี่ยนเมนบอร์ด</li>
+ 	<li><strong>[ทรัพยากรการตั้งค่าประเทศและผู้ให้บริการ (COSA)]</strong> แก้ไขแล้ว: การอัปเดตนี้จะทำให้โปรไฟล์เป็นปัจจุบันสำหรับผู้ให้บริการมือถือบางราย</li>
+ 	<li><strong>[เครื่องพิมพ์ Internet Printing Protocol (IPP)]</strong> แก้ไขแล้ว: Windows หยุดตอบสนองเมื่อคุณใช้เครื่องพิมพ์ USB IPP</li>
+ 	<li><strong>[Bluetooth LE Audio]</strong> แก้ไขแล้ว: อุปกรณ์บางอย่าง เช่น เครื่องช่วยฟัง ไม่สามารถสตรีมเสียง Bluetooth ได้</li>
+ 	<li><strong>[เพิ่มแล้ว]</strong> <span data-teams="true"><strong>[เมาส์และแถบเกม]</strong> แก้ไขแล้ว: เมาส์ของคุณอาจปลดล็อกจากหน้าต่างเกม ซึ่งจะเกิดขึ้นเมื่อคุณมีจอภาพหลายจอและเปิดและปิดแถบเกม </span></li>
+</ul>
+ขอบคุณ,
+ทีมโปรแกรม Windows Insider]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>ประกาศเปิดตัว Windows 11 Insider Preview Build 27749 (Canary Channel)</title>
+		ลิงก์ไปยังบทความ
+		
+		<dc:creator><![CDATA[อแมนดา ลางอฟสกี้]]></dc:creator>
+		<pubDate>พุธที่ 13 พ.ย. 2567 18:04:57 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/13/ประกาศ-windows-11-insider-preview-build-27749-canary-channel/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview </strong><strong>Build 27749 </strong> ใน Canary Channel เราเปิดตัว ISO สำหรับบิลด์นี้ โดยสามารถดาวน์โหลดได้ <a href="https://aka.ms/wipISO">ที่นี่</a></p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/13/announcing-windows-11-insider-preview-build-27749-canary-channel/">ประกาศ Windows 11 Insider Preview Build 27749 (Canary Channel)</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview </strong><strong>Build 27749 </strong> สู่ Canary Channel เรากำลังเปิดตัว ISO สำหรับบิลด์นี้ – คุณสามารถ <a href="https://aka.ms/wipISO">ดาวน์โหลดได้ที่นี่</a>
+
+เราไม่ได้วางแผนที่จะเปิดตัว SDK สำหรับรุ่นซีรีย์ 27xxx ในตอนนี้ด้วย
+<h2><strong>การเปลี่ยนแปลงและการปรับปรุง</strong></h2>
+<h3><strong>[ผู้บรรยาย]</strong></h3>
+<ul>
+ 	<li>เราได้เพิ่มทางลัดใหม่ “ปุ่ม Narrator + Control + X” เพื่อคัดลอกสิ่งที่ Narrator พูดล่าสุดไปยังคลิปบอร์ด โดยทำตามรูปแบบการใช้ “ปุ่ม Narrator + X” ซึ่งจะทำซ้ำวลีที่พูดล่าสุดออกเสียงดังๆ และเป็นวิธีที่ดีในการจดจำทางลัดที่คล้ายกัน คุณสามารถใช้ทางลัดเหล่านี้เพื่อทบทวนและคัดลอกสิ่งที่ Narrator พูด ซึ่งมีประโยชน์ในกรณีที่คุณต้องการคัดลอกเนื้อหา คำอธิบาย หรือรหัส/ตัวเลขบางส่วนเพื่อใช้งานอย่างรวดเร็ว</li>
+ 	<li>ขณะนี้ผู้บรรยายจะอ่านเนื้อหาของอีเมลในแอป <a href="https://support.microsoft.com/office/getting-started-with-the-new-outlook-for-windows-656bb8d9-5a60-49b2-a98b-ba7822bc7627">Outlook ใหม่</a> โดยอัตโนมัติ ซึ่งคล้ายกับลักษณะการทำงานใน Outlook แบบคลาสสิก</li>
+</ul>
+<h2><strong>การแก้ไข</strong></h2>
+<h3><strong>[ตัวสำรวจไฟล์]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาที่ทำให้รายการในบานหน้าต่างนำทางกระจายตัวออกมากเกินไป (โดยมีช่องว่างระหว่างแต่ละรายการที่ไม่คาดคิด) สำหรับบางคน</li>
+ 	<li>แก้ไขปัญหาพื้นฐานที่ทำให้ภาพ RAW ที่ถ่ายในโหมดแนวตั้งแสดงเป็นภาพขนาดย่อในโหมดแนวนอนโดยไม่คาดคิด</li>
+</ul>
+<h3><strong>[แถบงานและถาดระบบ]</strong></h3>
+<ul>
+ 	<li>ทำการเปลี่ยนแปลงเพื่อให้คุณเห็นช่องค้นหาหากแถบงานซ่อนโดยอัตโนมัติเมื่อการตั้งค่าสำหรับการค้นหาบนแถบงานถูกตั้งค่าเป็น "ช่องค้นหา" (แทนที่จะเป็นไอคอน)</li>
+</ul>
+<h3><strong>[อินพุต]</strong></h3>
+<ul>
+ 	<li>อัปเดตตัวเลือกเมาส์ “แสดงตำแหน่งของตัวชี้เมื่อกดปุ่ม CTRL” เพื่อให้วงกลมที่แสดงนั้นรองรับ DPI และไม่เล็กเกินไปบนจอภาพ DPI สูง
+</ul>
+<h3><strong>[ผู้บรรยาย]</strong></h3>
+<ul>
+ 	<li>เราได้แก้ไขปัญหาด้านประสิทธิภาพการทำงานที่โปรแกรม Narrator จะช้าลงหลังจากใช้งานต่อเนื่อง 15 นาทีด้วยแอปพลิเคชันเดียว หากคุณยังคงพบปัญหาด้านประสิทธิภาพการทำงาน โปรดรายงานโดยใช้ Feedback Hub</li>
+ 	<li>แก้ไขปัญหาที่โปรแกรม Narrator จะเพิ่มประกาศเพิ่มเติมว่า “มีสไตล์” เมื่อใดก็ตามที่โฟกัสอยู่ที่ข้อความที่มีแอตทริบิวต์สไตล์ เช่น จุดหัวข้อย่อย ตัวเลข ในแอปพลิเคชันต่างๆ เช่น Microsoft Edge, Teams, Outlook เป็นต้น</li>
+ 	<li>แก้ไขปัญหาที่กล่องโต้ตอบบางรายการในโปรแกรมผู้บรรยายไม่นำการตั้งค่าการปรับขนาดข้อความ 200% มาใช้ใน Windows</li>
+</ul>
+<h3><strong>[ตัวจัดการงาน]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาที่ทำให้ตัวจัดการงานแสดงจำนวนแอปและกระบวนการเป็น 0</li>
+</ul>
+<h3><strong>[เสียง]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาพื้นฐานที่อาจทำให้เสียงบนอุปกรณ์เสียงบางเครื่องกลับไปเป็น 100% โดยไม่คาดคิดเมื่อบูตเครื่องหรือหลังจากเข้าสู่โหมดสลีป</li>
+ 	<li>แก้ไขรายการว่างใน "การตั้งค่าและความเป็นส่วนตัว" ซึ่งจะทำให้การตั้งค่าขัดข้องหากคุณคลิกที่รายการนั้น</li>
+</ul>
+<h3><strong>[อื่นๆ]</strong></h3>
+<ul>
+ 	<li>บรรเทาปัญหาที่ทำให้ Git ไม่ทำงานสำหรับผู้ใช้ Insider ที่ใช้ Arm PC ในเที่ยวบินก่อนหน้านี้</li>
+ 	<li>แก้ไขปัญหาที่ทำให้ผู้ใช้ภายในบางรายพบข้อผิดพลาดกับ KERNEL_MODE_HEAP_CORRUPTION ในเที่ยวบินก่อนหน้านี้</li>
+ 	<li>แก้ไขปัญหาพื้นฐานที่อาจทำให้ไม่สามารถเข้าร่วมโดเมนได้</li>
+ 	<li>แก้ไขปัญหาที่ DirectAccess ไม่ทำงานและอาจติดอยู่ในสถานะเชื่อมต่อ</li>
+</ul>
+<h2><strong>ปัญหาที่ทราบ</strong></h2>
+<h3><strong>[ทั่วไป]</strong></h3>
+<ul>
+ 	<li><strong>[หมายเหตุสำคัญสำหรับพีซี COPILOT+]</strong> หากคุณเข้าร่วม Canary Channel บนพีซี Copilot+ ใหม่จาก Dev Channel, Release Preview Channel หรือร้านค้าปลีก คุณจะสูญเสีย PIN และข้อมูลไบโอเมตริกของ Windows Hello เพื่อลงชื่อเข้าใช้พีซีของคุณ โดยมีข้อผิดพลาด 0xd0000225 และข้อความแสดงข้อผิดพลาด "มีบางอย่างผิดพลาด และ PIN ของคุณไม่พร้อมใช้งาน" คุณควรสร้าง PIN ของคุณใหม่ได้โดยคลิก "ตั้งค่า PIN ของฉัน"</li>
+ 	<li>เรากำลังตรวจสอบรายงานที่ระบุว่าผู้ใช้ Insider บางรายยังคงประสบปัญหาการย้อนกลับ (พร้อมรหัสข้อผิดพลาด 0xc190010) เมื่อพยายามติดตั้ง Canary รุ่นล่าสุด
+ 	<li>[<strong>ใหม่</strong>] เรากำลังดำเนินการแก้ไขปัญหาพื้นฐานที่ทำให้แอปบางตัวที่ใช้ในการควบคุมระยะไกลไปยังพีซีเครื่องอื่นเกิดขัดข้องใน Canary รุ่นล่าสุด</li>
+ 	<li><strong>[ใหม่]</strong> รุ่นนี้มีปัญหาในการใช้หลักนโยบายสำหรับ Digital Markets Act ในภูมิภาค EEA</li>
+</ul>
+<h3><strong>[เดสก์ท็อป]</strong></h3>
+<ul>
+ 	<li>เรากำลังดำเนินการแก้ไขปัญหาที่พื้นหลังเดสก์ท็อปของคุณอาจไม่แสดงอย่างถูกต้องในบางครั้งเมื่อใช้จอภาพหลายจอ (แสดงพื้นที่สีดำขนาดใหญ่)</li>
+</ul>
+<h2><strong>คำเตือนสำหรับ Windows Insiders ใน Canary Channel</strong></h2>
+<ul>
+ 	<li>รุ่นที่เราเผยแพร่สู่ Canary Channel แสดงถึงการเปลี่ยนแปลงล่าสุดของแพลตฟอร์มในช่วงเริ่มต้นของวงจรการพัฒนา และ <strong>ไม่ควรมองว่าตรงกับรุ่นใดรุ่นหนึ่งของ Windows </strong> และคุณลักษณะและประสบการณ์ที่รวมอยู่ในรุ่นเหล่านี้อาจไม่มีวันเผยแพร่ เนื่องจากเราพยายามใช้แนวคิดต่างๆ และได้รับคำติชม คุณลักษณะต่างๆ อาจเปลี่ยนแปลงไปตามเวลา ถูกนำออก หรือแทนที่ และจะไม่มีการเผยแพร่เลยนอกเหนือจาก Windows Insiders คุณลักษณะและประสบการณ์บางส่วนเหล่านี้อาจปรากฏในรุ่น Windows ในอนาคต <strong>เมื่อพร้อมใช้งาน</strong>
+</ul>
+<ul>
+ 	<li>ฟีเจอร์ต่างๆ มากมายใน Canary Channel ได้รับการเผยแพร่โดยใช้<a href="https://support.microsoft.com/en-us/windows/delivering-continuous-innovation-in-windows-11-b0aa0a27-ea9a-4365-9224-cb155e517f12">เทคโนโลยี Control Feature Rollout</a> โดยเริ่มต้นจากกลุ่มย่อยของ Insider และค่อยๆ เพิ่มขึ้นตามเวลาในขณะที่เราตรวจสอบคำติชมเพื่อดูว่ามีผลดีอย่างไร ก่อนที่จะส่งต่อให้กับทุกคนในช่องทางนี้</li>
+</ul>
+<ul>
+ 	<li>คุณลักษณะบางอย่างอาจปรากฏในช่อง Dev และ Beta ก่อนที่จะปรากฏในช่อง Canary</li>
+</ul>
+<ul>
+ 	<li>ฟีเจอร์บางอย่างที่กำลังพัฒนาอยู่ซึ่งเราดูตัวอย่างด้วย Windows Insiders อาจยังไม่ได้รับการแปลเป็นภาษาท้องถิ่นอย่างสมบูรณ์ และการแปลจะเกิดขึ้นเมื่อเวลาผ่านไปเมื่อฟีเจอร์ต่างๆ เสร็จสมบูรณ์ หากคุณพบปัญหาในการแปลเป็นภาษาท้องถิ่น โปรดรายงานปัญหาเหล่านั้นให้เราทราบผ่าน Feedback Hub</li>
+ 	<li><strong>หากต้องการออกจาก Canary Channel จะต้องติดตั้ง Windows 11 ใหม่ทั้งหมด</strong></a> ขอเตือนว่าผู้ใช้ Insider ไม่สามารถสลับไปใช้ช่องที่มีรุ่นที่มีหมายเลขรุ่นต่ำกว่าได้หากไม่ติดตั้ง Windows 11 ใหม่ทั้งหมด เนื่องจากข้อกำหนดในการตั้งค่าทางเทคนิค</li>
+</ul>
+<ul>
+ 	<li>ลายน้ำเดสก์ท็อปที่แสดงอยู่ที่มุมล่างขวาของเดสก์ท็อปถือเป็นเรื่องปกติสำหรับรุ่นก่อนวางจำหน่ายเหล่านี้</li>
+</ul>
+<ul>
+ 	<li>ไปที่ <a href="https://aka.ms/flighthub">Flight Hub</a> เพื่อดูข้อมูลโดยละเอียดว่ามีรุ่นใดอยู่ในช่อง Insider ใด</li>
+</ul>
+ขอบคุณ,
+อแมนดา & แบรนดอน]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>DirectML ปลดล็อกซิลิคอนใหม่สำหรับประสบการณ์ AI บนพีซี Windows Copilot+</title>
+		<ลิงก์>https://blogs.windows.com/windowsdeveloper/2024/11/12/directml-unlocks-ซิลิคอนใหม่สำหรับประสบการณ์ AI ข้ามหน้าต่างนักบิน-ชิ้น/</ลิงก์>
+		
+		<dc:creator><![CDATA[ชาดปราล]]></dc:creator>
+		<pubDate>อ. 12 พ.ย. 2567 18:00:21 +0000</pubDate>
+				<หมวดหมู่><![CDATA[ไม่มีหมวดหมู่]]></หมวดหมู่>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/12/directml-unlocks-new-silicon-for-ai-experiences-across-windows-copilot-pcs/</guid>
+
+					<description><![CDATA[<p>เดือนตุลาคมเป็นเดือนที่น่าตื่นเต้นที่มีการนำเสนอและประกาศที่น่าสนใจเกี่ยวกับแอปพลิเคชันที่ใช้พลังของ NPU บนพีซี Copilot+ ใหม่เพื่อปรับใช้สิ่งประดิษฐ์ AI บน Windows ระบบนิเวศฮาร์ดแวร์ที่หลากหลายของ Windows ช่วยให้นักพัฒนามีศักยภาพมากขึ้น</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windowsdeveloper/2024/11/12/directml-unlocks-new-silicon-for-ai-experiences-across-windows-copilot-pcs/">DirectML ปลดล็อกซิลิคอนใหม่สำหรับประสบการณ์ AI ในพีซี Windows Copilot+</a> ปรากฏครั้งแรกใน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[เดือนตุลาคมเป็นเดือนที่น่าตื่นเต้นที่มีการนำเสนอและประกาศที่น่าสนใจเกี่ยวกับแอปพลิเคชันที่ใช้พลังของ NPU บนพีซี Copilot+ ใหม่เพื่อปรับใช้ AI บน Windows ระบบนิเวศฮาร์ดแวร์ที่หลากหลายของ Windows ช่วยให้นักพัฒนาซอฟต์แวร์มีตัวเลือกมากมายเพื่อพัฒนาและปรับใช้ AI ตั้งแต่ไคลเอนต์ไปจนถึงแอปพลิเคชันบนเว็บ DirectML ซึ่งเป็นรากฐานของ <a href="https://developer.microsoft.com/en-us/windows/ai/">Windows Copilot Runtime</a> มีเป้าหมายเพื่อลดความซับซ้อนของวิธีที่นักพัฒนาซอฟต์แวร์ปรับขนาดนวัตกรรม AI ของตนบน Windows ได้อย่างไม่เหมือนใคร ผ่าน DirectX API ข้ามฮาร์ดแวร์ตัวเดียว DirectML ทำงานร่วมกับสถาปัตยกรรมฮาร์ดแวร์ต่างๆ ตัวเร่งความเร็วอุปกรณ์ในพื้นที่ และกรอบการทำงานการเรียนรู้ของเครื่อง ซึ่งรองรับแพลตฟอร์มเปิดสำหรับ AI บน Windows
+
+มาดูนวัตกรรม AI ที่น่าทึ่งบางส่วนที่ใช้ประโยชน์จาก DirectML บน NPU ของ Copilot+ PC
+Adobe® Premiere® Pro เป็นแอปพลิเคชัน Adobe ตัวแรกที่ใช้ประโยชน์จาก NPU บนพีซี Copilot+ ซึ่งขับเคลื่อนด้วย Intel® Core™ Ultra และ DirectML
+Adobe เป็นผู้นำในด้านการเรียนรู้ของเครื่อง (ML) สำหรับผู้สร้างสรรค์ผลงานโดยนำเสนอฟีเจอร์เร่งความเร็วด้วยฮาร์ดแวร์ที่หลากหลายในชุดผลิตภัณฑ์ของตน ขณะนี้ Adobe Premiere Pro ได้เปิดใช้งานประสิทธิภาพการเรียนรู้ของเครื่องของโปรเซสเซอร์ Intel Core Ultra รุ่นล่าสุดแล้ว ซึ่งเปิดโอกาสด้านแพลตฟอร์มเพิ่มเติมสำหรับลูกค้าของ Adobe
+
+Adobe เปิดใช้งาน Audio Category Tagger ร่วมกับ Intel และ Microsoft เพื่อให้สามารถใช้งาน NPU รุ่นล่าสุดของ Intel โดยใช้ DirectML เป็นความสามารถเบต้าใน Premiere Pro ได้ ฟีเจอร์นี้จะแท็กเสียงโดยอัตโนมัติ โดยจะจำแนกคลิปเป็นเอฟเฟกต์เสียง เพลง บทสนทนา หรือบรรยากาศ ซึ่งทำให้ผู้สร้างสรรค์สามารถเริ่มแก้ไขไฟล์เสียงได้ทันที โดยแต่ละคลิปจะมีตรา Essential Sound Badge กำกับไว้ และเมื่อคลิกที่ตราดังกล่าว จะเปิดแผง Essential Sound เพื่อให้เข้าถึงพารามิเตอร์ที่จำเป็นสำหรับหมวดหมู่เสียงนั้นๆ ได้
+
+[caption id="attachment_57164" align="aligncenter" width="1024"]<img class="wp-image-57164 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Adobe-Premier-Pro-Audio-Category-Tagger-1024x331.png" alt="ภาพหน้าจอของ Premier Pro ที่แสดงคลิปเสียงที่ทำเครื่องหมายด้วยไอคอนซึ่งระบุหมวดหมู่เสียง A, B, C และ D โดย A คือ Music, B คือ SFX, C คือ Dialogue และ D คือ Ambience" width="1024" height="331" /> การติดป้ายกำกับ Audio Category Tagger A. Music B. SFX C. Dialogue D. Ambience[/caption]
+
+เรารู้สึกตื่นเต้นที่จะได้ร่วมงานกับผู้ริเริ่มด้าน AI อย่าง Adobe เพื่อส่งมอบคำมั่นสัญญาของ DirectML กลุ่มผลิตภัณฑ์แอปพลิเคชันและสถานการณ์ที่ขับเคลื่อนด้วย AI ที่ครอบคลุมของ Adobe มอบพื้นที่พิสูจน์ที่ไม่เหมือนใครสำหรับ DirectML และเราจะยังคงร่วมมือกันต่อไปในแอปพลิเคชันที่เร่งความเร็วด้วย GPU และ NPU
+Capture One นำฟีเจอร์ Match Look และ AI Crop ที่ได้รับการปรับปรุงโดย NPU มาสู่พีซี Copilot+
+<strong>Capture One</strong> คือซอฟต์แวร์ด้านการถ่ายภาพที่ช่างภาพมืออาชีพใช้ในอุตสาหกรรมแฟชั่นและอีคอมเมิร์ซ ซอฟต์แวร์นี้ช่วยให้มืออาชีพแก้ไขรูปภาพจำนวนมากได้อย่างรวดเร็วในขณะที่ยังคงควบคุมการแสดงออกทางความคิดสร้างสรรค์และศิลปะเบื้องหลังทุกช็อตได้อย่างสมบูรณ์ ในงาน Snapdragon Summit บริษัท Capture One ได้จัดแสดงฟีเจอร์ขั้นสูงที่ขับเคลื่อนด้วย AI สองฟีเจอร์บนพีซี Copilot+ ที่ขับเคลื่อนด้วย Qualcomm NPU
+
+[caption id="attachment_57165" align="aligncenter" width="1024"]<img class="wp-image-57165 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Capture-One-Match-Look-1024x575.jpg" alt="ภาพหน้าจอของแอปพลิเคชัน Capture One ซึ่งฟีเจอร์ Match Look ถูกนำไปใช้กับรูปภาพของผู้หญิงที่กำลังถือลูกแพร์ไว้ที่หู" width="1024" height="575" /> ฟีเจอร์ Match Look ถูกนำไปใช้กับรูปภาพใน Capture One[/caption]
+
+<strong>Match Look</strong> คือเครื่องมือใหม่ล่าสุดที่ให้คุณจับคู่สไตล์หรือการแก้ไขของภาพอ้างอิงได้ทันที ไม่ว่าจะเป็นจากโปรเจ็กต์ก่อนหน้า ภาพนิ่งจากภาพยนตร์ หรือมู้ดบอร์ด เครื่องมือนี้ใช้การเลือก AI เพื่อปรับแถบเลื่อนการแก้ไขต่างๆ แบบไดนามิก ช่วยให้คุณมีจุดเริ่มต้นที่มั่นคงสำหรับการแก้ไขและการปรับสี
+
+[caption id="attachment_57167" align="aligncenter" width="1024"]<img class="wp-image-57167 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Capture-One-Ai-Crop-1024x575.jpg" alt="ภาพหน้าจอของแอปพลิเคชัน Capture One ที่มีการตั้งค่าอ้างอิงการครอบตัดบนรูปภาพของกระเป๋าเพื่อใช้ฟีเจอร์ AI Crop โดย AI Crop จะแสดงอยู่ทางด้านขวาของภาพหน้าจอซึ่งจะใช้การครอบตัดกับรูปภาพอื่นๆ อย่างสม่ำเสมอ" width="1024" height="575" /> ฟีเจอร์ AI Crop ที่ใช้ใน Capture One[/caption]
+
+<strong>AI Crop</strong> ช่วยให้คุณครอบตัดภาพได้ทันทีและสม่ำเสมอ หลีกเลี่ยงข้อผิดพลาดและลดความพยายามด้วยตนเอง ตั้งค่าอ้างอิงการครอบตัดภาพบนภาพเดียวและสร้างการครอบตัดที่สม่ำเสมอสำหรับภาพอื่นๆ ทั้งหมดโดยอัตโนมัติ แม้ในขณะที่กำลังถ่ายภาพ
+
+Capture One ยังคงใช้ประโยชน์จากนวัตกรรม AI ในลักษณะที่รักษาความเป็นศิลปะสร้างสรรค์ที่ช่างภาพของพวกเขาต้องการ และ DirectML รู้สึกตื่นเต้นที่จะเป็นพันธมิตรกับพวกเขาเพื่อนำวิสัยทัศน์ของพวกเขาให้กลายเป็นจริง
+Affinity Photo 2 เร่งความเร็วความสามารถในการเลือกวัตถุและเรื่องด้วย NPU
+Affinity Photo 2 เป็นแอปแก้ไขรูปภาพยอดนิยมที่ผู้สร้างภาพดิจิทัลนับล้านคนทั่วโลกใช้ ความคิดสร้างสรรค์ของมนุษย์คือหัวใจสำคัญของผลิตภัณฑ์ Affinity ดังนั้นจึงไม่น่าแปลกใจที่เครื่องมือ AI ที่ได้รับการปรับปรุงชุดแรกที่ Affinity ประกาศนั้นมุ่งเน้นไปที่การปรับปรุงเวิร์กโฟลว์ของศิลปินให้เหมาะสมที่สุด โดยขจัดงานที่น่าเบื่อหน่ายและความขัดแย้งระหว่างผู้สร้างภาพกับผืนผ้าใบ Affinity Photo 2 จะขยายคุณสมบัติเหล่านี้ให้เหมาะกับฐานของผู้สร้างภาพโดยใช้ DirectML บนพีซี Copilot+ ตามที่ได้กล่าวไว้ในงาน Snapdragon Summit พวกเขาได้ปรับปรุงเวิร์กโฟลว์ของประสบการณ์ AI เหล่านี้ให้เหมาะสมที่สุดแล้วด้วย DirectML ซึ่งขับเคลื่อนโดย Qualcomm® Hexagon NPU ใน Snapdragon<sup>®</sup> X Elite Compute Platform
+
+<strong>Object Selection</strong> คือฟีเจอร์ที่เพิ่งประกาศออกมาใหม่ ซึ่งช่วยลดภาระงานในการสร้างเลเยอร์มาสก์ด้วยตนเอง โดยใช้ ML เพื่อแยกและแบ่งส่วนวัตถุภายในภาพอย่างรวดเร็ว การทำให้กระบวนการนี้เป็นอัตโนมัติจะช่วยให้ศิลปินสามารถลัดขั้นตอนการทำงานสร้างสรรค์ "ที่แท้จริง" ได้ นั่นคือการปรับภาพและเอฟเฟกต์ในพื้นที่เป้าหมายภายในภาพ การใช้ Qualcomm® Hexagon NPU ใน Snapdragon<sup>®</sup> X Elite Compute Platform ทำให้การเลือกวัตถุช่วยเพิ่มประสิทธิภาพและผลงานโดยรวมของผู้สร้าง
+
+[caption id="attachment_57168" align="aligncenter" width="1024"]<img class="wp-image-57168 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Affinity-Object-Selection-1920-1024x576.png" alt="ภาพหน้าจอของ Affinity Photo 2 ที่ใช้การเลือกวัตถุเพื่อเลือกรถยนต์ในภาพรถยนต์ที่มีควันล้อมรอบ" width="1024" height="576" /> การเลือกวัตถุถูกนำไปใช้ใน Affinity Photo 2[/caption]
+
+Affinity เป็นผู้นำในการระบุนวัตกรรม ML ที่ส่งมอบซอฟต์แวร์แก้ไขรูปภาพที่มีความเร็ว พลัง และความแม่นยำที่เหลือเชื่อตามคำมั่นสัญญา และ DirectML หวังเป็นอย่างยิ่งที่จะขยายคำมั่นสัญญานี้ไปยังระบบนิเวศฮาร์ดแวร์ที่หลากหลายของ Windows
+ต่อไปจะเป็นอย่างไร?
+ทีมงาน DirectML รู้สึกตื่นเต้นเสมอที่จะได้เห็นวิธีการที่สร้างสรรค์และน่าทึ่งที่นักพัฒนาซอฟต์แวร์ใช้ AI เพื่อยกระดับประสบการณ์ของลูกค้าใน Windows โปรดติดตามฟีเจอร์ DirectML เพิ่มเติมในเร็วๆ นี้ เพราะเรายังคงลงทุนในฟีเจอร์ต่างๆ เพื่อรองรับแพลตฟอร์มเปิดสำหรับ AI บน Windows หากต้องการเรียนรู้เพิ่มเติมเกี่ยวกับ DirectML และเริ่มต้นใช้งานวันนี้ โปรดไปที่ <a href="https://learn.microsoft.com/en-us/windows/ai/directml/dml">aka.ms/directml</a> หรือติดตามเราในเซสชันต่างๆ ที่ <a href="https://ignite.microsoft.com/en-US/home">Microsoft Ignite</a>]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>ประกาศเปิดตัว Windows 11 Insider Preview Build 22635.4445 (ช่องเบต้า)</title>
+		<ลิงก์>https://blogs.windows.com/windows-insider/2024/11/08/ประกาศ-windows-11-insider-preview-build-22635-4445-beta-channel/</ลิงก์>
+		
+		<dc:creator><![CDATA[อแมนดา ลางอฟสกี้]]></dc:creator>
+		<pubDate>ศุกร์ที่ 08 พ.ย. 2024 18:04:04 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/08/ประกาศเปิดตัว-windows-11-insider-preview-build-22635-4445-beta-channel/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview Build 22635.4445 (KB5046745) </strong> ไปยังช่องเบต้า</p>
+<p>การเปลี่ยนแปลงในรุ่นและการอัปเดตช่องเบต้าได้รับการบันทึกไว้ในสองกลุ่ม: คุณสมบัติใหม่ การปรับปรุง และการแก้ไข</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/08/announcing-windows-11-insider-preview-build-22635-4445-beta-channel/">ประกาศ Windows 11 Insider Preview Build 22635.4445 (ช่องเบต้า)</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview Build 22635.4445 (KB5046745) </strong> ไปยังช่องเบต้าแล้ว
+
+การเปลี่ยนแปลงในรุ่นและการอัปเดตของ Beta Channel จะถูกบันทึกไว้ในสองส่วน ได้แก่ คุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่ค่อยๆ เผยแพร่ให้กับผู้ใช้ Insider ที่เปิดใช้งานสวิตช์เพื่อรับการอัปเดตล่าสุดเมื่อพร้อมใช้งาน (ผ่านการตั้งค่า > Windows Update*) จากนั้นคุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่เผยแพร่ให้กับทุกคนใน Beta Channel <strong>สำหรับข้อมูลเพิ่มเติม โปรดดูส่วนคำเตือนที่ด้านล่างของโพสต์บล็อกนี้</strong>
+การเปลี่ยนแปลงและการปรับปรุงกำลังทยอยเปิดตัวสู่ช่องเบต้าพร้อมเปิด/ปิด*
+<h3><strong>[ตัวสำรวจไฟล์] </strong></h3>
+<ul>
+ 	<li>เราได้เพิ่มตัวเลือกโฟลเดอร์ใหม่ในเมนูบริบทเมื่อคลิกขวาตำแหน่งในบานหน้าต่างนำทาง</li>
+</ul>
+<h2><strong>แก้ไขโดยค่อยเป็นค่อยไปในช่องเบต้าพร้อมเปิด/ปิด*</strong></h2>
+<h3><strong>[แถบงาน]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาบางประการที่ส่งผลต่อความน่าเชื่อถือของ explorer.exe ในเวอร์ชันล่าสุดที่เกี่ยวข้องกับแถบงาน รวมทั้งปัญหาที่กระทบกับ Insider บางส่วนซึ่งอาจทำให้ explorer.exe หยุดทำงานบางครั้งเมื่อคลิกขวาที่แอปในแถบงาน</li>
+ 	<li>แก้ไขปัญหาที่เกิดขึ้นบนจอภาพรองสำหรับผู้ใช้แถบงานที่จัดตำแหน่งซ้าย ซึ่งข้อความของวิดเจ็ตในแถบงานอาจทับซ้อนกับวันที่และเวลา</li>
+</ul>
+<h3><strong>[ตัวสำรวจไฟล์]</strong></h3>
+<ul>
+ 	<li>เราได้แก้ไขปัญหาที่คุณสมบัติวันที่/เวลาของไฟล์ได้รับการอัปเดตโดยไม่คาดคิดในบางกรณีหลังจากการคัดลอกไฟล์</li>
+ 	<li>เราได้แก้ไขปัญหาที่ไอคอนบานหน้าต่างรายละเอียดไม่ตอบสนองต่อการเปลี่ยนแปลงธีมอย่างถูกต้อง ทำให้ยากต่อการดูว่าคุณสลับจากสีเข้มไปเป็นสีอ่อนหรือในทางกลับกันหรือไม่</li>
+ 	<li>เราได้แก้ไขแฟลชสีดำใน File Explorer ที่ปรากฏขึ้นเมื่อทำสำเนาแท็บแล้ว</li>
+ 	<li>เราได้ทำการเปลี่ยนแปลงเพื่อช่วยปรับปรุงประสิทธิภาพการเปิดเมนูบริบทและการนำทาง File Explorer</li>
+ 	<li>เราได้แก้ไขปัญหาที่เมื่อคุณค้นหา อาจทำให้การค้นหาเกิดขึ้นซ้ำๆ โดยไม่คาดคิด</li>
+</ul>
+<h3><strong>[อื่นๆ]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาพื้นฐานที่อาจส่งผลให้ภาพหน้าจอของ Snipping Tool ผิดเพี้ยนบนจอแสดงผลบางจอ</li>
+</ul>
+<h2><strong>คำเตือนสำหรับ Windows Insiders ในช่องเบต้า</strong></h2>
+<ul>
+ 	<li>Windows Insiders ในช่องเบต้าจะได้รับการอัปเดตตาม <strong>Windows 11 เวอร์ชัน 23H2</strong> ผ่านทาง <a href="https://support.microsoft.com/en-us/topic/kb5003791-update-to-windows-10-version-21h2-by-using-an-enablement-package-8bc077be-18d7-4aac-81ce-6f6dad2cd384">แพ็คเกจการเปิดใช้งาน</a> (รุ่น 22635.xxxx)</li>
+ 	<li>ฟีเจอร์มากมายใน Beta Channel จะเปิดตัวโดยใช้<a href="https://support.microsoft.com/en-us/windows/delivering-continuous-innovation-in-windows-11-b0aa0a27-ea9a-4365-9224-cb155e517f12">เทคโนโลยี Control Feature Rollout</a> โดยเริ่มต้นด้วย Insider กลุ่มย่อยและค่อยๆ เพิ่มขึ้นตามเวลาในขณะที่เราตรวจสอบคำติชมเพื่อดูว่ามีผลดีอย่างไร ก่อนที่จะส่งต่อให้ทุกคนในช่องทางนี้</li>
+ 	<li>สำหรับผู้ใช้งาน Windows Insider ในช่อง Beta ที่ต้องการเป็นคนแรกที่ได้รับฟีเจอร์ต่างๆ <strong>ค่อยๆ เผยแพร่</strong> คุณสามารถเปิด/ปิดปุ่มสลับเพื่อรับการอัปเดตล่าสุดได้ทันทีที่พร้อมใช้งานผ่านการตั้งค่า > Windows Update* ในอนาคต เราจะเพิ่มการเผยแพร่ฟีเจอร์ต่างๆ ให้กับทุกคนที่เปิดปุ่มสลับนี้ หากคุณปิดปุ่มสลับนี้ไว้ ฟีเจอร์ใหม่ๆ จะค่อยๆ เผยแพร่ไปยังอุปกรณ์ของคุณเมื่อพร้อมใช้งาน</li>
+ 	<li>ฟีเจอร์และประสบการณ์ที่รวมอยู่ในรุ่นเหล่านี้อาจไม่มีวันได้รับการเผยแพร่ เนื่องจากเราพยายามใช้แนวคิดต่างๆ และได้รับคำติชม ฟีเจอร์อาจเปลี่ยนแปลงไปตามเวลา อาจถูกลบหรือแทนที่ และจะไม่มีการเผยแพร่ต่อจาก Windows Insiders ฟีเจอร์และประสบการณ์บางส่วนเหล่านี้อาจปรากฏใน Windows รุ่นต่อๆ ไป <strong>เมื่อพร้อมใช้งาน</strong></li>
+ 	<li>ฟีเจอร์บางอย่างที่กำลังพัฒนาอยู่ซึ่งเราดูตัวอย่างด้วย Windows Insiders อาจยังไม่ได้รับการแปลเป็นภาษาท้องถิ่นอย่างสมบูรณ์ และการแปลจะเกิดขึ้นเมื่อเวลาผ่านไปเมื่อฟีเจอร์ต่างๆ เสร็จสมบูรณ์ หากคุณพบปัญหาในการแปลเป็นภาษาท้องถิ่น โปรดรายงานปัญหาเหล่านั้นให้เราทราบผ่าน Feedback Hub</li>
+ 	<li>เนื่องจากช่อง Dev และ Beta แสดงถึงเส้นทางการพัฒนาคู่ขนานจากวิศวกรของเรา อาจมีกรณีที่คุณลักษณะและประสบการณ์ปรากฏขึ้นในช่อง Beta ก่อน</li>
+ 	<li>ไปที่ <a href="https://aka.ms/flighthub">Flight Hub</a> เพื่อดูข้อมูลโดยละเอียดว่ามีรุ่นใดอยู่ในช่อง Insider ใด</li>
+</ul>
+ขอบคุณ,
+อแมนดา & แบรนดอน]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>ประกาศเปิดตัว Windows 11 Insider Preview Build 26120.2222 (ช่องทางสำหรับนักพัฒนา)</title>
+		<ลิงก์>https://blogs.windows.com/windows-insider/2024/11/08/ประกาศ-windows-11-insider-preview-build-26120-2222-dev-channel/</ลิงก์>
+		
+		<dc:creator><![CDATA[อแมนดา ลางอฟสกี้]]></dc:creator>
+		<pubDate>ศุกร์ที่ 08 พ.ย. 2024 18:04:00 +0000</pubDate>
+				<หมวดหมู่><![CDATA[พีซี]]></หมวดหมู่>
+		<category><![CDATA[โปรแกรม Windows Insider]]></category>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/08/ประกาศเปิดตัว-windows-11-insider-preview-build-26120-2222-dev-channel/</guid>
+
+					<description><![CDATA[<p>สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview </strong><strong>Build 26120.2222 (KB5046746)</strong> สู่ Dev Channel</p>
+<p>การเปลี่ยนแปลงในการสร้างและอัปเดต Dev Channel ได้รับการบันทึกไว้ในสองกลุ่ม: คุณลักษณะใหม่ การปรับปรุง</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windows-insider/2024/11/08/announcing-windows-11-insider-preview-build-26120-2222-dev-channel/">ประกาศ Windows 11 Insider Preview Build 26120.2222 (Dev Channel)</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[สวัสดีผู้ใช้ Windows Insider วันนี้เราเปิดตัว <strong>Windows 11 Insider Preview </strong><strong>Build 26120.2222 (KB5046746)</strong> สู่ Dev Channel แล้ว
+
+การเปลี่ยนแปลงในรุ่นและการอัปเดตของ Dev Channel จะถูกบันทึกไว้ในสองส่วน: คุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่ค่อยๆ เผยแพร่ให้กับผู้ใช้ Insider ที่เปิดใช้งานสวิตช์เพื่อรับการอัปเดตล่าสุดเมื่อพร้อมใช้งาน (ผ่านการตั้งค่าและ Windows Update*) จากนั้นคุณลักษณะใหม่ การปรับปรุง และการแก้ไขที่เผยแพร่ให้กับทุกคนใน Dev Channel <strong>สำหรับข้อมูลเพิ่มเติม โปรดดูส่วนคำเตือนที่ด้านล่างของโพสต์บล็อกนี้</strong>
+การเปลี่ยนแปลงและการปรับปรุงกำลังทยอยเปิดตัวสู่ Dev Channel พร้อมเปิดใช้งานการสลับ*
+<h3><strong>[ทั่วไป]</strong></h3>
+<ul>
+ 	<li>หากคุณกด Shift และ CTRL ค้างไว้ขณะคลิกรายการในรายการทางลัดในเมนู Start หรือแถบงาน รายการดังกล่าวจะเปิดขึ้นเป็นผู้ดูแลระบบ เช่นเดียวกับการกด Shift + CTRL แล้วคลิกไอคอนแอปโดยตรง ตัวอย่างเช่น หากคุณคลิกขวาที่ Windows Terminal แล้วกด Shift และ CTRL ค้างไว้ขณะคลิก PowerShell หน้าต่าง PowerShell จะเปิดขึ้นเป็นผู้ดูแลระบบ</li>
+</ul>
+<h2><strong>แก้ไขโดยค่อยเป็นค่อยไปใน Dev Channel ด้วยการเปิด/ปิด*</strong></h2>
+<h3><strong>[ตัวสำรวจไฟล์]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาที่ทำให้เมนูดูเพิ่มเติม (“…”) เปิดขึ้นในทิศทางที่ผิด (และอาจแสดงนอกหน้าจอเป็นผล)
+</ul>
+<h3><strong>[อินพุต]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาพื้นฐานที่อาจทำให้เมาส์ปลดล็อคจากหน้าต่างเกมบนระบบที่มีจอภาพหลายจอหลังจากเปิดและปิด Game Bar ดังนั้นคุณจึงไม่สามารถใช้เมาส์ภายในเกมได้</li>
+</ul>
+<h3><strong>[การสร้างหน้าต่าง]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาล่าสุดที่ทำให้หน้าต่างอาจเคลื่อนไหวโดยไม่คาดคิดหลังจากตื่นจากโหมดสลีปหากคุณมีจอภาพหลายจอ</li>
+</ul>
+<h3><strong>[อื่นๆ]</strong></h3>
+<ul>
+ 	<li>แก้ไขปัญหาพื้นฐานที่อาจทำให้ Registry Editor ไม่ตอบสนองหากคุณกด Alt หลังจากคลิกบนข้อมูลใบอนุญาตในส่วนเกี่ยวกับ</li>
+</ul>
+<h2><strong>ปัญหาที่ทราบ</strong></h2>
+<h3><strong>[ผู้บรรยาย]</strong></h3>
+<ul>
+ 	<li><strong>[ใหม่] [สำคัญ]</strong> มีปัญหาในรุ่นนี้ซึ่งจะทำให้ Narrator ขัดข้องเมื่อเปิดใช้งานหากคุณใช้เสียงธรรมชาติ (เช่น Jenny) หากคุณเป็นผู้ใช้ Narrator เราขอแนะนำให้หยุดการอัปเดตจากการตั้งค่าภายใต้ Windows Update > “หยุดการอัปเดตชั่วคราว” หากคุณติดตั้งการอัปเดตนี้และพบปัญหานี้ การสลับไปใช้เสียงอื่น เช่น Microsoft David ในการตั้งค่าภายใต้ Accessibility > Narrator จะหยุดการขัดข้องได้ เนื่องจาก Narrator ขัดข้อง คุณจะต้องใช้โปรแกรมอ่านหน้าจอสำรองหรือขอความช่วยเหลือจากผู้อื่นเพื่อดำเนินการนี้</li>
+</ul>
+<h3><strong>[เดสก์ท็อป]</strong></h3>
+<ul>
+ 	<li>เรากำลังดำเนินการแก้ไขปัญหาที่พื้นหลังเดสก์ท็อปของคุณอาจไม่แสดงอย่างถูกต้องในบางครั้งเมื่อใช้จอภาพหลายจอ (แสดงพื้นที่สีดำขนาดใหญ่)</li>
+</ul>
+<h2><strong>คำเตือนสำหรับ Windows Insiders ในช่อง Dev</strong></h2>
+<ul>
+ 	<li>Windows Insiders ใน Dev Channel จะได้รับการอัปเดตตาม <strong>Windows 11 เวอร์ชัน 24H2</strong> ผ่านทาง <a href="https://support.microsoft.com/en-us/topic/kb5003791-update-to-windows-10-version-21h2-by-using-an-enablement-package-8bc077be-18d7-4aac-81ce-6f6dad2cd384">แพ็คเกจการเปิดใช้งาน</a> (รุ่น 26120.xxxx)</li>
+ 	<li>การอัปเดตที่ส่งไปยัง Dev Channel จะอยู่ในรูปแบบที่เสนอการแสดงตัวอย่างการปรับปรุงเทคโนโลยีการให้บริการบน Windows 11 เวอร์ชัน 24H2 หากต้องการเรียนรู้เพิ่มเติม โปรดดูที่ <a href="https://aka.ms/CheckpointCumulativeUpdates">https://aka.ms/CheckpointCumulativeUpdates</a></li>
+ 	<li>ฟีเจอร์ต่างๆ มากมายใน Dev Channel นั้นเปิดตัวโดยใช้<a href="https://support.microsoft.com/en-us/windows/delivering-continuous-innovation-in-windows-11-b0aa0a27-ea9a-4365-9224-cb155e517f12">เทคโนโลยี Control Feature Rollout</a> โดยเริ่มต้นด้วย Insider กลุ่มย่อยและค่อยๆ เพิ่มขึ้นตามเวลาในขณะที่เราตรวจสอบคำติชมเพื่อดูว่ามีผลดีอย่างไร ก่อนจะส่งต่อให้กับทุกคนในช่องทางนี้</li>
+ 	<li>สำหรับผู้ใช้งาน Windows Insider ใน Dev Channel ที่ต้องการเป็นคนแรกที่ได้รับฟีเจอร์ต่างๆ <strong>ค่อยๆ เผยแพร่</strong> คุณสามารถเปิด/ปิดปุ่มสลับเพื่อรับการอัปเดตล่าสุดได้ทันทีที่พร้อมใช้งานผ่านการตั้งค่า > Windows Update* เมื่อเวลาผ่านไป เราจะเพิ่มการเผยแพร่ฟีเจอร์ต่างๆ ให้กับทุกคนที่เปิดปุ่มสลับนี้ หากคุณปิดปุ่มสลับนี้ไว้ ฟีเจอร์ใหม่ๆ จะค่อยๆ เผยแพร่ไปยังอุปกรณ์ของคุณเมื่อฟีเจอร์เหล่านั้นพร้อมใช้งาน</li>
+ 	<li>ฟีเจอร์และประสบการณ์ที่รวมอยู่ในรุ่นเหล่านี้อาจไม่มีวันได้รับการเผยแพร่ เนื่องจากเราพยายามใช้แนวคิดต่างๆ และได้รับคำติชม ฟีเจอร์อาจเปลี่ยนแปลงไปตามเวลา อาจถูกลบหรือแทนที่ และจะไม่มีการเผยแพร่ต่อจาก Windows Insiders ฟีเจอร์และประสบการณ์บางส่วนเหล่านี้อาจปรากฏใน Windows รุ่นต่อๆ ไป <strong>เมื่อพร้อมใช้งาน</strong></li>
+ 	<li>ฟีเจอร์บางอย่างที่กำลังพัฒนาอยู่ซึ่งเราดูตัวอย่างด้วย Windows Insiders อาจยังไม่ได้รับการแปลเป็นภาษาท้องถิ่นอย่างสมบูรณ์ และการแปลจะเกิดขึ้นเมื่อเวลาผ่านไปเมื่อฟีเจอร์ต่างๆ เสร็จสมบูรณ์ หากคุณพบปัญหาในการแปลเป็นภาษาท้องถิ่น โปรดรายงานปัญหาเหล่านั้นให้เราทราบผ่าน Feedback Hub</li>
+ 	<li>เนื่องจากช่อง Dev และ Beta แสดงถึงเส้นทางการพัฒนาคู่ขนานจากวิศวกรของเรา อาจมีกรณีที่คุณลักษณะและประสบการณ์ปรากฏขึ้นในช่อง Beta ก่อน</li>
+ 	<li>ไปที่ <a href="https://aka.ms/flighthub">Flight Hub</a> เพื่อดูข้อมูลโดยละเอียดว่ามีรุ่นใดอยู่ในช่อง Insider ใด</li>
+</ul>
+ขอบคุณ,
+อแมนดา & แบรนดอน]]></content:encoded>
+					
+		
+		
+			</รายการ>
+		<รายการ>
+		<title>มีอะไรใหม่บ้างในเทคโนโลยี UX ดั้งเดิมของ Microsoft</title>
+		<ลิงก์>https://blogs.windows.com/windowsdeveloper/2024/11/07/so-whats-new-with-microsoft-native-ux-technologies/</ลิงก์>
+		
+		<dc:creator><![CDATA[Steve Clarke, บรรณาธิการ]]></dc:creator>
+		<pubDate>พฤ. 07 พ.ย. 2567 17:00:04 +0000</pubDate>
+				<หมวดหมู่><![CDATA[ไม่มีหมวดหมู่]]></หมวดหมู่>
+		<guid isPermaLink="false">https://blogs.windows.com/blog/2024/11/07/so-whats-new-with-microsoft-native-ux-technologies/</guid>
+
+					<description><![CDATA[<p>แอปไคลเอนต์มักเป็นการโต้ตอบครั้งแรกที่ผู้ใช้มีต่อบริการของคุณ ไม่ว่าจะเป็นแอปอัจฉริยะบนคลาวด์ แบ็กเอนด์ที่โฮสต์บนเว็บ หรือข้อมูลธุรกิจ แอปไคลเอนต์กำหนดโทนสำหรับประสบการณ์ของผู้ใช้ และสามารถเสนอการโต้ตอบแบบส่วนตัวได้โดยตรงจาก</p>
+<p>โพสต์ <a href="https://blogs.windows.com/windowsdeveloper/2024/11/07/so-whats-new-with-microsoft-native-ux-technologies/">So what's new with Microsoft native UX technologies</a> ปรากฏครั้งแรกบน <a href="https://blogs.windows.com">บล็อก Windows</a></p>
+]]></คำอธิบาย>
+										<content:encoded><![CDATA[แอปไคลเอนต์มักเป็นปฏิสัมพันธ์แรกที่ผู้ใช้มีต่อบริการของคุณ ไม่ว่าจะเป็นแอปอัจฉริยะบนคลาวด์ แบ็กเอนด์ที่โฮสต์บนเว็บ หรือข้อมูลธุรกิจ แอปไคลเอนต์กำหนดทิศทางสำหรับประสบการณ์ของผู้ใช้ และสามารถเสนอการโต้ตอบแบบเฉพาะบุคคลได้ตั้งแต่เริ่มต้น ด้วยอุปกรณ์ Windows กว่า 1.5 พันล้านเครื่องทั่วโลก คุณมีโอกาสที่จะสร้างประสบการณ์ผู้ใช้ที่สวยงาม ตอบสนอง และน่าดึงดูด ซึ่งกำหนดเป้าหมายไปที่อุปกรณ์เหล่านี้
+
+ไม่ว่าคุณจะเป็นนักพัฒนาเว็บหรือผู้พัฒนาแอปเนทีฟ คุณคงอยากเข้าถึงอุปกรณ์ไคลเอนต์ให้ได้มากที่สุดด้วยประสบการณ์ผู้ใช้ที่ยอดเยี่ยมในวิธีที่มีประสิทธิภาพสูงสุด การพัฒนาแอปไคลเอนต์ที่ยอดเยี่ยมช่วยให้คุณเชื่อมต่อกับผู้ใช้ ปรับขนาดบริการของคุณ และทำให้ผู้ใช้กลับมาใช้ซ้ำ เพื่อช่วยให้คุณบรรลุเป้าหมายเหล่านี้ Microsoft ได้ลงทุนในกรอบงานและเทคโนโลยีแอปพลิเคชันไคลเอนต์ที่หลากหลายสำหรับนักพัฒนาเพื่อสร้างประสบการณ์ไคลเอนต์แบบกำหนดเอง
+
+<img class="aligncenter wp-image-57152 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/clientinvestments1920-1024x517.png" alt="แผนภูมิแสดงการลงทุนของ Microsoft ในการพัฒนาไคลเอนต์" width="1024" height="517" />Microsoft กำลังลงทุนอย่างแข็งขันในทุกด้านเหล่านี้สำหรับการพัฒนาไคลเอนต์ ซึ่งรวมถึงเทคโนโลยีต่างๆ มากมายสำหรับการสร้างแอปไคลเอนต์เนทีฟของ Windows, ครอสแพลตฟอร์ม, ไฮบริด และเว็บ โพสต์นี้จะสรุปกรอบงานแอปพลิเคชันไคลเอนต์เนทีฟสำหรับ Windows ที่เรากำลังลงทุน และนำเสนองานที่น่าทึ่งบางส่วนที่เราทำในพื้นที่เหล่านั้น
+วินยูไอ
+WinUI ร่วมกับเฟรมเวิร์กข้ามแพลตฟอร์มที่ใช้ WinUI สองตัว ได้แก่ React Native สำหรับเดสก์ท็อป และ .NET MAUI คือสามเทคโนโลยีที่เราแนะนำสำหรับการพัฒนาแอปพลิเคชันใหม่ที่สอดคล้องกับประสบการณ์เนทีฟของ Windows อย่างแท้จริง
+
+WinUI ช่วยให้นักพัฒนาสามารถสร้างแอปที่รวดเร็วและสมบูรณ์แบบด้วยชุดการควบคุม UI และรูปแบบที่ทันสมัยมากมายเช่นเดียวกับประสบการณ์หลักใน Windows ชุดเครื่องมืออันทรงพลังได้รับการปรับปรุงใน Windows App SDK 1.6 รุ่นล่าสุด ซึ่งมอบการปรับปรุงประสิทธิภาพและการอัปเดตการควบคุมใหม่ๆ ให้กับนักพัฒนา
+
+ใน WinAppSDK 1.6, WinUI เพิ่มการรองรับการคอมไพล์ Native Ahead-of-Time ซึ่งเป็นหนึ่งในคุณลักษณะใหม่ที่สำคัญในการพัฒนา .NET ที่ส่งผลให้แอปมีเวลาในการเริ่มทำงานและลดการใช้หน่วยความจำลงอย่างมาก
+
+[caption id="attachment_57148" align="aligncenter" width="800"]<img class="wp-image-57148 size-full" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Native-AOT-GIF-800-wide-1-loop.gif" alt="GIF ของสกรีนเซฟเวอร์ Bloom ที่กำลังเคลื่อนไหว" width="800" height="291" /> การเปรียบเทียบแบบเคียงข้างกันระหว่างการเปิดแอป Contoso Camera โดยใช้และไม่ใช้ Native AOT[/caption]
+
+นอกจากนี้ ตัวควบคุม <a href="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabview?view=windows-app-sdk-1.6">TabView</a> ยังมีโหมดฉีกแท็บใหม่ที่ให้ผู้ใช้ลากแท็บออกจากแอป WinUI ได้ เช่นเดียวกับที่ทำใน Microsoft Edge และ Google Chrome โดยจะสร้างหน้าต่างใหม่และเปิดใช้งานการสแนปหรือขยายขนาดได้ในการเคลื่อนไหวที่ราบรื่นขณะลาก การควบคุม <a href="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.pipspager?view=windows-app-sdk-1.6">PipsPager</a> ยังได้รับโหมดการห่อแบบใหม่ และ <a href="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.ratingcontrol?view=windows-app-sdk-1.6">RatingControl</a> สามารถปรับแต่งได้มากขึ้นผ่านทรัพยากรของธีม
+
+[caption id="attachment_57149" align="aligncenter" width="504"]<img class="wp-image-57149 size-full" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/TearOff2-1-loop.gif" alt="GIF ของโหมด CanTearOutTabs ใหม่ใน TabView ของคุณ แสดงย่อหน้าที่เคลื่อนไหว" width="504" height="421" /> เคอร์เซอร์เมาส์กำลังฉีกแท็บออกจากหน้าต่างที่มีหลายแท็บและสร้างหน้าต่างใหม่จากแท็บ[/caption]
+
+หากต้องการเรียนรู้เพิ่มเติมเกี่ยวกับ Windows App SDK 1.6 รวมถึง WinUI และฟีเจอร์อื่นๆ โปรดอ่านโพสต์บล็อกของเรา <a href="https://blogs.windows.com/windowsdeveloper/2024/09/04/whats-new-in-windows-app-sdk-1-6/">นอกจากนี้ คุณยังสามารถลองใช้แอป <a href="https://apps.microsoft.com/detail/9p3jfpwwdzrc?hl=en-us&gl=US">WinUI Gallery</a> ที่อัปเดตอยู่เสมอ ซึ่งจะแสดงการควบคุมและรูปแบบทั้งหมดที่มีให้เพื่อสร้างแอป WinUI 3 ด้วย Windows App SDK (ซอร์สโค้ดมีให้ใช้งานบน GitHub ที่ <a href="https://github.com/microsoft/WinUI-Gallery">https://github.com/microsoft/WinUI-Gallery</a>)
+
+[caption id="attachment_57153" align="aligncenter" width="1008"]<img class="wp-image-57153 size-full" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Picture4.png" alt="แอพ WinUI 3 Gallery ที่จัดแสดงในโหมดมืด" width="1008" height="690" /> แอพ WinUI 3 Gallery ที่จัดแสดงในโหมดมืด[/caption]
+
+เพื่อเป็นการเผยโฉมล่วงหน้าถึงสิ่งที่จะเกิดขึ้นกับ WinUI ใน Windows App SDK 1.7-experimental1 เวอร์ชันถัดไป นักพัฒนาสามารถรอคอยการนำการควบคุม TitleBar ที่ทุกคนรอคอยกลับมาใช้อีกครั้งพร้อมกับการปรับปรุงข้อเสนอแนะจากชุมชนชุดใหม่ รวมถึงการปรับปรุงการแสดงหน้าต่างและ API ที่สะดวกสำหรับการควบคุมขนาดหน้าต่าง การจดจำตำแหน่ง และอื่นๆ อีกมากมาย
+React Native สำหรับเดสก์ท็อป
+React Native ช่วยให้คุณใช้ทักษะและเครื่องมือ React และ JavaScript เพื่อสร้างแอปพลิเคชันเนทีฟที่กำหนดเป้าหมายไปที่ iOS, Android, Windows (ผ่าน WinAppSDK และ WinUI), macOS, TV และอื่นๆ ในช่วงหลายปีที่ผ่านมา Meta ได้ทำงานเพื่อเปิดใช้งาน “<a href="https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here">สถาปัตยกรรมใหม่</a>” ซึ่งรวมถึงความสามารถใหม่ๆ เช่น เค้าโครงและเอฟเฟกต์แบบซิงโครนัส ตัวแสดงผลพร้อมกัน และ JS ที่ดีขึ้นสำหรับอินเทอร์เฟซเนทีฟ ที่ Microsoft เราได้ร่วมมือกับ Meta เพื่อนำสถาปัตยกรรมใหม่มาสู่ Windows และ macOS
+
+ใน <a href="https://aka.ms/reactnative">React Native สำหรับเดสก์ท็อป เวอร์ชัน 0.76</a> (ฤดูใบไม้ร่วง 2024) แอปใหม่สามารถเลือก<a href="https://aka.ms/rnw-new-arch">เลือกใช้สถาปัตยกรรมใหม่</a> ดูตัวอย่างเมื่อสร้างแอปใหม่จาก CLI บน Windows สถาปัตยกรรมใหม่ปลดล็อกความสามารถใหม่ เช่น การบูรณาการอย่างลึกซึ้งกับ Windows App SDK (รวมถึง <a href="https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/composition">Scene Graph</a> และ <a href="https://learn.microsoft.com/en-us/windows/ai/overview">Windows Copilot Library</a>) รวมถึงการรองรับแอปพลิเคชันที่ใช้ Win32 นอกจากนี้ v0.76 ยังจัดเตรียมเทมเพลตสำหรับผู้เขียนไลบรารีเพื่อเขียนโมดูลที่กำหนดเป้าหมายทั้งสถาปัตยกรรมเก่าและใหม่พร้อมกัน
+
+แม้ว่าสถาปัตยกรรมใหม่<a href="https://aka.ms/rnw-roadmap">ยังอยู่ในช่วงพรีวิว</a> แต่แอปหลักหลายตัวของเราก็ได้ตรวจสอบแพลตฟอร์ม React Native สำหรับเดสก์ท็อปที่อัปเดตแล้ว และกำลังเริ่มทดสอบประสบการณ์บนสถาปัตยกรรมใหม่นี้ หากคุณสนใจที่จะเห็นความสามารถของ React Native สำหรับเดสก์ท็อป คุณสามารถดาวน์โหลด React Native Gallery ได้จาก Microsoft Store <a href="https://Aka.ms/reactnativegalleryapp">ได้ที่ Microsoft Store</a>
+
+[caption id="attachment_57154" align="aligncenter" width="975"]<img class="wp-image-57154 size-full" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/Picture5.png" alt="แอป React Native Gallery" width="975" height="548" /> แอป React Native Gallery ประกอบด้วยตัวอย่างคอมโพเนนต์และโมดูล React Native ที่คุณสามารถใช้ในแอป React Native สำหรับ Windows[/caption]
+
+หากคุณอยากรู้ว่าคุณสามารถใช้ทักษะ React และ JavaScript ของคุณเพื่อสร้างแอปเนทีฟสำหรับเดสก์ท็อปได้อย่างไร คุณสามารถเรียนรู้เพิ่มเติมได้ที่ <a href="https://aka.ms/reactnative">https://aka.ms/reactnative</a> สุดท้ายนี้ หากคุณต้องการทดลองใช้เวอร์ชันตัวอย่างของสถาปัตยกรรมใหม่ โปรดไปที่ <a href="https://aka.ms/rnw-new-arch">https://aka.ms/rnw-new-arch</a>
+UI แอปพลิเคชันหลายแพลตฟอร์มของ .NET (.NET MAUI)
+<a href="https://dot.net/maui">.NET MAUI</a> ยังคงขยายขอบเขตการพัฒนาข้ามแพลตฟอร์มสำหรับนักพัฒนา .NET โดยนำเสนอกรอบงานรวมสำหรับการสร้างแอปพลิเคชันเนทีฟ ด้วยฐานโค้ด C# และระบบโปรเจ็กต์ .NET เพียงฐานเดียว คุณสามารถสร้างแอปพลิเคชันที่ทำงานบน Windows (ผ่าน WinUI3), Mac (ผ่าน MacCatalyst), iOS และ Android เวอร์ชันล่าสุดสำหรับ .NET 9 ประกอบด้วยการปรับปรุงคุณภาพมากมาย รวมถึง <a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9">คุณลักษณะและการปรับปรุงใหม่</a>
+
+คุณลักษณะใหม่ที่อาจเป็นที่สนใจของนักพัฒนาระบบ Windows ได้แก่ การเพิ่ม <a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9?view=net-maui-8.0#titlebar-for-windows">การควบคุมแถบชื่อเรื่อง</a> การปรับปรุงมัลติวินโดว์เพื่อนำหน้าต่างมาไว้ด้านหน้าด้วย <a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9?view=net-maui-8.0#multi-window-support">ActivateWindow</a> และการรองรับแอป Windows ที่ไม่ได้แพ็คเกจตามค่าเริ่มต้นเพื่อช่วยให้นักพัฒนาสามารถดีบักและปรับใช้ได้รวดเร็วยิ่งขึ้น
+
+มีคุณลักษณะอื่นๆ อีกมากมายที่เป็นประโยชน์ต่อแพลตฟอร์มอุปกรณ์ทั้งหมด เช่น การเพิ่ม <a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9?view=net-maui-8.0#hybridwebview">การควบคุม HybridWebView</a> ซึ่งช่วยให้สามารถโฮสต์เนื้อหา HTML/JS/CSS ที่ต้องการในมุมมองเว็บ และสื่อสารระหว่างโค้ด JavaScript ในมุมมองเว็บและโค้ด C# ในแอปพลิเคชัน .NET MAUI ได้ นอกจากนี้ยังมี<a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9?view=net-maui-8.0#control-enhancements">การปรับปรุงการควบคุมอื่นๆ อีกมากมาย</a> <a href="https://learn.microsoft.com/en-us/dotnet/maui/whats-new/dotnet-9?view=net-maui-8.0#project-templates">เทมเพลตโซลูชันใหม่ๆ เพื่อช่วยให้คุณกำหนดเป้าหมายเว็บได้</a> การอัปเดตเครื่องมือของ Visual Studio และ VS Code การเพิ่มประสิทธิภาพของ Inner-loop และอื่นๆ อีกมากมายใน .NET 9
+
+นอกเหนือจากตัวควบคุมในตัวของ .NET MAUI แล้ว ทีมงานยัง<a href="https://devblogs.microsoft.com/dotnet/dotnet-maui-welcomes-syncfusion-open-source-contributions/">ร่วมมือกับ Syncfusion</a> ซึ่ง<a href="https://aka.ms/syncfusion-blog">เปิดตัว Syncfusion Toolkit สำหรับ .NET MAUI</a> ซึ่งประกอบด้วยตัวควบคุม .NET MAUI ยอดนิยม 14 ตัวในรูปแบบโอเพ่นซอร์สและฟรี นอกจากนี้ พวกเขายังประกาศถึงความมุ่งมั่นต่อโครงการ .NET MAUI อีกด้วย Syncfusion ได้ลงทุนความเชี่ยวชาญในฐานะผู้สร้างตัวควบคุมใน .NET MAUI โดยการมีส่วนร่วมอย่างเปิดเผยในประเด็นต่างๆ และส่ง PR ใน <a href="https://github.com/dotnet/maui/">คลังข้อมูล dotnet/maui บน GitHub</a> เพื่อเพิ่มความเร็วในการพัฒนา .NET MAUI
+
+ทีมงาน .NET MAUI รู้สึกตื่นเต้นมากที่จะได้นำเสนอผลงานอันน่าทึ่งทั้งหมดที่พวกเขาได้ทำกับชุมชน (รวมถึงเซอร์ไพรส์เล็กๆ น้อยๆ ด้วย) ที่ <a href="https://www.dotnetconf.net">.NET Conf ในวันที่ 12-14 พฤศจิกายน</a> อย่าลืมมาร่วมงาน!
+
+[caption id="attachment_57155" align="aligncenter" width="1024"]<img class="wp-image-57155 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/dotnetnewmaui-1024x576.png" alt="เทมเพลตโครงการใหม่สำหรับ .NET MAUI" width="1024" height="576" /> เทมเพลตโครงการใหม่สำหรับ .NET MAUI นำเสนอแนวทางปฏิบัติที่ดีที่สุดและตัวควบคุมโอเพนซอร์สใหม่จาก Syncfusion เพื่อสร้างแอป ToDo ที่มีคุณลักษณะครบครันซึ่งทำงานบนเดสก์ท็อปและอุปกรณ์พกพา[/caption]
+<h1><strong>WPF (Windows Presentation Foundation)</strong></h1>
+<strong>แอพพลิเคชั่นที่ทันสมัย</strong>
+
+เนื่องด้วยเป็นส่วนหนึ่งของการปรับปรุง Windows Presentation Foundation (WPF) ให้ทันสมัยอย่างต่อเนื่อง แอปพลิเคชันที่สร้างบน WPF และทำงานบน Windows 10 หรือใหม่กว่าจึงสามารถใช้ประโยชน์จากองค์ประกอบและลักษณะการทำงานด้านการออกแบบที่ล้ำสมัยได้ การปรับปรุงที่สำคัญ ได้แก่:
+<ul>
+ 	<li>รองรับธีมสีสว่างและสีเข้ม</li>
+ 	<li>มุมโค้งมนสำหรับการควบคุม</li>
+ 	<li>การปฏิบัติตามแนวทางการออกแบบ Windows 11</li>
+ 	<li>การสนับสนุนสีเน้นสำหรับตัวควบคุม</li>
+</ul>
+การเปิดตัวธีม Fluent ใหม่ทำให้แอปพลิเคชัน WPF มีรูปลักษณ์ใหม่ที่ทันสมัยตามแบบ Windows 11 ด้วยโหมด Light/Dark แบบบูรณาการและการรองรับสีเน้นของระบบ การอัปเดตนี้ออกแบบมาเพื่อเพิ่มการมีส่วนร่วมของผู้ใช้โดยมอบรูปลักษณ์ที่ทันสมัยและสวยงามให้กับแอปพลิเคชัน WPF
+
+ธีม Fluent ได้รับการจัดแสดงครั้งแรกที่ Build 2024 และขณะนี้พร้อมให้ใช้งานทั่วไปแล้วโดยเป็นส่วนหนึ่งของการเปิดตัว .NET 9 อย่างเป็นทางการสำหรับ Windows 10, Windows 11 และ Windows Server 2019
+
+<a href="https://apps.microsoft.com/detail/9ndlx60wx4kq?hl=en-US&gl=US">WPF Gallery App</a> เป็นเครื่องมือตัวอย่างที่สาธิตการควบคุมและสไตล์ WPF ให้กับแอปพลิเคชัน WPF ใน .NET 9 ขึ้นไป โค้ดต้นฉบับสำหรับแอปพลิเคชันนี้พร้อมใช้งานบน GitHub: <a href="https://github.com/microsoft/WPF-Samples">https://github.com/microsoft/WPF-Samples</a>
+
+[caption id="attachment_57170" align="aligncenter" width="1024"]<img class="wp-image-57170 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/gallery-v2-light-1024x629.png" alt="แอพ WPF Gallery ที่จัดแสดงในโหมด Light" width="1024" height="629" /> แอพ WPF Gallery ที่จัดแสดงในโหมด Light[/caption]
+
+[caption id="attachment_57171" align="aligncenter" width="1024"]<img class="wp-image-57171 size-large" src="https://blogs.windows.com/wp-content/uploads/prod/sites/3/2024/11/gallery-v2-dark-1024x639.png" alt="แอพ WPF Gallery ที่จัดแสดงในโหมด Light" width="1024" height="639" /> แอพ WPF Gallery ที่จัดแสดงในโหมด Dark[/caption]
+<h2><strong>การสนับสนุนการผูกอักษรแบบใช้เครื่องหมายยัติภังค์ใน WPF</strong></h2>
+จากคำติชมอันมีค่าจากชุมชน WPF (<a href="https://github.com/dotnet/wpf/issues/109">ฉบับที่ 109</a>) เราได้แก้ไขปัญหาที่เกิดขึ้นมานานเกี่ยวกับการใช้เครื่องหมายยัติภังค์ใน WPF ที่ไม่สามารถใช้งานได้ การปรับปรุงนี้มุ่งเป้าไปที่การปรับปรุงประสบการณ์ของนักพัฒนาโดยทำให้การแสดงผลข้อความดีขึ้นและการจัดวางตัวอักษรในแอปพลิเคชัน WPF สวยงามขึ้น
+
+<em> </em>
+WinForms (แบบฟอร์ม Windows)
+Windows Forms ถือเป็นเทคโนโลยียอดนิยมสำหรับแอปพลิเคชันเดสก์ท็อปน้ำหนักเบาที่สร้างขึ้นบน Win32 API โดยเฉพาะอย่างยิ่งในพื้นที่องค์กร Line of Business มานานแล้ว เนื่องจากใช้งานง่าย การอัปเดตล่าสุดของ WinForms จึงทำให้ผู้พัฒนาสามารถเริ่มใช้ประโยชน์จากเทคโนโลยีสมัยใหม่ในแอปพลิเคชันที่มีอยู่ได้ ในระหว่างการพัฒนา .NET 9 WinForms ได้ปรับปรุงโค้ดหลายพันบรรทัดให้ทันสมัยเพื่อใช้ประโยชน์จากความสามารถของ C# สมัยใหม่ เพื่อตอบสนองต่อการปรับปรุงระบบปฏิบัติการ WinForms ได้เพิ่มการสนับสนุนการเลือกหลายรายการสำหรับ <a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=windowsdesktop-9.0">FolderBrowserDialog</a> ความสามารถในการคลิกผ่านไปยังการควบคุม <a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.toolstrip?view=windowsdesktop-9.0">ToolStrip</a> และ API <a href="https://learn.microsoft.com/en-us/dotnet/api/system.drawing?view=windowsdesktop-9.0">System.Drawing</a> ใหม่และอัปเดตมากกว่า 100 รายการเพื่อใช้ประโยชน์จากความสามารถของ GDI+ มากกว่าเดิม เพื่อตอบสนองต่อความต้องการที่ล้นหลาม WinForms ยังได้เพิ่มคุณสมบัติการตรวจจับโหมดมืด (ในโหมดทดลอง)!
+
+เป็นครั้งแรกที่นักพัฒนาสามารถใช้ประโยชน์จากความสามารถแบบอะซิงค์ของ Windows และ .NET ได้อย่างรวดเร็วและง่ายดายด้วย .NET 9 ในรุ่นนี้ WinForms ได้เปิดตัว <a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.invokeasync?view=windowsdesktop-9.0">Control.InvokeAsync</a> API ใหม่นี้ช่วยให้แอปพลิเคชัน WinForms สามารถใช้ประโยชน์จาก Web API, Semantic Kernel, AI และอื่นๆ ได้ง่ายขึ้น! การปรับปรุงเหล่านี้ทำให้ WinForms ยังคงเป็นเครื่องมือที่มีประสิทธิภาพและอเนกประสงค์สำหรับการพัฒนาแอปพลิเคชันเดสก์ท็อปสมัยใหม่ โดยเชื่อมช่องว่างระหว่างระบบเดิมและเทคโนโลยีล้ำสมัยในปัจจุบัน
+ต่อไปจะเป็นอย่างไร?
+ติดตามการประชุม .NET Conf (12-14 พฤศจิกายน) และ Ignite (19-22 พฤศจิกายน) เพื่อเรียนรู้เพิ่มเติมเกี่ยวกับเทคโนโลยีเหล่านี้ผ่านเซสชันต่อไปนี้ คุณสามารถตรวจสอบกำหนดการทั้งหมดของ <a href="https://www.dotnetconf.net/agenda">.NET Conf</a> และ <a href="https://ignite.microsoft.com/en-US/sessions">Ignite</a> ได้
+
+สำหรับคำแนะนำและเอกสารเพิ่มเติมเกี่ยวกับวิธีการพัฒนาแอปสำหรับ Windows โดยใช้เทคโนโลยีเหล่านี้ โปรดไปที่ <a href="https://aka.ms/windev">https://aka.ms/windev</a>
+
+<strong>เซสชั่นที่ .NET Conf</strong>
+<div style="text-align: กลาง;">
+<ตาราง>
+<tbody>
+<tr>
+<td width="50%"><strong>ชื่อเซสชั่น</strong></td>
+<td width="50%"><strong>วันที่</strong></td>
+</tr>
+<tr>
+มีอะไรใหม่ใน .NET MAUI ใน .NET 9
+<td width="50%">12 พ.ย. 12:00 น. - 12:45 น. PST</td>
+</tr>
+<tr>
+<td width="50%">สร้างแอปไฮบริดด้วย .NET MAUI</td>
+<td width="50%">12 พ.ย. 15:15 น. - 15:45 น. PST</td>
+</tr>
+<tr>
+การเพิ่มประสิทธิภาพการทำงานของ .NET MAUI ด้วย NativeAOT และการตัดแต่ง
+<td width="50%">13 พ.ย. 14:30 น. - 15:00 น. PST</td>
+</tr>
+<tr>
+มีอะไรใหม่ใน WinUI และ Windows App SDK 1.6
+<td width="50%">13 พ.ย. 15:00 - 15:30 น. PST</td>
+</tr>
+<tr>
+<td width="50%">การพัฒนา WinForms ที่ทันสมัยด้วย .NET 9</td>
+<td width="50%">13 พ.ย. 16:00 - 16:30 น. PST</td>
+</tr>
+<tr>
+<td width="50%">การเสริมพลังให้กับนักพัฒนา WPF: การเดินทางผ่าน .NET 9 และเส้นทางข้างหน้า</td>
+14 พ.ย. 04:00 - 04:30 น. PST</td>
+</tr>
+<tr>
+<td width="50%">WPF Reborn: ความมหัศจรรย์ข้ามแพลตฟอร์มของ Avalonia</td>
+14 พ.ย. 04:30 - 05:00 น. PST
+</tr>
+<tr>
+<td width="50%">สรุปชุดเครื่องมือชุมชน</td>
+14 พ.ย. 11:00 น. - 11:30 น. PST</td>
+</tr>
+<tr>
+การพัฒนาข้ามแพลตฟอร์ม.NET ที่เสริมประสิทธิภาพด้วย .NET 9 และแพลตฟอร์ม Uno
+เพื่อนๆ ของเราที่ Uno Platform* กำลังเตรียมประกาศพิเศษสำหรับ .NET Conf! หากคุณต้องการเป็นหนึ่งใน <strong><a href="https://platform.uno/waitlist/">คนแรกๆ ที่จะได้รับคำเชิญรุ่นเบต้า โปรดเข้าร่วมรายชื่อรอ</a></strong></td>
+<td width="50%">14 พ.ย. 14:00 - 14:30 น. PST</td>
+</tr>
+<tr>
+"ทำให้แอป WinForms ของคุณชาญฉลาดขึ้น" เพื่อประสบการณ์ใหม่ที่น่าทึ่งสำหรับลูกค้า!</td>
+<td width="50%">15 พ.ย. 12:00 น. - 12:30 น. PST</td>
+</tr>
+<tr>
+<td width="50%">เพิ่มประสิทธิภาพ WPF - การปรับปรุงที่กำลังจะเกิดขึ้น</td>
+<td width="50%">15 พ.ย. 13:30 - 14:00 น. PST</td>
+</tr>
+<tr>
+<td width="50%">สร้างแอพ MIDI 2.0 ที่ยอดเยี่ยมโดยใช้ Windows MIDI Services และ C#</td>
+15 พ.ย. 10:30 น. - 11:00 น. PST</td>
+</tr>
+<tr>
+เพิ่ม AI ลงในแอพ Windows ของคุณด้วย .NET
+<td width="50%">15 พ.ย. 14:00 - 14:30 น. PST</td>
+</tr>
+<tr>
+<td width="50%">บล็อกการสร้าง MVVM สำหรับการพัฒนา WinUI และ WPF</td>
+<td width="50%">15 พ.ย. 16:00 - 16:30 น. PST</td>
+</tr>
+</tbody>
+</ตาราง>
+</div>
+<strong>เซสชั่นที่ Ignite</strong>
+<div style="text-align: กลาง;">
+<ตาราง>
+<tbody>
+<tr>
+<td width="50%"><strong>ชื่อเซสชั่น</strong></td>
+<td width="50%"><strong>วันที่</strong></td>
+</tr>
+<tr>
+<td width="50%"><strong><a href="https://ignite.microsoft.com/en-US/sessions/BRK304">ปรับปรุงแอปของคุณให้ทันสมัยโดยเรียนรู้วิธีที่ Office ใช้ประโยชน์จาก Windows App SDK</a></strong></td>
+<td width="50%">21 พ.ย. 11:15 น. - 12:00 น. PST</td>
+</tr>
+</tbody>
+</ตาราง>
+</div>
+*สำหรับผู้ที่เพิ่งเริ่มใช้ Uno Platform แพลตฟอร์มนี้จะช่วยให้สามารถสร้างแอป C# และ XAML แบบซอร์สเดียวที่สมบูรณ์แบบในระดับพิกเซล ซึ่งทำงานบน Windows, iOS, Android, macOS, Linux และเว็บผ่านทาง WebAssembly Uno Platform นำเสนอการผสานรวม Figma สำหรับการถ่ายโอนข้อมูลตั้งแต่การออกแบบไปจนถึงการพัฒนา พร้อมด้วยส่วนขยายชุดหนึ่งสำหรับบูตสแตรปโปรเจ็กต์ของคุณ <a href="https://github.com/unoplatform/uno">เป็นโอเพ่นซอร์สฟรี (Apache 2.0) และพร้อมใช้งานบน GitHub</a>
+
+<i><b>หมายเหตุของบรรณาธิการ – 12 พฤศจิกายน 2024 –</i></b> รูปภาพที่แสดงแอป WPF Gallery ที่จัดแสดงในโหมดสว่างและมืดได้รับการอัปเดตแล้ว</i>]]></content:encoded>
+					
+		
+		
+			</รายการ>
+	</ช่อง>
+</rss>
