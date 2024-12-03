@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=957457e2">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=957457e2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=95180981">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=95180981">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=957457e2"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=95180981"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -726,7 +726,7 @@ and output.</p>
 For legacy reasons, the field <strong>should</strong> be called <code>mime_type</code>.</p>
 <h3 id="countries-and-regions">Countries and regions</h3>
 <p>Fields representing individual countries or nations <strong>must</strong> use the <a href="http://cldr.unicode.org/">Unicode
-CLDR region codes</a> (<a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">list</a>), such as <code>US</code> or <code>CH</code>, and the field
+CLDR region codes</a> (<a href="https://www.unicode.org/cldr/charts/46/supplemental/territory_information.html">list</a>), such as <code>US</code> or <code>CH</code>, and the field
 <strong>must</strong> be called <code>region_code</code>.</p>
 <p><strong>Important:</strong> We use <code>region_code</code> and not <code>country_code</code> to include regions
 distinct from any country, and avoid political disputes over whether or not
@@ -738,7 +738,7 @@ such as <code>USD</code> or <code>CHF</code>, and the field <strong>must</strong
 than the currency code itself, use <a href="https://github.com/googleapis/googleapis/blob/master/google/type/money.proto"><code>google.protobuf.Money</code></a>.</p>
 <h3 id="language">Language</h3>
 <p>Fields representing spoken languages <strong>must</strong> use <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF BCP-47 language
-codes</a> (<a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">list</a>), such as <code>en-US</code> or <code>de-CH</code>, and the field <strong>must</strong>
+codes</a> (<a href="https://www.unicode.org/cldr/charts/46/supplemental/territory_information.html">list</a>), such as <code>en-US</code> or <code>de-CH</code>, and the field <strong>must</strong>
 be called <code>language_code</code>.</p>
 <h3 id="time-zones">Time zones</h3>
 <p>Fields representing a time zone <strong>should</strong> use the <a href="http://www.iana.org/time-zones">IANA TZ</a> codes, and the
@@ -748,6 +748,7 @@ these are subtly different). In this case, the field <strong>must</strong> use t
 format</a> to represent this, and the field <strong>must</strong> be named <code>utc_offset</code>.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-11-12</strong>: Change country/region code list to CLDR list from IANA list</li>
 <li><strong>2020-05-12</strong>: Replaced <code>country_code</code> guidance with <code>region_code</code>,
   correcting an original error.</li>
 </ul>
