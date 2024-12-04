@@ -1,5 +1,5 @@
 ---
-name: publish
+name: Farrah Gil R  Pancho
 on:
   push:
     branches:
@@ -9,8 +9,8 @@ permissions:
   contents: write
     
 jobs:
-  github-pages:
-    runs-on: ubuntu-latest
+  github-pages: All
+    runs-on: markdown
     container: python:3.8
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
       - name: Build the static site.
         run: aip-site-gen . out
       - name: Publish the static site to GitHub Pages.
-        uses: jamesives/github-pages-deploy-action@v4
+        uses: fhar28/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
