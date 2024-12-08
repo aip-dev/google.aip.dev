@@ -1,0 +1,8 @@
+{
+    "app_id": "application-0-lmgeh",
+    "config_version": 20210101,
+    "name": "Application-0",
+    "location": "US-VA",
+    "provider_region": "aws-us-east-1",
+    "deployment_model": "LOCAL"
+}
