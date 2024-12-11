@@ -13,6 +13,7 @@ categories:
   - code: design-patterns
     title: Design Patterns
   - code: compatibility
+    title: Compatibility and Versioning
   - code: polish
   - code: protobuf
     title: Protocol buffers
