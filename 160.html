@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=27460daa">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=27460daa">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a36cdfbd">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a36cdfbd">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=27460daa"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=a36cdfbd"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -640,8 +640,10 @@
 <li><a href="#has-operator">Has Operator</a></li>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#limitations">Limitations</a></li>
+<li><a href="#validation">Validation</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -939,11 +941,33 @@ supports.</p>
 above what is defined here. For example, a service may support the logical
 operators but only permit a certain number of them (to avoid "queries of death"
 or other performance concerns).</p>
-<p>Further structure or limitations <strong>must</strong> be clearly documented, <strong>must not</strong>
-violate requirements set forth in this document, and a non-compliant filter
-query <strong>must</strong> error with <code>INVALID_ARGUMENT</code>.</p>
+<p>Further structure or limitations <strong>must</strong> be clearly documented, and
+<strong>must not</strong> violate requirements set forth in this document.</p>
+<h3 id="validation">Validation</h3>
+<p>If a non-compliant or schematically invalid <code>filter</code> string is specified,
+the API <strong>should</strong> error with <code>INVALID_ARGUMENT</code>. Wherever validation is relaxed
+for <code>filter</code>, the API <strong>must</strong> document the difference.</p>
+<p>Schematic validation refers, but is not limited to, the following:</p>
+<ul>
+<li>Fields referenced in the <code>filter</code> <strong>must</strong> exist on the filtered schema</li>
+<li>Field values provided in the <code>filter</code> <strong>must</strong> align to the type of the field<ul>
+<li>For example, for a field <code>int32 age</code> a <code>filter</code> like <code>"age=hello"</code> is
+  invalid</li>
+</ul>
+</li>
+<li>Field values for bounded data types e.g. <code>enum</code> provided in the <code>filter</code>
+  <strong>must</strong> be a valid value in the set</li>
+<li>Field values for standardized types e.g. <code>Timestamp</code> <strong>must</strong> conform to the
+  documented standard (see <a href="#comparison-operators">Comparison Operators</a> for a
+  list of such types)</li>
+</ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
+
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2024-12-11</strong>: Move non-compliant filter guidance to Validation section.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
