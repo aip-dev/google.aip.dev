@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a36cdfbd">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a36cdfbd">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=633a277e">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=633a277e">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a36cdfbd"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=633a277e"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -633,20 +633,20 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#api">API</a></li>
-<li><a href="#api-backend">API Backend</a></li>
-<li><a href="#api-consumer">API Consumer</a></li>
-<li><a href="#api-definition">API Definition</a></li>
-<li><a href="#api-frontend">API Frontend</a></li>
-<li><a href="#api-method">API Method</a></li>
-<li><a href="#api-producer">API Producer</a></li>
-<li><a href="#api-product">API Product</a></li>
-<li><a href="#api-service">API Service</a></li>
-<li><a href="#api-service-definition">API Service Definition</a></li>
-<li><a href="#api-service-endpoint">API Service Endpoint</a></li>
-<li><a href="#api-service-name">API Service Name</a></li>
-<li><a href="#api-title">API Title</a></li>
-<li><a href="#api-request">API Request</a></li>
-<li><a href="#api-version">API Version</a></li>
+<li><a href="#api-backend">API backend</a></li>
+<li><a href="#api-consumer">API consumer</a></li>
+<li><a href="#api-definition">API definition</a></li>
+<li><a href="#api-frontend">API frontend</a></li>
+<li><a href="#api-method">API method</a></li>
+<li><a href="#api-producer">API producer</a></li>
+<li><a href="#api-product">API product</a></li>
+<li><a href="#api-service">API service</a></li>
+<li><a href="#api-service-definition">API service definition</a></li>
+<li><a href="#api-service-endpoint">API service endpoint</a></li>
+<li><a href="#api-service-name">API service name</a></li>
+<li><a href="#api-title">API title</a></li>
+<li><a href="#api-request">API request</a></li>
+<li><a href="#api-version">API version</a></li>
 <li><a href="#client">Client</a></li>
 <li><a href="#google-api">Google API</a></li>
 <li><a href="#declarative-clients">Declarative Clients</a></li>
@@ -702,60 +702,60 @@ than in each AIP individually.</p>
 <h2 id="guidance">Guidance</h2>
 <p>The following terminology <strong>should</strong> be used consistently throughout AIPs.</p>
 <h3 id="api">API</h3>
-<p>Application Programming Interface. This can be a local interface (such as a
+<p>Application programming interface. This can be a local interface (such as a
 client library) or a Network API (defined below).</p>
-<h3 id="api-backend">API Backend</h3>
+<h3 id="api-backend">API backend</h3>
 <p>A set of servers and related infrastructure that implements the business logic
-for an API Service. An individual API backend server is often called an API
+for an API service. An individual API backend server is often called an API
 server.</p>
-<h3 id="api-consumer">API Consumer</h3>
-<p>The entity that consumes an API Service. For Google APIs, it typically is a
+<h3 id="api-consumer">API consumer</h3>
+<p>The entity that consumes an API service. For Google APIs, it typically is a
 Google project that owns the client application or the server resource.</p>
-<h3 id="api-definition">API Definition</h3>
+<h3 id="api-definition">API definition</h3>
 <p>The definition of an API, usually defined in a Protocol Buffer service. An API
-Definition can be implemented by any number of API Services.</p>
-<h3 id="api-frontend">API Frontend</h3>
+definition can be implemented by any number of API services.</p>
+<h3 id="api-frontend">API frontend</h3>
 <p>A set of servers plus related infrastructure that provides common functionality
-across API Services, such as load balancing and authentication. An individual
+across API services, such as load balancing and authentication. An individual
 API frontend server is often called an API proxy.</p>
 <p><strong>Note:</strong> the API frontend and the API backend may run next to each other or far
 away from each other. In some cases, they can be compiled into a single
 application binary and run inside a single process.</p>
-<h3 id="api-method">API Method</h3>
+<h3 id="api-method">API method</h3>
 <p>An individual operation within an API. It is typically represented in Protocol
 Buffers by an <code>rpc</code> definition, and is mapped to a function in the API in most
 programming languages.</p>
-<h3 id="api-producer">API Producer</h3>
-<p>The entity that produces an API Service. For Google APIs, it typically is a
-Google team responsible for the API Service.</p>
-<h3 id="api-product">API Product</h3>
-<p>An API Service and its related components, such as Terms of Service,
+<h3 id="api-producer">API producer</h3>
+<p>The entity that produces an API service. For Google APIs, it typically is a
+Google team responsible for the API service.</p>
+<h3 id="api-product">API product</h3>
+<p>An API service and its related components, such as Terms of Service,
 documentation, client libraries, and service support, are collectively presented
-to customers as a API Product. For example, Google Calendar API.</p>
-<p><strong>Note:</strong> people sometimes refer to an API Product simply as an API.</p>
-<h3 id="api-service">API Service</h3>
+to customers as a API product. For example, Google Calendar API.</p>
+<p><strong>Note:</strong> people sometimes refer to an API product simply as an API.</p>
+<h3 id="api-service">API service</h3>
 <p>A deployed implementation of one or more APIs, exposed on one or more network
 addresses, such as the Cloud Pub/Sub API.</p>
-<h3 id="api-service-definition">API Service Definition</h3>
-<p>The combination of API Definitions (<code>.proto</code> files) and API Service
-configurations (<code>.yaml</code> files) used to define an API Service. The schema for
-Google API Service Definition is <code>google.api.Service</code>.</p>
-<h3 id="api-service-endpoint">API Service Endpoint</h3>
-<p>Refers to a network address that an API Service uses to handle incoming API
-Requests. One API Service may have multiple API Service Endpoints, such as
+<h3 id="api-service-definition">API service definition</h3>
+<p>The combination of API definitions (<code>.proto</code> files) and API service
+configurations (<code>.yaml</code> files) used to define an API service. The schema for
+Google API service definition is <code>google.api.Service</code>.</p>
+<h3 id="api-service-endpoint">API service endpoint</h3>
+<p>Refers to a network address that an API service uses to handle incoming API
+requests. One API service may have multiple API service endpoints, such as
 <code>https://pubsub.googleapis.com</code> and <code>https://content-pubsub.googleapis.com</code>.</p>
-<h3 id="api-service-name">API Service Name</h3>
-<p>Refers to the logical identifier of an API Service. Google APIs use RFC 1035 DNS
-compatible names as their API Service Names, such as <code>pubsub.googleapis.com</code>.</p>
-<h3 id="api-title">API Title</h3>
+<h3 id="api-service-name">API service name</h3>
+<p>Refers to the logical identifier of an API service. Google APIs use RFC 1035 DNS
+compatible names as their API service names, such as <code>pubsub.googleapis.com</code>.</p>
+<h3 id="api-title">API title</h3>
 <p>Refers to the user-facing product title of an API service, such as "Cloud Pub/Sub
 API".</p>
-<h3 id="api-request">API Request</h3>
-<p>A single invocation of an API Method. It is often used as the unit for billing,
+<h3 id="api-request">API request</h3>
+<p>A single invocation of an API method. It is often used as the unit for billing,
 logging, monitoring, and rate limiting.</p>
-<h3 id="api-version">API Version</h3>
+<h3 id="api-version">API version</h3>
 <p>The version of an API or a group of APIs if they are defined together. An API
-Version is often represented by a string, such as "v1", and presents in API
+version is often represented by a string, such as "v1", and presents in API
 requests and Protocol Buffers package names.</p>
 <h3 id="client">Client</h3>
 <p>Clients are programs that perform a specific tasks by calling an API or generic
@@ -800,6 +800,7 @@ using network protocols including HTTP, and are frequently produced by
 organizations separate from those that consume them.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-12-18</strong>: Downcase headings and terms as per dev docs style</li>
 <li><strong>2024-10-23</strong>: Add API Title entry</li>
 <li><strong>2023-07-24</strong>: Rename IaC to Declarative Clients</li>
 <li><strong>2023-04-01</strong>: Adding definition of IaC</li>
