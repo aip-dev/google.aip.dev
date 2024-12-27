@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=633a277e">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=633a277e">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=766e038a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=766e038a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=633a277e"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=766e038a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -636,6 +636,7 @@
 <li><a href="#uniformity">Uniformity</a></li>
 <li><a href="#repeated-fields">Repeated fields</a></li>
 <li><a href="#prepositions">Prepositions</a></li>
+<li><a href="#abbreviations">Abbreviations</a></li>
 <li><a href="#adjectives">Adjectives</a></li>
 <li><a href="#verbs">Verbs</a></li>
 <li><a href="#booleans">Booleans</a></li>
@@ -747,6 +748,18 @@ cases. Often "per" is part of a unit (e.g. "miles per hour"), in which case the
 preposition must be present to accurately convey the unit. Additionally, "per"
 is often appropriate in reporting scenarios (e.g. "nodes per instance" or
 "failures per hour").</p>
+<h3 id="abbreviations">Abbreviations</h3>
+<p>For well known name abbreviations among software developers, such as "config"
+and "spec", the abbreviations <strong>should</strong> be used in API definitions instead of
+the full spelling. This will make the source code easy to read and write.
+Examples:</p>
+<ul>
+<li><code>config</code> (<strong>not</strong> <code>configuration</code>)</li>
+<li><code>id</code> (<strong>not</strong> <code>identifier</code>)</li>
+<li><code>info</code> (<strong>not</strong> <code>information</code>)</li>
+<li><code>spec</code> (<strong>not</strong> <code>specification</code>)</li>
+<li><code>stats</code> (<strong>not</strong> <code>statistics</code>)</li>
+</ul>
 <h3 id="adjectives">Adjectives</h3>
 <p>For uniformity, field names that contain both a noun and an adjective
 <strong>should</strong> place the adjective <em>before</em> the noun. For example:</p>
@@ -810,6 +823,7 @@ field <strong>should not</strong> have a uniqueness requirement.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2024-12-20</strong>: Copy over abbreviations guidance from old design site.</li>
 <li><strong>2024-08-26</strong>: Codify exception to string and base64 guidance </li>
 <li><strong>2024-05-18</strong>: Documented the effect of field names on client surfaces.</li>
 <li><strong>2023-04-25</strong>: Field names <strong>must not</strong> be expressed as verbs.</li>
