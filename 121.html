@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=4e1726bf">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=4e1726bf">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ebc7ce51">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ebc7ce51">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=4e1726bf"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=ebc7ce51"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -786,7 +786,7 @@ patterns, such as database transactions, import and export, or data analysis.</p
 operations (either successful or with an error, long-running operation, or
 synchronous) <strong>must</strong> mean that the state of the resource's existence and all
 user-settable values have reached a steady-state.</p>
-<p><a href="/203#output-only">output only</a> values unrelated to the resource <a href="/216">state</a> <strong>should</strong> also have
+<p><a href="/203#output-only">Output only</a> values unrelated to the resource <a href="/216">state</a> <strong>should</strong> also have
 reached a steady-state for values that are related to the resource <a href="/216">state</a>.</p>
 <p>Examples include:</p>
 <ul>
@@ -804,8 +804,8 @@ in sequence (e.g. create resource A, create resource B which depends on A), and
 ensuring that resources immediately reflect steady user state after an operation
 is complete ensures clients can rely on method completion as a signal to begin
 the next operation.</p>
-<p><a href="/203#output-only">output only</a> fields ideally would follow the same guidelines, but as
-these fields can often represent a resources live state, it's sometimes
+<p><a href="/203#output-only">Output only</a> fields ideally would follow the same guidelines, but as
+these fields can often represent a resource's live state, it's sometimes
 necessary for these values to change after a successful mutation operation to
 reflect a state change.</p>
 <h3 id="stateless-protocol">Stateless protocol</h3>
