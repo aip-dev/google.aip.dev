@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=15c6993d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=15c6993d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=c7efd722">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=c7efd722">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=15c6993d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=c7efd722"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -638,6 +638,7 @@
 </ul>
 </li>
 <li><a href="#rationale">Rationale</a><ul>
+<li><a href="#type-and-message-name-alignment">Type and message name alignment</a></li>
 <li><a href="#singular-and-plural">Singular and Plural</a></li>
 </ul>
 </li>
@@ -700,14 +701,14 @@ tools such as Kubernetes or GraphQL interact with APIs from multiple providers.<
   This usually (but not necessarily) matches the hostname that users use to
   call the service. Example: <code>pubsub.googleapis.com</code>. This is equivalent to an
   <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups">API Group</a> in Kubernetes.</li>
-<li><strong>Type:</strong> This is the name used for the type within the API. This <em>should</em>
-  match the name of the protobuf message. This is equivalent to an <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#types-kinds">Object</a> in
-  Kubernetes.</li>
+<li><strong>Type:</strong> This is the name used for the type within the API e.g. the name of
+  the Protobuf <code>message</code>. This is equivalent to an <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#types-kinds">Object</a> in Kubernetes.</li>
 </ul>
 <h2 id="guidance">Guidance</h2>
 <p>APIs <strong>must</strong> define a resource type for each resource in the API, according to
 the following pattern: <code>{Service Name}/{Type}</code>. The type name <strong>must</strong>:</p>
 <ul>
+<li>Match the containing API type's name.</li>
 <li>Start with an uppercase letter.</li>
 <li>Only contain alphanumeric characters.</li>
 <li>Be of the singular form of the noun.</li>
@@ -772,6 +773,13 @@ resource:</p>
 <li><code>user/{user_part_1}~{user_part_2}</code></li>
 </ul>
 <h2 id="rationale">Rationale</h2>
+<h3 id="type-and-message-name-alignment">Type and message name alignment</h3>
+<p>In addition to simple schema-resource coherence and alignment, a number of
+consumers benefit from the <code>{Type}</code> and <code>message</code> names matching. Consumers have
+simpler lookups, client libraries get the same in addition to aligned user
+experience where resource-oriented code has naming aligned with the generated
+<code>message</code> code, generated reference documentation aligns resources with
+<code>message</code> docs, etc.</p>
 <h3 id="singular-and-plural">Singular and Plural</h3>
 <p>Well-defined singular and plurals of a resource enable clients to determine the
 proper name to use in code and documentation.</p>
@@ -782,6 +790,7 @@ such as UpperCamelCase and snake_case.</p>
 
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-01-09</strong>: Strongly align resource type and message naming.</li>
 <li><strong>2024-08-07</strong>: Added multi-pattern ordering compatibility requirements.</li>
 <li><strong>2023-09-19</strong>: Prohibited duplicate pattern variables.</li>
 <li><strong>2023-05-06</strong>: Added requirement of singular and plural.</li>
