@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=78a1623c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=78a1623c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9d78f914">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9d78f914">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=78a1623c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=9d78f914"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -270,10 +270,12 @@
 <li><a href="#application-default-credentials-for-dca">Application Default Credentials for DCA</a></li>
 <li><a href="#expected-behavior">Expected Behavior</a></li>
 <li><a href="#obtaining-the-default-mtls-endpoint">Obtaining the Default mTLS Endpoint</a></li>
-<li><a href="#obtaining-the-default-device-certificate">Obtaining the Default Device Certificate</a></li>
+<li><a href="#obtaining-the-default-device-certificate-via-secureconnect">Obtaining the Default Device Certificate via SecureConnect</a></li>
+<li><a href="#obtaining-the-default-device-certificate-via-ecp">Obtaining the Default Device Certificate via ECP</a></li>
 <li><a href="#environment-variables">Environment Variables</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -361,7 +363,7 @@ endpoint override is an mTLS url, since the url pattern may change at anytime.</
 <h3 id="obtaining-the-default-mtls-endpoint">Obtaining the Default mTLS Endpoint</h3>
 <p>The default mTLS endpoint for a service <strong>should</strong> be read from the Discovery
 Document field <strong>"mtlsRootUrl"</strong> instead of generated via regex patterns.</p>
-<h3 id="obtaining-the-default-device-certificate">Obtaining the Default Device Certificate</h3>
+<h3 id="obtaining-the-default-device-certificate-via-secureconnect">Obtaining the Default Device Certificate via SecureConnect</h3>
 <p>The default device certificate <strong>should</strong> be procured using the
 <a href="https://cloud.google.com/endpoint-verification/docs/overview">EndpointVerification</a> workflow, which fetches the certificate from a
 platform-specific credential store (ex. KeyChain in macOS) via a native helper.</p>
@@ -391,6 +393,16 @@ Serial Number: 4921083229008411918 (0x444b331faf2dbd0e)
 ...
 -----END PRIVATE KEY-----
 </code></pre>
+<h3 id="obtaining-the-default-device-certificate-via-ecp">Obtaining the Default Device Certificate via ECP</h3>
+<p>The Enterprise Certificate Proxy (ECP) project is the newly recommended way to
+procure device certificates. It has two major advantages compared to the legacy
+SecureConnect mechanism:</p>
+<ol>
+<li>Allows usage of enterprise certs and private keys stored in native keystores and TPMs
+    instead of relying on self-signed certs.</li>
+<li>Delegates signing operations to keystores, so private keys never leave the security realm.</li>
+</ol>
+<p>Please see <a href="https://cloud.google.com/beyondcorp-enterprise/docs/enable-cba-enterprise-certificates">ECP Public Documentation</a> for details on ECP configuration.</p>
 <h3 id="environment-variables">Environment Variables</h3>
 <p>There are situations where the ADC for DCA behavior needs to be modified, such
 as for integration testing, or for failsafe. To accomodate those scenarios, the
@@ -402,11 +414,13 @@ available. The default value of this environment variable will be "auto".</p>
 <p><strong>GOOGLE_API_USE_CLIENT_CERTIFICATE</strong>: If <strong>"true"</strong>, device certificate
 authentication will be supported as described in the general guidance. If
 <strong>"false"</strong>, the device certificate <strong>must</strong> not be used, even if specified by
-the user. For now, the default value will be "false", since mTLS support is not
-yet fully adopted by all services. Users who wish to enable DCA feature <strong>must</strong>
-explicitly set this environment variable to "true". In the future, the default
-value will be "true' to allow a more secure connection to be established
-whenever possible.</p>
+the user. The default value <strong>should</strong> be "true" as of May 3, 2024. Users who
+wish to disable DCA feature <strong>must</strong> explicitly set this environment variable
+to "false".</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>*<em>2024-11-25</em>: GOOGLE_API_USE_CLIENT_CERTIFICATE should default to "true" as of May 3, 2024.</li>
+</ul>
 <!-- prettier-ignore-start -->
 <!-- prettier-ignore-end -->
   <footer>
