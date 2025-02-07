@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9d78f914">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9d78f914">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=26220397">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=26220397">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9d78f914"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=26220397"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -788,9 +788,12 @@ has elapsed after the operation completed.</p>
 <h3 id="errors">Errors</h3>
 <p>Errors that prevent a long-running operation from <em>starting</em> <strong>must</strong> return an
 error response (<a href="/193">AIP-193</a>), similar to any other method.</p>
-<p>Errors that occur over the course of an operation <strong>may</strong> be placed in the
-metadata message. The errors themselves <strong>must</strong> still be represented with a
-<a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto">google.rpc.Status</a> object.</p>
+<p>Operations that fail during their execution phase <strong>must</strong> return an
+error response (<a href="/193">AIP-193</a>), placed in the <code>Operation.error</code> <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto">google.rpc.Status</a>
+field.</p>
+<p>Non-terminal errors that occur over the course of an operation <strong>may</strong> be placed
+in the metadata message and the field(s) <strong>must</strong> be <a href="/193">AIP-193</a> compliant
+<a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto">google.rpc.Status</a>.</p>
 <h3 id="backwards-compatibility">Backwards compatibility</h3>
 <p>Changing either the <code>response_type</code> or <code>metadata_type</code> of a long-running operation
 is a breaking change.</p>
@@ -812,6 +815,8 @@ updated status) but server don't need to maintain any additional state.</p>
 
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-02-04</strong>: Clarified error propagation behavior for failures
+  that occur during long-running operations.</li>
 <li><strong>2024-04-23</strong>: Provided pattern for validation on RPCs returning
   long-running operations.</li>
 <li><strong>2022-05-31</strong>: Added compatibility section.</li>
