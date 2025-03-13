@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9404ac51">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=9404ac51">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f683ad14">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f683ad14">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=9404ac51"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f683ad14"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -632,9 +632,17 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#atomic-vs-partial-success">Atomic vs. Partial Success</a></li>
 <li><a href="#request-message">Request message</a></li>
 <li><a href="#request-message-containing-standard-delete-request-messages">Request message containing standard delete request messages</a></li>
 <li><a href="#response-message-soft-delete-only">Response message (soft-delete only)</a></li>
+<li><a href="#operation-metadata-message">Operation metadata message</a></li>
+<li><a href="#adopting-partial-success">Adopting Partial Success</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#restricting-synchronous-batch-methods-to-be-atomic">Restricting synchronous batch methods to be atomic</a></li>
+<li><a href="#communicating-partial-failures">Communicating partial failures</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -683,11 +691,24 @@
 <p>Some APIs need to allow users to delete a set of resources in a single
 transaction. A batch delete method provides this functionality.</p>
 <h2 id="guidance">Guidance</h2>
-<p>Batch delete methods are specified using the following pattern:</p>
+<p>APIs <strong>may</strong> support Batch Delete using the following two patterns:</p>
+<p>Returning the response synchronously</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">BatchDeleteBooks</span><span class="p">(</span><span class="n">BatchDeleteBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:batchDelete&quot;</span>
     <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Returning an Operation which resolves to the response asynchronously</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">BatchDeleteBooks</span><span class="p">(</span><span class="n">BatchDeleteBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:batchDelete&quot;</span>
+    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
+  <span class="p">};</span>
+  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;google.protobuf.Empty&quot;</span>
+    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;BatchDeleteBooksOperationMetadata&quot;</span>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -698,9 +719,12 @@ transaction. A batch delete method provides this functionality.</p>
 <li>The response message <strong>should</strong> be <code>google.protobuf.Empty</code>.<ul>
 <li>If the resource is <a href="/135#soft-delete">soft deleted</a>, the response message
   <strong>should</strong> be a response message containing the updated resources.</li>
-<li>In the event that the request may take a significant amount of time, the
-  response message <strong>must</strong> be a <code>google.longrunning.Operation</code> which
-  resolves to the correct response.</li>
+</ul>
+</li>
+<li>If the batch method returns an <code>google.longrunning.Operation</code>, both the
+  <code>response_type</code> and <code>metadata_type</code> fields <strong>must</strong> be specified.<ul>
+<li>If the resource is <a href="/135#soft-delete">soft deleted</a>, the <code>response_type</code>
+  <strong>should</strong> be a response message containing the updated resources.</li>
 </ul>
 </li>
 <li>The HTTP verb <strong>must</strong> be <code>POST</code> (not <code>DELETE</code>).</li>
@@ -709,10 +733,26 @@ transaction. A batch delete method provides this functionality.</p>
   the collection used for simple CRUD operations. If the operation spans
   parents, a dash (<code>-</code>) <strong>may</strong> be accepted as a wildcard.</li>
 <li>The body clause in the <code>google.api.http</code> annotation <strong>should</strong> be <code>"*"</code>.</li>
-<li>The operation <strong>should</strong> be atomic: it <strong>should</strong> fail for all resources or
-  succeed for all resources (no partial success).<ul>
-<li>If the operation covers multiple locations and at least one location is
-  down, the operation <strong>must</strong> fail.</li>
+</ul>
+<h3 id="atomic-vs-partial-success">Atomic vs. Partial Success</h3>
+<ul>
+<li>The batch delete method <strong>may</strong> support atomic (all resources deleted or none
+  are) or partial success behavior. To make a choice, consider the following
+  factors:<ul>
+<li><strong>Complexity of Ensuring Atomicity:</strong> Operations that are simple
+  passthrough database transactions <strong>should</strong> use an atomic operation,
+  while operations that manage complex resources <strong>should</strong> use partial
+  success operations.</li>
+<li><strong>End-User Experience:</strong> Consider the perspective of the API consumer.
+  Would atomic behavior be preferable for the given use case, even if it
+  means that a large batch could fail due to issues with a single or a few
+  entries?</li>
+</ul>
+</li>
+<li>Synchronous batch delete <strong>must</strong> be atomic.</li>
+<li>Asynchronous batch delete <strong>may</strong> support atomic or partial success.<ul>
+<li>If supporting partial success, see
+  <a href="#operation-metadata-message">Operation metadata message</a> requirements.</li>
 </ul>
 </li>
 </ul>
@@ -840,8 +880,93 @@ soft-deleted, the response <strong>should</strong> be specified with the followi
 <li>The response message <strong>must</strong> include one repeated field corresponding to the
   resources that were soft-deleted.</li>
 </ul>
+<h3 id="operation-metadata-message">Operation metadata message</h3>
+<ul>
+<li>The <code>metadata_type</code> message <strong>must</strong> either match the RPC name with
+  <code>OperationMetadata</code> suffix, or be named with <code>Batch</code> prefix and
+  <code>OperationMetadata</code> suffix if the type is shared by multiple Batch methods.</li>
+<li>If batch delete method supports partial success, the metadata message <strong>must</strong>
+  include a <code>map&lt;int32, google.rpc.Status&gt; failed_requests</code> field to communicate
+  the partial failures.<ul>
+<li>The key in this map is the index of the request in the <code>requests</code> field in
+  the batch request.</li>
+<li>The value in each map entry <strong>must</strong> mirror the error(s) that would normally
+  be returned by the singular Standard Delete method.</li>
+<li>If a failed request can eventually succeed due to server side retries, such
+  transient errors <strong>must not</strong> be communicated using <code>failed_requests</code>.</li>
+<li>When all requests in the batch fail, <code>Operation.error</code> <strong>must</strong> be set with
+  <code>code = google.rpc.Code.Aborted</code> and <code>message = "None of the requests
+  succeeded, refer to the BatchDeleteBooksOperationMetadata.failed_requests
+  for individual error details"</code></li>
+</ul>
+</li>
+<li>The metadata message <strong>may</strong> include other fields to communicate the
+  operation progress.</li>
+</ul>
+<h3 id="adopting-partial-success">Adopting Partial Success</h3>
+<p>In order for an existing Batch API to adopt the partial success pattern, the API
+must do the following:</p>
+<ul>
+<li>The default behavior must be retained to avoid incompatible behavioral
+  changes.</li>
+<li>If the API returns an Operation:<ul>
+<li>The request message <strong>must</strong> have a <code>bool return_partial_success</code> field.</li>
+<li>The Operation <code>metadata_type</code> <strong>must</strong> include a
+  <code>map&lt;int32, google.rpc.Status&gt; failed_requests</code> field.</li>
+<li>When the <code>bool return_partial_success</code> field is set to true in a request,
+  the API should allow partial success behavior, otherwise it should continue
+  with atomic behavior as default.</li>
+</ul>
+</li>
+<li>If the API returns a direct response synchronously:<ul>
+<li>Since the existing clients will treat a success response as an atomic
+  operation, the existing version of the API <strong>must not</strong> adopt the partial
+  success pattern.</li>
+<li>A new version <strong>must</strong> be created instead that returns an Operation and
+  follows the partial success pattern described in this AIP.</li>
+</ul>
+</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<h3 id="restricting-synchronous-batch-methods-to-be-atomic">Restricting synchronous batch methods to be atomic</h3>
+<p>The restriction that synchronous batch methods must be atomic is a result of
+the following considerations.</p>
+<p>The previous iteration of this AIP recommended batch methods must be atomic.
+There is no clear way to convey partial failure in a sync response status code
+because an OK implies it all worked. Therefore, adding a new field to the
+response to indicate partial failure would be a breaking change because the
+existing clients would interpret an OK response as all resources created.</p>
+<p>On the other hand, as described in <a href="https://aip.dev/193">AIP-193</a>, Operations
+are more capable of presenting partial states. The response status code for an
+Operation does not convey anything about the outcome of the underlying operation
+and a client has to check the response body to determine if the operation was
+successful.</p>
+<h3 id="communicating-partial-failures">Communicating partial failures</h3>
+<p>The AIP recommends using a <code>map&lt;int32, google.rpc.Status&gt; failed_requests</code> field
+to communicate partial failures, where the key is the index of the failed
+request in the original batch request. The other options considered were:</p>
+<ul>
+<li>A <code>repeated google.rpc.Status</code> field. This was rejected because it is not
+  clear which entry corresponds to which request.</li>
+<li>A <code>map&lt;string, google.rpc.Status&gt;</code> field, where the key is the request id of
+  the failed request. This was rejected because:<ul>
+<li>Client will need to maintain a map of request_id -&gt; request in order to use
+  the partial success response.</li>
+<li>Populating a request id for the purpose of communicating errors could
+  conflict with <a href="https://aip.dev/155">AIP-155</a> if the service can not
+  guarantee idempotency for an individual request across multiple batch
+  requests.</li>
+</ul>
+</li>
+<li>A <code>repeated FailedRequest</code> field, where FailedRequest contains the individual
+  create request and the <code>google.rpc.Status</code>. This was rejected because echoing
+  the request payload back in response is discouraged due to additional
+  challenges around user data sensitivity.</li>
+</ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-03-06</strong>: Changed recommendation to allow partial success, along with
+  detailed guidance</li>
 <li><strong>2022-06-02:</strong> Changed suffix descriptions to eliminate superfluous "-".</li>
 <li><strong>2020-09-16</strong>: Suggested annotating <code>parent</code>, <code>names</code>, and <code>requests</code> fields.</li>
 <li><strong>2020-08-27</strong>: Removed parent recommendations for top-level resources.</li>
