@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f683ad14">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f683ad14">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f212eabf">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f212eabf">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f683ad14"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=f212eabf"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -649,6 +649,10 @@
 <li><a href="#disallow-embedding-of-resources">Disallow embedding of resources</a></li>
 </ul>
 </li>
+<li><a href="#history">History</a><ul>
+<li><a href="#disallowing-uuids-in-user-specified-ids">Disallowing UUIDs in user-specified IDs</a></li>
+</ul>
+</li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -807,8 +811,6 @@ ID for the publisher, and <code>les-miserables</code> is the resource ID for the
 <li>Characters outside of ASCII <strong>should not</strong> be permitted; however, if
   Unicode characters are necessary, APIs <strong>must</strong> follow guidance in
   <a href="/210">AIP-210</a>.</li>
-<li>User-specified IDs <strong>should not</strong> be permitted to be a UUID (or any value
-  that syntactically appears to be a UUID).</li>
 </ul>
 </li>
 <li>If resource IDs are not user-settable, the API <strong>should</strong> document the
@@ -1024,8 +1026,20 @@ is problematic for a number of reasons, which are as follows:</p>
 preventing resource data duplication, and forcing the owning service to be
 involved in the resolution of the reference (via Standard Methods), guaranteeing
 isolation of logical concerns per-resource.</p>
+<h2 id="history">History</h2>
+<h3 id="disallowing-uuids-in-user-specified-ids">Disallowing UUIDs in user-specified IDs</h3>
+<p>As part of an effort to make APIs more declarative-friendly, APIs were required
+to allow user-specified resource ID on creation. As part of this, a supporting
+field <code>string uid</code> containing a UUID was also encouraged. Guidance was then
+added to discourage the <em>user-specified resource ID</em> from being a UUID or
+even resembling one.</p>
+<p>Ostensibly, the fact that <code>uid</code> contained a service-generated UUID motivated
+this restriction on the user-specified resource ID, forcing the user-specified
+resource ID to be a more "meaningful" value. However, we no longer saw value in
+this requirement, hence its removal.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-03-10</strong>: Drop guidance disallowing UUID in user-specified ID.</li>
 <li><strong>2024-10-15</strong>: Add some rationale we found for use of <code>name</code> as a field and
   instead of IDs as an identifier.</li>
 <li><strong>2024-06-14</strong>: Clarify resource annotation shortening rules for nested
