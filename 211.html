@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f212eabf">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f212eabf">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1ebda68a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1ebda68a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f212eabf"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=1ebda68a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -690,8 +690,8 @@ both a secure API surface and a consistent user experience. An operation
 authorization.</p>
 <p>If a request can not pass the authorization check for any reason, the service
 <strong>must</strong> error with <code>PERMISSION_DENIED</code>, and the corresponding error message
-<strong>should</strong> look like: "Permission <code>{p}</code> denied on resource <code>{r}</code> (or it might
-not exist)." This avoids leaking resource existence.</p>
+<strong>should</strong> look like: "Permission '<code>{p}</code>' denied on resource '<code>{r}</code>' (or it
+might not exist)." This avoids leaking resource existence.</p>
 <p>If it is not possible to determine authorization for a resource because the
 resource does not exist, the service <strong>should</strong> check authorization to read
 children on the parent resource, and return <code>NOT_FOUND</code> if the authorization
