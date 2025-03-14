@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: python:3.8
+    container: python:3.13
     steps:
       - uses: actions/checkout@v3
       - name: Install the site-generator
