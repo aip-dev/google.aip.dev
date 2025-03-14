@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1ebda68a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1ebda68a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=fe26af96">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=fe26af96">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,12 +18,12 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=1ebda68a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=fe26af96"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
-<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=1ebda68a"></script>
-<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=1ebda68a"></script>
-<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=1ebda68a"></script>
+<script type="text/javascript" src="/assets/js/graphviz/viz.js?v=fe26af96"></script>
+<script type="text/javascript" src="/assets/js/graphviz/lite.render.js?v=fe26af96"></script>
+<script type="text/javascript" src="/assets/js/aip/aip-graphviz.js?v=fe26af96"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
     <script>
@@ -852,6 +852,18 @@ an AIP from proposal to implementation to final acceptance.</p>
 <p>In order to propose an AIP, first <a href="https://github.com/googleapis/aip/issues">open an issue</a> to circulate the
 fundamental idea for initial feedback. It should generally be possible to
 describe the idea in a couple of pages.</p>
+<p>When proposing a new AIP or changes to an existing one, it is best to reference
+prior art and/or example use cases that the proposal will impact, so as to
+ensure that the proposal is grounded in a realistic problem space. So, proposals
+<strong>should</strong> provide concrete references and/or well-defined examples. Appropriate
+material includes, but is not limited to, the following:</p>
+<ul>
+<li>Existing external RFCs or standards</li>
+<li>A corpus of APIs that have aligned on a similar pattern e.g. <code>Search</code> methods</li>
+<li>A concrete use case that has yet to be solved that exists or could exist in
+  one or more APIs e.g. adding an <a href="/202">AIP-202</a> Format for <a href="/143">AIP-143</a> Unicode CLDR
+  region codes</li>
+</ul>
 <p>Once ready, create a PR with a new file in the AIP directory using a file
 titled <code>aip/new.md</code>. Ensure that the PR is editable by maintainers.</p>
 <p>In most circumstances, the editors will assign the proposal an AIP number and
@@ -895,6 +907,7 @@ once approved, will replace the old one. The old one then enters "Replaced"
 state, and will link to the new, current AIP.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-01-09</strong>: Add requirement to include references/examples in proposals.</li>
 <li><strong>2024-09-04</strong>: Updated names of current editors and remove TLs.</li>
 <li><strong>2023-05-10</strong>: Updated names of current and editors and TLs.</li>
 <li><strong>2019-07-30</strong>: Further clarified AIP quorum requirements.</li>
