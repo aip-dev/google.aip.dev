@@ -7,9 +7,10 @@
 aip/general/*.md              @aip-dev/google
 
 # Team-specific components are owned by those teams.
-aip/apps/27*.md               @aip-dev/apps
-aip/aog/30*.md                @aip-dev/aog
-aip/auth/41*.md               @aip-dev/auth
-aip/client-libraries/42*.md   @aip-dev/client-libraries
-aip/cloud/26*.md              @aip-dev/cloud-cli
-aip/firebase/32*.md           @aip-dev/firebase
+# @aip-dev/google is added only for structural changes (typos, markdown, refactorings)
+aip/apps/27*.md               @aip-dev/apps @aip-dev/google
+aip/aog/30*.md                @aip-dev/aog @aip-dev/google
+aip/auth/41*.md               @aip-dev/auth @aip-dev/google
+aip/client-libraries/42*.md   @aip-dev/client-libraries @aip-dev/google
+aip/cloud/26*.md              @aip-dev/cloud-cli @aip-dev/google
+aip/firebase/32*.md           @aip-dev/firebase @aip-dev/google
