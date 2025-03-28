@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=f864f3c1">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=f864f3c1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d89e1416">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d89e1416">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=f864f3c1"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d89e1416"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -697,7 +697,8 @@ mask <strong>must</strong> use the <code>google.protobuf.FieldMask</code> type. 
 common on Update requests (<a href="/134">AIP-134</a>).</p>
 <p>Field masks <strong>must</strong> always be relative to the resource:</p>
 <p><strong>Warning:</strong> Read masks as a single field on the request message, for
-example: <code>google.protobuf.FieldMask read_mask</code> are <strong>DEPRECATED</strong>.</p>
+example: <code>google.protobuf.FieldMask read_mask</code> are <strong>DEPRECATED</strong>. Instead, see
+<a href="/157">AIP-157</a>.</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UpdateBookRequest</span> <span class="p">{</span>
   <span class="c1">// The book to update.</span>
   <span class="c1">//</span>
