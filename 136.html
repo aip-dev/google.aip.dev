@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e432a403">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e432a403">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=617c6fda">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=617c6fda">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=e432a403"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=617c6fda"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -825,9 +825,12 @@ without risk of runtime impact.</p>
 <p>Generally, method names with prepositions indicate that a new method is being
 used where a field should instead be added to an existing method, or the method
 should use a distinct verb. For example, if a <code>CreateBook</code> message already
-exists and you are considering adding <code>CreateBookFromDictation</code>, consider a <code>TranscribeBook</code> method instead. Similarly, if there is desire for a
+exists and you are considering adding <code>CreateBookFromDictation</code>, consider a
+<code>TranscribeBook</code> method instead. Similarly, if there is desire for a
 property-specific look-up method, instead of <code>GetBookByAuthor</code> consider a
-<code>SearchBooks</code> with an <code>author</code> field as a search dimension.</p>
+<code>SearchBooks</code> with an <code>author</code> field as a search dimension. This helps prevent
+an explosion of hyper-focused methods that bloat API and client surfaces, and
+add complexity to both managing and consuming the API.</p>
 <h3 id="rpc-name">RPC name</h3>
 <p>The term "async" is commonly used in programming languages to indicate whether
 a specific method call is synchronous or asynchronous, including for making RPCs.
@@ -838,6 +841,7 @@ which generate both synchronous and asynchronous methods to call the RPC in some
 languages.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-05-12:</strong> Extend disallowing prepositions rationale.</li>
 <li><strong>2025-01-09:</strong> Add original rationale for disallowing prepositions in names.</li>
 <li><strong>2023-11-16:</strong> Included link to <a href="/127">AIP-127</a> "HTTP and gRPC Transcoding" for guidance on body definition.</li>
 <li><strong>2023-05-16:</strong> Added prohibition of the term "async" within RPC names.</li>
