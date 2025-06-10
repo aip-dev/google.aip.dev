@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=11b40da1">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=11b40da1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=d50e11a4">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=d50e11a4">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=11b40da1"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=d50e11a4"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -632,6 +632,8 @@
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
+<li><a href="#compound-units">Compound units</a></li>
+<li><a href="#inverse-units">Inverse units</a></li>
 <li><a href="#specialized-messages">Specialized messages</a></li>
 </ul>
 </li>
@@ -683,8 +685,8 @@ number of miles, number of nodes, etc.).</p>
 <h2 id="guidance">Guidance</h2>
 <p>Quantities with a clear unit of measurement (such as bytes, miles, and so on)
 <strong>must</strong> include the unit of measurement as the suffix. When appropriate, units
-<strong>should</strong> use generally accepted abbreviations (for example, <code>distance_km</code>
-rather than <code>distance_kilometers</code>).</p>
+<strong>should</strong> use generally accepted abbreviations, and abbreviations <strong>should not</strong> 
+be pluralized (for example, <code>distance_km</code> rather than <code>distance_kilometers</code>). </p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a non-stop air route.</span>
 <span class="kd">message</span> <span class="nc">Route</span> <span class="p">{</span>
   <span class="c1">// The airport where the route begins.</span>
@@ -709,6 +711,32 @@ cluster), then the field <strong>should</strong> use the suffix <code>_count</co
 </code></pre></div>
 <p><strong>Note:</strong> Fields <strong>must not</strong> use unsigned integer types, because many
 programming languages and systems do not support them well.</p>
+<h3 id="compound-units">Compound units</h3>
+<p>Quantities with compound units of measurement <strong>may</strong> use separating underscores
+between units as needed for clarity. Unabbreviated units <strong>must</strong> be separated.
+Abbreviated units <strong>should not</strong> be separated unless otherwise ambiguous.
+Compound units <strong>should</strong> be in plural form, with all component units in 
+singular form except for the final component unit, which should be in plural 
+form unless abbreviated.</p>
+<ul>
+<li><code>energy_kwh</code> (<strong>not</strong> <code>energy_kw_h</code>)</li>
+<li><code>energy_kw_fortnights</code> (<strong>not</strong> <code>energy_kwfortnight</code> or <code>energy_kw_fortnight</code>)</li>
+</ul>
+<p><strong>Note:</strong> Metric prefixes <strong>must not</strong> be separated from their base unit.</p>
+<h3 id="inverse-units">Inverse units</h3>
+<p>Quantities with units of measurement that are or include inverse units
+<strong>should</strong> indicate all inverse units as a compound unit after a compound
+of any non-inverse units, separated by the word "per".
+The inverse compound unit <strong>should</strong> be in singular form.</p>
+<ul>
+<li><code>speed_miles_per_hour</code> (<strong>not</strong> <code>speed_mph</code>)</li>
+<li><code>speed_meters_per_second</code> (<strong>not</strong> <code>speed_meters_per_seconds</code> or <code>speed_meter_per_second</code>)</li>
+<li><code>event_count_per_hour</code> (<strong>not</strong> <code>events_per_hour</code>, <code>event_counts_per_hour</code>, or <code>hourly_events</code>)</li>
+<li><code>price_per_kwh</code> (using <a href="https://github.com/googleapis/googleapis/blob/master/google/type/money.proto"><code>google.type.Money</code></a>)</li>
+</ul>
+<p><strong>Note:</strong> This guidance does not apply in cases where generally accepted derived
+units with special names and symbols exist for inverse quantities. For example,
+the derived unit 'hertz' <strong>should</strong> be used when appropriate for reciprocal time.</p>
 <h3 id="specialized-messages">Specialized messages</h3>
 <p>It is sometimes useful to create a message that represents a particular
 quantity. This is particularly valuable in two situations:</p>
@@ -723,6 +751,9 @@ using these messages as fields, APIs <strong>should</strong> use the name of the
 the suffix for the field name if it makes intuitive sense to do so.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-07-09</strong>: Added guidance for compound units.</li>
+<li><strong>2025-07-09</strong>: Clarified guidance to not pluralize abbreviated units.</li>
+<li><strong>2025-07-09</strong>: Clarified guidance to use per_ prefix to represent inverse units.</li>
 <li><strong>2019-09-13</strong>: Added the prohibition on uint and fixed types.</li>
 </ul>
 <!-- prettier-ignore-start -->
