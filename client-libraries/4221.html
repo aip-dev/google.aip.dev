@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8d11fbcc">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8d11fbcc">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b802f41c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b802f41c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8d11fbcc"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b802f41c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -383,9 +383,9 @@ service, except for those that are explicitly named which get no <code>RetryPoli
     <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;60s&quot;</span><span class="p">,</span>
     <span class="nt">&quot;retryPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;maxAttempts&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-      <span class="nt">&quot;initialBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;0.01s&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;maxBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;60s&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;backoffMultiplier&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
+      <span class="nt">&quot;initialBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;1s&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;maxBackoff&quot;</span><span class="p">:</span> <span class="s2">&quot;10s&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;backoffMultiplier&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
       <span class="nt">&quot;retryableStatusCodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;UNAVAILABLE&quot;</span><span class="p">]</span>
     <span class="p">}</span>
   <span class="p">},</span>
@@ -399,7 +399,7 @@ service, except for those that are explicitly named which get no <code>RetryPoli
       <span class="p">{</span> <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;google.example.library.v1.LibraryService&quot;</span><span class="p">,</span> <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;MoveBook&quot;</span> <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;waitForReady&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;60s&quot;</span>
+    <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;10s&quot;</span>
   <span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div>
