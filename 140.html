@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=857a7cad">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=857a7cad">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=631cebbe">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=631cebbe">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=857a7cad"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=631cebbe"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -803,9 +803,23 @@ API is designed to handle data that is meant to be base64-encoded at rest and
 the double base64-encoding as a result of using <code>bytes</code> is undesirable - in
 this case, services <strong>may</strong> use a <code>string</code>.</p>
 <h3 id="uris">URIs</h3>
-<p>Field names representing URLs or URIs <strong>should</strong> always use <code>uri</code> rather than
-<code>url</code>. This is because while all URLs are URIs, not all URIs are URLs. Field
-names <strong>may</strong> use a prefix in front of <code>uri</code> as appropriate.</p>
+<p>Field names representing arbitrary URIs <strong>should</strong> use <code>uri</code>. In particular,
+note that URLs are URIs but not all URIs are URLs.</p>
+<p>Field names <strong>may</strong> use a prefix in front of <code>uri</code> as appropriate.</p>
+<p>Field names that can only represent a URL <strong>should</strong> use <code>url</code>.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
+
+  <span class="c1">// A URL pointing to an image of the book.</span>
+  <span class="kt">string</span> <span class="na">image_url</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// A URI identifying the book.</span>
+  <span class="c1">// This could be an ISBN or a URL.</span>
+  <span class="kt">string</span> <span class="na">uri</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Note:</strong> APIs that have previously used <code>uri</code> for URL fields may continue to
+do so to avoid unnecessary API changes and to preserve local consistency.</p>
 <h3 id="reserved-words">Reserved words</h3>
 <p>Field names <strong>should</strong> avoid using names that are likely to conflict with
 keywords in common programming languages, such as <code>new</code>, <code>class</code>, <code>function</code>,
