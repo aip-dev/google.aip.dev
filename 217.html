@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=631cebbe">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=631cebbe">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0b03c3b5">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0b03c3b5">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=631cebbe"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0b03c3b5"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -880,7 +880,7 @@ populating the <code>repeated string unreachable</code> response field.</p>
 scoped beyond the supported granualirty of the API's ability to reasonably
 report unreachable resources, the API <strong>should</strong> return an <code>INVALID_ARGUMENT</code>
 error with details explaining the issue. For example, if the API only supports
-<code>return_partial_success</code> when [Reading Across Collections][aip159], it returns
+<code>return_partial_success</code> when <a href="/159">Reading Across Collections</a>, it returns
 an <code>INVALID_ARGUMENT</code> error when given a request scoped to a specific parent
 resource collection. The supported granularity <strong>must</strong> be documented on the
 <code>return_partial_success</code> field.</p>
