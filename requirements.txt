@@ -1,1 +1,1 @@
-aip-site-generator==0.6.0
+aip-site-generator==0.6.4
