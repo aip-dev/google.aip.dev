@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=ca097262">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=ca097262">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b939fb8f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b939fb8f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=ca097262"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=b939fb8f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -586,7 +586,9 @@ endpoint.</p>
   <strong>imdsv2_session_token_url</strong> fields if they are provided. The host should
   either be <strong>169.254.169.254</strong> or <strong>fd00:ec2::254</strong>.</li>
 <li>If <strong>imdsv2_session_token_url</strong> is available, then fetch session token
-  from <strong>imdsv2_session_token_url</strong>.</li>
+  from <strong>imdsv2_session_token_url</strong>. Note: only perform this step if you
+  need to communicate with the metadata server to fetch the region and/or
+  the security credentials</li>
 <li>Check the environment variables in the following order (<code>AWS_REGION</code> and
   then the <code>AWS_DEFAULT_REGION</code>) to determine the AWS region. If found, skip
   using the AWS metadata server to determine this value.</li>
@@ -624,7 +626,7 @@ endpoint.</p>
       <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;x-amz-date&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS4-HMAC-SHA256 Credential=AKIASOZTBDV4D7ABCDEDF/20200228/us-east-1/sts/aws4_request, SignedHeaders=host;x-amz-date,Signature=abcedefdfedfd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS4-HMAC-SHA256 Credential=AKIASOZTBDV4D7ABCDEDF/20200228/us-east-1/sts/aws4_request, SignedHeaders=host;x-amz-date;x-amz-security-token;x-goog-cloud-target-resource, Signature=abcedefdfedfd&quot;</span><span class="p">,</span>
       <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;Authorization&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -640,7 +642,7 @@ endpoint.</p>
   <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-For the AWS token, STS requires a special header <code>x-goog-cloud-endpoint</code> to recognize that the token is for a specific workload identity provider.</p>
+For the AWS token, STS requires a special header <code>x-goog-cloud-target-resource</code> to recognize that the token is for a specific workload identity provider.</p>
 </li>
 </ul>
 <h3 id="determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials">Determining the subject token in Microsoft Azure and URL-sourced credentials</h3>
@@ -984,6 +986,7 @@ the following form:</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-10-17</strong>: Corrections in specification and examples for External Account Credentials (AIP 4117).</li>
 <li><strong>2021-12-10</strong>: Add AIP for External Account Credentials (AIP 4117).</li>
 <li><strong>2022-05-18</strong>: Document executable-sourced credentials (AIP 4117).</li>
 <li><strong>2022-08-31</strong>: Document configurable token lifetime (AIP 4117).</li>
