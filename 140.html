@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=67d5e94f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=67d5e94f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0725402a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0725402a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=67d5e94f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=0725402a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -767,6 +767,12 @@ Examples:</p>
 <li><code>spec</code> (<strong>not</strong> <code>specification</code>)</li>
 <li><code>stats</code> (<strong>not</strong> <code>statistics</code>)</li>
 </ul>
+<p>Furthermore, well known abbreviations for units <strong>should</strong> be used in field names.
+See <a href="/141">AIP-141</a> for more guidance on fields that represent quantities. Examples:</p>
+<ul>
+<li><code>distance_km</code> (<strong>not</strong> <code>distance_kilometers</code>)</li>
+<li><code>width_px</code> (<strong>not</strong> <code>width_pixels</code>)</li>
+</ul>
 <h3 id="adjectives">Adjectives</h3>
 <p>For uniformity, field names that contain both a noun and an adjective
 <strong>should</strong> place the adjective <em>before</em> the noun. For example:</p>
@@ -851,6 +857,7 @@ creating a more coherent surface. At the same time, the requirement being a
 <strong>should</strong> allows for more specific terms when it truly merits it.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-10-23</strong>: Call out <a href="/141">AIP-141</a> unit abbreviations as preferred.</li>
 <li><strong>2025-03-10</strong>: Add rationale for URI guidance.</li>
 <li><strong>2024-12-20</strong>: Copy over abbreviations guidance from old design site.</li>
 <li><strong>2024-08-26</strong>: Codify exception to string and base64 guidance </li>
