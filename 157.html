@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b939fb8f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b939fb8f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=67d5e94f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=67d5e94f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b939fb8f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=67d5e94f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -735,10 +735,17 @@ number of permutations to the user:</p>
 <li>The enum <strong>should</strong> at minimum have values named <code>BASIC</code> and <code>FULL</code> (although
   it <strong>may</strong> have values other than these).</li>
 <li>The <code>UNSPECIFIED</code> value <strong>must</strong> be valid (not an error), and the API
-  <strong>must</strong> document what the unspecified value will do).<ul>
+  <strong>must</strong> document what the unspecified value will do.<ul>
 <li>For List RPCs, the effective default value <strong>should</strong> be <code>BASIC</code>.</li>
-<li>For Get RPCs, the effective default value <strong>should</strong> be either <code>BASIC</code> or
-  <code>FULL</code>.</li>
+<li>For the following RPC types, the effective default value <strong>should</strong> be
+  either <code>BASIC</code> or <code>FULL</code>:<ul>
+<li>Get</li>
+<li>Create</li>
+<li>Update</li>
+<li>Soft Delete</li>
+<li>Custom Method</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>The enum <strong>should</strong> be defined at the top level of the proto file (as it is
@@ -751,6 +758,10 @@ number of permutations to the user:</p>
 overlapping but distinct values, there is a potential for a namespace
 conflict. In this situation, the service <strong>should</strong> nest the view enum within
 the individual resource.</p>
+<p><strong>Note:</strong> Having a partial response be the default of standard methods can
+degrade the effectiveness of declarative clients. Providing a mechanism to
+request the full resource be populated in the response, like this View
+pattern, is preferred if partial responses are deemed necessary.</p>
 </li>
 </ul>
 <h3 id="read-masks-as-a-request-field">Read masks as a request field</h3>
@@ -781,6 +792,8 @@ specify a <code>read_mask</code> in their request schema. Doing so is both redun
 potential point of conflict for the client or service.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-10-03</strong>: Added default view guidance for other RPC types, and
+                  declarative client warning.</li>
 <li><strong>2025-06-16</strong>: Reinstate read mask guidance as historical/external reference.</li>
 <li><strong>2023-05-09</strong>: Fix top-level enum example and link to <a href="/126">AIP-126</a>.</li>
 <li><strong>2022-03-14:</strong> Updated guidance on default value and how to specify a read mask.</li>

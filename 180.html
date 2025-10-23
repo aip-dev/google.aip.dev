@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b939fb8f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b939fb8f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=67d5e94f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=67d5e94f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b939fb8f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=67d5e94f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -643,11 +643,17 @@
 <li><a href="#moving-components-between-files">Moving components between files</a></li>
 <li><a href="#moving-into-oneofs">Moving into oneofs</a></li>
 <li><a href="#changing-the-type-of-fields">Changing the type of fields</a></li>
+<li><a href="#changing-string-length">Changing string length</a></li>
 <li><a href="#changing-resource-names">Changing resource names</a></li>
 <li><a href="#semantic-changes">Semantic changes</a></li>
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#risk-of-string-length-changes">Risk of string length changes</a></li>
+<li><a href="#risk-of-changing-value-format-or-construction">Risk of changing value format or construction</a></li>
+</ul>
+</li>
 <li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
@@ -737,7 +743,14 @@ enum values) <strong>may</strong> be added to existing APIs in the same major ve
 <li>New required fields <strong>must not</strong> be added to existing request messages or
   resources.</li>
 <li>Any field being populated by clients <strong>must</strong> have a default behavior
-  matching the behavior before the field was introduced.</li>
+  matching the behavior before the field was introduced.<ul>
+<li>This can be tricky to do in some cases. For example, adding pagination
+  after the fact where previously all items were returned (i.e. <code>page_size</code>
+  is infinite, which is not advised). If the default for the new <code>page_size</code>
+  field is <em>less</em> than what was previously returned, older clients will
+  incorrectly assume all results were returned.</li>
+</ul>
+</li>
 <li>Any field previously populated by the server <strong>must</strong> continue to be
   populated, even if it introduces redundancy.</li>
 </ul>
@@ -780,6 +793,13 @@ backwards-incompatible change in the Go protobuf stubs.</p>
 <p>Existing fields and messages <strong>must not</strong> have their type changed, even if the
 new type is wire-compatible, because type changes alter generated code in a
 breaking way.</p>
+<h3 id="changing-string-length">Changing string length</h3>
+<p>APIs <strong>should</strong> avoid increasing the upper bound for the size or limit (if
+accepted as input) of <code>string</code> fields. APIs <strong>should</strong> treat expected size upper
+bound increases as incompatible changes (see [Changing resource names]
+(#changing-resource-names) as an example). APIs <strong>may</strong> pad out values with
+filler characters if reserving a consistent size is necessary, but this <strong>must</strong>
+be documented if done.</p>
 <h3 id="changing-resource-names">Changing resource names</h3>
 <p>A resource <strong>must not</strong> change its <a href="/122">name</a>.</p>
 <p>Unlike most breaking changes, this affects major versions as well: in order for
@@ -809,6 +829,12 @@ code, as such changes will be seen as breaking by those users.</p>
 <p><strong>Note:</strong> This does involve some level of judgment; it is not always clear
 whether a proposed change is likely to break users, and an expansive reading of
 this guidance could ostensibly prevent <em>any</em> change (which is not the intent).</p>
+<h4 id="changing-value-format-or-construction">Changing value format or construction</h4>
+<p>APIs <strong>must not</strong> change the expected format or algorithm used to construct the
+value of an existing field - even if the field is <code>OUTPUT_ONLY</code> and populated by
+the API service - within an API version. Doing so requires a new API version.</p>
+<p>For example, changing the format of a field <code>ip_address</code> conforming to IPv4
+format to instead contain IPv6 values is a breaking change.</p>
 <h4 id="default-values-must-not-change">Default values must not change</h4>
 <p>Default values are the values set by servers for resources when they are not
 specified by the client. This section only applies to static default values within
@@ -886,8 +912,22 @@ version.</p>
 <li>For compatibility around field presence changes, see <a href="/149">AIP-149</a>.</li>
 <li>For compatibility around resource types, see <a href="/123">AIP-123</a>.</li>
 </ul>
+<h2 id="rationale">Rationale</h2>
+<h3 id="risk-of-string-length-changes">Risk of string length changes</h3>
+<p>End users may store resource properties, like the <code>name</code>, in a dedicated
+database column with a limited length. If the service starts returning values
+for the <code>name</code> that are twice the originally documented/observed length, this
+may unexpectedly break the customer's database. Furthermore, string properties
+that appear in URLs (including query parameters) are especially likely to have
+client-side limits, making them more sensitive to length changes.</p>
+<h3 id="risk-of-changing-value-format-or-construction">Risk of changing value format or construction</h3>
+<p>Customers often depend on the format or algorithmic construction of a field for
+client-side parsing, hashing, or database table construction. Changing it in
+an existing field could break that client-side consumption.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-10-21</strong>: Added guidance for string length changes, changing formats,
+                  and an example for carefully adding components.</li>
 <li><strong>2024-08-07</strong>: Added reference to resource type compatibility.</li>
 <li><strong>2024-06-05</strong>: Added reference to field presence compatibility.</li>
 <li><strong>2023-07-26</strong>: Added reference to field behavior compatibility.</li>

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b939fb8f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b939fb8f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=67d5e94f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=67d5e94f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b939fb8f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=67d5e94f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -719,7 +719,8 @@ a new resource in an already-existing collection.</p>
   <code>CreateBookResponse</code>.<ul>
 <li>The response <strong>should</strong> include the fully-populated resource, and <strong>must</strong>
   include any fields that were provided unless they are input only (see
-  <a href="/203">AIP-203</a>).</li>
+  <a href="/203">AIP-203</a>) or there is a reason to return a partial response (see
+  [AIP-157][]).</li>
 <li>If the create RPC is <a href="#long-running-create">long-running</a>, the response
   message <strong>must</strong> be a <code>google.longrunning.Operation</code> which resolves to the
   resource itself.</li>
@@ -874,6 +875,7 @@ the ID of the newly-created resource.</p>
 name and use it in references from other resources.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2025-10-03</strong>: Allow use of partial responses via <a href="/157">AIP-157</a>.</li>
 <li><strong>2023-10-20</strong>: Clarify that {resource}_id is only required for management plane resources.</li>
 <li><strong>2023-08-24</strong>: Adding consistency requirement.</li>
 <li><strong>2023-05-11</strong>: Changing guidance around resource_id to a must.</li>

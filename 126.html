@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=b939fb8f">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=b939fb8f">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=67d5e94f">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=67d5e94f">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=b939fb8f"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=67d5e94f"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -643,6 +643,7 @@
 </ul>
 </li>
 <li><a href="#further-reading">Further reading</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -726,7 +727,9 @@ infrequently:</p>
   followed by the suffix <code>_UNSPECIFIED</code>.<ul>
 <li>An exception to this rule is if there is a clearly useful zero value. In
   particular, if an enum needs to present an <code>UNKNOWN</code>, it is usually clearer
-  and more useful for it to be a zero value rather than having both.</li>
+  and more useful for it to be a zero value rather than having both. The
+  <code>UNKNOWN</code> value <strong>may</strong> be prefixed by the enum name as is typical for
+  avoiding enum value name collisions.</li>
 </ul>
 </li>
 <li>Enums which will only be used in a single message <strong>should</strong> be nested within that message. 
@@ -777,6 +780,10 @@ choice (although <code>google.protobuf.BoolValue</code> is also available).</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>For states, a special type of enum, see <a href="/216">AIP-216</a>.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2025-10-03</strong>: Added prefixing guidance for <code>UNKNOWN</code> value exception.</li>
 </ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
