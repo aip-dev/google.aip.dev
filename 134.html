@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0725402a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0725402a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e4fbe414">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e4fbe414">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=0725402a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e4fbe414"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -719,7 +719,7 @@ changes to the resources without causing side effects.</p>
 <li>The response <strong>should</strong> include the fully-populated resource, and <strong>must</strong>
   include any fields that were sent and included in the update mask unless
   they are input only (see <a href="/203">AIP-203</a>) or there is a reason to return a partial
-  response (see [AIP-157][]).</li>
+  response (see <a href="/157">AIP-157</a>).</li>
 <li>If the update RPC is <a href="#long-running-update">long-running</a>, the response
   message <strong>must</strong> be a <code>google.longrunning.Operation</code> which resolves to the
   resource itself.</li>
@@ -961,7 +961,7 @@ does not exist, the service <strong>must</strong> error with <code>NOT_FOUND</co
 <li><strong>2020-06-08</strong>: Added guidance on returning the full resource.</li>
 <li><strong>2019-10-18</strong>: Added guidance on annotations.</li>
 <li><strong>2019-09-10</strong>: Added a link to the long-running operations AIP
-  ([AIP-151][]).</li>
+  (<a href="/151">AIP-151</a>).</li>
 <li><strong>2019-08-01</strong>: Changed the examples from "shelves" to "publishers", to
   present a better example of resource ownership.</li>
 <li><strong>2019-06-10</strong>: Added guidance for long-running update.</li>
