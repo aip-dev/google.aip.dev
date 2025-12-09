@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=490c9a6b">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=490c9a6b">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=1c035e00">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=1c035e00">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=490c9a6b"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=1c035e00"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -265,20 +265,26 @@
     <tr><td>Number</td><td>4236</td></tr>
     <tr><td>Permalink</td><td><a href="https://google.aip.dev/client-libraries/4236">google.aip.dev/client-libraries/4236</a></td></tr>
     <tr><td>Scope</td><td>Client libraries</td></tr>
-    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
     <tr><td>Created</td><td>2024-05-16</td></tr>
     <tr><td>Updated</td><td>2024-05-16</td></tr>
   </table>
 
   <section id="aip-toc" class="docs-component-sidebar-toc">
     <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</a></li>
+<li><a href="#generator-and-client-library-behavior">Generator and client library behavior</a><ul>
+<li><a href="#generated-client-documentation">Generated client documentation</a></li>
+<li><a href="#version-opacity">Version opacity</a></li>
+</ul>
+</li>
 <li><a href="#rationale">Rationale</a><ul>
 <li><a href="#necessity-for-versioning">Necessity for Versioning</a></li>
 <li><a href="#importance-of-opaque-treatment">Importance of Opaque Treatment</a></li>
 <li><a href="#mutual-exclusivity-of-query-and-header">Mutual Exclusivity of Query and Header</a></li>
+<li><a href="#inclusion-in-documentation">Inclusion in documentation</a></li>
 </ul>
 </li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </div>
 
@@ -318,46 +324,100 @@
     </ol>
   </nav>
 </section>
-  <p id="aip-state-banner" class="callout note">
-  This AIP is currently under review. This means that the editors have read it
-  and are in high-level concurrence, and while it is not yet fully approved, we
-  have a good faith expectation that the AIP will be approved in something
-  close to its current state.
-</p>
+  
   <h4 class="aip-number">AIP-4236</h4>
   <h1 id="version-aware-clients">Version-aware clients</h1>
-<p>APIs can annotate services with [<code>google.api.api_version</code>][]. If
-<code>google.api.api_version</code> is specified, version-aware clients <strong>must</strong>
-include the value of <code>google.api.api_version</code> in the request to the API.</p>
-<h3 id="expected-generator-and-client-library-behavior">Expected Generator and Client Library Behavior</h3>
-<p>If a service is annotated with <code>google.api.api_version</code>, client library
-generators <strong>must</strong> include either an HTTP query parameter <code>$apiVersion</code>
-or HTTP header <code>X-Goog-Api-Version</code>, but a request <strong>must not</strong> contain both.</p>
-<p>Generated documentation for a given service <strong>may</strong> include the value of
-<code>google.api.api_version</code>, if it exists in the source protos.</p>
-<p>Clients <strong>must</strong> treat the value of <code>google.api.api_version</code> as opaque to ensure
-robust compatibility.  This means that the specific format or structure of the
-version string <strong>must not</strong> be parsed or interpreted for any purpose beyond identifying
-the intended API version.</p>
+<p>APIs can annotate <a href="https://google.aip.dev/9#api-interface">API interfaces</a> with
+<a href="https://github.com/googleapis/googleapis/blob/master/google/api/client.proto"><code>google.api.api_version</code></a>. If <code>google.api.api_version</code> is
+specified, version-aware clients <strong>must</strong> include the value of
+<code>google.api.api_version</code> in the request to the API and in the documentation of
+the per-API interface clients.</p>
+<h2 id="generator-and-client-library-behavior">Generator and client library behavior</h2>
+<p>If an API interface is annotated with <code>google.api.api_version</code>, client
+library generators <strong>must</strong> include either an HTTP query parameter <code>$apiVersion</code>
+or HTTP header/gRPC metadata key <code>X-Goog-Api-Version</code>, but a request
+<strong>must not</strong> contain both.</p>
+<h3 id="generated-client-documentation">Generated client documentation</h3>
+<p>Generated client documentation for a given API interface <strong>must</strong> include the
+value of <code>google.api.api_version</code>, if it exists in the source protos. The
+comment <strong>must</strong> include the original API interface name and the exact contents
+of the annotation.</p>
+<p><strong>Note:</strong> The text does not need to match exactly to the examples below, but it
+still needs to fulfill the requirements desribed herein.</p>
+<p>For example, the following API interface definition would produce the following
+Go client documentation:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">service</span> <span class="n">LibraryService</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">google.api.api_version</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;2026-01-01&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight language-go"><pre><span></span><code><span class="c1">// The LibraryClient is a client for interacting with the Cloud Library...</span>
+<span class="c1">//</span>
+<span class="c1">// This client uses LibraryService version 2026-01-01.</span>
+<span class="kd">type</span> <span class="nx">LibraryClient</span> <span class="kd">struct</span> <span class="p">{}</span>
+</code></pre></div>
+<p>Any generated documentation for an entire <a href="https://google.aip.dev/9#api-service">API service's</a> client
+package <strong>must</strong> include a section that lists the client-interface-version
+tuples present in the package. For example, the following API interface
+defintions would produce the following client package documentation section:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">service</span> <span class="n">LibraryService</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">google.api.api_version</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;2026-01-01&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="n">BookService</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">google.api.api_version</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;2026-05-15&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="n">ShelfService</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">google.api.api_version</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;2026-02-05&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight language-md"><pre><span></span><code><span class="gu">## API Versions</span>
+
+<span class="k">*</span> LibraryClient uses LibraryService version 2026-01-01
+<span class="k">*</span> BookClient uses BookService version 2026-05-15
+<span class="k">*</span> ShelfClient uses ShelfService version 2026-02-05
+</code></pre></div>
+<p>If all API interfaces share the same API version, this list <strong>should</strong> be
+reduced to a single sentence for brevity. For example, if all versions were the
+same in the definitions above, the generated client package documentation would
+be as follows:</p>
+<div class="highlight language-md"><pre><span></span><code><span class="gu">## API Versions</span>
+
+All clients use API version 2026-01-01.
+</code></pre></div>
+<h3 id="version-opacity">Version opacity</h3>
+<p>Clients and generators <strong>must</strong> treat the value of <code>google.api.api_version</code> as
+opaque to ensure robust compatibility. This means that the specific format or
+structure of the version string <strong>must not</strong> be parsed or interpreted for any
+purpose beyond identifying the intended API version.</p>
 <h2 id="rationale">Rationale</h2>
 <h3 id="necessity-for-versioning">Necessity for Versioning</h3>
-<p>Explicit API versioning using the <code>google.api.api_version</code> annotation is essential
-for maintaining compatibility between clients and services over time. As services
-evolve, their schemas and behaviors may change. By specifying the API version, a
-client communicates its expectations to the service. This allows the service to
-respond in a manner consistent with the client's understanding, preventing errors
-or unexpected results due to incompatible changes.</p>
+<p>Explicit API versioning using the <code>google.api.api_version</code> annotation is
+essential for maintaining compatibility between clients and services over time.
+As services evolve, their schemas and behaviors may change. By specifying the
+API version, a client communicates its expectations to the API service. This
+allows the API service to respond in a manner consistent with the client's
+intended semantics, preventing errors or unexpected results due to incompatible
+changes.</p>
 <h3 id="importance-of-opaque-treatment">Importance of Opaque Treatment</h3>
-<p>Treating the <code>google.api.api_version</code> value as opaque is important for ensuring robust
-compatibility guarantees. By relying on this opaque identifier, clients avoid making
-assumptions about the underlying versioning scheme, which may change independently of
-the API itself. This flexibility allows service providers to evolve their versioning
-strategies without impacting client compatibility.</p>
+<p>Treating the <code>google.api.api_version</code> value as opaque is important for ensuring
+robust compatibility guarantees. By using this identifier opaquely, clients
+avoid making assumptions about the underlying versioning scheme, which may
+change independently of the API itself. This flexibility allows API service
+providers to evolve their versioning strategies without impacting client
+compatibility.</p>
 <h3 id="mutual-exclusivity-of-query-and-header">Mutual Exclusivity of Query and Header</h3>
-<p>Both the query parameter and header mechanisms exist to provide flexibility for different
-client environments. However, allowing both simultaneously could lead to ambiguity if the
-values differ. To ensure consistent version identification and prevent potential conflicts,
-only one mechanism should be used at a time.</p>
+<p>Both the query parameter and header mechanisms exist to provide flexibility for
+different client environments. However, allowing both simultaneously could lead
+to ambiguity if the values differ. To ensure consistent version identification
+and prevent potential conflicts, only one mechanism should be used at a time.</p>
+<h3 id="inclusion-in-documentation">Inclusion in documentation</h3>
+<p>The API version identifies the iteration of the API contract being consumed by
+the client and thus the end user. The end user needs a means of relating the
+API version in use by the client to other API artifacts (such as product
+documentation and other client surfaces) and vice versa.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2025-12-08</strong>: Add documentation generation requirements and reformat.</li>
+</ul>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
