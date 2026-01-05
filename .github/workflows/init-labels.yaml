@@ -1,0 +1,30 @@
+---
+name: init-labels
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create translation labels
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const labels = [
+              { name: 'needs-translation', color: 'f9d0c4', description: 'Change needs translation' },
+              { name: 'translation-in-progress', color: 'f9d0a4', description: 'Translation in progress' },
+              { name: 'translation-done', color: '0e8a16', description: 'Translation complete' }
+            ];
+            for (const label of labels) {
+              try {
+                await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name: label.name });
+              } catch (e) {
+                await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: label.name, color: label.color, description: label.description });
+              }
+            }

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - zh-tw
 
 permissions:
   contents: write
@@ -20,6 +21,10 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build the static site.
         run: aip-site-gen . out
+      - name: Remove CNAME when deploying `zh-tw`
+        if: github.ref == 'refs/heads/zh-tw'
+        run: |
+          if [ -f out/CNAME ]; then rm out/CNAME; fi
       - name: Publish the static site to GitHub Pages.
         uses: jamesives/github-pages-deploy-action@v4
         with:

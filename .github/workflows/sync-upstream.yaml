@@ -1,0 +1,62 @@
+---
+name: sync-upstream
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 00:00
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/aip-dev/google.aip.dev.git || true
+          git fetch upstream --no-tags
+
+      - name: Create/update upstream-sync branch
+        run: |
+          git checkout -B upstream-sync
+          git reset --hard upstream/master
+          git push origin upstream-sync --force
+
+      - name: Ensure zh-tw branch exists
+        run: |
+          # If zh-tw doesn't exist on origin, create it based on upstream-sync
+          if ! git ls-remote --exit-code --heads origin refs/heads/zh-tw; then
+            git checkout -B zh-tw upstream-sync
+            git push origin zh-tw
+          fi
+
+      - name: Check for changes compared to origin/upstream-sync
+        id: diff
+        run: |
+          if git rev-parse origin/upstream-sync >/dev/null 2>&1; then
+            COUNT=$(git rev-list --count origin/upstream-sync..upstream-sync || true)
+          else
+            COUNT=$(git rev-list --count origin/HEAD..upstream-sync || true)
+          fi
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Create PR to zh-tw if changes are present
+        if: steps.diff.outputs.count != '0'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: sync upstream master (automated)'
+          title: 'chore: sync upstream master (automated)'
+          body: |
+            Automated sync from upstream/master — please review and translate changes into `zh-tw`.
+
+            This PR was created by an automated workflow that runs daily. It includes changes from the upstream repository's `master` branch. Please review the changed files and update translations on the `zh-tw` branch.
+          base: zh-tw
+          head: upstream-sync
+          labels: needs-translation

@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - master
+      - zh-tw
 jobs:
   build:
     runs-on: ubuntu-latest
