@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8a1f9729">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8a1f9729">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=889d5d03">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=889d5d03">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8a1f9729"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=889d5d03"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -714,7 +714,11 @@ field behavior, such as a field being required or immutable.</p>
 </code></pre></div>
 <ul>
 <li>APIs <strong>must</strong> apply the <code>google.api.field_behavior</code> annotation on every field
-  on a message or sub-message used in a request.</li>
+  on a message or sub-message used in a request.<ul>
+<li>An exception to this is the <a href="/154">AIP-154</a> <code>etag</code> field on a resource message,
+  which <strong>should not</strong> have any <code>google.api.field_behavior</code> assigned.</li>
+</ul>
+</li>
 <li>The annotation <strong>must</strong> include any <a href="https://github.com/googleapis/googleapis/blob/master/google/api/field_behavior.proto#L49">google.api.FieldBehavior</a> values that
   accurately describe the behavior of the field.<ul>
 <li><code>FIELD_BEHAVIOR_UNSPECIFIED</code> <strong>must not</strong> be used.</li>
