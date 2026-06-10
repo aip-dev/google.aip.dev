@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a3e53e1d">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=a3e53e1d">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3aedc609">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=3aedc609">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=a3e53e1d"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=3aedc609"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -730,7 +730,11 @@ services. The bullets below apply in all three cases.</p>
 </ul>
 </li>
 <li>The HTTP method <strong>must</strong> be <code>GET</code> or <code>POST</code>:<ul>
-<li><code>GET</code> <strong>must</strong> be used for methods retrieving data or resource state.</li>
+<li><code>GET</code> <strong>must</strong> be used for methods retrieving data or resource state.<ul>
+<li><code>POST</code> <strong>may</strong> be used for data retieval methods if the request payload could
+  exceed URL size limitations, thus requiring a <code>body</code>.</li>
+</ul>
+</li>
 <li><code>POST</code> <strong>must</strong> be used if the method has side effects or mutates resources
   or data.</li>
 </ul>
@@ -847,6 +851,7 @@ which generate both synchronous and asynchronous methods to call the RPC in some
 languages.</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2026-06-09:</strong> Allow complex GET to be POST if necessary.</li>
 <li><strong>2025-05-12:</strong> Extend disallowing prepositions rationale.</li>
 <li><strong>2025-01-09:</strong> Add original rationale for disallowing prepositions in names.</li>
 <li><strong>2023-11-16:</strong> Included link to <a href="/127">AIP-127</a> "HTTP and gRPC Transcoding" for guidance on body definition.</li>
