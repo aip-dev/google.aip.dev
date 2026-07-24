@@ -1,1 +1,2 @@
-git+https://github.com/aip-dev/site-generator.git@v0.6.6#egg=aip-site-generator
+# Corresponds to v0.6.6.
+git+https://github.com/aip-dev/site-generator.git@c5cb78b347d82ad6244c0f4954f3f219baaa26db#egg=aip-site-generator
