@@ -7,9 +7,10 @@ WORKDIR /code/
 
 # Install Python packages for this project.
 COPY requirements.txt /code/requirements.txt
-RUN apk add git && \
-  pip install -r requirements.txt && \
-  apk del git
+RUN apk add git build-base && \
+  pip install "setuptools<66" && \
+  pip install --no-build-isolation -r requirements.txt && \
+  apk del git build-base
 
 # Set environment variables.
 ENV FLASK_ENV development
