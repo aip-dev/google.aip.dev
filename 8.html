@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -755,16 +755,16 @@ printed pages.</p>
 four-digit number (example: <code>0008.md</code>). AIPs that serve a specific scope
 <strong>must</strong> be in the subdirectory for that scope.</p>
 <p>AIPs <strong>must</strong> have appropriate front matter.</p>
-<div class="highlight language-yaml"><pre><span></span><code><span class="nn">---</span>
-<span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
-<span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reviewing</span>
-<span class="nt">created</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2019-05-28</span>
-<span class="nt">permalink</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/8</span>
-<span class="nt">redirect_from</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/08</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/008</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/0008</span>
-<span class="nn">---</span>
+<div class="highlight language-yaml"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span><span class="w"></span>
+<span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviewing</span><span class="w"></span>
+<span class="nt">created</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2019-05-28</span><span class="w"></span>
+<span class="nt">permalink</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/8</span><span class="w"></span>
+<span class="nt">redirect_from</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/08</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/008</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/0008</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
 </code></pre></div>
 <p>Front matter for AIPs <strong>must</strong> include:</p>
 <ul>
@@ -887,7 +887,7 @@ complete understanding, but <strong>must not</strong> contain guidance (and RFC-
 examples, a <code>google.api.http</code> annotation <strong>should</strong> be included.</p>
 <h3 id="referencing-aips">Referencing AIPs</h3>
 <p>When AIPs reference other AIPs, the prosaic text <strong>must</strong> use the format
-<code>AIP-XXXX</code> without zero-padding (e.g., <code>[AIP-8](/8)</code>, not <code>AIP-0008</code>), and <strong>must</strong>
+<code>AIP-XXXX</code> without zero-padding (e.g., <code>[AIP-8](/8)</code>, not <code>[AIP-0008](/0008)</code>), and <strong>must</strong>
 link to the relevant AIP. AIP links <strong>may</strong> point to a particular section of the
 AIP if appropriate.</p>
 <p><strong>Important:</strong> AIP links <strong>must</strong> use the relative path to the file in the

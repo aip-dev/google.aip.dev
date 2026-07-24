@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -710,11 +710,11 @@ include a <code>DELETED</code> state value if the resource includes a <code>stat
 (<a href="/216">AIP-216</a>).</p>
 <h3 id="undelete">Undelete</h3>
 <p>A resource that supports soft delete <strong>should</strong> provide an <code>Undelete</code> method:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -732,12 +732,12 @@ include a <code>DELETED</code> state value if the resource includes a <code>stat
 </ul>
 <h3 id="undelete-request-message">Undelete request message</h3>
 <p>Undelete methods implement a common request message pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UndeleteBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The name of the deleted book.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span><span class="p">];</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">UndeleteBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The name of the deleted book.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -756,15 +756,15 @@ include a <code>DELETED</code> state value if the resource includes a <code>stat
 <p>Some resources take longer to undelete a resource than is reasonable for a
 regular API request. In this situation, the API <strong>should</strong> use a long-running
 operation (<a href="/151">AIP-151</a>) instead:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;Book&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UndeleteBook</span><span class="p">(</span><span class="n">UndeleteBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{name=publishers/*/books/*}:undelete&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Book&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;OperationMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -778,12 +778,12 @@ allow users to trigger immediate permanent deletion of a resource. This method c
 operate on resources that are currently in a <code>CREATING</code>, <code>READY</code> or <code>SOFT_DELETED</code>
 state (e.g., <code>delete_time</code> is set).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Permanently deletes a soft-deleted Book.</span>
-<span class="k">rpc</span> <span class="n">ExpungeBook</span><span class="p">(</span><span class="n">ExpungeBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:expunge&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">;</span>
+<span class="k">rpc</span><span class="w"> </span><span class="n">ExpungeBook</span><span class="p">(</span><span class="n">ExpungeBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.protobuf.Empty</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{name=publishers/*/books/*}:expunge&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -795,27 +795,27 @@ state (e.g., <code>delete_time</code> is set).</p>
 <p>If the expunge process takes significant time, the method <strong>may</strong> be a
 <code>google.longrunning.Operation</code> (<a href="/151">AIP-151</a>) instead:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Permanently deletes a soft-deleted Book.</span>
-<span class="k">rpc</span> <span class="n">ExpungeBook</span><span class="p">(</span><span class="n">ExpungeBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{name=publishers/*/books/*}:expunge&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;google.protobuf.Empty&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">;</span>
+<span class="k">rpc</span><span class="w"> </span><span class="n">ExpungeBook</span><span class="p">(</span><span class="n">ExpungeBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{name=publishers/*/books/*}:expunge&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;google.protobuf.Empty&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;OperationMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="expunge-request-message">Expunge request message</h3>
 <p>Expunge methods implement a common request message pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ExpungeBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The name of the soft-deleted book to expunge.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-  <span class="p">];</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">ExpungeBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The name of the soft-deleted book to expunge.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">  </span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>

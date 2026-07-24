@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -867,17 +867,17 @@ which <strong>must</strong> be of type <code>string</code> and <strong>must</str
 resource name. The message <strong>should</strong> include a <code>google.api.resource</code>
 annotation declaring the type (see <a href="/123">AIP-123</a> for more on this).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a book in the library.</span>
-<span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
-  <span class="p">};</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="c1">// The resource name of the book.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// The resource name of the book.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
 
-  <span class="c1">// Other fields...</span>
+<span class="w">  </span><span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>When defining a method that retrieves or acts on an already-existing resource
@@ -887,16 +887,16 @@ annotation declaring the type (see <a href="/123">AIP-123</a> for more on this).
 annotated with the <code>google.api.resource_reference</code> annotation, referencing the
 resource type (<a href="/123">AIP-123</a>).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Request message for ArchiveBook</span>
-<span class="kd">message</span> <span class="nc">ArchiveBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The book to archive.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">ArchiveBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The book to archive.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
 
-  <span class="c1">// Other fields...</span>
+<span class="w">  </span><span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Note:</strong> Fields <strong>must not</strong> be called <code>name</code> except for this purpose. For
@@ -910,32 +910,32 @@ of the request message <strong>should</strong> be of type <code>string</code> an
 also be annotated with the <code>google.api.resource_reference</code> annotation,
 referencing the parent's resource type (<a href="/123">AIP-123</a>).</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Request message for ListBooks.</span>
-<span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
-  <span class="c1">// The publisher to list books from.</span>
-  <span class="c1">// Format: publishers/{publisher_id}</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Publisher&quot;</span>
-  <span class="p">}];</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">ListBooksRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The publisher to list books from.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher_id}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Publisher&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
 
-  <span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
+<span class="w">  </span><span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>If there is more than one possible parent type, the <code>parent</code> field <strong>should</strong>
 be annotated with the <code>child_type</code> key on <code>google.api.resource_reference</code>
 instead:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Request message for ListBooks.</span>
-<span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
-  <span class="c1">// The parent to list books from.</span>
-  <span class="c1">// Format:</span>
-  <span class="c1">//   - publishers/{publisher_id}</span>
-  <span class="c1">//   - authors/{author_id}</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">ListBooksRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The parent to list books from.</span>
+<span class="w">  </span><span class="c1">// Format:</span>
+<span class="w">  </span><span class="c1">//   - publishers/{publisher_id}</span>
+<span class="w">  </span><span class="c1">//   - authors/{author_id}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">child_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
 
-  <span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
+<span class="w">  </span><span class="c1">// Other fields (e.g. page_size, page_token, filter, etc.)...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Note:</strong> Fields <strong>should not</strong> be called <code>parent</code> except for this purpose. For
@@ -965,23 +965,23 @@ implements the resource, <strong>except</strong> for one of following conditions
 </ul>
 <p>Example of a resource reference:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// A representation of a book in a library.</span>
-<span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
-  <span class="p">};</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="c1">// Name of the book.</span>
-  <span class="c1">// Format is `publishers/{publisher}/books/{book}`</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// Name of the book.</span>
+<span class="w">  </span><span class="c1">// Format is `publishers/{publisher}/books/{book}`</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
 
-  <span class="c1">// The shelf where the book currently sits.</span>
-  <span class="c1">// Format is `shelves/{shelf}`.</span>
-  <span class="kt">string</span> <span class="na">shelf</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Shelf&quot;</span>
-  <span class="p">}];</span>
+<span class="w">  </span><span class="c1">// The shelf where the book currently sits.</span>
+<span class="w">  </span><span class="c1">// Format is `shelves/{shelf}`.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">shelf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Shelf&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
 
-  <span class="c1">// Other fields...</span>
+<span class="w">  </span><span class="c1">// Other fields...</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="further-reading">Further reading</h2>

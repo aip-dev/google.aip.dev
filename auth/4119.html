@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -344,30 +344,30 @@ how to do this are out of scope of this AIP.</p>
 <strong>"~/.config/gcloud/certificate_config.json"</strong> configuration file. Note that the
 default location of this file can be changed using the
 <code>GOOGLE_API_CERTIFICATE_CONFIG</code> environment variable.</p>
-<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span>
-  <span class="nt">&quot;cert_configs&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;workload&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;cert_path&quot;</span><span class="p">:</span> <span class="nt">&quot;path/to/cert/file&quot;</span>
-      <span class="nt">&quot;key_path&quot;</span><span class="p">:</span> <span class="nt">&quot;path/to/key/file&quot;</span>
-      <span class="nt">&quot;workload_identity_provider&quot;</span><span class="p">:</span> <span class="nt">&quot;...&quot;</span>
-      <span class="nt">&quot;authenticate_as_identity_type&quot;</span><span class="p">:</span> <span class="nt">&quot;gsa/native&quot;</span>
-      <span class="nt">&quot;service_account_email&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;keychain&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;pkcs11&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;windows&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;libs&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="err">...</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;cert_configs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;workload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cert_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;path/to/cert/file&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;key_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;path/to/key/file&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;workload_identity_provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;...&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;authenticate_as_identity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;gsa/native&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;service_account_email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;keychain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;pkcs11&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;libs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The following lists the fields relevant to mTLS token binding configuration:</p>
 <ul>

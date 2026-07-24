@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -739,9 +739,9 @@ small vocabulary when naming methods and resources.</p>
 <code>pubsub.googleapis.com</code>, the term <em>interface name</em> refers to the name
 used when defining a <code>service</code> in a .proto file:</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// Library is the interface name.</span>
-<span class="kd">service</span> <span class="n">Library</span> <span class="p">{</span>
-  <span class="k">rpc</span> <span class="n">ListBooks</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="o">...</span><span class="p">);</span>
-  <span class="k">rpc</span> <span class="o">...</span>
+<span class="kd">service</span><span class="w"> </span><span class="n">Library</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ListBooks</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>You can think of the <em>service name</em> as a reference to the actual

@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -924,67 +924,67 @@ parent does not exist, the service <strong>must</strong> error with <code>NOT_FO
 is returned in the body of the response, as a JSON object. For backward
 compatibility reasons, this does not map precisely to <code>google.rpc.Status</code>,
 but contains the same core information. The schema is defined in the following proto:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Error</span> <span class="p">{</span>
-  <span class="kd">message</span> <span class="nc">Status</span> <span class="p">{</span>
-    <span class="c1">// The HTTP status code that corresponds to `google.rpc.Status.code`.</span>
-    <span class="kt">int32</span> <span class="na">code</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// This corresponds to `google.rpc.Status.message`.</span>
-    <span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="c1">// This is the enum version for `google.rpc.Status.code`.</span>
-    <span class="n">google.rpc.Code</span> <span class="na">status</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="c1">// This corresponds to `google.rpc.Status.details`.</span>
-    <span class="k">repeated</span> <span class="n">google.protobuf.Any</span> <span class="na">details</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-  <span class="p">}</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">message</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// The HTTP status code that corresponds to `google.rpc.Status.code`.</span>
+<span class="w">    </span><span class="kt">int32</span><span class="w"> </span><span class="na">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// This corresponds to `google.rpc.Status.message`.</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="kd">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// This is the enum version for `google.rpc.Status.code`.</span>
+<span class="w">    </span><span class="n">google.rpc.Code</span><span class="w"> </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// This corresponds to `google.rpc.Status.details`.</span>
+<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="n">google.protobuf.Any</span><span class="w"> </span><span class="na">details</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="n">Status</span> <span class="na">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Status</span><span class="w"> </span><span class="na">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The most important difference is that the <code>code</code> field in the JSON is an HTTP status code,
 <em>not</em> the direct value of <code>google.rpc.Status.code</code>. For example, a <code>google.rpc.Status</code>
 message with a <code>code</code> value of 5 would be mapped to an object including the following
 code-related fields (as well as the message, details etc):</p>
-<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>          <span class="err">//</span> <span class="err">The</span> <span class="err">HTTP</span> <span class="err">s</span><span class="kc">tatus</span> <span class="err">code</span> <span class="kc">f</span><span class="err">or</span> <span class="nt">&quot;not found&quot;</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;NOT_FOUND&quot;</span> <span class="err">//</span> <span class="err">The</span> <span class="kc">na</span><span class="err">me</span> <span class="err">i</span><span class="kc">n</span> <span class="err">google.rpc.Code</span> <span class="kc">f</span><span class="err">or</span> <span class="err">value</span> <span class="mi">5</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">          </span><span class="c1">// The HTTP status code for &quot;not found&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOT_FOUND&quot;</span><span class="w"> </span><span class="c1">// The name in google.rpc.Code for value 5</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The following JSON shows a fully populated HTTP/1.1+JSON representation of an error response.</p>
-<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">429</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;The zone &#39;us-east1-a&#39; does not have enough resources available to fulfill the request. Try a different zone, or try again later.&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_EXHAUSTED&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.ErrorInfo&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_AVAILABILITY&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;compute.googleapis.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;zone&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east1-a&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;vmType&quot;</span><span class="p">:</span> <span class="s2">&quot;e2-medium&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;attachment&quot;</span><span class="p">:</span> <span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;zonesWithCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;us-central1-f,us-central1-c&quot;</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.LocalizedMessage&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;An &lt;e2-medium&gt; VM instance with &lt;local-ssd=3,nvidia-t4=2&gt; is currently unavailable in the &lt;us-east1-a&gt; zone. Consider trying your request in the &lt;us-central1-f,us-central1-c&gt; zone(s), which currently has/have capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation.&quot;</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.Help&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Additional information on this error&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cloud.google.com/compute/docs/resource-error&quot;</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">429</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The zone &#39;us-east1-a&#39; does not have enough resources available to fulfill the request. Try a different zone, or try again later.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESOURCE_EXHAUSTED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/google.rpc.ErrorInfo&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESOURCE_AVAILABILITY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compute.googleapis.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east1-a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;vmType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e2-medium&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;attachment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;zonesWithCapacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-central1-f,us-central1-c&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/google.rpc.LocalizedMessage&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An &lt;e2-medium&gt; VM instance with &lt;local-ssd=3,nvidia-t4=2&gt; is currently unavailable in the &lt;us-east1-a&gt; zone. Consider trying your request in the &lt;us-central1-f,us-central1-c&gt; zone(s), which currently has/have capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation.&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/google.rpc.Help&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Additional information on this error&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.google.com/compute/docs/resource-error&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="rationale">Rationale</h2>
 <h3 id="requiring-errorinfo">Requiring ErrorInfo</h3>
@@ -1039,7 +1039,7 @@ available to them.</p>
 <ul>
 <li>For which error codes to retry, see <a href="/194">AIP-194</a>.</li>
 <li>For how to retry errors in client libraries, see
-  <a href="https://google.aip.dev/client-libraries/4221">AIP-4221</a>.</li>
+  <a href="/4221">AIP-4221</a>.</li>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>

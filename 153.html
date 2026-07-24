@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -696,26 +696,26 @@ multiple new resources, or they <strong>may</strong> populate data into a single
 <h3 id="multiple-resources">Multiple resources</h3>
 <p>Services <strong>may</strong> support importing and exporting multiple resources into or out
 of an API, and <strong>should</strong> implement a common pattern to do so:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">ImportBooks</span><span class="p">(</span><span class="n">ImportBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:import&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ImportBooksResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ImportBooksMetadata&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ImportBooks</span><span class="p">(</span><span class="n">ImportBooksRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books:import&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ImportBooksResponse&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ImportBooksMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 
-<span class="k">rpc</span> <span class="n">ExportBooks</span><span class="p">(</span><span class="n">ExportBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:export&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ExportBooksResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ExportBooksMetadata&quot;</span>
-  <span class="p">};</span>
+<span class="k">rpc</span><span class="w"> </span><span class="n">ExportBooks</span><span class="p">(</span><span class="n">ExportBooksRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books:export&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ExportBooksResponse&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ExportBooksMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -736,26 +736,26 @@ of an API, and <strong>should</strong> implement a common pattern to do so:</p>
 <h3 id="data-for-a-single-resource">Data for a single resource</h3>
 <p>Services <strong>may</strong> support importing and exporting data into or out of a single
 resource, and <strong>should</strong> implement a common pattern to do so:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">ImportPages</span><span class="p">(</span><span class="n">ImportPagesRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{book=publishers/*/books/*}:importPages&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ImportPagesResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ImportPagesMetadata&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ImportPages</span><span class="p">(</span><span class="n">ImportPagesRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{book=publishers/*/books/*}:importPages&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ImportPagesResponse&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ImportPagesMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 
-<span class="k">rpc</span> <span class="n">ExportPages</span><span class="p">(</span><span class="n">ExportPagesRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{book=publishers/*/books/*}:exportPages&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;ExportPagesResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;ExportPagesMetadata&quot;</span>
-  <span class="p">};</span>
+<span class="k">rpc</span><span class="w"> </span><span class="n">ExportPages</span><span class="p">(</span><span class="n">ExportPagesRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{book=publishers/*/books/*}:exportPages&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ExportPagesResponse&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ExportPagesMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -778,30 +778,30 @@ configuration:</p>
 </ol>
 <p>Source or destination configuration should be grouped into a single message and
 placed inside a oneof:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ImportBooksRequest</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-  <span class="k">oneof</span> <span class="n">source</span> <span class="p">{</span>
-    <span class="n">AuthorSource</span> <span class="na">author_source</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">TranslatorSource</span> <span class="na">translator_source</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">string</span> <span class="na">isbn_prefix</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">ImportBooksRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">child_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
+<span class="w">  </span><span class="k">oneof</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">AuthorSource</span><span class="w"> </span><span class="na">author_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TranslatorSource</span><span class="w"> </span><span class="na">translator_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">isbn_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">message</span> <span class="nc">ExportBooksRequest</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
-  <span class="k">oneof</span> <span class="n">destination</span> <span class="p">{</span>
-    <span class="n">PrinterDestination</span> <span class="na">printer_destination</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">TranslatorDestination</span> <span class="na">translator_destination</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">string</span> <span class="na">filter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">ExportBooksRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">child_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
+<span class="w">  </span><span class="k">oneof</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PrinterDestination</span><span class="w"> </span><span class="na">printer_destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TranslatorDestination</span><span class="w"> </span><span class="na">translator_destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -817,8 +817,8 @@ a directory.)</p>
 <h3 id="inline-sources">Inline sources</h3>
 <p>APIs <strong>may</strong> also permit import and export "inline", where the contents to be
 imported or exported are provided in the request or response.</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">InlineSource</span> <span class="p">{</span>
-  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">InlineSource</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="na">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>

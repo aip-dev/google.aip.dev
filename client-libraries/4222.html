@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -348,13 +348,13 @@ implicitly, and use that specification.</p>
 parameters specified in the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/routing.proto"><code>google.api.routing</code></a> annotation, if present.
 Any given routing parameter specifies a field name and a pattern with exactly one
 named resource ID path segment. For example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">routing_parameters</span> <span class="p">{</span>
-      <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-      <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*}/**&quot;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">      </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{project=projects/*}/**&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The value of the field <code>field</code> <strong>must</strong> be one of the following:</p>
@@ -376,28 +376,28 @@ routing headers should be generated for the RPC, when they otherwise would be
 e.g. implicitly from the <code>google.api.http</code> annotation.</p>
 <p><strong>Note:</strong> It is acceptable to omit the pattern in the resource ID segment, <code>{parent}</code>
 for example, is equivalent to <code>{parent=*}</code> and <strong>must</strong> be parsed, e.g.:
-<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
-  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;projects/{parent}&quot;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">  </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;projects/{parent}&quot;</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p>is the same as</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
-  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;projects/{parent=*}&quot;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">  </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;projects/{parent=*}&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Note:</strong> It is acceptable to omit the <code>path_template</code> field altogether. An omitted 
 <code>path_template</code> is equivalent to a <code>path_template</code> with the same resource ID name as
 the field and the pattern <code>**</code>, and <strong>must</strong> be parsed, e.g.:
-<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
-  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p>is the same as</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span> <span class="p">{</span>
-  <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-  <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{parent=**}&quot;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">  </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{parent=**}&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Note:</strong> An omitted <code>path_template</code> field does not indicate that key-value
@@ -427,19 +427,19 @@ name have failed to match the field, or if the field was unset, or if the extrac
 is an empty string, these parameters are not considered when determining which value
 to send.</p>
 <p>Example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">option</span> <span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">routing_parameters</span> <span class="p">{</span>
-    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*}/**&quot;</span>
-  <span class="p">}</span>
-  <span class="n">routing_parameters</span> <span class="p">{</span>
-    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;parent&quot;</span>
-    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=projects/*/subprojects/*}/**&quot;</span>
-  <span class="p">}</span>
-  <span class="n">routing_parameters</span> <span class="p">{</span>
-    <span class="n">field</span><span class="o">:</span> <span class="s">&quot;billing_project&quot;</span>
-    <span class="n">path_template</span><span class="o">:</span> <span class="s">&quot;{project=**}&quot;</span>
-  <span class="p">}</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.routing</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">    </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{project=projects/*}/**&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;parent&quot;</span>
+<span class="w">    </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{project=projects/*/subprojects/*}/**&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">routing_parameters</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">field</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;billing_project&quot;</span>
+<span class="w">    </span><span class="n">path_template</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{project=**}&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>In this case if in a given request the <code>billing_project</code> field is set to an non-empty value,
@@ -525,8 +525,8 @@ annotation, code generators <strong>must</strong> look at URI-based variables de
 <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> annotation and transcribe these into the
 <code>x-goog-request-params</code> header in unary calls. A URI-based variable is a
 variable declared as a key in curly braces in the URI string. For example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span> <span class="o">=</span> <span class="s">&quot;{parent=projects/*}/topics&quot;</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateTopic</span><span class="p">(</span><span class="n">CreateTopicRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;{parent=projects/*}/topics&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Note:</strong> It is acceptable to omit the pattern in the resource ID segment, <code>{parent}</code>
@@ -539,8 +539,8 @@ value, and append them to the <code>x-goog-request-params</code> header. Both th
 the value <strong>must</strong> be URL-encoded per <a href="https://tools.ietf.org/html/rfc6570#section-3.2.2">RFC 6570 §3.2.2</a>. This can be done
 with standard library URL encoding. For example, adding this header to a gRPC
 request in Go:</p>
-<div class="highlight language-go"><pre><span></span><code><span class="nx">md</span> <span class="o">:=</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">Pairs</span><span class="p">(</span><span class="s">&quot;x-goog-request-params&quot;</span><span class="p">,</span>
-  <span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;=&quot;</span> <span class="o">+</span> <span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">GetParent</span><span class="p">()))</span>
+<div class="highlight language-go"><pre><span></span><code><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">Pairs</span><span class="p">(</span><span class="s">&quot;x-goog-request-params&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">GetParent</span><span class="p">()))</span><span class="w"></span>
 </code></pre></div>
 <p>At runtime, if a field with the same name as the named parameter is unset on the
 request message, the key-value pair corresponding to that parameter <strong>must not</strong>

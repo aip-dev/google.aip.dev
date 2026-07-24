@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -712,19 +712,19 @@ internal comment linking to this document using its descriptive link
 the errors as precedent of a "previously approved API".</p>
 <p>The comment should also include an explanation of what violates standards and
 why it is necessary. For example:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">DailyMaintenanceWindow</span> <span class="p">{</span>
-  <span class="c1">// Time within the maintenance window to start the maintenance operations.</span>
-  <span class="c1">// It must use the format &quot;HH MM&quot;, where HH : [00-23] and MM : [00-59] GMT.</span>
-  <span class="c1">// (-- aip.dev/not-precedent: This was designed for consistency with crontab,</span>
-  <span class="c1">//     and preceded the AIP standards.</span>
-  <span class="c1">//     Ordinarily, this type should be `google.type.TimeOfDay`. --)</span>
-  <span class="kt">string</span> <span class="na">start_time</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">DailyMaintenanceWindow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Time within the maintenance window to start the maintenance operations.</span>
+<span class="w">  </span><span class="c1">// It must use the format &quot;HH MM&quot;, where HH : [00-23] and MM : [00-59] GMT.</span>
+<span class="w">  </span><span class="c1">// (-- aip.dev/not-precedent: This was designed for consistency with crontab,</span>
+<span class="w">  </span><span class="c1">//     and preceded the AIP standards.</span>
+<span class="w">  </span><span class="c1">//     Ordinarily, this type should be `google.type.TimeOfDay`. --)</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 
-  <span class="c1">// Output only. Duration of the time window, automatically chosen to be</span>
-  <span class="c1">// smallest possible in the given scenario.</span>
-  <span class="c1">// (-- aip.dev/not-precedent: This preceded the AIP standards.</span>
-  <span class="c1">//     Ordinarily, this type should be `google.protobuf.Duration`. --)</span>
-  <span class="kt">string</span> <span class="na">duration</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Output only. Duration of the time window, automatically chosen to be</span>
+<span class="w">  </span><span class="c1">// smallest possible in the given scenario.</span>
+<span class="w">  </span><span class="c1">// (-- aip.dev/not-precedent: This preceded the AIP standards.</span>
+<span class="w">  </span><span class="c1">//     Ordinarily, this type should be `google.protobuf.Duration`. --)</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Important:</strong> APIs should only be considered to be precedent-setting if they
@@ -740,19 +740,19 @@ API should continue to follow the local pattern.</p>
 this is contra-standard and not something to cite as precedent when launching
 new APIs.</p>
 <div class="highlight language-proto"><pre><span></span><code><span class="c1">// ...</span>
-<span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="c1">// (-- aip.dev/not-precedent: This field was present before there was a</span>
-  <span class="c1">//     standard field.</span>
-  <span class="c1">//     Ordinarily, it should be spelled `create_time`. --)</span>
-  <span class="n">google.protobuf.Timestamp</span> <span class="na">creation_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// (-- aip.dev/not-precedent: This field was present before there was a</span>
+<span class="w">  </span><span class="c1">//     standard field.</span>
+<span class="w">  </span><span class="c1">//     Ordinarily, it should be spelled `create_time`. --)</span>
+<span class="w">  </span><span class="n">google.protobuf.Timestamp</span><span class="w"> </span><span class="na">creation_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// ...</span>
-<span class="kd">message</span> <span class="nc">Author</span> <span class="p">{</span>
-  <span class="c1">// (-- aip.dev/not-precedent: `Book` had `creation_time` before there was</span>
-  <span class="c1">//     a standard field, so we match that here for consistency. Ordinarily,</span>
-  <span class="c1">//     this would be spelled `create_time`. --)</span>
-  <span class="n">google.protobuf.Timestamp</span> <span class="na">creation_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">Author</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// (-- aip.dev/not-precedent: `Book` had `creation_time` before there was</span>
+<span class="w">  </span><span class="c1">//     a standard field, so we match that here for consistency. Ordinarily,</span>
+<span class="w">  </span><span class="c1">//     this would be spelled `create_time`. --)</span>
+<span class="w">  </span><span class="n">google.protobuf.Timestamp</span><span class="w"> </span><span class="na">creation_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="pre-existing-functionality">Pre-existing functionality</h3>

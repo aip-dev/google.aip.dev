@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -702,12 +702,12 @@ representing that resource and return the resource.</p>
 not valuable for users to do so. The purpose of the update method is to make
 changes to the resources without causing side effects.</p>
 <p>Update methods are specified using the following pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;book,update_mask&quot;</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">patch</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.method_signature</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;book,update_mask&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -754,15 +754,15 @@ a nested field (<code>book.name</code>) in the example. If the resource field ha
 separator, <code>snake_case</code> is used.</p>
 <h3 id="request-message">Request message</h3>
 <p>Update methods implement a common request message pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UpdateBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The book to update.</span>
-  <span class="c1">//</span>
-  <span class="c1">// The book&#39;s `name` field is used to identify the book to update.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The book to update.</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// The book&#39;s `name` field is used to identify the book to update.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="n">Book</span><span class="w"> </span><span class="na">book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">];</span>
 
-  <span class="c1">// The list of fields to update.</span>
-  <span class="n">google.protobuf.FieldMask</span> <span class="na">update_mask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The list of fields to update.</span>
+<span class="w">  </span><span class="n">google.protobuf.FieldMask</span><span class="w"> </span><span class="na">update_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -817,12 +817,12 @@ an existing resource, but this becomes a breaking change when using <code>PUT</c
 </code></pre>
 <p>Next consider that the resource is later augmented with a new field (here we
 add <code>rating</code>):</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="kt">string</span> <span class="na">title</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">string</span> <span class="na">author</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 
-  <span class="c1">// Subsequently added to v1 in place...</span>
-  <span class="kt">int32</span> <span class="na">rating</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Subsequently added to v1 in place...</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">rating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>If a rating is set on a book and the existing <code>PUT</code> request was executed, it
@@ -832,15 +832,15 @@ wiped out data because the previous version did not know about it.</p>
 <p>Some resources take longer to update a resource than is reasonable for a
 regular API request. In this situation, the API <strong>should</strong> use a long-running
 operation (<a href="/151">AIP-151</a>) instead:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">patch</span><span class="o">:</span> <span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;Book&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;OperationMetadata&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateBook</span><span class="p">(</span><span class="n">UpdateBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">patch</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{book.name=publishers/*/books/*}&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Book&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;OperationMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -855,19 +855,19 @@ update.</p>
 expose a <code>bool allow_missing</code> field, which will cause the method to succeed in
 the event that the user attempts to update a resource that is not present (and
 will create the resource in the process):</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">UpdateBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The book to update.</span>
-  <span class="c1">//</span>
-  <span class="c1">// The book&#39;s `name` field is used to identify the book to be updated.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The book to update.</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// The book&#39;s `name` field is used to identify the book to be updated.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="n">Book</span><span class="w"> </span><span class="na">book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">];</span>
 
-  <span class="c1">// The list of fields to be updated.</span>
-  <span class="n">google.protobuf.FieldMask</span> <span class="na">update_mask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The list of fields to be updated.</span>
+<span class="w">  </span><span class="n">google.protobuf.FieldMask</span><span class="w"> </span><span class="na">update_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 
-  <span class="c1">// If set to true, and the book is not found, a new book will be created.</span>
-  <span class="c1">// In this situation, `update_mask` is ignored.</span>
-  <span class="kt">bool</span> <span class="na">allow_missing</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// If set to true, and the book is not found, a new book will be created.</span>
+<span class="w">  </span><span class="c1">// In this situation, `update_mask` is ignored.</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="na">allow_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>More specifically, the <code>allow_missing</code> flag triggers the following behavior:</p>
@@ -893,27 +893,27 @@ is to detect and avoid race conditions). Resources which need to enable this do
 so by including a <code>string etag</code> field, which contains an opaque,
 server-computed value representing the content of the resource.</p>
 <p>In this situation, the resource <strong>should</strong> contain a <code>string etag</code> field:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Book</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="n">pattern</span><span class="o">:</span> <span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="c1">// The resource name of the book.</span>
-  <span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-  <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">IDENTIFIER</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// The resource name of the book.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
 
-  <span class="c1">// The title of the book.</span>
-  <span class="c1">// Example: &quot;Mary Poppins&quot;</span>
-  <span class="kt">string</span> <span class="na">title</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The title of the book.</span>
+<span class="w">  </span><span class="c1">// Example: &quot;Mary Poppins&quot;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 
-  <span class="c1">// The author of the book.</span>
-  <span class="c1">// Example: &quot;P.L. Travers&quot;</span>
-  <span class="kt">string</span> <span class="na">author</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The author of the book.</span>
+<span class="w">  </span><span class="c1">// Example: &quot;P.L. Travers&quot;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 
-  <span class="c1">// The etag for this book.</span>
-  <span class="c1">// If this is provided on update, it must match the server&#39;s etag.</span>
-  <span class="kt">string</span> <span class="na">etag</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The etag for this book.</span>
+<span class="w">  </span><span class="c1">// If this is provided on update, it must match the server&#39;s etag.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">etag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The <code>etag</code> field <strong>may</strong> be either <a href="/203#required">required</a> or <a href="/203#optional">optional</a>. If it is set,

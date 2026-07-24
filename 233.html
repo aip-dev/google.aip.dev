@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -698,23 +698,23 @@ transaction. A batch create method provides this functionality.</p>
 <h2 id="guidance">Guidance</h2>
 <p>APIs <strong>may</strong> support Batch Create using the following two patterns:</p>
 <p>Returning the response synchronously</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">BatchCreateBooks</span><span class="p">(</span><span class="n">BatchCreateBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BatchCreateBooksResponse</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:batchCreate&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">BatchCreateBooks</span><span class="p">(</span><span class="n">BatchCreateBooksRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BatchCreateBooksResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books:batchCreate&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Returning an Operation which resolves to the response asynchronously</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">BatchCreateBooks</span><span class="p">(</span><span class="n">BatchCreateBooksRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books:batchCreate&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;*&quot;</span>
-  <span class="p">};</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">response_type</span><span class="o">:</span> <span class="s">&quot;BatchCreateBooksResponse&quot;</span>
-    <span class="n">metadata_type</span><span class="o">:</span> <span class="s">&quot;BatchCreateBooksOperationMetadata&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">BatchCreateBooks</span><span class="p">(</span><span class="n">BatchCreateBooksRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.Operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books:batchCreate&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.longrunning.operation_info</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">response_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;BatchCreateBooksResponse&quot;</span>
+<span class="w">    </span><span class="n">metadata_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;BatchCreateBooksOperationMetadata&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -756,20 +756,20 @@ transaction. A batch create method provides this functionality.</p>
 <h3 id="request-message">Request message</h3>
 <p>The request for a batch create method <strong>should</strong> be specified with the
 following pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BatchCreateBooksRequest</span> <span class="p">{</span>
-  <span class="c1">// The parent resource shared by all books being created.</span>
-  <span class="c1">// Format: publishers/{publisher}</span>
-  <span class="c1">// If this is set, the parent field in the CreateBookRequest messages</span>
-  <span class="c1">// must either be empty or match this field.</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">BatchCreateBooksRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The parent resource shared by all books being created.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}</span>
+<span class="w">  </span><span class="c1">// If this is set, the parent field in the CreateBookRequest messages</span>
+<span class="w">  </span><span class="c1">// must either be empty or match this field.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">child_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
 
-  <span class="c1">// The request message specifying the resources to create.</span>
-  <span class="c1">// A maximum of 1000 books can be created in a batch.</span>
-  <span class="k">repeated</span> <span class="n">CreateBookRequest</span> <span class="na">requests</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// The request message specifying the resources to create.</span>
+<span class="w">  </span><span class="c1">// A maximum of 1000 books can be created in a batch.</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">CreateBookRequest</span><span class="w"> </span><span class="na">requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -809,9 +809,9 @@ following pattern:</p>
 <h3 id="response-message">Response message</h3>
 <p>The response for a batch create method <strong>should</strong> be specified with the
 following pattern:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">BatchCreateBooksResponse</span> <span class="p">{</span>
-  <span class="c1">// Books created.</span>
-  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">BatchCreateBooksResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Books created.</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="na">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>

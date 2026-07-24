@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -700,35 +700,35 @@ streaming.</p>
 <h3 id="http-method-and-path">HTTP method and path</h3>
 <p>When using protocol buffers, each RPC <strong>must</strong> define the HTTP method and path
 using the <code>google.api.http</code> annotation:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateBook</span><span class="p">(</span><span class="n">CreateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateBook</span><span class="p">(</span><span class="n">CreateBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 
-<span class="kd">message</span> <span class="nc">CreateBookRequest</span> <span class="p">{</span>
-  <span class="c1">// The publisher who will publish this book.</span>
-  <span class="c1">// When using HTTP/JSON, this field is automatically populated based</span>
-  <span class="c1">// on the URI, because of the `{parent=publishers/*}` syntax.</span>
-  <span class="kt">string</span> <span class="na">parent</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">child_type</span><span class="o">:</span> <span class="s">&quot;library.googleapis.com/Book&quot;</span>
-    <span class="p">}];</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">CreateBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The publisher who will publish this book.</span>
+<span class="w">  </span><span class="c1">// When using HTTP/JSON, this field is automatically populated based</span>
+<span class="w">  </span><span class="c1">// on the URI, because of the `{parent=publishers/*}` syntax.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">child_type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
 
-  <span class="c1">// The book to create.</span>
-  <span class="c1">// When using HTTP/JSON, this field is populated based on the HTTP body,</span>
-  <span class="c1">// because of the `body: &quot;book&quot;` syntax.</span>
-  <span class="n">Book</span> <span class="na">book</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">REQUIRED</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// The book to create.</span>
+<span class="w">  </span><span class="c1">// When using HTTP/JSON, this field is populated based on the HTTP body,</span>
+<span class="w">  </span><span class="c1">// because of the `body: &quot;book&quot;` syntax.</span>
+<span class="w">  </span><span class="n">Book</span><span class="w"> </span><span class="na">book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">];</span>
 
-  <span class="c1">// The user-specified ID for the book.</span>
-  <span class="c1">// When using HTTP/JSON, this field is populated based on a query string</span>
-  <span class="c1">// argument, such as `?bookId=foo`. This is the fallback for fields that</span>
-  <span class="c1">// are not included in either the URI or the body.</span>
-  <span class="c1">// Note that clients use camelCase format to communicate the field names</span>
-  <span class="c1">// to the service.</span>
-  <span class="kt">string</span> <span class="na">book_id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// The user-specified ID for the book.</span>
+<span class="w">  </span><span class="c1">// When using HTTP/JSON, this field is populated based on a query string</span>
+<span class="w">  </span><span class="c1">// argument, such as `?bookId=foo`. This is the fallback for fields that</span>
+<span class="w">  </span><span class="c1">// are not included in either the URI or the body.</span>
+<span class="w">  </span><span class="c1">// Note that clients use camelCase format to communicate the field names</span>
+<span class="w">  </span><span class="c1">// to the service.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -776,19 +776,19 @@ annotation at all. If feasible, the service <strong>should</strong> provide non-
 equivalent RPCs.</p>
 <h3 id="multiple-uri-bindings">Multiple URI bindings</h3>
 <p>Occasionally, an RPC needs to correspond to more than one URI:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateBook</span><span class="p">(</span><span class="n">CreateBookRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">option</span> <span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=publishers/*}/books&quot;</span>
-    <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-    <span class="n">additional_bindings</span><span class="o">:</span> <span class="p">{</span>
-      <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/{parent=authors/*}/books&quot;</span>
-      <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-    <span class="p">}</span>
-    <span class="n">additional_bindings</span><span class="o">:</span> <span class="p">{</span>
-      <span class="n">post</span><span class="o">:</span> <span class="s">&quot;/v1/books&quot;</span>
-      <span class="n">body</span><span class="o">:</span> <span class="s">&quot;book&quot;</span>
-    <span class="p">}</span>
-  <span class="p">};</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateBook</span><span class="p">(</span><span class="n">CreateBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=publishers/*}/books&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">    </span><span class="n">additional_bindings</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{parent=authors/*}/books&quot;</span>
+<span class="w">      </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">additional_bindings</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/books&quot;</span>
+<span class="w">      </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;book&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>

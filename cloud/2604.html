@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=8efe348a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=8efe348a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=8efe348a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -288,14 +288,14 @@
 GCE a group can be created with a configurable limit for either the percentage
 or number of instances in the group that can undergo maintenance
 simultaneously:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ConcurrencyControl</span> <span class="p">{</span>
-  <span class="kd">enum</span> <span class="n">LimitType</span> <span class="p">{</span>
-    <span class="na">INVALID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="na">PERCENT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="na">FIXED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">optional</span> <span class="kt">int32</span> <span class="na">concurrency_limit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="k">optional</span> <span class="n">LimitType</span> <span class="na">limit_type</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">ConcurrencyControl</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">LimitType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">INVALID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="na">PERCENT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="na">FIXED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">concurrency_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="n">LimitType</span><span class="w"> </span><span class="na">limit_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="guidance">Guidance</h2>
@@ -304,17 +304,17 @@ simultaneously:</p>
 consisting of two flags: one for specifying a number, and the other for
 specifying a percentage. The API field in the example above would thus
 correspond to the following surface specification in gcloud:</p>
-<div class="highlight language-yaml"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span>
-    <span class="nt">mutex</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">arguments</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">concurrency-limit</span>
-        <span class="nt">help_text</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-          <span class="no">Maximum number of instances in the group that can undergo maintenance</span>
-          <span class="no">simultaneously.</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">concurrency-limit-percent</span>
-        <span class="nt">help_text</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-          <span class="no">Integer from 0 to 100 representing the maximum percentage of instances</span>
-          <span class="no">in the group that can undergo maintenance simultaneously.</span>
+<div class="highlight language-yaml"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mutex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">arguments</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concurrency-limit</span><span class="w"></span>
+<span class="w">        </span><span class="nt">help_text</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">          </span><span class="no">Maximum number of instances in the group that can undergo maintenance</span><span class="w"></span>
+<span class="w">          </span><span class="no">simultaneously.</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concurrency-limit-percent</span><span class="w"></span>
+<span class="w">        </span><span class="nt">help_text</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">          </span><span class="no">Integer from 0 to 100 representing the maximum percentage of instances</span><span class="w"></span>
+<span class="w">          </span><span class="no">in the group that can undergo maintenance simultaneously.</span><span class="w"></span>
 </code></pre></div>
 <h3 id="flag-naming">Flag naming</h3>
 <p>Any flag taking a percentage should end with <code>-percent</code> (not <code>-percentage</code>).</p>
@@ -334,9 +334,9 @@ contains 20 instances with a concurrency limit of 10%, and a user wishes to
 update the limit to 20%. If the user issues a describe command (or performs a
 GET request) to see the existing limit, the API response will contain something
 like:</p>
-<div class="highlight language-yaml"><pre><span></span><code><span class="nt">concurrencyControl</span><span class="p">:</span>
-  <span class="nt">concurrencyLimit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-  <span class="nt">limitType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PERCENT</span>
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">concurrencyControl</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">concurrencyLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">  </span><span class="nt">limitType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PERCENT</span><span class="w"></span>
 </code></pre></div>
 <p>It's easy for the user to gloss over limitType and just assume that
 <code>--concurrency-limit=20</code> will update the limit to 20%. However, in reality this
