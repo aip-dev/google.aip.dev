@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cd1a9a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cd1a9a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33cd1a9a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -490,6 +490,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a href="/184">
+        <span class="aip-number">184</span>
+        API version identifiers
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="/185">
         <span class="aip-number">185</span>
         API Versioning
@@ -645,6 +651,13 @@
 <li><a href="#emergency-changes">Emergency changes</a></li>
 </ul>
 </li>
+<li><a href="#interface-based-stability-levels">Interface-based stability levels</a><ul>
+<li><a href="#stability-axes">Stability axes</a></li>
+<li><a href="#experimental">Experimental</a></li>
+<li><a href="#preview">Preview</a></li>
+<li><a href="#general-availability">General availability</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -746,6 +759,77 @@ the approval of the API Governance team.</p>
 requirements, any API component <strong>may</strong> be changed in a breaking manner
 regardless of its stability level, and a deprecation is not promised in these
 situations.</p>
+<h2 id="interface-based-stability-levels">Interface-based stability levels</h2>
+<p>The following concepts and stability levels pertain to the interface-based
+versioning pattern as described in <a href="https://aip.dev/185">AIP-185</a>.</p>
+<h3 id="stability-axes">Stability axes</h3>
+<p>The points at which stability is evaluated in various user journeys include call-time
+compatibility and upgrade compatibility.</p>
+<p>Call-time compatibility is typically evaluated when an <a href="https://aip.dev/9#api-producer">API producer</a>
+initiates a change to a live API version that impacts the behavior of existing
+traffic from existing, unchanged clients. Management and mitigation of call-time
+compatibility changes is the responsibility of the producer.</p>
+<p>Upgrade compatibility is evaluated when an <a href="https://aip.dev/9#api-consumer">API consumer</a> attempts to update
+the API version in use. This is evaluated continuously, from application
+development through to the completion of application production rollout.
+Management and mitigation of upgrade-time compatibility changes are the
+responsibility of the consumer.</p>
+<h3 id="experimental">Experimental</h3>
+<p>Experimental versions are offered early in the service lifecycle in order to
+help shape products and features prior to their preview introduction. They are
+typically short-lived and made available to specific consumers to evaluate
+specific aspects of the API under consideration for future development.</p>
+<p>Key aspects of experimental versions regarding stability include:</p>
+<ul>
+<li>They have no call-time or upgrade compatibility guarantee whatsoever.</li>
+<li>They have no guaranteed lifetime, but will expire at some point.</li>
+<li>They are exempt from all compatibility policies.</li>
+</ul>
+<p>While policy does not guarantee stability, the extremely limited and targeted
+nature of their use means that direct communication with consumers about changes
+is both possible and encouraged.</p>
+<h3 id="preview">Preview</h3>
+<p>A preview version is an early iteration of a service version that is destined
+for GA (if all goes well). They are intended to enable early testing of a change by
+customers, gather customer feedback, allow customers to prepare for forthcoming features, and
+ensure that the GA launch will have long-term value and supportability.</p>
+<p>Key aspects of preview versions regarding stability include:</p>
+<ul>
+<li>They have a strict time-boxed lifecycle that is communicated at inception.</li>
+<li>They strive to retain call-time compatibility.</li>
+<li>They do not provide upgrade compatibility.</li>
+<li>They can contain multiple, actively evaluated preview features.</li>
+<li>Consumers need to account for the time and effort involved in migrating off
+  a preview version before it expires.</li>
+</ul>
+<p>Given the above, preview versions are <strong>not</strong> suitable for use by consumers in
+production workloads.</p>
+<h4 id="preview-expiration">Preview expiration</h4>
+<p>Version expiration is a multi-phased event consisting of onboarding window
+closure followed by final turndown and rejection of the version. The timing of
+these events varies, but is always stated upfront to set expectations.
+Communication with consumers precedes each phase.</p>
+<h3 id="general-availability">General availability</h3>
+<p>General availability (GA) versions are stable, ready-for-production versions of a
+product that can be depended upon long-term, used in production workloads, and
+have SLAs and SLOs backed by technical support. The contents of such a version have
+typically progressed through the previous stability levels of experimental and
+preview before reaching general availability. This is especially important for
+non-trivial features that warrant thorough evaluation, but is not strictly a
+requirement for smaller, self-explanatory features.</p>
+<p>Key aspects of general availability versions regarding stability include:</p>
+<ul>
+<li>They have a long-term support commitment.</li>
+<li>They have a call-time compatibility guarantee.</li>
+<li>They are subject to discontinuation and deprecation policies.</li>
+</ul>
+<p>Regarding upgrade compatibility for general availability versions, actively supported
+features will adhere to upgrade compatibility requirements. However, features
+that are facing deprecation or substantial redesign can change in
+incompatible ways between two consecutive generally available versions. This
+will happen after the API producer has fulfilled the necessary processes for
+communicating the change and facilitating consumer migration as appropriate for
+the change.</p>
   <footer>
   Except as otherwise noted, the content of this page is licensed under the
   <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons

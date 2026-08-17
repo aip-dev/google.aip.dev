@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5b06e84c">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5b06e84c">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=33cd1a9a">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=33cd1a9a">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=5b06e84c"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=33cd1a9a"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -489,6 +489,12 @@
         External software dependencies
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/184">
+        <span class="aip-number">184</span>
+        API version identifiers
+      </a>
+    </li>
     <li class="nav-item nav-item-active">
       <a href="/185">
         <span class="aip-number">185</span>
@@ -639,6 +645,7 @@
     <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#channel-based-versioning">Channel-based versioning</a></li>
+<li><a href="#interface-based-versioning">Interface-based versioning</a></li>
 <li><a href="#release-based-versioning">Release-based versioning</a></li>
 <li><a href="#visibility-based-versioning">Visibility-based versioning</a></li>
 </ul>
@@ -712,6 +719,7 @@ the stability level after the major version number in the protobuf package and
 URI path using one of these strategies:</p>
 <ul>
 <li>Channel-based versioning (recommended)</li>
+<li>Interface-based versioning</li>
 <li>Release-based versioning</li>
 <li>Visibility-based versioning</li>
 </ul>
@@ -748,6 +756,61 @@ only in the alpha channel, deprecation is optional, and functionality <strong>ma
 removed without notice. If functionality is deprecated in an API's
 alpha channel before removal, the API <strong>should</strong> apply the same annotation, and
 <strong>may</strong> use any timeframe it wishes.</p>
+<h3 id="interface-based-versioning">Interface-based versioning</h3>
+<p>Interface-based versioning (IBV) is a versioning system where API producers can
+iterate quickly and safely on their APIs, while API consumers can update to new
+service features on their own schedule.</p>
+<p>With IBV, consumers experience a given service's API surface through reliable
+lenses called <a href="https://aip.dev/9">API versions</a>, and they can pin to any supported version for
+backward compatibility. Producers provide continued support for all published
+versions of their APIs, with explicitly time-bounded previews.</p>
+<p>IBV rests on the following principles:</p>
+<ul>
+<li><strong>Flexible versioning scope:</strong> API versioning is scoped as small as a single
+  <a href="https://aip.dev/9">API interface</a> (an individual resource or group of RPCs), or as large as an
+  entire <a href="https://aip.dev/9">API service</a>.</li>
+<li><strong>Element annotations:</strong> API elements (RPCs, fields, enum values) are
+  annotated with API version ranges indicating when they exist.</li>
+<li><strong>Versioned requests:</strong> API requests carry a version identifier in a header
+  or query parameter.</li>
+<li><strong>Co-versioned resources:</strong> Resources are co-versioned with the API
+  interfaces through which consumers access them. But producers store resource
+  definitions in a single, version-agnostic representation.</li>
+</ul>
+<h4 id="version-designation">Version designation</h4>
+<p>API requests under IBV <strong>must</strong> send the API version identifier using either the
+<code>X-Goog-Api-Version</code> HTTP header or the <code>$apiVersion</code> URL query parameter.</p>
+<p>If no version is specified in a request, behavior depends on configuration: the
+request <strong>may</strong> default to a producer-chosen version (often the initial API
+version for legacy clients), <strong>may</strong> respect a consumer override, or <strong>must</strong> be
+rejected with an error if no default is available.</p>
+<p>Stable API versions <strong>must</strong> be a date in <code>YYYY-MM-DD</code> format, such as
+<code>2025-09-04</code>. Preview API versions <strong>must</strong> follow the format
+<code>YYYY-MM-DD-preview</code>, such as <code>2025-03-01-preview</code>. See <a href="https://aip.dev/184">AIP-184</a> for more
+details.</p>
+<h4 id="previews">Previews</h4>
+<p>Preview API versions replace the need for traditional <code>alpha</code> and <code>beta</code>
+channels. Preview API versions are minted based on a given stable API version
+and represent a superset of that stable API version functionality, unless
+foreshadowing a potential incompatible change. See <a href="https://aip.dev/181">AIP-181</a> for more on the
+expected stability of Preview API versions.</p>
+<p>Preview API versions are explicitly time-bound in their lifecycle and <strong>must
+not</strong> be used for stable releases.</p>
+<h4 id="api-evolution">API evolution</h4>
+<p>Service producers <strong>must</strong> annotate API elements (RPCs, message fields, enum
+values) with internal annotations indicating the API version ranges in which
+these elements exist. These annotations define API screens, which represent
+version-aware lenses on the API surface.</p>
+<p>API screens determine request and response shaping in API proxies, and inform
+API documentation and API Discovery Documents. Service producers bundle API
+versions for publication, and releases of Discovery Documents, API
+documentation, and client libraries are built from these bundles.</p>
+<h4 id="deprecating-api-functionality_1">Deprecating API functionality</h4>
+<p>Deprecations and breaking changes are gated by incorporating them in a new API
+version. Users of existing, unchanged API versions are undisturbed and can plan
+an upgrade at their own pace. Making changes to existing, non-current versions
+as well as version-gated incompatible or unsafe changes, are governed by the
+applicable deprecation policy.</p>
 <h3 id="release-based-versioning">Release-based versioning</h3>
 <p><strong>Important:</strong> This pattern is not commonly used for new services. There are
 existing services that follow it, but Channel-based Versioning is the preferred
