@@ -41,9 +41,9 @@ and local changes will be automatically reflected in your browser upon reload.
 It is possible to run the development server locally also. The general gist of
 how to do so correctly is:
 
-- Install Python 3.8 if you do not already have it (direct install is fine, but
+- Install Python 3.10 if you do not already have it (direct install is fine, but
   [pyenv][5] is probably the best way if you have other Python projects).
-- Create a Python 3.8 [venv][6]. Once it is created, activate it in your shell
+- Create a Python 3.10 [venv][6]. Once it is created, activate it in your shell
   (`source path/to/venv/bin/activate`).
 - `pip install git+https://github.com/aip-dev/site-generator.git`
 - `aip-site-serve .`
