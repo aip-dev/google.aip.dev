@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0683166a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0683166a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e862fcc9">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e862fcc9">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=0683166a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e862fcc9"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -646,10 +646,14 @@
 <li><a href="#guidance">Guidance</a><ul>
 <li><a href="#read-write-consistency">Read-write consistency</a></li>
 <li><a href="#specifying-specific-fields">Specifying specific fields</a></li>
-<li><a href="#map-fields">Map fields</a></li>
-<li><a href="#wildcards">Wildcards</a></li>
+<li><a href="#repeated-fields">Repeated fields</a></li>
 <li><a href="#output-only-fields">Output only fields</a></li>
 <li><a href="#invalid-field-mask-entries">Invalid field mask entries</a></li>
+</ul>
+</li>
+<li><a href="#non-standard-extensions">Non-standard extensions</a><ul>
+<li><a href="#map-fields">Map fields</a></li>
+<li><a href="#collection-wildcards">Collection wildcards</a></li>
 </ul>
 </li>
 <li><a href="#changelog">Changelog</a></li>
@@ -746,72 +750,55 @@ resource require no traversal (examples: <code>title</code>, <code>rating</code>
 when resources contain messages (example: <code>author.given_name</code>).</p>
 <p><strong>Note:</strong> A user <strong>must</strong> be able to specify either a field as a whole, or one
 of its subfields: <code>author</code> and <code>author.given_name</code> are both valid.</p>
-<h3 id="map-fields">Map fields</h3>
-<p>Field masks <strong>may</strong> permit the specification of specific fields in a map, if
-and only if the map's keys are either strings or integers, using the <code>.</code>
-character for traversal.</p>
-<p>Field masks <strong>should</strong> support string keys that contain characters that are
-problematic for the field mask syntax, using the backtick character.</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// The name of the book.</span>
-<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// Reviews for the back cover. The key is the author of the review,</span>
-<span class="w">  </span><span class="c1">// and the value is the text of the review.</span>
-<span class="w">  </span><span class="c1">//</span>
-<span class="w">  </span><span class="c1">// Valid field masks: reviews, reviews.smith, reviews.`John Smith`</span>
-<span class="w">  </span><span class="n">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">&gt;</span><span class="w"> </span><span class="na">reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="wildcards">Wildcards</h3>
-<p>Field masks <strong>may</strong> permit the use of the <code>*</code> character on a repeated field or
-map to indicate the specification of particular sub-fields in the collection:</p>
-<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
-<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
-<span class="w">  </span><span class="p">};</span>
-
-<span class="w">  </span><span class="c1">// The name of the book.</span>
-<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
-
-<span class="w">  </span><span class="c1">// The author or authors of the book.</span>
-<span class="w">  </span><span class="c1">// Valid field masks: authors, authors.*.given_name, authors.*.family_name</span>
-<span class="w">  </span><span class="c1">// Invalid field masks: authors.0, authors.0.given_name</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="na">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span><span class="w"> </span><span class="nc">Author</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// The author&#39;s given name.</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">given_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// The author&#39;s family name.</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">family_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Note:</strong> Field masks <strong>must not</strong> permit accessing a particular element of a
-repeated field by index, and <strong>must</strong> return an <code>INVALID_ARGUMENT</code> error if
-this is attempted.</p>
+<h3 id="repeated-fields">Repeated fields</h3>
+<p>Field masks <strong>must</strong> permit specifying a repeated field as a whole (example:
+<code>authors</code>).</p>
+<p>In standard Protocol Buffer runtime libraries, repeated fields are <strong>only</strong>
+permitted as the terminal (leaf) element of a path. Field masks <strong>must not</strong>
+permit accessing a particular element of a repeated field by index (example:
+<code>authors.0</code>), and <strong>must</strong> return an <code>INVALID_ARGUMENT</code> error if this is
+attempted.</p>
 <h3 id="output-only-fields">Output only fields</h3>
-<p>If a user includes an output only field in an update mask indirectly (by using
-a wildcard or specifying an overall message that includes an output-only
-subfield), the service <strong>must</strong> ignore any output only fields provided as
-input, even if they are cleared or modified.</p>
+<p>If a user includes an output only field in an update mask indirectly (by
+specifying an overall message that includes an output-only subfield), the
+service <strong>must</strong> ignore any output only fields provided as input, even if they
+are cleared or modified.</p>
 <p>If a user directly specifies an output only field in an update mask, the
 service <strong>must</strong> ignore the output only fields provided as input, even if
 they are cleared or modified, to permit the same field mask to be used for
 input and output.</p>
 <h3 id="invalid-field-mask-entries">Invalid field mask entries</h3>
 <p>When reading data, field masks <strong>may</strong> ignore entries that point to a value
-that can not exist (either a field that does not exist, or a map key that the
-service considers invalid).</p>
+that can not exist (such as a field name that does not exist in the schema).</p>
 <p>When writing data, field masks <strong>should</strong> return an <code>INVALID_ARGUMENT</code> error if
 an entry points to a value that can not exist; however, the service <strong>may</strong>
 permit deletions.</p>
+<h2 id="non-standard-extensions">Non-standard extensions</h2>
+<p>The following features have occasionally appeared in API designs or custom
+infrastructure, but are <strong>not supported</strong> by standard Protocol Buffer runtime
+libraries. Standard Protocol Buffer utilities validate paths directly against
+message definitions and do not support traversing maps or collections.</p>
+<p>Services that choose to support these extensions are responsible for providing
+custom parsing and processing logic:</p>
+<h3 id="map-fields">Map fields</h3>
+<p>Standard Protocol Buffer serialization treats maps as repeated message
+entries, and standard runtime utilities do not support traversing into map
+entries.</p>
+<p>Services <strong>may</strong> support field mask paths targeting specific map entries using
+the <code>.</code> character for traversal (e.g. <code>reviews.smith</code>), or backtick escaping for
+keys containing special characters (e.g. <code>reviews.`John Smith`</code>).</p>
+<h3 id="collection-wildcards">Collection wildcards</h3>
+<p>Standard Protocol Buffer runtime utilities require repeated fields to be
+terminal elements in a path. Services <strong>may</strong> support wildcards (e.g. <code>*</code>) on
+repeated fields or maps (e.g. <code>authors.*.given_name</code>) to specify sub-fields
+across elements in a collection.</p>
+<p>(Note: For the top-level wildcard <code>*</code> used for full replacement in standard
+Update methods, see <a href="/134#request-message">AIP-134</a>).</p>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2026-10-08</strong>: Clarify support limits of standard Protocol Buffer libraries;
+  move map key traversal and mid-path collection wildcards to non-standard
+  extensions.</li>
 <li><strong>2023-10-18</strong>: Update guidance for presence of output only fields in update
   mask.</li>
 <li><strong>2023-07-17</strong>: Move <code>update_mask</code> guidance to <a href="/134">AIP-134</a>.</li>

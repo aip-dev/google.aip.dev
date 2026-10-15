@@ -8,8 +8,8 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0683166a">
-    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=0683166a">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=e862fcc9">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=e862fcc9">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
     <script type="text/javascript">
@@ -18,7 +18,7 @@
         $('html').css('visibility', 'visible');
       });
     </script>
-    <script type="text/javascript" src="/assets/js/global.js?v=0683166a"></script>
+    <script type="text/javascript" src="/assets/js/global.js?v=e862fcc9"></script>
     
 <script type="text/javascript" src="/assets/js/syntax.js"></script>
 
@@ -776,7 +776,14 @@ using the <code>google.api.http</code> annotation:</p>
   name in JSON, unless doing so for backwards-compatibility reasons.</li>
 </ul>
 </li>
+<li>Request fields that are not bound to the URL path or the HTTP <code>body</code> are
+  passed as URL query parameters.</li>
 </ul>
+<p><strong>Note:</strong> For the detailed transcoding behavior for the entire request
+(including how fields are bound across the URL path, HTTP request body, and URL
+query parameters), refer to the <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto"><code>google.api.http</code></a> documentation.
+For information on how fields and types are encoded—including query parameters
+and well-known types—refer to the Protocol Buffers canonical <a href="https://developers.google.com/protocol-buffers/docs/proto3#json">JSON encoding</a>.</p>
 <p><strong>Note:</strong> Bi-directional streaming RPCs should not include a <code>google.api.http</code>
 annotation at all. If feasible, the service <strong>should</strong> provide non-streaming
 equivalent RPCs.</p>
@@ -807,6 +814,9 @@ equivalent RPCs.</p>
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
+<li><strong>2026-10-14</strong>: Added general note referencing <code>google.api.http</code> transcoding
+  documentation and Protocol Buffers JSON encoding for request fields and
+  well-known types.</li>
 <li><strong>2022-08-18</strong>: Added the comment that query string parameter names are
   in camelCase.</li>
 <li><strong>2021-01-06</strong>: Added clarification around <code>body</code> and nested fields.</li>
