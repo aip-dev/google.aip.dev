@@ -33,11 +33,6 @@ $.when($.ready).then(() => {
   }
   extend.set('table:not(.no-h)', ['glue-table']);
   extend.set('#aip-main table:not(.no-h)', ['glue-table--datatable']);
-  extend.set('.tipue_search_content_title', [
-    'glue-headline',
-    'glue-headline--headline-4',
-    'glue-has-top-margin',
-  ]);
   for (let [selector, classes] of extend) {
     $(selector).addClass(classes);
   }
